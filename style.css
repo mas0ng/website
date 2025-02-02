@@ -1,0 +1,272 @@
+/* -------------------------- */
+/*       CSS Variables        */
+/* -------------------------- */
+:root {
+  --background-color: #121212;
+  --surface-color: #1e1e1e;
+  --text-color: #e0e0e0;
+  --accent-color: #bb86fc;
+  --accent-hover: #9b59b6;
+  --border-color: #333;
+  --card-shadow: rgba(0, 0, 0, 0.7);
+}
+
+/* -------------------------- */
+/*      Global Reset          */
+/* -------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* -------------------------- */
+/*    Header & Navigation     */
+/* -------------------------- */
+header {
+  background: var(--surface-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 20px;
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav .logo {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--accent-color);
+}
+
+/* -------------------------- */
+/*       Main Content         */
+/* -------------------------- */
+main {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #2c3e50, #4a148c);
+  border-radius: 10px;
+  margin-bottom: 60px;
+}
+
+.hero h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--accent-color);
+  color: var(--surface-color);
+  padding: 15px 30px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1em;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: var(--accent-hover);
+}
+
+/* About Section */
+.about {
+  padding: 40px 20px;
+  text-align: center;
+  background: var(--surface-color);
+  border-radius: 10px;
+  margin-bottom: 60px;
+}
+
+.about h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: var(--accent-color);
+}
+
+.about p {
+  font-size: 1.1em;
+  margin-bottom: 15px;
+  line-height: 1.8;
+}
+
+/* -------------------------- */
+/*          Footer            */
+/* -------------------------- */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: var(--surface-color);
+  border-top: 1px solid var(--border-color);
+  margin-top: 60px;
+}
+
+/* -------------------------- */
+/*       Apps Grid Page       */
+/* -------------------------- */
+.apps-grid h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5em;
+  color: var(--accent-color);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* App Card Styles */
+.app-card {
+  background: var(--surface-color);
+  border-radius: 15px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text-color);
+  box-shadow: 0 4px 8px var(--card-shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.app-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px var(--card-shadow);
+}
+
+/* Banner within the Card */
+.card-banner {
+  width: 100%;
+  padding-top: 33.33%; /* Maintains banner aspect ratio */
+  background-size: cover;
+  background-position: center;
+}
+
+/* Card Content */
+.card-content {
+  padding: 20px;
+}
+
+.card-content h2 {
+  margin-bottom: 10px;
+  font-size: 1.5em;
+}
+
+.card-content p {
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+/* -------------------------- */
+/*       404 Page Styles      */
+/* -------------------------- */
+.not-found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--background-color);
+  color: var(--text-color);
+  padding: 20px;
+}
+
+.not-found .container {
+  text-align: center;
+  animation: fadeIn 1s ease-out;
+}
+
+.error-code {
+  font-size: 6em;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--accent-color);
+  animation: pulse 2s infinite;
+}
+
+/* -------------------------- */
+/*         Animations         */
+/* -------------------------- */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* -------------------------- */
+/*      Responsive Styles     */
+/* -------------------------- */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+
+  .hero h1 {
+    font-size: 2.5em;
+  }
+
+  .hero p {
+    font-size: 1em;
+  }
+
+  .error-code {
+    font-size: 4em;
+  }
+}
