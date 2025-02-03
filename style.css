@@ -1,6 +1,4 @@
-/* -------------------------- */
-/*       CSS Variables        */
-/* -------------------------- */
+/* Global Styles */
 :root {
   --background-color: #121212;
   --surface-color: #1e1e1e;
@@ -27,52 +25,19 @@ body {
   line-height: 1.6;
 }
 
-/* -------------------------- */
-/*    Header & Navigation     */
-/* -------------------------- */
+/* Header Banner */
 header {
   background: var(--surface-color);
   border-bottom: 1px solid var(--border-color);
   padding: 20px;
 }
 
-nav {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  font-weight: bold;
 }
 
-nav .logo {
-  font-size: 1.8em;
-  font-weight: 700;
-  color: var(--accent-color);
-  text-decoration: none;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-}
-
-.nav-links li {
-  margin-left: 20px;
-}
-
-.nav-links a {
-  color: var(--text-color);
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.nav-links a:hover {
-  color: var(--accent-color);
-}
-
-/* -------------------------- */
-/*       Main Content         */
-/* -------------------------- */
 main {
   max-width: 1200px;
   margin: 40px auto;
@@ -114,55 +79,44 @@ main {
   background: var(--accent-hover);
 }
 
-/* About Section */
-.about {
-  padding: 40px 20px;
-  text-align: center;
-  background: var(--surface-color);
-  border-radius: 10px;
-  margin-bottom: 60px;
+
+/* Content Section */
+.content-section {
+  margin: 40px 20px;
 }
 
-.about h2 {
-  font-size: 2em;
+/* Section Header */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
-  color: var(--accent-color);
 }
 
-.about p {
-  font-size: 1.1em;
-  margin-bottom: 15px;
-  line-height: 1.8;
+.section-header h2 {
+  color: #4a148c; /* Light blue */
+  margin: 0;
+  font-size: 1.8em;
 }
 
-/* -------------------------- */
-/*          Footer            */
-/* -------------------------- */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: var(--surface-color);
-  border-top: 1px solid var(--border-color);
-  margin-top: 60px;
+.view-more {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9em;
 }
 
-/* -------------------------- */
-/*       Apps Grid Page       */
-/* -------------------------- */
-.apps-grid h1 {
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 2.5em;
-  color: var(--accent-color);
+.view-more:hover {
+  text-decoration: underline;
 }
 
-.grid-container {
+/* Cards Grid: 4 per row */
+.cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
-/* App Card Styles */
+/* Card Styles */
 .app-card {
   background: var(--surface-color);
   border-radius: 15px;
@@ -201,9 +155,8 @@ footer {
   line-height: 1.6;
 }
 
-/* -------------------------- */
-/*       404 Page Styles      */
-/* -------------------------- */
+/* Additional 404 Page Styles (if needed by 404.html) can be added here */
+
 .not-found {
   display: flex;
   align-items: center;
@@ -239,34 +192,4 @@ footer {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-/* -------------------------- */
-/*      Responsive Styles     */
-/* -------------------------- */
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    margin-top: 10px;
-  }
-
-  .nav-links li {
-    margin: 10px 0;
-  }
-
-  .hero h1 {
-    font-size: 2.5em;
-  }
-
-  .hero p {
-    font-size: 1em;
-  }
-
-  .error-code {
-    font-size: 4em;
-  }
 }
