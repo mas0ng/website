@@ -1,0 +1,193 @@
+/* Global Styles */
+:root {
+  --background-color: #121212;
+  --surface-color: #1e1e1e;
+  --text-color: #e0e0e0;
+  --accent-color: #bb86fc;
+  --accent-hover: #9b59b6;
+  --border-color: #333;
+  --card-shadow: rgba(0, 0, 0, 0.7);
+}
+
+/* -------------------------- */
+/*      Global Reset          */
+/* -------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* Header Banner */
+header {
+  background: var(--surface-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+main {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #2c3e50, #4a148c);
+  border-radius: 10px;
+  margin-bottom: 60px;
+}
+
+.hero h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--accent-color);
+  color: var(--surface-color);
+  padding: 15px 30px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1em;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: var(--accent-hover);
+}
+
+
+
+
+/* Content Section */
+.content-section {
+  margin: 40px 20px;
+}
+
+/* Section Header */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  color: #fff;
+  margin: 0;
+  font-size: 1.8em;
+}
+
+.view-more {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.view-more:hover {
+  text-decoration: underline;
+}
+
+/* Scrollable Cards */
+.cards-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 10px;
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+}
+
+/* Card Styles */
+.app-card {
+  display: inline-block;
+  width: 250px;
+  background: var(--surface-color);
+  border-radius: 15px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text-color);
+  box-shadow: 0 4px 8px var(--card-shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+  flex-shrink: 0;
+}
+
+.app-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px var(--card-shadow);
+}
+
+/* Banner within the Card */
+.card-banner {
+  width: 100%;
+  padding-top: 33.33%;
+  background-size: cover;
+  background-position: center;
+  margin-top: 30px;
+}
+
+/* Card Content */
+.card-content {
+  padding: 20px;
+}
+
+.card-content h2 {
+  margin-bottom: 10px;
+  font-size: 1.5em;
+}
+
+.card-content p {
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+
+/* Scrollbar Customization */
+.cards-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.cards-container::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+.cards-container::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 10px;
+}
+
+.cards-container::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-hover);
+}
+ght: 1.6;
+}
+
+/* Additional 404 Page Styles (if needed by 404.html) can be added here */
+
+
