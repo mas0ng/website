@@ -1,0 +1,46 @@
+{
+  "title": "Privacy Policy",
+  "last_updated": "January 25, 2026",
+  "sections": [
+    {
+      "heading": "1. Data Handling",
+      "content": "We only process the information you choose to provide. This may include exam details, instructions, or other text input necessary to generate the requested PDF output."
+    },
+    {
+      "heading": "2. AI Processing",
+      "content": "Input provided to this service may be processed by OpenAI for the purpose of generating responses. We do not store or retain conversation data on our own servers."
+    },
+    {
+      "heading": "3. PDF Generation",
+      "content": "When generating exam papers, the structured JSON sent to the PDF generation endpoint is processed temporarily for document rendering. The resulting PDF is returned to you and not archived."
+    },
+    {
+      "heading": "4. No User Account Storage",
+      "content": "We do not maintain user accounts, authentication records, or profile information. We do not collect or store email addresses, phone numbers, or personal identifiers."
+    },
+    {
+      "heading": "5. No Sale or Transfer of Data",
+      "content": "We do not sell, rent, or transfer your data to third parties for marketing or advertising."
+    },
+    {
+      "heading": "6. Sensitive Information",
+      "content": "Please avoid providing sensitive personal information (PII), financial data, medical records, or passwords. This service is not intended to process or store such information."
+    },
+    {
+      "heading": "7. Third-Party Systems",
+      "content": "PDF rendering and AI interactions depend on third-party systems (e.g. OpenAI) which may have their own privacy practices. Please review their policies for details."
+    },
+    {
+      "heading": "8. Data Retention",
+      "content": "Input and generated PDFs are only retained in-memory for the duration of the request and are not permanently stored."
+    },
+    {
+      "heading": "9. Changes to This Policy",
+      "content": "We may update this policy from time to time. Continued use of the service after changes indicates acceptance of the updated policy."
+    },
+    {
+      "heading": "10. Contact",
+      "content": "If you have questions regarding data privacy, please contact the service operator."
+    }
+  ]
+}

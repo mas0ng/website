@@ -253,7 +253,7 @@
         @media (max-width: 735px) {
             .wrapper { padding: 30px 15px; }
             header { padding-left: 0; align-items: flex-start; }
-            .profile-pic { width: 85px; height: 85px; margin-bottom: 10px; }
+            .profile-pic { width: 115px; height: 115px; margin-bottom: 10px; }
             .username { font-size: 22px; margin-bottom: 25px; }
             
             .stories-section { gap: 15px; padding-bottom: 25px; }
@@ -270,7 +270,12 @@
             }
             .link-card img { margin-bottom: 0; margin-right: 15px; width: 26px; height: 26px; }
 
-            #story-window { height: 100vh; width: 100vw; border-radius: 0; }
+            #story-window {
+                aspect-ratio: 9 / 16;
+                height: 85vh;
+                max-width: 95vw;
+                border-radius: 0;
+            }
         }
 
         /* Respect reduced motion preferences */

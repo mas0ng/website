@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policy Viewer</title>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-primary: #262626;
+            --text-secondary: #8e8e8e;
+            --accent-blue: #0095f6;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .doc-wrapper {
+            max-width: 680px;
+            width: 100%;
+            padding: 60px 25px;
+            line-height: 1.6;
+        }
+
+        /* --- Header --- */
+        .doc-header {
+            margin-bottom: 50px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #efefef;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin: 0 0 10px 0;
+            letter-spacing: -1px;
+        }
+
+        .meta-info {
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* --- Content Styling --- */
+        .section-block {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        p {
+            font-size: 16px;
+            color: #444; 
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        /* --- Navigation --- */
+        .top-nav { margin-bottom: 30px; }
+        .top-nav a {
+            text-decoration: none;
+            color: var(--accent-blue);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* --- States --- */
+        #loading { color: var(--text-secondary); font-style: italic; }
+        .error-msg { 
+            color: #ed4956; 
+            background: #fff0f0; 
+            padding: 20px; 
+            border-radius: 8px; 
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="doc-wrapper">
+    <div class="top-nav">
+        <a href="index.html">← Back to Menu</a>
+    </div>
+
+    <div id="loading">Loading document...</div>
+
+    <div id="content-area" style="display: none;">
+        <div class="doc-header">
+            <h1 id="p-title"></h1>
+            <div class="meta-info" id="p-date"></div>
+        </div>
+        
+        <div id="p-body">
+            </div>
+    </div>
+</div>
+
+<script>
+    async function loadDocument() {
+        const loading = document.getElementById('loading');
+        const content = document.getElementById('content-area');
+        
+        try {
+            // 1. Get the file name from the URL
+            const params = new URLSearchParams(window.location.search);
+            const fileName = params.get('id'); // e.g., "main" or "custom-gpt"
+
+            if (!fileName) throw new Error("No document specified.");
+
+            // 2. Fetch the JSON file
+            // Note: We manually add .json here
+            const response = await fetch(`data/${fileName}.json`);
+
+            if (!response.ok) {
+                throw new Error(`Policy file not found (${response.status})`);
+            }
+
+            const data = await response.json();
+
+            // 3. Populate Data
+            document.getElementById('p-title').innerText = data.title;
+            document.getElementById('p-date').innerText = "Last Updated: " + data.last_updated;
+
+            const bodyContainer = document.getElementById('p-body');
+            bodyContainer.innerHTML = ''; 
+
+            data.sections.forEach(section => {
+                const block = document.createElement('div');
+                block.className = 'section-block';
+                block.innerHTML = `
+                    <h2>${section.heading}</h2>
+                    <p>${section.content}</p>
+                `;
+                bodyContainer.appendChild(block);
+            });
+
+            // 4. Reveal
+            loading.style.display = 'none';
+            content.style.display = 'block';
+
+        } catch (error) {
+            loading.style.display = 'none';
+            document.querySelector('.doc-wrapper').innerHTML += `
+                <div class="error-msg">
+                    <strong>Error:</strong> ${error.message}<br>
+                    <a href="privacy.html" style="color:#ed4956; text-decoration: underline; margin-top:10px; display:block;">Go Back</a>
+                </div>
+            `;
+        }
+    }
+
+    loadDocument();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "policies": [
+    { "id": "main", "title": "Main Site Policy", "description": "General website usage." },
+    { "id": "custom-gpt", "title": "AI Policy", "description": "How we use GPT data." }
+  ]
+}
