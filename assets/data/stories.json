@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "name": "Travel",
+    "cover_image": "/assets/storyImages/travel/cover/cover.jpg",
+    "slides": [
+      "/assets/storyImages/travel/content/3.jpg",
+      "/assets/storyImages/travel/content/2.jpg",
+      "/assets/storyImages/travel/content/1.jpg"
+    ]
+  }
+]

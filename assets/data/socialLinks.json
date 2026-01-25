@@ -1,0 +1,37 @@
+[
+  {
+    "title": "TikTok",
+    "url": "https://tiktok.com",
+    "icon": "/assets/socialImages/tiktok.svg"
+  },
+  {
+    "title": "Instagram",
+    "url": "https://instagram.com",
+    "icon": "/assets/socialImages/instagram.svg"
+  },
+  {
+    "title": "Discord",
+    "url": "https://discord.com",
+    "icon": "/assets/socialImages/discord.svg"
+  },
+  {
+    "title": "Snapchat",
+    "url": "https://snapchat.com",
+    "icon": "/assets/socialImages/snapchat.svg"
+  },
+  {
+    "title": "GitHub",
+    "url": "https://github.com",
+    "icon": "/assets/socialImages/github.svg"
+  },
+  {
+    "title": "Signal",
+    "url": "https://github.com",
+    "icon": "/assets/socialImages/signal.svg"
+  },
+  {
+    "title": "Facebook",
+    "url": "https://facebook.com",
+    "icon": "/assets/socialImages/facebook.svg"
+  }
+]
