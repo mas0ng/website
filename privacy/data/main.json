@@ -1,14 +1,43 @@
 {
-  "title": "Main Privacy Policy",
-  "last_updated": "October 24, 2025",
+  "title": "Privacy Policy",
+  "last_updated": "26 Jan 2026",
   "sections": [
     {
       "heading": "1. Introduction",
-      "content": "Welcome to our website. We are committed to protecting your personal information and your right to privacy. By using our main landing page, you agree to the collection and use of information in accordance with this policy."
+      "content": "Thank you for visiting our website. We respect your privacy and want to be clear about how information is handled. This website is a static informational site hosted on GitHub Pages and does not require account creation, login, or submission of personal details to function."
     },
     {
-      "heading": "2. Analytics",
-      "content": "We use basic analytics tools to understand how users interact with our site. This data is anonymized and does not track individual IP addresses."
+      "heading": "2. Information We Do Not Collect",
+      "content": "We do not collect or store personal information such as names, email addresses, passwords, physical addresses, payment details, or other identifying information."
+    },
+    {
+      "heading": "3. Basic Analytics",
+      "content": "This website may use simple analytics tools to understand general traffic, performance, and usage trends. The information collected is aggregated and anonymized. It does not identify individual users and does not track IP addresses."
+    },
+    {
+      "heading": "4. Cookies",
+      "content": "This site does not use cookies for tracking, advertising, or personalization. If analytics are used, they may set basic cookies solely to measure website performance."
+    },
+    {
+      "heading": "5. Data Sharing",
+      "content": "We do not sell, share, or transfer any personal data to third parties. No user information is shared for advertising or marketing purposes."
+    },
+    {
+      "heading": "6. Hosting",
+      "content": "This website is hosted on GitHub Pages. GitHub may collect standard server logs for operational and security purposes. For more information, please refer to GitHub's own privacy statement."
+    },
+    {
+      "heading": "7. External Links",
+      "content": "This website may include links to external websites. We are not responsible for the privacy practices or content of these external sites."
+    },
+    {
+      "heading": "8. Changes to This Policy",
+      "content": "We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated date."
+    },
+    {
+      "heading": "9. Contact",
+      "content": "If you have questions about this Privacy Policy, you may contact us at the email provided below."
     }
-  ]
+  ],
+  "contact_email": "mason@mas0ng.com"
 }

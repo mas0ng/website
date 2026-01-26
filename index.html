@@ -2,519 +2,103 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mas0ng.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>mas0ng.com | Links</title>
+    <script src="assets/js/footer.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="/assets/icons/siteIcons/favicons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/icons/siteIcons/favicons/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/icons/siteIcons/favicons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/siteIcons/favicons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="mas0ng.com" />
+    <link rel="manifest" href="/assets/icons/siteIcons/favicons/site.webmanifest" />
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ig: { bg: '#fafafa', text: '#262626', stroke: '#dbdbdb', blue: '#0095f6' }
+                    },
+                    maxWidth: { 'insta': '935px' }
+                }
+            }
+        }
+    </script>
+
     <style>
-        :root {
-            --bg-color: #fafafa;
-            --text-color: #262626;
-            --accent-blue: #0095f6;
-            --border: 1px solid #dbdbdb;
-            --story-size-pc: 85px;
-            --story-size-mobile: 65px;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
-        .wrapper {
-            width: 100%;
-            max-width: 935px; /* Instagram standard desktop width */
-            padding: 50px 20px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* --- Header & Highlights: Aligned Left --- */
-        header {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 30px;
-            padding-left: 10px;
-        }
-
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 1px solid #dbdbdb;
-            padding: 4px;
-            margin-bottom: 20px;
-        }
-
-        .username {
-            font-size: 28px;
-            font-weight: 300;
-            margin: 0 0 40px 0;
-            letter-spacing: -0.5px;
-        }
-
-        /* --- Stories Section: Aligned Left --- */
-        .stories-section {
-            display: flex;
-            justify-content: flex-start;
-            gap: 35px;
-            width: 100%;
-            padding: 10px 10px 40px 10px;
-            border-bottom: 1px solid #dbdbdb;
-            overflow-x: auto;
-            scrollbar-width: none;
-        }
-        .stories-section::-webkit-scrollbar { display: none; }
-
-        .story-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-            min-width: 90px;
-            border: none;
-            padding: 0;
-            background: none;
-        }
-
-        .story-item:focus-visible {
-            outline: 2px solid var(--accent-blue);
-            outline-offset: 4px;
-            border-radius: 999px;
-        }
-
-        .story-ring {
-            width: var(--story-size-pc);
-            height: var(--story-size-pc);
-            border-radius: 50%;
-            background: white;
-            border: 1px solid #dbdbdb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 12px;
-            transition: all 0.2s ease-in-out;
-        }
-
-        .story-item:hover .story-ring {
-            border-color: var(--accent-blue);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0, 149, 246, 0.15);
-        }
-
-        .story-img {
-            width: calc(var(--story-size-pc) - 8px);
-            height: calc(var(--story-size-pc) - 8px);
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .story-name { 
-            font-size: 13px; 
-            font-weight: 600; 
-            color: var(--text-color);
-            text-align: center;
-        }
-
-        /* --- Social Links Grid --- */
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 25px;
-            margin-top: 50px;
-            width: 100%;
-        }
-
-        .link-card {
-            aspect-ratio: 1 / 1; 
-            background-color: white;
-            border: var(--border);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: var(--text-color);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .link-card:hover {
-            border-color: var(--accent-blue);
-            transform: scale(1.02);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-        }
-
-        .link-card:focus-visible {
-            outline: 2px solid var(--accent-blue);
-            outline-offset: 3px;
-        }
-
-        .link-card img {
-            width: 40px;
-            height: 40px;
-            margin-bottom: 15px;
-        }
-
-        .link-card span {
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* --- 9:16 Story Viewer --- */
-        #story-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #story-overlay.is-open {
-            display: flex;
-        }
-
-        #story-window {
-            position: relative;
-            aspect-ratio: 9 / 16;
-            height: 90vh; 
-            max-width: 95vw;
-            background: #000;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        #story-img { width: 100%; height: 100%; object-fit: cover; }
-
-        .progress-container {
-            position: absolute; top: 12px; width: 100%;
-            display: flex; gap: 4px; padding: 0 10px; box-sizing: border-box;
-            z-index: 10;
-        }
-        .bar { flex: 1; height: 2px; background: rgba(255,255,255,0.3); border-radius: 2px; overflow: hidden; }
-        .fill { height: 100%; background: #fff; width: 0%; }
-
-        .close-btn { 
-            position: absolute; top: 15px; right: 15px; color: #fff; 
-            cursor: pointer; font-size: 26px; z-index: 20; 
-            line-height: 1; text-shadow: 0 0 10px rgba(0,0,0,0.5);
-            border: none;
-            background: rgba(0,0,0,0.4);
-            border-radius: 999px;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .close-btn:focus-visible {
-            outline: 2px solid #fff;
-            outline-offset: 2px;
-        }
-
-        .nav-zone { 
-            position: absolute; top: 0; height: 100%; width: 45%;
-            z-index: 5;
-            background: transparent;
-            border: none;
-            padding: 0;
-            cursor: pointer;
-        }
-        .nav-left { left: 0; }
-        .nav-right { right: 0; width: 55%; }
-
-        .nav-zone:focus-visible {
-            outline: none;
-        }
-
-        /* Simple message for errors / no data */
-        .status-message {
-            margin-top: 30px;
-            font-size: 14px;
-            color: #8e8e8e;
-            padding: 0 10px;
-        }
-
-        /* --- RESPONSIVE MOBILE --- */
-        @media (max-width: 735px) {
-            .wrapper { padding: 30px 15px; }
-            header { padding-left: 0; align-items: flex-start; }
-            .profile-pic { width: 115px; height: 115px; margin-bottom: 10px; }
-            .username { font-size: 22px; margin-bottom: 25px; }
-            
-            .stories-section { gap: 15px; padding-bottom: 25px; }
-            .story-ring { width: var(--story-size-mobile); height: var(--story-size-mobile); }
-            .story-img { width: calc(var(--story-size-mobile) - 6px); height: calc(var(--story-size-mobile) - 6px); }
-
-            .links-grid { grid-template-columns: 1fr; gap: 10px; margin-top: 30px; }
-            .link-card {
-                aspect-ratio: auto;
-                flex-direction: row;
-                justify-content: flex-start;
-                padding: 18px 20px;
-                border-radius: 8px;
-            }
-            .link-card img { margin-bottom: 0; margin-right: 15px; width: 26px; height: 26px; }
-
-            #story-window {
-                aspect-ratio: 9 / 16;
-                height: 85vh;
-                max-width: 95vw;
-                border-radius: 0;
-            }
-        }
-
-        /* Respect reduced motion preferences */
-        @media (prefers-reduced-motion: reduce) {
-            .story-ring,
-            .link-card {
-                transition: none;
-            }
-            .story-item:hover .story-ring,
-            .link-card:hover {
-                transform: none;
-                box-shadow: none;
-            }
-        }
+        .pt-safe { padding-top: env(safe-area-inset-top, 20px); }
+        
+        img { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; pointer-events: none; }
+        button img { pointer-events: none; }
     </style>
 </head>
-<body>
+<body class="bg-ig-bg text-ig-text font-sans antialiased min-h-screen flex flex-col items-center select-none -webkit-tap-highlight-color-transparent">
 
-<div class="wrapper">
-    <header>
-        <img src="assets/profileImages/pfp.jpg" class="profile-pic" alt="Profile picture">
-        <h1 class="username">Mason</h1>
-    </header>
-
-    <div class="stories-section" id="stories-container" aria-label="Highlights"></div>
-
-    <div class="links-grid" id="links-container"></div>
-
-    <p class="status-message" id="status-message" hidden></p>
-</div>
-
-<div id="story-overlay" role="dialog" aria-modal="true" aria-label="Story viewer">
-    <div id="story-window">
-        <div class="progress-container" id="p-container"></div>
+    <div class="w-full max-w-insta p-5 md:p-10 flex flex-col pt-safe">
         
-        <button class="close-btn" id="close-story-btn" type="button" aria-label="Close story">
-            ×
-        </button>
+        <div id="links-container" class="flex flex-col gap-3 w-full md:grid md:grid-cols-3 md:gap-6">
+            
+            <div class="bg-gray-100 animate-pulse border border-ig-stroke h-16 w-full rounded-lg md:rounded-none md:h-auto md:aspect-square"></div>
+            <div class="bg-gray-100 animate-pulse border border-ig-stroke h-16 w-full rounded-lg md:rounded-none md:h-auto md:aspect-square"></div>
+            <div class="bg-gray-100 animate-pulse border border-ig-stroke h-16 w-full rounded-lg md:rounded-none md:h-auto md:aspect-square"></div>
         
-        <button class="nav-zone nav-left" id="nav-left" type="button" aria-label="Previous slide"></button>
-        <button class="nav-zone nav-right" id="nav-right" type="button" aria-label="Next slide"></button>
-        
-        <img id="story-img" src="" alt="">
+        </div>
+
+        <p id="status-message" class="text-center text-gray-400 text-sm mt-10 hidden"></p>
     </div>
-</div>
 
-<noscript>
-    <p style="padding: 1rem; text-align:center; font-size: 14px;">
-        JavaScript is required to view stories and links.
-    </p>
-</noscript>
+    <script>
+        const els = {
+            containerLinks: document.getElementById('links-container'),
+            statusMsg: document.getElementById('status-message')
+        };
 
-<script>
-    let allStories = [];
-    let curStoryIdx = 0;
-    let curSlideIdx = 0;
-    let timer;
-    const SLIDE_DURATION = 5000;
-    const prefersReducedMotion = window.matchMedia &&
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        async function init() {
+            try {
+                const res = await fetch('assets/data/socialLinks.json');
 
-    const overlay = document.getElementById('story-overlay');
-    const storyImgEl = document.getElementById('story-img');
-    const progressContainer = document.getElementById('p-container');
-    const statusMessage = document.getElementById('status-message');
+                if (!res.ok) throw new Error('Data load failed');
 
-    async function fetchData() {
-        const linksContainer = document.getElementById('links-container');
-        const storiesContainer = document.getElementById('stories-container');
+                const links = await res.json();
+                renderLinks(links);
 
-        try {
-            const [linksRes, storiesRes] = await Promise.all([
-                fetch('assets/data/socialLinks.json'),
-                fetch('assets/data/stories.json')
-            ]);
-
-            if (!linksRes.ok || !storiesRes.ok) {
-                throw new Error('Network response was not ok');
+            } catch (err) {
+                console.error(err);
+                els.statusMsg.classList.remove('hidden');
+                els.statusMsg.textContent = 'Please run on a local server (e.g., Live Server) to view content.';
             }
-
-            const links = await linksRes.json();
-            allStories = await storiesRes.json();
-
-            // Populate Links (build once then inject)
-            if (Array.isArray(links) && links.length) {
-                const linksHtml = links.map(l => `
-                    <a href="${l.url}" class="link-card" target="_blank" rel="noopener noreferrer">
-                        <img src="${l.icon}" alt="">
-                        <span>${l.title}</span>
-                    </a>
-                `).join('');
-                linksContainer.innerHTML = linksHtml;
-            }
-
-            // Populate Stories
-            if (Array.isArray(allStories) && allStories.length) {
-                const storiesFragment = document.createDocumentFragment();
-                allStories.forEach((s, i) => {
-                    const btn = document.createElement('button');
-                    btn.className = 'story-item';
-                    btn.type = 'button';
-                    btn.setAttribute('data-story-index', String(i));
-                    btn.setAttribute('aria-label', s.name);
-
-                    btn.innerHTML = `
-                        <div class="story-ring">
-                            <img src="${s.cover_image}" class="story-img" alt="">
-                        </div>
-                        <div class="story-name">${s.name}</div>
-                    `;
-                    storiesFragment.appendChild(btn);
-                });
-                storiesContainer.appendChild(storiesFragment);
-            } else {
-                statusMessage.hidden = false;
-                statusMessage.textContent = 'No stories to show right now.';
-            }
-
-        } catch (err) {
-            console.error("Make sure you are running on a local server!", err);
-            statusMessage.hidden = false;
-            statusMessage.textContent = 'Unable to load stories and links. Please try again later.';
-        }
-    }
-
-    function openStory(idx) {
-        if (!allStories[idx]) return;
-        curStoryIdx = idx;
-        curSlideIdx = 0;
-        overlay.classList.add('is-open');
-        renderSlide();
-    }
-
-    function renderSlide() {
-        clearInterval(timer);
-
-        const story = allStories[curStoryIdx];
-        if (!story || !story.slides || !story.slides.length) {
-            return closeStory();
         }
 
-        if (curSlideIdx >= story.slides.length) {
-            return closeStory();
+        function renderLinks(links) {
+            els.containerLinks.innerHTML = links.map(l => `
+                <a href="${l.url}" target="_blank" class="
+                    group relative block w-full bg-white border border-ig-stroke 
+                    hover:bg-gray-50 active:scale-95 transition-all duration-200
+                    rounded-lg md:rounded-none
+                    md:aspect-square
+                ">
+                    <div class="flex items-center p-4 h-full md:absolute md:inset-0 md:flex-col md:justify-center md:p-4">
+                        
+                        <img src="${l.icon}" class="
+                            w-6 h-6 object-contain pointer-events-none mr-4 
+                            md:mr-0 md:mb-3 md:w-10 md:h-10
+                        " alt="">
+                        
+                        <span class="
+                            text-base font-medium text-gray-900 flex-grow
+                            md:flex-grow-0 md:text-xs md:font-semibold md:uppercase md:tracking-wide md:text-gray-700 md:text-center
+                        ">
+                            ${l.title}
+                        </span>
+
+                        <svg class="w-4 h-4 text-gray-300 md:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </div>
+                </a>
+            `).join('');
         }
-        if (curSlideIdx < 0) curSlideIdx = 0;
 
-        const slideUrl = story.slides[curSlideIdx];
-        storyImgEl.src = slideUrl;
-        storyImgEl.alt = story.name || 'Story slide';
-
-        // Progress Bars
-        progressContainer.innerHTML = story.slides.map((_, i) => `
-            <div class="bar">
-                <div class="fill" id="f-${i}" style="width:${i < curSlideIdx ? '100%' : '0%'}"></div>
-            </div>
-        `).join('');
-
-        if (prefersReducedMotion) {
-            // Instantly fill current bar if reduced motion, no auto-advance
-            const currentFill = document.getElementById(`f-${curSlideIdx}`);
-            if (currentFill) currentFill.style.width = '100%';
-            return;
-        }
-
-        let startTime = Date.now();
-        const currentFill = document.getElementById(`f-${curSlideIdx}`);
-
-        timer = setInterval(() => {
-            const elapsed = Date.now() - startTime;
-            const progress = (elapsed / SLIDE_DURATION) * 100;
-            if (currentFill) {
-                currentFill.style.width = Math.min(progress, 100) + '%';
-            }
-            if (progress >= 100) nextSlide();
-        }, 30);
-    }
-
-    function nextSlide() {
-        curSlideIdx++;
-        renderSlide();
-    }
-
-    function prevSlide() {
-        curSlideIdx--;
-        if (curSlideIdx < 0) curSlideIdx = 0;
-        renderSlide();
-    }
-
-    function closeStory() {
-        overlay.classList.remove('is-open');
-        clearInterval(timer);
-    }
-
-    // Event wiring
-    document.addEventListener('DOMContentLoaded', () => {
-        fetchData();
-
-        // Delegated click for stories
-        const storiesContainer = document.getElementById('stories-container');
-        storiesContainer.addEventListener('click', (event) => {
-            const target = event.target.closest('.story-item');
-            if (!target) return;
-            const idx = Number(target.getAttribute('data-story-index'));
-            if (!Number.isNaN(idx)) {
-                openStory(idx);
-            }
-        });
-
-        document.getElementById('nav-left').addEventListener('click', prevSlide);
-        document.getElementById('nav-right').addEventListener('click', nextSlide);
-        document.getElementById('close-story-btn').addEventListener('click', closeStory);
-
-        // Keyboard shortcuts for overlay
-        document.addEventListener('keydown', (event) => {
-            if (!overlay.classList.contains('is-open')) return;
-
-            switch (event.key) {
-                case 'Escape':
-                    event.preventDefault();
-                    closeStory();
-                    break;
-                case 'ArrowRight':
-                    event.preventDefault();
-                    nextSlide();
-                    break;
-                case 'ArrowLeft':
-                    event.preventDefault();
-                    prevSlide();
-                    break;
-            }
-        });
-
-        // Close overlay if user clicks outside the story window
-        overlay.addEventListener('click', (event) => {
-            if (event.target === overlay) {
-                closeStory();
-            }
-        });
-    });
-</script>
+        init();
+    </script>
 </body>
 </html>

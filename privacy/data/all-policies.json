@@ -1,6 +1,14 @@
 {
   "policies": [
-    { "id": "main", "title": "Main Site Policy", "description": "General website usage." },
-    { "id": "custom-gpt", "title": "AI Policy", "description": "How we use GPT data." }
+    {
+      "id": "main",
+      "title": "Website Privacy Policy",
+      "description": "Outlines data handling practices and user privacy for the primary website."
+    },
+    {
+      "id": "custom-gpt",
+      "title": "AI Data Processing Policy",
+      "description": "Describes how user inputs and request data are processed when interacting with our Custom GPT integrations."
+    }
   ]
 }

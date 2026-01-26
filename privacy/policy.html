@@ -2,167 +2,182 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Policy Viewer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>mas0ng.com | Privacy Policy</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="icon" type="image/png" href="/assets/icons/siteIcons/favicons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/icons/siteIcons/favicons/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/icons/siteIcons/favicons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/siteIcons/favicons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="mas0ng.com" />
+    <link rel="manifest" href="/assets/icons/siteIcons/favicons/site.webmanifest" />
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ig: { bg: '#fafafa', text: '#262626', stroke: '#dbdbdb', blue: '#0095f6' }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --bg-color: #ffffff;
-            --text-primary: #262626;
-            --text-secondary: #8e8e8e;
-            --accent-blue: #0095f6;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        .doc-wrapper {
-            max-width: 680px;
-            width: 100%;
-            padding: 60px 25px;
-            line-height: 1.6;
-        }
-
-        /* --- Header --- */
-        .doc-header {
-            margin-bottom: 50px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid #efefef;
-        }
-
-        h1 {
-            font-size: 32px;
-            font-weight: 800;
-            margin: 0 0 10px 0;
-            letter-spacing: -1px;
-        }
-
-        .meta-info {
-            color: var(--text-secondary);
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        /* --- Content Styling --- */
-        .section-block {
-            margin-bottom: 40px;
-        }
-
-        h2 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--text-primary);
-        }
-
-        p {
-            font-size: 16px;
-            color: #444; 
-            margin: 0;
-            line-height: 1.7;
-        }
-
-        /* --- Navigation --- */
-        .top-nav { margin-bottom: 30px; }
-        .top-nav a {
-            text-decoration: none;
-            color: var(--accent-blue);
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        /* --- States --- */
-        #loading { color: var(--text-secondary); font-style: italic; }
-        .error-msg { 
-            color: #ed4956; 
-            background: #fff0f0; 
-            padding: 20px; 
-            border-radius: 8px; 
-            text-align: center;
-        }
+        body { -webkit-tap-highlight-color: transparent; }
+        .pt-safe { padding-top: env(safe-area-inset-top, 20px); }
     </style>
 </head>
-<body>
+<body class="bg-ig-bg text-ig-text font-sans antialiased min-h-screen flex flex-col">
 
-<div class="doc-wrapper">
-    <div class="top-nav">
-        <a href="index.html">← Back to Menu</a>
-    </div>
-
-    <div id="loading">Loading document...</div>
-
-    <div id="content-area" style="display: none;">
-        <div class="doc-header">
-            <h1 id="p-title"></h1>
-            <div class="meta-info" id="p-date"></div>
-        </div>
+    <div class="w-full max-w-4xl mx-auto p-6 md:p-12 flex-grow flex flex-col">
         
-        <div id="p-body">
+        <header class="flex flex-col gap-4 mb-8 pt-safe border-b border-gray-200 pb-6">
+            <a id="back-btn" href="/privacy/" class="inline-flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-black transition-colors w-fit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                <span id="back-text">Back</span>
+            </a>
+            
+            <div id="header-content">
+                <div class="animate-pulse space-y-3">
+                    <div class="h-8 bg-gray-200 rounded w-1/3"></div>
+                    <div class="h-4 bg-gray-100 rounded w-1/4"></div>
+                </div>
             </div>
+        </header>
+
+        <main class="bg-white rounded-xl border border-ig-stroke p-6 md:p-10 shadow-sm min-h-[400px]">
+            
+            <div id="skeleton-loader" class="animate-pulse space-y-6">
+                <div class="space-y-2">
+                    <div class="h-5 bg-gray-100 rounded w-1/4"></div>
+                    <div class="h-4 bg-gray-100 rounded w-full"></div>
+                    <div class="h-4 bg-gray-100 rounded w-full"></div>
+                </div>
+                <div class="space-y-2">
+                    <div class="h-5 bg-gray-100 rounded w-1/4"></div>
+                    <div class="h-4 bg-gray-100 rounded w-full"></div>
+                    <div class="h-4 bg-gray-100 rounded w-5/6"></div>
+                </div>
+                <div class="h-40 bg-gray-50 rounded w-full mt-6"></div>
+            </div>
+
+            <div id="policy-content" class="hidden space-y-8 text-gray-800 leading-relaxed">
+                </div>
+            
+            <div id="contact-area" class="hidden mt-12 pt-8 border-t border-gray-100 flex flex-col items-start">
+                </div>
+
+            <div id="error-msg" class="hidden flex flex-col items-center justify-center py-10 text-center">
+                <div class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                </div>
+                <p class="text-gray-900 font-medium text-lg">Policy not found</p>
+                <p class="text-gray-500 text-sm mt-1 mb-4">We couldn't find the file: <span id="missing-file-name" class="font-mono text-xs bg-gray-100 px-1 py-0.5 rounded"></span></p>
+                <a href="/privacy/" class="text-ig-blue hover:underline font-medium">Return to Privacy Hub</a>
+            </div>
+        </main>
+
     </div>
-</div>
 
-<script>
-    async function loadDocument() {
-        const loading = document.getElementById('loading');
-        const content = document.getElementById('content-area');
-        
-        try {
-            // 1. Get the file name from the URL
+    <script src="/assets/js/footer.js"></script>
+
+    <script>
+        // --- 1. HANDLE RETURN ADDRESS ---
+        (function setupNavigation() {
             const params = new URLSearchParams(window.location.search);
-            const fileName = params.get('id'); // e.g., "main" or "custom-gpt"
+            const returnUrl = params.get('return_to');
+            const backBtn = document.getElementById('back-btn');
+            const backText = document.getElementById('back-text');
 
-            if (!fileName) throw new Error("No document specified.");
+            let backHref = "/privacy/";
 
-            // 2. Fetch the JSON file
-            // Note: We manually add .json here
-            const response = await fetch(`data/${fileName}.json`);
+            if (returnUrl) {
+                backHref += `?return_to=${encodeURIComponent(returnUrl)}`;
+                backText.innerText = "Back";
+            }
+            
+            backBtn.href = backHref;
+        })();
 
-            if (!response.ok) {
-                throw new Error(`Policy file not found (${response.status})`);
+        async function loadPolicy() {
+            const params = new URLSearchParams(window.location.search);
+            const policyId = params.get('id'); // e.g., "privacy"
+            
+            const skeleton = document.getElementById('skeleton-loader');
+            const contentDiv = document.getElementById('policy-content');
+            const headerDiv = document.getElementById('header-content');
+            const contactArea = document.getElementById('contact-area');
+            const errorMsg = document.getElementById('error-msg');
+            const missingFileName = document.getElementById('missing-file-name');
+
+            const filePath = `data/${policyId}.json`;
+
+            if (!policyId) {
+                skeleton.classList.add('hidden');
+                errorMsg.classList.remove('hidden');
+                headerDiv.innerHTML = '';
+                return;
             }
 
-            const data = await response.json();
+            try {
+                const res = await fetch(filePath);
+                
+                if (!res.ok) {
+                    missingFileName.textContent = filePath;
+                    throw new Error('File not found');
+                }
+                
+                const data = await res.json();
+                
+                // Simulate slight delay for smooth UI feel
+                await new Promise(r => setTimeout(r, 300));
 
-            // 3. Populate Data
-            document.getElementById('p-title').innerText = data.title;
-            document.getElementById('p-date').innerText = "Last Updated: " + data.last_updated;
-
-            const bodyContainer = document.getElementById('p-body');
-            bodyContainer.innerHTML = ''; 
-
-            data.sections.forEach(section => {
-                const block = document.createElement('div');
-                block.className = 'section-block';
-                block.innerHTML = `
-                    <h2>${section.heading}</h2>
-                    <p>${section.content}</p>
+                // 1. Render Header (Title + Last Updated)
+                headerDiv.innerHTML = `
+                    <h1 class="text-3xl font-bold text-gray-900 tracking-tight">${data.title || 'Untitled Policy'}</h1>
+                    <p class="text-gray-500 text-sm mt-2">Last Updated: ${data.last_updated || 'Unknown Date'}</p>
                 `;
-                bodyContainer.appendChild(block);
-            });
 
-            // 4. Reveal
-            loading.style.display = 'none';
-            content.style.display = 'block';
+                // 2. Render Body (Sections Loop)
+                if (data.sections && Array.isArray(data.sections)) {
+                    contentDiv.innerHTML = data.sections.map(section => `
+                        <section>
+                            <h2 class="text-lg font-bold text-gray-900 mb-2">${section.heading}</h2>
+                            <p class="text-gray-600 text-sm md:text-base leading-relaxed whitespace-pre-line">${section.content}</p>
+                        </section>
+                    `).join('');
+                } else {
+                    contentDiv.innerHTML = `<p class="text-gray-500 italic">No content sections available.</p>`;
+                }
 
-        } catch (error) {
-            loading.style.display = 'none';
-            document.querySelector('.doc-wrapper').innerHTML += `
-                <div class="error-msg">
-                    <strong>Error:</strong> ${error.message}<br>
-                    <a href="privacy.html" style="color:#ed4956; text-decoration: underline; margin-top:10px; display:block;">Go Back</a>
-                </div>
-            `;
+                // 3. Render Contact Email Button (if exists)
+                if (data.contact_email) {
+                    contactArea.innerHTML = `
+                        <h3 class="text-sm font-semibold text-gray-900 mb-2">Have specific questions?</h3>
+                        <a href="mailto:${data.contact_email}" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 hover:bg-black text-white text-sm font-medium rounded-lg transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            Email Us
+                        </a>
+                    `;
+                    contactArea.classList.remove('hidden');
+                }
+
+                // 4. Reveal
+                skeleton.classList.add('hidden');
+                contentDiv.classList.remove('hidden');
+
+            } catch (err) {
+                console.error(err);
+                skeleton.classList.add('hidden');
+                errorMsg.classList.remove('hidden');
+                headerDiv.innerHTML = ''; 
+            }
         }
-    }
 
-    loadDocument();
-</script>
-
+        loadPolicy();
+    </script>
 </body>
 </html>
