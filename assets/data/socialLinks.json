@@ -1,37 +1,42 @@
 [
   {
     "title": "TikTok",
-    "url": "https://tiktok.com",
+    "url": "https://www.tiktok.com/@mas0ng",
     "icon": "/assets/socialImages/tiktok.svg"
   },
   {
     "title": "Instagram",
-    "url": "https://instagram.com",
+    "url": "https://www.instagram.com/mas0ngi/",
     "icon": "/assets/socialImages/instagram.svg"
   },
   {
     "title": "Discord",
-    "url": "https://discord.com",
+    "url": "undefined",
     "icon": "/assets/socialImages/discord.svg"
   },
   {
     "title": "Snapchat",
-    "url": "https://snapchat.com",
+    "url": "undefined",
     "icon": "/assets/socialImages/snapchat.svg"
   },
   {
     "title": "GitHub",
-    "url": "https://github.com",
+    "url": "https://github.com/mas0ng",
     "icon": "/assets/socialImages/github.svg"
   },
   {
     "title": "Signal",
-    "url": "https://github.com",
+    "url": "https://signal.me/#eu/Js8_IVmBa0zw4nGdLTvE1Fbcg6mUcmm11h34T-4CjCwgk8jx76hAQbvCkyHjY9JO",
     "icon": "/assets/socialImages/signal.svg"
   },
   {
     "title": "Facebook",
-    "url": "https://facebook.com",
+    "url": "undefined",
     "icon": "/assets/socialImages/facebook.svg"
+  },
+  {
+    "title": "LinkedIn",
+    "url": "undefined",
+    "icon": "/assets/socialImages/linkedin.svg"
   }
 ]

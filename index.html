@@ -31,6 +31,36 @@
         
         img { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; pointer-events: none; }
         button img { pointer-events: none; }
+
+        /* ===== popup styles added ===== */
+        #unavailableModal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        #unavailableModalBox {
+            background: #fff;
+            padding: 22px 26px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 360px;
+            text-align: center;
+            font-family: sans-serif;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+        #unavailableModalBox button {
+            margin-top: 14px;
+            background: #0095f6;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="bg-ig-bg text-ig-text font-sans antialiased min-h-screen flex flex-col items-center select-none -webkit-tap-highlight-color-transparent">
@@ -48,18 +78,53 @@
         <p id="status-message" class="text-center text-gray-400 text-sm mt-10 hidden"></p>
     </div>
 
+    <div id="unavailableModal" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/50 backdrop-blur-sm transition-opacity duration-300">
+    
+    <div id="unavailableModalBox" class="w-full max-w-sm mx-4 bg-white rounded-2xl shadow-2xl overflow-hidden transform transition-all p-6 text-center">
+        
+        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-amber-100 mb-5">
+            <svg class="h-8 w-8 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+            </svg>
+        </div>
+
+        <h2 class="text-xl font-bold text-gray-900 mb-2">
+            Link Unavailable
+        </h2>
+        <p class="text-sm text-gray-500 mb-6 leading-relaxed">
+            We couldn't reach this social link right now. It may have been moved or deleted. Please try again later.
+        </p>
+
+        <button id="closeUnavailableModal" class="w-full inline-flex justify-center items-center px-4 py-3 bg-gray-900 hover:bg-gray-800 text-white text-sm font-semibold rounded-xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 shadow-lg shadow-gray-900/20">
+            Close
+        </button>
+        
+    </div>
+</div>
     <script>
         const els = {
             containerLinks: document.getElementById('links-container'),
-            statusMsg: document.getElementById('status-message')
+            statusMsg: document.getElementById('status-message'),
+            unavailableModal: document.getElementById('unavailableModal'),
+            closeUnavailable: document.getElementById('closeUnavailableModal')
         };
+
+        function showUnavailable() {
+            els.unavailableModal.style.display = 'flex';
+        }
+        function hideUnavailable() {
+            els.unavailableModal.style.display = 'none';
+        }
+
+        els.closeUnavailable.addEventListener('click', hideUnavailable);
+        els.unavailableModal.addEventListener('click', (e) => {
+            if (e.target === els.unavailableModal) hideUnavailable();
+        });
 
         async function init() {
             try {
                 const res = await fetch('assets/data/socialLinks.json');
-
                 if (!res.ok) throw new Error('Data load failed');
-
                 const links = await res.json();
                 renderLinks(links);
 
@@ -71,8 +136,11 @@
         }
 
         function renderLinks(links) {
-            els.containerLinks.innerHTML = links.map(l => `
-                <a href="${l.url}" target="_blank" class="
+            els.containerLinks.innerHTML = links.map(l => {
+                const unavailable = (l.url === undefined || l.url === null || l.url === "" || l.url === "undefined");
+
+                return `
+                <a ${unavailable ? 'data-unavailable="1"' : `href="${l.url}" target="_blank"`} class="
                     group relative block w-full bg-white border border-ig-stroke 
                     hover:bg-gray-50 active:scale-95 transition-all duration-200
                     rounded-lg md:rounded-none
@@ -83,7 +151,7 @@
                         <img src="${l.icon}" class="
                             w-6 h-6 object-contain pointer-events-none mr-4 
                             md:mr-0 md:mb-3 md:w-10 md:h-10
-                        " alt="">
+                        ">
                         
                         <span class="
                             text-base font-medium text-gray-900 flex-grow
@@ -94,8 +162,16 @@
 
                         <svg class="w-4 h-4 text-gray-300 md:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                     </div>
-                </a>
-            `).join('');
+                </a>`;
+            }).join('');
+
+            // attach click logic for unavailable links
+            [...els.containerLinks.querySelectorAll('[data-unavailable]')].forEach(a => {
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showUnavailable();
+                });
+            });
         }
 
         init();

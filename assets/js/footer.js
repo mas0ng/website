@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
 
                 <nav>
-                    <a href="privacy/?return_to=${currentUrl}" class="text-slate-400 hover:text-white transition-colors duration-200 font-medium">
+                    <a href="/privacy/?return_to=${currentUrl}" class="text-slate-400 hover:text-white transition-colors duration-200 font-medium">
                         Privacy Policy
                     </a>
                 </nav>
