@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Error</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          animation: {
+            float: 'float 6s ease-in-out infinite',
+            fade: 'fade 1s ease-out forwards'
+          },
+          keyframes: {
+            float: {
+              '0%,100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-18px)' }
+            },
+            fade: {
+              '0%': { opacity: 0, transform: 'translateY(16px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-slate-50 min-h-screen flex items-center justify-center overflow-hidden">
+
+  <!-- background blobs -->
+  <div class="absolute -top-32 -left-32 w-96 h-96 bg-blue-200 blur-3xl opacity-40"></div>
+  <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-blue-300 blur-3xl opacity-40"></div>
+
+  <div class="relative text-center px-6 animate-fade max-w-xl">
+
+    <h1 id="errorCode"
+        class="text-[120px] md:text-[160px] font-extrabold text-blue-600 leading-none animate-float">
+      404
+    </h1>
+
+    <h2 id="errorTitle"
+        class="mt-4 text-2xl font-semibold text-slate-800">
+      Page not found
+    </h2>
+
+    <p id="errorMessage"
+       class="mt-3 text-slate-500">
+      This page doesn’t exist.
+    </p>
+
+    <div id="buttonContainer" class="mt-8 hidden">
+      <a id="actionButton"
+         class="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-blue-600 text-white font-medium shadow hover:bg-blue-700 transition">
+        Go somewhere
+      </a>
+    </div>
+
+    <p class="mt-10 text-xs text-slate-400 tracking-wide">
+      <span id="debugInfo"></span>
+    </p>
+
+  </div>
+
+  <script>
+    /* ==========================
+       ERROR CONFIG
+    ========================== */
+
+    const errorRules = [
+
+      {
+        subdomain: "www.mas0ng.com",
+        path: "/index.html",
+        code: "503",
+        title: "Page unavailable",
+        message: "This page is still being built, and has not yet been published.",
+        button: null
+      },
+	  
+      {
+        subdomain: "dt-coursework.edu.mas0ng.com",
+        code: "403",
+        title: "Access prohibited",
+        message: "This subdomain can not be navigated, please only follow official links.",
+        button: {
+          text: "Main Website",
+          url: "https://www.mas0ng.com/index.html"
+        }
+      },
+	  
+
+      {
+        code: "404",
+        title: "Page not found",
+        message: "The page you’re looking for doesn’t exist.",
+        button: {
+          text: "Main Website",
+          url: "https://www.mas0ng.com/index.html"
+        }
+      }
+    ];
+
+    /* ==========================
+       MATCHING LOGIC
+    ========================== */
+
+    const hostname = window.location.hostname;
+    const pathname = window.location.pathname;
+
+    function findRule() {
+      return errorRules.find(rule => {
+        if (rule.subdomain && rule.path)
+          return hostname === rule.subdomain && pathname.startsWith(rule.path);
+
+        if (rule.subdomain)
+          return hostname === rule.subdomain;
+
+        if (rule.path)
+          return pathname.startsWith(rule.path);
+
+        return true; // fallback
+      });
+    }
+
+    const rule = findRule();
+
+    /* ==========================
+       APPLY UI
+    ========================== */
+
+    document.title = `${rule.code} | ${rule.title}`;
+    document.getElementById("errorCode").textContent = rule.code;
+    document.getElementById("errorTitle").textContent = rule.title;
+    document.getElementById("errorMessage").textContent = rule.message;
+
+    if (rule.button) {
+      const btn = document.getElementById("actionButton");
+      btn.textContent = rule.button.text;
+      btn.href = rule.button.url;
+      document.getElementById("buttonContainer").classList.remove("hidden");
+    }
+
+    document.getElementById("debugInfo").textContent =
+      `${hostname}${pathname}`;
+  </script>
+
+</body>
+</html>
