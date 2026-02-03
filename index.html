@@ -2,179 +2,138 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>mas0ng.com | Links</title>
-    <script src="assets/js/footer.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/png" href="/assets/icons/siteIcons/favicons/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/assets/icons/siteIcons/favicons/favicon.svg" />
-    <link rel="shortcut icon" href="/assets/icons/siteIcons/favicons/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/siteIcons/favicons/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="mas0ng.com" />
-    <link rel="manifest" href="/assets/icons/siteIcons/favicons/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mas0ng.com</title>
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        ig: { bg: '#fafafa', text: '#262626', stroke: '#dbdbdb', blue: '#0095f6' }
-                    },
-                    maxWidth: { 'insta': '935px' }
-                }
-            }
-        }
-    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        .pt-safe { padding-top: env(safe-area-inset-top, 20px); }
+        body {
+            background-color: #0f172a; /* Slate 900 base */
+            /* This creates the nice dot grid effect */
+            background-image: radial-gradient(#334155 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
         
-        img { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; pointer-events: none; }
-        button img { pointer-events: none; }
-
-        /* ===== popup styles added ===== */
-        #unavailableModal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.45);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
+        /* Subtle fade in animation */
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(10px);
         }
-        #unavailableModalBox {
-            background: #fff;
-            padding: 22px 26px;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 360px;
-            text-align: center;
-            font-family: sans-serif;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-        }
-        #unavailableModalBox button {
-            margin-top: 14px;
-            background: #0095f6;
-            color: white;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 6px;
-            cursor: pointer;
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
+
+    <script src="/assets/js/inject.js" defer></script>
 </head>
-<body class="bg-ig-bg text-ig-text font-sans antialiased min-h-screen flex flex-col items-center select-none -webkit-tap-highlight-color-transparent">
+<body class="text-slate-100 min-h-screen flex flex-col font-sans antialiased selection:bg-blue-500 selection:text-white">
 
-    <div class="w-full max-w-insta p-5 md:p-10 flex flex-col pt-safe">
+    <main class="flex-grow flex flex-col items-center justify-center p-6 md:p-12 mb-12">
         
-        <div id="links-container" class="flex flex-col gap-3 w-full md:grid md:grid-cols-3 md:gap-6">
+        <div class="w-full max-w-4xl fade-in" style="animation-delay: 0.1s;">
             
-            <div class="bg-gray-100 animate-pulse border border-ig-stroke h-16 w-full rounded-lg md:rounded-none md:h-auto md:aspect-square"></div>
-            <div class="bg-gray-100 animate-pulse border border-ig-stroke h-16 w-full rounded-lg md:rounded-none md:h-auto md:aspect-square"></div>
-            <div class="bg-gray-100 animate-pulse border border-ig-stroke h-16 w-full rounded-lg md:rounded-none md:h-auto md:aspect-square"></div>
-        
-        </div>
+            <div class="text-center mb-16">
+                <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 min-h-[90px]">
+                    <span id="typewriter" class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-white"></span><span class="animate-pulse text-blue-500">_</span>
+                </h1>
+            </div>
 
-        <p id="status-message" class="text-center text-gray-400 text-sm mt-10 hidden"></p>
-    </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-    <div id="unavailableModal" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/50 backdrop-blur-sm transition-opacity duration-300">
-    
-    <div id="unavailableModalBox" class="w-full max-w-sm mx-4 bg-white rounded-2xl shadow-2xl overflow-hidden transform transition-all p-6 text-center">
-        
-        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-amber-100 mb-5">
-            <svg class="h-8 w-8 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-            </svg>
-        </div>
-
-        <h2 class="text-xl font-bold text-gray-900 mb-2">
-            Link Unavailable
-        </h2>
-        <p class="text-sm text-gray-500 mb-6 leading-relaxed">
-            We couldn't reach this social link right now. It may have been moved or deleted. Please try again later.
-        </p>
-
-        <button id="closeUnavailableModal" class="w-full inline-flex justify-center items-center px-4 py-3 bg-gray-900 hover:bg-gray-800 text-white text-sm font-semibold rounded-xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 shadow-lg shadow-gray-900/20">
-            Close
-        </button>
-        
-    </div>
-</div>
-    <script>
-        const els = {
-            containerLinks: document.getElementById('links-container'),
-            statusMsg: document.getElementById('status-message'),
-            unavailableModal: document.getElementById('unavailableModal'),
-            closeUnavailable: document.getElementById('closeUnavailableModal')
-        };
-
-        function showUnavailable() {
-            els.unavailableModal.style.display = 'flex';
-        }
-        function hideUnavailable() {
-            els.unavailableModal.style.display = 'none';
-        }
-
-        els.closeUnavailable.addEventListener('click', hideUnavailable);
-        els.unavailableModal.addEventListener('click', (e) => {
-            if (e.target === els.unavailableModal) hideUnavailable();
-        });
-
-        async function init() {
-            try {
-                const res = await fetch('assets/data/socialLinks.json');
-                if (!res.ok) throw new Error('Data load failed');
-                const links = await res.json();
-                renderLinks(links);
-
-            } catch (err) {
-                console.error(err);
-                els.statusMsg.classList.remove('hidden');
-                els.statusMsg.textContent = 'Please run on a local server (e.g., Live Server) to view content.';
-            }
-        }
-
-        function renderLinks(links) {
-            els.containerLinks.innerHTML = links.map(l => {
-                const unavailable = (l.url === undefined || l.url === null || l.url === "" || l.url === "undefined");
-
-                return `
-                <a ${unavailable ? 'data-unavailable="1"' : `href="${l.url}" target="_blank"`} class="
-                    group relative block w-full bg-white border border-ig-stroke 
-                    hover:bg-gray-50 active:scale-95 transition-all duration-200
-                    rounded-lg md:rounded-none
-                    md:aspect-square
-                ">
-                    <div class="flex items-center p-4 h-full md:absolute md:inset-0 md:flex-col md:justify-center md:p-4">
-                        
-                        <img src="${l.icon}" class="
-                            w-6 h-6 object-contain pointer-events-none mr-4 
-                            md:mr-0 md:mb-3 md:w-10 md:h-10
-                        ">
-                        
-                        <span class="
-                            text-base font-medium text-gray-900 flex-grow
-                            md:flex-grow-0 md:text-xs md:font-semibold md:uppercase md:tracking-wide md:text-gray-700 md:text-center
-                        ">
-                            ${l.title}
-                        </span>
-
-                        <svg class="w-4 h-4 text-gray-300 md:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                <a href="/socials" class="group relative overflow-hidden rounded-2xl bg-slate-800/50 border border-slate-700/50 p-8 hover:bg-slate-800 transition-all duration-300 hover:border-pink-500/50 hover:shadow-2xl hover:shadow-pink-500/10">
+                    <div class="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-100 group-hover:text-pink-400 transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-12">
+                         <i class="fa-solid fa-share-nodes text-6xl"></i>
+                     </div>
+                     <div class="relative z-10">
+                       <div class="h-12 w-12 rounded-lg bg-pink-500/20 text-pink-400 flex items-center justify-center text-xl mb-6 group-hover:bg-pink-500 group-hover:text-white transition-colors">
+                         <i class="fa-regular fa-address-card"></i>
+                      </div>
+                      <h3 class="text-2xl font-bold text-white mb-2">Socials</h3>
+                        <p class="text-slate-400 group-hover:text-slate-300">Connect via Signal, TikTok, and other platforms.</p>
                     </div>
-                </a>`;
-            }).join('');
+                </a>
 
-            // attach click logic for unavailable links
-            [...els.containerLinks.querySelectorAll('[data-unavailable]')].forEach(a => {
-                a.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showUnavailable();
-                });
-            });
-        }
+                <a href="/projects" class="group relative overflow-hidden rounded-2xl bg-slate-800/50 border border-slate-700/50 p-8 hover:bg-slate-800 transition-all duration-300 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10">
+                    <div class="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-100 group-hover:text-blue-400 transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-12">
+                        <i class="fa-solid fa-code text-6xl"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="h-12 w-12 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl mb-6 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-terminal"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Projects</h3>
+                        <p class="text-slate-400 group-hover:text-slate-300">Browse coding repositories and active development work.</p>
+                    </div>
+                </a>
 
-        init();
+                <a href="/docs" class="group relative overflow-hidden rounded-2xl bg-slate-800/50 border border-slate-700/50 p-8 hover:bg-slate-800 transition-all duration-300 hover:border-purple-500/50 hover:shadow-2xl hover:shadow-purple-500/10">
+                    <div class="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-100 group-hover:text-purple-400 transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-12">
+                        <i class="fa-solid fa-book-open text-6xl"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="h-12 w-12 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl mb-6 group-hover:bg-purple-500 group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-pen-nib"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Docs</h3>
+                        <p class="text-slate-400 group-hover:text-slate-300">Project documentation.</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const textElement = document.getElementById('typewriter');
+            
+            // Edit your phrases here
+            const phrases = [
+                "Hello!", 
+                "mas0ng.com"
+            ];
+            
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typeSpeed = 100;
+
+            function type() {
+                const currentPhrase = phrases[phraseIndex];
+                
+                if (isDeleting) {
+                    // Remove char
+                    textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                    charIndex--;
+                    typeSpeed = 50; // Deleting is faster
+                } else {
+                    // Add char
+                    textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                    charIndex++;
+                    typeSpeed = 150; // Typing speed
+                }
+
+                if (!isDeleting && charIndex === currentPhrase.length) {
+                    // Finished typing phrase
+                    isDeleting = true;
+                    typeSpeed = 2000; // Pause at the end
+                } else if (isDeleting && charIndex === 0) {
+                    // Finished deleting phrase
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    typeSpeed = 500; // Pause before new phrase
+                }
+
+                setTimeout(type, typeSpeed);
+            }
+
+            // Start the loop
+            type();
+        });
     </script>
 </body>
 </html>

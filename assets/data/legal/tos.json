@@ -1,0 +1,40 @@
+{
+  "title": "Terms of Service",
+  "effectiveDate": "February 3, 2026",
+  "version": "1.1.0",
+  "contactEmail": "legal@mas0ng.com",
+  "sections": [
+    {
+      "heading": "1. Acceptance of Terms",
+      "content": "<p>By accessing or using mas0ng.com, you agree to be bound by these Terms of Service. If you do not agree with these terms, you should not use the website.</p>"
+    },
+    {
+      "heading": "2. Use of the Website",
+      "content": "<p>You agree to use this website only for lawful purposes and in a way that does not damage, disable, or impair the website or interfere with other users.</p>"
+    },
+    {
+      "heading": "3. Intellectual Property",
+      "content": "<p>All original content, code, design, and functionality on this website are the property of mas0ng.com, unless otherwise stated. You may not copy, reproduce, or redistribute any part of the site without permission.</p>"
+    },
+    {
+      "heading": "4. No Guarantees",
+      "content": "<p>The website and any tools or features provided are offered on an &ldquo;as is&rdquo; basis. We make no guarantees regarding availability, accuracy, or suitability for any particular purpose.</p>"
+    },
+    {
+      "heading": "5. Third-Party Services",
+      "content": "<p>This website relies on third-party services such as GitHub Pages and Cloudflare. We are not responsible for downtime, service interruptions, or issues caused by these providers, or for their individual terms and privacy practices.</p>"
+    },
+    {
+      "heading": "6. Termination",
+      "content": "<p>We reserve the right to restrict or terminate access to the website at any time if misuse, abuse, or security risks are detected.</p>"
+    },
+    {
+      "heading": "7. Changes to These Terms",
+      "content": "<p>We may update these Terms of Service from time to time. Continued use of the website after changes are made constitutes acceptance of the updated terms.</p>"
+    },
+    {
+      "heading": "8. Contact",
+      "content": "<p>If you have any questions regarding these Terms of Service, please contact <a href='mailto:legal@mas0ng.com'>legal@mas0ng.com</a>.</p>"
+    }
+  ]
+}

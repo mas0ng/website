@@ -1,0 +1,13 @@
+{
+  "id": "discord-bot",
+  "title": "Moderation Bot",
+  "description": "An advanced bot using discord.py to handle moderation logs and auto-roles.",
+  "longDescription": "This project started as a small script and evolved into a full bot sharded across multiple servers. It uses Redis for caching and PostgreSQL for logging.",
+  "links": {
+    "github": "https://github.com/yourname/bot",
+    "download": null,
+    "docs": "/docs.html?docId=bot-docs",
+    "demo": "https://www.youtube.com/watch?v=example",
+    "external": "https://discord.gg/bot-support"
+  }
+}

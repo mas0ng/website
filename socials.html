@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socials | Connect</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Shared System Theme */
+        body {
+            background-color: #0f172a;
+            background-image: radial-gradient(#334155 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .fade-in { animation: fadeIn 0.4s ease-out forwards; opacity: 0; }
+        @keyframes fadeIn { to { opacity: 1; } }
+        
+        /* Smooth invert for icons on hover */
+        .icon-invert { filter: invert(1) brightness(2); }
+    </style>
+
+    <script src="/assets/js/inject.js" defer></script>
+</head>
+<body class="text-slate-100 min-h-screen flex flex-col font-sans antialiased">
+
+    <nav class="p-6 absolute top-0 left-0 w-full z-20">
+        <a href="/" class="text-slate-400 hover:text-white transition-colors flex items-center gap-2 w-fit bg-slate-900/50 px-4 py-2 rounded-full border border-slate-700 backdrop-blur-md">
+            <i class="fa-solid fa-arrow-left"></i> <span class="text-sm font-semibold">Home</span>
+        </a>
+    </nav>
+
+    <main class="flex-grow flex flex-col items-center justify-center p-4 md:p-8 relative z-10">
+        
+        <div class="w-full max-w-md fade-in mt-12 mb-12">
+            
+            <div class="text-center mb-10">
+                <div class="w-28 h-28 mx-auto bg-slate-800 rounded-full border-4 border-slate-800 shadow-2xl overflow-hidden mb-4 ring-2 ring-slate-700/50">
+                    <img src="/assets/icons/socials/pfp.png" alt="Profile Picture" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                </div>
+                
+                <h1 class="text-3xl font-bold text-white tracking-tight">mas0ng</h1>
+                
+            </div>
+
+            <div class="space-y-4">
+
+                <a href="https://www.tiktok.com/@mas0ng" target="_blank" class="group relative block bg-slate-900/80 hover:bg-black border border-slate-700 hover:border-[#ff0050] rounded-xl p-4 transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,242,234,0.3)] hover:-translate-y-1">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center group-hover:bg-slate-900 transition-colors">
+                                <img src="/assets/icons/socials/tiktok.svg" class="w-5 h-5 opacity-70 group-hover:opacity-100 group-hover:invert group-hover:brightness-0 transition-all">
+                            </div>
+                            <div class="text-left">
+                                <h3 class="font-bold text-slate-200 group-hover:text-white">TikTok</h3>
+                                <p class="text-xs text-slate-500 group-hover:text-[#00f2ea]">@mas0ng</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-slate-600 group-hover:text-[#ff0050] transition-colors"></i>
+                    </div>
+                </a>
+
+                <a href="https://www.instagram.com/mas0ngi/" target="_blank" class="group relative block bg-slate-900/80 border border-slate-700 rounded-xl p-4 transition-all duration-300 hover:border-pink-500 hover:shadow-[0_0_20px_rgba(236,72,153,0.3)] hover:-translate-y-1 overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-yellow-500 via-red-500 to-purple-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    
+                    <div class="relative z-10 flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center group-hover:bg-transparent transition-colors">
+                                <img src="/assets/icons/socials/instagram.svg" class="w-5 h-5 opacity-70 group-hover:opacity-100 group-hover:invert group-hover:brightness-0 transition-all">
+                            </div>
+                            <div class="text-left">
+                                <h3 class="font-bold text-slate-200 group-hover:text-white">Instagram</h3>
+                                <p class="text-xs text-slate-500 group-hover:text-pink-400">@mas0ngi</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-slate-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                </a>
+
+                <a href="https://signal.me/#eu/Js8_IVmBa0zw4nGdLTvE1Fbcg6mUcmm11h34T-4CjCwgk8jx76hAQbvCkyHjY9JO" target="_blank" class="group relative block bg-slate-900/80 hover:bg-[#3A76F0] border border-slate-700 hover:border-[#3A76F0] rounded-xl p-4 transition-all duration-300 hover:shadow-[0_0_20px_rgba(58,118,240,0.4)] hover:-translate-y-1">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                                <img src="/assets/icons/socials/signal.svg" class="w-5 h-5 opacity-70 group-hover:opacity-100 group-hover:brightness-0 group-hover:invert transition-all">
+                            </div>
+                            <div class="text-left">
+                                <h3 class="font-bold text-slate-200 group-hover:text-white">Signal</h3>
+                                <p class="text-xs text-slate-500 group-hover:text-blue-100">Contact Me</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-message text-slate-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                </a>
+
+                <a href="https://github.com/mas0ng" target="_blank" class="group relative block bg-slate-900/80 hover:bg-[#161b22] border border-slate-700 hover:border-slate-500 rounded-xl p-4 transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:-translate-y-1">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center group-hover:bg-slate-700 transition-colors">
+                                <img src="/assets/icons/socials/github.svg" class="w-5 h-5 opacity-70 group-hover:opacity-100 group-hover:invert group-hover:brightness-0 transition-all">
+                            </div>
+                            <div class="text-left">
+                                <h3 class="font-bold text-slate-200 group-hover:text-white">GitHub</h3>
+                                <p class="text-xs text-slate-500 group-hover:text-slate-300">View Repositories</p>
+                            </div>
+                        </div>
+                        <i class="fa-brands fa-github text-slate-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                </a>
+
+                <a href="mailto:contact@mas0ng.com" class="group relative block bg-slate-900/80 hover:bg-emerald-900/30 border border-slate-700 hover:border-emerald-500/50 rounded-xl p-4 transition-all duration-300 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] hover:-translate-y-1">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+                                <i class="fa-solid fa-envelope text-slate-400 group-hover:text-emerald-400"></i>
+                            </div>
+                            <div class="text-left">
+                                <h3 class="font-bold text-slate-200 group-hover:text-white">Email</h3>
+                                <p class="text-xs text-slate-500 group-hover:text-emerald-400">contact@mas0ng.com</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-paper-plane text-slate-600 group-hover:text-emerald-400 transition-colors"></i>
+                    </div>
+                </a>
+
+            </div>
+            
+            
+
+        </div>
+    </main>
+
+    </body>
+</html>
