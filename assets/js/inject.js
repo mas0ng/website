@@ -26,19 +26,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const config = {
         socials: {
             tiktok: {
-                url: "https://tiktok.com/@yourusername",
+                url: "https://www.tiktok.com/@mas0ng",
                 icon: "/assets/icons/socials/tiktok.svg"
             },
             instagram: {
-                url: "https://instagram.com/yourusername",
+                url: "https://www.instagram.com/mas0ngi/",
                 icon: "/assets/icons/socials/instagram.svg"
             },
             signal: {
-                url: "https://signal.me/#p/yourusername", 
+                url: "https://signal.me/#eu/Js8_IVmBa0zw4nGdLTvE1Fbcg6mUcmm11h34T-4CjCwgk8jx76hAQbvCkyHjY9JO", 
                 icon: "/assets/icons/socials/signal.svg"
             },
             github: {
-                url: "https://github.com/yourusername",
+                url: "https://github.com/mas0ng",
                 icon: "/assets/icons/socials/github.svg"
             }
         },
