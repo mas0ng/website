@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 | not found</title>
+    <title>privacy | mas0ng.com</title>
     
     <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/siteIcons/favicons/favicon-96x96.png">
     <link rel="icon" type="image/svg+xml" href="/assets/icons/siteIcons/favicons/favicon.svg">
@@ -71,21 +71,29 @@
 
         .command-text { color: var(--accent-blue); font-weight: bold; }
         
-        .error-code {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: clamp(5rem, 15vw, 10rem);
-            line-height: 1;
-        }
-
         section { opacity: 0; transform: translateY(15px); transition: all 0.5s ease-out; }
         section.visible { opacity: 1; transform: translateY(0); }
 
-        .btn-home {
+        .content-area {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .policy-heading {
+            color: var(--accent-blue);
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .btn-back {
             background: #ffffff;
             border: 1px solid #e2e8f0;
             transition: all 0.2s ease;
         }
-        .btn-home:hover {
+        .btn-back:hover {
             border-color: var(--accent-blue);
             background: #eff6ff;
             color: var(--accent-blue);
@@ -93,51 +101,58 @@
         }
     </style>
 </head>
-<body class="p-4 md:p-12 min-h-screen flex flex-col items-center justify-center">
+<body class="p-4 md:p-12 min-h-screen flex flex-col items-center">
 
-    <main class="w-full max-w-3xl terminal-window flex flex-col">
+    <main class="w-full max-w-4xl terminal-window flex flex-col">
         <div class="terminal-header justify-between">
             <div class="flex">
                 <div class="dot dot-red"></div>
                 <div class="dot dot-yellow"></div>
                 <div class="dot dot-green"></div>
             </div>
-            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">mas0ng.com — error</div>
+            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">mas0ng.com — privacy policy</div>
             <div class="w-12"></div>
         </div>
 
-        <div class="p-8 md:p-16 space-y-10 text-center md:text-left">
+        <div class="p-8 md:p-16 space-y-8">
             
-            <div class="space-y-2">
-                <div class="flex items-center justify-center md:justify-start gap-2">
-                    <span class="text-green-500 font-bold">mason@home:~$</span>
-                    <span class="command-text">curl -I /requested-page</span>
-                </div>
-                <div class="text-slate-400 text-xs">HTTP/1.1 404 Not Found</div>
+            <div class="flex items-center gap-2">
+                <span class="text-green-500 font-bold">mason@home:~$</span>
+                <span class="command-text">cat privacy_policy.md</span>
             </div>
 
-            <section id="error-content" class="visible">
-                <h1 class="error-code font-black text-blue-600 mb-4">404</h1>
-                <h2 class="text-2xl font-bold mb-4 tracking-tight text-slate-900" style="font-family: 'Plus Jakarta Sans', sans-serif;">
-                    Resource not found.
-                </h2>
-                <p class="text-slate-500 max-w-md leading-relaxed">
-                    The directory or file you're looking for doesn't exist on this server. It might have been moved or deleted.
-                </p>
+            <section id="policy-content" class="content-area text-slate-600">
+                <h1 class="text-3xl font-extrabold text-slate-900 mb-6 tracking-tight" style="font-family: 'Plus Jakarta Sans', sans-serif;">Privacy Policy</h1>
+                
+                <p class="mb-4 italic text-slate-400">Last updated: 15 FEB 2026</p>
+
+                <span class="policy-heading">01. Overview</span>
+                <p>Welcome to mas0ng.com. Your privacy is important. This policy outlines how any information provided via social links or direct contact is handled. Essentially: I don't track you, but the platforms I link to might.</p>
+
+                <span class="policy-heading">02. Information Collection</span>
+                <p>This website is a static portfolio. It does not use cookies for tracking or require user accounts. Any information shared with me (via Signal, LinkedIn, etc.) is only used for the purpose of our communication.</p>
+
+                <span class="policy-heading">03. Third-Party Services</span>
+                <p>My site contains links to external platforms (TikTok, Instagram, LinkedIn, Signal). Once you leave mas0ng.com, the privacy policies of those specific platforms apply. I am not responsible for the data collection practices of these third parties.</p>
+
+                <span class="policy-heading">04. Analytics</span>
+                <p>I may use simple, privacy-focused analytics to monitor site traffic (like view counts), but no personally identifiable information (PII) is stored or shared with advertisers.</p>
+
+                <span class="policy-heading">05. Contact</span>
+                <p>If you have questions regarding your data or this policy, feel free to reach out via Signal or any of my linked social platforms.</p>
             </section>
 
-            <section id="navigation" class="visible pt-4">
-                <div class="flex items-center justify-center md:justify-start gap-2 mb-6">
+            <section id="navigation" class="pt-8 border-t border-slate-100">
+                <div class="flex items-center gap-2 mb-6">
                     <span class="text-green-500 font-bold">mason@home:~$</span>
-                    <span class="command-text">cd /</span>
+                    <span class="command-text">cd ..</span>
                 </div>
-                <a href="/" class="btn-home inline-flex items-center gap-3 px-8 py-3 rounded-xl font-bold text-sm uppercase tracking-wider">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l-7-7m7 7V3"></path></svg>
-                    Back to Home
+                <a href="/" class="btn-back inline-flex items-center gap-3 px-6 py-3 rounded-xl font-bold text-sm uppercase tracking-wider">
+                    Return to root
                 </a>
             </section>
 
-            <div class="flex items-center justify-center md:justify-start gap-2 pt-4">
+            <div class="flex items-center gap-2 pt-4">
                 <span class="text-green-500 font-bold">mason@home:~$</span>
                 <span class="cursor"></span>
             </div>
@@ -149,7 +164,7 @@
 
     <script>
         window.addEventListener('load', () => {
-            document.getElementById('error-content').classList.add('visible');
+            document.getElementById('policy-content').classList.add('visible');
             document.getElementById('navigation').classList.add('visible');
         });
     </script>

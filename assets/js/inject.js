@@ -1,5 +1,6 @@
-// --- PART 1: HEAD INJECTION (Favicons & Meta) ---
-(function() {
+
+
+(function injectHead() {
     const add = (type, attrs) => {
         const el = document.createElement(type);
         for (const [key, value] of Object.entries(attrs)) {
@@ -8,137 +9,157 @@
         document.head.appendChild(el);
     };
 
+    
     add("link", { rel: "icon", type: "image/png", sizes: "96x96", href: "/assets/icons/siteIcons/favicons/favicon-96x96.png" });
     add("link", { rel: "icon", type: "image/svg+xml", href: "/assets/icons/siteIcons/favicons/favicon.svg" });
     add("link", { rel: "shortcut icon", href: "/assets/icons/siteIcons/favicons/favicon.ico" });
     add("link", { rel: "apple-touch-icon", sizes: "180x180", href: "/assets/icons/siteIcons/favicons/apple-touch-icon.png" });
+    
     add("meta", { name: "apple-mobile-web-app-title", content: "mas0ng.com" });
+    
     add("link", { rel: "manifest", href: "/assets/icons/siteIcons/favicons/site.webmanifest" });
 })();
 
 
-// --- PART 2: BODY INJECTION (Footer) ---
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function injectFooter() {
     const currentYear = new Date().getFullYear();
-    const currentUrl = encodeURIComponent(window.location.href);
 
-    // CONFIGURATION: Edit links AND icon paths here
     const config = {
-        socials: {
-            tiktok: {
-                url: "https://www.tiktok.com/@mas0ng",
-                icon: "/assets/icons/socials/tiktok.svg"
-            },
-            instagram: {
-                url: "https://www.instagram.com/mas0ngi/",
-                icon: "/assets/icons/socials/instagram.svg"
-            },
-            signal: {
-                url: "https://signal.me/#eu/Js8_IVmBa0zw4nGdLTvE1Fbcg6mUcmm11h34T-4CjCwgk8jx76hAQbvCkyHjY9JO", 
-                icon: "/assets/icons/socials/signal.svg"
-            },
-            github: {
-                url: "https://github.com/mas0ng",
-                icon: "/assets/icons/socials/github.svg"
-            }
-        },
+        socials: [
+            { name: "TikTok", url: "https://www.tiktok.com/@mas0ng", icon: "/assets/icons/socials/tiktok.svg" },
+            { name: "Instagram", url: "https://www.instagram.com/mas0ngi/", icon: "/assets/icons/socials/instagram.svg" },
+            { name: "LinkedIn", url: "/404", icon: "/assets/icons/socials/linkedin.svg" },
+            { name: "Github", url: "https://github.com/mas0ng", icon: "/assets/icons/socials/github.svg" },
+            { name: "Signal", url: "https://signal.me/#eu/Js8_IVmBa0zw4nGdLTvE1Fbcg6mUcmm11h34T-4CjCwgk8jx76hAQbvCkyHjY9JO", icon: "/assets/icons/socials/signal.svg" },
+            { name: "Email", url: "mailto:mason@mas0ng.com", icon: "/assets/icons/socials/email.svg" }
+        ],
         columns: {
             col1: {
-                title: "Pages",
+                title: "Navigation",
                 links: [
                     { name: "Home", url: "/" },
-                    { name: "Socials", url: "/socials" },
-                    { name: "Projects", url: "/projects" },
-                    { name: "Docs", url: "/docs" }
+                    { name: "Expertise", url: "/#skills" },
+                    { name: "Impact", url: "/#stats" },
+                    { name: "Socials", url: "/#connect" }
                 ]
             },
             col2: {
-                title: "",
-                links: [
-                    //{ name: "File Browser", url: "/files" },
-                    //{ name: "Plex Media", url: "/media" },
-                    //{ name: "Requestrr", url: "/requests" },
-                    //{ name: "Overseerr", url: "/overseerr" }
-                ]
-            },
-            col3: {
-                title: "",
-                links: [
-                    //{ name: "Uptime Kuma", url: "/status" },
-                    //{ name: "Grafana", url: "/grafana" },
-                    //{ name: "Portainer", url: "/portainer" },
-                    //{ name: "Logs", url: "/logs" }
-                ]
-            },
-            col4: {
                 title: "Legal",
                 links: [
-                    { name: "Privacy Policy", url: `/legal.html?doc=privacy` },
-                    { name: "Terms of Service", url: `/legal.html?doc=tos` },
-                    { name: "Contact", url: "mailto:contact@mas0ng.com" }
+                    { name: "Privacy Policy", url: "/privacy.html" }
                 ]
             }
         }
     };
 
     const footer = document.createElement('footer');
-    footer.className = "w-full p-4 md:p-8 mt-auto fade-in";
-    footer.style.animation = "fadeIn 0.5s ease-out forwards"; 
-    footer.style.animationDelay = "0.3s";
+    footer.className = "w-full max-w-4xl mx-auto p-4 md:p-8 mt-12 mb-12";
+    
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes footerFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-footer { animation: footerFadeIn 0.6s ease-out forwards; }
+        .footer-terminal {
+            border: 2px solid #e2e8f0;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.1);
+        }
+        .footer-header {
+            background: #f1f5f9;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .footer-dot { width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
+        .social-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .social-card:hover {
+            border-color: #3b82f6;
+            background: #eff6ff;
+            transform: translateY(-2px);
+        }
+        .custom-icon { width: 24px; height: 24px; object-fit: contain; }
+    `;
+    document.head.appendChild(style);
+    footer.classList.add('animate-footer');
 
     const generateLinks = (linkArray) => {
         return linkArray.map(link => 
-            `<li><a href="${link.url}" class="text-slate-400 hover:text-blue-400 transition-colors duration-200 text-sm font-medium tracking-wide">${link.name}</a></li>`
+            `<li><a href="${link.url}" class="text-slate-400 hover:text-blue-500 transition-colors duration-200 text-xs font-medium tracking-tight font-mono">${link.name}</a></li>`
         ).join('');
     };
 
-    // Note: I added 'group' to the <a> tags and 'group-hover:invert group-hover:brightness-0' to the <img> tags.
-    // This ensures that when you hover the button, the SVG turns white (assuming your SVGs are black or colored).
+    const generateSocials = (socialArray) => {
+        return socialArray.map(social => `
+            <a href="${social.url}" target="_blank" class="social-card p-6 rounded-xl flex flex-col items-center justify-center gap-3">
+                <img src="${social.icon}" alt="${social.name}" class="custom-icon" onerror="this.style.opacity='0.5'">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-mono">${social.name}</span>
+            </a>
+        `).join('');
+    };
+
     footer.innerHTML = `
-        <div class="bg-slate-900/90 backdrop-blur-md rounded-[2rem] p-8 md:p-12 shadow-2xl border border-slate-800 mx-auto max-w-7xl relative overflow-hidden group/card">
-            
-            <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl pointer-events-none group-hover/card:bg-blue-600/20 transition-all duration-700"></div>
-
-            <div class="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-10 mb-12">
-                <div><h3 class="font-bold text-slate-200 mb-4 tracking-tight">${config.columns.col1.title}</h3><ul class="space-y-3">${generateLinks(config.columns.col1.links)}</ul></div>
-                <div><h3 class="font-bold text-slate-200 mb-4 tracking-tight">${config.columns.col2.title}</h3><ul class="space-y-3">${generateLinks(config.columns.col2.links)}</ul></div>
-                <div><h3 class="font-bold text-slate-200 mb-4 tracking-tight">${config.columns.col3.title}</h3><ul class="space-y-3">${generateLinks(config.columns.col3.links)}</ul></div>
-                <div><h3 class="font-bold text-slate-200 mb-4 tracking-tight">${config.columns.col4.title}</h3><ul class="space-y-3">${generateLinks(config.columns.col4.links)}</ul></div>
+        <div class="footer-terminal font-sans">
+            <!-- Terminal Header -->
+            <div class="footer-header justify-between">
+                <div class="flex">
+                    <div class="footer-dot" style="background: #ff5f56;"></div>
+                    <div class="footer-dot" style="background: #ffbd2e;"></div>
+                    <div class="footer-dot" style="background: #27c93f;"></div>
+                </div>
+                <div class="text-[9px] font-bold text-slate-400 uppercase tracking-widest font-mono">mas0ng.com — footer</div>
+                <div class="w-10"></div>
             </div>
 
-            <div class="relative z-10 flex flex-col md:flex-row justify-between items-center pt-8 border-t border-slate-800/50 gap-6">
+            <div class="p-8 md:p-12">
                 
-                <div class="flex items-center gap-2">
-                    <span class="text-2xl font-black tracking-tighter text-white cursor-default">
-                        mas0ng<span class="text-blue-500">.com</span>
-                    </span>
+                <div class="mb-12">
+                    <div class="flex items-center gap-2 mb-6">
+                        <span class="text-green-500 font-bold font-mono">mason@home:~$</span>
+                        <span class="text-blue-500 font-bold font-mono">connect --grid</span>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                        ${generateSocials(config.socials)}
+                    </div>
                 </div>
 
-                <div class="text-slate-500 text-[10px] uppercase tracking-[0.2em] font-medium hidden md:block">
-                    &copy; ${currentYear} All Rights Reserved
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10 pt-10 border-t border-slate-50">
+                    <div>
+                        <h3 class="text-[10px] font-bold text-slate-300 uppercase tracking-[0.2em] mb-4 font-mono">${config.columns.col1.title}</h3>
+                        <ul class="space-y-2" style="list-style: none; padding: 0;">
+                            ${generateLinks(config.columns.col1.links)}
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-[10px] font-bold text-slate-300 uppercase tracking-[0.2em] mb-4 font-mono">${config.columns.col2.title}</h3>
+                        <ul class="space-y-2" style="list-style: none; padding: 0;">
+                            ${generateLinks(config.columns.col2.links)}
+                        </ul>
+                    </div>
+                    <div class="col-span-2 flex flex-col md:items-end md:justify-start">
+                        <span class="text-xl font-black tracking-tighter text-slate-900 mb-2" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+                            mas0ng<span class="text-blue-500">.com</span>
+                        </span>
+                        <p class="text-[10px] text-slate-400 uppercase tracking-widest font-mono">&copy; ${currentYear} All Rights Reserved</p>
+                    </div>
                 </div>
 
-                <div class="flex gap-3">
-                    <a href="${config.socials.tiktok.url}" target="_blank" class="group h-10 w-10 rounded-full bg-slate-800 hover:bg-[#000000] border border-slate-700 hover:border-[#ff0050] flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-[#00f2ea]/20 hover:-translate-y-1">
-                        <img src="${config.socials.tiktok.icon}" alt="TikTok" class="w-4 h-4 opacity-70 group-hover:opacity-100 group-hover:brightness-0 group-hover:invert transition-all">
-                    </a>
+                <div class="flex justify-between items-center pt-8 border-t border-slate-50">
                     
-                    <a href="${config.socials.instagram.url}" target="_blank" class="group h-10 w-10 rounded-full bg-slate-800 hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-red-500 hover:to-purple-600 border border-slate-700 hover:border-transparent flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1">
-                        <img src="${config.socials.instagram.icon}" alt="Instagram" class="w-4 h-4 opacity-70 group-hover:opacity-100 group-hover:brightness-0 group-hover:invert transition-all">
-                    </a>
-
-                    <a href="${config.socials.signal.url}" target="_blank" class="group h-10 w-10 rounded-full bg-slate-800 hover:bg-[#3A76F0] border border-slate-700 hover:border-[#3A76F0] flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-1">
-                        <img src="${config.socials.signal.icon}" alt="Signal" class="w-4 h-4 opacity-70 group-hover:opacity-100 group-hover:brightness-0 group-hover:invert transition-all">
-                    </a>
-
-                    <a href="${config.socials.github.url}" target="_blank" class="group h-10 w-10 rounded-full bg-slate-800 hover:bg-black border border-slate-700 hover:border-slate-500 flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-white/10 hover:-translate-y-1">
-                        <img src="${config.socials.github.icon}" alt="GitHub" class="w-5 h-5 opacity-70 group-hover:opacity-100 group-hover:brightness-0 group-hover:invert transition-all">
-                    </a>
+                    <div class="flex items-center gap-2">
+                         <span class="text-green-500 font-bold font-mono">~$</span>
+                         <span class="w-1.5 h-4 bg-blue-500 animate-pulse"></span>
+                    </div>
                 </div>
-            </div>
-
-            <div class="text-center text-slate-600 text-[10px] uppercase tracking-widest mt-6 md:hidden">
-                &copy; ${currentYear} mas0ng.com
             </div>
         </div>
     `;
