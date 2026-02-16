@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index | mason</title>
 
-    <!-- Cookie Banner and data collection -->
     <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/152416f70a69c8655ea60feb58656f08/script.js"></script>
 
     <script>
@@ -25,8 +24,6 @@
      gtag('js', new Date());
      gtag('config', 'G-Z69GPRYZS0');
     </script>
-
-
     
     <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/siteIcons/favicons/favicon-96x96.png">
     <link rel="icon" type="image/svg+xml" href="/assets/icons/siteIcons/favicons/favicon.svg">
@@ -145,7 +142,6 @@
 
         <div class="p-6 md:p-12 space-y-12">
             
-            
             <section id="hero" class="space-y-4">
                 <div class="flex items-center gap-2">
                     <span class="text-green-500 font-bold">mason@home:~$</span>
@@ -197,20 +193,29 @@
                     <div class="flex flex-col">
                         <span class="text-[10px] font-bold text-slate-400 uppercase mb-1">Total Followers</span>
                         <div class="flex items-baseline">
-                            <span class="text-5xl font-black text-blue-600 heading-font counter" data-target="25000">0</span>
-                            <span class="text-2xl font-black text-blue-600 ml-1">+</span>
+                            <span id="followers-count" class="text-5xl font-black text-blue-600 heading-font counter" data-target="0">0</span>
+                            <span class="text-2xl font-black text-blue-600 ml-1 plus-sign" style="display: none;"></span>
                         </div>
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-[10px] font-bold text-slate-400 uppercase mb-1">Total Views</span>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase mb-1">Total Likes</span>
                         <div class="flex items-baseline">
-                            <span class="text-5xl font-black text-slate-900 heading-font counter" data-target="20000000">0</span>
-                            <span class="text-2xl font-black text-slate-900 ml-1">+</span>
+                            <span id="likes-count" class="text-5xl font-black text-slate-900 heading-font counter" data-target="0">0</span>
+                            <span class="text-2xl font-black text-slate-900 ml-1 plus-sign" style="display: none;"></span>
                         </div>
                     </div>
                 </div>
+                
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-[10px] text-slate-500 mt-2">
+                    <div class="border-l-2 border-blue-400 pl-2 leading-relaxed max-w-lg">
+                        * These statistics are summed up across multiple of my TikTok accounts (not all are linked below). 
+                        <br>Updates automatically every day at 00:00:00 UTC.
+                    </div>
+                    <div id="last-updated" class="font-bold text-slate-400 uppercase tracking-wider text-left md:text-right">
+                        Status: Fetching live stats...
+                    </div>
+                </div>
             </section>
-
           
             <section id="connect" class="space-y-6">
                 <div class="flex items-center gap-2">
@@ -218,39 +223,30 @@
                     <span class="command-text">./socials.sh --list</span>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                   
                     <a href="https://www.tiktok.com/@mas0ng" target="_blank" class="social-card p-6 rounded-xl flex flex-col items-center justify-center gap-3">
                         <img src="/assets/icons/socials/tiktok.svg" alt="TikTok" class="custom-icon">
                         <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">TikTok</span>
                     </a>
-                    
                     <a href="https://www.instagram.com/mas0ngi/" target="_blank" class="social-card p-6 rounded-xl flex flex-col items-center justify-center gap-3">
                         <img src="/assets/icons/socials/instagram.svg" alt="Instagram" class="custom-icon">
                         <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Instagram</span>
                     </a>
-                    
                     <a href="/404" target="_blank" class="social-card p-6 rounded-xl flex flex-col items-center justify-center gap-3">
                         <img src="/assets/icons/socials/linkedin.svg" alt="LinkedIn" class="custom-icon">
                         <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">LinkedIn</span>
                     </a>
-
                     <a href="https://github.com/mas0ng" target="_blank" class="social-card p-6 rounded-xl flex flex-col items-center justify-center gap-3">
                         <img src="/assets/icons/socials/github.svg" alt="Github" class="custom-icon">
                         <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Github</span>
                     </a>
-
                     <a href="https://signal.me/#eu/Js8_IVmBa0zw4nGdLTvE1Fbcg6mUcmm11h34T-4CjCwgk8jx76hAQbvCkyHjY9JO" target="_blank" class="social-card p-6 rounded-xl flex flex-col items-center justify-center gap-3">
                         <img src="/assets/icons/socials/signal.svg" alt="Signal" class="custom-icon">
                         <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Signal</span>
                     </a>
-
                     <a href="mailto:mason@mas0ng.com" class="social-card p-6 rounded-xl flex flex-col items-center justify-center gap-3">
                         <img src="/assets/icons/socials/email.svg" alt="Email" class="custom-icon">
                         <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Email</span>
                     </a>
-                    
-                    
-                    
                 </div>
             </section>
 
@@ -263,14 +259,60 @@
     </main>
 
     <footer class="mt-12 mb-8 text-center space-y-4">
-        
         <div>
             <a href="/privacy" class="text-slate-400 hover:text-blue-500 text-[11px] underline decoration-slate-200 underline-offset-4 transition-colors">Privacy Policy</a>
         </div>
     </footer>
 
     <script>
-        
+        const WORKER_URL = 'https://ttdata.mas0ngcloud.com/'; 
+
+        let statsLoaded = false;
+        let statsError = false;
+
+        async function fetchMetrics() {
+            const followerCountEl = document.getElementById('followers-count');
+            const likeCountEl = document.getElementById('likes-count');
+            const lastUpdatedEl = document.getElementById('last-updated');
+
+            try {
+                const response = await fetch(WORKER_URL);
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Failed to fetch');
+                }
+
+                // Inject live target numbers
+                followerCountEl.setAttribute('data-target', data.followers);
+                likeCountEl.setAttribute('data-target', data.likes);
+
+                // Format timestamp for display
+                const date = new Date(data.lastUpdated);
+                lastUpdatedEl.innerText = `Last update: ${date.toLocaleString()}`;
+
+                statsLoaded = true;
+
+                if (document.getElementById('stats').classList.contains('visible')) {
+                    startCounters();
+                }
+
+            } catch (error) {
+                console.error('API Fetch Error:', error);
+                statsError = true;
+
+                [followerCountEl, likeCountEl].forEach(el => {
+                    el.classList.remove('text-5xl', 'counter');
+                    el.classList.add('text-xl');
+                    el.innerText = 'Error fetching';
+                });
+
+                document.querySelectorAll('.plus-sign').forEach(el => el.style.display = 'none');
+                lastUpdatedEl.innerText = 'Status: Fetch failed';
+            }
+        }
+
+        fetchMetrics();
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -286,6 +328,8 @@
         document.querySelectorAll('section').forEach(el => observer.observe(el));
 
         function startCounters() {
+            if (!statsLoaded || statsError) return;
+
             const counters = document.querySelectorAll('.counter');
             const duration = 1500; 
 
@@ -295,6 +339,11 @@
                 
                 const target = +counter.getAttribute('data-target');
                 const startTime = performance.now();
+
+                const plusSign = counter.nextElementSibling;
+                if (plusSign && plusSign.classList.contains('plus-sign')) {
+                    plusSign.style.display = 'inline';
+                }
 
                 const update = (now) => {
                     const elapsed = now - startTime;
