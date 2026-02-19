@@ -3,37 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 | not found</title>
+    <meta name="description" content="Error 404: Page not found on mas0ng.com.">
+    <title>mas0ng.com | 404</title>
 
-    <!-- Cookie Banner and data collection -->
-    <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/152416f70a69c8655ea60feb58656f08/script.js"></script>
-
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-
-         gtag('consent', 'default', {
-           'ad_storage': 'denied',
-          'ad_user_data': 'denied',
-          'ad_personalization': 'denied',
-          'analytics_storage': 'denied'
-         });
-    </script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z69GPRYZS0"></script>
-    <script>
-     gtag('js', new Date());
-     gtag('config', 'G-Z69GPRYZS0');
-    </script>
-
-
-    
-    <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/siteIcons/favicons/favicon-96x96.png">
-    <link rel="icon" type="image/svg+xml" href="/assets/icons/siteIcons/favicons/favicon.svg">
-    <link rel="shortcut icon" href="/assets/icons/siteIcons/favicons/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/siteIcons/favicons/apple-touch-icon.png">
-    <meta name="apple-mobile-web-app-title" content="mas0ng.com">
-    <link rel="manifest" href="/assets/icons/siteIcons/favicons/site.webmanifest">
+    <script src="/assets/js/inject.js" defer></script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
@@ -104,15 +77,15 @@
         section.visible { opacity: 1; transform: translateY(0); }
 
         .btn-home {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
+            background: var(--accent-blue);
+            color: #ffffff;
+            border: 1px solid transparent;
             transition: all 0.2s ease;
         }
         .btn-home:hover {
-            border-color: var(--accent-blue);
-            background: #eff6ff;
-            color: var(--accent-blue);
+            background: #2563eb;
             transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
         }
     </style>
 </head>
@@ -144,8 +117,8 @@
                 <h2 class="text-2xl font-bold mb-4 tracking-tight text-slate-900" style="font-family: 'Plus Jakarta Sans', sans-serif;">
                     Resource not found.
                 </h2>
-                <p class="text-slate-500 max-w-md leading-relaxed">
-                    The directory or file you're looking for doesn't exist on this server. It might have been moved or deleted.
+                <p class="text-slate-500 max-w-md mx-auto md:mx-0 leading-relaxed">
+                    The directory or file you're looking for doesn't exist on this server. It might have been moved, deleted, or you typed the URL incorrectly.
                 </p>
             </section>
 
@@ -154,9 +127,9 @@
                     <span class="text-green-500 font-bold">mason@home:~$</span>
                     <span class="command-text">cd /</span>
                 </div>
-                <a href="/" class="btn-home inline-flex items-center gap-3 px-8 py-3 rounded-xl font-bold text-sm uppercase tracking-wider">
+                <a href="/" class="btn-home inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-wider w-full md:w-auto">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l-7-7m7 7V3"></path></svg>
-                    Back to Home
+                    Back to Home directory
                 </a>
             </section>
 
@@ -167,8 +140,6 @@
 
         </div>
     </main>
-
-    
 
     <script>
         window.addEventListener('load', () => {
