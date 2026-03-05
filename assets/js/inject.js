@@ -66,7 +66,8 @@ document.addEventListener("DOMContentLoaded", function injectFooter() {
                 col2: {
                     title: "Legal",
                     links: [
-                        { name: "Privacy Policy", url: "https://www.mas0ng.com/privacy" }
+                        { name: "Privacy Policy", url: "https://www.mas0ng.com/privacy" },
+                        { name: "Terms & Conditions", url: "https://www.mas0ng.com/terms" }
                     ]
                 }
             }
