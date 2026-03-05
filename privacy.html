@@ -9,158 +9,79 @@
     <script src="/assets/js/inject.js" defer></script>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --accent-blue: #3b82f6;
-            --bg-light: #f8fafc;
-            --terminal-bg: #ffffff;
-            --text-main: #1e293b;
+        body { 
+            font-family: 'Space Grotesk', sans-serif; 
+            background-color: #f4f4f0; 
         }
-
-        body {
-            font-family: 'JetBrains Mono', monospace;
-            background-color: var(--bg-light);
-            color: var(--text-main);
-            overflow-x: hidden;
-            background-image: 
-                linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
+        .brutal-box { 
+            border: 3px solid #000; 
+            box-shadow: 6px 6px 0px #000; 
+            background: #fff; 
         }
-
-        .terminal-window {
-            border: 2px solid #e2e8f0;
-            box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.12);
-            border-radius: 12px;
-            overflow: hidden;
-            background: var(--terminal-bg);
-        }
-
-        .terminal-header {
-            background: #f1f5f9;
-            padding: 10px 16px;
-            display: flex;
-            align-items: center;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        .dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
-        .dot-red { background: #ff5f56; }
-        .dot-yellow { background: #ffbd2e; }
-        .dot-green { background: #27c93f; }
-
-        .cursor {
-            display: inline-block;
-            width: 8px;
-            height: 18px;
-            background: var(--accent-blue);
-            animation: blink 1s infinite;
-            vertical-align: middle;
-            margin-left: 4px;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        .command-text { color: var(--accent-blue); font-weight: bold; }
-        
-        section { opacity: 0; transform: translateY(15px); transition: all 0.5s ease-out; }
-        section.visible { opacity: 1; transform: translateY(0); }
-
-        .content-area {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .policy-heading {
-            color: var(--accent-blue);
-            font-weight: 700;
-            margin-top: 2rem;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .btn-back {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            transition: all 0.2s ease;
-        }
-        .btn-back:hover {
-            border-color: var(--accent-blue);
-            background: #eff6ff;
-            color: var(--accent-blue);
-            transform: translateY(-2px);
-        }
+        ::-webkit-scrollbar { width: 12px; border-left: 3px solid #000; }
+        ::-webkit-scrollbar-track { background: #f4f4f0; }
+        ::-webkit-scrollbar-thumb { background: #000; }
     </style>
 </head>
-<body class="p-4 md:p-12 min-h-screen flex flex-col items-center">
+<body class="p-6 md:p-12 text-black min-h-screen flex flex-col items-center">
 
-    <main class="w-full max-w-4xl terminal-window flex flex-col">
-        <div class="terminal-header justify-between">
-            <div class="flex">
-                <div class="dot dot-red"></div>
-                <div class="dot dot-yellow"></div>
-                <div class="dot dot-green"></div>
-            </div>
-            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">mas0ng.com — privacy policy</div>
-            <div class="w-12"></div>
+    <main class="w-full max-w-4xl space-y-8 mt-4 md:mt-12">
+        
+        <div class="brutal-box p-8 md:p-12 bg-yellow-300">
+            <h1 class="text-4xl md:text-6xl font-extrabold uppercase leading-none mb-4">Privacy Policy</h1>
+            <p class="text-lg font-bold border-t-4 border-black pt-4 inline-block mt-2">
+                Last updated: 18 February 2026
+            </p>
         </div>
 
-        <div class="p-8 md:p-16 space-y-8">
+        <div class="brutal-box p-8 md:p-12 space-y-8">
             
-            <div class="flex items-center gap-2">
-                <span class="text-green-500 font-bold">mason@home:~$</span>
-                <span class="command-text">cat privacy_policy.md</span>
-            </div>
-
-            <section id="policy-content" class="content-area text-slate-600">
-                <h1 class="text-3xl font-extrabold text-slate-900 mb-6 tracking-tight" style="font-family: 'Plus Jakarta Sans', sans-serif;">Privacy Policy</h1>
-                
-                <p class="mb-4 italic text-slate-400">Last updated: 18 February 2026</p>
-
-                <h2 class="policy-heading text-lg">01. Overview</h2>
-                <p>Welcome to mas0ng.com. Your privacy is important. This policy outlines how any information provided via social links or direct contact is handled, as well as how analytics are processed. Essentially: I use basic analytics to see how the site performs, but absolutely no tracking happens unless you explicitly agree.</p>
-
-                <h2 class="policy-heading text-lg">02. Information Collection</h2>
-                <p>This website is a static portfolio and does not require user accounts. I do use cookies for analytics, but only if you explicitly grant permission through the cookie banner. Any direct information shared with me (via Signal, LinkedIn, etc.) is used solely for the purpose of our communication.</p>
-
-                <h2 class="policy-heading text-lg">03. Third-Party Services</h2>
-                <p>My site contains links to external platforms (TikTok, Instagram, LinkedIn, Signal). Once you leave mas0ng.com, the privacy policies of those specific platforms apply. I am not responsible for the data collection practices of these third parties.</p>
-
-                <h2 class="policy-heading text-lg">04. Analytics</h2>
-                <p>I use Google Analytics to monitor site traffic and understand user interactions. To ensure your privacy is strictly respected, this process is managed by CookieYes. Analytics scripts and cookies are blocked by default and will only run if you explicitly opt-in via the cookie consent banner. No personally identifiable information (PII) is collected, sold, or shared with advertisers.</p>
-
-                <h2 class="policy-heading text-lg">05. Contact</h2>
-                <p>If you have questions regarding your data or this policy, feel free to reach out via Signal or any of my linked social platforms.</p>
+            <section>
+                <h2 class="text-2xl font-extrabold uppercase border-b-4 border-black pb-2 mb-4">01. Overview</h2>
+                <p class="font-medium text-lg leading-relaxed">
+                    Welcome to mas0ng.com. Your privacy is important. This policy outlines how any information provided via social links or direct contact is handled, as well as how analytics are processed. Essentially: I use basic analytics to see how the site performs, but absolutely no tracking happens unless you explicitly agree.
+                </p>
             </section>
 
-            <section id="navigation" class="pt-8 border-t border-slate-100">
-                <div class="flex items-center gap-2 mb-6">
-                    <span class="text-green-500 font-bold">mason@home:~$</span>
-                    <span class="command-text">cd ..</span>
-                </div>
-                <a href="/" class="btn-back inline-flex items-center gap-3 px-6 py-3 rounded-xl font-bold text-sm uppercase tracking-wider">
-                    Return to root
-                </a>
+            <section>
+                <h2 class="text-2xl font-extrabold uppercase border-b-4 border-black pb-2 mb-4">02. Information Collection</h2>
+                <p class="font-medium text-lg leading-relaxed">
+                    This website is a static portfolio and does not require user accounts. I do use cookies for analytics, but only if you explicitly grant permission through the cookie banner. Any direct information shared with me (via Signal, LinkedIn, etc.) is used solely for the purpose of our communication.
+                </p>
             </section>
 
-            <div class="flex items-center gap-2 pt-4">
-                <span class="text-green-500 font-bold">mason@home:~$</span>
-                <span class="cursor"></span>
-            </div>
+            <section>
+                <h2 class="text-2xl font-extrabold uppercase border-b-4 border-black pb-2 mb-4">03. Third-Party Services</h2>
+                <p class="font-medium text-lg leading-relaxed">
+                    My site contains links to external platforms (TikTok, Instagram, LinkedIn, Signal). Once you leave mas0ng.com, the privacy policies of those specific platforms apply. I am not responsible for the data collection practices of these third parties.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-extrabold uppercase border-b-4 border-black pb-2 mb-4">04. Analytics</h2>
+                <p class="font-medium text-lg leading-relaxed">
+                    I use Google Analytics to monitor site traffic and understand user interactions. To ensure your privacy is strictly respected, this process is managed by CookieYes. Analytics scripts and cookies are blocked by default and will only run if you explicitly opt-in via the cookie consent banner. No personally identifiable information (PII) is collected, sold, or shared with advertisers.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-extrabold uppercase border-b-4 border-black pb-2 mb-4">05. Contact</h2>
+                <p class="font-medium text-lg leading-relaxed">
+                    If you have questions regarding your data or this policy, feel free to reach out via Signal or any of my linked social platforms.
+                </p>
+            </section>
 
         </div>
+
+        <div class="pt-4 pb-12 flex justify-start">
+            <a href="/" class="brutal-box px-8 py-4 font-extrabold uppercase text-lg hover:bg-black hover:text-white hover:-translate-y-1 transition-all">
+                ← Return to Home
+            </a>
+        </div>
+
     </main>
 
-    <script>
-        window.addEventListener('load', () => {
-            document.getElementById('policy-content').classList.add('visible');
-            document.getElementById('navigation').classList.add('visible');
-        });
-    </script>
 </body>
 </html>

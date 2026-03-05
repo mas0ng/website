@@ -9,143 +9,44 @@
     <script src="/assets/js/inject.js" defer></script>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --accent-blue: #3b82f6;
-            --bg-light: #f8fafc;
-            --terminal-bg: #ffffff;
-            --text-main: #1e293b;
+        body { 
+            font-family: 'Space Grotesk', sans-serif; 
+            background-color: #f4f4f0; 
         }
-
-        body {
-            font-family: 'JetBrains Mono', monospace;
-            background-color: var(--bg-light);
-            color: var(--text-main);
-            overflow-x: hidden;
-            background-image: 
-                linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
+        .brutal-box { 
+            border: 3px solid #000; 
+            box-shadow: 6px 6px 0px #000; 
+            background: #fff; 
         }
-
-        .terminal-window {
-            border: 2px solid #e2e8f0;
-            box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.12);
-            border-radius: 12px;
-            overflow: hidden;
-            background: var(--terminal-bg);
-        }
-
-        .terminal-header {
-            background: #f1f5f9;
-            padding: 10px 16px;
-            display: flex;
-            align-items: center;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        .dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
-        .dot-red { background: #ff5f56; }
-        .dot-yellow { background: #ffbd2e; }
-        .dot-green { background: #27c93f; }
-
-        .cursor {
-            display: inline-block;
-            width: 8px;
-            height: 18px;
-            background: var(--accent-blue);
-            animation: blink 1s infinite;
-            vertical-align: middle;
-            margin-left: 4px;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        .command-text { color: var(--accent-blue); font-weight: bold; }
-        
-        .error-code {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: clamp(5rem, 15vw, 10rem);
-            line-height: 1;
-        }
-
-        section { opacity: 0; transform: translateY(15px); transition: all 0.5s ease-out; }
-        section.visible { opacity: 1; transform: translateY(0); }
-
-        .btn-home {
-            background: var(--accent-blue);
-            color: #ffffff;
-            border: 1px solid transparent;
-            transition: all 0.2s ease;
-        }
-        .btn-home:hover {
-            background: #2563eb;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
-        }
+        ::-webkit-scrollbar { width: 12px; border-left: 3px solid #000; }
+        ::-webkit-scrollbar-track { background: #f4f4f0; }
+        ::-webkit-scrollbar-thumb { background: #000; }
     </style>
 </head>
-<body class="p-4 md:p-12 min-h-screen flex flex-col items-center justify-center">
+<body class="p-6 md:p-12 text-black min-h-screen flex flex-col justify-center items-center">
 
-    <main class="w-full max-w-3xl terminal-window flex flex-col">
-        <div class="terminal-header justify-between">
-            <div class="flex">
-                <div class="dot dot-red"></div>
-                <div class="dot dot-yellow"></div>
-                <div class="dot dot-green"></div>
-            </div>
-            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">mas0ng.com — error</div>
-            <div class="w-12"></div>
+    <main class="max-w-3xl w-full space-y-8">
+        
+        <div class="brutal-box p-8 md:p-16 bg-red-400 text-center">
+            <div class="text-sm font-extrabold uppercase tracking-widest border-b-4 border-black inline-block pb-1 mb-6">Error 404</div>
+            <h1 class="text-7xl md:text-9xl font-black uppercase leading-none mb-4 tracking-tighter">404</h1>
+            <h2 class="text-3xl md:text-5xl font-extrabold uppercase tracking-tight mb-6">
+                Resource Not Found.
+            </h2>
+            <p class="text-lg font-bold max-w-lg mx-auto leading-relaxed">
+                The directory or file you're looking for doesn't exist. It might have been moved, deleted, or you typed the URL incorrectly.
+            </p>
         </div>
 
-        <div class="p-8 md:p-16 space-y-10 text-center md:text-left">
-            
-            <div class="space-y-2">
-                <div class="flex items-center justify-center md:justify-start gap-2">
-                    <span class="text-green-500 font-bold">mason@home:~$</span>
-                    <span class="command-text">curl -I /requested-page</span>
-                </div>
-                <div class="text-slate-400 text-xs">HTTP/1.1 404 Not Found</div>
-            </div>
-
-            <section id="error-content" class="visible">
-                <h1 class="error-code font-black text-blue-600 mb-4">404</h1>
-                <h2 class="text-2xl font-bold mb-4 tracking-tight text-slate-900" style="font-family: 'Plus Jakarta Sans', sans-serif;">
-                    Resource not found.
-                </h2>
-                <p class="text-slate-500 max-w-md mx-auto md:mx-0 leading-relaxed">
-                    The directory or file you're looking for doesn't exist on this server. It might have been moved, deleted, or you typed the URL incorrectly.
-                </p>
-            </section>
-
-            <section id="navigation" class="visible pt-4">
-                <div class="flex items-center justify-center md:justify-start gap-2 mb-6">
-                    <span class="text-green-500 font-bold">mason@home:~$</span>
-                    <span class="command-text">cd /</span>
-                </div>
-                <a href="/" class="btn-home inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-wider w-full md:w-auto">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l-7-7m7 7V3"></path></svg>
-                    Back to Home directory
-                </a>
-            </section>
-
-            <div class="flex items-center justify-center md:justify-start gap-2 pt-4">
-                <span class="text-green-500 font-bold">mason@home:~$</span>
-                <span class="cursor"></span>
-            </div>
-
+        <div class="flex justify-center">
+            <a href="/" class="brutal-box px-8 py-4 font-extrabold uppercase text-lg hover:bg-black hover:text-white hover:-translate-y-1 transition-all">
+                ← Back to Home
+            </a>
         </div>
+
     </main>
 
-    <script>
-        window.addEventListener('load', () => {
-            document.getElementById('error-content').classList.add('visible');
-            document.getElementById('navigation').classList.add('visible');
-        });
-    </script>
 </body>
 </html>

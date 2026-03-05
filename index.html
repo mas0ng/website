@@ -9,236 +9,90 @@
     <script src="/assets/js/inject.js" defer></script>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --accent-blue: #3b82f6;
-            --bg-light: #f8fafc;
-            --terminal-bg: #ffffff;
-            --text-main: #1e293b;
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+    <style> 
+        body { 
+            font-family: 'Space Grotesk', sans-serif; 
+            background-color: #f4f4f0; 
         }
-
-        body {
-            font-family: 'JetBrains Mono', monospace;
-            background-color: var(--bg-light);
-            color: var(--text-main);
-            overflow-x: hidden;
-            background-image: 
-                linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
-
-        .terminal-window {
-            border: 2px solid #e2e8f0;
-            box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.12);
-            border-radius: 12px;
-            overflow: hidden;
-            background: var(--terminal-bg);
-        }
-
-        .terminal-header {
-            background: #f1f5f9;
-            padding: 10px 16px;
-            display: flex;
-            align-items: center;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        .dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
-        .dot-red { background: #ff5f56; }
-        .dot-yellow { background: #ffbd2e; }
-        .dot-green { background: #27c93f; }
-
-        .cursor {
-            display: inline-block;
-            width: 8px;
-            height: 18px;
-            background: var(--accent-blue);
-            animation: blink 1s infinite;
-            vertical-align: middle;
-            margin-left: 4px;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        .command-text { color: var(--accent-blue); font-weight: bold; }
-        
-        .stat-card {
-            border: 1px solid #e2e8f0;
-            background: #ffffff;
-        }
-
-        .social-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .social-card:hover {
-            border-color: var(--accent-blue);
-            background: #eff6ff;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px -4px rgba(59, 130, 246, 0.1);
-        }
-
-        .custom-icon {
-            width: 32px;
-            height: 32px;
-            object-fit: contain;
-        }
-
-        section { opacity: 0; transform: translateY(15px); transition: all 0.5s ease-out; }
-        section.visible { opacity: 1; transform: translateY(0); }
-
-        .heading-font {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+        .brutal-box { 
+            border: 3px solid #000; 
+            box-shadow: 6px 6px 0px #000; 
+            background: #fff; 
         }
         
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #cbd5e1; }
+        /* Custom scrollbar to match the theme */
+        ::-webkit-scrollbar { width: 12px; border-left: 3px solid #000; }
+        ::-webkit-scrollbar-track { background: #f4f4f0; }
+        ::-webkit-scrollbar-thumb { background: #000; }
     </style>
 </head>
-<body class="p-4 md:p-12 min-h-screen flex flex-col items-center">
-
-    <main class="w-full max-w-4xl terminal-window flex flex-col">
-        <div class="terminal-header justify-between">
-            <div class="flex">
-                <div class="dot dot-red"></div>
-                <div class="dot dot-yellow"></div>
-                <div class="dot dot-green"></div>
-            </div>
-            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">mas0ng.com</div>
-            <div class="w-12"></div>
+<body class="p-6 md:p-12 text-black min-h-screen flex flex-col justify-center items-center">
+    <div class="max-w-4xl w-full space-y-10">
+        
+        <div class="brutal-box p-8 md:p-12 bg-yellow-300">
+            <h1 class="text-5xl md:text-7xl font-extrabold uppercase leading-none mb-6">Mason.</h1>
+            <p class="text-xl md:text-2xl font-bold max-w-2xl leading-snug">
+                UI Design. Python Scripts. Faceless Social Media.
+            </p>
         </div>
 
-        <div class="p-6 md:p-12 space-y-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             
-            <section id="hero" class="space-y-4">
-                <div class="flex items-center gap-2">
-                    <span class="text-green-500 font-bold">mason@home:~$</span>
-                    <span class="command-text">whoami</span>
+            <div class="brutal-box p-8 space-y-6">
+                <h2 class="text-2xl font-extrabold uppercase border-b-4 border-black pb-2">What I Do</h2>
+                <div>
+                    <h3 class="font-extrabold text-lg uppercase">01. UI Design</h3>
+                    <p class="text-sm font-medium mt-1">Designing intuitive user interfaces, pitch decks, and clean digital presentations.</p>
                 </div>
-                <div class="mt-4">
-                    <h1 class="text-4xl md:text-6xl font-extrabold mb-4 heading-font leading-tight tracking-tight">
-                        I'm <span class="text-blue-600">Mason</span>.
-                    </h1>
-                    <p class="text-slate-600 max-w-xl text-lg leading-relaxed">
-                        I'm an expert in <span class="text-slate-900 font-bold underline decoration-blue-500 decoration-2 underline-offset-4">graphic design</span> and quite capable with <span class="text-slate-900 font-bold">Python</span>. I focus on creating clean visuals and efficient scripts.
-                    </p>
+                <div>
+                    <h3 class="font-extrabold text-lg uppercase">02. Python Dev</h3>
+                    <p class="text-sm font-medium mt-1">Writing clean code to scrape the web, process data, and automate manual tasks.</p>
                 </div>
-            </section>
+                <div>
+                    <h3 class="font-extrabold text-lg uppercase">03. Faceless TikTok</h3>
+                    <p class="text-sm font-medium mt-1">Running anonymous social accounts that pull millions of views and generate revenue.</p>
+                </div>
+            </div>
 
-            <section id="skills" class="space-y-6">
-                <div class="flex items-center gap-2">
-                    <span class="text-green-500 font-bold">mason@home:~$</span>
-                    <span class="command-text">ls skills/</span>
-                </div>
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div class="stat-card p-6 rounded-xl">
-                        <div class="text-blue-600 font-bold mb-2 flex items-center gap-2">
-                            <span>Graphic Design</span>
-                            <span class="px-2 py-0.5 bg-blue-50 text-[10px] rounded uppercase tracking-wider">Expert</span>
-                        </div>
-                        <p class="text-sm text-slate-500 leading-relaxed">
-                            Crafting visual identities and high-retention social assets. This is my core strength—visual storytelling.
-                        </p>
+            <div class="brutal-box p-8 bg-blue-400 flex flex-col justify-center relative">
+                <h2 class="text-2xl font-extrabold uppercase border-b-4 border-black pb-2 mb-6">The Proof <span class="text-sm">(Updated every 24hr)</span></h2>
+                
+                <div class="mb-6">
+                    <div class="flex items-baseline">
+                        <span id="followers-count" class="text-5xl md:text-6xl font-extrabold counter" data-target="0">0</span>
+                        <span class="text-4xl font-extrabold ml-1 plus-sign" style="display: none;">+</span>
                     </div>
-                    <div class="stat-card p-6 rounded-xl">
-                        <div class="text-blue-600 font-bold mb-2 flex items-center gap-2">
-                            <span>Python Coding</span>
-                            <span class="px-2 py-0.5 bg-slate-50 text-[10px] rounded uppercase tracking-wider">Mid</span>
-                        </div>
-                        <p class="text-sm text-slate-500 leading-relaxed">
-                            Automating workflows and solving logic puzzles. I'm comfortable building tools that make life easier.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="stats" class="space-y-6">
-                <div class="flex items-center gap-2">
-                    <span class="text-green-500 font-bold">mason@home:~$</span>
-                    <span class="command-text">python3 get_metrics.py</span>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50/50 p-8 rounded-2xl border border-slate-200">
-                    <div class="flex flex-col">
-                        <span class="text-[10px] font-bold text-slate-400 uppercase mb-1">Total Followers</span>
-                        <div class="flex items-baseline">
-                            <span id="followers-count" class="text-5xl font-black text-blue-600 heading-font counter" data-target="0">0</span>
-                            <span class="text-2xl font-black text-blue-600 ml-1 plus-sign" style="display: none;"></span>
-                        </div>
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-[10px] font-bold text-slate-400 uppercase mb-1">Total Likes</span>
-                        <div class="flex items-baseline">
-                            <span id="likes-count" class="text-5xl font-black text-slate-900 heading-font counter" data-target="0">0</span>
-                            <span class="text-2xl font-black text-slate-900 ml-1 plus-sign" style="display: none;"></span>
-                        </div>
-                    </div>
+                    <div class="font-bold uppercase tracking-widest text-sm mt-1">Tiktok Followers</div>
                 </div>
                 
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-[10px] text-slate-500 mt-2">
-                    <div class="border-l-2 border-blue-400 pl-2 leading-relaxed max-w-lg">
-                        * These statistics are summed up across multiple of my TikTok accounts (not all are linked below). 
-                        <br>Updates automatically every day at 00:00:00 UTC.
+                <div class="mb-6">
+                    <div class="flex items-baseline">
+                        <span id="likes-count" class="text-4xl md:text-5xl font-extrabold counter" data-target="0">0</span>
+                        <span class="text-3xl font-extrabold ml-1 plus-sign" style="display: none;">+</span>
                     </div>
-                    <div id="last-updated" class="font-bold text-slate-400 uppercase tracking-wider text-left md:text-right">
-                        Status: Fetching live stats...
-                    </div>
+                    <div class="font-bold uppercase tracking-widest text-sm mt-1">Likes</div>
                 </div>
-            </section>
-          
-            <section id="connect" class="space-y-6">
-                <div class="flex items-center gap-2">
-                    <span class="text-green-500 font-bold">mason@home:~$</span>
-                    <span class="command-text">./socials.sh --list</span>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <a href="https://www.tiktok.com/@mas0ng" target="_blank" class="social-card p-6 rounded-xl flex flex-col items-center justify-center gap-3">
-                        <img src="/assets/icons/socials/tiktok.svg" alt="TikTok" class="custom-icon">
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">TikTok</span>
-                    </a>
-                    <a href="https://www.instagram.com/mas0ngi/" target="_blank" class="social-card p-6 rounded-xl flex flex-col items-center justify-center gap-3">
-                        <img src="/assets/icons/socials/instagram.svg" alt="Instagram" class="custom-icon">
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Instagram</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/mason-gibbs-3348512a6" target="_blank" class="social-card p-6 rounded-xl flex flex-col items-center justify-center gap-3">
-                        <img src="/assets/icons/socials/linkedin.svg" alt="LinkedIn" class="custom-icon">
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">LinkedIn</span>
-                    </a>
-                    <a href="https://github.com/mas0ng" target="_blank" class="social-card p-6 rounded-xl flex flex-col items-center justify-center gap-3">
-                        <img src="/assets/icons/socials/github.svg" alt="Github" class="custom-icon">
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Github</span>
-                    </a>
-                    <a href="https://signal.me/#eu/Js8_IVmBa0zw4nGdLTvE1Fbcg6mUcmm11h34T-4CjCwgk8jx76hAQbvCkyHjY9JO" target="_blank" class="social-card p-6 rounded-xl flex flex-col items-center justify-center gap-3">
-                        <img src="/assets/icons/socials/signal.svg" alt="Signal" class="custom-icon">
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Signal</span>
-                    </a>
-                    <a href="mailto:mason@mas0ng.com" class="social-card p-6 rounded-xl flex flex-col items-center justify-center gap-3">
-                        <img src="/assets/icons/socials/email.svg" alt="Email" class="custom-icon">
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Email</span>
-                    </a>
-                </div>
-            </section>
 
-            <div class="flex items-center gap-2 pt-4">
-                <span class="text-green-500 font-bold">mason@home:~$</span>
-                <span class="cursor"></span>
+                <div id="last-updated" class="text-xs font-bold uppercase tracking-wider mt-2 bg-black text-white p-2 inline-block">
+                    Status: Fetching live stats...
+                </div>
             </div>
-
         </div>
-    </main>
 
-    <footer class="mt-12 mb-8 text-center space-y-4">
-        <div>
-            <a href="/privacy" class="text-slate-400 hover:text-blue-500 text-[11px] underline decoration-slate-200 underline-offset-4 transition-colors">Privacy Policy</a>
+        <div class="flex flex-wrap gap-4">
+            <a href="https://www.tiktok.com/@mas0ng" target="_blank" class="brutal-box px-6 py-3 font-extrabold uppercase hover:bg-black hover:text-white hover:-translate-y-1 transition-all">TikTok</a>
+            <a href="https://www.instagram.com/mas0ngi/" target="_blank" class="brutal-box px-6 py-3 font-extrabold uppercase hover:bg-black hover:text-white hover:-translate-y-1 transition-all">Instagram</a>
+            <a href="https://www.linkedin.com/in/mason-gibbs-3348512a6" target="_blank" class="brutal-box px-6 py-3 font-extrabold uppercase hover:bg-black hover:text-white hover:-translate-y-1 transition-all">LinkedIn</a>
+            <a href="https://github.com/mas0ng" target="_blank" class="brutal-box px-6 py-3 font-extrabold uppercase hover:bg-black hover:text-white hover:-translate-y-1 transition-all">GitHub</a>
+            <a href="https://signal.me/#eu/Js8_IVmBa0zw4nGdLTvE1Fbcg6mUcmm11h34T-4CjCwgk8jx76hAQbvCkyHjY9JO" target="_blank" class="brutal-box px-6 py-3 font-extrabold uppercase hover:bg-black hover:text-white hover:-translate-y-1 transition-all">Signal</a>
+            <a href="mailto:mason@mas0ng.com" class="brutal-box px-6 py-3 font-extrabold uppercase hover:bg-black hover:text-white hover:-translate-y-1 transition-all bg-yellow-300 hover:bg-black">Email Me</a>
         </div>
-    </footer>
+
+        <footer class="pt-8 text-center md:text-left">
+            <a href="/privacy" class="font-bold hover:underline uppercase text-sm border-b-2 border-black pb-1">Privacy Policy</a>
+        </footer>
+    </div>
 
     <script>
         const WORKER_URL = 'https://ttdata.mas0ngcloud.com/'; 
@@ -265,43 +119,28 @@
 
                 // Format timestamp for display
                 const date = new Date(data.lastUpdated);
-                lastUpdatedEl.innerText = `Last update: ${date.toLocaleString()}`;
+                lastUpdatedEl.innerText = `Last updated: ${date.toLocaleString()}`;
 
                 statsLoaded = true;
-
-                if (document.getElementById('stats').classList.contains('visible')) {
-                    startCounters();
-                }
+                
+                // Immediately start counters for this layout
+                startCounters();
 
             } catch (error) {
                 console.error('API Fetch Error:', error);
                 statsError = true;
 
                 [followerCountEl, likeCountEl].forEach(el => {
-                    el.classList.remove('text-5xl', 'counter');
-                    el.classList.add('text-xl');
-                    el.innerText = 'Error fetching';
+                    el.classList.remove('text-5xl', 'text-6xl', 'counter');
+                    el.classList.add('text-2xl');
+                    el.innerText = 'ERR_FETCH';
                 });
 
                 document.querySelectorAll('.plus-sign').forEach(el => el.style.display = 'none');
                 lastUpdatedEl.innerText = 'Status: Fetch failed';
+                lastUpdatedEl.classList.replace('bg-black', 'bg-red-500');
             }
         }
-
-        fetchMetrics();
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    if (entry.target.id === 'stats') {
-                        startCounters();
-                    }
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('section').forEach(el => observer.observe(el));
 
         function startCounters() {
             if (!statsLoaded || statsError) return;
@@ -328,6 +167,7 @@
                     const ease = 1 - Math.pow(2, -10 * progress);
                     const current = Math.floor(ease * target);
                     
+                    // Format with commas to match the aesthetic scale
                     counter.innerText = current.toLocaleString();
 
                     if (progress < 1) {
@@ -340,9 +180,8 @@
             });
         }
 
-        window.addEventListener('load', () => {
-            document.getElementById('hero').classList.add('visible');
-        });
+        // Initialize fetch
+        fetchMetrics();
     </script>
 </body>
 </html>
