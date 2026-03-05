@@ -1,55 +1,52 @@
-(function dynamicShadowCursor() {
+(function trailingOutlineCursor() {
     if (window.matchMedia("(max-width: 768px)").matches) return;
 
     const style = document.createElement('style');
     style.textContent = `
         body { cursor: none; }
-        .brutal-cursor-layer {
+        .ghost-layer {
             position: fixed; top: 0; left: 0;
-            width: 20px; height: 20px;
             pointer-events: none; z-index: 9999;
             transform: translate(-50%, -50%);
         }
-        #cursor-shadow { background-color: #000; transition: width 0.15s, height 0.15s; }
-        #cursor-main {
-            background-color: #fff; border: 2px solid #000;
+        #ghost-core {
+            width: 12px; height: 12px; background-color: #000;
             transition: background-color 0.15s, width 0.15s, height 0.15s;
         }
-        #cursor-main.hovering { background-color: #fde047; width: 40px; height: 40px; }
-        #cursor-shadow.hovering { width: 40px; height: 40px; }
+        #ghost-outline {
+            width: 24px; height: 24px; border: 2px solid #000; background-color: transparent;
+            transition: width 0.15s, height 0.15s, border-color 0.15s;
+        }
+        #ghost-core.hovering { width: 32px; height: 32px; background-color: #fde047; border: 2px solid #000; }
+        #ghost-outline.hovering { width: 32px; height: 32px; border-color: transparent; }
         a, button { cursor: none; }
     `;
     document.head.appendChild(style);
 
-    const shadow = document.createElement('div');
-    shadow.id = 'cursor-shadow'; shadow.className = 'brutal-cursor-layer';
-    
-    const main = document.createElement('div');
-    main.id = 'cursor-main'; main.className = 'brutal-cursor-layer';
+    const core = document.createElement('div'); core.id = 'ghost-core'; core.className = 'ghost-layer';
+    const outline = document.createElement('div'); outline.id = 'ghost-outline'; outline.className = 'ghost-layer';
 
-    document.body.appendChild(shadow); document.body.appendChild(main);
+    document.body.appendChild(outline); document.body.appendChild(core);
 
-    let mouseX = 0, mouseY = 0, shadowX = 0, shadowY = 0;
-    document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+    let mx = 0, my = 0, ox = 0, oy = 0;
+    document.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
 
     function animate() {
-        // Main box follows instantly
-        main.style.left = `${mouseX}px`; main.style.top = `${mouseY}px`;
-        // Shadow drags slightly behind, creating a dynamic 3D effect
-        shadowX += (mouseX - shadowX) * 0.4; shadowY += (mouseY - shadowY) * 0.4;
-        shadow.style.left = `${shadowX + 4}px`; shadow.style.top = `${shadowY + 4}px`;
+        core.style.left = `${mx}px`; core.style.top = `${my}px`;
+        ox += (mx - ox) * 0.25; oy += (my - oy) * 0.25;
+        outline.style.left = `${ox}px`; outline.style.top = `${oy}px`;
         requestAnimationFrame(animate);
     }
     animate();
 
     document.addEventListener('mouseover', (e) => {
         if (e.target.closest('a') || e.target.closest('button')) {
-            main.classList.add('hovering'); shadow.classList.add('hovering');
+            core.classList.add('hovering'); outline.classList.add('hovering');
         }
     });
     document.addEventListener('mouseout', (e) => {
         if (e.target.closest('a') || e.target.closest('button')) {
-            main.classList.remove('hovering'); shadow.classList.remove('hovering');
+            core.classList.remove('hovering'); outline.classList.remove('hovering');
         }
     });
 })();
