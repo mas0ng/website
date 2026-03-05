@@ -35,12 +35,12 @@
         `);
 
         // Inject Favicons & PWA Manifest
-        add("link", { rel: "icon", type: "image/png", sizes: "96x96", href: "/assets/icons/siteIcons/favicons/favicon-96x96.png" });
-        add("link", { rel: "icon", type: "image/svg+xml", href: "/assets/icons/siteIcons/favicons/favicon.svg" });
-        add("link", { rel: "shortcut icon", href: "/assets/icons/siteIcons/favicons/favicon.ico" });
-        add("link", { rel: "apple-touch-icon", sizes: "180x180", href: "/assets/icons/siteIcons/favicons/apple-touch-icon.png" });
+        add("link", { rel: "icon", type: "image/png", sizes: "96x96", href: "https://www.mas0ng.com/assets/icons/siteIcons/favicons/favicon-96x96.png" });
+        add("link", { rel: "icon", type: "image/svg+xml", href: "https://www.mas0ng.com/assets/icons/siteIcons/favicons/favicon.svg" });
+        add("link", { rel: "shortcut icon", href: "https://www.mas0ng.com/assets/icons/siteIcons/favicons/favicon.ico" });
+        add("link", { rel: "apple-touch-icon", sizes: "180x180", href: "https://www.mas0ng.com/assets/icons/siteIcons/favicons/apple-touch-icon.png" });
         add("meta", { name: "apple-mobile-web-app-title", content: "mas0ng.com" });
-        add("link", { rel: "manifest", href: "/assets/icons/siteIcons/favicons/site.webmanifest" });
+        add("link", { rel: "manifest", href: "https://www.mas0ng.com/assets/icons/siteIcons/favicons/site.webmanifest" });
 
         document.head.appendChild(fragment);
     } catch (error) {
@@ -57,16 +57,16 @@ document.addEventListener("DOMContentLoaded", function injectFooter() {
                 col1: {
                     title: "Navigation",
                     links: [
-                        { name: "Home", url: "/" },
-                        { name: "Expertise", url: "/#skills" },
-                        { name: "Impact", url: "/#stats" },
-                        { name: "Socials", url: "/#connect" }
+                        { name: "Home", url: "https://www.mas0ng.com/" },
+                        { name: "Expertise", url: "https://www.mas0ng.com/#skills" },
+                        { name: "Impact", url: "https://www.mas0ng.com/#stats" },
+                        { name: "Socials", url: "https://www.mas0ng.com/#connect" }
                     ]
                 },
                 col2: {
                     title: "Legal",
                     links: [
-                        { name: "Privacy Policy", url: "/privacy.html" }
+                        { name: "Privacy Policy", url: "https://www.mas0ng.com/privacy" }
                     ]
                 }
             }
