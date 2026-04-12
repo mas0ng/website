@@ -1,161 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Terms and conditions for using mas0ng.com.">
-    <title>mas0ng.com | terms</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Terms and conditions for using mas0ng.com." />
+  <title>mas0ng.com | terms</title>
 
-    <script src="/assets/js/inject.js" defer></script>
+  <script src="/assets/js/inject.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text: #0f1115;
+      --muted: #6f7682;
+      --line: rgba(15, 17, 21, 0.08);
+      --line-strong: rgba(15, 17, 21, 0.14);
+      --shadow-soft: 0 10px 28px rgba(15, 17, 21, 0.06);
+      --grad-1: #090914;
+      --grad-2: #171036;
+      --grad-3: #4420b7;
+      --grad-4: #1d61e7;
+      --grad-5: #b44be9;
+    }
 
-    <style>
-        body { 
-            font-family: 'Space Grotesk', sans-serif; 
-            background-color: #f4f4f0; 
-        }
-        .brutal-box { 
-            border: 3px solid #000; 
-            box-shadow: 6px 6px 0px #000; 
-            background: #fff; 
-        }
-        ::-webkit-scrollbar { width: 12px; border-left: 3px solid #000; }
-        ::-webkit-scrollbar-track { background: #f4f4f0; }
-        ::-webkit-scrollbar-thumb { background: #000; }
-    </style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+      color: var(--text);
+      background: #fff;
+    }
+
+    .page-gradient {
+      position: relative;
+      width: 100%;
+      height: 330px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 14% 18%, rgba(255,255,255,0.11), transparent 18%),
+        radial-gradient(circle at 84% 16%, rgba(255,255,255,0.09), transparent 16%),
+        radial-gradient(circle at 50% 0%, rgba(18, 196, 255, 0.12), transparent 28%),
+        linear-gradient(135deg, var(--grad-1) 0%, var(--grad-2) 20%, var(--grad-3) 48%, var(--grad-4) 76%, var(--grad-5) 100%);
+    }
+
+    .page-gradient::after {
+      content: "";
+      position: absolute;
+      left: -8%;
+      right: -8%;
+      bottom: -88px;
+      height: 190px;
+      background: #ffffff;
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    }
+
+    main {
+      flex: 1;
+      width: min(100% - 32px, 940px);
+      margin: -82px auto 0;
+      position: relative;
+      z-index: 2;
+      padding-bottom: 26px;
+    }
+
+    .hero {
+      margin-bottom: 26px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.96);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    h1 {
+      margin: 18px 0 0;
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      line-height: 0.95;
+      font-weight: 800;
+      letter-spacing: -0.08em;
+    }
+
+    .updated {
+      margin-top: 14px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .doc {
+      display: grid;
+      gap: 30px;
+    }
+
+    section {
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+
+    section:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 1.35rem;
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.78;
+      color: #2f3440;
+      font-weight: 500;
+    }
+
+    p + p {
+      margin-top: 14px;
+    }
+
+    .actions {
+      margin-top: 34px;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      background: #111318;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border: 1px solid #111318;
+      box-shadow: var(--shadow-soft);
+      transition: transform .16s ease, opacity .16s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+    }
+
+    @media (max-width: 640px) {
+      .page-gradient { height: 280px; }
+      main {
+        width: calc(100% - 24px);
+        margin-top: -66px;
+      }
+      h2 { font-size: 1.2rem; }
+      p { font-size: 0.96rem; }
+    }
+  </style>
 </head>
+<body>
+  <div class="page-gradient" aria-hidden="true"></div>
 
-<body class="p-6 md:p-12 text-black min-h-screen flex flex-col items-center">
+  <main>
+    <header class="hero">
+    
+      <h1>Terms &amp; Conditions</h1>
+      <div class="updated">Last updated: 05 March 2026</div>
+    </header>
 
-<main class="w-full max-w-4xl space-y-8 mt-4 md:mt-12">
+    <article class="doc">
+      <section>
+        <h2>01. Overview</h2>
+        <p>
+          These terms govern your use of mas0ng.com. By accessing this website you agree to use it
+          responsibly and in accordance with these conditions. This site primarily functions as a
+          personal profile and informational platform.
+        </p>
+        <p>
+          The website is provided on an “as-is” basis and may change, update, or remove content at
+          any time without notice.
+        </p>
+      </section>
 
-<div class="brutal-box p-8 md:p-12 bg-yellow-300">
-<h1 class="text-4xl md:text-6xl font-extrabold uppercase leading-none mb-4">
-Terms & Conditions
-</h1>
+      <section>
+        <h2>02. Educational Content Disclaimer</h2>
+        <p>
+          Some pages may contain educational resources, explanations, tools, or reference material.
+          While efforts are made to ensure accuracy, the information is provided for general learning
+          purposes only.
+        </p>
+        <p>
+          mas0ng.com does not guarantee the completeness, reliability, or accuracy of educational
+          material. You should always verify important information using official sources such as
+          exam boards, textbooks, or teachers.
+        </p>
+      </section>
 
-<p class="text-lg font-bold border-t-4 border-black pt-4 inline-block mt-2">
-Last updated: 05 March 2026
-</p>
-</div>
+      <section>
+        <h2>03. No Liability</h2>
+        <p>
+          The site owner is not responsible for any loss, damage, academic outcomes, or other
+          consequences that may arise from the use of information, tools, or resources provided on
+          this website.
+        </p>
+        <p>
+          Use of the site and its content is entirely at your own risk.
+        </p>
+      </section>
 
-<div class="brutal-box p-8 md:p-12 space-y-8">
+      <section>
+        <h2>04. External Links</h2>
+        <p>
+          This website may contain links to third-party platforms such as TikTok, Instagram, GitHub,
+          Signal, or other external websites.
+        </p>
+        <p>
+          Once you leave mas0ng.com, those platforms operate under their own terms and privacy
+          policies. I am not responsible for the content, security, or data handling practices of
+          third-party services.
+        </p>
+      </section>
 
-<section>
-<h2 class="text-2xl font-extrabold uppercase border-b-4 border-black pb-2 mb-4">
-01. Overview
-</h2>
+      <section>
+        <h2>05. Interactive Features</h2>
+        <p>
+          Some parts of the website may include interactive elements powered by Cloudflare Workers or
+          other lightweight backend services. These may process submitted data to display content or
+          enable certain features.
+        </p>
+        <p>
+          Any interaction with these systems must be lawful and respectful. Attempting to abuse,
+          overload, reverse engineer, or exploit these systems is not permitted.
+        </p>
+      </section>
 
-<p class="font-medium text-lg leading-relaxed">
-These terms govern your use of mas0ng.com. By accessing this website you agree to use it responsibly and in accordance with these conditions. This site primarily functions as a personal portfolio and informational platform.
-</p>
+      <section>
+        <h2>06. Intellectual Property</h2>
+        <p>
+          Unless otherwise stated, the design, branding, text, and original content on mas0ng.com
+          belong to the site owner.
+        </p>
+        <p>
+          You may view and reference the content for personal use, but you may not copy, redistribute,
+          or reproduce significant portions of the site without permission.
+        </p>
+      </section>
 
-<p class="font-medium text-lg leading-relaxed mt-3">
-The website is provided on an "as-is" basis and may change, update, or remove content at any time without notice.
-</p>
-</section>
+      <section>
+        <h2>07. Changes to These Terms</h2>
+        <p>
+          These terms may be updated occasionally to reflect changes to the website or its
+          functionality. Continued use of the site after updates means you accept the revised terms.
+        </p>
+      </section>
 
-<section>
-<h2 class="text-2xl font-extrabold uppercase border-b-4 border-black pb-2 mb-4">
-02. Educational Content Disclaimer
-</h2>
+      <section>
+        <h2>08. Contact</h2>
+        <p>
+          If you have questions regarding these terms, you may contact me via Signal, email, or
+          through the linked platforms on the site.
+        </p>
+      </section>
+    </article>
 
-<p class="font-medium text-lg leading-relaxed">
-Some pages may contain educational resources, explanations, tools, or reference material. While efforts are made to ensure accuracy, the information is provided for general learning purposes only.
-</p>
-
-<p class="font-medium text-lg leading-relaxed mt-3">
-mas0ng.com does not guarantee the completeness, reliability, or accuracy of educational material. You should always verify important information using official sources such as exam boards, textbooks, or teachers.
-</p>
-</section>
-
-<section>
-<h2 class="text-2xl font-extrabold uppercase border-b-4 border-black pb-2 mb-4">
-03. No Liability
-</h2>
-
-<p class="font-medium text-lg leading-relaxed">
-The site owner is not responsible for any loss, damage, academic outcomes, or other consequences that may arise from the use of information, tools, or resources provided on this website.
-</p>
-
-<p class="font-medium text-lg leading-relaxed mt-3">
-Use of the site and its content is entirely at your own risk.
-</p>
-</section>
-
-<section>
-<h2 class="text-2xl font-extrabold uppercase border-b-4 border-black pb-2 mb-4">
-04. External Links
-</h2>
-
-<p class="font-medium text-lg leading-relaxed">
-This website may contain links to third-party platforms such as TikTok, Instagram, LinkedIn, or other external websites.
-</p>
-
-<p class="font-medium text-lg leading-relaxed mt-3">
-Once you leave mas0ng.com, those platforms operate under their own terms and privacy policies. I am not responsible for the content, security, or data handling practices of third-party services.
-</p>
-</section>
-
-<section>
-<h2 class="text-2xl font-extrabold uppercase border-b-4 border-black pb-2 mb-4">
-05. Interactive Features
-</h2>
-
-<p class="font-medium text-lg leading-relaxed">
-Some parts of the website may include interactive elements powered by Cloudflare Workers or other lightweight backend services. These may process submitted data to display content or enable certain features.
-</p>
-
-<p class="font-medium text-lg leading-relaxed mt-3">
-Any interaction with these systems must be lawful and respectful. Attempting to abuse, overload, reverse engineer, or exploit these systems is not permitted.
-</p>
-</section>
-
-<section>
-<h2 class="text-2xl font-extrabold uppercase border-b-4 border-black pb-2 mb-4">
-06. Intellectual Property
-</h2>
-
-<p class="font-medium text-lg leading-relaxed">
-Unless otherwise stated, the design, branding, text, and original content on mas0ng.com belong to the site owner.
-</p>
-
-<p class="font-medium text-lg leading-relaxed mt-3">
-You may view and reference the content for personal use, but you may not copy, redistribute, or reproduce significant portions of the site without permission.
-</p>
-</section>
-
-<section>
-<h2 class="text-2xl font-extrabold uppercase border-b-4 border-black pb-2 mb-4">
-07. Changes to These Terms
-</h2>
-
-<p class="font-medium text-lg leading-relaxed">
-These terms may be updated occasionally to reflect changes to the website or its functionality. Continued use of the site after updates means you accept the revised terms.
-</p>
-</section>
-
-<section>
-<h2 class="text-2xl font-extrabold uppercase border-b-4 border-black pb-2 mb-4">
-08. Contact
-</h2>
-
-<p class="font-medium text-lg leading-relaxed">
-If you have questions regarding these terms, you may contact me via Signal or through any of the social platforms linked on the site.
-</p>
-</section>
-
-</div>
-
-<div class="pt-4 pb-12 flex justify-start">
-<a href="/" class="brutal-box px-8 py-4 font-extrabold uppercase text-lg hover:bg-black hover:text-white hover:-translate-y-1 transition-all">
-← Return to Home
-</a>
-</div>
-
-</main>
-
+    <div class="actions">
+      <a href="/" class="button">Return to Home</a>
+    </div>
+  </main>
 </body>
 </html>
