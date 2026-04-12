@@ -1,186 +1,588 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Mason, an expert graphic designer and Python developer focusing on clean visuals and efficient scripts.">
-    <title>mas0ng.com | index</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mason / @mas0ng" />
+  <title>mas0ng.com</title>
 
-    <script src="/assets/js/inject.js" defer></script>
-    <script src="/assets/js/mouse.js" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/assets/js/inject.js" defer></script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
-    <style> 
-        body { 
-            font-family: 'Space Grotesk', sans-serif; 
-            background-color: #f4f4f0; 
-        }
-        .brutal-box { 
-            border: 3px solid #000; 
-            box-shadow: 6px 6px 0px #000; 
-            background: #fff; 
-        }
-        
-        /* Custom scrollbar to match the theme */
-        ::-webkit-scrollbar { width: 12px; border-left: 3px solid #000; }
-        ::-webkit-scrollbar-track { background: #f4f4f0; }
-        ::-webkit-scrollbar-thumb { background: #000; }
-    </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --text: #0f1115;
+      --muted: #6f7682;
+      --line: rgba(15, 17, 21, 0.08);
+      --line-strong: rgba(15, 17, 21, 0.14);
+      --shadow-soft: 0 10px 28px rgba(15, 17, 21, 0.06);
+      --grad-1: #090914;
+      --grad-2: #171036;
+      --grad-3: #4420b7;
+      --grad-4: #1d61e7;
+      --grad-5: #b44be9;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: #fff;
+    }
+
+    .page-gradient {
+      position: relative;
+      width: 100%;
+      height: 360px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 14% 18%, rgba(255,255,255,0.11), transparent 18%),
+        radial-gradient(circle at 84% 16%, rgba(255,255,255,0.09), transparent 16%),
+        radial-gradient(circle at 50% 0%, rgba(18, 196, 255, 0.12), transparent 28%),
+        linear-gradient(135deg, var(--grad-1) 0%, var(--grad-2) 20%, var(--grad-3) 48%, var(--grad-4) 76%, var(--grad-5) 100%);
+    }
+
+    .page-gradient::after {
+      content: "";
+      position: absolute;
+      left: -8%;
+      right: -8%;
+      bottom: -88px;
+      height: 190px;
+      background: #ffffff;
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    }
+
+    .site-shell {
+      width: min(100% - 32px, 1220px);
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      margin-top: -88px;
+      padding-bottom: 8px;
+      flex: 1;
+    }
+
+    .profile-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+      padding: 0;
+    }
+
+    .avatar-wrap {
+      flex-shrink: 0;
+      margin-top: -8px;
+    }
+
+    .avatar {
+      width: 118px;
+      height: 118px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 4px solid rgba(255,255,255,0.98);
+      box-shadow: 0 16px 34px rgba(15, 17, 21, 0.12);
+      background: linear-gradient(135deg, #eceff5, #d8dde8);
+      display: grid;
+      place-items: center;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .avatar-fallback {
+      font-size: 2.15rem;
+      font-weight: 800;
+      letter-spacing: -0.06em;
+      color: #13161b;
+    }
+
+    .identity {
+      min-width: 0;
+      padding-top: 12px;
+    }
+
+    .name {
+      margin: 0;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.07em;
+    }
+
+    .username {
+      margin-top: 8px;
+      font-size: 0.98rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .quote {
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: #303742;
+      font-weight: 600;
+    }
+
+    .main-grid {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+      gap: 46px;
+      align-items: start;
+    }
+
+    .left-col,
+    .right-col {
+      min-width: 0;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .stat {
+      min-width: 0;
+    }
+
+    .stat-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .stat-number {
+      margin-top: 10px;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.08em;
+      color: #0f1115;
+    }
+
+    .stat-sub {
+      margin-top: 8px;
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-weight: 600;
+      line-height: 1.5;
+      max-width: 270px;
+    }
+
+    .updated {
+      margin-top: 18px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .icon-row {
+      margin-top: 22px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .round-link {
+      width: 50px;
+      height: 50px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.96);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      color: #111318;
+      transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease, background .16s ease;
+    }
+
+    .round-link:hover {
+      transform: translateY(-1px);
+      border-color: var(--line-strong);
+      background: #fff;
+      box-shadow: 0 14px 28px rgba(15,17,21,0.08);
+    }
+
+    .round-link svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+
+    .link-list {
+      display: grid;
+      gap: 4px;
+      margin-top: 2px;
+    }
+
+    .profile-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+      transition: border-color .16s ease, transform .16s ease;
+    }
+
+    .profile-link:hover {
+      transform: translateX(2px);
+      border-color: var(--line-strong);
+    }
+
+    .profile-link:first-child {
+      border-top: 1px solid var(--line);
+    }
+
+    .profile-link-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .profile-link-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: rgba(245,247,251,0.92);
+      border: 1px solid var(--line);
+      flex-shrink: 0;
+      color: #111318;
+    }
+
+    .profile-link-icon svg {
+      width: 19px;
+      height: 19px;
+      display: block;
+    }
+
+    .profile-link-meta {
+      min-width: 0;
+    }
+
+    .profile-link-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #111318;
+    }
+
+    .profile-link-subtitle {
+      margin-top: 2px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .profile-link-arrow {
+      color: #b8bec8;
+      font-size: 1.08rem;
+      flex-shrink: 0;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 0 rgba(34,197,94,0.42);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.42); }
+      70% { box-shadow: 0 0 0 10px rgba(34,197,94,0); }
+      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+    }
+
+    @media (max-width: 960px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-gradient {
+        height: 300px;
+      }
+
+      .site-shell {
+        width: calc(100% - 24px);
+        margin-top: -72px;
+      }
+
+      .profile-head {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+      }
+
+      .avatar-wrap {
+        margin-top: -2px;
+      }
+
+      .avatar {
+        width: 104px;
+        height: 104px;
+      }
+
+      .main-grid {
+        gap: 22px;
+      }
+
+      .stats-row {
+        gap: 12px;
+      }
+
+      .stat {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        box-shadow: var(--shadow-soft);
+        padding: 16px 14px;
+        text-align: center;
+      }
+
+      .stat-top {
+        justify-content: center;
+      }
+
+      .stat-number {
+        text-align: center;
+      }
+
+      .stat-sub {
+        max-width: none;
+        text-align: center;
+      }
+
+      .updated {
+        text-align: center;
+      }
+
+      .icon-row {
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
-<body class="p-6 md:p-12 text-black min-h-screen flex flex-col justify-center items-center">
-    <div class="max-w-4xl w-full space-y-10">
-        
-        <div class="brutal-box p-8 md:p-12 bg-yellow-300">
-            <h1 class="text-5xl md:text-7xl font-extrabold uppercase leading-none mb-6">Mason.</h1>
-            <p class="text-xl md:text-2xl font-bold max-w-2xl leading-snug">
-                UI Design. Python Scripts. Faceless Social Media.
-            </p>
-        </div>
+<body>
+  <div class="page-gradient" aria-hidden="true"></div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            
-            <div class="brutal-box p-8 space-y-6">
-                <h2 class="text-2xl font-extrabold uppercase border-b-4 border-black pb-2">What I Do</h2>
-                <div>
-                    <h3 class="font-extrabold text-lg uppercase">01. UI Design</h3>
-                    <p class="text-sm font-medium mt-1">Designing intuitive user interfaces, pitch decks, and clean digital presentations.</p>
-                </div>
-                <div>
-                    <h3 class="font-extrabold text-lg uppercase">02. Python Dev</h3>
-                    <p class="text-sm font-medium mt-1">Writing clean code to scrape the web, process data, and automate manual tasks.</p>
-                </div>
-                <div>
-                    <h3 class="font-extrabold text-lg uppercase">03. Faceless TikTok</h3>
-                    <p class="text-sm font-medium mt-1">Running anonymous social accounts that pull millions of views and generate revenue.</p>
-                </div>
+  <main class="site-shell">
+    <section class="profile-head">
+      <div class="avatar-wrap">
+        <div class="avatar">
+          <!-- replace with your real image -->
+          <!-- <img src="/assets/images/profile.jpg" alt="Mason profile picture"> -->
+          <span class="avatar-fallback">M</span>
+        </div>
+      </div>
+
+      <div class="identity">
+        <h1 class="name">Mason</h1>
+        <div class="username">@mas0ng</div>
+        <div class="quote">What’s done is done.</div>
+      </div>
+    </section>
+
+    <section class="main-grid">
+      <div class="left-col">
+        <div class="stats-row">
+          <div class="stat">
+            <div class="stat-top">
+              <span class="live-dot"></span>
+              followers
             </div>
+            <div class="stat-number" id="followers-count">0</div>
+            <div class="stat-sub">Combined total across all TikTok accounts.</div>
+          </div>
 
-            <div class="brutal-box p-8 bg-blue-400 flex flex-col justify-center relative">
-                <h2 class="text-2xl font-extrabold uppercase border-b-4 border-black pb-2 mb-6">The Proof <span class="text-sm">(Updated every 24hr)</span></h2>
-                
-                <div class="mb-6">
-                    <div class="flex items-baseline">
-                        <span id="followers-count" class="text-5xl md:text-6xl font-extrabold counter" data-target="0">0</span>
-                        <span class="text-4xl font-extrabold ml-1 plus-sign" style="display: none;">+</span>
-                    </div>
-                    <div class="font-bold uppercase tracking-widest text-sm mt-1">Tiktok Followers</div>
-                </div>
-                
-                <div class="mb-6">
-                    <div class="flex items-baseline">
-                        <span id="likes-count" class="text-4xl md:text-5xl font-extrabold counter" data-target="0">0</span>
-                        <span class="text-3xl font-extrabold ml-1 plus-sign" style="display: none;">+</span>
-                    </div>
-                    <div class="font-bold uppercase tracking-widest text-sm mt-1">Likes</div>
-                </div>
-
-                <div id="last-updated" class="text-xs font-bold uppercase tracking-wider mt-2 bg-black text-white p-2 inline-block">
-                    Status: Fetching live stats...
-                </div>
+          <div class="stat">
+            <div class="stat-top">
+              <span class="live-dot"></span>
+              likes
             </div>
+            <div class="stat-number" id="likes-count">0</div>
+            <div class="stat-sub">Combined likes across all TikTok accounts.</div>
+          </div>
         </div>
 
-        <div class="flex flex-wrap gap-4">
-            <a href="https://www.tiktok.com/@mas0ng" target="_blank" class="brutal-box px-6 py-3 font-extrabold uppercase hover:bg-black hover:text-white hover:-translate-y-1 transition-all">TikTok</a>
-            <a href="https://www.instagram.com/mas0ngi/" target="_blank" class="brutal-box px-6 py-3 font-extrabold uppercase hover:bg-black hover:text-white hover:-translate-y-1 transition-all">Instagram</a>
-            <a href="https://www.linkedin.com/in/mason-gibbs-3348512a6" target="_blank" class="brutal-box px-6 py-3 font-extrabold uppercase hover:bg-black hover:text-white hover:-translate-y-1 transition-all">LinkedIn</a>
-            <a href="https://github.com/mas0ng" target="_blank" class="brutal-box px-6 py-3 font-extrabold uppercase hover:bg-black hover:text-white hover:-translate-y-1 transition-all">GitHub</a>
-            <a href="https://signal.me/#eu/Js8_IVmBa0zw4nGdLTvE1Fbcg6mUcmm11h34T-4CjCwgk8jx76hAQbvCkyHjY9JO" target="_blank" class="brutal-box px-6 py-3 font-extrabold uppercase hover:bg-black hover:text-white hover:-translate-y-1 transition-all">Signal</a>
-            <a href="mailto:mason@mas0ng.com" class="brutal-box px-6 py-3 font-extrabold uppercase hover:bg-black hover:text-white hover:-translate-y-1 transition-all bg-yellow-300 hover:bg-black">Email Me</a>
+        <div class="updated" id="last-updated">Fetching live stats...</div>
+
+        <div class="icon-row">
+          
         </div>
+      </div>
 
-        
-    </div>
+      <div class="right-col">
+        <nav class="link-list">
+          <a href="https://www.tiktok.com/@mas0ng" target="_blank" rel="noopener" class="profile-link">
+            <div class="profile-link-left">
+              <div class="profile-link-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.68h-3.1v12.36a2.89 2.89 0 1 1-2.89-2.89c.24 0 .47.03.69.08V8.43a6 6 0 1 0 5.3 5.94V7.95a7.92 7.92 0 0 0 4.77 1.6V6.69Z"/></svg>
+              </div>
+              <div class="profile-link-meta">
+                <div class="profile-link-title">TikTok</div>
+                <div class="profile-link-subtitle">@mas0ng</div>
+              </div>
+            </div>
+            <div class="profile-link-arrow">›</div>
+          </a>
 
-    <script>
-        const WORKER_URL = 'https://ttdata.mas0ngcloud.com/'; 
+          <a href="https://www.instagram.com/mas0ngi/" target="_blank" rel="noopener" class="profile-link">
+            <div class="profile-link-left">
+              <div class="profile-link-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5Zm8.95 1.35a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 6.86A5.14 5.14 0 1 1 6.86 12 5.15 5.15 0 0 1 12 6.86Zm0 1.8A3.34 3.34 0 1 0 15.34 12 3.35 3.35 0 0 0 12 8.66Z"/></svg>
+              </div>
+              <div class="profile-link-meta">
+                <div class="profile-link-title">Instagram</div>
+                <div class="profile-link-subtitle">@mas0ngi</div>
+              </div>
+            </div>
+            <div class="profile-link-arrow">›</div>
+          </a>
 
-        let statsLoaded = false;
-        let statsError = false;
+          <a href="https://github.com/mas0ng" target="_blank" rel="noopener" class="profile-link">
+            <div class="profile-link-left">
+              <div class="profile-link-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12.23a11.5 11.5 0 0 0 7.87 10.93c.58.11.79-.26.79-.57v-2.02c-3.2.71-3.88-1.41-3.88-1.41-.52-1.36-1.27-1.72-1.27-1.72-1.04-.73.08-.72.08-.72 1.15.08 1.75 1.22 1.75 1.22 1.02 1.79 2.67 1.27 3.32.97.1-.76.4-1.27.73-1.56-2.55-.3-5.24-1.31-5.24-5.82 0-1.29.45-2.35 1.2-3.17-.12-.3-.52-1.5.11-3.14 0 0 .97-.32 3.19 1.21a10.83 10.83 0 0 1 5.81 0c2.21-1.53 3.18-1.21 3.18-1.21.63 1.64.23 2.84.11 3.14.75.82 1.2 1.88 1.2 3.17 0 4.52-2.69 5.52-5.26 5.82.42.37.78 1.08.78 2.18v3.23c0 .31.21.69.8.57a11.5 11.5 0 0 0 7.86-10.93A11.5 11.5 0 0 0 12 .5Z"/></svg>
+              </div>
+              <div class="profile-link-meta">
+                <div class="profile-link-title">GitHub</div>
+                <div class="profile-link-subtitle">@mas0ng</div>
+              </div>
+            </div>
+            <div class="profile-link-arrow">›</div>
+          </a>
 
-        async function fetchMetrics() {
-            const followerCountEl = document.getElementById('followers-count');
-            const likeCountEl = document.getElementById('likes-count');
-            const lastUpdatedEl = document.getElementById('last-updated');
+          <a href="https://signal.me/#eu/Js8_IVmBa0zw4nGdLTvE1Fbcg6mUcmm11h34T-4CjCwgk8jx76hAQbvCkyHjY9JO" target="_blank" rel="noopener" class="profile-link">
+            <div class="profile-link-left">
+              <div class="profile-link-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25c-5.39 0-9.75 3.87-9.75 8.64 0 2.74 1.43 5.18 3.67 6.76l-.93 3.85 3.95-2.13c.98.27 2 .41 3.06.41 5.39 0 9.75-3.87 9.75-8.64S17.39 2.25 12 2.25Zm-4.18 11.7 1.45-4.56 2.8 2.32 1.44-4.56 2.92 6.8-2.82-2.31-1.54 4.67-2.77-2.36-1.48 4.69Z"/></svg>
+              </div>
+              <div class="profile-link-meta">
+                <div class="profile-link-title">Signal</div>
+                <div class="profile-link-subtitle">Direct message</div>
+              </div>
+            </div>
+            <div class="profile-link-arrow">›</div>
+          </a>
 
-            try {
-                const response = await fetch(WORKER_URL);
-                const data = await response.json();
+          <a href="mailto:mason@mas0ng.com" class="profile-link">
+            <div class="profile-link-left">
+              <div class="profile-link-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1 21 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 18.5v-13Zm2.13-.7 6.87 5.36 6.87-5.36H5.13Zm14.07 1.92-6.65 5.19a.9.9 0 0 1-1.1 0L4.8 6.72V18.5c0 .39.31.7.7.7h13a.7.7 0 0 0 .7-.7V6.72Z"/></svg>
+              </div>
+              <div class="profile-link-meta">
+                <div class="profile-link-title">Email</div>
+                <div class="profile-link-subtitle">mason@mas0ng.com</div>
+              </div>
+            </div>
+            <div class="profile-link-arrow">›</div>
+          </a>
+        </nav>
+      </div>
+    </section>
+  </main>
 
-                if (!response.ok) {
-                    throw new Error(data.error || 'Failed to fetch');
-                }
+  <script>
+    const WORKER_URL = 'https://ttdata.mas0ngcloud.com/';
 
-                // Inject live target numbers
-                followerCountEl.setAttribute('data-target', data.followers);
-                likeCountEl.setAttribute('data-target', data.likes);
+    function formatCompact1dp(value) {
+      const num = Number(value) || 0;
+      const abs = Math.abs(num);
 
-                // Format timestamp for display
-                const date = new Date(data.lastUpdated);
-                lastUpdatedEl.innerText = `Last updated: ${date.toLocaleString()}`;
+      if (abs >= 1e9) return (num / 1e9).toFixed(1) + 'B';
+      if (abs >= 1e6) return (num / 1e6).toFixed(1) + 'M';
+      if (abs >= 1e3) return (num / 1e3).toFixed(1) + 'K';
+      return Math.round(num).toLocaleString();
+    }
 
-                statsLoaded = true;
-                
-                // Immediately start counters for this layout
-                startCounters();
+    function animateCompact(el, target, duration = 1300) {
+      const start = performance.now();
 
-            } catch (error) {
-                console.error('API Fetch Error:', error);
-                statsError = true;
+      function frame(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = target * eased;
+        el.textContent = formatCompact1dp(current);
 
-                [followerCountEl, likeCountEl].forEach(el => {
-                    el.classList.remove('text-5xl', 'text-6xl', 'counter');
-                    el.classList.add('text-2xl');
-                    el.innerText = 'ERR_FETCH';
-                });
+        if (progress < 1) {
+          requestAnimationFrame(frame);
+        } else {
+          el.textContent = formatCompact1dp(target);
+        }
+      }
 
-                document.querySelectorAll('.plus-sign').forEach(el => el.style.display = 'none');
-                lastUpdatedEl.innerText = 'Status: Fetch failed';
-                lastUpdatedEl.classList.replace('bg-black', 'bg-red-500');
-            }
+      requestAnimationFrame(frame);
+    }
+
+    async function fetchMetrics() {
+      const followersEl = document.getElementById('followers-count');
+      const likesEl = document.getElementById('likes-count');
+      const updatedEl = document.getElementById('last-updated');
+
+      try {
+        const response = await fetch(WORKER_URL);
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to fetch');
         }
 
-        function startCounters() {
-            if (!statsLoaded || statsError) return;
+        const followers = Number(data.followers || 0);
+        const likes = Number(data.likes || 0);
 
-            const counters = document.querySelectorAll('.counter');
-            const duration = 1500; 
+        animateCompact(followersEl, followers, 1400);
+        animateCompact(likesEl, likes, 1500);
 
-            counters.forEach(counter => {
-                if (counter.dataset.started) return;
-                counter.dataset.started = "true";
-                
-                const target = +counter.getAttribute('data-target');
-                const startTime = performance.now();
+        const date = new Date(data.lastUpdated);
+        updatedEl.textContent = `Last updated: ${date.toLocaleString()}`;
+      } catch (error) {
+        console.error('API Fetch Error:', error);
+        followersEl.textContent = '—';
+        likesEl.textContent = '—';
+        updatedEl.textContent = 'Live stats unavailable right now';
+      }
+    }
 
-                const plusSign = counter.nextElementSibling;
-                if (plusSign && plusSign.classList.contains('plus-sign')) {
-                    plusSign.style.display = 'inline';
-                }
-
-                const update = (now) => {
-                    const elapsed = now - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    
-                    const ease = 1 - Math.pow(2, -10 * progress);
-                    const current = Math.floor(ease * target);
-                    
-                    // Format with commas to match the aesthetic scale
-                    counter.innerText = current.toLocaleString();
-
-                    if (progress < 1) {
-                        requestAnimationFrame(update);
-                    } else {
-                        counter.innerText = target.toLocaleString();
-                    }
-                };
-                requestAnimationFrame(update);
-            });
-        }
-
-        // Initialize fetch
-        fetchMetrics();
-    </script>
+    fetchMetrics();
+  </script>
 </body>
 </html>
