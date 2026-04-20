@@ -6,85 +6,32 @@
   <meta name="description" content="Mason / @mas0ng" />
   <title>mas0ng.com</title>
 
-  <script src="https://cdn.tailwindcss.com"></script>
   <script src="/assets/js/inject.js" defer></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-  
+  <link rel="stylesheet" href="/assets/css/site-theme.css">
 
   <style>
-    :root {
-      --text: #0f1115;
-      --muted: #6f7682;
-      --line: rgba(15, 17, 21, 0.08);
-      --line-strong: rgba(15, 17, 21, 0.14);
-      --shadow-soft: 0 10px 28px rgba(15, 17, 21, 0.06);
-      --grad-1: #090914;
-      --grad-2: #171036;
-      --grad-3: #4420b7;
-      --grad-4: #1d61e7;
-      --grad-5: #b44be9;
-    }
-
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background: #fff;
-    }
-
     .page-gradient {
-      position: relative;
-      width: 100%;
-      height: 360px;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 14% 18%, rgba(255,255,255,0.11), transparent 18%),
-        radial-gradient(circle at 84% 16%, rgba(255,255,255,0.09), transparent 16%),
-        radial-gradient(circle at 50% 0%, rgba(18, 196, 255, 0.12), transparent 28%),
-        linear-gradient(135deg, var(--grad-1) 0%, var(--grad-2) 20%, var(--grad-3) 48%, var(--grad-4) 76%, var(--grad-5) 100%);
-    }
-
-    .page-gradient::after {
-      content: "";
-      position: absolute;
-      left: -8%;
-      right: -8%;
-      bottom: -88px;
-      height: 190px;
-      background: #ffffff;
-      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      --page-gradient-height: 380px;
+      --page-gradient-height-mobile: 308px;
     }
 
     .site-shell {
-      width: min(100% - 32px, 1220px);
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-      margin-top: -88px;
-      padding-bottom: 8px;
+      --page-shell-width: 1220px;
+      --page-shell-overlap: -88px;
+      --page-shell-overlap-mobile: -72px;
       flex: 1;
+      padding-bottom: 8px;
     }
 
     .profile-head {
       display: flex;
-      align-items: flex-start;
+      align-items: flex-end;
       gap: 22px;
-      padding: 0;
+      padding: 0 4px;
     }
 
     .avatar-wrap {
@@ -93,13 +40,14 @@
     }
 
     .avatar {
+      position: relative;
       width: 118px;
       height: 118px;
       border-radius: 999px;
       overflow: hidden;
-      border: 4px solid rgba(255,255,255,0.98);
+      border: 4px solid rgba(255, 255, 255, 0.98);
       box-shadow: 0 16px 34px rgba(15, 17, 21, 0.12);
-      background: linear-gradient(135deg, #eceff5, #d8dde8);
+      background: linear-gradient(135deg, #eff3f9, #dce3ef);
       display: grid;
       place-items: center;
     }
@@ -112,10 +60,22 @@
     }
 
     .avatar-fallback {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
       font-size: 2.15rem;
       font-weight: 800;
       letter-spacing: -0.06em;
       color: #13161b;
+      opacity: 0;
+      transform: scale(0.96);
+      transition: opacity 0.18s ease, transform 0.18s ease;
+    }
+
+    .avatar--fallback .avatar-fallback {
+      opacity: 1;
+      transform: scale(1);
     }
 
     .identity {
@@ -138,15 +98,8 @@
       font-weight: 700;
     }
 
-    .quote {
-      margin-top: 10px;
-      font-size: 0.95rem;
-      color: #303742;
-      font-weight: 600;
-    }
-
     .main-grid {
-      margin-top: 26px;
+      margin-top: 28px;
       display: grid;
       grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
       gap: 46px;
@@ -161,11 +114,16 @@
     .stats-row {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
+      gap: 20px;
     }
 
     .stat {
       min-width: 0;
+      padding: 18px 20px 22px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 1));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow-soft);
     }
 
     .stat-top {
@@ -199,47 +157,15 @@
 
     .updated {
       margin-top: 18px;
+      padding-left: 4px;
       font-size: 0.82rem;
       color: var(--muted);
       font-weight: 600;
     }
 
-    .icon-row {
-      margin-top: 22px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .round-link {
-      width: 50px;
-      height: 50px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      background: rgba(255,255,255,0.96);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow-soft);
-      color: #111318;
-      transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease, background .16s ease;
-    }
-
-    .round-link:hover {
-      transform: translateY(-1px);
-      border-color: var(--line-strong);
-      background: #fff;
-      box-shadow: 0 14px 28px rgba(15,17,21,0.08);
-    }
-
-    .round-link svg {
-      width: 18px;
-      height: 18px;
-      display: block;
-    }
-
     .link-list {
       display: grid;
-      gap: 4px;
+      gap: 14px;
       margin-top: 2px;
     }
 
@@ -250,18 +176,18 @@
       gap: 12px;
       text-decoration: none;
       color: inherit;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--line);
-      transition: border-color .16s ease, transform .16s ease;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 1));
+      box-shadow: var(--shadow-soft);
+      transition: border-color 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease;
     }
 
     .profile-link:hover {
-      transform: translateX(2px);
+      transform: translateY(-2px);
       border-color: var(--line-strong);
-    }
-
-    .profile-link:first-child {
-      border-top: 1px solid var(--line);
+      box-shadow: 0 18px 34px rgba(15, 17, 21, 0.08);
     }
 
     .profile-link-left {
@@ -277,7 +203,7 @@
       border-radius: 15px;
       display: grid;
       place-items: center;
-      background: rgba(245,247,251,0.92);
+      background: rgba(245, 247, 251, 0.96);
       border: 1px solid var(--line);
       flex-shrink: 0;
       color: #111318;
@@ -310,23 +236,8 @@
 
     .profile-link-arrow {
       color: #b8bec8;
-      font-size: 1.08rem;
+      font-size: 1.2rem;
       flex-shrink: 0;
-    }
-
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 0 rgba(34,197,94,0.42);
-      animation: pulse 1.8s infinite;
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.42); }
-      70% { box-shadow: 0 0 0 10px rgba(34,197,94,0); }
-      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
     }
 
     @media (max-width: 960px) {
@@ -337,15 +248,6 @@
     }
 
     @media (max-width: 640px) {
-      .page-gradient {
-        height: 300px;
-      }
-
-      .site-shell {
-        width: calc(100% - 24px);
-        margin-top: -72px;
-      }
-
       .profile-head {
         flex-direction: column;
         align-items: center;
@@ -371,12 +273,9 @@
       }
 
       .stat {
-        background: #fff;
-        border: 1px solid var(--line);
-        border-radius: 20px;
-        box-shadow: var(--shadow-soft);
         padding: 16px 14px;
         text-align: center;
+        border-radius: 20px;
       }
 
       .stat-top {
@@ -394,10 +293,16 @@
 
       .updated {
         text-align: center;
+        padding-left: 0;
       }
 
-      .icon-row {
-        justify-content: center;
+      .link-list {
+        gap: 12px;
+      }
+
+      .profile-link {
+        padding: 16px;
+        border-radius: 20px;
       }
     }
   </style>
@@ -405,12 +310,16 @@
 <body>
   <div class="page-gradient" aria-hidden="true"></div>
 
-  <main class="site-shell">
+  <main class="page-shell page-shell--overlap site-shell">
     <section class="profile-head">
       <div class="avatar-wrap">
         <div class="avatar">
-          <img src="/assets/images/profile.jpg" alt="pfp">
-          
+          <img
+            src="/assets/images/profile.jpg"
+            alt="Mason profile photo"
+            onerror="this.closest('.avatar').classList.add('avatar--fallback'); this.style.display='none';"
+          >
+          <span class="avatar-fallback" aria-hidden="true">M</span>
         </div>
       </div>
 
@@ -425,7 +334,7 @@
         <div class="stats-row">
           <div class="stat">
             <div class="stat-top">
-              <span class="live-dot"></span>
+              <span class="status-dot" aria-hidden="true"></span>
               followers
             </div>
             <div class="stat-number" id="followers-count">0</div>
@@ -434,7 +343,7 @@
 
           <div class="stat">
             <div class="stat-top">
-              <span class="live-dot"></span>
+              <span class="status-dot" aria-hidden="true"></span>
               likes
             </div>
             <div class="stat-number" id="likes-count">0</div>
@@ -443,10 +352,6 @@
         </div>
 
         <div class="updated" id="last-updated">Fetching live stats...</div>
-
-        <div class="icon-row">
-          
-        </div>
       </div>
 
       <div class="right-col">
@@ -461,7 +366,7 @@
                 <div class="profile-link-subtitle">@mas0ng</div>
               </div>
             </div>
-            <div class="profile-link-arrow">›</div>
+            <div class="profile-link-arrow" aria-hidden="true">&rsaquo;</div>
           </a>
 
           <a href="https://www.instagram.com/mas0ngi/" target="_blank" rel="noopener" class="profile-link">
@@ -474,7 +379,7 @@
                 <div class="profile-link-subtitle">@mas0ngi</div>
               </div>
             </div>
-            <div class="profile-link-arrow">›</div>
+            <div class="profile-link-arrow" aria-hidden="true">&rsaquo;</div>
           </a>
 
           <a href="https://github.com/mas0ng" target="_blank" rel="noopener" class="profile-link">
@@ -487,7 +392,7 @@
                 <div class="profile-link-subtitle">@mas0ng</div>
               </div>
             </div>
-            <div class="profile-link-arrow">›</div>
+            <div class="profile-link-arrow" aria-hidden="true">&rsaquo;</div>
           </a>
 
           <a href="https://signal.me/#eu/Js8_IVmBa0zw4nGdLTvE1Fbcg6mUcmm11h34T-4CjCwgk8jx76hAQbvCkyHjY9JO" target="_blank" rel="noopener" class="profile-link">
@@ -500,7 +405,7 @@
                 <div class="profile-link-subtitle">Direct message</div>
               </div>
             </div>
-            <div class="profile-link-arrow">›</div>
+            <div class="profile-link-arrow" aria-hidden="true">&rsaquo;</div>
           </a>
 
           <a href="mailto:mason@mas0ng.com" class="profile-link">
@@ -513,7 +418,7 @@
                 <div class="profile-link-subtitle">mason@mas0ng.com</div>
               </div>
             </div>
-            <div class="profile-link-arrow">›</div>
+            <div class="profile-link-arrow" aria-hidden="true">&rsaquo;</div>
           </a>
         </nav>
       </div>
@@ -575,8 +480,8 @@
         updatedEl.textContent = `Last updated: ${date.toLocaleString()}`;
       } catch (error) {
         console.error('API Fetch Error:', error);
-        followersEl.textContent = '—';
-        likesEl.textContent = '—';
+        followersEl.textContent = '\u2014';
+        likesEl.textContent = '\u2014';
         updatedEl.textContent = 'Live stats unavailable right now';
       }
     }

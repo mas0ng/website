@@ -10,95 +10,24 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site-theme.css">
 
   <style>
-    :root {
-      --text: #0f1115;
-      --muted: #6f7682;
-      --line: rgba(15, 17, 21, 0.08);
-      --line-strong: rgba(15, 17, 21, 0.14);
-      --shadow-soft: 0 10px 28px rgba(15, 17, 21, 0.06);
-      --grad-1: #090914;
-      --grad-2: #171036;
-      --grad-3: #4420b7;
-      --grad-4: #1d61e7;
-      --grad-5: #b44be9;
-    }
-
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-      color: var(--text);
-      background: #fff;
-    }
-
     .page-gradient {
-      position: relative;
-      width: 100%;
-      height: 330px;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 14% 18%, rgba(255,255,255,0.11), transparent 18%),
-        radial-gradient(circle at 84% 16%, rgba(255,255,255,0.09), transparent 16%),
-        radial-gradient(circle at 50% 0%, rgba(18, 196, 255, 0.12), transparent 28%),
-        linear-gradient(135deg, var(--grad-1) 0%, var(--grad-2) 20%, var(--grad-3) 48%, var(--grad-4) 76%, var(--grad-5) 100%);
+      --page-gradient-height: 330px;
+      --page-gradient-height-mobile: 280px;
     }
 
-    .page-gradient::after {
-      content: "";
-      position: absolute;
-      left: -8%;
-      right: -8%;
-      bottom: -88px;
-      height: 190px;
-      background: #ffffff;
-      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-    }
-
-    main {
+    .legal-shell {
+      --page-shell-width: 940px;
+      --page-shell-overlap: -82px;
+      --page-shell-overlap-mobile: -66px;
       flex: 1;
-      width: min(100% - 32px, 940px);
-      margin: -82px auto 0;
-      position: relative;
-      z-index: 2;
       padding-bottom: 26px;
     }
 
     .hero {
       margin-bottom: 26px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.96);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow-soft);
-      font-size: 0.82rem;
-      font-weight: 800;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-    }
-
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #22c55e;
     }
 
     h1 {
@@ -121,12 +50,12 @@
       gap: 30px;
     }
 
-    section {
+    .doc section {
       padding-top: 22px;
       border-top: 1px solid var(--line);
     }
 
-    section:first-child {
+    .doc section:first-child {
       border-top: none;
       padding-top: 0;
     }
@@ -153,128 +82,109 @@
 
     .actions {
       margin-top: 34px;
-      display: flex;
-      justify-content: flex-start;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 0 22px;
-      border-radius: 999px;
-      text-decoration: none;
-      background: #111318;
-      color: #fff;
-      font-size: 0.95rem;
-      font-weight: 700;
-      border: 1px solid #111318;
-      box-shadow: var(--shadow-soft);
-      transition: transform .16s ease, opacity .16s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-1px);
-      opacity: 0.96;
     }
 
     @media (max-width: 640px) {
-      .page-gradient { height: 280px; }
-      main {
-        width: calc(100% - 24px);
-        margin-top: -66px;
+      h2 {
+        font-size: 1.2rem;
       }
-      h2 { font-size: 1.2rem; }
-      p { font-size: 0.96rem; }
+
+      p {
+        font-size: 0.96rem;
+      }
     }
   </style>
 </head>
 <body>
   <div class="page-gradient" aria-hidden="true"></div>
 
-  <main>
-    <header class="hero">
-      
-      <h1>Privacy Policy</h1>
-      <div class="updated">Last updated: 05 March 2026</div>
-    </header>
+  <main class="page-shell page-shell--overlap legal-shell">
+    <article class="panel-card">
+      <header class="hero">
+        <div class="eyebrow">
+          <span class="status-dot" aria-hidden="true"></span>
+          Site policy
+        </div>
+        <h1>Privacy Policy</h1>
+        <div class="updated">Last updated: 05 March 2026</div>
+      </header>
 
-    <article class="doc">
-      <section>
-        <h2>01. Overview</h2>
-        <p>
-          Welcome to mas0ng.com. Your privacy is important. This policy outlines how any
-          information provided via social links or direct contact is handled, as well as how
-          analytics are processed. Essentially: I use basic analytics to see how the site performs,
-          but absolutely no tracking happens unless you explicitly agree.
-        </p>
-      </section>
+      <div class="doc">
+        <section>
+          <h2>01. Overview</h2>
+          <p>
+            Welcome to mas0ng.com. Your privacy is important. This policy outlines how any
+            information provided via social links or direct contact is handled, as well as how
+            analytics are processed. Essentially: I use basic analytics to see how the site performs,
+            but absolutely no tracking happens unless you explicitly agree.
+          </p>
+        </section>
 
-      <section>
-        <h2>02. Information Collection</h2>
-        <p>
-          This website is a static profile site and does not require user accounts. I do use cookies
-          for analytics, but only if you explicitly grant permission through the cookie banner. Any
-          direct information shared with me through linked platforms is used solely for the purpose
-          of our communication.
-        </p>
-      </section>
+        <section>
+          <h2>02. Information Collection</h2>
+          <p>
+            This website is a static profile site and does not require user accounts. I do use cookies
+            for analytics, but only if you explicitly grant permission through the cookie banner. Any
+            direct information shared with me through linked platforms is used solely for the purpose
+            of our communication.
+          </p>
+        </section>
 
-      <section>
-        <h2>03. Third-Party Services</h2>
-        <p>
-          My site contains links to external platforms such as TikTok, Instagram, GitHub, and
-          Signal. Once you leave mas0ng.com, the privacy policies of those platforms apply. I am not
-          responsible for the data collection practices of those third parties.
-        </p>
-      </section>
+        <section>
+          <h2>03. Third-Party Services</h2>
+          <p>
+            My site contains links to external platforms such as TikTok, Instagram, GitHub, and
+            Signal. Once you leave mas0ng.com, the privacy policies of those platforms apply. I am not
+            responsible for the data collection practices of those third parties.
+          </p>
+        </section>
 
-      <section>
-        <h2>04. Analytics</h2>
-        <p>
-          I use Google Analytics to monitor site traffic and understand user interactions. To ensure
-          your privacy is respected, this process is managed by CookieYes. Analytics scripts and
-          cookies are blocked by default and will only run if you explicitly opt in via the cookie
-          consent banner. No personally identifiable information is collected, sold, or shared with
-          advertisers.
-        </p>
-      </section>
+        <section>
+          <h2>04. Analytics</h2>
+          <p>
+            I use Google Analytics to monitor site traffic and understand user interactions. To ensure
+            your privacy is respected, this process is managed by CookieYes. Analytics scripts and
+            cookies are blocked by default and will only run if you explicitly opt in via the cookie
+            consent banner. No personally identifiable information is collected, sold, or shared with
+            advertisers.
+          </p>
+        </section>
 
-      <section>
-        <h2>05. Cloudflare Worker Processing</h2>
-        <p>
-          Certain interactive features on this website may submit data through secure endpoints
-          powered by Cloudflare Workers. These lightweight server-side functions are used to process
-          specific actions such as publishing submitted content, storing form responses, or
-          retrieving structured data used by parts of the site.
-        </p>
-        <p>
-          Any information submitted through these interactions is transmitted securely and processed
-          only for the intended functionality of the feature you are using. Data is not sold, shared
-          with advertisers, or used for behavioural tracking. In some cases, submissions may be
-          stored in minimal formats such as JSON records and may be publicly accessible where they
-          are intended to power public site features.
-        </p>
-        <p>
-          Cloudflare may process limited technical information, such as IP address and request
-          metadata, as part of its infrastructure security and network services. This processing is
-          governed by Cloudflare’s own privacy policies.
-        </p>
-      </section>
+        <section>
+          <h2>05. Cloudflare Worker Processing</h2>
+          <p>
+            Certain interactive features on this website may submit data through secure endpoints
+            powered by Cloudflare Workers. These lightweight server-side functions are used to process
+            specific actions such as publishing submitted content, storing form responses, or
+            retrieving structured data used by parts of the site.
+          </p>
+          <p>
+            Any information submitted through these interactions is transmitted securely and processed
+            only for the intended functionality of the feature you are using. Data is not sold, shared
+            with advertisers, or used for behavioural tracking. In some cases, submissions may be
+            stored in minimal formats such as JSON records and may be publicly accessible where they
+            are intended to power public site features.
+          </p>
+          <p>
+            Cloudflare may process limited technical information, such as IP address and request
+            metadata, as part of its infrastructure security and network services. This processing is
+            governed by Cloudflare's own privacy policies.
+          </p>
+        </section>
 
-      <section>
-        <h2>06. Contact</h2>
-        <p>
-          If you have questions regarding your data or this policy, feel free to reach out via
-          Signal, email, or any linked platform on the site.
-        </p>
-      </section>
+        <section>
+          <h2>06. Contact</h2>
+          <p>
+            If you have questions regarding your data or this policy, feel free to reach out via
+            Signal, email, or any linked platform on the site.
+          </p>
+        </section>
+      </div>
+
+      <div class="button-row actions">
+        <a href="/" class="button">Return to Home</a>
+      </div>
     </article>
-
-    <div class="actions">
-      <a href="/" class="button">Return to Home</a>
-    </div>
   </main>
 </body>
 </html>

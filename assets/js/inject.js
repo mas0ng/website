@@ -100,10 +100,28 @@ document.addEventListener("DOMContentLoaded", function injectFooter() {
                 padding: 28px 0;
                 color: #ffffff;
                 background:
-                    radial-gradient(circle at 14% 20%, rgba(255,255,255,0.11), transparent 18%),
-                    radial-gradient(circle at 84% 16%, rgba(255,255,255,0.09), transparent 16%),
-                    radial-gradient(circle at 50% 0%, rgba(18, 196, 255, 0.12), transparent 28%),
-                    linear-gradient(135deg, #090914 0%, #171036 20%, #4420b7 48%, #1d61e7 76%, #b44be9 100%);
+                    linear-gradient(112deg, rgba(255,255,255,0.18) 0%, transparent 18%, rgba(110,216,255,0.08) 38%, transparent 64%),
+                    radial-gradient(circle at 18% 18%, rgba(255,255,255,0.22), transparent 0 18%),
+                    radial-gradient(circle at 82% 16%, rgba(110,216,255,0.26), transparent 0 18%),
+                    linear-gradient(118deg, #010308 0%, #02060d 12%, #05111f 28%, #0a1f34 52%, #123f66 76%, #dbf4ff 112%);
+                background-size: 180% 180%;
+                animation: mxFooterShift 10s ease-in-out infinite alternate;
+            }
+
+            .mx-footer::before {
+                content: "";
+                position: absolute;
+                inset: -42% -10% -8%;
+                background:
+                    radial-gradient(circle at 18% 28%, rgba(255,255,255,0.36), transparent 0 16%),
+                    radial-gradient(circle at 76% 20%, rgba(110,216,255,0.44), transparent 0 18%),
+                    radial-gradient(circle at 52% 12%, rgba(255,255,255,0.18), transparent 0 14%),
+                    radial-gradient(circle at 40% 42%, rgba(37,127,213,0.28), transparent 0 22%),
+                    linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 32%, rgba(110,216,255,0.12) 58%, transparent 84%);
+                background-size: 130% 130%;
+                filter: blur(18px);
+                opacity: 0.98;
+                animation: mxFooterFloat 12s ease-in-out infinite alternate;
             }
 
             .mx-footer-inner {
@@ -120,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function injectFooter() {
                 gap: 12px;
                 margin-bottom: 14px;
                 padding-bottom: 14px;
-                border-bottom: 1px solid rgba(255,255,255,0.16);
+                border-bottom: 1px solid rgba(255,255,255,0.2);
             }
 
             .mx-footer-brand {
@@ -156,6 +174,40 @@ document.addEventListener("DOMContentLoaded", function injectFooter() {
                 opacity: 1;
             }
 
+            @keyframes mxFooterShift {
+                0% {
+                    background-position: 0% 44%;
+                }
+
+                100% {
+                    background-position: 100% 58%;
+                }
+            }
+
+            @keyframes mxFooterFloat {
+                0% {
+                    transform: translate3d(-4%, -3%, 0) scale(1.08);
+                    opacity: 0.86;
+                }
+
+                50% {
+                    transform: translate3d(2%, -6%, 0) scale(1.14);
+                    opacity: 1;
+                }
+
+                100% {
+                    transform: translate3d(5%, 4%, 0) scale(1.1);
+                    opacity: 0.92;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .mx-footer,
+                .mx-footer::before {
+                    animation: none;
+                }
+            }
+
             @media (max-width: 640px) {
                 .mx-footer {
                     padding: 22px 0;
@@ -184,12 +236,12 @@ document.addEventListener("DOMContentLoaded", function injectFooter() {
                 <div class="mx-footer-inner">
                     <div class="mx-footer-top">
                         <div class="mx-footer-brand">Mason / @mas0ng</div>
-                        <div class="mx-footer-copy">© ${currentYear} All Rights Reserved</div>
+                        <div class="mx-footer-copy">&copy; ${currentYear} All Rights Reserved</div>
                     </div>
                     <div class="mx-footer-links">
                         <a href="https://www.mas0ng.com/" class="mx-footer-link">Home</a>
                         <a href="https://www.mas0ng.com/privacy" class="mx-footer-link">Privacy Policy</a>
-                        <a href="https://www.mas0ng.com/terms" class="mx-footer-link">Terms & Conditions</a>
+                        <a href="https://www.mas0ng.com/terms" class="mx-footer-link">Terms &amp; Conditions</a>
                         <a href="mailto:mason@mas0ng.com" class="mx-footer-link">Email</a>
                     </div>
                 </div>
