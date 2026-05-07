@@ -6,91 +6,44 @@
   <meta name="description" content="Error 404: Page not found on mas0ng.com." />
   <title>mas0ng.com | 404</title>
 
-  <script src="/assets/js/inject.js" defer></script>
+  <script>
+    (() => {
+      const base = document.createElement("base");
+      base.href = window.location.protocol === "file:"
+        ? window.location.href.replace(/[^/]*$/, "")
+        : "/";
+      document.currentScript.after(base);
+    })();
+  </script>
+  <script src="assets/js/theme-controller.js"></script>
+  <script src="assets/js/inject.js" defer></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/site-theme.css">
-
-  <style>
-    .page-gradient {
-      --page-gradient-height: 320px;
-      --page-gradient-height-mobile: 270px;
-    }
-
-    .error-shell {
-      --page-shell-width: 920px;
-      --page-shell-overlap: -82px;
-      --page-shell-overlap-mobile: -66px;
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-bottom: 24px;
-    }
-
-    .card {
-      width: 100%;
-      text-align: center;
-    }
-
-    h1 {
-      margin: 22px 0 0;
-      font-size: clamp(4.8rem, 12vw, 8.5rem);
-      line-height: 0.9;
-      font-weight: 800;
-      letter-spacing: -0.1em;
-    }
-
-    h2 {
-      margin: 14px 0 0;
-      font-size: clamp(1.6rem, 4vw, 2.7rem);
-      line-height: 1;
-      font-weight: 800;
-      letter-spacing: -0.06em;
-    }
-
-    p {
-      margin: 18px auto 0;
-      max-width: 640px;
-      font-size: 1rem;
-      line-height: 1.7;
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    .actions {
-      margin-top: 28px;
-      justify-content: center;
-    }
-
-    @media (max-width: 640px) {
-      p {
-        font-size: 0.95rem;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site-theme.css">
 </head>
 <body>
-  <div class="page-gradient" aria-hidden="true"></div>
-
-  <main class="page-shell page-shell--overlap error-shell">
-    <section class="panel-card card">
-      <div class="eyebrow">
-        <span class="status-dot status-dot--danger" aria-hidden="true"></span>
-        Error page
-      </div>
-
-      <h1>404</h1>
-      <h2>Page not found.</h2>
-      <p>
-        The page or file you were looking for does not exist. It may have been moved,
-        removed, or the URL may have been entered incorrectly.
+  <main class="site-shell">
+    <section class="site-slab">
+      <h1 class="site-title site-title--error">404</h1>
+      <p class="site-lead">
+        The page or file you were looking for does not exist. It may have moved, been removed, or the URL may have been entered incorrectly.
       </p>
-
-      <div class="button-row actions">
-        <a href="/" class="button">Back to Home</a>
+      <div class="button-row">
+        <a href="index.html" class="site-button">Back Home</a>
       </div>
+    </section>
+
+    <section class="site-grid">
+      <article class="site-panel">
+        <h2>Try home</h2>
+        <p>The main profile links and live stats are on the homepage.</p>
+      </article>
+      <article class="site-panel">
+        <h2>Contact</h2>
+        <p>If something should exist here, email is the quickest way to flag it.</p>
+      </article>
     </section>
   </main>
 </body>

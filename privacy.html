@@ -6,184 +6,94 @@
   <meta name="description" content="Privacy policy for mas0ng.com outlining data handling, analytics use, and cookie practices." />
   <title>mas0ng.com | privacy</title>
 
-  <script src="/assets/js/inject.js" defer></script>
+  <script src="assets/js/theme-controller.js"></script>
+  <script src="assets/js/inject.js" defer></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/site-theme.css">
-
-  <style>
-    .page-gradient {
-      --page-gradient-height: 330px;
-      --page-gradient-height-mobile: 280px;
-    }
-
-    .legal-shell {
-      --page-shell-width: 940px;
-      --page-shell-overlap: -82px;
-      --page-shell-overlap-mobile: -66px;
-      flex: 1;
-      padding-bottom: 26px;
-    }
-
-    .hero {
-      margin-bottom: 26px;
-    }
-
-    h1 {
-      margin: 18px 0 0;
-      font-size: clamp(2.4rem, 5vw, 4.4rem);
-      line-height: 0.95;
-      font-weight: 800;
-      letter-spacing: -0.08em;
-    }
-
-    .updated {
-      margin-top: 14px;
-      font-size: 0.95rem;
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    .doc {
-      display: grid;
-      gap: 30px;
-    }
-
-    .doc section {
-      padding-top: 22px;
-      border-top: 1px solid var(--line);
-    }
-
-    .doc section:first-child {
-      border-top: none;
-      padding-top: 0;
-    }
-
-    h2 {
-      margin: 0 0 14px;
-      font-size: 1.35rem;
-      line-height: 1.1;
-      font-weight: 800;
-      letter-spacing: -0.05em;
-    }
-
-    p {
-      margin: 0;
-      font-size: 1rem;
-      line-height: 1.78;
-      color: #2f3440;
-      font-weight: 500;
-    }
-
-    p + p {
-      margin-top: 14px;
-    }
-
-    .actions {
-      margin-top: 34px;
-    }
-
-    @media (max-width: 640px) {
-      h2 {
-        font-size: 1.2rem;
-      }
-
-      p {
-        font-size: 0.96rem;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site-theme.css">
 </head>
 <body>
-  <div class="page-gradient" aria-hidden="true"></div>
+  <main class="site-shell">
+    <header class="site-slab site-slab--compact">
+      <h1 class="site-title">Privacy Policy</h1>
+      <p class="site-lead">Last updated: 05 March 2026</p>
+    </header>
 
-  <main class="page-shell page-shell--overlap legal-shell">
-    <article class="panel-card">
-      <header class="hero">
-        <div class="eyebrow">
-          <span class="status-dot" aria-hidden="true"></span>
-          Site policy
+    <article class="doc">
+      <section class="doc-section">
+        <h2>01. Overview</h2>
+        <p>
+          Welcome to mas0ng.com. Your privacy is important. This policy outlines how any
+          information provided via social links or direct contact is handled, as well as how
+          analytics are processed. Essentially: I use basic analytics to see how the site performs,
+          but absolutely no tracking happens unless you explicitly agree.
+        </p>
+      </section>
+
+      <section class="doc-section">
+        <h2>02. Information Collection</h2>
+        <p>
+          This website is a static profile site and does not require user accounts. I do use cookies
+          for analytics, but only if you explicitly grant permission through the cookie banner. Any
+          direct information shared with me through linked platforms is used solely for the purpose
+          of our communication.
+        </p>
+      </section>
+
+      <section class="doc-section">
+        <h2>03. Third-Party Services</h2>
+        <p>
+          My site contains links to external platforms such as TikTok, Instagram, GitHub, and
+          Signal. Once you leave mas0ng.com, the privacy policies of those platforms apply. I am not
+          responsible for the data collection practices of those third parties.
+        </p>
+      </section>
+
+      <section class="doc-section">
+        <h2>04. Analytics</h2>
+        <p>
+          I use Google Analytics to monitor site traffic and understand user interactions. To ensure
+          your privacy is respected, this process is managed by CookieYes. Analytics scripts and
+          cookies are blocked by default and will only run if you explicitly opt in via the cookie
+          consent banner. No personally identifiable information is collected, sold, or shared with
+          advertisers.
+        </p>
+      </section>
+
+      <section class="doc-section">
+        <h2>05. Cloudflare Worker Processing</h2>
+        <p>
+          Certain interactive features on this website may submit data through secure endpoints
+          powered by Cloudflare Workers. These lightweight server-side functions are used to process
+          specific actions such as publishing submitted content, storing form responses, or
+          retrieving structured data used by parts of the site.
+        </p>
+        <p>
+          Any information submitted through these interactions is transmitted securely and processed
+          only for the intended functionality of the feature you are using. Data is not sold, shared
+          with advertisers, or used for behavioural tracking. In some cases, submissions may be
+          stored in minimal formats such as JSON records and may be publicly accessible where they
+          are intended to power public site features.
+        </p>
+        <p>
+          Cloudflare may process limited technical information, such as IP address and request
+          metadata, as part of its infrastructure security and network services. This processing is
+          governed by Cloudflare's own privacy policies.
+        </p>
+      </section>
+
+      <section class="doc-section">
+        <h2>06. Contact</h2>
+        <p>
+          If you have questions regarding your data or this policy, feel free to reach out via
+          Signal, email, or any linked platform on the site.
+        </p>
+        <div class="button-row">
+          <a href="index.html" class="site-button">Return Home</a>
         </div>
-        <h1>Privacy Policy</h1>
-        <div class="updated">Last updated: 05 March 2026</div>
-      </header>
-
-      <div class="doc">
-        <section>
-          <h2>01. Overview</h2>
-          <p>
-            Welcome to mas0ng.com. Your privacy is important. This policy outlines how any
-            information provided via social links or direct contact is handled, as well as how
-            analytics are processed. Essentially: I use basic analytics to see how the site performs,
-            but absolutely no tracking happens unless you explicitly agree.
-          </p>
-        </section>
-
-        <section>
-          <h2>02. Information Collection</h2>
-          <p>
-            This website is a static profile site and does not require user accounts. I do use cookies
-            for analytics, but only if you explicitly grant permission through the cookie banner. Any
-            direct information shared with me through linked platforms is used solely for the purpose
-            of our communication.
-          </p>
-        </section>
-
-        <section>
-          <h2>03. Third-Party Services</h2>
-          <p>
-            My site contains links to external platforms such as TikTok, Instagram, GitHub, and
-            Signal. Once you leave mas0ng.com, the privacy policies of those platforms apply. I am not
-            responsible for the data collection practices of those third parties.
-          </p>
-        </section>
-
-        <section>
-          <h2>04. Analytics</h2>
-          <p>
-            I use Google Analytics to monitor site traffic and understand user interactions. To ensure
-            your privacy is respected, this process is managed by CookieYes. Analytics scripts and
-            cookies are blocked by default and will only run if you explicitly opt in via the cookie
-            consent banner. No personally identifiable information is collected, sold, or shared with
-            advertisers.
-          </p>
-        </section>
-
-        <section>
-          <h2>05. Cloudflare Worker Processing</h2>
-          <p>
-            Certain interactive features on this website may submit data through secure endpoints
-            powered by Cloudflare Workers. These lightweight server-side functions are used to process
-            specific actions such as publishing submitted content, storing form responses, or
-            retrieving structured data used by parts of the site.
-          </p>
-          <p>
-            Any information submitted through these interactions is transmitted securely and processed
-            only for the intended functionality of the feature you are using. Data is not sold, shared
-            with advertisers, or used for behavioural tracking. In some cases, submissions may be
-            stored in minimal formats such as JSON records and may be publicly accessible where they
-            are intended to power public site features.
-          </p>
-          <p>
-            Cloudflare may process limited technical information, such as IP address and request
-            metadata, as part of its infrastructure security and network services. This processing is
-            governed by Cloudflare's own privacy policies.
-          </p>
-        </section>
-
-        <section>
-          <h2>06. Contact</h2>
-          <p>
-            If you have questions regarding your data or this policy, feel free to reach out via
-            Signal, email, or any linked platform on the site.
-          </p>
-        </section>
-      </div>
-
-      <div class="button-row actions">
-        <a href="/" class="button">Return to Home</a>
-      </div>
+      </section>
     </article>
   </main>
 </body>

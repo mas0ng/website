@@ -6,145 +6,41 @@
   <meta name="description" content="Status notice for archived, removed, private, offline, or moved pages on mas0ng.com." />
   <title>mas0ng.com | page status</title>
 
-  <script src="/assets/js/inject.js" defer></script>
+  <script src="../assets/js/theme-controller.js"></script>
+  <script src="../assets/js/inject.js" defer></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/site-theme.css">
-
-  <style>
-    .page-gradient {
-      --page-gradient-height: 320px;
-      --page-gradient-height-mobile: 270px;
-    }
-
-    .redirect-shell {
-      --page-shell-width: 920px;
-      --page-shell-overlap: -82px;
-      --page-shell-overlap-mobile: -66px;
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-bottom: 24px;
-    }
-
-    .card {
-      width: 100%;
-      text-align: center;
-    }
-
-    h1 {
-      margin: 22px 0 0;
-      font-size: clamp(3.4rem, 11vw, 7.6rem);
-      line-height: 0.9;
-      font-weight: 800;
-      letter-spacing: -0.1em;
-    }
-
-    h2 {
-      margin: 14px 0 0;
-      font-size: clamp(1.6rem, 4vw, 2.7rem);
-      line-height: 1;
-      font-weight: 800;
-      letter-spacing: -0.06em;
-    }
-
-    .hero-copy {
-      margin: 18px auto 0;
-      max-width: 640px;
-      font-size: 1rem;
-      line-height: 1.7;
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    .detail-grid {
-      margin-top: 24px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .detail-pill {
-      min-width: 0;
-      max-width: min(100%, 320px);
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.78);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow-soft);
-      text-align: left;
-    }
-
-    .detail-label {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 0.76rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      color: var(--muted);
-    }
-
-    .detail-value {
-      display: block;
-      font-size: 0.96rem;
-      font-weight: 700;
-      color: #111318;
-      word-break: break-word;
-    }
-
-    .actions {
-      margin-top: 28px;
-      justify-content: center;
-    }
-
-    @media (max-width: 640px) {
-      .hero-copy {
-        font-size: 0.95rem;
-      }
-
-      .detail-grid {
-        display: grid;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/site-theme.css">
 </head>
 <body>
-  <div class="page-gradient" aria-hidden="true"></div>
-
-  <main class="page-shell page-shell--overlap redirect-shell">
-    <section class="panel-card card">
-      <div class="eyebrow">
+  <main class="site-shell">
+    <section class="site-slab">
+      <div class="stat-label">
         <span class="status-dot status-dot--warning" aria-hidden="true" id="eyebrow-dot"></span>
         <span id="eyebrow-label">Page status</span>
       </div>
-
-      <h1 id="code-display">INFO</h1>
-      <h2 id="hero-title">This page is no longer available at this URL.</h2>
-      <p class="hero-copy" id="hero-copy">
-        This link points to a page that has changed status. Use the details below to explain why the
-        old address no longer works and where visitors should go next.
+      <h1 class="site-title" id="code-display">Info</h1>
+      <p class="site-lead" id="hero-copy">
+        This link points to a page that has changed status. Use the details below to explain why the old address no longer works and where visitors should go next.
       </p>
-
-      <div class="detail-grid" id="detail-grid" hidden>
-        <div class="detail-pill" id="from-pill" hidden>
-          <span class="detail-label">Original path</span>
-          <span class="detail-value" id="from-value"></span>
-        </div>
-
-        <div class="detail-pill" id="destination-pill" hidden>
-          <span class="detail-label">Suggested destination</span>
-          <span class="detail-value" id="destination-value"></span>
-        </div>
+      <div class="button-row">
+        <a href="../index.html" class="site-button">Back Home</a>
+        <a href="../index.html" class="site-button" id="destination-action" hidden>Open New Page</a>
       </div>
+    </section>
 
-      <div class="button-row actions">
-        <a href="/" class="button">Back to Home</a>
-        <a href="/" class="button button-secondary" id="destination-action" hidden>Open New Page</a>
-      </div>
+    <section class="site-grid" id="detail-grid" hidden>
+      <article class="site-panel" id="from-pill" hidden>
+        <h2>Original path</h2>
+        <p id="from-value"></p>
+      </article>
+
+      <article class="site-panel" id="destination-pill" hidden>
+        <h2>Suggested destination</h2>
+        <p id="destination-value"></p>
+      </article>
     </section>
   </main>
 
@@ -165,35 +61,35 @@
         tone: "danger"
       },
       "archived": {
-        badge: "ARCHIVED",
+        badge: "Archived",
         eyebrow: "Archived page",
         title: "This page is archived.",
         copy: "The content is no longer part of the live site, but it may still be referenced historically or brought back in a different format later.",
         tone: "warning"
       },
       "offline": {
-        badge: "OFFLINE",
+        badge: "Offline",
         eyebrow: "Page offline",
         title: "This page is offline.",
         copy: "The content has been pulled from public view for now. That can happen during cleanup, review, or larger site changes.",
         tone: "danger"
       },
       "moved": {
-        badge: "MOVED",
+        badge: "Moved",
         eyebrow: "Moved page",
         title: "This page has moved.",
         copy: "The original URL has been retired and the content now lives somewhere else. If a replacement URL is available, the button below can send visitors there directly.",
         tone: "default"
       },
       "private": {
-        badge: "PRIVATE",
+        badge: "Private",
         eyebrow: "Private page",
         title: "This page is private.",
         copy: "The content still exists, but it is no longer publicly accessible from this address.",
         tone: "warning"
       },
       "paused": {
-        badge: "PAUSED",
+        badge: "Paused",
         eyebrow: "Temporarily unavailable",
         title: "This page is temporarily unavailable.",
         copy: "The content may return later after updates, fixes, or internal review. For now, the public link has been paused.",
@@ -216,7 +112,7 @@
     const params = new URLSearchParams(window.location.search);
     const rawCode = (params.get("code") || "").trim().toLowerCase();
     const state = REASON_MAP[rawCode] || {
-      badge: "UNKNOWN",
+      badge: "Unknown",
       eyebrow: "Page unavailable",
       title: "Unknown page error.",
       copy: "This link is missing a valid error code, so the page cannot determine the intended status.",
@@ -229,7 +125,6 @@
     document.title = `mas0ng.com | ${state.badge.toLowerCase()}`;
     document.getElementById("code-display").textContent = state.badge;
     document.getElementById("eyebrow-label").textContent = state.eyebrow;
-    document.getElementById("hero-title").textContent = state.title;
     document.getElementById("hero-copy").textContent = state.copy;
 
     const eyebrowDot = document.getElementById("eyebrow-dot");

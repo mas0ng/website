@@ -6,430 +6,90 @@
   <meta name="description" content="Mason / @mas0ng" />
   <title>mas0ng.com</title>
 
-  <script src="/assets/js/inject.js" defer></script>
+  <script src="assets/js/theme-controller.js"></script>
+  <script src="assets/js/inject.js" defer></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/site-theme.css">
-
-  <style>
-    .page-gradient {
-      --page-gradient-height: 380px;
-      --page-gradient-height-mobile: 308px;
-    }
-
-    .site-shell {
-      --page-shell-width: 1220px;
-      --page-shell-overlap: -88px;
-      --page-shell-overlap-mobile: -72px;
-      flex: 1;
-      padding-bottom: 8px;
-    }
-
-    .profile-head {
-      display: flex;
-      align-items: flex-end;
-      gap: 22px;
-      padding: 0 4px;
-    }
-
-    .avatar-wrap {
-      flex-shrink: 0;
-      margin-top: -8px;
-    }
-
-    .avatar {
-      position: relative;
-      width: 118px;
-      height: 118px;
-      border-radius: 999px;
-      overflow: hidden;
-      border: 4px solid rgba(255, 255, 255, 0.98);
-      box-shadow: 0 16px 34px rgba(15, 17, 21, 0.12);
-      background: linear-gradient(135deg, #eff3f9, #dce3ef);
-      display: grid;
-      place-items: center;
-    }
-
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .avatar-fallback {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      font-size: 2.15rem;
-      font-weight: 800;
-      letter-spacing: -0.06em;
-      color: #13161b;
-      opacity: 0;
-      transform: scale(0.96);
-      transition: opacity 0.18s ease, transform 0.18s ease;
-    }
-
-    .avatar--fallback .avatar-fallback {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    .identity {
-      min-width: 0;
-      padding-top: 12px;
-    }
-
-    .name {
-      margin: 0;
-      font-size: clamp(2rem, 3vw, 3rem);
-      line-height: 1;
-      font-weight: 800;
-      letter-spacing: -0.07em;
-    }
-
-    .username {
-      margin-top: 8px;
-      font-size: 0.98rem;
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    .main-grid {
-      margin-top: 28px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
-      gap: 46px;
-      align-items: start;
-    }
-
-    .left-col,
-    .right-col {
-      min-width: 0;
-    }
-
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .stat {
-      min-width: 0;
-      padding: 18px 20px 22px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 1));
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .stat-top {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--muted);
-      font-size: 0.76rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-    }
-
-    .stat-number {
-      margin-top: 10px;
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      line-height: 1;
-      font-weight: 800;
-      letter-spacing: -0.08em;
-      color: #0f1115;
-    }
-
-    .stat-sub {
-      margin-top: 8px;
-      font-size: 0.88rem;
-      color: var(--muted);
-      font-weight: 600;
-      line-height: 1.5;
-      max-width: 270px;
-    }
-
-    .updated {
-      margin-top: 18px;
-      padding-left: 4px;
-      font-size: 0.82rem;
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    .link-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 2px;
-    }
-
-    .profile-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      text-decoration: none;
-      color: inherit;
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 1));
-      box-shadow: var(--shadow-soft);
-      transition: border-color 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease;
-    }
-
-    .profile-link:hover {
-      transform: translateY(-2px);
-      border-color: var(--line-strong);
-      box-shadow: 0 18px 34px rgba(15, 17, 21, 0.08);
-    }
-
-    .profile-link-left {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      min-width: 0;
-    }
-
-    .profile-link-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 15px;
-      display: grid;
-      place-items: center;
-      background: rgba(245, 247, 251, 0.96);
-      border: 1px solid var(--line);
-      flex-shrink: 0;
-      color: #111318;
-    }
-
-    .profile-link-icon svg {
-      width: 19px;
-      height: 19px;
-      display: block;
-    }
-
-    .profile-link-meta {
-      min-width: 0;
-    }
-
-    .profile-link-title {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #111318;
-    }
-
-    .profile-link-subtitle {
-      margin-top: 2px;
-      font-size: 0.85rem;
-      color: var(--muted);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .profile-link-arrow {
-      color: #b8bec8;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-    }
-
-    @media (max-width: 960px) {
-      .main-grid {
-        grid-template-columns: 1fr;
-        gap: 28px;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .profile-head {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 16px;
-      }
-
-      .avatar-wrap {
-        margin-top: -2px;
-      }
-
-      .avatar {
-        width: 104px;
-        height: 104px;
-      }
-
-      .main-grid {
-        gap: 22px;
-      }
-
-      .stats-row {
-        gap: 12px;
-      }
-
-      .stat {
-        padding: 16px 14px;
-        text-align: center;
-        border-radius: 20px;
-      }
-
-      .stat-top {
-        justify-content: center;
-      }
-
-      .stat-number {
-        text-align: center;
-      }
-
-      .stat-sub {
-        max-width: none;
-        text-align: center;
-      }
-
-      .updated {
-        text-align: center;
-        padding-left: 0;
-      }
-
-      .link-list {
-        gap: 12px;
-      }
-
-      .profile-link {
-        padding: 16px;
-        border-radius: 20px;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site-theme.css">
 </head>
 <body>
-  <div class="page-gradient" aria-hidden="true"></div>
-
-  <main class="page-shell page-shell--overlap site-shell">
-    <section class="profile-head">
-      <div class="avatar-wrap">
-        <div class="avatar">
-          <img
-            src="/assets/images/profile.jpg"
-            alt="Mason profile photo"
-            onerror="this.closest('.avatar').classList.add('avatar--fallback'); this.style.display='none';"
-          >
-          <span class="avatar-fallback" aria-hidden="true">M</span>
-        </div>
-      </div>
-
-      <div class="identity">
-        <h1 class="name">Mason</h1>
-        <div class="username">@mas0ng</div>
-      </div>
+  <main class="site-shell">
+    <section class="site-slab">
+      <h1 class="site-title">Mason / @mas0ng</h1>
     </section>
 
-    <section class="main-grid">
-      <div class="left-col">
-        <div class="stats-row">
-          <div class="stat">
-            <div class="stat-top">
+    <section class="site-grid">
+      <article class="site-panel">
+        <h2>Live TikTok stats</h2>
+        <div class="stats-strip" aria-label="Live TikTok stats">
+          <div class="stat-box">
+            <div class="stat-label">
               <span class="status-dot" aria-hidden="true"></span>
-              followers
+              Followers
             </div>
             <div class="stat-number" id="followers-count">0</div>
             <div class="stat-sub">Combined total across all TikTok accounts.</div>
           </div>
 
-          <div class="stat">
-            <div class="stat-top">
+          <div class="stat-box">
+            <div class="stat-label">
               <span class="status-dot" aria-hidden="true"></span>
-              likes
+              Likes
             </div>
             <div class="stat-number" id="likes-count">0</div>
             <div class="stat-sub">Combined likes across all TikTok accounts.</div>
           </div>
+
+          <div class="stat-box">
+            <div class="stat-label">
+              <span class="status-dot" aria-hidden="true"></span>
+              Views
+            </div>
+            <div class="stat-number" id="views-count">0</div>
+            <div class="stat-sub">Combined views across all TikTok accounts.</div>
+          </div>
         </div>
-
         <div class="updated" id="last-updated">Fetching live stats...</div>
-      </div>
+      </article>
 
-      <div class="right-col">
-        <nav class="link-list">
-          <a href="https://www.tiktok.com/@mas0ng" target="_blank" rel="noopener" class="profile-link">
-            <div class="profile-link-left">
-              <div class="profile-link-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.68h-3.1v12.36a2.89 2.89 0 1 1-2.89-2.89c.24 0 .47.03.69.08V8.43a6 6 0 1 0 5.3 5.94V7.95a7.92 7.92 0 0 0 4.77 1.6V6.69Z"/></svg>
-              </div>
-              <div class="profile-link-meta">
-                <div class="profile-link-title">TikTok</div>
-                <div class="profile-link-subtitle">@mas0ng</div>
-              </div>
-            </div>
-            <div class="profile-link-arrow" aria-hidden="true">&rsaquo;</div>
-          </a>
-
-          <a href="https://www.instagram.com/mas0ngi/" target="_blank" rel="noopener" class="profile-link">
-            <div class="profile-link-left">
-              <div class="profile-link-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5Zm8.95 1.35a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 6.86A5.14 5.14 0 1 1 6.86 12 5.15 5.15 0 0 1 12 6.86Zm0 1.8A3.34 3.34 0 1 0 15.34 12 3.35 3.35 0 0 0 12 8.66Z"/></svg>
-              </div>
-              <div class="profile-link-meta">
-                <div class="profile-link-title">Instagram</div>
-                <div class="profile-link-subtitle">@mas0ngi</div>
-              </div>
-            </div>
-            <div class="profile-link-arrow" aria-hidden="true">&rsaquo;</div>
-          </a>
-
-          <a href="https://github.com/mas0ng" target="_blank" rel="noopener" class="profile-link">
-            <div class="profile-link-left">
-              <div class="profile-link-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12.23a11.5 11.5 0 0 0 7.87 10.93c.58.11.79-.26.79-.57v-2.02c-3.2.71-3.88-1.41-3.88-1.41-.52-1.36-1.27-1.72-1.27-1.72-1.04-.73.08-.72.08-.72 1.15.08 1.75 1.22 1.75 1.22 1.02 1.79 2.67 1.27 3.32.97.1-.76.4-1.27.73-1.56-2.55-.3-5.24-1.31-5.24-5.82 0-1.29.45-2.35 1.2-3.17-.12-.3-.52-1.5.11-3.14 0 0 .97-.32 3.19 1.21a10.83 10.83 0 0 1 5.81 0c2.21-1.53 3.18-1.21 3.18-1.21.63 1.64.23 2.84.11 3.14.75.82 1.2 1.88 1.2 3.17 0 4.52-2.69 5.52-5.26 5.82.42.37.78 1.08.78 2.18v3.23c0 .31.21.69.8.57a11.5 11.5 0 0 0 7.86-10.93A11.5 11.5 0 0 0 12 .5Z"/></svg>
-              </div>
-              <div class="profile-link-meta">
-                <div class="profile-link-title">GitHub</div>
-                <div class="profile-link-subtitle">@mas0ng</div>
-              </div>
-            </div>
-            <div class="profile-link-arrow" aria-hidden="true">&rsaquo;</div>
-          </a>
-
-          <a href="https://signal.me/#eu/Js8_IVmBa0zw4nGdLTvE1Fbcg6mUcmm11h34T-4CjCwgk8jx76hAQbvCkyHjY9JO" target="_blank" rel="noopener" class="profile-link">
-            <div class="profile-link-left">
-              <div class="profile-link-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25c-5.39 0-9.75 3.87-9.75 8.64 0 2.74 1.43 5.18 3.67 6.76l-.93 3.85 3.95-2.13c.98.27 2 .41 3.06.41 5.39 0 9.75-3.87 9.75-8.64S17.39 2.25 12 2.25Zm-4.18 11.7 1.45-4.56 2.8 2.32 1.44-4.56 2.92 6.8-2.82-2.31-1.54 4.67-2.77-2.36-1.48 4.69Z"/></svg>
-              </div>
-              <div class="profile-link-meta">
-                <div class="profile-link-title">Signal</div>
-                <div class="profile-link-subtitle">Direct message</div>
-              </div>
-            </div>
-            <div class="profile-link-arrow" aria-hidden="true">&rsaquo;</div>
-          </a>
-
-          <a href="mailto:mason@mas0ng.com" class="profile-link">
-            <div class="profile-link-left">
-              <div class="profile-link-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1 21 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 18.5v-13Zm2.13-.7 6.87 5.36 6.87-5.36H5.13Zm14.07 1.92-6.65 5.19a.9.9 0 0 1-1.1 0L4.8 6.72V18.5c0 .39.31.7.7.7h13a.7.7 0 0 0 .7-.7V6.72Z"/></svg>
-              </div>
-              <div class="profile-link-meta">
-                <div class="profile-link-title">Email</div>
-                <div class="profile-link-subtitle">mason@mas0ng.com</div>
-              </div>
-            </div>
-            <div class="profile-link-arrow" aria-hidden="true">&rsaquo;</div>
-          </a>
-        </nav>
-      </div>
+      <aside class="social-rail" aria-label="Profile links">
+        <a href="https://www.tiktok.com/@mas0ng" target="_blank" rel="noopener">
+          <img src="assets/icons/socials/light/tiktok.png" data-themed-icon data-icon-root="assets/icons/socials" data-icon-base="tiktok" alt="" />
+          <span>TikTok</span>
+        </a>
+        <a href="https://www.instagram.com/mas0ngi/" target="_blank" rel="noopener">
+          <img src="assets/icons/socials/light/instagram.png" data-themed-icon data-icon-root="assets/icons/socials" data-icon-base="instagram" alt="" />
+          <span>Instagram</span>
+        </a>
+        <a href="https://github.com/mas0ng" target="_blank" rel="noopener">
+          <img src="assets/icons/socials/light/github.png" data-themed-icon data-icon-root="assets/icons/socials" data-icon-base="github" alt="" />
+          <span>GitHub</span>
+        </a>
+        <a href="https://signal.me/#eu/Js8_IVmBa0zw4nGdLTvE1Fbcg6mUcmm11h34T-4CjCwgk8jx76hAQbvCkyHjY9JO" target="_blank" rel="noopener">
+          <img src="assets/icons/socials/light/signal.png" data-themed-icon data-icon-root="assets/icons/socials" data-icon-base="signal" alt="" />
+          <span>Signal</span>
+        </a>
+        <a href="mailto:mason@mas0ng.com">
+          <img src="assets/icons/socials/light/email.png" data-themed-icon data-icon-root="assets/icons/socials" data-icon-base="email" alt="" />
+          <span>Email</span>
+        </a>
+      </aside>
     </section>
   </main>
 
   <script>
     const WORKER_URL = 'https://social-data-api.mas0ng.com/';
 
-    function formatCompact1dp(value) {
-      const num = Number(value) || 0;
+    function parseMetric(value) {
+      if (value === null || value === undefined || value === '') return null;
+      const num = Number(value);
+      if (!Number.isFinite(num) || num < 0) return null;
+      return num;
+    }
+
+    function formatCompact1dp(num) {
       const abs = Math.abs(num);
 
       if (abs >= 1e9) return (num / 1e9).toFixed(1) + 'B';
@@ -457,10 +117,35 @@
       requestAnimationFrame(frame);
     }
 
+    function showMetricError(el, message = 'No data') {
+      el.textContent = message;
+      el.classList.add('stat-number--error');
+
+      const dot = el.closest('.stat-box')?.querySelector('.status-dot');
+      if (dot) {
+        dot.classList.remove('status-dot--danger');
+        dot.classList.add('status-dot--warning');
+      }
+    }
+
+    function showMetricValue(el, value, duration) {
+      el.classList.remove('stat-number--error');
+
+      const dot = el.closest('.stat-box')?.querySelector('.status-dot');
+      if (dot) {
+        dot.classList.remove('status-dot--danger', 'status-dot--warning');
+      }
+
+      animateCompact(el, value, duration);
+    }
+
     async function fetchMetrics() {
-      const followersEl = document.getElementById('followers-count');
-      const likesEl = document.getElementById('likes-count');
       const updatedEl = document.getElementById('last-updated');
+      const metrics = [
+        { key: 'followers', el: document.getElementById('followers-count'), duration: 1400 },
+        { key: 'likes', el: document.getElementById('likes-count'), duration: 1500 },
+        { key: 'views', el: document.getElementById('views-count'), duration: 1600 }
+      ];
 
       try {
         const response = await fetch(WORKER_URL);
@@ -470,18 +155,33 @@
           throw new Error(data.error || 'Failed to fetch');
         }
 
-        const followers = Number(data.followers || 0);
-        const likes = Number(data.likes || 0);
+        let failedMetrics = 0;
 
-        animateCompact(followersEl, followers, 1400);
-        animateCompact(likesEl, likes, 1500);
+        metrics.forEach((metric) => {
+          const value = parseMetric(data[metric.key]);
+          if (value === null) {
+            failedMetrics += 1;
+            showMetricError(metric.el);
+            return;
+          }
+
+          showMetricValue(metric.el, value, metric.duration);
+        });
 
         const date = new Date(data.lastUpdated);
-        updatedEl.textContent = `Last updated: ${date.toLocaleString()}`;
+        const hasValidDate = Number.isFinite(date.getTime());
+        if (failedMetrics > 0 && hasValidDate) {
+          updatedEl.textContent = `Last updated: ${date.toLocaleString()} - some stats unavailable`;
+        } else if (hasValidDate) {
+          updatedEl.textContent = `Last updated: ${date.toLocaleString()}`;
+        } else if (failedMetrics > 0) {
+          updatedEl.textContent = 'Some stats unavailable';
+        } else {
+          updatedEl.textContent = 'Stats loaded';
+        }
       } catch (error) {
         console.error('API Fetch Error:', error);
-        followersEl.textContent = '\u2014';
-        likesEl.textContent = '\u2014';
+        metrics.forEach((metric) => showMetricError(metric.el, 'Offline'));
         updatedEl.textContent = 'Live stats unavailable right now';
       }
     }
