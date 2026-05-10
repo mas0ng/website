@@ -1,3 +1,33 @@
+var mas0ngInjectConfig = (function readInjectConfig() {
+    const currentScript = document.currentScript || Array.from(document.scripts).reverse().find((script) => {
+        return (script.getAttribute("src") || "").includes("inject.js");
+    });
+    const params = new URL(currentScript?.getAttribute("src") || "inject.js", window.location.href).searchParams;
+
+    function readBool(names, defaultValue) {
+        for (const name of names) {
+            if (!params.has(name)) continue;
+
+            const value = params.get(name).trim().toLowerCase();
+            if (["1", "true", "yes", "on", "open", "enabled"].includes(value)) return true;
+            if (["0", "false", "no", "off", "closed", "disabled"].includes(value)) return false;
+        }
+
+        return defaultValue;
+    }
+
+    const config = {
+        trackingEnabled: readBool(["tracking", "analytics"], true),
+        navEnabled: readBool(["nav", "sidebar"], true),
+        startOpen: readBool(["startOpen", "start-open", "navOpen", "nav-open", "open"], false),
+        rememberNav: readBool(["rememberNav", "remember-nav"], false),
+        externalWarningEnabled: readBool(["externalWarning", "external-warning", "externalLinks", "external-links"], true)
+    };
+
+    window.mas0ngInjectConfig = config;
+    return config;
+})();
+
 (function injectHead() {
     const analyticsId = "G-Z69GPRYZS0";
     const consentStorageKey = "mas0ng-tracking-consent";
@@ -67,6 +97,13 @@
     }
 
     function applyTrackingConsent(choice, options = {}) {
+        if (!mas0ngInjectConfig.trackingEnabled) {
+            window[`ga-disable-${analyticsId}`] = true;
+            window.gtag("consent", "update", deniedConsent);
+            clearAnalyticsCookies();
+            return "disabled";
+        }
+
         const nextChoice = choice === "granted" ? "granted" : "denied";
         if (options.persist !== false) {
             saveTrackingConsent(nextChoice);
@@ -97,7 +134,9 @@
     window.openPrivacyChoices = window.mas0ngPrivacy.openChoices;
 
     const storedConsent = readTrackingConsent();
-    if (storedConsent) {
+    if (!mas0ngInjectConfig.trackingEnabled) {
+        clearAnalyticsCookies();
+    } else if (storedConsent) {
         applyTrackingConsent(storedConsent, { persist: false });
     }
 
@@ -160,20 +199,33 @@ document.addEventListener("DOMContentLoaded", function initSharedUi() {
     const path = window.location.pathname.replace(/\\/g, "/");
     const rootPrefix = path.includes("/errors/") ? "../" : "";
     const sidebarStorageKey = "mas0ng-sidebar-open";
+    const mobileSidebarQuery = window.matchMedia("(max-width: 560px)");
 
     function isInternalMas0ngUrl(url) {
         return url.hostname === "mas0ng.com" || url.hostname.endsWith(".mas0ng.com");
     }
 
     function readSidebarOpen() {
-        try {
-            return localStorage.getItem(sidebarStorageKey) === "true";
-        } catch (error) {
+        if (mobileSidebarQuery.matches) {
             return false;
+        }
+
+        if (!mas0ngInjectConfig.rememberNav) {
+            return mas0ngInjectConfig.startOpen;
+        }
+
+        try {
+            const savedValue = localStorage.getItem(sidebarStorageKey);
+            return savedValue === null ? mas0ngInjectConfig.startOpen : savedValue === "true";
+        } catch (error) {
+            return mas0ngInjectConfig.startOpen;
         }
     }
 
     function saveSidebarOpen(isOpen) {
+        if (!mas0ngInjectConfig.rememberNav) return;
+        if (mobileSidebarQuery.matches) return;
+
         try {
             localStorage.setItem(sidebarStorageKey, String(isOpen));
         } catch (error) {
@@ -222,6 +274,8 @@ document.addEventListener("DOMContentLoaded", function initSharedUi() {
     }
 
     function injectSidebar() {
+        if (!mas0ngInjectConfig.navEnabled) return;
+
         document.body.classList.add("has-site-sidebar");
         if (readSidebarOpen()) {
             document.body.classList.add("site-sidebar-open");
@@ -300,12 +354,12 @@ document.addEventListener("DOMContentLoaded", function initSharedUi() {
             </nav>
 
             <div class="site-sidebar__bottom">
-                <button class="site-sidebar__utility-link site-sidebar__utility-link--button" type="button" data-privacy-choices>
+                ${mas0ngInjectConfig.trackingEnabled ? `<button class="site-sidebar__utility-link site-sidebar__utility-link--button" type="button" data-privacy-choices>
                     <span class="site-sidebar__glyph site-sidebar__glyph--privacy-choices" aria-hidden="true">
                         <img src="${rootPrefix}assets/images/sidebar/light/privacy-choices.png" data-themed-icon data-icon-root="${rootPrefix}assets/images/sidebar" data-icon-base="privacy-choices" alt="" />
                     </span>
                     <span>Privacy Choices</span>
-                </button>
+                </button>` : ""}
                 <a class="site-sidebar__utility-link" href="${rootPrefix}privacy.html">
                     <span class="site-sidebar__glyph site-sidebar__glyph--privacy" aria-hidden="true">
                         <img src="${rootPrefix}assets/images/sidebar/light/privacy.png" data-themed-icon data-icon-root="${rootPrefix}assets/images/sidebar" data-icon-base="privacy" alt="" />
@@ -335,6 +389,12 @@ document.addEventListener("DOMContentLoaded", function initSharedUi() {
             document.body.classList.toggle("site-sidebar-open", isOpen);
             toggle.setAttribute("aria-expanded", String(isOpen));
             saveSidebarOpen(isOpen);
+        }
+
+        function closeSidebarOnMobile() {
+            if (mobileSidebarQuery.matches) {
+                setSidebarOpen(false);
+            }
         }
 
         function closeAllGroups(exceptToggle = null) {
@@ -419,9 +479,18 @@ document.addEventListener("DOMContentLoaded", function initSharedUi() {
                 window.openPrivacyChoices();
             }
         });
+
+        closeSidebarOnMobile();
+        if (typeof mobileSidebarQuery.addEventListener === "function") {
+            mobileSidebarQuery.addEventListener("change", closeSidebarOnMobile);
+        } else if (typeof mobileSidebarQuery.addListener === "function") {
+            mobileSidebarQuery.addListener(closeSidebarOnMobile);
+        }
     }
 
     function setupConsentBanner() {
+        if (!mas0ngInjectConfig.trackingEnabled) return;
+
         const banner = document.createElement("section");
         banner.className = "consent-banner";
         banner.hidden = true;
@@ -513,6 +582,8 @@ document.addEventListener("DOMContentLoaded", function initSharedUi() {
     }
 
     function setupExternalWarning() {
+        if (!mas0ngInjectConfig.externalWarningEnabled) return;
+
         const warning = document.createElement("div");
         warning.className = "external-warning";
         warning.hidden = true;
