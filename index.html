@@ -1,192 +1,286 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Mason / @mas0ng" />
-  <title>mas0ng.com</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>mas0ng | websites made fast</title>
+    <meta
+      name="description"
+      content="Fast, stylish website design and build services for founders, creatives, and small businesses who need a site that looks sharp without the agency drag."
+    >
+    <meta name="theme-color" content="#f7f2ea">
+    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="assets/images/studio-hero.png" as="image">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="brand icon-only" href="#top" aria-label="Home">
+        <span class="brand-mark" aria-hidden="true">M</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+      </button>
+      <nav class="site-nav" aria-label="Primary navigation" data-nav>
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="header-cta" href="#contact">Start a project</a>
+    </header>
 
-  <script src="assets/js/theme-controller.js"></script>
-  <script src="assets/js/inject.js" defer></script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/site-theme.css">
-</head>
-<body>
-  <main class="site-shell">
-    <section class="site-slab">
-      <h1 class="site-title">Mason / @mas0ng</h1>
-    </section>
-
-    <section class="site-grid">
-      <article class="site-panel">
-        <h2>Live TikTok stats</h2>
-        <div class="stats-strip" aria-label="Live TikTok stats">
-          <div class="stat-box">
-            <div class="stat-label">
-              <span class="status-dot" aria-hidden="true"></span>
-              Followers
-            </div>
-            <div class="stat-number" id="followers-count">0</div>
-            <div class="stat-sub">Combined total across all TikTok accounts.</div>
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-media" aria-hidden="true"></div>
+        <div class="hero-scrim" aria-hidden="true"></div>
+        <div class="hero-inner">
+          <p class="eyebrow">Web designer, not a slow agency</p>
+          <h1 id="hero-title">Websites that look expensive, launch fast, and actually sell.</h1>
+          <p class="hero-copy">
+            I design and build sharp websites for people who need to look legit now, not after six weeks of meetings.
+          </p>
+          <div class="hero-actions" aria-label="Project actions">
+            <a class="button button-primary" href="#contact">Book a build</a>
+            <a class="button button-secondary" href="#work">See the style</a>
           </div>
-
-          <div class="stat-box">
-            <div class="stat-label">
-              <span class="status-dot" aria-hidden="true"></span>
-              Likes
-            </div>
-            <div class="stat-number" id="likes-count">0</div>
-            <div class="stat-sub">Combined likes across all TikTok accounts.</div>
-          </div>
-
-          <div class="stat-box">
-            <div class="stat-label">
-              <span class="status-dot" aria-hidden="true"></span>
-              Views
-            </div>
-            <div class="stat-number" id="views-count">0</div>
-            <div class="stat-sub">Combined views across all TikTok accounts in the past 365 days.</div>
+          <div class="hero-meta" aria-label="Build highlights">
+            <span>custom coded</span>
+            <span>mobile first</span>
+            <span>live fast</span>
           </div>
         </div>
-        <div class="updated" id="last-updated">Fetching live stats...</div>
-      </article>
+      </section>
 
-      <aside class="social-rail" aria-label="Profile links">
-        <a href="https://www.tiktok.com/@mas0ng" target="_blank" rel="noopener">
-          <img src="assets/icons/socials/light/tiktok.png" data-themed-icon data-icon-root="assets/icons/socials" data-icon-base="tiktok" alt="" />
-          <span>TikTok</span>
-        </a>
-        <a href="https://www.instagram.com/mas0ngi/" target="_blank" rel="noopener">
-          <img src="assets/icons/socials/light/instagram.png" data-themed-icon data-icon-root="assets/icons/socials" data-icon-base="instagram" alt="" />
-          <span>Instagram</span>
-        </a>
-        <a href="https://github.com/mas0ng" target="_blank" rel="noopener">
-          <img src="assets/icons/socials/light/github.png" data-themed-icon data-icon-root="assets/icons/socials" data-icon-base="github" alt="" />
-          <span>GitHub</span>
-        </a>
-        <a href="https://signal.me/#eu/Js8_IVmBa0zw4nGdLTvE1Fbcg6mUcmm11h34T-4CjCwgk8jx76hAQbvCkyHjY9JO" target="_blank" rel="noopener">
-          <img src="assets/icons/socials/light/signal.png" data-themed-icon data-icon-root="assets/icons/socials" data-icon-base="signal" alt="" />
-          <span>Signal</span>
-        </a>
-        <a href="mailto:mason@mas0ng.com">
-          <img src="assets/icons/socials/light/email.png" data-themed-icon data-icon-root="assets/icons/socials" data-icon-base="email" alt="" />
-          <span>Email</span>
-        </a>
-      </aside>
-    </section>
-  </main>
+      <section class="stat-strip" aria-label="Studio highlights">
+        <dl>
+          <div>
+              <dt>A few hours</dt>
+              <dd>from agreement to launch window</dd>
+          </div>
+          <div>
+            <dt>100%</dt>
+            <dd>custom design</dd>
+          </div>
+          <div>
+              <dt>No bloat</dt>
+              <dd>design, build, publish</dd>
+          </div>
+        </dl>
+      </section>
 
-  <script>
-    const WORKER_URL = 'https://www.mas0ng.com/api/social_data';
+      <section class="intro section-band" aria-labelledby="intro-title">
+        <div class="section-shell intro-grid">
+          <div>
+            <p class="eyebrow">What you are buying</p>
+            <h2 id="intro-title">A clean, current website that makes your thing feel real.</h2>
+          </div>
+          <div class="intro-copy">
+            <p>
+              Your site should make people instantly understand what you do, why it is worth caring about, and how to contact you. Pretty matters, but only when it has a job.
+            </p>
+            <a href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>
+          </div>
+        </div>
+      </section>
 
-    function parseMetric(value) {
-      if (value === null || value === undefined || value === '') return null;
-      const num = Number(value);
-      if (!Number.isFinite(num) || num < 0) return null;
-      return num;
-    }
+      <section class="section-shell services" id="services" aria-labelledby="services-title">
+        <div class="section-heading">
+          <p class="eyebrow">Services</p>
+          <h2 id="services-title">Websites without the painful agency bit.</h2>
+        </div>
+        <div class="service-grid">
+          <article class="service-card">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM8 10h4M8 14h8"></path></svg>
+            </span>
+            <h3>Fast Launch</h3>
+            <p>A polished one-page site for an idea, offer, or business that needs to be online very soon.</p>
+            <ul>
+              <li>Positioning and page structure</li>
+              <li>Custom responsive design</li>
+              <li>Contact flow and same-day launch support</li>
+            </ul>
+          </article>
+          <article class="service-card featured">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 5h14v14H5zM8 8h8v4H8zM8 15h3M13 15h3"></path></svg>
+            </span>
+            <h3>Full Website</h3>
+            <p>A richer site for when you need more pages, more detail, and a stronger first impression.</p>
+            <ul>
+              <li>Multi-page design system</li>
+              <li>Conversion-focused copy sections</li>
+              <li>Performance and SEO foundations</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3v18M5 8h14M7 16h10"></path></svg>
+            </span>
+            <h3>Site Glow-Up</h3>
+            <p>A focused redesign for a site that works, but does not look as good as what you are selling.</p>
+            <ul>
+              <li>Design audit and art direction</li>
+              <li>Key page redesigns</li>
+              <li>Speed, layout, and UX fixes</li>
+            </ul>
+          </article>
+        </div>
+      </section>
 
-    function formatCompact1dp(num) {
-      const abs = Math.abs(num);
+      <section class="work section-band" id="work" aria-labelledby="work-title">
+        <div class="section-shell">
+          <div class="section-heading split">
+            <div>
+              <p class="eyebrow">Look and feel</p>
+              <h2 id="work-title">Trendy, but still usable when the trend changes.</h2>
+            </div>
+            <p>
+              Clean enough to trust, punchy enough to remember, and practical enough that people can still find the button.
+            </p>
+          </div>
+          <div class="portfolio-grid" aria-label="Design style examples">
+            <article class="portfolio-card lime wide">
+              <div class="browser-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="mock-layout">
+                <span></span>
+                <strong></strong>
+                <p></p>
+                <em></em>
+              </div>
+              <h3>Personal brands</h3>
+              <p>Sharp layouts for creators, consultants, freelancers, and one-person businesses.</p>
+            </article>
+            <article class="portfolio-card cobalt">
+              <div class="browser-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="mock-dashboard">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <h3>Productized offers</h3>
+              <p>Pages that make packages, pricing, and outcomes easy to understand.</p>
+            </article>
+            <article class="portfolio-card coral">
+              <div class="browser-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="mock-shop">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <h3>Local standouts</h3>
+              <p>Stylish small-business sites that feel better than the usual template option.</p>
+            </article>
+          </div>
+        </div>
+      </section>
 
-      if (abs >= 1e9) return (num / 1e9).toFixed(1) + 'B';
-      if (abs >= 1e6) return (num / 1e6).toFixed(1) + 'M';
-      if (abs >= 1e3) return (num / 1e3).toFixed(1) + 'K';
-      return Math.round(num).toLocaleString();
-    }
+      <section class="section-shell process" id="process" aria-labelledby="process-title">
+        <div class="section-heading">
+          <p class="eyebrow">Process</p>
+          <h2 id="process-title">Quick, clear, and not buried in meetings.</h2>
+        </div>
+        <div class="steps">
+          <article>
+            <span>01</span>
+            <h3>Shape</h3>
+            <p>I pin down the offer, the pages, and the vibe so the build has a clear target.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Design</h3>
+            <p>The visual direction becomes a responsive design that feels current, tidy, and yours.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Build</h3>
+            <p>The site gets coded cleanly, tuned for speed, checked on devices, and prepared to publish.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Launch</h3>
+            <p>The essentials get connected, the enquiry path gets tested, and your site goes live.</p>
+          </article>
+        </div>
+      </section>
 
-    function animateCompact(el, target, duration = 1300) {
-      const start = performance.now();
+      <section class="proof section-band" aria-labelledby="proof-title">
+        <div class="section-shell proof-grid">
+          <div>
+            <p class="eyebrow">Why it works</p>
+            <h2 id="proof-title">Good taste gets attention. Clear pages get messages.</h2>
+          </div>
+          <div class="proof-list">
+            <article>
+              <h3>Built around the visitor</h3>
+              <p>Every section has a purpose: explain the offer, build trust, or move people toward contact.</p>
+            </article>
+            <article>
+              <h3>Responsive from the first pass</h3>
+              <p>Mobile is designed with the same care as desktop, so nothing feels squeezed in after the fact.</p>
+            </article>
+            <article>
+              <h3>Polished enough to feel serious</h3>
+              <p>Typography, spacing, colour, and rhythm all work together so the offer feels worth paying for.</p>
+            </article>
+          </div>
+        </div>
+      </section>
 
-      function frame(now) {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const current = target * eased;
-        el.textContent = formatCompact1dp(current);
+      <section class="section-shell contact" id="contact" aria-labelledby="contact-title">
+        <div class="contact-panel">
+          <div>
+            <p class="eyebrow">Now booking</p>
+            <h2 id="contact-title">Tell me what you are selling. I will make it look like the obvious choice.</h2>
+            <p>
+              Send the rough idea, the deadline, and any sites you secretly wish were yours. I will reply with the next step.
+            </p>
+          </div>
+          <form
+            class="contact-form"
+            action="https://www.mas0ng.com/api/webform"
+            method="post"
+            data-contact-form
+          >
+            <input type="text" name="company" tabindex="-1" autocomplete="off" class="honeypot" aria-hidden="true">
+            <label>
+              <span>Name</span>
+              <input name="name" autocomplete="name" required>
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+            <label>
+              <span>Project</span>
+              <textarea name="project" rows="5" placeholder="New site, redesign, deadline, budget range..." required></textarea>
+            </label>
+            <div
+              class="cf-turnstile"
+              data-sitekey="0x4AAAAAADOlcfxJBwt9G_7U"
+              data-theme="dark"
+              data-size="flexible"
+            ></div>
+            <button class="button button-primary" type="submit">Send enquiry</button>
+            <p class="form-status" aria-live="polite" data-form-status></p>
+          </form>
+        </div>
+      </section>
+    </main>
 
-        if (progress < 1) {
-          requestAnimationFrame(frame);
-        } else {
-          el.textContent = formatCompact1dp(target);
-        }
-      }
+    <footer class="site-footer">
+      <p>mas0ng</p>
+      <div>
+        <a href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </footer>
 
-      requestAnimationFrame(frame);
-    }
-
-    function showMetricError(el, message = 'No data') {
-      el.textContent = message;
-      el.classList.add('stat-number--error');
-
-      const dot = el.closest('.stat-box')?.querySelector('.status-dot');
-      if (dot) {
-        dot.classList.remove('status-dot--danger');
-        dot.classList.add('status-dot--warning');
-      }
-    }
-
-    function showMetricValue(el, value, duration) {
-      el.classList.remove('stat-number--error');
-
-      const dot = el.closest('.stat-box')?.querySelector('.status-dot');
-      if (dot) {
-        dot.classList.remove('status-dot--danger', 'status-dot--warning');
-      }
-
-      animateCompact(el, value, duration);
-    }
-
-    async function fetchMetrics() {
-      const updatedEl = document.getElementById('last-updated');
-      const metrics = [
-        { key: 'followers', el: document.getElementById('followers-count'), duration: 1400 },
-        { key: 'likes', el: document.getElementById('likes-count'), duration: 1500 },
-        { key: 'views', el: document.getElementById('views-count'), duration: 1600 }
-      ];
-
-      try {
-        const response = await fetch(WORKER_URL);
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(data.error || 'Failed to fetch');
-        }
-
-        let failedMetrics = 0;
-
-        metrics.forEach((metric) => {
-          const value = parseMetric(data[metric.key]);
-          if (value === null) {
-            failedMetrics += 1;
-            showMetricError(metric.el);
-            return;
-          }
-
-          showMetricValue(metric.el, value, metric.duration);
-        });
-
-        const date = new Date(data.lastUpdated);
-        const hasValidDate = Number.isFinite(date.getTime());
-        if (failedMetrics > 0 && hasValidDate) {
-          updatedEl.textContent = `Last updated: ${date.toLocaleString()} - some stats unavailable`;
-        } else if (hasValidDate) {
-          updatedEl.textContent = `Last updated: ${date.toLocaleString()}`;
-        } else if (failedMetrics > 0) {
-          updatedEl.textContent = 'Some stats unavailable';
-        } else {
-          updatedEl.textContent = 'Stats loaded';
-        }
-      } catch (error) {
-        console.error('API Fetch Error:', error);
-        metrics.forEach((metric) => showMetricError(metric.el, 'Offline'));
-        updatedEl.textContent = 'Live stats unavailable right now';
-      }
-    }
-
-    fetchMetrics();
-  </script>
-</body>
+    <script src="assets/js/site.js"></script>
+  </body>
 </html>

@@ -1,50 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Error 404: Page not found on mas0ng.com." />
-  <title>mas0ng.com | 404</title>
-
-  <script>
-    (() => {
-      const base = document.createElement("base");
-      base.href = window.location.protocol === "file:"
-        ? window.location.href.replace(/[^/]*$/, "")
-        : "/";
-      document.currentScript.after(base);
-    })();
-  </script>
-  <script src="assets/js/theme-controller.js"></script>
-  <script src="assets/js/inject.js" defer></script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/site-theme.css">
-</head>
-<body>
-  <main class="site-shell">
-    <section class="site-slab">
-      <h1 class="site-title site-title--error">404</h1>
-      <p class="site-lead">
-        The page or file you were looking for does not exist. It may have moved, been removed, or the URL may have been entered incorrectly.
-      </p>
-      <div class="button-row">
-        <a href="index.html" class="site-button">Back Home</a>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Page not found | mas0ng</title>
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="assets/css/site.css">
+  </head>
+  <body>
+    <main class="section-shell contact" style="min-height: 100svh; display: grid; place-items: center;">
+      <div class="contact-panel" style="grid-template-columns: 1fr;">
+        <div>
+          <p class="eyebrow">404</p>
+          <h1 id="contact-title" style="margin: 0; font-size: clamp(3rem, 10vw, 6rem); line-height: .9;">This page wandered off.</h1>
+          <p>Head back to the homepage and we can get you to the good bit.</p>
+          <a class="button button-primary" href="index.html" style="width: max-content; background: #c7f36b; color: #171714;">Back home</a>
+        </div>
       </div>
-    </section>
-
-    <section class="site-grid">
-      <article class="site-panel">
-        <h2>Try home</h2>
-        <p>The main profile links and live stats are on the homepage.</p>
-      </article>
-      <article class="site-panel">
-        <h2>Contact</h2>
-        <p>If something should exist here, email is the quickest way to flag it.</p>
-      </article>
-    </section>
-  </main>
-</body>
+    </main>
+  </body>
 </html>
