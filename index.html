@@ -6,317 +6,183 @@
     <title>mas0ng | websites made fast</title>
     <meta
       name="description"
-      content="Fast, stylish website design and build services for founders, creatives, and small businesses who need a site that looks sharp without the agency drag."
+      content="Fast, expressive website design, redesign, landing page, and web-ready visual services for businesses that want a sharper online presence."
     >
-    <meta name="theme-color" content="#080a08">
+    <meta name="theme-color" content="#111111">
     <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
-    <link rel="preload" href="assets/images/studio-hero.png" as="image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/site.css">
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   </head>
   <body>
     <header class="site-header" data-header>
-      <a class="brand" href="#top" aria-label="Home">
-        <span class="brand-mark" aria-hidden="true">M</span>
-        <span class="brand-text">
-          <strong>websites</strong>
-          <small>made fast</small>
-        </span>
-      </a>
+      <span class="nav-label" aria-hidden="true">websites made fast</span>
       <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle>
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M4 7h16M4 12h16M4 17h16"></path>
         </svg>
       </button>
       <nav class="site-nav" aria-label="Primary navigation" data-nav>
-        <a href="#services">Services</a>
-        <a href="#content">Content</a>
         <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#footage">Footage</a>
         <a href="#process">Process</a>
-        <a href="#contact">Contact</a>
+        <a href="contact.html">Contact</a>
       </nav>
-      <a class="header-cta" href="#contact">Start a project</a>
+      <a class="header-cta" href="contact.html">Start a project</a>
     </header>
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-media" aria-hidden="true"></div>
-        <div class="hero-scrim" aria-hidden="true"></div>
-        <div class="hero-stickers" aria-hidden="true">
-          <div class="sticker sticker-window">
-            <span></span>
-            <span></span>
-            <span></span>
-            <strong>hero_v3.final</strong>
-          </div>
-          <div class="sticker sticker-note">make it feel expensive</div>
-          <div class="sticker sticker-badge">ship fast</div>
-        </div>
-        <div class="hero-inner">
-          <p class="eyebrow">Web designer, builder, launch person</p>
-          <h1 id="hero-title">Websites that feel custom, current, and worth clicking.</h1>
+        <div class="hero-copy-block">
+          <p class="eyebrow">Small studio / sharp websites / quick launches</p>
+          <h1 id="hero-title">Clean websites that make the next step obvious.</h1>
           <p class="hero-copy">
-            I design and build sharp websites for small businesses, creators, and offers that need to look credible without waiting months for an agency process.
+            I build custom websites, landing pages, redesigns, and launch visuals for businesses that want to look clearer, braver, and easier to contact.
           </p>
           <div class="hero-actions" aria-label="Project actions">
-            <a class="button button-primary" href="#contact">Book a build</a>
-            <a class="button button-secondary" href="#content">Add footage</a>
-          </div>
-          <div class="hero-meta" aria-label="Build highlights">
-            <span>custom coded</span>
-            <span>mobile first</span>
-            <span>drone add-ons</span>
+            <a class="button button-primary" href="contact.html">Tell me the idea</a>
+            <a class="button button-secondary" href="#services">See what I do</a>
           </div>
         </div>
-      </section>
 
-      <section class="stat-strip" aria-label="Studio highlights">
-        <dl>
-          <div>
-              <dt>Fast</dt>
-              <dd>launch windows available after agreement</dd>
-          </div>
-          <div>
-            <dt>100%</dt>
-            <dd>custom design</dd>
-          </div>
-          <div>
-              <dt>Content too</dt>
-              <dd>optional on-site photo and drone footage</dd>
-          </div>
-        </dl>
-      </section>
-
-      <section class="intro section-band reveal" aria-labelledby="intro-title">
-        <div class="section-shell intro-grid">
-          <div>
-            <p class="eyebrow">What you are buying</p>
-            <h2 id="intro-title">A site that looks like you actually care what people see first.</h2>
-          </div>
-          <div class="intro-copy">
-            <p>
-              Your site should make people understand what you do, trust you faster, and know exactly how to get in touch. The visuals can have personality, but every section still has to earn its place.
-            </p>
-            <a href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-shell services reveal" id="services" aria-labelledby="services-title">
-        <div class="section-heading">
-          <p class="eyebrow">Services</p>
-          <h2 id="services-title">Design, build, and the bits that make it feel real.</h2>
-        </div>
-        <div class="service-grid">
-          <article class="service-card tilt-card">
-            <span class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM8 10h4M8 14h8"></path></svg>
-            </span>
-            <h3>Fast launch</h3>
-            <p>A polished one-page site for an idea, offer, or business that needs to be online very soon.</p>
-            <ul>
-              <li>Positioning and page structure</li>
-              <li>Custom responsive design</li>
-              <li>Contact flow and same-day launch support</li>
-            </ul>
-          </article>
-          <article class="service-card featured tilt-card">
-            <span class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M5 5h14v14H5zM8 8h8v4H8zM8 15h3M13 15h3"></path></svg>
-            </span>
-            <h3>Full website</h3>
-            <p>A richer site for when you need more pages, more detail, and a stronger first impression.</p>
-            <ul>
-              <li>Multi-page design system</li>
-              <li>Conversion-focused copy sections</li>
-              <li>Performance and SEO foundations</li>
-            </ul>
-          </article>
-          <article class="service-card tilt-card">
-            <span class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 3v18M5 8h14M7 16h10"></path></svg>
-            </span>
-            <h3>Site glow-up</h3>
-            <p>A focused redesign for a site that works, but does not look as good as what you are selling.</p>
-            <ul>
-              <li>Design audit and art direction</li>
-              <li>Key page redesigns</li>
-              <li>Speed, layout, and UX fixes</li>
-            </ul>
-          </article>
-          <article class="service-card media-card tilt-card">
-            <span class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M8 8h8l2 3h2v8H4v-8h2zM12 13.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM5 5l3 3M19 5l-3 3"></path></svg>
-            </span>
-            <h3>Content add-on</h3>
-            <p>Optional on-site photos, short clips, and drone footage so the website is built around your actual place, team, or work.</p>
-            <ul>
-              <li>Exterior and location shots</li>
-              <li>Drone footage where practical</li>
-              <li>Website-ready hero visuals</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section class="content-feature section-band reveal" id="content" aria-labelledby="content-title">
-        <div class="section-shell content-grid">
-          <div>
-            <p class="eyebrow">Additional service</p>
-            <h2 id="content-title">No good photos? I can help make the website look alive.</h2>
-            <p>
-              If your business has a place, vehicle, team, venue, project, or anything worth showing properly, I can come out and capture content for the site. That can include drone footage, exterior shots, simple video clips, and stills that make the page feel made for you instead of pulled from a stock folder.
-            </p>
-          </div>
-          <div class="content-shot" aria-hidden="true">
-            <span class="scan-line"></span>
-            <span class="drone-dot"></span>
-            <div class="shot-frame">
-              <strong>4K hero footage</strong>
-              <small>location / movement / atmosphere</small>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="work section-band reveal" id="work" aria-labelledby="work-title">
-        <div class="section-shell">
-          <div class="section-heading split">
-            <div>
-              <p class="eyebrow">Look and feel</p>
-              <h2 id="work-title">A look that feels designed, not generated.</h2>
-            </div>
-            <p>
-              Clean enough to trust, punchy enough to remember, and practical enough that people can still find the button.
-            </p>
-          </div>
-          <div class="portfolio-grid" aria-label="Design style examples">
-            <article class="portfolio-card lime wide">
-              <div class="browser-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-              <div class="mock-layout">
-                <span></span>
-                <strong></strong>
-                <p></p>
+        <div class="signal-board" aria-hidden="true">
+          <div class="signal-browser">
+            <div class="browser-bar"><span></span><span></span><span></span><strong>site-map</strong></div>
+            <div class="browser-canvas">
+              <div class="blueprint-copy">
+                <i></i>
+                <b></b>
                 <em></em>
               </div>
-              <h3>Personal brands</h3>
-              <p>Sharp layouts for creators, consultants, freelancers, and one-person businesses.</p>
-            </article>
-            <article class="portfolio-card cobalt">
-              <div class="browser-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-              <div class="mock-dashboard">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
+              <div class="blueprint-action"></div>
+              <div class="blueprint-grid">
+                <span></span><span></span><span></span><span></span>
               </div>
-              <h3>Productized offers</h3>
-              <p>Pages that make packages, pricing, and outcomes easy to understand.</p>
-            </article>
-            <article class="portfolio-card coral">
-              <div class="browser-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-              <div class="mock-shop">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <h3>Local standouts</h3>
-              <p>Stylish small-business sites that feel better than the usual template option.</p>
-            </article>
+            </div>
           </div>
-        </div>
-      </section>
-
-      <section class="section-shell process reveal" id="process" aria-labelledby="process-title">
-        <div class="section-heading">
-          <p class="eyebrow">Process</p>
-            <h2 id="process-title">Quick, clear, and light on waffle.</h2>
-        </div>
-        <div class="steps">
-          <article>
+          <div class="signal-card card-one">
             <span>01</span>
-              <h3>Shape</h3>
-              <p>I pin down the offer, the pages, and the vibe so the build has a clear target.</p>
-          </article>
-          <article>
+            <strong>clear offer</strong>
+          </div>
+          <div class="signal-card card-two">
             <span>02</span>
-            <h3>Design</h3>
-            <p>The visual direction becomes a responsive design that feels current, tidy, and yours.</p>
-          </article>
-          <article>
+            <strong>visual punch</strong>
+          </div>
+          <div class="signal-card card-three">
             <span>03</span>
-            <h3>Build</h3>
-            <p>The site gets coded cleanly, tuned for speed, checked on devices, and prepared to publish.</p>
+            <strong>fast enquiry</strong>
+          </div>
+          <div class="signal-line"></div>
+        </div>
+      </section>
+
+      <section class="quick-strip" aria-label="Studio highlights">
+        <span>Custom coded</span>
+        <span>Mobile polished</span>
+        <span>Contact-ready</span>
+        <span>Optional drone footage</span>
+      </section>
+
+      <section class="section-shell work-section reveal" id="work" aria-labelledby="work-title">
+        <div class="section-heading split-heading">
+          <div>
+            <p class="eyebrow">The goal</p>
+            <h2 id="work-title">Make the first five seconds do some actual work.</h2>
+          </div>
+          <p>
+            A good site should explain the offer, carry the taste of the business, and make the next step obvious before the visitor starts mentally checking out.
+          </p>
+        </div>
+        <div class="proof-grid">
+          <article>
+            <span>Signal</span>
+            <h3>People understand what you sell.</h3>
           </article>
           <article>
-            <span>04</span>
-            <h3>Launch</h3>
-            <p>The essentials get connected, the enquiry path gets tested, and your site goes live.</p>
+            <span>Trust</span>
+            <h3>The page feels cared for and current.</h3>
+          </article>
+          <article>
+            <span>Action</span>
+            <h3>The contact path is never hidden.</h3>
           </article>
         </div>
       </section>
 
-      <section class="proof section-band reveal" aria-labelledby="proof-title">
-        <div class="section-shell proof-grid">
-          <div>
-            <p class="eyebrow">Why it works</p>
-            <h2 id="proof-title">Good taste gets attention. Clear pages get enquiries.</h2>
+      <section class="services-section" id="services" aria-labelledby="services-title">
+        <div class="section-shell">
+          <div class="section-heading">
+            <p class="eyebrow">Services</p>
+            <h2 id="services-title">Useful pieces, built around the job your site has to do.</h2>
           </div>
-          <div class="proof-list">
-            <article>
-              <h3>Built around the visitor</h3>
-              <p>Every section has a purpose: explain the offer, build trust, or move people toward contact.</p>
+          <div class="service-grid">
+            <article class="service-card tilt-card">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM7 9h6M7 13h10M7 17h4"></path></svg>
+              <h3>Custom websites</h3>
+              <p>Responsive sites for services, personal brands, local businesses, small teams, and new offers.</p>
             </article>
-            <article>
-              <h3>Responsive from the first pass</h3>
-              <p>Mobile is designed with the same care as desktop, so nothing feels squeezed in after the fact.</p>
+            <article class="service-card accent-lime tilt-card">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5v14M8 8l8 8M16 8l-8 8"></path></svg>
+              <h3>Landing pages</h3>
+              <p>One focused page for a launch, campaign, event, lead magnet, product, or urgent idea.</p>
             </article>
-            <article>
-              <h3>Polished enough to feel serious</h3>
-              <p>Typography, spacing, colour, and rhythm all work together so the offer feels worth paying for.</p>
+            <article class="service-card accent-blue tilt-card">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M7 4v6M17 4v6M6 14h5M6 18h12M14 14h4"></path></svg>
+              <h3>Redesigns</h3>
+              <p>Better layout, stronger copy flow, cleaner mobile, and a visual system that feels more like you.</p>
+            </article>
+            <article class="service-card accent-coral tilt-card">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8h8l2 3h2v8H4v-8h2zM12 14a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM7 5l2 3M17 5l-2 3"></path></svg>
+              <h3>Visual capture</h3>
+              <p>Photo, short video, and drone footage when real visuals would do more than stock ever could.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section-shell contact reveal" id="contact" aria-labelledby="contact-title">
-        <div class="contact-panel">
+      <section class="section-shell footage-section reveal" id="footage" aria-labelledby="footage-title">
+        <div class="footage-panel">
           <div>
-            <p class="eyebrow">Now booking</p>
-            <h2 id="contact-title">Tell me what you are selling. I will make it look obvious.</h2>
+            <p class="eyebrow">Footage add-on</p>
+            <h2 id="footage-title">If the business exists in the real world, the site can show that.</h2>
             <p>
-              Send the rough idea, the deadline, and whether you need visuals captured too. I will reply with the next step.
+              Venues, properties, vehicles, gyms, salons, trades, food, events, and physical work all benefit from visuals that feel specific. I can capture website-ready content and build around it.
             </p>
           </div>
-          <form
-            class="contact-form"
-            action="https://mas0ng.com/api/webform"
-            method="post"
-            data-contact-form
-          >
-            <input type="text" name="company" tabindex="-1" autocomplete="off" class="honeypot" aria-hidden="true">
-            <label>
-              <span>Name</span>
-              <input name="name" autocomplete="name" required>
-            </label>
-            <label>
-              <span>Email</span>
-              <input type="email" name="email" autocomplete="email" required>
-            </label>
-            <label>
-              <span>Project</span>
-              <textarea name="project" rows="5" placeholder="New site, redesign, deadline, drone footage, budget range..." required></textarea>
-            </label>
-            <div
-              class="cf-turnstile"
-              data-sitekey="0x4AAAAAADOlcfxJBwt9G_7U"
-              data-theme="dark"
-              data-size="flexible"
-            ></div>
-            <button class="button button-primary" type="submit">Send enquiry</button>
-            <p class="form-status" aria-live="polite" data-form-status></p>
-          </form>
+          <div class="footage-stack" aria-hidden="true">
+            <span>exterior pass</span>
+            <span>detail shots</span>
+            <span>hero video</span>
+          </div>
         </div>
+      </section>
+
+      <section class="process-section reveal" id="process" aria-labelledby="process-title">
+        <div class="section-shell">
+          <div class="section-heading split-heading">
+            <div>
+              <p class="eyebrow">Process</p>
+              <h2 id="process-title">Simple enough to move quickly. Clear enough to not get messy.</h2>
+            </div>
+            <p>
+              We start with the shape of the offer, then build the page around what visitors need to understand and do.
+            </p>
+          </div>
+          <div class="process-grid">
+            <article><span>01</span><h3>Shape</h3><p>Offer, audience, sections, visuals, deadline, and the contact path.</p></article>
+            <article><span>02</span><h3>Design</h3><p>Page rhythm, visual direction, copy hierarchy, and responsive layout.</p></article>
+            <article><span>03</span><h3>Build</h3><p>Clean static implementation with fast load times and proper mobile care.</p></article>
+            <article><span>04</span><h3>Launch</h3><p>Final checks, contact flow test, publish support, and sensible handover.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell footer-cta reveal" aria-labelledby="footer-cta-title">
+        <p class="eyebrow">Ready when you are</p>
+        <h2 id="footer-cta-title">Got a rough idea, a broken site, or a launch that needs a proper page?</h2>
+        <a class="button button-primary" href="contact.html">Go to contact</a>
       </section>
     </main>
 
@@ -324,6 +190,7 @@
       <p>mas0ng</p>
       <div>
         <a href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>
+        <a href="contact.html">Contact page</a>
         <a href="#top">Back to top</a>
       </div>
     </footer>

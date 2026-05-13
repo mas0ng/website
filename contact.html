@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact | mas0ng</title>
+    <meta
+      name="description"
+      content="Contact mas0ng about a website, landing page, redesign, or web-ready visuals."
+    >
+    <meta name="theme-color" content="#111111">
+    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="nav-label" href="index.html" aria-label="Back to homepage">websites made fast</a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+      </button>
+      <nav class="site-nav" aria-label="Primary navigation" data-nav>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#footage">Footage</a>
+        <a href="index.html#process">Process</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a class="header-cta" href="contact.html">Start a project</a>
+    </header>
+
+    <main class="contact-page" id="top">
+      <section class="section-shell contact-section reveal" aria-labelledby="contact-title">
+        <div class="contact-panel">
+          <div class="contact-copy">
+            <p class="eyebrow">Contact</p>
+            <h1 id="contact-title">Send the rough idea. I will help turn it into a site-shaped thing.</h1>
+            <p>
+              Include what you sell, what is wrong with the current site if there is one, your deadline, and whether you need visuals captured too.
+            </p>
+            <a href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>
+          </div>
+          <form
+            class="contact-form"
+            action="https://mas0ng.com/api/webform"
+            method="post"
+            data-contact-form
+          >
+            <input type="text" name="company" tabindex="-1" autocomplete="off" class="honeypot" aria-hidden="true">
+            <label>
+              <span>Name</span>
+              <input name="name" autocomplete="name" required>
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+            <label>
+              <span>Project</span>
+              <textarea name="project" rows="5" placeholder="New site, redesign, deadline, drone footage, budget range..." required></textarea>
+            </label>
+            <div
+              class="cf-turnstile"
+              data-sitekey="0x4AAAAAADOlcfxJBwt9G_7U"
+              data-theme="light"
+              data-size="flexible"
+            ></div>
+            <button class="button button-primary" type="submit">Send enquiry</button>
+            <p class="form-status" aria-live="polite" data-form-status></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>mas0ng</p>
+      <div>
+        <a href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>
+        <a href="index.html">Home</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </footer>
+
+    <script src="assets/js/site.js"></script>
+  </body>
+</html>

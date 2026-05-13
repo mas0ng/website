@@ -11,6 +11,15 @@ function closeNav() {
   navToggle?.setAttribute("aria-expanded", "false");
 }
 
+function updateHeader() {
+  header?.classList.toggle("is-scrolled", window.scrollY > 18);
+}
+
+function updatePointer(event) {
+  document.body.style.setProperty("--mx", `${event.clientX}px`);
+  document.body.style.setProperty("--my", `${event.clientY}px`);
+}
+
 navToggle?.addEventListener("click", () => {
   const isOpen = document.body.classList.toggle("nav-open");
   navToggle.setAttribute("aria-expanded", String(isOpen));
@@ -28,17 +37,17 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-const headerObserver = new IntersectionObserver(
-  ([entry]) => {
-    header?.classList.toggle("is-scrolled", !entry.isIntersecting);
-  },
-  { threshold: 0 }
-);
+window.addEventListener("scroll", () => {
+  updateHeader();
+}, { passive: true });
 
-const main = document.querySelector("main");
-if (main) {
-  headerObserver.observe(main);
-}
+window.addEventListener("mousemove", updatePointer, { passive: true });
+window.addEventListener("mouseleave", () => {
+  document.body.style.setProperty("--mx", "-9999px");
+  document.body.style.setProperty("--my", "-9999px");
+});
+
+updateHeader();
 
 const revealObserver = new IntersectionObserver(
   (entries) => {
