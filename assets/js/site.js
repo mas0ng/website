@@ -3,6 +3,8 @@ const nav = document.querySelector("[data-nav]");
 const header = document.querySelector("[data-header]");
 const contactForm = document.querySelector("[data-contact-form]");
 const formStatus = document.querySelector("[data-form-status]");
+const revealItems = document.querySelectorAll(".reveal");
+const tiltCards = document.querySelectorAll(".tilt-card");
 
 function closeNav() {
   document.body.classList.remove("nav-open");
@@ -37,6 +39,36 @@ const main = document.querySelector("main");
 if (main) {
   headerObserver.observe(main);
 }
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      }
+    }
+  },
+  { threshold: 0.16 }
+);
+
+revealItems.forEach((item) => revealObserver.observe(item));
+
+tiltCards.forEach((card) => {
+  card.addEventListener("pointermove", (event) => {
+    const rect = card.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+    card.style.setProperty("--tilt-x", `${y * -5}deg`);
+    card.style.setProperty("--tilt-y", `${x * 6}deg`);
+  });
+
+  card.addEventListener("pointerleave", () => {
+    card.style.setProperty("--tilt-x", "0deg");
+    card.style.setProperty("--tilt-y", "0deg");
+  });
+});
 
 contactForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
