@@ -3,21 +3,45 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Page not found | mas0ng</title>
+    <title>404 | mas0ng</title>
     <meta name="robots" content="noindex">
-    <meta name="theme-color" content="#0098ff">
-    <link rel="stylesheet" href="/assets/css/site.css">
+    <meta name="theme-color" content="#080808">
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+        background: #080808;
+        color: #d8d8d8;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        background: #080808;
+      }
+
+      main {
+        padding: 24px;
+        font-size: 1rem;
+        letter-spacing: 0;
+      }
+
+      span {
+        color: #6f6f6f;
+      }
+
+      a {
+        color: inherit;
+        text-decoration-color: #6f6f6f;
+        text-underline-offset: 4px;
+      }
+    </style>
   </head>
   <body>
-    <main class="section-shell contact-section" style="min-height: 100svh; display: grid; place-items: center;">
-      <div class="contact-panel" style="grid-template-columns: 1fr;">
-        <div class="contact-copy">
-          <p class="eyebrow">404 / Missing</p>
-          <h1 style="margin: 0; font-size: clamp(3rem, 10vw, 7rem); line-height: .9;">This page wandered off.</h1>
-          <p>Head back to the homepage and we can get you to the good bit.</p>
-          <a href="/">Back home</a>
-        </div>
-      </div>
+    <main>
+      404 <span>|</span> <a href="/auth/login">login to continue</a>
     </main>
   </body>
 </html>
