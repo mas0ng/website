@@ -12,6 +12,13 @@
         font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
         background: #080808;
         color: #d8d8d8;
+        --panel: rgba(13, 13, 13, 0.96);
+        --line: #242424;
+        --muted: #858585;
+      }
+
+      * {
+        box-sizing: border-box;
       }
 
       body {
@@ -19,17 +26,123 @@
         margin: 0;
         display: grid;
         place-items: center;
-        background: #080808;
+        padding: 22px;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 32%),
+          #080808;
+        background-size: 44px 44px, 44px 44px, 100% 100%, auto;
       }
 
       main {
-        padding: 24px;
+        position: relative;
+        width: min(100%, 700px);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--panel);
+        padding: 0;
         font-size: 1rem;
         letter-spacing: 0;
+        overflow: hidden;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
       }
 
-      span {
-        color: #6f6f6f;
+      main::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: repeating-linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.025) 0,
+          rgba(255, 255, 255, 0.025) 1px,
+          transparent 1px,
+          transparent 7px
+        );
+        opacity: 0.42;
+      }
+
+      main::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 22px;
+        right: 22px;
+        height: 1px;
+        background: #d8d8d8;
+        opacity: 0.34;
+      }
+
+      h1,
+      p {
+        margin: 0;
+      }
+
+      .bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        border-bottom: 1px solid var(--line);
+        padding: 14px 18px;
+        color: #737373;
+        font-size: 0.78rem;
+      }
+
+      .bar strong {
+        color: #d8d8d8;
+        font-weight: 500;
+      }
+
+      .body {
+        position: relative;
+        display: grid;
+        gap: 18px;
+        padding: 28px;
+      }
+
+      .code {
+        color: #737373;
+        font-size: 0.85rem;
+      }
+
+      h1 {
+        max-width: 13ch;
+        font-size: clamp(2.4rem, 10vw, 5.2rem);
+        line-height: 0.96;
+        font-weight: 500;
+      }
+
+      p {
+        max-width: 58ch;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .meta {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .meta div {
+        border: 1px solid var(--line);
+        background: #090909;
+        padding: 10px;
+      }
+
+      .meta span {
+        display: block;
+        color: #666;
+        font-size: 0.72rem;
+      }
+
+      .meta strong {
+        display: block;
+        margin-top: 4px;
+        color: #d8d8d8;
+        font-weight: 500;
       }
 
       a {
@@ -37,11 +150,49 @@
         text-decoration-color: #6f6f6f;
         text-underline-offset: 4px;
       }
+
+      .contact {
+        border-left: 2px solid #303030;
+        padding-left: 12px;
+      }
+
+      span {
+        color: #6f6f6f;
+      }
+
+      @media (max-width: 560px) {
+        .body {
+          padding: 22px;
+        }
+
+        .bar,
+        .meta {
+          grid-template-columns: 1fr;
+        }
+
+        .bar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
     </style>
   </head>
   <body>
     <main>
-      404 <span>|</span> <a href="/auth/login">login to continue</a>
+      <div class="bar">
+        <strong>mas0ng.com</strong>
+        <span>route unavailable</span>
+      </div>
+      <div class="body">
+        <div class="code">404 <span>|</span> page not found</div>
+        <h1>Nothing here.</h1>
+        <p>This page couldn't be found. The address may be wrong, the page may have moved, or it may not exist anymore.</p>
+        <div class="meta">
+          <div><span>status</span><strong>not found</strong></div>
+          <div><span>next step</span><strong>check the address</strong></div>
+        </div>
+        <p class="contact">If you think this was a mistake, contact <a href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>.</p>
+      </div>
     </main>
   </body>
 </html>
