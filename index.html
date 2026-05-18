@@ -4,8 +4,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>401 | mas0ng</title>
+    <meta name="description" content="Authentication is required to access this page.">
     <meta name="robots" content="noindex">
     <meta name="theme-color" content="#080808">
+    <link rel="icon" type="image/png" sizes="128x128" href="/public_assets/site_branding/site_icons/128/warning.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="/public_assets/site_branding/site_icons/256/warning.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/public_assets/site_branding/site_icons/512/warning.png">
+    <link rel="apple-touch-icon" href="/public_assets/site_branding/site_icons/256/warning.png">
+    <meta property="og:title" content="401 | mas0ng">
+    <meta property="og:description" content="Authentication is required to access this page.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mas0ng.com/">
+    <meta property="og:image" content="https://www.mas0ng.com/public_assets/site_branding/site_icons/800/warning.png">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="800">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="401 | mas0ng">
+    <meta name="twitter:description" content="Authentication is required to access this page.">
+    <meta name="twitter:image" content="https://www.mas0ng.com/public_assets/site_branding/site_icons/800/warning.png">
     <style>
       :root {
         color-scheme: dark;
@@ -107,6 +123,15 @@
         font-size: 0.85rem;
       }
 
+      .icon {
+        width: 64px;
+        height: 64px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: #090909;
+        padding: 10px;
+      }
+
       h1 {
         max-width: 12ch;
         font-size: clamp(2.4rem, 10vw, 5.2rem);
@@ -118,31 +143,6 @@
         max-width: 54ch;
         color: var(--muted);
         line-height: 1.55;
-      }
-
-      .meta {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-      }
-
-      .meta div {
-        border: 1px solid var(--line);
-        background: #090909;
-        padding: 10px;
-      }
-
-      .meta span {
-        display: block;
-        color: #666;
-        font-size: 0.72rem;
-      }
-
-      .meta strong {
-        display: block;
-        margin-top: 4px;
-        color: #d8d8d8;
-        font-weight: 500;
       }
 
       a {
@@ -165,11 +165,6 @@
           padding: 22px;
         }
 
-        .bar,
-        .meta {
-          grid-template-columns: 1fr;
-        }
-
         .bar {
           align-items: flex-start;
           flex-direction: column;
@@ -184,13 +179,10 @@
         <span>request blocked</span>
       </div>
       <div class="body">
+        <img class="icon" src="/public_assets/site_branding/site_icons/128/warning.png" alt="" width="64" height="64">
         <div class="code">401 <span>|</span> unauthorized</div>
         <h1>Access denied.</h1>
         <p>You need to be logged in to access this page.</p>
-        <div class="meta">
-          <div><span>status</span><strong>authentication required</strong></div>
-          <div><span>route</span><strong>/</strong></div>
-        </div>
         <a href="/auth/login">login to continue</a>
       </div>
     </main>
