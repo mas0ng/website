@@ -3,24 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>401 | mas0ng</title>
-    <meta name="description" content="Authentication is required to access this page.">
+    <title>mas0ng</title>
+    <meta name="description" content="Sign in to continue to mas0ng.com.">
     <meta name="robots" content="noindex">
     <meta name="theme-color" content="#080808">
     <link rel="icon" type="image/png" sizes="128x128" href="/public_assets/site_branding/site_icons/128/warning.png">
     <link rel="icon" type="image/png" sizes="256x256" href="/public_assets/site_branding/site_icons/256/warning.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/public_assets/site_branding/site_icons/512/warning.png">
     <link rel="apple-touch-icon" href="/public_assets/site_branding/site_icons/256/warning.png">
-    <meta property="og:title" content="401 | mas0ng">
-    <meta property="og:description" content="Authentication is required to access this page.">
+    <meta property="og:title" content="mas0ng">
+    <meta property="og:description" content="Sign in to continue to mas0ng.com.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.mas0ng.com/">
     <meta property="og:image" content="https://www.mas0ng.com/public_assets/site_branding/site_icons/800/warning.png">
     <meta property="og:image:width" content="800">
     <meta property="og:image:height" content="800">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="401 | mas0ng">
-    <meta name="twitter:description" content="Authentication is required to access this page.">
+    <meta name="twitter:title" content="mas0ng">
+    <meta name="twitter:description" content="Sign in to continue to mas0ng.com.">
     <meta name="twitter:image" content="https://www.mas0ng.com/public_assets/site_branding/site_icons/800/warning.png">
     <style>
       :root {
@@ -57,9 +57,6 @@
         border: 1px solid var(--line);
         border-radius: 6px;
         background: var(--panel);
-        padding: 0;
-        font-size: 1rem;
-        letter-spacing: 0;
         overflow: hidden;
         box-shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
       }
@@ -96,6 +93,7 @@
       }
 
       .bar {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -133,9 +131,8 @@
       }
 
       h1 {
-        max-width: 12ch;
-        font-size: clamp(2.4rem, 10vw, 5.2rem);
-        line-height: 0.96;
+        font-size: clamp(2.3rem, 9vw, 4.4rem);
+        line-height: 0.98;
         font-weight: 500;
       }
 
@@ -146,6 +143,7 @@
       }
 
       a {
+        width: fit-content;
         display: inline-flex;
         border: 1px solid #303030;
         border-radius: 4px;
@@ -153,11 +151,14 @@
         color: #080808;
         padding: 11px 14px;
         text-decoration: none;
-        width: fit-content;
       }
 
       span {
         color: #6f6f6f;
+      }
+
+      [data-checking="true"] .body {
+        opacity: 0.72;
       }
 
       @media (max-width: 560px) {
@@ -172,19 +173,43 @@
       }
     </style>
   </head>
-  <body>
+  <body data-checking="true">
     <main>
       <div class="bar">
         <strong>mas0ng.com</strong>
-        <span>request blocked</span>
+        <span id="status-label">checking session</span>
       </div>
       <div class="body">
         <img class="icon" src="/public_assets/site_branding/site_icons/128/warning.png" alt="" width="64" height="64">
-        <div class="code">401 <span>|</span> unauthorized</div>
-        <h1>Access denied.</h1>
-        <p>You need to be logged in to access this page.</p>
-        <a href="/auth/login">login to continue</a>
+        <div class="code" id="status-code">102 <span>|</span> checking</div>
+        <h1 id="status-title">Checking session.</h1>
+        <p id="status-copy">One moment while your login status is checked.</p>
+        <a id="login-link" href="/auth/login?return_to=%2Fdash%2F">login again</a>
       </div>
     </main>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const status = params.get("status") || params.get("stats") || "";
+
+      if (!status) {
+        const loggedOutTo = "/index.html?status=not_loggedin";
+        const expiredTo = "/index.html?stats=session_expired";
+        window.location.replace(
+          "/auth/login?check=1&return_to=" + encodeURIComponent("/dash/") +
+          "&logged_out_to=" + encodeURIComponent(loggedOutTo) +
+          "&expired_to=" + encodeURIComponent(expiredTo)
+        );
+      } else {
+        document.body.dataset.checking = "false";
+        const sessionExpired = status === "session_expired";
+        document.querySelector("#status-label").textContent = sessionExpired ? "session expired" : "not logged in";
+        document.querySelector("#status-code").innerHTML = (sessionExpired ? "440" : "401") + " <span>|</span> " + (sessionExpired ? "session expired" : "unauthorized");
+        document.querySelector("#status-title").textContent = sessionExpired ? "Session expired." : "Not logged in.";
+        document.querySelector("#status-copy").textContent = sessionExpired
+          ? "Your session has expired. Log in again to continue."
+          : "You are not logged in. Log in again to continue.";
+      }
+    </script>
   </body>
 </html>
