@@ -184,7 +184,7 @@
         <div class="code" id="status-code">102 <span>|</span> checking</div>
         <h1 id="status-title">Checking session.</h1>
         <p id="status-copy">One moment while your login status is checked.</p>
-        <a id="login-link" href="/auth/login?return_to=%2Fdash%2F">login again</a>
+        <a id="login-link" href="/auth/login?return_to=%2Fapps%2F">login again</a>
       </div>
     </main>
 
@@ -196,7 +196,7 @@
         const loggedOutTo = "/index.html?status=not_loggedin";
         const expiredTo = "/index.html?stats=session_expired";
         window.location.replace(
-          "/auth/login?check=1&return_to=" + encodeURIComponent("/dash/") +
+          "/auth/login?check=1&return_to=" + encodeURIComponent("/apps/") +
           "&logged_out_to=" + encodeURIComponent(loggedOutTo) +
           "&expired_to=" + encodeURIComponent(expiredTo)
         );
