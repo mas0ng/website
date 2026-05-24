@@ -22,6 +22,7 @@
     <meta name="twitter:title" content="404 | mas0ng">
     <meta name="twitter:description" content="This page could not be found or does not exist.">
     <meta name="twitter:image" content="https://www.mas0ng.com/public_assets/site_branding/site_icons/800/error.png">
+    <script defer src="/p/navbar.js" data-active="home"></script>
     <style>
       :root {
         color-scheme: light;
@@ -47,39 +48,11 @@
         color: var(--ink);
       }
 
-      header {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        background: #050505;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-        padding: 16px clamp(18px, 4vw, 34px);
-      }
-
       a { color: inherit; text-decoration: none; }
-      .brand { color: #ffffff; font-weight: 800; }
-      .nav-actions { display: flex; gap: 8px; }
-
-      .nav-link {
-        min-height: 42px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid rgba(255, 255, 255, 0.16);
-        border-radius: 8px;
-        color: rgba(255, 255, 255, 0.76);
-        background: rgba(255, 255, 255, 0.04);
-        padding: 0 14px;
-        font-weight: 700;
-      }
 
       main {
         width: min(100%, 980px);
-        min-height: calc(100vh - 75px);
+        min-height: calc(100vh - 68px);
         margin: 0 auto;
         display: grid;
         align-content: center;
@@ -130,13 +103,6 @@
     </style>
   </head>
   <body>
-    <header>
-      <a class="brand" href="/p/">Mason</a>
-      <div class="nav-actions">
-        <a class="nav-link" href="/p/">Home</a>
-        <a class="nav-link" href="/p/legal/">Legal</a>
-      </div>
-    </header>
     <main>
       <section class="panel">
         <div class="code">404 | page not found</div>

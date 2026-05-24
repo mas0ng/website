@@ -135,16 +135,16 @@
           const data = await response.json().catch(() => ({}));
           if (response.ok && data.authenticated) {
             document.querySelector("#status").innerHTML = '200 <span>|</span> opening apps';
-            return "https://www.mas0ng.com/apps/";
+            return "/apps/";
           }
         } catch {
           document.querySelector("#status").innerHTML = '200 <span>|</span> opening public page';
         }
-        return "/p/index.html?from=index";
+        return "/p/";
       }
 
       function withIntroState(target) {
-        if (!target.startsWith("/p/index.html")) return target;
+        if (target !== "/p/" && !target.startsWith("/p/?")) return target;
 
         const elapsed = Date.now() - startedAt;
         const phaseMs = elapsed % spinDurationMs;
