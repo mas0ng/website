@@ -6,207 +6,47 @@
     <title>Legal | Mason</title>
     <meta name="description" content="Legal documents for mas0ng.com.">
     <link rel="icon" type="image/png" sizes="128x128" href="/public_assets/site_branding/site_icons/128/logged_out.png">
+    <script src="/p/site-libs.js"></script>
     <script defer src="/p/navbar.js" data-active="legal"></script>
-    <style>
-        :root {
-            color-scheme: light;
-            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            --ink: #101418;
-            --muted: #5f6368;
-            --line: #e0e3e7;
-            --blue: #1a73e8;
-            --blue-soft: #e8f0fe;
-            --green-soft: #e6f4ea;
-            --yellow-soft: #fef7e0;
-            --red-soft: #fce8e6;
-        }
-
-        * { box-sizing: border-box; }
-
-        body {
-            min-height: 100vh;
-            margin: 0;
-            background: #ffffff;
-            color: var(--ink);
-        }
-
-        main {
-            width: min(100%, 1180px);
-            margin: 0 auto;
-            padding: 58px 22px 72px;
-        }
-
-        .hero {
-            min-height: 360px;
-            border-radius: 8px;
-            padding: clamp(32px, 7vw, 72px);
-            display: grid;
-            align-content: center;
-            background:
-                linear-gradient(135deg, rgba(232, 240, 254, 0.95), rgba(230, 244, 234, 0.84) 54%, rgba(254, 247, 224, 0.88));
-            border: 1px solid #dfe8f8;
-        }
-
-        h1 {
-            max-width: 780px;
-            margin: 0 0 18px;
-            font-size: clamp(3rem, 8vw, 6rem);
-            line-height: 0.94;
-            letter-spacing: 0;
-        }
-
-        .hero p {
-            max-width: 720px;
-            margin: 0;
-            color: #2d3339;
-            font-size: clamp(1.12rem, 2.2vw, 1.45rem);
-            line-height: 1.55;
-            font-weight: 560;
-        }
-
-        .section-title {
-            margin: 54px 0 18px;
-            font-size: clamp(1.7rem, 3vw, 2.5rem);
-            line-height: 1.1;
-        }
-
-        .documents {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 16px;
-        }
-
-        .doc-card {
-            min-height: 220px;
-            display: grid;
-            align-content: space-between;
-            gap: 26px;
-            padding: 26px;
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            color: inherit;
-            text-decoration: none;
-            background: #ffffff;
-            transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
-        }
-
-        .doc-card:hover {
-            transform: translateY(-3px);
-            border-color: #c7d8f8;
-            box-shadow: 0 18px 45px rgba(32, 45, 64, 0.10);
-        }
-
-        .doc-card.primary {
-            background: var(--blue-soft);
-            border-color: #d2e3fc;
-        }
-
-        .doc-card.green {
-            background: var(--green-soft);
-            border-color: #ceead6;
-        }
-
-        .doc-card.yellow {
-            background: var(--yellow-soft);
-            border-color: #feefc3;
-        }
-
-        .doc-card.red {
-            background: var(--red-soft);
-            border-color: #fad2cf;
-        }
-
-        .doc-card h2 {
-            margin: 0 0 10px;
-            font-size: clamp(1.42rem, 2.4vw, 2.05rem);
-            line-height: 1.08;
-        }
-
-        .doc-card p {
-            margin: 0;
-            max-width: 460px;
-            color: #3c4043;
-            line-height: 1.58;
-        }
-
-        .info-band {
-            margin-top: 18px;
-            padding: clamp(24px, 4vw, 38px);
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            display: grid;
-            grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
-            gap: 24px;
-            background: #f8fbff;
-        }
-
-        .info-band h2 {
-            margin: 0;
-            font-size: clamp(1.5rem, 3vw, 2.3rem);
-            line-height: 1.12;
-        }
-
-        .info-band p {
-            margin: 0;
-            color: var(--muted);
-            line-height: 1.68;
-        }
-
-        @media (max-width: 760px) {
-            main {
-                padding-top: 32px;
-            }
-
-            .hero {
-                min-height: 310px;
-                padding: 30px 22px;
-            }
-
-            .documents,
-            .info-band {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 </head>
-<body>
-    <main>
-        <section class="hero">
-            <h1>Legal centre.</h1>
-            <p>Privacy, terms, cookie information, and security notes for mas0ng.com.</p>
+<body class="min-h-screen bg-white text-slate-900 antialiased">
+    <main class="mx-auto w-full max-w-6xl px-5 pb-20 pt-12 sm:px-6 sm:pt-16 lg:px-8">
+        <section class="grid min-h-[340px] content-center rounded-lg border border-blue-100 bg-gradient-to-br from-blue-50 via-emerald-50 to-amber-50 p-8 sm:p-12 lg:p-16">
+            <h1 class="m-0 max-w-3xl text-5xl font-black leading-none tracking-normal sm:text-6xl lg:text-7xl">Legal centre.</h1>
+            <p class="m-0 mt-5 max-w-3xl text-lg font-medium leading-8 text-slate-700 sm:text-xl">Privacy, terms, cookie information, and security notes for mas0ng.com.</p>
         </section>
 
-        <h2 class="section-title">Documents</h2>
-        <section class="documents" aria-label="Legal documents">
-            <a class="doc-card primary" href="/p/legal/privacy/">
+        <h2 class="mb-5 mt-14 text-3xl font-black tracking-normal text-slate-950 sm:text-4xl">Documents</h2>
+        <section class="grid gap-4 md:grid-cols-2" aria-label="Legal documents">
+            <a class="grid min-h-[220px] content-between rounded-lg border border-blue-100 bg-blue-50 p-6 text-slate-950 no-underline shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl" href="/p/legal/privacy/">
                 <div>
-                    <h2>Privacy Policy</h2>
-                    <p>Explains what information may be handled by this site, workers, login systems, and connected dashboard features.</p>
+                    <h2 class="m-0 mb-3 text-2xl font-black leading-tight sm:text-3xl">Privacy Policy</h2>
+                    <p class="m-0 max-w-md text-base font-medium leading-7 text-slate-700">Explains what information may be handled by this site, workers, login systems, and connected dashboard features.</p>
                 </div>
             </a>
-            <a class="doc-card green" href="/p/legal/terms.html">
+            <a class="grid min-h-[220px] content-between rounded-lg border border-emerald-100 bg-emerald-50 p-6 text-slate-950 no-underline shadow-sm transition hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl" href="/p/legal/terms.html">
                 <div>
-                    <h2>Terms of Use</h2>
-                    <p>Sets out basic rules for using the public pages and protected services.</p>
+                    <h2 class="m-0 mb-3 text-2xl font-black leading-tight sm:text-3xl">Terms of Use</h2>
+                    <p class="m-0 max-w-md text-base font-medium leading-7 text-slate-700">Sets out basic rules for using the public pages and protected services.</p>
                 </div>
             </a>
-            <a class="doc-card yellow" href="/p/legal/cookies.html">
+            <a class="grid min-h-[220px] content-between rounded-lg border border-amber-100 bg-amber-50 p-6 text-slate-950 no-underline shadow-sm transition hover:-translate-y-1 hover:border-amber-200 hover:shadow-xl" href="/p/legal/cookies.html">
                 <div>
-                    <h2>Cookie Notice</h2>
-                    <p>Explains cookies, session storage, local preferences, and similar browser technologies.</p>
+                    <h2 class="m-0 mb-3 text-2xl font-black leading-tight sm:text-3xl">Cookie Notice</h2>
+                    <p class="m-0 max-w-md text-base font-medium leading-7 text-slate-700">Explains cookies, session storage, local preferences, and similar browser technologies.</p>
                 </div>
             </a>
-            <a class="doc-card red" href="/p/legal/security.html">
+            <a class="grid min-h-[220px] content-between rounded-lg border border-rose-100 bg-rose-50 p-6 text-slate-950 no-underline shadow-sm transition hover:-translate-y-1 hover:border-rose-200 hover:shadow-xl" href="/p/legal/security.html">
                 <div>
-                    <h2>Security Notes</h2>
-                    <p>Explains access protection, account safety, and how to report a security concern.</p>
+                    <h2 class="m-0 mb-3 text-2xl font-black leading-tight sm:text-3xl">Security Notes</h2>
+                    <p class="m-0 max-w-md text-base font-medium leading-7 text-slate-700">Explains access protection, account safety, and how to report a security concern.</p>
                 </div>
             </a>
         </section>
 
-        <section class="info-band">
-            <h2>Questions or requests.</h2>
-            <p>For legal, privacy, or security questions, contact <a href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>.</p>
+        <section class="mt-5 grid gap-6 rounded-lg border border-slate-200 bg-slate-50 p-6 sm:grid-cols-[0.8fr_1fr] sm:p-9">
+            <h2 class="m-0 text-2xl font-black leading-tight text-slate-950 sm:text-3xl">Questions or requests.</h2>
+            <p class="m-0 text-base font-medium leading-7 text-slate-600">For legal, privacy, or security questions, contact <a class="font-bold text-blue-700 underline decoration-blue-300 underline-offset-4" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>.</p>
         </section>
     </main>
 </body>

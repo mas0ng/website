@@ -22,93 +22,16 @@
     <meta name="twitter:title" content="404 | mas0ng">
     <meta name="twitter:description" content="This page could not be found or does not exist.">
     <meta name="twitter:image" content="https://www.mas0ng.com/public_assets/site_branding/site_icons/800/error.png">
+    <script src="/p/site-libs.js"></script>
     <script defer src="/p/navbar.js" data-active="home"></script>
-    <style>
-      :root {
-        color-scheme: light;
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        --ink: #101418;
-        --muted: #5f6368;
-        --line: #e0e3e7;
-        --blue-soft: #e8f0fe;
-        --red-soft: #fce8e6;
-      }
-
-      * { box-sizing: border-box; }
-
-      body {
-        min-height: 100vh;
-        margin: 0;
-        background:
-          linear-gradient(rgba(26, 115, 232, 0.05) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(26, 115, 232, 0.05) 1px, transparent 1px),
-          linear-gradient(135deg, rgba(232, 240, 254, 0.95), rgba(255, 255, 255, 0.78) 44%, rgba(252, 232, 230, 0.68)),
-          #ffffff;
-        background-size: 42px 42px, 42px 42px, 100% 100%, auto;
-        color: var(--ink);
-      }
-
-      a { color: inherit; text-decoration: none; }
-
-      main {
-        width: min(100%, 980px);
-        min-height: calc(100vh - 68px);
-        margin: 0 auto;
-        display: grid;
-        align-content: center;
-        padding: 54px 22px 76px;
-      }
-
-      .panel {
-        border: 1px solid #dfe8f8;
-        border-radius: 8px;
-        background:
-          linear-gradient(135deg, var(--red-soft), transparent 44%),
-          #ffffff;
-        padding: clamp(32px, 7vw, 72px);
-        box-shadow: 0 18px 45px rgba(32, 45, 64, 0.10);
-      }
-
-      .code {
-        color: #b3261e;
-        font-size: 0.92rem;
-        font-weight: 850;
-      }
-
-      h1, p { margin: 0; }
-
-      h1 {
-        max-width: 780px;
-        margin-top: 18px;
-        font-size: clamp(3rem, 8vw, 6rem);
-        line-height: 0.94;
-        letter-spacing: 0;
-      }
-
-      p {
-        max-width: 720px;
-        margin-top: 22px;
-        color: var(--muted);
-        font-size: clamp(1.05rem, 2vw, 1.24rem);
-        line-height: 1.66;
-        font-weight: 560;
-      }
-
-      .text-link {
-        color: #0b57d0;
-        font-weight: 750;
-        text-decoration: underline;
-        text-underline-offset: 4px;
-      }
-    </style>
   </head>
-  <body>
-    <main>
-      <section class="panel">
-        <div class="code">404 | page not found</div>
-        <h1>This page could not be found.</h1>
-        <p>The address may be wrong, the page may have moved, or it may not exist anymore.</p>
-        <p>If you think this was a mistake, contact <a class="text-link" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>.</p>
+  <body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
+    <main class="mx-auto grid min-h-[calc(100vh-5rem)] w-full max-w-5xl content-center px-5 py-16 sm:px-6 lg:px-8">
+      <section class="rounded-lg border border-rose-100 bg-gradient-to-br from-rose-50 via-white to-blue-50 p-8 shadow-2xl shadow-slate-900/10 sm:p-12 lg:p-16">
+        <div class="inline-flex rounded-full bg-rose-100 px-3 py-1 text-xs font-black uppercase tracking-wider text-rose-700">404 | page not found</div>
+        <h1 class="m-0 mt-5 max-w-3xl text-5xl font-black leading-none tracking-normal text-slate-950 sm:text-6xl lg:text-7xl">This page could not be found.</h1>
+        <p class="m-0 mt-6 max-w-3xl text-lg font-medium leading-8 text-slate-700">The address may be wrong, the page may have moved, or it may not exist anymore.</p>
+        <p class="m-0 mt-4 max-w-3xl text-base font-medium leading-7 text-slate-600">If you think this was a mistake, contact <a class="font-bold text-blue-700 underline decoration-blue-300 underline-offset-4" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>.</p>
       </section>
     </main>
   </body>

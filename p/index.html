@@ -21,6 +21,7 @@
     <meta name="twitter:title" content="Mason">
     <meta name="twitter:description" content="Mason's links.">
     <meta name="twitter:image" content="https://www.mas0ng.com/public_assets/site_branding/site_icons/800/logged_out.png">
+    <script src="/p/site-libs.js"></script>
     <script defer src="/p/navbar.js" data-active="home"></script>
     <style>
       :root {
@@ -469,6 +470,21 @@
         justify-content: center;
       }
 
+      .intro-status {
+        position: fixed;
+        left: 16px;
+        right: 16px;
+        bottom: 24px;
+        z-index: 30;
+        margin: 0;
+        color: rgba(15, 23, 42, 0.58);
+        font-size: 0.78rem;
+        font-weight: 700;
+        line-height: 1.5;
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
       .spinner-container {
         position: absolute;
         z-index: 20;
@@ -637,48 +653,48 @@
       }
     </style>
   </head>
-  <body>
-    <div class="page">
-      <main>
-        <section class="profile" aria-label="Mason profile">
-          <div class="profile-cover" aria-hidden="true"></div>
-          <div class="profile-body">
-            <div class="avatar-ring" aria-hidden="true">
-              <div class="avatar">M</div>
+  <body class="min-h-screen bg-white text-slate-900 antialiased">
+    <div class="page px-5 pb-28 pt-10 sm:px-6 lg:px-8">
+      <main class="mx-auto w-full max-w-5xl space-y-6">
+        <section class="profile overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm" aria-label="Mason profile">
+          <div class="profile-cover h-36 bg-gradient-to-br from-brand-100 via-white to-emerald-50" aria-hidden="true"></div>
+          <div class="profile-body flex items-end gap-5 px-5 pb-6 sm:px-8">
+            <div class="avatar-ring -mt-12 grid size-24 shrink-0 place-items-center rounded-2xl bg-white p-1 shadow-lg" aria-hidden="true">
+              <div class="avatar grid size-full place-items-center rounded-xl bg-gradient-to-br from-brand-500 to-blue-700 text-3xl font-black text-white">M</div>
             </div>
-            <div class="profile-info">
+            <div class="profile-info min-w-0 py-2">
               <div class="profile-top">
-                <h1>Mason</h1>
+                <h1 class="m-0 text-4xl font-black tracking-normal text-slate-950 sm:text-5xl">Mason</h1>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="content-grid" aria-label="Profile links">
-          <div class="section-title">
-            <span>Links</span>
+        <section class="content-grid rounded-lg border border-slate-200 bg-slate-50 p-5 shadow-sm sm:p-6" aria-label="Profile links">
+          <div class="section-title mb-4 flex items-center justify-between">
+            <span class="text-sm font-black uppercase tracking-wider text-slate-500">Links</span>
           </div>
-          <div class="links" data-social-links></div>
+          <div class="links grid gap-3" data-social-links></div>
         </section>
       </main>
     </div>
 
-    <section class="privacy" data-privacy-banner aria-live="polite">
-      <p>We value your privacy. This page does not load third-party tracking scripts. Read the <a href="/p/legal/privacy/">privacy policy</a>.</p>
-      <div class="privacy-actions">
-        <button type="button" data-privacy-choice="seen">Got it</button>
+    <section class="privacy fixed inset-x-4 bottom-4 z-[60] mx-auto max-w-3xl rounded-lg border border-slate-200 bg-white/95 p-4 text-sm font-medium leading-6 text-slate-700 shadow-2xl shadow-slate-900/10 backdrop-blur" data-privacy-banner aria-live="polite">
+      <p class="m-0">We value your privacy. This page does not load third-party tracking scripts. Read the <a class="font-bold text-blue-700 underline decoration-blue-300 underline-offset-4" href="/p/legal/privacy/">privacy policy</a>.</p>
+      <div class="privacy-actions mt-3">
+        <button class="rounded-full bg-slate-950 px-5 py-2 text-sm font-bold text-white transition hover:bg-brand-600" type="button" data-privacy-choice="seen">Got it</button>
       </div>
     </section>
 
-    <div class="external-modal" data-external-modal aria-hidden="true">
-      <section class="external-panel" role="dialog" aria-modal="true" aria-labelledby="external-title">
-        <div class="external-code">External site</div>
-        <h2 id="external-title">You are leaving mas0ng.com</h2>
-        <p>This link opens another website. Check the host before continuing.</p>
-        <span class="external-host" data-external-host></span>
-        <div class="external-actions">
-          <button type="button" data-external-cancel>Stay here</button>
-          <button type="button" data-external-continue>Continue</button>
+    <div class="external-modal fixed inset-0 z-[70] bg-slate-950/35 p-4 backdrop-blur-sm" data-external-modal aria-hidden="true">
+      <section class="external-panel w-full max-w-md rounded-lg border border-slate-200 bg-white p-6 shadow-2xl" role="dialog" aria-modal="true" aria-labelledby="external-title">
+        <div class="external-code mb-4 inline-flex rounded-full bg-blue-50 px-3 py-1 text-xs font-black uppercase tracking-wider text-blue-700">External site</div>
+        <h2 class="m-0 text-2xl font-black text-slate-950" id="external-title">You are leaving mas0ng.com</h2>
+        <p class="m-0 mt-3 text-sm font-medium leading-6 text-slate-600">This link opens another website. Check the host before continuing.</p>
+        <span class="external-host mt-4 block rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-bold text-slate-800" data-external-host></span>
+        <div class="external-actions mt-5 grid gap-3 sm:grid-cols-2">
+          <button class="rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm font-bold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50" type="button" data-external-cancel>Stay here</button>
+          <button class="rounded-full bg-brand-600 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition hover:bg-brand-500" type="button" data-external-continue>Continue</button>
         </div>
       </section>
     </div>
@@ -703,6 +719,7 @@
           </div>
         </div>
       </div>
+      <p class="intro-status" data-intro-status></p>
     </div>
 
     <script>
@@ -791,6 +808,7 @@
           const cleanUrl = `${window.location.pathname}${nextQuery ? `?${nextQuery}` : ""}${window.location.hash}`;
           window.history.replaceState({}, "", cleanUrl);
           overlay.dataset.active = "true";
+          setIntroStatus("Loading /p/");
           applyIntroState(introState);
           window.setTimeout(() => {
             triggerIntroReveal();
@@ -830,18 +848,18 @@
       function renderSocialLinks() {
         socialLinksContainer.replaceChildren(...socials.map((social) => {
           const link = document.createElement("a");
-          link.className = "link-card";
+          link.className = "link-card group flex min-h-24 items-center gap-4 rounded-lg border border-slate-200 bg-white p-4 text-slate-950 no-underline shadow-sm transition hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-lg";
           link.href = social.url;
           link.target = "_blank";
           link.rel = "noopener noreferrer";
           link.dataset.externalLink = "";
 
           const iconShell = document.createElement("span");
-          iconShell.className = "icon-shell";
+          iconShell.className = "icon-shell grid size-14 shrink-0 place-items-center rounded-lg bg-slate-50";
           iconShell.setAttribute("aria-hidden", "true");
 
           const icon = document.createElement("img");
-          icon.className = "social-icon";
+          icon.className = "social-icon size-10";
           icon.src = social.icon;
           icon.alt = "";
           icon.width = 56;
@@ -849,16 +867,18 @@
           iconShell.append(icon);
 
           const text = document.createElement("span");
-          text.className = "link-text";
+          text.className = "link-text grid min-w-0 gap-1";
 
           const name = document.createElement("strong");
+          name.className = "text-base font-black text-slate-950";
           name.textContent = social.name;
 
           const username = document.createElement("small");
+          username.className = "text-sm font-semibold text-slate-500";
           username.textContent = social.username;
 
           const arrow = document.createElement("span");
-          arrow.className = "arrow";
+          arrow.className = "arrow ml-auto text-3xl font-light leading-none text-slate-300 transition group-hover:translate-x-1 group-hover:text-brand-600";
           arrow.setAttribute("aria-hidden", "true");
           arrow.innerHTML = "&rsaquo;";
 
@@ -889,6 +909,7 @@
       function triggerIntroReveal() {
         if (isRevealing) return;
         isRevealing = true;
+        setIntroStatus("");
 
         const spinnerContainer = document.querySelector("#spinner-container");
         const polygons = document.querySelectorAll(".poly-shape");
@@ -906,6 +927,11 @@
           overlay.remove();
           showPrivacyBanner();
         }, 1600);
+      }
+
+      function setIntroStatus(value) {
+        const status = document.querySelector("[data-intro-status]");
+        if (status) status.textContent = value;
       }
 
       function positionRevealHole() {

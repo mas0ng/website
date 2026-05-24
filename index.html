@@ -11,6 +11,7 @@
     <link rel="icon" type="image/png" sizes="256x256" href="/public_assets/site_branding/site_icons/256/logged_out.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/public_assets/site_branding/site_icons/512/logged_out.png">
     <link rel="apple-touch-icon" href="/public_assets/site_branding/site_icons/256/logged_out.png">
+    <script src="/p/site-libs.js"></script>
     <style>
       html {
         background: #ffffff;
@@ -68,6 +69,7 @@
         text-align: center;
         color: rgba(16, 20, 24, 0.56);
         font-size: 0.82rem;
+        overflow-wrap: anywhere;
       }
 
       .status span {
@@ -98,7 +100,7 @@
       }
     </style>
   </head>
-  <body>
+  <body class="bg-white text-slate-900 antialiased">
     <div class="screen" aria-label="Checking session">
       <div class="spinner-container">
         <div class="spinner-core animate-sin-spin">
@@ -107,7 +109,7 @@
           </svg>
         </div>
       </div>
-      <p class="status" id="status">102 <span>|</span> checking session</p>
+      <p class="status" id="status" data-intro-status>Loading /auth/session</p>
     </div>
 
     <script>
@@ -127,6 +129,7 @@
 
       async function resolveTarget() {
         try {
+          document.querySelector("#status").textContent = "Loading /auth/session";
           const response = await fetch("/auth/session", {
             credentials: "include",
             cache: "no-store",
@@ -134,11 +137,11 @@
           });
           const data = await response.json().catch(() => ({}));
           if (response.ok && data.authenticated) {
-            document.querySelector("#status").innerHTML = '200 <span>|</span> opening apps';
+            document.querySelector("#status").textContent = "Loading /apps/";
             return "/apps/";
           }
         } catch {
-          document.querySelector("#status").innerHTML = '200 <span>|</span> opening public page';
+          document.querySelector("#status").textContent = "Loading /p/";
         }
         return "/p/";
       }

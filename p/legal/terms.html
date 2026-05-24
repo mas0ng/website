@@ -7,86 +7,39 @@
     <meta name="description" content="Terms of use for mas0ng.com.">
     <meta name="theme-color" content="#ffffff">
     <link rel="icon" type="image/png" sizes="128x128" href="/public_assets/site_branding/site_icons/128/logged_out.png">
+    <script src="/p/site-libs.js"></script>
     <script defer src="/p/navbar.js" data-active="legal"></script>
-    <style>
-      :root {
-        color-scheme: light;
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        --ink: #101418;
-        --muted: #5f6368;
-        --line: #e0e3e7;
-        --green-soft: #e6f4ea;
-      }
-
-      * { box-sizing: border-box; }
-      body { min-height: 100vh; margin: 0; background: #ffffff; color: var(--ink); }
-      a { color: inherit; text-decoration: none; }
-
-      main {
-        width: min(100%, 980px);
-        margin: 0 auto;
-        padding: clamp(44px, 7vh, 76px) 22px 92px;
-      }
-
-      .hero {
-        min-height: 320px;
-        border: 1px solid #ceead6;
-        border-radius: 8px;
-        background: linear-gradient(135deg, var(--green-soft), #ffffff 72%);
-        padding: clamp(30px, 6vw, 62px);
-        display: grid;
-        align-content: center;
-      }
-
-      h1 { max-width: 760px; margin: 0; font-size: clamp(3rem, 8vw, 6rem); line-height: 0.94; letter-spacing: 0; }
-      .lead { max-width: 720px; margin: 22px 0 0; color: #30353b; font-size: clamp(1.05rem, 2vw, 1.26rem); line-height: 1.66; }
-
-      .section {
-        margin-top: 18px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        padding: clamp(22px, 3vw, 30px);
-        background: #ffffff;
-      }
-
-      h2 { margin: 0 0 12px; font-size: clamp(1.45rem, 3vw, 2.25rem); line-height: 1.12; }
-      p, li { color: var(--muted); font-weight: 560; line-height: 1.7; }
-      p { margin: 0; }
-      p + p { margin-top: 12px; }
-      ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
-      .text-link { color: #0b57d0; font-weight: 750; text-decoration: underline; text-underline-offset: 4px; }
-    </style>
   </head>
-  <body>
-    <main>
-      <section class="hero">
-        <h1>Terms of Use.</h1>
-        <p class="lead">These terms apply when you access mas0ng.com, including the public pages and any protected areas you are authorised to use.</p>
+  <body class="min-h-screen bg-white text-slate-900 antialiased">
+    <main class="mx-auto w-full max-w-[980px] px-5 pb-24 pt-12 sm:px-6 sm:pt-16 lg:pt-20">
+      <section class="grid min-h-[320px] content-center rounded-lg border border-emerald-200 bg-gradient-to-br from-emerald-50 via-white to-white p-8 sm:p-12 lg:p-16">
+        <h1 class="m-0 max-w-3xl text-5xl font-black leading-none tracking-normal sm:text-6xl lg:text-7xl">Terms of Use.</h1>
+        <p class="m-0 mt-6 max-w-3xl text-lg font-medium leading-8 text-slate-700 sm:text-xl">These terms apply when you access mas0ng.com, including the public pages and any protected areas you are authorised to use.</p>
       </section>
-      <section class="section">
-        <h2>Using this site</h2>
-        <ul>
+      <section class="mt-5 rounded-lg border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+        <h2 class="m-0 mb-3 text-2xl font-black leading-tight text-slate-950 sm:text-3xl">Using this site</h2>
+        <ul class="m-0 grid gap-2 pl-5 text-base font-medium leading-7 text-slate-600">
           <li>Use the public pages normally and lawfully.</li>
           <li>Do not attempt to bypass login, session checks, worker routes, or access controls.</li>
           <li>Do not misuse forms, APIs, or protected pages.</li>
           <li>Do not upload, submit, or attempt to process unlawful, harmful, or sensitive data unless specifically requested.</li>
         </ul>
       </section>
-      <section class="section">
-        <h2>Protected areas</h2>
-        <p>Protected pages and APIs are for authorised users only. Access may be refused, revoked, or logged for security and abuse prevention.</p>
+      <section class="mt-5 rounded-lg border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+        <h2 class="m-0 mb-3 text-2xl font-black leading-tight text-slate-950 sm:text-3xl">Protected areas</h2>
+        <p class="m-0 text-base font-medium leading-7 text-slate-600">Protected pages and APIs are for authorised users only. Access may be refused, revoked, or logged for security and abuse prevention.</p>
       </section>
-      <section class="section">
-        <h2>External links</h2>
-        <p>Links to other websites are provided for convenience. External websites are responsible for their own content, terms, and privacy practices.</p>
+      <section class="mt-5 rounded-lg border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+        <h2 class="m-0 mb-3 text-2xl font-black leading-tight text-slate-950 sm:text-3xl">External links</h2>
+        <p class="m-0 text-base font-medium leading-7 text-slate-600">Links to other websites are provided for convenience. External websites are responsible for their own content, terms, and privacy practices.</p>
       </section>
-      <section class="section">
-        <h2>Availability</h2>
-        <p>The site is provided as-is and may change, move, or be unavailable without notice. Nothing on the public pages should be treated as professional advice.</p>
+      <section class="mt-5 rounded-lg border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+        <h2 class="m-0 mb-3 text-2xl font-black leading-tight text-slate-950 sm:text-3xl">Availability</h2>
+        <p class="m-0 text-base font-medium leading-7 text-slate-600">The site is provided as-is and may change, move, or be unavailable without notice. Nothing on the public pages should be treated as professional advice.</p>
       </section>
-      <section class="section">
-        <h2>Contact</h2>
-        <p>Questions about these terms can be sent to <a class="text-link" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>.</p>
+      <section class="mt-5 rounded-lg border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+        <h2 class="m-0 mb-3 text-2xl font-black leading-tight text-slate-950 sm:text-3xl">Contact</h2>
+        <p class="m-0 text-base font-medium leading-7 text-slate-600">Questions about these terms can be sent to <a class="font-bold text-blue-700 underline decoration-blue-300 underline-offset-4" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>.</p>
       </section>
     </main>
   </body>
