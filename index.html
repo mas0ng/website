@@ -1,26 +1,26 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>mas0ng</title>
     <meta name="description" content="mas0ng.com session check.">
     <meta name="robots" content="noindex">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#ffffff">
     <link rel="icon" type="image/png" sizes="128x128" href="/public_assets/site_branding/site_icons/128/logged_out.png">
     <link rel="icon" type="image/png" sizes="256x256" href="/public_assets/site_branding/site_icons/256/logged_out.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/public_assets/site_branding/site_icons/512/logged_out.png">
     <link rel="apple-touch-icon" href="/public_assets/site_branding/site_icons/256/logged_out.png">
     <style>
       html {
-        background: #000000;
+        background: #ffffff;
       }
 
       body {
         min-height: 100vh;
         margin: 0;
-        background: #000000;
-        color: #ffffff;
+        background: #ffffff;
+        color: #101418;
         font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
         overflow: hidden;
         user-select: none;
@@ -66,28 +66,28 @@
         bottom: 28px;
         z-index: 30;
         text-align: center;
-        color: rgba(255, 255, 255, 0.52);
+        color: rgba(16, 20, 24, 0.56);
         font-size: 0.82rem;
       }
 
       .status span {
-        color: rgba(255, 255, 255, 0.32);
+        color: rgba(16, 20, 24, 0.34);
       }
 
       @keyframes sinSpin {
         0% {
           transform: rotate(0deg) scale(0.9);
-          filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+          filter: drop-shadow(0 0 10px rgba(26, 115, 232, 0.22));
           stroke-width: 4;
         }
         50% {
           transform: rotate(180deg) scale(1.1);
-          filter: drop-shadow(0 0 30px rgba(255, 255, 255, 1));
+          filter: drop-shadow(0 0 30px rgba(26, 115, 232, 0.44));
           stroke-width: 8;
         }
         100% {
           transform: rotate(360deg) scale(0.9);
-          filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+          filter: drop-shadow(0 0 10px rgba(26, 115, 232, 0.22));
           stroke-width: 4;
         }
       }
@@ -103,7 +103,7 @@
       <div class="spinner-container">
         <div class="spinner-core animate-sin-spin">
           <svg viewBox="0 0 100 100" aria-hidden="true">
-            <polygon points="50,10 88,38 74,82 26,82 12,38" fill="none" stroke="#ffffff" stroke-linejoin="round" stroke-linecap="round" class="poly-shape"></polygon>
+            <polygon points="50,10 88,38 74,82 26,82 12,38" fill="none" stroke="#101418" stroke-linejoin="round" stroke-linecap="round" class="poly-shape"></polygon>
           </svg>
         </div>
       </div>
@@ -134,8 +134,8 @@
           });
           const data = await response.json().catch(() => ({}));
           if (response.ok && data.authenticated) {
-            document.querySelector("#status").innerHTML = '200 <span>|</span> opening dash';
-            return "/dash/";
+            document.querySelector("#status").innerHTML = '200 <span>|</span> opening apps';
+            return "https://www.mas0ng.com/apps/";
           }
         } catch {
           document.querySelector("#status").innerHTML = '200 <span>|</span> opening public page';
