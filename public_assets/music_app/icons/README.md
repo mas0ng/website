@@ -1,32 +1,25 @@
-# Music App Icon Upload List
+# Music App Icons
 
-Upload the replacement PNG icons into this folder:
+The music app no longer uses uploaded PNG icons from this folder.
 
-`website/public_assets/music_app/icons/`
+All playback, library, volume, like, delete, refresh, logout, and jump controls now render from Lucide icons in the browser. You do not need to upload replacement icon files here.
 
-Keep the filenames exactly as listed below. Use transparent backgrounds, square canvases, and at least 128x128px source artwork so the buttons stay crisp.
+## Lucide Icons Used
 
-## Required Icons
+| Control | Lucide icon | Runtime colour |
+| --- | --- | --- |
+| Play | `play` | Inherits the button text colour, usually `#ffffff` |
+| Pause | `pause` | Inherits the button text colour, usually `#ffffff` |
+| Previous | `skip-back` | Inherits the button text colour |
+| Next | `skip-forward` | Inherits the button text colour |
+| Shuffle | `shuffle` | Inherits the button text colour |
+| Like | `heart` | Inherits the button text colour |
+| Liked | `heart` with fill | Inherits the button text colour |
+| Refresh library | `refresh-cw` | Inherits the button text colour |
+| Delete / clear queue | `trash-2` | Inherits the button text colour |
+| Logout | `log-out` | Inherits the button text colour |
+| Jump to current | `crosshair` | Inherits the button text colour |
+| Volume | `volume-2` | Inherits the button text colour |
+| Muted volume | `volume-x` | Inherits the button text colour |
 
-| Filename | Used for | Icon colour | Accent/background colour |
-| --- | --- | --- | --- |
-| `play.png` | Main play, row play, bottom player play | `#ffffff` | Use on `#1688d8` blue controls |
-| `pause.png` | Main pause, row pause, bottom player pause | `#ffffff` | Use on `#1688d8` blue controls |
-| `previous.png` | Previous track | `#174ea6` | Transparent |
-| `next.png` | Next track | `#174ea6` | Transparent |
-| `shuffle.png` | Smart shuffle | `#174ea6` | Transparent |
-| `heart-unliked.png` | Like action, not yet liked | `#64748b` | Transparent |
-| `heart-liked.png` | Liked state and play liked | `#e11d48` | Transparent |
-| `refresh.png` | Refresh library | `#1688d8` | Transparent |
-| `trash.png` | Delete song and clear queue | `#dc2626` | Transparent |
-| `logout.png` | Sign out | `#64748b` | Transparent |
-| `target.png` | Jump to current song | `#1688d8` | Transparent |
-| `volume.png` | Volume enabled | `#174ea6` | Transparent |
-| `volume-muted.png` | Muted volume | `#64748b` | Transparent |
-
-## Design Notes
-
-- Match the light blue music UI: primary blue `#1688d8`, deep blue `#174ea6`, soft slate `#64748b`, danger red `#dc2626`, liked red `#e11d48`.
-- Do not include text in any icon.
-- Keep line weights consistent across all icons.
-- Avoid built-in circular outlines or boxed backgrounds. The app supplies button shapes itself.
+Button colours are controlled by the music app CSS, so icons stay consistent with hover, active, liked, and disabled states.

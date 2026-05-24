@@ -3,7 +3,7 @@
   const SHARED_NAV_URL = "https://sharedassets.mas0ng.com/navbar.js";
   const TAILWIND_URL = "https://cdn.tailwindcss.com";
   const LUCIDE_URL = "https://unpkg.com/lucide@latest";
-  const LOGIN_URL = "/auth/login?return_to=https%3A%2F%2Fwww.mas0ng.com%2Fapps%2F";
+  const LOGIN_URL = "/auth/login?return_to=%2Fapps%2F";
   const loaderScript = document.currentScript;
 
   const legalLinks = [
@@ -118,19 +118,19 @@
     const active = loaderScript?.dataset.active || inferActive();
     const nav = document.createElement("nav");
     nav.id = NAV_ID;
-    nav.className = "fixed left-0 right-0 top-3 z-[2147482000] px-3 sm:px-5";
+    nav.className = "fixed left-0 right-0 top-0 z-[2147482000] border-b border-slate-200/80 bg-white/95 shadow-sm shadow-slate-900/5 backdrop-blur-xl";
     nav.setAttribute("aria-label", "Primary");
     nav.innerHTML = `
-      <div class="mx-auto flex h-20 max-w-7xl items-center justify-between gap-5 rounded-2xl border border-slate-200/80 bg-white/90 px-4 shadow-xl shadow-slate-900/10 backdrop-blur-xl sm:px-5 lg:px-6">
+      <div class="flex h-16 w-full items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <a class="flex shrink-0 items-center gap-3" href="/p/" aria-label="mas0ng.com public home">
-          <img src="/public_assets/site_branding/site_icons/256/logged_out.png" alt="" class="h-11 w-11 rounded-xl object-cover">
+          <img src="/public_assets/site_branding/site_icons/256/logged_out.png" alt="" class="h-10 w-10 rounded-xl object-cover">
           <span class="grid leading-tight">
-            <span class="text-lg font-black tracking-tight text-slate-950">mas0ng.com</span>
+            <span class="text-base font-black tracking-tight text-slate-950 sm:text-lg">mas0ng.com</span>
           </span>
         </a>
 
-        <div class="hidden flex-1 items-center justify-center px-8 md:flex">
-          <div class="flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50/80 p-1">
+        <div class="hidden flex-1 items-center justify-center px-4 md:flex">
+          <div class="flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50/90 p-1">
             <a href="/p/" class="${desktopLinkClass(active === "home")}">Home</a>
             ${desktopDropdown("Legal", legalLinks, active)}
           </div>
@@ -154,7 +154,7 @@
       </div>
 
       <div class="mobile-menu absolute left-0 top-full max-h-0 w-full overflow-hidden border-b border-slate-200 bg-white opacity-0 shadow-xl transition-all duration-300 md:hidden">
-        <div class="max-h-[calc(100vh-80px)] overflow-y-auto px-4 pb-6 pt-2">
+        <div class="max-h-[calc(100vh-64px)] overflow-y-auto px-4 pb-6 pt-2">
           <a href="/p/" class="block rounded-xl px-4 py-3 text-base font-semibold text-slate-900 hover:bg-slate-50">Home</a>
           ${mobileDropdown("Legal", legalLinks, active)}
           <div class="my-4 h-px bg-slate-100"></div>
@@ -164,7 +164,7 @@
     `;
 
     document.body.prepend(nav);
-    document.body.classList.add("pt-24");
+    document.body.classList.add("pt-16");
     bindMobile(nav);
     window.lucide?.createIcons?.();
   }
