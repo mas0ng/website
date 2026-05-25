@@ -118,10 +118,10 @@
     const active = loaderScript?.dataset.active || inferActive();
     const nav = document.createElement("nav");
     nav.id = NAV_ID;
-    nav.className = "fixed left-0 right-0 top-0 z-[2147482000] border-b border-slate-200/80 bg-white/95 shadow-sm shadow-slate-900/5 backdrop-blur-xl";
+    nav.className = "fixed left-0 right-0 top-0 z-[2147482000] box-border max-w-full overflow-x-clip border-b border-slate-200/80 bg-white/95 shadow-sm shadow-slate-900/5 backdrop-blur-xl";
     nav.setAttribute("aria-label", "Primary");
     nav.innerHTML = `
-      <div class="flex h-16 w-full items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+      <div class="box-border flex h-16 w-full max-w-full items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
         <a class="flex shrink-0 items-center gap-3" href="/p/" aria-label="mas0ng.com public home">
           <img src="/public_assets/site_branding/site_icons/256/logged_out.png" alt="" class="h-10 w-10 rounded-xl object-cover">
           <span class="grid leading-tight">
@@ -129,14 +129,14 @@
           </span>
         </a>
 
-        <div class="hidden flex-1 items-center justify-center px-4 md:flex">
+        <div class="hidden min-w-0 flex-1 items-center justify-center px-3 lg:flex">
           <div class="flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50/90 p-1">
             <a href="/p/" class="${desktopLinkClass(active === "home")}">Home</a>
             ${desktopDropdown("Legal", legalLinks, active)}
           </div>
         </div>
 
-        <div class="hidden items-center gap-4 md:flex">
+        <div class="hidden shrink-0 items-center gap-3 lg:flex">
           <span class="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-2 text-xs font-black uppercase tracking-wider text-blue-700">
             <i data-lucide="globe-2" class="h-4 w-4"></i>
             Public
@@ -147,13 +147,13 @@
           </a>
         </div>
 
-        <button class="mobile-menu-button rounded-lg p-2 text-slate-600 transition hover:bg-slate-100 hover:text-sky-700 md:hidden" type="button" aria-label="Open menu" aria-expanded="false">
+        <button class="mobile-menu-button rounded-lg p-2 text-slate-600 transition hover:bg-slate-100 hover:text-sky-700 lg:hidden" type="button" aria-label="Open menu" aria-expanded="false">
           <i data-lucide="menu" class="menu-icon h-6 w-6"></i>
           <i data-lucide="x" class="close-icon hidden h-6 w-6"></i>
         </button>
       </div>
 
-      <div class="mobile-menu absolute left-0 top-full max-h-0 w-full overflow-hidden border-b border-slate-200 bg-white opacity-0 shadow-xl transition-all duration-300 md:hidden">
+      <div class="mobile-menu absolute left-0 top-full box-border max-h-0 w-full overflow-hidden border-b border-slate-200 bg-white opacity-0 shadow-xl transition-all duration-300 lg:hidden">
         <div class="max-h-[calc(100vh-64px)] overflow-y-auto px-4 pb-6 pt-2">
           <a href="/p/" class="block rounded-xl px-4 py-3 text-base font-semibold text-slate-900 hover:bg-slate-50">Home</a>
           ${mobileDropdown("Legal", legalLinks, active)}
@@ -164,7 +164,8 @@
     `;
 
     document.body.prepend(nav);
-    document.body.classList.add("pt-16");
+    document.body.classList.remove("pt-16", "pt-20", "pt-24");
+    document.body.classList.add("pt-20");
     bindMobile(nav);
     window.lucide?.createIcons?.();
   }

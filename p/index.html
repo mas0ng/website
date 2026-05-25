@@ -878,14 +878,15 @@
           username.textContent = social.username;
 
           const arrow = document.createElement("span");
-          arrow.className = "arrow ml-auto text-3xl font-light leading-none text-slate-300 transition group-hover:translate-x-1 group-hover:text-brand-600";
+          arrow.className = "arrow ml-auto grid size-8 place-items-center rounded-lg border border-slate-200 bg-slate-50 text-slate-300 transition group-hover:translate-x-1 group-hover:border-brand-200 group-hover:text-brand-600";
           arrow.setAttribute("aria-hidden", "true");
-          arrow.innerHTML = "&rsaquo;";
+          arrow.innerHTML = '<i data-lucide="arrow-up-right" class="size-4"></i>';
 
           text.append(name, username);
           link.append(iconShell, text, arrow);
           return link;
         }));
+        window.mas0ngLoadDesignLibraries?.then?.(() => window.lucide?.createIcons?.());
       }
 
       function openExternalWarning(url) {
