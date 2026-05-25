@@ -9,6 +9,7 @@
   const legalLinks = [
     { id: "legal", label: "Legal hub", href: "/p/legal/", icon: "scale" },
     { id: "privacy", label: "Privacy policy", href: "/p/legal/privacy/", icon: "shield" },
+    { id: "ai", label: "AI policy", href: "/p/legal/ai.html", icon: "bot" },
     { id: "terms", label: "Terms", href: "/p/legal/terms.html", icon: "file-text" },
     { id: "cookies", label: "Cookies", href: "/p/legal/cookies.html", icon: "cookie" },
     { id: "security", label: "Security", href: "/p/legal/security.html", icon: "lock" }
@@ -240,6 +241,7 @@
   function inferActive() {
     const path = window.location.pathname.replace(/\/index\.html$/, "/");
     if (path.startsWith("/p/legal/privacy")) return "privacy";
+    if (path.endsWith("/ai.html")) return "ai";
     if (path.endsWith("/terms.html")) return "terms";
     if (path.endsWith("/cookies.html")) return "cookies";
     if (path.endsWith("/security.html")) return "security";

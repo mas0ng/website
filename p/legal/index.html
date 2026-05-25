@@ -1,53 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-GB">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legal | Mason</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Legal | mas0ng.com</title>
     <meta name="description" content="Legal documents for mas0ng.com.">
+    <meta name="theme-color" content="#f7f8fb">
     <link rel="icon" type="image/png" sizes="128x128" href="/public_assets/site_branding/site_icons/128/logged_out.png">
+    <link rel="stylesheet" href="/p/legal/legal.css">
     <script src="/p/site-libs.js"></script>
     <script defer src="/p/navbar.js" data-active="legal"></script>
-</head>
-<body class="min-h-screen bg-white text-slate-900 antialiased">
-    <main class="mx-auto w-full max-w-6xl px-5 pb-20 pt-12 sm:px-6 sm:pt-16 lg:px-8">
-        <section class="grid min-h-[340px] content-center rounded-lg border border-blue-100 bg-gradient-to-br from-blue-50 via-emerald-50 to-amber-50 p-8 sm:p-12 lg:p-16">
-            <h1 class="m-0 max-w-3xl text-5xl font-black leading-none tracking-normal sm:text-6xl lg:text-7xl">Legal centre.</h1>
-            <p class="m-0 mt-5 max-w-3xl text-lg font-medium leading-8 text-slate-700 sm:text-xl">Privacy, terms, cookie information, and security notes for mas0ng.com.</p>
-        </section>
+  </head>
+  <body class="min-h-screen text-slate-900 antialiased">
+    <main class="legal-shell">
+      <section class="legal-hero">
+        <p class="legal-kicker">Legal centre</p>
+        <h1 class="legal-title">Policies for mas0ng.com.</h1>
+        <p class="legal-lead">Privacy, terms, AI usage, cookies, and security notes for the public site and private apps including AI, music, dash, and diagnostics.</p>
+      </section>
 
-        <h2 class="mb-5 mt-14 text-3xl font-black tracking-normal text-slate-950 sm:text-4xl">Documents</h2>
-        <section class="grid gap-4 md:grid-cols-2" aria-label="Legal documents">
-            <a class="grid min-h-[220px] content-between rounded-lg border border-blue-100 bg-blue-50 p-6 text-slate-950 no-underline shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl" href="/p/legal/privacy/">
-                <div>
-                    <h2 class="m-0 mb-3 text-2xl font-black leading-tight sm:text-3xl">Privacy Policy</h2>
-                    <p class="m-0 max-w-md text-base font-medium leading-7 text-slate-700">Explains what information may be handled by this site, workers, login systems, and connected dashboard features.</p>
-                </div>
-            </a>
-            <a class="grid min-h-[220px] content-between rounded-lg border border-emerald-100 bg-emerald-50 p-6 text-slate-950 no-underline shadow-sm transition hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl" href="/p/legal/terms.html">
-                <div>
-                    <h2 class="m-0 mb-3 text-2xl font-black leading-tight sm:text-3xl">Terms of Use</h2>
-                    <p class="m-0 max-w-md text-base font-medium leading-7 text-slate-700">Sets out basic rules for using the public pages and protected services.</p>
-                </div>
-            </a>
-            <a class="grid min-h-[220px] content-between rounded-lg border border-amber-100 bg-amber-50 p-6 text-slate-950 no-underline shadow-sm transition hover:-translate-y-1 hover:border-amber-200 hover:shadow-xl" href="/p/legal/cookies.html">
-                <div>
-                    <h2 class="m-0 mb-3 text-2xl font-black leading-tight sm:text-3xl">Cookie Notice</h2>
-                    <p class="m-0 max-w-md text-base font-medium leading-7 text-slate-700">Explains cookies, session storage, local preferences, and similar browser technologies.</p>
-                </div>
-            </a>
-            <a class="grid min-h-[220px] content-between rounded-lg border border-rose-100 bg-rose-50 p-6 text-slate-950 no-underline shadow-sm transition hover:-translate-y-1 hover:border-rose-200 hover:shadow-xl" href="/p/legal/security.html">
-                <div>
-                    <h2 class="m-0 mb-3 text-2xl font-black leading-tight sm:text-3xl">Security Notes</h2>
-                    <p class="m-0 max-w-md text-base font-medium leading-7 text-slate-700">Explains access protection, account safety, and how to report a security concern.</p>
-                </div>
-            </a>
-        </section>
+      <section class="legal-grid" aria-label="Legal documents">
+        <a class="legal-card" href="/p/legal/privacy/">
+          <div>
+            <h2>Privacy Policy</h2>
+            <p>Explains data handled by public pages, login, workers, private apps, AI chats, uploads, and connected services.</p>
+          </div>
+          <span>Read policy</span>
+        </a>
+        <a class="legal-card" href="/p/legal/ai.html">
+          <div>
+            <h2>AI Policy</h2>
+            <p>Explains model providers, prompts, uploaded files, local extraction, retention, and sensible limits for the private AI app.</p>
+          </div>
+          <span>Read policy</span>
+        </a>
+        <a class="legal-card" href="/p/legal/terms.html">
+          <div>
+            <h2>Terms of Use</h2>
+            <p>Sets out basic rules for using public pages, protected routes, private APIs, uploads, and AI features.</p>
+          </div>
+          <span>Read terms</span>
+        </a>
+        <a class="legal-card" href="/p/legal/cookies.html">
+          <div>
+            <h2>Cookie Notice</h2>
+            <p>Explains session cookies, local preferences, local app storage, and similar browser technologies.</p>
+          </div>
+          <span>Read notice</span>
+        </a>
+        <a class="legal-card" href="/p/legal/security.html">
+          <div>
+            <h2>Security Notes</h2>
+            <p>Explains protected access, session checks, server-side secrets, upload limits, and reporting security concerns.</p>
+          </div>
+          <span>Read notes</span>
+        </a>
+      </section>
 
-        <section class="mt-5 grid gap-6 rounded-lg border border-slate-200 bg-slate-50 p-6 sm:grid-cols-[0.8fr_1fr] sm:p-9">
-            <h2 class="m-0 text-2xl font-black leading-tight text-slate-950 sm:text-3xl">Questions or requests.</h2>
-            <p class="m-0 text-base font-medium leading-7 text-slate-600">For legal, privacy, or security questions, contact <a class="font-bold text-blue-700 underline decoration-blue-300 underline-offset-4" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>.</p>
-        </section>
+      <section class="legal-stack">
+        <div class="legal-section legal-callout">
+          <h2>Questions or requests</h2>
+          <p>For legal, privacy, AI, or security questions, contact <a class="legal-link" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>.</p>
+        </div>
+      </section>
     </main>
-</body>
+  </body>
 </html>

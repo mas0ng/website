@@ -3,35 +3,53 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Security Notes | Mason</title>
+    <title>Security Notes | mas0ng.com</title>
     <meta name="description" content="Security notes for mas0ng.com.">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#f7f8fb">
     <link rel="icon" type="image/png" sizes="128x128" href="/public_assets/site_branding/site_icons/128/logged_out.png">
+    <link rel="stylesheet" href="/p/legal/legal.css">
     <script src="/p/site-libs.js"></script>
     <script defer src="/p/navbar.js" data-active="legal"></script>
   </head>
-  <body class="min-h-screen bg-white text-slate-900 antialiased">
-    <main class="mx-auto w-full max-w-[980px] px-5 pb-24 pt-12 sm:px-6 sm:pt-16 lg:pt-20">
-      <section class="grid min-h-[320px] content-center rounded-lg border border-rose-200 bg-gradient-to-br from-rose-50 via-white to-white p-8 sm:p-12 lg:p-16">
-        <h1 class="m-0 max-w-3xl text-5xl font-black leading-none tracking-normal sm:text-6xl lg:text-7xl">Security Notes.</h1>
-        <p class="m-0 mt-6 max-w-3xl text-lg font-medium leading-8 text-slate-700 sm:text-xl">These notes explain how protected areas are intended to be accessed and how security concerns can be reported.</p>
+  <body class="min-h-screen text-slate-900 antialiased">
+    <main class="legal-shell">
+      <section class="legal-hero">
+        <p class="legal-kicker">Security notes</p>
+        <h1 class="legal-title">Keeping private apps protected.</h1>
+        <p class="legal-lead">These notes explain intended access controls, session checks, server-side secrets, upload limits, and how to report security concerns.</p>
+        <p class="legal-meta">Last updated: 25 May 2026</p>
       </section>
-      <section class="mt-5 rounded-lg border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-        <h2 class="m-0 mb-3 text-2xl font-black leading-tight text-slate-950 sm:text-3xl">Authorised access</h2>
-        <p class="m-0 text-base font-medium leading-7 text-slate-600">Private pages and worker API routes are intended for authorised users only. Login, session, and server-side verification checks protect those areas.</p>
-      </section>
-      <section class="mt-5 rounded-lg border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-        <h2 class="m-0 mb-3 text-2xl font-black leading-tight text-slate-950 sm:text-3xl">Session safety</h2>
-        <ul class="m-0 grid gap-2 pl-5 text-base font-medium leading-7 text-slate-600">
-          <li>Keep login details private.</li>
-          <li>Sign out when using a shared device.</li>
-          <li>Clear browser cookies if a device is lost or no longer trusted.</li>
-          <li>Report unexpected login or session behaviour.</li>
-        </ul>
-      </section>
-      <section class="mt-5 rounded-lg border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-        <h2 class="m-0 mb-3 text-2xl font-black leading-tight text-slate-950 sm:text-3xl">Reporting concerns</h2>
-        <p class="m-0 text-base font-medium leading-7 text-slate-600">If you believe you have found a security issue, contact <a class="font-bold text-blue-700 underline decoration-blue-300 underline-offset-4" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a> with enough detail to understand and reproduce the issue.</p>
+
+      <section class="legal-stack">
+        <section class="legal-section">
+          <h2>Authorised access</h2>
+          <p>Private pages and Worker API routes are intended for authorised users only. Login, session cookies, server-side auth verification, and route checks protect those areas.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>AI token protection</h2>
+          <p>AI provider keys should stay server-side in Worker secrets. The browser should call the private AI Worker, and the Worker should verify the session before sending requests to providers such as OpenAI or DeepSeek.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Upload limits</h2>
+          <p>The AI app enforces compressed file limits, total upload allowance, same-origin checks for unsafe requests, and retention rules for pinned and recent chats. These controls reduce storage abuse and accidental cost exposure.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Session safety</h2>
+          <ul>
+            <li>Keep login details private.</li>
+            <li>Sign out when using a shared device.</li>
+            <li>Clear browser cookies if a device is lost or no longer trusted.</li>
+            <li>Report unexpected login, session, AI usage, upload, or dashboard behaviour.</li>
+          </ul>
+        </section>
+
+        <section class="legal-section">
+          <h2>Reporting concerns</h2>
+          <p>If you believe you have found a security issue, contact <a class="legal-link" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a> with enough detail to understand and reproduce the issue.</p>
+        </section>
       </section>
     </main>
   </body>
