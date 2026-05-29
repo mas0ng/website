@@ -3,36 +3,303 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>mas0ng</title>
-    <meta name="description" content="mas0ng.com session check.">
-    <meta name="robots" content="noindex">
+    <title>Mason</title>
+    <meta name="description" content="Mason">
     <meta name="theme-color" content="#ffffff">
     <link rel="icon" type="image/png" sizes="128x128" href="/public_assets/site_branding/site_icons/128/logged_out.png">
     <link rel="icon" type="image/png" sizes="256x256" href="/public_assets/site_branding/site_icons/256/logged_out.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/public_assets/site_branding/site_icons/512/logged_out.png">
     <link rel="apple-touch-icon" href="/public_assets/site_branding/site_icons/256/logged_out.png">
-    <script src="/p/site-libs.js"></script>
+    <meta property="og:title" content="Mason">
+    <meta property="og:description" content="Mason">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mas0ng.com/">
+    <meta property="og:image" content="https://www.mas0ng.com/public_assets/site_branding/site_icons/800/logged_out.png">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="800">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Mason">
+    <meta name="twitter:description" content="Mason">
+    <meta name="twitter:image" content="https://www.mas0ng.com/public_assets/site_branding/site_icons/800/logged_out.png">
+    <script src="/site-libs.js"></script>
+    <script defer src="/navbar.js" data-active="home"></script>
     <style>
-      html {
+      :root {
+        color-scheme: light;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         background: #ffffff;
+        color: #101418;
+        --bg: #ffffff;
+        --panel: #ffffff;
+        --panel-strong: #ffffff;
+        --line: #e0e3e7;
+        --line-strong: #c7d8f8;
+        --muted: #5f6368;
+        --blue: #1a73e8;
+        --blue-strong: #174ea6;
+        --blue-soft: #e8f0fe;
+        --green-soft: #e6f4ea;
+        --yellow-soft: #fef7e0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: transparent;
       }
 
       body {
         min-height: 100vh;
         margin: 0;
-        background: #ffffff;
-        color: #101418;
-        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+        background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+        color: #0f172a;
+      }
+
+      a,
+      button {
+        font: inherit;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      .page {
+        position: relative;
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr;
         overflow: hidden;
+      }
+
+      /* Clean, calm page — no heavy decorative overlays */
+
+      main {
+        position: relative;
+        width: min(100%, 980px);
+        margin: 0 auto;
+        padding: clamp(28px, 6vh, 58px) 18px 124px;
+      }
+
+      .profile {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 20px;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+        overflow: hidden;
+      }
+
+      .profile-body {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 28px 32px;
+      }
+
+      .avatar-ring {
+        width: 88px;
+        height: 88px;
+        display: grid;
+        place-items: center;
+        border-radius: 9999px;
+        background: #0f172a;
+        padding: 4px;
+        flex-shrink: 0;
+        box-shadow: 0 4px 12px -2px rgb(15 23 42 / 0.15);
+      }
+
+      .avatar {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-items: center;
+        border-radius: 9999px;
+        background: #0f172a;
+        color: white;
+        font-size: 2.1rem;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+      }
+
+      .profile-info {
+        min-width: 0;
+      }
+
+      .profile-top {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      h1, h2, p { margin: 0; }
+
+      .main-title {
+        font-size: clamp(2.75rem, 8vw, 4.25rem);
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        line-height: 0.92;
+        color: #0f172a;
+      }
+
+      .section-heading {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #64748b;
+      }
+
+      .links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 10px;
+      }
+
+      .link-card {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 16px 20px;
+        border: 1px solid #e2e8f0;
+        border-radius: 14px;
+        background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+
+      .link-card:hover {
+        border-color: #94a3b8;
+        box-shadow: 0 10px 15px -3px rgb(15 23 42 / 0.1);
+        transform: translateY(-1px);
+      }
+
+      .icon-shell {
+        width: 46px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        border-radius: 12px;
+        background: #f8fafc;
+      }
+
+      .social-icon {
+        width: 26px;
+        height: 26px;
+        display: block;
+      }
+
+      .link-text {
+        min-width: 0;
+        flex: 1;
+      }
+
+      .link-card .name {
+        font-weight: 600;
+        font-size: 1.02rem;
+        color: #0f172a;
+        line-height: 1.2;
+      }
+
+      .link-card .handle {
+        font-size: 0.875rem;
+        color: #64748b;
+        margin-top: 1px;
+      }
+
+      .privacy-banner {
+        position: fixed;
+        left: 50%;
+        bottom: 20px;
+        transform: translateX(-50%);
+        z-index: 60;
+        display: none;
+        max-width: 420px;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 9999px;
+        padding: 10px 18px 10px 22px;
+        box-shadow: 0 10px 15px -3px rgb(15 23 42 / 0.08);
+        font-size: 0.8125rem;
+      }
+      .privacy-banner[data-open="true"] { display: flex; align-items: center; gap: 12px; }
+
+      .external-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 70;
+        display: none;
+        place-items: center;
+        padding: 24px;
+        background: rgba(15, 23, 42, 0.65);
+        backdrop-filter: blur(8px);
+      }
+      .external-modal[data-open="true"] { display: grid; }
+
+      .external-panel {
+        width: 100%;
+        max-width: 420px;
+        background: #fff;
+        border-radius: 20px;
+        border: 1px solid #e2e8f0;
+        padding: 28px;
+        box-shadow: 0 25px 50px -12px rgb(15 23 42 / 0.25);
+      }
+
+      .intro-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        width: 100vw;
+        height: 100vh;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: #ffffff;
+        overflow: hidden;
+        pointer-events: none;
         user-select: none;
       }
 
-      .screen {
-        width: 100vw;
-        height: 100vh;
+      .intro-overlay[data-active="true"] {
+        display: flex;
+      }
+
+      .intro-overlay.is-revealing {
+        background: transparent !important;
+      }
+
+      .intro-stage {
+        position: relative;
+        width: 100%;
+        height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
+      }
+
+      .intro-status {
+        position: fixed;
+        left: 16px;
+        right: 16px;
+        bottom: 24px;
+        z-index: 30;
+        margin: 0;
+        color: rgba(15, 23, 42, 0.58);
+        font-size: 0.78rem;
+        font-weight: 700;
+        line-height: 1.5;
+        text-align: center;
+        overflow-wrap: anywhere;
       }
 
       .spinner-container {
@@ -60,20 +327,27 @@
         overflow: visible;
       }
 
-      .status {
+      .reveal-screen {
         position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 28px;
-        z-index: 30;
-        text-align: center;
-        color: rgba(16, 20, 24, 0.56);
-        font-size: 0.82rem;
-        overflow-wrap: anywhere;
+        inset: 0;
+        z-index: 10;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        opacity: 0;
       }
 
-      .status span {
-        color: rgba(16, 20, 24, 0.34);
+      .reveal-hole {
+        transform-box: fill-box;
+        transform-origin: center;
+      }
+
+      .is-revealing .reveal-screen {
+        opacity: 1;
+      }
+
+      .is-revealing .reveal-hole {
+        animation: revealHole 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
       }
 
       @keyframes sinSpin {
@@ -94,74 +368,399 @@
         }
       }
 
+      @keyframes burstContainer {
+        0% { transform: scale(1) rotate(0deg); opacity: 1; }
+        30% { transform: scale(0.6) rotate(-45deg); opacity: 1; }
+        60% { transform: scale(4) rotate(20deg); opacity: 1; }
+        100% { transform: scale(60) rotate(90deg); opacity: 0; }
+      }
+
+      @keyframes burstPoly {
+        0% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.8)); stroke-width: 8; stroke: #ffffff; }
+        30% { stroke: #3b82f6; filter: drop-shadow(0 0 40px rgba(59, 130, 246, 1)); stroke-width: 16; }
+        60% { stroke: #a855f7; filter: drop-shadow(0 0 60px rgba(168, 85, 247, 1)); stroke-width: 4; }
+        100% { stroke: #ec4899; filter: drop-shadow(0 0 100px rgba(236, 72, 153, 0)); stroke-width: 0.5; }
+      }
+
+      @keyframes revealHole {
+        0% { transform: scale(1) rotate(0deg); opacity: 1; }
+        30% { transform: scale(0.6) rotate(-45deg); opacity: 1; }
+        60% { transform: scale(4) rotate(20deg); opacity: 1; }
+        100% { transform: scale(60) rotate(90deg); opacity: 1; }
+      }
+
       .animate-sin-spin {
         animation: sinSpin 4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+        animation-delay: var(--intro-phase-delay, 0ms);
         transform-origin: center;
+      }
+
+      .animate-burst-container {
+        animation: burstContainer 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      .animate-burst-poly {
+        animation: burstPoly 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+        stroke-linejoin: round;
+        stroke-linecap: round;
+      }
+
+      @media (max-width: 760px) {
+        main {
+          padding-top: 18px;
+        }
+
+
+
+        .profile-body {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
+        .avatar-ring {
+          width: 110px;
+          height: 110px;
+          transform: translateY(-38px);
+        }
+
+        .avatar {
+          border-width: 6px;
+          font-size: 3.2rem;
+        }
+
+        .profile-info {
+          padding-top: 0;
+          margin-top: -22px;
+        }
+
+        .profile-top {
+          display: grid;
+        }
+
+        h1 {
+          font-size: clamp(3.6rem, 18vw, 5rem);
+        }
+
+        .links {
+          grid-template-columns: 1fr;
+        }
+
+      }
+
+      @media (max-width: 620px) {
+        header {
+          gap: 12px;
+          padding-inline: 14px;
+        }
+
+        .brand {
+          font-size: 0.96rem;
+        }
+
+        .privacy {
+          grid-template-columns: 1fr;
+        }
+
+        .external-actions {
+          display: grid;
+        }
+
       }
     </style>
   </head>
-  <body class="bg-white text-slate-900 antialiased">
-    <div class="screen" aria-label="Checking session">
-      <div class="spinner-container">
-        <div class="spinner-core animate-sin-spin">
-          <svg viewBox="0 0 100 100" aria-hidden="true">
-            <polygon points="50,10 88,38 74,82 26,82 12,38" fill="none" stroke="#101418" stroke-linejoin="round" stroke-linecap="round" class="poly-shape"></polygon>
-          </svg>
+  <body class="min-h-screen bg-[#fafafa] text-slate-900 antialiased">
+    <div class="max-w-3xl mx-auto px-5 pt-14 pb-20 sm:px-6">
+      <main class="space-y-12">
+        <!-- Clean modern hero with gradient accent -->
+        <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-5">
+          <div class="avatar-ring w-20 h-20 sm:w-[92px] sm:h-[92px] bg-gradient-to-br from-brand-500 via-brand-600 to-slate-900 p-[3px]">
+            <div class="avatar text-4xl">M</div>
+          </div>
+          <div class="min-w-0 flex-1 text-center sm:text-left">
+            <h1 class="main-title">Mason</h1>
+          </div>
+        </div>
+
+        <!-- Links -->
+        <div>
+          <div class="px-1 mb-2.5">
+            <div class="section-heading">Links</div>
+          </div>
+          <div class="links" data-social-links></div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Clean, minimal, non-intrusive privacy notice -->
+    <div class="privacy-banner px-6 py-2.5 text-sm text-slate-600 shadow-sm" data-privacy-banner aria-live="polite">
+      <span class="flex-1">No third-party tracking. <a href="/legal/privacy/" class="font-medium text-slate-800 underline decoration-slate-300 underline-offset-2">Privacy policy</a>.</span>
+      <button class="shrink-0 ml-4 rounded-full bg-slate-900 text-white text-xs font-semibold px-3.5 py-1 hover:bg-black transition" type="button" data-privacy-choice="seen">Got it</button>
+    </div>
+
+    <!-- Much cleaner external link dialog -->
+    <div class="external-modal" data-external-modal aria-hidden="true">
+      <div class="external-panel" role="dialog" aria-modal="true" aria-labelledby="external-title">
+        <div class="text-[10px] font-semibold tracking-[0.12em] text-slate-500">EXTERNAL LINK</div>
+        <h2 class="mt-3 text-2xl font-semibold tracking-tight text-slate-900" id="external-title">Leaving mas0ng.com</h2>
+        <p class="mt-2 text-[15px] leading-relaxed text-slate-600">You are about to visit an external website. Double-check the destination.</p>
+
+        <div class="mt-5 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-800 break-all" data-external-host></div>
+
+        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+          <button class="flex-1 rounded-2xl border border-slate-200 py-3 text-sm font-semibold hover:bg-slate-50 transition" type="button" data-external-cancel>Stay here</button>
+          <button class="flex-1 rounded-2xl bg-slate-900 py-3 text-sm font-semibold text-white hover:bg-black transition" type="button" data-external-continue>Continue</button>
         </div>
       </div>
-      <p class="status" id="status" data-intro-status>Loading /auth/session</p>
+    </div>
+
+    <div class="intro-overlay" id="intro-overlay" aria-hidden="true">
+      <svg id="reveal-screen" class="reveal-screen">
+        <defs>
+          <mask id="reveal-mask">
+            <rect x="0" y="0" width="100%" height="100%" fill="white"></rect>
+            <polygon id="reveal-hole" class="reveal-hole" fill="black"></polygon>
+          </mask>
+        </defs>
+        <rect x="0" y="0" width="100%" height="100%" fill="#ffffff" mask="url(#reveal-mask)"></rect>
+      </svg>
+
+      <div class="intro-stage">
+        <div id="spinner-container" class="spinner-container">
+          <div class="spinner-core animate-sin-spin">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <polygon points="50,10 88,38 74,82 26,82 12,38" fill="none" stroke="#101418" stroke-linejoin="round" stroke-linecap="round" class="poly-shape"></polygon>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <p class="intro-status" data-intro-status></p>
     </div>
 
     <script>
-      const minimumIntroMs = 1000;
-      const spinDurationMs = 4000;
-      const startedAt = Date.now();
+      const banner = document.querySelector("[data-privacy-banner]");
+      const overlay = document.querySelector("#intro-overlay");
+      const externalModal = document.querySelector("[data-external-modal]");
+      const externalHost = document.querySelector("[data-external-host]");
+      const externalCancel = document.querySelector("[data-external-cancel]");
+      const externalContinue = document.querySelector("[data-external-continue]");
+      const socialLinksContainer = document.querySelector("[data-social-links]");
 
-      checkSession();
-
-      async function checkSession() {
-        const target = await resolveTarget();
-        const wait = Math.max(0, minimumIntroMs - (Date.now() - startedAt));
-        window.setTimeout(() => {
-          window.location.replace(withIntroState(target));
-        }, wait);
-      }
-
-      async function resolveTarget() {
-        try {
-          document.querySelector("#status").textContent = "Loading /auth/session";
-          const response = await fetch("/auth/session", {
-            credentials: "include",
-            cache: "no-store",
-            headers: { "Accept": "application/json" }
-          });
-          const data = await response.json().catch(() => ({}));
-          if (response.ok && data.authenticated) {
-            document.querySelector("#status").textContent = "Loading /apps/";
-            return "/apps/";
-          }
-        } catch {
-          document.querySelector("#status").textContent = "Loading /p/";
+      const socials = [
+        {
+          name: "Instagram",
+          username: "@mas0ngi",
+          url: "https://www.instagram.com/mas0ngi",
+          icon: "/public_assets/social_icons/instagram.svg"
+        },
+        {
+          name: "TikTok",
+          username: "@mas0ng",
+          url: "https://www.tiktok.com/@mas0ng",
+          icon: "/public_assets/social_icons/tiktok.svg"
+        },
+        {
+          name: "Snapchat",
+          username: "mas0ng",
+          url: "https://www.snapchat.com/add/mas0ng",
+          icon: "/public_assets/social_icons/snapchat.svg"
         }
-        return "/p/";
+      ];
+
+      let isRevealing = false;
+      let pendingExternalUrl = "";
+
+      bootPage();
+      renderSocialLinks();
+
+      window.addEventListener("resize", () => {
+        if (isRevealing) positionRevealHole();
+      });
+
+      document.addEventListener("click", (event) => {
+        const externalLink = event.target.closest("[data-external-link]");
+        if (externalLink) {
+          event.preventDefault();
+          openExternalWarning(externalLink.href);
+          return;
+        }
+
+        const button = event.target.closest("[data-privacy-choice]");
+        if (!button) return;
+        try {
+          localStorage.setItem("mas0ng_privacy_choice", "seen");
+        } catch {}
+        banner.dataset.open = "false";
+      });
+
+      externalCancel.addEventListener("click", closeExternalWarning);
+
+      externalContinue.addEventListener("click", () => {
+        if (!pendingExternalUrl) return;
+        const nextUrl = pendingExternalUrl;
+        closeExternalWarning();
+        window.open(nextUrl, "_blank", "noopener,noreferrer");
+      });
+
+      externalModal.addEventListener("click", (event) => {
+        if (event.target === externalModal) closeExternalWarning();
+      });
+
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeExternalWarning();
+        }
+      });
+
+      function bootPage() {
+        const params = new URLSearchParams(window.location.search);
+        const shouldPlayIntro = params.get("from") === "index";
+        const introState = readIntroState(params);
+
+        if (shouldPlayIntro) {
+          ["from", "phase", "rotation", "scale", "size"].forEach((key) => params.delete(key));
+          const nextQuery = params.toString();
+          const cleanUrl = `${window.location.pathname}${nextQuery ? `?${nextQuery}` : ""}${window.location.hash}`;
+          window.history.replaceState({}, "", cleanUrl);
+          overlay.dataset.active = "true";
+          setIntroStatus("");
+          applyIntroState(introState);
+          window.setTimeout(() => {
+            triggerIntroReveal();
+          }, 1000);
+          return;
+        }
+
+        overlay.remove();
+        showPrivacyBanner();
       }
 
-      function withIntroState(target) {
-        if (target !== "/p/" && !target.startsWith("/p/?")) return target;
+      function readIntroState(params) {
+        return {
+          phase: clampNumber(Number(params.get("phase")), 0, 3999, 0),
+          rotation: clampNumber(Number(params.get("rotation")), 0, 359, 0),
+          scale: clampNumber(Number(params.get("scale")), 0.75, 1.25, 0.9),
+          size: clampNumber(Number(params.get("size")), 96, 420, 256)
+        };
+      }
 
-        const elapsed = Date.now() - startedAt;
-        const phaseMs = elapsed % spinDurationMs;
-        const progress = phaseMs / spinDurationMs;
-        const rotation = Math.round(progress * 360);
-        const scale = 0.9 + (0.2 * ((1 - Math.cos(progress * Math.PI * 2)) / 2));
-        const spinner = document.querySelector(".spinner-container");
-        const size = spinner ? Math.round(spinner.getBoundingClientRect().width) : 256;
-        const url = new URL(target, window.location.origin);
-        url.searchParams.set("phase", String(Math.round(phaseMs)));
-        url.searchParams.set("rotation", String(rotation));
-        url.searchParams.set("scale", scale.toFixed(3));
-        url.searchParams.set("size", String(size));
-        return `${url.pathname}${url.search}`;
+      function applyIntroState(state) {
+        const spinnerContainer = document.querySelector("#spinner-container");
+        const movingWrapper = spinnerContainer.querySelector(".animate-sin-spin");
+        spinnerContainer.style.width = `${state.size}px`;
+        spinnerContainer.style.height = `${state.size}px`;
+        movingWrapper.style.setProperty("--intro-phase-delay", `-${Math.round(state.phase)}ms`);
+        movingWrapper.style.transform = `rotate(${state.rotation}deg) scale(${state.scale})`;
+        movingWrapper.getBoundingClientRect();
+        movingWrapper.style.transform = "";
+      }
+
+      function clampNumber(value, min, max, fallback) {
+        if (!Number.isFinite(value)) return fallback;
+        return Math.min(max, Math.max(min, value));
+      }
+
+      function renderSocialLinks() {
+        socialLinksContainer.replaceChildren(...socials.map((social) => {
+          const link = document.createElement("a");
+          link.className = "link-card group";
+          link.href = social.url;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.dataset.externalLink = "";
+
+          link.innerHTML = `
+            <div class="icon-shell">
+              <img class="social-icon" src="${social.icon}" alt="" width="26" height="26">
+            </div>
+            <div class="link-text">
+              <div class="name">${social.name}</div>
+              <div class="handle">${social.username}</div>
+            </div>
+            <div class="ml-auto text-slate-400 group-hover:text-slate-600 transition">
+              <i data-lucide="arrow-up-right" class="h-5 w-5"></i>
+            </div>
+          `;
+          return link;
+        }));
+        window.mas0ngLoadDesignLibraries?.then?.(() => window.lucide?.createIcons?.());
+      }
+
+      function openExternalWarning(url) {
+        let host = "external site";
+        try {
+          host = new URL(url).hostname.replace(/^www\./, "");
+        } catch {}
+        pendingExternalUrl = url;
+        externalHost.textContent = host;
+        externalModal.dataset.open = "true";
+        externalModal.setAttribute("aria-hidden", "false");
+        externalContinue.focus();
+      }
+
+      function closeExternalWarning() {
+        pendingExternalUrl = "";
+        externalModal.dataset.open = "false";
+        externalModal.setAttribute("aria-hidden", "true");
+      }
+
+      function triggerIntroReveal() {
+        if (isRevealing) return;
+        isRevealing = true;
+        setIntroStatus("");
+
+        const spinnerContainer = document.querySelector("#spinner-container");
+        const polygons = document.querySelectorAll(".poly-shape");
+        const movingWrapper = spinnerContainer.querySelector(".animate-sin-spin");
+        if (movingWrapper) movingWrapper.classList.remove("animate-sin-spin");
+
+        positionRevealHole();
+        overlay.classList.add("is-revealing");
+        spinnerContainer.classList.add("animate-burst-container");
+        polygons.forEach((poly) => {
+          poly.classList.add("animate-burst-poly");
+        });
+
+        window.setTimeout(() => {
+          overlay.remove();
+          showPrivacyBanner();
+        }, 1600);
+      }
+
+      function setIntroStatus(value) {
+        const status = document.querySelector("[data-intro-status]");
+        if (status) status.textContent = value;
+      }
+
+      function positionRevealHole() {
+        const screen = document.querySelector("#reveal-screen");
+        const hole = document.querySelector("#reveal-hole");
+        const width = window.innerWidth || 1;
+        const height = window.innerHeight || 1;
+        const base = 204;
+        const centerX = width / 2;
+        const centerY = height / 2;
+        const points = [
+          [50, 10],
+          [88, 38],
+          [74, 82],
+          [26, 82],
+          [12, 38]
+        ].map(([x, y]) => {
+          const nextX = centerX + ((x - 50) / 100) * base;
+          const nextY = centerY + ((y - 50) / 100) * base;
+          return `${nextX},${nextY}`;
+        }).join(" ");
+
+        screen.setAttribute("viewBox", `0 0 ${width} ${height}`);
+        hole.setAttribute("points", points);
+      }
+
+      function showPrivacyBanner() {
+        let choice = "";
+        try {
+          choice = localStorage.getItem("mas0ng_privacy_choice") || "";
+        } catch {}
+        if (!choice) banner.dataset.open = "true";
       }
     </script>
   </body>

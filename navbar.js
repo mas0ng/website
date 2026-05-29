@@ -3,16 +3,16 @@
   const SHARED_NAV_URL = "https://sharedassets.mas0ng.com/navbar.js";
   const TAILWIND_URL = "https://cdn.tailwindcss.com";
   const LUCIDE_URL = "https://unpkg.com/lucide@latest";
-  const LOGIN_URL = "/auth/login?return_to=%2Fapps%2F";
+  const LOGIN_URL = "/secure/auth/login?return_to=%2Fsecure%2Fapps%2F";
   const loaderScript = document.currentScript;
 
   const legalLinks = [
-    { id: "legal", label: "Legal hub", href: "/p/legal/", icon: "scale" },
-    { id: "privacy", label: "Privacy policy", href: "/p/legal/privacy/", icon: "shield" },
-    { id: "ai", label: "AI policy", href: "/p/legal/ai.html", icon: "bot" },
-    { id: "terms", label: "Terms", href: "/p/legal/terms.html", icon: "file-text" },
-    { id: "cookies", label: "Cookies", href: "/p/legal/cookies.html", icon: "cookie" },
-    { id: "security", label: "Security", href: "/p/legal/security.html", icon: "lock" }
+    { id: "legal", label: "Legal hub", href: "/legal/", icon: "scale" },
+    { id: "privacy", label: "Privacy policy", href: "/legal/privacy/", icon: "shield" },
+    { id: "ai", label: "AI policy", href: "/legal/ai.html", icon: "bot" },
+    { id: "terms", label: "Terms", href: "/legal/terms.html", icon: "file-text" },
+    { id: "cookies", label: "Cookies", href: "/legal/cookies.html", icon: "cookie" },
+    { id: "security", label: "Security", href: "/legal/security.html", icon: "lock" }
   ];
 
   boot();
@@ -28,7 +28,7 @@
 
   async function loadSharedNavbarIfLoggedIn() {
     try {
-      const response = await fetch("/auth/session", {
+      const response = await fetch("/secure/auth/session", {
         credentials: "include",
         cache: "no-store",
         headers: { "Accept": "application/json" }
@@ -119,11 +119,11 @@
     const active = loaderScript?.dataset.active || inferActive();
     const nav = document.createElement("nav");
     nav.id = NAV_ID;
-    nav.className = "fixed left-0 right-0 top-0 z-[2147482000] box-border max-w-full overflow-x-clip border-b border-slate-200/80 bg-white/95 shadow-sm shadow-slate-900/5 backdrop-blur-xl";
+    nav.className = "fixed left-0 right-0 top-0 z-[2147482000] border-b border-slate-200 bg-white/95 backdrop-blur-xl";
     nav.setAttribute("aria-label", "Primary");
     nav.innerHTML = `
       <div class="box-border flex h-16 w-full max-w-full items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
-        <a class="flex shrink-0 items-center gap-3" href="/p/" aria-label="mas0ng.com public home">
+        <a class="flex shrink-0 items-center gap-3" href="/" aria-label="mas0ng.com public home">
           <img src="/public_assets/site_branding/site_icons/256/logged_out.png" alt="" class="h-10 w-10 rounded-xl object-cover">
           <span class="grid leading-tight">
             <span class="text-base font-black tracking-tight text-slate-950 sm:text-lg">mas0ng.com</span>
@@ -132,16 +132,12 @@
 
         <div class="hidden min-w-0 flex-1 items-center justify-center px-3 lg:flex">
           <div class="flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50/90 p-1">
-            <a href="/p/" class="${desktopLinkClass(active === "home")}">Home</a>
+            <a href="/" class="${desktopLinkClass(active === "home")}">Home</a>
             ${desktopDropdown("Legal", legalLinks, active)}
           </div>
         </div>
 
         <div class="hidden shrink-0 items-center gap-3 lg:flex">
-          <span class="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-2 text-xs font-black uppercase tracking-wider text-blue-700">
-            <i data-lucide="globe-2" class="h-4 w-4"></i>
-            Public
-          </span>
           <a href="${LOGIN_URL}" class="inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-slate-950/10 transition hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-blue-500/25">
             <i data-lucide="log-in" class="h-4 w-4"></i>
             Log in
@@ -156,7 +152,7 @@
 
       <div class="mobile-menu absolute left-0 top-full box-border max-h-0 w-full overflow-hidden border-b border-slate-200 bg-white opacity-0 shadow-xl transition-all duration-300 lg:hidden">
         <div class="max-h-[calc(100vh-64px)] overflow-y-auto px-4 pb-6 pt-2">
-          <a href="/p/" class="block rounded-xl px-4 py-3 text-base font-semibold text-slate-900 hover:bg-slate-50">Home</a>
+          <a href="/" class="block rounded-xl px-4 py-3 text-base font-semibold text-slate-900 hover:bg-slate-50">Home</a>
           ${mobileDropdown("Legal", legalLinks, active)}
           <div class="my-4 h-px bg-slate-100"></div>
           <a href="${LOGIN_URL}" class="flex items-center justify-center rounded-xl bg-slate-950 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-sky-700">Log in</a>
@@ -240,12 +236,12 @@
 
   function inferActive() {
     const path = window.location.pathname.replace(/\/index\.html$/, "/");
-    if (path.startsWith("/p/legal/privacy")) return "privacy";
+    if (path.startsWith("/legal/privacy")) return "privacy";
     if (path.endsWith("/ai.html")) return "ai";
     if (path.endsWith("/terms.html")) return "terms";
     if (path.endsWith("/cookies.html")) return "cookies";
     if (path.endsWith("/security.html")) return "security";
-    if (path.startsWith("/p/legal")) return "legal";
+    if (path.startsWith("/legal")) return "legal";
     return "home";
   }
 })();

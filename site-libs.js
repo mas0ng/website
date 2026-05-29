@@ -51,9 +51,17 @@
             brand: {
               50: "#eff6ff",
               100: "#dbeafe",
+              200: "#bfdbfe",
               500: "#1688d8",
               600: "#174ea6",
+              700: "#1e40af",
               900: "#073b84"
+            },
+            accent: {
+              50: "#ecfdf5",
+              100: "#d1fae5",
+              500: "#10b981",
+              600: "#059669"
             }
           }
         }
@@ -148,7 +156,7 @@
   function shouldSkipOverlay() {
     const path = window.location.pathname.replace(/\/index\.html$/, "/");
     if (path === "/") return true;
-    if (path === "/p/" && new URLSearchParams(window.location.search).get("from") === "index") return true;
+    if (path === "/" && new URLSearchParams(window.location.search).get("from") === "index") return true;
     return Boolean(document.querySelector("#mas0ng-intro-boot, #intro-overlay[data-active='true']"));
   }
 
