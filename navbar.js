@@ -3,7 +3,7 @@
   const SHARED_NAV_URL = "https://sharedassets.mas0ng.com/navbar.js";
   const TAILWIND_URL = "https://cdn.tailwindcss.com";
   const LUCIDE_URL = "https://unpkg.com/lucide@latest";
-  const LOGIN_URL = "/secure/auth/login?return_to=%2Fsecure%2Fapps%2F";
+  const LOGIN_URL = "https://auth.mas0ng.com/login?return_to=%2Fsecure%2Fapps%2F";
   const loaderScript = document.currentScript;
 
   const legalLinks = [
@@ -28,7 +28,7 @@
 
   async function loadSharedNavbarIfLoggedIn() {
     try {
-      const response = await fetch("/secure/auth/session", {
+      const response = await fetch("https://auth.mas0ng.com/session", {
         credentials: "include",
         cache: "no-store",
         headers: { "Accept": "application/json" }
