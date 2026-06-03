@@ -42,6 +42,14 @@ body {
   color: #061224 !important;
 }
 
+#mas0ng-public-navbar a[class*="bg-blue-100"] *,
+#mas0ng-public-navbar a[class*="bg-blue-100"] svg,
+#mas0ng-public-navbar a[aria-current="page"] *,
+#mas0ng-public-navbar a[aria-current="page"] svg {
+  color: #020617 !important;
+  stroke: #020617 !important;
+}
+
 .page main {
   width: min(100%, 1120px);
   padding-top: clamp(34px, 7vh, 72px);
