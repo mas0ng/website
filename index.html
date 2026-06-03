@@ -6,21 +6,21 @@
     <title>Mason</title>
     <meta name="description" content="Mason">
     <meta name="theme-color" content="#ffffff">
-    <link rel="icon" type="image/png" sizes="128x128" href="/public_assets/site_branding/site_icons/128/logged_out.png">
-    <link rel="icon" type="image/png" sizes="256x256" href="/public_assets/site_branding/site_icons/256/logged_out.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/public_assets/site_branding/site_icons/512/logged_out.png">
-    <link rel="apple-touch-icon" href="/public_assets/site_branding/site_icons/256/logged_out.png">
+    <link rel="icon" type="image/svg+xml" sizes="128x128" href="/public_assets/site_branding/favicon.svg">
+    <link rel="icon" type="image/svg+xml" sizes="256x256" href="/public_assets/site_branding/apple-touch-icon.svg">
+    <link rel="icon" type="image/svg+xml" sizes="512x512" href="/public_assets/site_branding/favicon.svg">
+    <link rel="apple-touch-icon" href="/public_assets/site_branding/apple-touch-icon.svg">
     <meta property="og:title" content="Mason">
     <meta property="og:description" content="Mason">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.mas0ng.com/">
-    <meta property="og:image" content="https://www.mas0ng.com/public_assets/site_branding/site_icons/800/logged_out.png">
+    <meta property="og:image" content="https://www.mas0ng.com/public_assets/site_branding/social-card.svg">
     <meta property="og:image:width" content="800">
     <meta property="og:image:height" content="800">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Mason">
     <meta name="twitter:description" content="Mason">
-    <meta name="twitter:image" content="https://www.mas0ng.com/public_assets/site_branding/site_icons/800/logged_out.png">
+    <meta name="twitter:image" content="https://www.mas0ng.com/public_assets/site_branding/social-card.svg">
     <script src="/site-libs.js"></script>
     <script defer src="/navbar.js" data-active="home"></script>
     <style>
@@ -655,6 +655,7 @@
         }
       }
     </style>
+      <link rel="stylesheet" href="/site-theme.css">
   </head>
   <body class="min-h-screen antialiased">
     <div class="max-w-3xl mx-auto px-5 pt-14 pb-20 sm:px-6">
@@ -715,29 +716,6 @@
           <button class="flex-1 rounded-2xl bg-slate-900 py-3 text-sm font-semibold text-white hover:bg-black transition" type="button" data-external-continue>Continue</button>
         </div>
       </div>
-    </div>
-
-    <div class="intro-overlay" id="intro-overlay" aria-hidden="true">
-      <svg id="reveal-screen" class="reveal-screen">
-        <defs>
-          <mask id="reveal-mask">
-            <rect x="0" y="0" width="100%" height="100%" fill="white"></rect>
-            <polygon id="reveal-hole" class="reveal-hole" fill="black"></polygon>
-          </mask>
-        </defs>
-        <rect x="0" y="0" width="100%" height="100%" fill="#ffffff" mask="url(#reveal-mask)"></rect>
-      </svg>
-
-      <div class="intro-stage">
-        <div id="spinner-container" class="spinner-container">
-          <div class="spinner-core animate-sin-spin">
-            <svg viewBox="0 0 100 100" aria-hidden="true">
-              <polygon points="50,10 88,38 74,82 26,82 12,38" fill="none" stroke="#101418" stroke-linejoin="round" stroke-linecap="round" class="poly-shape"></polygon>
-            </svg>
-          </div>
-        </div>
-      </div>
-      <p class="intro-status" data-intro-status></p>
     </div>
 
     <script>
@@ -824,7 +802,7 @@
 
       function bootPage() {
         const params = new URLSearchParams(window.location.search);
-        const shouldPlayIntro = params.get("from") === "index";
+        const shouldPlayIntro = false;
         const introState = readIntroState(params);
 
         if (shouldPlayIntro) {
@@ -841,7 +819,7 @@
           return;
         }
 
-        overlay.remove();
+        overlay?.remove();
         showPrivacyBanner();
       }
 

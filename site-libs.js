@@ -33,7 +33,6 @@
     useOverlay = !shouldSkipOverlay();
     if (!useOverlay) return;
     document.documentElement.classList.add("mas0ng-style-pending");
-    injectPendingStyles();
   }
 
   function configureTailwind() {
@@ -133,7 +132,7 @@
       overlay = document.createElement("div");
       overlay.id = "mas0ng-style-loader";
       overlay.setAttribute("aria-hidden", "true");
-      overlay.innerHTML = '<div class="mas0ng-style-loader-spinner"></div><p class="mas0ng-style-loader-status" data-style-loader-status>' + escapeHtml(currentAsset) + '</p>';
+      overlay.innerHTML = '<div class="mas0ng-style-loader-card"><div class="mas0ng-style-loader-spinner"></div><div class="mas0ng-style-loader-lines"><span></span><span></span></div></div><p class="mas0ng-style-loader-status" data-style-loader-status>' + escapeHtml(currentAsset) + '</p>';
       document.body.append(overlay);
       injectOverlayStyles();
     };
@@ -189,37 +188,55 @@
         z-index: 2147482500;
         display: grid;
         place-items: center;
-        background: linear-gradient(120deg, rgba(239, 246, 255, 0.92), rgba(255, 255, 255, 0.96), rgba(236, 253, 245, 0.9));
-        background-size: 220% 220%;
-        animation: mas0ngStyleGradient 1.8s ease-in-out infinite;
+        background: rgba(2, 6, 23, 0.28);
+        backdrop-filter: blur(10px);
         opacity: 1;
         transition: opacity 260ms ease;
         pointer-events: none;
       }
       #mas0ng-style-loader[data-done="true"] { opacity: 0; }
+      .mas0ng-style-loader-card {
+        min-width: 210px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        border: 1px solid rgba(255,255,255,.12);
+        border-radius: 18px;
+        background: rgba(8, 17, 31, .92);
+        padding: 16px 18px;
+        box-shadow: 0 24px 60px rgba(2,6,23,.30);
+      }
       .mas0ng-style-loader-spinner {
-        width: 42px;
-        height: 42px;
+        width: 34px;
+        height: 34px;
         border-radius: 999px;
-        border: 3px solid rgba(23, 78, 166, 0.18);
-        border-top-color: #1688d8;
-        box-shadow: 0 18px 45px rgba(22, 136, 216, 0.18);
+        border: 3px solid rgba(147, 197, 253, 0.22);
+        border-top-color: #38bdf8;
         animation: mas0ngStyleSpin 760ms linear infinite;
       }
+      .mas0ng-style-loader-lines {
+        width: 120px;
+        display: grid;
+        gap: 8px;
+      }
+      .mas0ng-style-loader-lines span {
+        height: 10px;
+        display: block;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(255,255,255,.10);
+      }
+      .mas0ng-style-loader-lines span:last-child { width: 72%; }
       .mas0ng-style-loader-status {
         position: fixed;
         left: 16px;
         right: 16px;
         bottom: 24px;
         margin: 0;
-        color: rgba(15, 23, 42, 0.58);
+        color: rgba(226, 232, 240, 0.72);
         font: 700 12px/1.5 Inter, ui-sans-serif, system-ui, sans-serif;
         text-align: center;
         overflow-wrap: anywhere;
-      }
-      @keyframes mas0ngStyleGradient {
-        0%, 100% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
       }
       @keyframes mas0ngStyleSpin {
         to { transform: rotate(360deg); }
@@ -233,9 +250,7 @@
     const style = document.createElement("style");
     style.id = "mas0ng-style-pending-css";
     style.textContent = `
-      html.mas0ng-style-pending body > *:not(#mas0ng-style-loader) {
-        visibility: hidden !important;
-      }
+      html.mas0ng-style-pending body { cursor: progress; }
     `;
     document.head.append(style);
   }

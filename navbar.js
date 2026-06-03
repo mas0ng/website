@@ -5,14 +5,15 @@
   const LUCIDE_URL = "https://unpkg.com/lucide@latest";
   const LOGIN_URL = "https://auth.mas0ng.com/login?return_to=%2Fsecure%2Fapps%2F";
   const loaderScript = document.currentScript;
+  const SITE_ORIGIN = "https://mas0ng.com";
 
   const legalLinks = [
-    { id: "legal", label: "Legal hub", href: "/legal/", icon: "scale" },
-    { id: "privacy", label: "Privacy policy", href: "/legal/privacy/", icon: "shield" },
-    { id: "ai", label: "AI policy", href: "/legal/ai.html", icon: "bot" },
-    { id: "terms", label: "Terms", href: "/legal/terms.html", icon: "file-text" },
-    { id: "cookies", label: "Cookies", href: "/legal/cookies.html", icon: "cookie" },
-    { id: "security", label: "Security", href: "/legal/security.html", icon: "lock" }
+    { id: "legal", label: "Legal hub", href: SITE_ORIGIN + "/legal/", icon: "scale" },
+    { id: "privacy", label: "Privacy policy", href: SITE_ORIGIN + "/legal/privacy/", icon: "shield" },
+    { id: "ai", label: "AI policy", href: SITE_ORIGIN + "/legal/ai.html", icon: "bot" },
+    { id: "terms", label: "Terms", href: SITE_ORIGIN + "/legal/terms.html", icon: "file-text" },
+    { id: "cookies", label: "Cookies", href: SITE_ORIGIN + "/legal/cookies.html", icon: "cookie" },
+    { id: "security", label: "Security", href: SITE_ORIGIN + "/legal/security.html", icon: "lock" }
   ];
 
   boot();
@@ -119,20 +120,17 @@
     const active = loaderScript?.dataset.active || inferActive();
     const nav = document.createElement("nav");
     nav.id = NAV_ID;
-    nav.className = "fixed left-0 right-0 top-0 z-[2147482000] border-b border-white/10 bg-slate-950/92 text-white shadow-2xl shadow-slate-950/20 backdrop-blur-2xl";
+    nav.className = "fixed left-0 right-0 top-0 z-[2147482000] border-b border-white/10 bg-slate-950/95 text-white shadow-2xl shadow-slate-950/20 backdrop-blur-2xl";
     nav.setAttribute("aria-label", "Primary");
     nav.innerHTML = `
       <div class="box-border flex h-16 w-full max-w-full items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
-        <a class="flex shrink-0 items-center gap-3" href="/" aria-label="mas0ng.com public home">
-          <img src="/public_assets/site_branding/site_icons/256/logged_out.png" alt="" class="h-9 w-9 rounded-xl object-cover ring-1 ring-white/15">
-          <span class="grid leading-tight">
-            <span class="text-base font-black tracking-tight text-white sm:text-lg">mas0ng.com</span>
-          </span>
+        <a class="flex shrink-0 items-center gap-3 no-underline" href="${SITE_ORIGIN}/" aria-label="mas0ng.com public home">
+          <img src="/public_assets/site_branding/brand-nav.svg" alt="mas0ng.com" class="h-9 w-auto max-w-[180px] object-contain">
         </a>
 
         <div class="hidden min-w-0 flex-1 items-center justify-center px-3 lg:flex">
-          <div class="flex items-center gap-1 rounded-2xl border border-white/10 bg-white/6 p-1 backdrop-blur">
-            <a href="/" class="${desktopLinkClass(active === "home")}">Home</a>
+          <div class="flex items-center gap-1 rounded-2xl border border-white/10 bg-white/5 p-1 backdrop-blur">
+            <a href="${SITE_ORIGIN}/" class="${desktopLinkClass(active === "home")}">Home</a>
             ${desktopDropdown("Legal", legalLinks, active)}
           </div>
         </div>
@@ -152,7 +150,7 @@
 
       <div class="mobile-menu absolute left-0 top-full box-border max-h-0 w-full overflow-hidden border-b border-white/10 bg-slate-950 opacity-0 shadow-xl transition-all duration-300 lg:hidden">
         <div class="max-h-[calc(100vh-64px)] overflow-y-auto px-4 pb-6 pt-2">
-          <a href="/" class="block rounded-xl px-4 py-3 text-base font-semibold text-white hover:bg-white/10">Home</a>
+          <a href="${SITE_ORIGIN}/" class="block rounded-xl px-4 py-3 text-base font-semibold text-white no-underline hover:bg-white/10">Home</a>
           ${mobileDropdown("Legal", legalLinks, active)}
           <div class="my-4 h-px bg-slate-100"></div>
           <a href="${LOGIN_URL}" class="flex items-center justify-center rounded-2xl bg-white py-2.5 text-sm font-bold text-slate-950 shadow-md transition hover:bg-blue-50">Log in</a>
@@ -164,13 +162,15 @@
     document.body.classList.remove("pt-16", "pt-20", "pt-24");
     document.body.classList.add("pt-20");
     bindMobile(nav);
+    bindBrandFallback(nav);
+    bindPageLoadIndicator(nav);
     window.lucide?.createIcons?.();
   }
 
   function desktopDropdown(label, links, active) {
     return `
       <div class="group relative flex items-center">
-        <button class="flex items-center gap-1 rounded-full px-4 py-2 text-sm font-bold text-slate-300 transition group-hover:bg-white/10 group-hover:text-white" type="button">
+        <button class="appearance-none border-0 bg-transparent flex items-center gap-1 rounded-full px-4 py-2 text-sm font-bold text-slate-200 transition group-hover:bg-white/10 group-hover:text-white" type="button">
           ${label}
           <i data-lucide="chevron-down" class="h-4 w-4 transition-transform duration-200 group-hover:rotate-180"></i>
         </button>
@@ -178,7 +178,7 @@
         <div class="invisible absolute left-0 top-full w-64 translate-y-1 pt-4 opacity-0 transition-all duration-200 ease-out group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
           <div class="grid gap-1 rounded-2xl border border-slate-200 bg-white p-3 shadow-2xl shadow-slate-900/10 ring-1 ring-black/5">
             ${links.map((link) => `
-              <a href="${link.href}" class="flex items-center gap-3 rounded-xl p-2 transition hover:bg-sky-50 ${link.id === active ? "bg-sky-50 text-sky-700" : "text-slate-600 hover:text-sky-700"}">
+              <a href="${link.href}" class="flex items-center gap-3 rounded-xl p-2 no-underline transition hover:bg-sky-50 ${link.id === active ? "bg-sky-50 text-sky-700" : "text-slate-600 hover:text-sky-700"}">
                 <span class="grid h-9 w-9 place-items-center rounded-lg bg-sky-50 text-sky-700"><i data-lucide="${link.icon}" class="h-4 w-4"></i></span>
                 <span class="text-sm font-semibold">${link.label}</span>
               </a>
@@ -193,19 +193,19 @@
     const id = "mobile-public-" + label.toLowerCase().replace(/[^a-z0-9]+/g, "-");
     return `
       <div>
-        <button class="mobile-dropdown-button flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-semibold text-white hover:bg-white/10" type="button" data-target="${id}">
+        <button class="mobile-dropdown-button appearance-none border-0 bg-transparent flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-semibold text-white hover:bg-white/10" type="button" data-target="${id}">
           ${label}
           <i data-lucide="chevron-down" class="h-4 w-4 transition-transform duration-200"></i>
         </button>
         <div id="${id}" class="mobile-dropdown-panel ml-4 hidden space-y-1 border-l-2 border-white/10 px-4 py-2">
-          ${links.map((link) => `<a href="${link.href}" class="block rounded-lg py-2 text-sm font-medium ${link.id === active ? "text-blue-200" : "text-slate-300 hover:text-white"}">${link.label}</a>`).join("")}
+          ${links.map((link) => `<a href="${link.href}" class="block rounded-lg py-2 text-sm font-medium no-underline ${link.id === active ? "text-blue-200" : "text-slate-300 hover:text-white"}">${link.label}</a>`).join("")}
         </div>
       </div>
     `;
   }
 
   function desktopLinkClass(active) {
-    return "rounded-full px-4 py-2 text-sm font-bold transition " + (active ? "bg-white text-blue-700 shadow-sm" : "text-slate-300 hover:bg-white/10 hover:text-white");
+    return "rounded-full px-4 py-2 text-sm font-bold no-underline transition " + (active ? "bg-blue-100 text-slate-950 ring-1 ring-blue-300 shadow-sm" : "text-slate-200 hover:bg-white/10 hover:text-white");
   }
 
   function bindMobile(nav) {
@@ -231,6 +231,27 @@
         panel?.classList.toggle("hidden");
         icon?.classList.toggle("rotate-180");
       });
+    });
+  }
+
+  function bindBrandFallback(nav) {
+    const image = nav.querySelector("a[aria-label='mas0ng.com public home'] img");
+    image?.addEventListener("error", () => {
+      const fallback = document.createElement("span");
+      fallback.className = "text-base font-black tracking-tight text-white sm:text-lg";
+      fallback.textContent = "mas0ng.com";
+      image.replaceWith(fallback);
+    }, { once: true });
+  }
+
+  function bindPageLoadIndicator(nav) {
+    nav.querySelectorAll("a[href]").forEach((link) => {
+      link.addEventListener("click", () => {
+        document.documentElement.classList.add("mas0ng-page-loading");
+      });
+    });
+    window.addEventListener("pageshow", () => {
+      document.documentElement.classList.remove("mas0ng-page-loading");
     });
   }
 
