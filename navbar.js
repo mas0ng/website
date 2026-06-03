@@ -119,43 +119,43 @@
     const active = loaderScript?.dataset.active || inferActive();
     const nav = document.createElement("nav");
     nav.id = NAV_ID;
-    nav.className = "fixed left-0 right-0 top-0 z-[2147482000] border-b border-slate-200 bg-white/95 backdrop-blur-xl";
+    nav.className = "fixed left-0 right-0 top-0 z-[2147482000] border-b border-white/10 bg-slate-950/92 text-white shadow-2xl shadow-slate-950/20 backdrop-blur-2xl";
     nav.setAttribute("aria-label", "Primary");
     nav.innerHTML = `
       <div class="box-border flex h-16 w-full max-w-full items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
         <a class="flex shrink-0 items-center gap-3" href="/" aria-label="mas0ng.com public home">
-          <img src="/public_assets/site_branding/site_icons/256/logged_out.png" alt="" class="h-10 w-10 rounded-xl object-cover">
+          <img src="/public_assets/site_branding/site_icons/256/logged_out.png" alt="" class="h-9 w-9 rounded-xl object-cover ring-1 ring-white/15">
           <span class="grid leading-tight">
-            <span class="text-base font-black tracking-tight text-slate-950 sm:text-lg">mas0ng.com</span>
+            <span class="text-base font-black tracking-tight text-white sm:text-lg">mas0ng.com</span>
           </span>
         </a>
 
         <div class="hidden min-w-0 flex-1 items-center justify-center px-3 lg:flex">
-          <div class="flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50/90 p-1">
+          <div class="flex items-center gap-1 rounded-2xl border border-white/10 bg-white/6 p-1 backdrop-blur">
             <a href="/" class="${desktopLinkClass(active === "home")}">Home</a>
             ${desktopDropdown("Legal", legalLinks, active)}
           </div>
         </div>
 
         <div class="hidden shrink-0 items-center gap-3 lg:flex">
-          <a href="${LOGIN_URL}" class="inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-slate-950/10 transition hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-blue-500/25">
+          <a href="${LOGIN_URL}" class="inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-2.5 text-sm font-bold text-slate-950 shadow-sm transition hover:-translate-y-0.5 hover:bg-blue-50">
             <i data-lucide="log-in" class="h-4 w-4"></i>
             Log in
           </a>
         </div>
 
-        <button class="mobile-menu-button rounded-lg p-2 text-slate-600 transition hover:bg-slate-100 hover:text-sky-700 lg:hidden" type="button" aria-label="Open menu" aria-expanded="false">
+        <button class="mobile-menu-button rounded-xl p-2 text-slate-200 transition hover:bg-white/10 hover:text-white lg:hidden" type="button" aria-label="Open menu" aria-expanded="false">
           <i data-lucide="menu" class="menu-icon h-6 w-6"></i>
           <i data-lucide="x" class="close-icon hidden h-6 w-6"></i>
         </button>
       </div>
 
-      <div class="mobile-menu absolute left-0 top-full box-border max-h-0 w-full overflow-hidden border-b border-slate-200 bg-white opacity-0 shadow-xl transition-all duration-300 lg:hidden">
+      <div class="mobile-menu absolute left-0 top-full box-border max-h-0 w-full overflow-hidden border-b border-white/10 bg-slate-950 opacity-0 shadow-xl transition-all duration-300 lg:hidden">
         <div class="max-h-[calc(100vh-64px)] overflow-y-auto px-4 pb-6 pt-2">
-          <a href="/" class="block rounded-xl px-4 py-3 text-base font-semibold text-slate-900 hover:bg-slate-50">Home</a>
+          <a href="/" class="block rounded-xl px-4 py-3 text-base font-semibold text-white hover:bg-white/10">Home</a>
           ${mobileDropdown("Legal", legalLinks, active)}
           <div class="my-4 h-px bg-slate-100"></div>
-          <a href="${LOGIN_URL}" class="flex items-center justify-center rounded-xl bg-slate-950 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-sky-700">Log in</a>
+          <a href="${LOGIN_URL}" class="flex items-center justify-center rounded-2xl bg-white py-2.5 text-sm font-bold text-slate-950 shadow-md transition hover:bg-blue-50">Log in</a>
         </div>
       </div>
     `;
@@ -170,7 +170,7 @@
   function desktopDropdown(label, links, active) {
     return `
       <div class="group relative flex items-center">
-        <button class="flex items-center gap-1 rounded-full px-4 py-2 text-sm font-bold text-slate-600 transition group-hover:bg-white group-hover:text-brand-600 group-hover:shadow-sm" type="button">
+        <button class="flex items-center gap-1 rounded-full px-4 py-2 text-sm font-bold text-slate-300 transition group-hover:bg-white/10 group-hover:text-white" type="button">
           ${label}
           <i data-lucide="chevron-down" class="h-4 w-4 transition-transform duration-200 group-hover:rotate-180"></i>
         </button>
@@ -193,19 +193,19 @@
     const id = "mobile-public-" + label.toLowerCase().replace(/[^a-z0-9]+/g, "-");
     return `
       <div>
-        <button class="mobile-dropdown-button flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-semibold text-slate-900 hover:bg-slate-50" type="button" data-target="${id}">
+        <button class="mobile-dropdown-button flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-semibold text-white hover:bg-white/10" type="button" data-target="${id}">
           ${label}
           <i data-lucide="chevron-down" class="h-4 w-4 transition-transform duration-200"></i>
         </button>
-        <div id="${id}" class="mobile-dropdown-panel ml-4 hidden space-y-1 border-l-2 border-slate-100 px-4 py-2">
-          ${links.map((link) => `<a href="${link.href}" class="block rounded-lg py-2 text-sm font-medium ${link.id === active ? "text-sky-700" : "text-slate-600 hover:text-sky-700"}">${link.label}</a>`).join("")}
+        <div id="${id}" class="mobile-dropdown-panel ml-4 hidden space-y-1 border-l-2 border-white/10 px-4 py-2">
+          ${links.map((link) => `<a href="${link.href}" class="block rounded-lg py-2 text-sm font-medium ${link.id === active ? "text-blue-200" : "text-slate-300 hover:text-white"}">${link.label}</a>`).join("")}
         </div>
       </div>
     `;
   }
 
   function desktopLinkClass(active) {
-    return "rounded-full px-4 py-2 text-sm font-bold transition " + (active ? "bg-white text-brand-600 shadow-sm" : "text-slate-600 hover:bg-white hover:text-brand-600 hover:shadow-sm");
+    return "rounded-full px-4 py-2 text-sm font-bold transition " + (active ? "bg-white text-blue-700 shadow-sm" : "text-slate-300 hover:bg-white/10 hover:text-white");
   }
 
   function bindMobile(nav) {

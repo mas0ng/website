@@ -32,9 +32,9 @@
         --bg: #ffffff;
         --panel: #ffffff;
         --panel-strong: #ffffff;
-        --line: #e0e3e7;
-        --line-strong: #c7d8f8;
-        --muted: #5f6368;
+        --line: #e2e8f0;
+        --line-strong: #bfdbfe;
+        --muted: #64748b;
         --blue: #1a73e8;
         --blue-strong: #174ea6;
         --blue-soft: #e8f0fe;
@@ -53,7 +53,7 @@
       body {
         min-height: 100vh;
         margin: 0;
-        background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+        background: linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
         color: #0f172a;
       }
 
@@ -83,9 +83,17 @@
 
       main {
         position: relative;
-        width: min(100%, 980px);
+        width: min(100%, 1080px);
         margin: 0 auto;
         padding: clamp(28px, 6vh, 58px) 18px 124px;
+      }
+
+      .profile-hero {
+        border: 1px solid rgba(15, 23, 42, 0.12);
+        border-radius: 28px;
+        padding: clamp(22px, 4vw, 34px);
+        background: linear-gradient(135deg, #061224 0%, #0b2d5f 58%, #0b57d0 100%);
+        box-shadow: 0 22px 58px rgba(15, 23, 42, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.12);
       }
 
       .profile {
@@ -143,18 +151,18 @@
 
       .main-title {
         font-size: clamp(2.75rem, 8vw, 4.25rem);
-        font-weight: 700;
+        font-weight: 800;
         letter-spacing: -0.04em;
         line-height: 0.92;
-        color: #0f172a;
+        color: #ffffff;
       }
 
       .section-heading {
         font-size: 0.75rem;
-        font-weight: 600;
+        font-weight: 800;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        color: #64748b;
+        color: #174ea6;
       }
 
       .links {
@@ -169,16 +177,18 @@
         gap: 15px;
         padding: 16px 20px;
         border: 1px solid #e2e8f0;
-        border-radius: 14px;
-        background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+        border-radius: 18px;
+        background: #ffffff;
         text-decoration: none;
         color: inherit;
-        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        box-shadow: 0 12px 32px rgba(15, 23, 42, 0.07);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
       }
 
       .link-card:hover {
-        border-color: #94a3b8;
-        box-shadow: 0 10px 15px -3px rgb(15 23 42 / 0.1);
+        border-color: #bfdbfe;
+        background: #f8fbff;
+        box-shadow: 0 18px 44px rgba(15, 23, 42, 0.11);
         transform: translateY(-1px);
       }
 
@@ -204,7 +214,7 @@
       }
 
       .link-card .name {
-        font-weight: 600;
+        font-weight: 750;
         font-size: 1.02rem;
         color: #0f172a;
         line-height: 1.2;
@@ -212,8 +222,81 @@
 
       .link-card .handle {
         font-size: 0.875rem;
-        color: #64748b;
+        color: var(--muted);
         margin-top: 1px;
+      }
+
+      .social-stats-panel {
+        margin-top: 14px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: clamp(18px, 3vw, 28px);
+        background: #ffffff;
+        box-shadow: 0 14px 38px rgba(15, 23, 42, 0.08);
+      }
+
+      .social-stats-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+
+      .social-stats-title {
+        color: #0f172a;
+        font-size: clamp(1.35rem, 3vw, 2rem);
+        font-weight: 850;
+        letter-spacing: -0.035em;
+      }
+
+      .social-stats-source {
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 750;
+      }
+
+      .social-stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .social-stat {
+        border: 1px solid #e2e8f0;
+        border-radius: 18px;
+        padding: 18px;
+        background: #f8fbff;
+      }
+
+      .social-stat span {
+        display: block;
+        color: #64748b;
+        font-size: 0.73rem;
+        font-weight: 850;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .social-stat strong {
+        display: block;
+        margin-top: 8px;
+        color: #0f172a;
+        font-size: clamp(1.45rem, 4vw, 2.35rem);
+        line-height: 0.98;
+        letter-spacing: -0.045em;
+      }
+
+      .social-stats-updated,
+      .social-stats-error {
+        margin-top: 13px;
+        color: var(--muted);
+        font-size: 0.86rem;
+        font-weight: 700;
+      }
+
+      .social-stats-error {
+        color: #ffd7d7;
       }
 
       .privacy-banner {
@@ -465,14 +548,119 @@
           display: grid;
         }
 
+        .social-stats-head,
+        .social-stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .social-stats-head {
+          display: grid;
+          align-items: start;
+        }
+
+      }
+
+      /* App-launcher inspired public refresh */
+      body {
+        background: #f8fafc !important;
+      }
+
+      body > .max-w-3xl {
+        width: 100%;
+        max-width: none;
+        padding: 0 0 88px !important;
+      }
+
+      body > .max-w-3xl > main {
+        width: 100%;
+        max-width: none;
+        padding: 0;
+      }
+
+      .profile-hero {
+        justify-content: center;
+        min-height: min(440px, calc(100vh - 112px));
+        margin: 0 0 -42px;
+        padding: clamp(58px, 9vw, 104px) 20px 88px;
+        border: 0;
+        border-radius: 0 0 48px 48px;
+        background:
+          radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+          radial-gradient(circle at 12% 90%, rgba(59, 130, 246, 0.24), transparent 360px),
+          radial-gradient(circle at 86% 8%, rgba(20, 184, 166, 0.14), transparent 320px),
+          linear-gradient(135deg, #061224 0%, #111827 56%, #020617 100%);
+        background-size: 24px 24px, auto, auto, auto;
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.22);
+      }
+
+      .profile-hero .avatar-ring {
+        width: 96px;
+        height: 96px;
+        background: rgba(255, 255, 255, 0.16) !important;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18), 0 20px 54px rgba(2, 6, 23, 0.25);
+      }
+
+      .profile-hero .avatar {
+        background: #ffffff;
+        color: #0f172a;
+      }
+
+      .main-title {
+        color: #ffffff;
+        text-align: center;
+      }
+
+      .profile-info {
+        flex: initial;
+      }
+
+      body > .max-w-3xl > main > div:nth-child(2) {
+        position: relative;
+        z-index: 2;
+        width: min(100% - 32px, 1040px);
+        margin: 0 auto;
+      }
+
+      body > .max-w-3xl > main > div:nth-child(2) > .px-1 {
+        margin-left: 4px;
+      }
+
+      .links {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .link-card {
+        min-height: 150px;
+        align-items: flex-start;
+        border-radius: 20px;
+        padding: 22px;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1);
+      }
+
+      .social-stats-panel {
+        border-radius: 20px;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1);
+      }
+
+      @media (max-width: 820px) {
+        .links,
+        .social-stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .profile-hero {
+          border-radius: 0 0 32px 32px;
+          margin-bottom: -30px;
+        }
       }
     </style>
   </head>
-  <body class="min-h-screen bg-[#fafafa] text-slate-900 antialiased">
+  <body class="min-h-screen antialiased">
     <div class="max-w-3xl mx-auto px-5 pt-14 pb-20 sm:px-6">
       <main class="space-y-12">
         <!-- Clean modern hero with gradient accent -->
-        <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-5">
+        <div class="profile-hero flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-5">
           <div class="avatar-ring w-20 h-20 sm:w-[92px] sm:h-[92px] bg-gradient-to-br from-brand-500 via-brand-600 to-slate-900 p-[3px]">
             <div class="avatar text-4xl">M</div>
           </div>
@@ -487,6 +675,22 @@
             <div class="section-heading">Links</div>
           </div>
           <div class="links" data-social-links></div>
+          <section class="social-stats-panel" data-social-stats aria-live="polite">
+            <div class="social-stats-head">
+              <div>
+                <div class="section-heading">TikTok</div>
+                <div class="social-stats-title">Creator figures</div>
+              </div>
+              <div class="social-stats-source">From mas0ng social data</div>
+            </div>
+            <div class="social-stats-grid">
+              <div class="social-stat"><span>Followers</span><strong data-social-followers>...</strong></div>
+              <div class="social-stat"><span>Total likes</span><strong data-social-likes>...</strong></div>
+              <div class="social-stat"><span>365 day views</span><strong data-social-views>...</strong></div>
+            </div>
+            <p class="social-stats-updated" data-social-updated>Loading latest figures...</p>
+            <p class="social-stats-error" data-social-error hidden>TikTok figures couldn't be fetched.</p>
+          </section>
         </div>
       </main>
     </div>
@@ -544,6 +748,12 @@
       const externalCancel = document.querySelector("[data-external-cancel]");
       const externalContinue = document.querySelector("[data-external-continue]");
       const socialLinksContainer = document.querySelector("[data-social-links]");
+      const socialStatsPanel = document.querySelector("[data-social-stats]");
+      const socialStatsError = document.querySelector("[data-social-error]");
+      const socialStatsUpdated = document.querySelector("[data-social-updated]");
+      const socialFollowers = document.querySelector("[data-social-followers]");
+      const socialLikes = document.querySelector("[data-social-likes]");
+      const socialViews = document.querySelector("[data-social-views]");
 
       const socials = [
         {
@@ -571,6 +781,7 @@
 
       bootPage();
       renderSocialLinks();
+      loadSocialStats();
 
       window.addEventListener("resize", () => {
         if (isRevealing) positionRevealHole();
@@ -683,6 +894,72 @@
           return link;
         }));
         window.mas0ngLoadDesignLibraries?.then?.(() => window.lucide?.createIcons?.());
+      }
+
+      async function loadSocialStats() {
+        try {
+          const data = await fetchSocialData();
+          const tiktok = data?.tiktok || data?.tikTok || data?.social?.tiktok || data;
+          const followers = pickMetric(tiktok, ["totalFollowers", "followers", "followerCount", "followersTotal"]);
+          const likes = pickMetric(tiktok, ["totalLikes", "likes", "likeCount", "likesTotal"]);
+          const views = pickMetric(tiktok, ["viewsPast365Days", "views365", "past365Views", "viewsLast365Days", "last365DaysViews"]);
+          const updated = pickValue(tiktok, ["updatedAt", "lastUpdated", "retrievedAt", "updated"]);
+          if (![followers, likes, views].every((value) => Number.isFinite(value))) throw new Error("Missing TikTok metrics");
+          socialFollowers.textContent = formatMetric(followers);
+          socialLikes.textContent = formatMetric(likes);
+          socialViews.textContent = formatMetric(views);
+          socialStatsUpdated.textContent = updated ? `Last updated ${formatDate(updated)}` : "Last updated date unavailable";
+          socialStatsError.hidden = true;
+        } catch {
+          socialStatsPanel.dataset.error = "true";
+          socialFollowers.textContent = "--";
+          socialLikes.textContent = "--";
+          socialViews.textContent = "--";
+          socialStatsUpdated.textContent = "";
+          socialStatsError.hidden = false;
+        }
+      }
+
+      async function fetchSocialData() {
+        const urls = ["/public-api/social-data", "https://mas0ng.com/public-api/social-data"];
+        let lastError = null;
+        for (const url of urls) {
+          try {
+            const response = await fetch(url, {
+              headers: { "Accept": "application/json" },
+              cache: "no-store"
+            });
+            if (!response.ok) throw new Error("Social data request failed");
+            return await response.json();
+          } catch (error) {
+            lastError = error;
+          }
+        }
+        throw lastError || new Error("Social data unavailable");
+      }
+
+      function pickMetric(source, keys) {
+        const value = pickValue(source, keys);
+        const number = typeof value === "string" ? Number(value.replace(/,/g, "")) : Number(value);
+        return Number.isFinite(number) ? number : NaN;
+      }
+
+      function pickValue(source, keys) {
+        for (const key of keys) {
+          const value = key.split(".").reduce((node, part) => node?.[part], source);
+          if (value !== undefined && value !== null && value !== "") return value;
+        }
+        return undefined;
+      }
+
+      function formatMetric(value) {
+        return new Intl.NumberFormat("en-GB", { notation: "compact", maximumFractionDigits: value >= 1000 ? 1 : 0 }).format(value);
+      }
+
+      function formatDate(value) {
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) return String(value);
+        return new Intl.DateTimeFormat("en-GB", { dateStyle: "medium", timeStyle: "short" }).format(date);
       }
 
       function openExternalWarning(url) {

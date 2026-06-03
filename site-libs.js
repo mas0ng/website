@@ -155,7 +155,6 @@
 
   function shouldSkipOverlay() {
     const path = window.location.pathname.replace(/\/index\.html$/, "/");
-    if (path === "/") return true;
     if (path === "/" && new URLSearchParams(window.location.search).get("from") === "index") return true;
     return Boolean(document.querySelector("#mas0ng-intro-boot, #intro-overlay[data-active='true']"));
   }
