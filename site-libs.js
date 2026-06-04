@@ -6,6 +6,7 @@
   let useOverlay = false;
   let currentAsset = "";
   let loaderDone = false;
+  let loaderTextTimer = null;
 
   preparePendingState();
   window.mas0ngLoadDesignLibraries = window.mas0ngLoadDesignLibraries || loadDesignLibraries();
@@ -131,10 +132,12 @@
       if (!document.body || overlay || loaderDone || shouldSkipOverlay()) return;
       overlay = document.createElement("div");
       overlay.id = "mas0ng-style-loader";
-      overlay.setAttribute("aria-hidden", "true");
-      overlay.innerHTML = '<div class="mas0ng-style-loader-card"><div class="mas0ng-style-loader-spinner"></div><div class="mas0ng-style-loader-lines"><span></span><span></span></div></div><p class="mas0ng-style-loader-status" data-style-loader-status>' + escapeHtml(currentAsset) + '</p>';
+      overlay.setAttribute("role", "status");
+      overlay.setAttribute("aria-live", "polite");
+      overlay.innerHTML = '<div class="mas0ng-style-loader-stage"><div class="mas0ng-style-loader-mark" aria-hidden="true"><span></span><span></span><span></span></div><p class="mas0ng-style-loader-word" data-style-loader-word>Loading.</p></div>';
       document.body.append(overlay);
       injectOverlayStyles();
+      startLoaderTextLoop();
     };
 
     if (document.body) mount();
@@ -144,6 +147,7 @@
   function hideLoadingOverlay() {
     document.documentElement.classList.remove("mas0ng-style-pending");
     loaderDone = true;
+    stopLoaderTextLoop();
     if (!overlay) return;
     overlay.dataset.done = "true";
     window.setTimeout(() => {
@@ -167,14 +171,22 @@
     if (introStatus) introStatus.textContent = text;
   }
 
-  function escapeHtml(value) {
-    return String(value).replace(/[&<>"']/g, (char) => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    })[char]);
+  function startLoaderTextLoop() {
+    const word = overlay?.querySelector("[data-style-loader-word]");
+    if (!word || loaderTextTimer) return;
+    const states = ["Loading.", "Loading..", "Loading..."];
+    let index = 0;
+    word.textContent = states[index];
+    loaderTextTimer = window.setInterval(() => {
+      index = (index + 1) % states.length;
+      word.textContent = states[index];
+    }, 420);
+  }
+
+  function stopLoaderTextLoop() {
+    if (!loaderTextTimer) return;
+    window.clearInterval(loaderTextTimer);
+    loaderTextTimer = null;
   }
 
   function injectOverlayStyles() {
@@ -188,58 +200,66 @@
         z-index: 2147482500;
         display: grid;
         place-items: center;
-        background: rgba(2, 6, 23, 0.28);
-        backdrop-filter: blur(10px);
+        overflow: hidden;
+        background:
+          linear-gradient(90deg, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(56, 189, 248, 0.06) 1px, transparent 1px),
+          radial-gradient(circle at 22% 24%, rgba(56, 189, 248, 0.18), transparent 360px),
+          radial-gradient(circle at 78% 18%, rgba(34, 197, 94, 0.12), transparent 330px),
+          linear-gradient(180deg, #07111f 0%, #0b1525 100%);
+        background-size: 48px 48px, 48px 48px, auto, auto, auto;
         opacity: 1;
         transition: opacity 260ms ease;
         pointer-events: none;
       }
       #mas0ng-style-loader[data-done="true"] { opacity: 0; }
-      .mas0ng-style-loader-card {
-        min-width: 210px;
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        border: 1px solid rgba(255,255,255,.12);
-        border-radius: 18px;
-        background: rgba(8, 17, 31, .92);
-        padding: 16px 18px;
-        box-shadow: 0 24px 60px rgba(2,6,23,.30);
-      }
-      .mas0ng-style-loader-spinner {
-        width: 34px;
-        height: 34px;
-        border-radius: 999px;
-        border: 3px solid rgba(147, 197, 253, 0.22);
-        border-top-color: #38bdf8;
-        animation: mas0ngStyleSpin 760ms linear infinite;
-      }
-      .mas0ng-style-loader-lines {
-        width: 120px;
+      .mas0ng-style-loader-stage {
         display: grid;
+        place-items: center;
+        gap: 22px;
+        transform: translateY(-8px);
+      }
+      .mas0ng-style-loader-mark {
+        width: 116px;
+        height: 116px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: end;
         gap: 8px;
+        border: 1px solid rgba(255,255,255,.13);
+        border-radius: 28px;
+        background: rgba(8, 17, 31, .76);
+        padding: 24px;
+        box-shadow: 0 28px 80px rgba(2,6,23,.36), inset 0 1px 0 rgba(255,255,255,.08);
+        animation: mas0ngStyleFloat 1800ms ease-in-out infinite;
+        backdrop-filter: blur(18px);
       }
-      .mas0ng-style-loader-lines span {
-        height: 10px;
+      .mas0ng-style-loader-mark span {
         display: block;
-        overflow: hidden;
         border-radius: 999px;
-        background: rgba(255,255,255,.10);
+        background: linear-gradient(180deg, #dbeafe 0%, #38bdf8 58%, #22c55e 100%);
+        box-shadow: 0 0 26px rgba(56, 189, 248, .32);
+        animation: mas0ngStyleBars 980ms ease-in-out infinite;
       }
-      .mas0ng-style-loader-lines span:last-child { width: 72%; }
-      .mas0ng-style-loader-status {
-        position: fixed;
-        left: 16px;
-        right: 16px;
-        bottom: 24px;
+      .mas0ng-style-loader-mark span:nth-child(1) { height: 34px; animation-delay: -180ms; }
+      .mas0ng-style-loader-mark span:nth-child(2) { height: 62px; animation-delay: -60ms; }
+      .mas0ng-style-loader-mark span:nth-child(3) { height: 46px; animation-delay: -300ms; }
+      .mas0ng-style-loader-word {
         margin: 0;
-        color: rgba(226, 232, 240, 0.72);
-        font: 700 12px/1.5 Inter, ui-sans-serif, system-ui, sans-serif;
+        min-width: 126px;
+        color: #f8fbff;
+        font: 900 24px/1.1 Inter, ui-sans-serif, system-ui, sans-serif;
+        letter-spacing: 0;
         text-align: center;
-        overflow-wrap: anywhere;
+        text-shadow: 0 14px 38px rgba(2,6,23,.48);
       }
-      @keyframes mas0ngStyleSpin {
-        to { transform: rotate(360deg); }
+      @keyframes mas0ngStyleFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+      @keyframes mas0ngStyleBars {
+        0%, 100% { transform: scaleY(.72); opacity: .72; }
+        50% { transform: scaleY(1.08); opacity: 1; }
       }
     `;
     document.head.append(style);
