@@ -125,7 +125,7 @@
     nav.innerHTML = `
       <div class="box-border flex h-16 w-full max-w-full items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
         <a class="flex shrink-0 items-center gap-3 no-underline" href="${SITE_ORIGIN}/" aria-label="mas0ng.com public home">
-          <img src="/public_assets/site_branding/brand-nav.svg" alt="mas0ng.com" class="h-9 w-auto max-w-[180px] object-contain">
+          <span class="text-lg font-black tracking-tight text-white">mas0ng.com</span>
         </a>
 
         <div class="hidden min-w-0 flex-1 items-center justify-center px-3 lg:flex">
@@ -162,7 +162,6 @@
     document.body.classList.remove("pt-16", "pt-20", "pt-24");
     document.body.classList.add("pt-20");
     bindMobile(nav);
-    bindBrandFallback(nav);
     bindPageLoadIndicator(nav);
     window.lucide?.createIcons?.();
   }
@@ -232,16 +231,6 @@
         icon?.classList.toggle("rotate-180");
       });
     });
-  }
-
-  function bindBrandFallback(nav) {
-    const image = nav.querySelector("a[aria-label='mas0ng.com public home'] img");
-    image?.addEventListener("error", () => {
-      const fallback = document.createElement("span");
-      fallback.className = "text-base font-black tracking-tight text-white sm:text-lg";
-      fallback.textContent = "mas0ng.com";
-      image.replaceWith(fallback);
-    }, { once: true });
   }
 
   function bindPageLoadIndicator(nav) {
