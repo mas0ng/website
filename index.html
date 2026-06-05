@@ -3,23 +3,23 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>mas0ng.com</title>
-    <meta name="description" content="Public links, creator stats, and private tools for mas0ng.com.">
+    <title>401 | mas0ng.com</title>
+    <meta name="description" content="Unauthorised. Please log in to access mas0ng.com.">
     <meta name="theme-color" content="#07111f">
     <link rel="icon" type="image/svg+xml" sizes="128x128" href="/public_assets/site_branding/favicon.svg">
     <link rel="icon" type="image/svg+xml" sizes="256x256" href="/public_assets/site_branding/apple-touch-icon.svg">
     <link rel="icon" type="image/svg+xml" sizes="512x512" href="/public_assets/site_branding/favicon.svg">
     <link rel="apple-touch-icon" href="/public_assets/site_branding/apple-touch-icon.svg">
-    <meta property="og:title" content="mas0ng.com">
-    <meta property="og:description" content="Public links, creator stats, and private tools for mas0ng.com.">
+    <meta property="og:title" content="401 | mas0ng.com">
+    <meta property="og:description" content="Unauthorised. Please log in to access mas0ng.com.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.mas0ng.com/">
     <meta property="og:image" content="https://www.mas0ng.com/public_assets/site_branding/social-card.svg">
     <meta property="og:image:width" content="800">
     <meta property="og:image:height" content="800">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="mas0ng.com">
-    <meta name="twitter:description" content="Public links, creator stats, and private tools for mas0ng.com.">
+    <meta name="twitter:title" content="401 | mas0ng.com">
+    <meta name="twitter:description" content="Unauthorised. Please log in to access mas0ng.com.">
     <meta name="twitter:image" content="https://www.mas0ng.com/public_assets/site_branding/social-card.svg">
     <script src="/site-libs.js"></script>
     <script defer src="/navbar.js" data-active="home"></script>
@@ -29,17 +29,10 @@
         font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         background: #07111f;
         color: #f8fbff;
-        --page: #07111f;
-        --surface: rgba(10, 21, 37, 0.78);
-        --surface-strong: rgba(15, 28, 47, 0.92);
         --line: rgba(255, 255, 255, 0.12);
-        --line-strong: rgba(147, 197, 253, 0.42);
-        --text: #f8fbff;
+        --surface: rgba(10, 21, 37, 0.82);
         --muted: #a8b5c8;
-        --soft: #74839a;
-        --blue: #38bdf8;
         --blue-soft: #dbeafe;
-        --green: #22c55e;
       }
 
       * {
@@ -47,7 +40,6 @@
       }
 
       html {
-        scroll-behavior: smooth;
         background: #07111f;
       }
 
@@ -55,11 +47,11 @@
         min-height: 100vh;
         margin: 0;
         background:
-          linear-gradient(180deg, rgba(7, 17, 31, 0.94), rgba(7, 17, 31, 0.72)),
-          radial-gradient(circle at 14% 18%, rgba(56, 189, 248, 0.18), transparent 360px),
-          radial-gradient(circle at 82% 12%, rgba(34, 197, 94, 0.13), transparent 330px),
-          linear-gradient(180deg, #07111f 0%, #0b1525 58%, #eef3f9 58%, #f8fbff 100%);
-        color: var(--text);
+          linear-gradient(180deg, rgba(7, 17, 31, 0.96), rgba(7, 17, 31, 0.78)),
+          radial-gradient(circle at 18% 16%, rgba(56, 189, 248, 0.18), transparent 360px),
+          radial-gradient(circle at 82% 12%, rgba(34, 197, 94, 0.12), transparent 320px),
+          linear-gradient(180deg, #07111f 0%, #0b1525 100%);
+        color: #f8fbff;
         font-family: inherit;
       }
 
@@ -72,14 +64,8 @@
           linear-gradient(90deg, rgba(56, 189, 248, 0.07) 1px, transparent 1px),
           linear-gradient(180deg, rgba(56, 189, 248, 0.055) 1px, transparent 1px);
         background-size: 46px 46px;
-        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.78), transparent 68%);
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.78), transparent 70%);
         pointer-events: none;
-      }
-
-      h1,
-      h2,
-      p {
-        margin: 0;
       }
 
       a {
@@ -87,804 +73,110 @@
         text-decoration: none;
       }
 
-      button {
-        border: 0;
-        font: inherit;
-        cursor: pointer;
-      }
-
-      .public-page {
+      main {
         min-height: 100vh;
-        padding: clamp(82px, 10vw, 110px) 18px 118px;
-      }
-
-      .public-shell {
-        width: min(100%, 1160px);
-        margin: 0 auto;
-      }
-
-      .public-hero {
-        min-height: clamp(390px, 54vw, 560px);
         display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(280px, 430px);
-        align-items: stretch;
-        gap: clamp(18px, 3vw, 28px);
+        place-items: center;
+        padding: clamp(90px, 12vw, 124px) 18px 48px;
       }
 
-      .public-hero-main,
-      .public-command-panel,
-      .public-card,
-      .social-stats-panel,
-      .external-panel {
+      .error-panel {
+        width: min(100%, 680px);
         border: 1px solid var(--line);
         border-radius: 24px;
         background: var(--surface);
+        padding: clamp(28px, 6vw, 54px);
+        text-align: center;
         box-shadow: 0 28px 84px rgba(2, 6, 23, 0.34);
         backdrop-filter: blur(18px);
       }
 
-      .public-hero-main {
-        position: relative;
-        min-width: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        overflow: hidden;
-        padding: clamp(28px, 5vw, 58px);
-      }
-
-      .public-hero-main::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-          linear-gradient(90deg, rgba(56, 189, 248, 0.09) 1px, transparent 1px),
-          linear-gradient(180deg, rgba(56, 189, 248, 0.07) 1px, transparent 1px);
-        background-size: 42px 42px;
-        mask-image: linear-gradient(135deg, rgba(0, 0, 0, 0.88), transparent 68%);
-        opacity: 0.72;
-        pointer-events: none;
-      }
-
-      .public-kicker,
-      .section-heading {
-        width: fit-content;
-        color: #bfdbfe;
-        font-size: 0.76rem;
-        font-weight: 850;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
-      .public-kicker {
-        position: relative;
-        border: 1px solid rgba(147, 197, 253, 0.28);
-        border-radius: 999px;
-        padding: 7px 11px;
-        background: rgba(219, 234, 254, 0.08);
-      }
-
-      .public-title {
-        position: relative;
-        max-width: 11ch;
-        margin-top: 18px;
-        color: #ffffff;
-        font-size: clamp(4rem, 13vw, 8.8rem);
+      .status-code {
+        color: rgba(219, 234, 254, 0.22);
+        font-size: clamp(5.5rem, 22vw, 11rem);
         font-weight: 950;
         letter-spacing: 0;
-        line-height: 0.86;
+        line-height: 0.78;
       }
 
-      .public-lead {
-        position: relative;
-        max-width: 56ch;
+      h1,
+      p {
+        margin: 0;
+      }
+
+      h1 {
         margin-top: 22px;
-        color: #cbd5e1;
-        font-size: clamp(1rem, 1.8vw, 1.2rem);
-        font-weight: 650;
-        line-height: 1.68;
+        color: #ffffff;
+        font-size: clamp(2.15rem, 7vw, 4.4rem);
+        font-weight: 950;
+        letter-spacing: 0;
+        line-height: 0.96;
       }
 
-      .public-actions {
-        position: relative;
+      p {
+        max-width: 44ch;
+        margin: 18px auto 0;
+        color: var(--muted);
+        font-size: clamp(1rem, 2vw, 1.16rem);
+        font-weight: 650;
+        line-height: 1.65;
+      }
+
+      .actions {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
         gap: 10px;
         margin-top: 28px;
       }
 
-      .public-actions a,
-      .external-panel button {
-        min-height: 44px;
+      .actions a {
+        min-height: 46px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         gap: 8px;
         border-radius: 14px;
         padding: 0 18px;
-        font-size: 0.92rem;
-        font-weight: 850;
-        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+        font-size: 0.94rem;
+        font-weight: 900;
+        transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
       }
 
-      .public-actions a:first-child,
-      .external-continue {
+      .login-action {
         border: 1px solid #bfdbfe;
-        background: #dbeafe;
+        background: var(--blue-soft);
         color: #061224;
       }
 
-      .public-actions a:last-child,
-      .external-cancel {
+      .legal-action {
         border: 1px solid rgba(255, 255, 255, 0.13);
         background: rgba(255, 255, 255, 0.08);
         color: #f8fbff;
       }
 
-      .public-actions a:hover,
-      .external-panel button:hover {
+      .actions a:hover {
         transform: translateY(-1px);
-      }
-
-      .public-command-panel {
-        min-width: 0;
-        display: grid;
-        align-content: end;
-        gap: 16px;
-        padding: clamp(20px, 4vw, 30px);
-      }
-
-      .command-stack {
-        display: grid;
-        gap: 12px;
-      }
-
-      .command-row {
-        display: grid;
-        grid-template-columns: 44px 1fr auto;
-        align-items: center;
-        gap: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 18px;
-        background: rgba(255, 255, 255, 0.055);
-        padding: 12px;
-        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
-      }
-
-      .command-row:hover,
-      .link-card:hover {
-        border-color: var(--line-strong);
-        background: rgba(219, 234, 254, 0.1);
-        transform: translateY(-2px);
-      }
-
-      .command-icon {
-        width: 44px;
-        height: 44px;
-        display: grid;
-        place-items: center;
-        border-radius: 13px;
-        background: var(--blue-soft);
-        color: #061224;
-      }
-
-      .command-copy strong,
-      .public-card h2,
-      .social-stats-title {
-        color: #ffffff;
-        font-weight: 900;
-      }
-
-      .command-copy span {
-        display: block;
-        margin-top: 3px;
-        color: var(--muted);
-        font-size: 0.86rem;
-        font-weight: 700;
-      }
-
-      .command-pill {
-        border-radius: 999px;
-        background: rgba(34, 197, 94, 0.12);
-        color: #86efac;
-        padding: 6px 9px;
-        font-size: 0.74rem;
-        font-weight: 900;
-      }
-
-      .public-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
-        gap: clamp(18px, 3vw, 28px);
-        margin-top: clamp(18px, 3vw, 28px);
-      }
-
-      .public-card,
-      .social-stats-panel {
-        padding: clamp(20px, 3vw, 28px);
-      }
-
-      .public-section-head {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        gap: 16px;
-        margin-bottom: 18px;
-      }
-
-      .public-section-head p {
-        max-width: 44ch;
-        color: var(--muted);
-        font-size: 0.92rem;
-        font-weight: 650;
-        line-height: 1.5;
-      }
-
-      .links {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-
-      .link-card {
-        min-height: 92px;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        border: 1px solid rgba(255, 255, 255, 0.11);
-        border-radius: 18px;
-        background: rgba(255, 255, 255, 0.07);
-        padding: 18px;
-        color: #f8fbff;
-        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
-      }
-
-      .icon-shell {
-        width: 48px;
-        height: 48px;
-        display: grid;
-        place-items: center;
-        flex: 0 0 auto;
-        border-radius: 14px;
-        background: #f8fbff;
-      }
-
-      .social-icon {
-        width: 26px;
-        height: 26px;
-        display: block;
-      }
-
-      .link-text {
-        min-width: 0;
-        flex: 1;
-      }
-
-      .link-card .name {
-        color: #ffffff;
-        font-size: 1.02rem;
-        font-weight: 850;
-        line-height: 1.2;
-      }
-
-      .link-card .handle {
-        margin-top: 4px;
-        color: var(--muted);
-        font-size: 0.92rem;
-        font-weight: 700;
-      }
-
-      .link-arrow {
-        color: var(--muted);
-      }
-
-      .social-stats-head {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 16px;
-        margin-bottom: 18px;
-      }
-
-      .social-stats-source,
-      .social-stats-updated,
-      .social-stats-error {
-        color: var(--muted);
-        font-size: 0.82rem;
-        font-weight: 750;
-      }
-
-      .social-stats-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-
-      .social-stat {
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        background: rgba(255, 255, 255, 0.07);
-        padding: 16px;
-      }
-
-      .social-stat span {
-        display: block;
-        color: var(--muted);
-        font-size: 0.76rem;
-        font-weight: 850;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-      }
-
-      .social-stat strong {
-        display: block;
-        margin-top: 7px;
-        color: #ffffff;
-        font-size: 2rem;
-        font-weight: 950;
-        line-height: 1;
-      }
-
-      .social-stats-updated,
-      .social-stats-error {
-        margin-top: 14px;
-      }
-
-      .privacy-banner {
-        position: fixed;
-        left: 50%;
-        right: auto;
-        bottom: 18px;
-        z-index: 80;
-        width: min(100% - 28px, 720px);
-        display: none;
-        align-items: center;
-        gap: 12px;
-        transform: translateX(-50%);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 18px;
-        background: rgba(8, 17, 31, 0.94);
-        color: #dbeafe;
-        padding: 12px 14px;
-        box-shadow: 0 18px 48px rgba(2, 6, 23, 0.28);
-        backdrop-filter: blur(16px);
-      }
-
-      .privacy-banner[data-open="true"] {
-        display: flex;
-      }
-
-      .privacy-banner span {
-        flex: 1;
-        color: #dbeafe;
-        font-size: 0.9rem;
-        font-weight: 650;
-        line-height: 1.45;
-      }
-
-      .privacy-banner a {
-        color: #ffffff;
-        text-decoration: underline;
-        text-decoration-color: rgba(147, 197, 253, 0.55);
-        text-underline-offset: 3px;
-      }
-
-      .privacy-banner button {
-        flex: 0 0 auto;
-        border-radius: 999px;
-        background: #dbeafe;
-        color: #061224;
-        padding: 9px 13px;
-        font-size: 0.8rem;
-        font-weight: 900;
-      }
-
-      .external-modal {
-        position: fixed;
-        inset: 0;
-        z-index: 100;
-        display: none;
-        place-items: center;
-        background: rgba(2, 6, 23, 0.72);
-        padding: 18px;
-        backdrop-filter: blur(14px);
-      }
-
-      .external-modal[data-open="true"] {
-        display: grid;
-      }
-
-      .external-panel {
-        width: min(100%, 460px);
-        background: var(--surface-strong);
-        padding: 24px;
-      }
-
-      .external-label {
-        color: var(--muted);
-        font-size: 0.7rem;
-        font-weight: 850;
-        letter-spacing: 0.12em;
-      }
-
-      .external-panel h2 {
-        margin-top: 10px;
-        color: #ffffff;
-        font-size: 1.65rem;
-        font-weight: 900;
-      }
-
-      .external-panel p {
-        margin-top: 8px;
-        color: var(--muted);
-        font-size: 0.98rem;
-        font-weight: 650;
-        line-height: 1.55;
-      }
-
-      .external-host {
-        margin-top: 18px;
-        overflow-wrap: anywhere;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 16px;
-        background: rgba(255, 255, 255, 0.08);
-        padding: 14px;
-        color: #f8fbff;
-        font-size: 0.9rem;
-        font-weight: 800;
-      }
-
-      .external-actions {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        margin-top: 20px;
-      }
-
-      @media (max-width: 900px) {
-        .public-page {
-          padding-top: 76px;
-        }
-
-        .public-hero,
-        .public-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .public-hero {
-          min-height: 0;
-        }
-      }
-
-      @media (max-width: 560px) {
-        .public-page {
-          padding-inline: 12px;
-        }
-
-        .public-hero-main,
-        .public-command-panel,
-        .public-card,
-        .social-stats-panel {
-          border-radius: 20px;
-        }
-
-        .public-title {
-          font-size: clamp(3.2rem, 22vw, 4.8rem);
-        }
-
-        .public-section-head,
-        .social-stats-head {
-          align-items: flex-start;
-          flex-direction: column;
-        }
-
-        .command-row {
-          grid-template-columns: 40px 1fr;
-        }
-
-        .command-pill {
-          grid-column: 2;
-          justify-self: start;
-        }
-
-        .privacy-banner {
-          align-items: flex-start;
-          flex-direction: column;
-        }
-
-        .external-actions {
-          grid-template-columns: 1fr;
-        }
       }
     </style>
   </head>
-  <body class="public-home min-h-screen antialiased">
-    <div class="public-page">
-      <main class="public-shell">
-        <section class="public-hero" aria-label="mas0ng.com">
-          <div class="public-hero-main">
-            <p class="public-kicker">Public front door</p>
-            <h1 class="public-title">mas0ng.com</h1>
-            <p class="public-lead">Public links, creator figures, legal pages, and the fast route into the private mas0ng.com tools.</p>
-            <div class="public-actions" aria-label="Primary links">
-              <a href="https://auth.mas0ng.com/login?return_to=%2Fsecure%2Fapps%2F">
-                <i data-lucide="lock-keyhole" class="h-4 w-4"></i>
-                Open apps
-              </a>
-              <a href="/legal/">
-                <i data-lucide="scale" class="h-4 w-4"></i>
-                Legal
-              </a>
-            </div>
-          </div>
-
-          <aside class="public-command-panel" aria-label="Site sections">
-            <div class="section-heading">Quick access</div>
-            <div class="command-stack">
-              <a class="command-row" href="https://auth.mas0ng.com/login?return_to=%2Fsecure%2Fapps%2F">
-                <span class="command-icon"><i data-lucide="grid-3x3" class="h-5 w-5"></i></span>
-                <span class="command-copy"><strong>Private apps</strong><span>Launch tools and dashboards</span></span>
-                <span class="command-pill">Secure</span>
-              </a>
-              <a class="command-row" href="/legal/">
-                <span class="command-icon"><i data-lucide="file-text" class="h-5 w-5"></i></span>
-                <span class="command-copy"><strong>Legal</strong><span>Privacy, terms, and notices</span></span>
-                <span class="command-pill">Public</span>
-              </a>
-              <a class="command-row" href="#links">
-                <span class="command-icon"><i data-lucide="at-sign" class="h-5 w-5"></i></span>
-                <span class="command-copy"><strong>Socials</strong><span>Find Mason on other platforms</span></span>
-                <span class="command-pill">Live</span>
-              </a>
-            </div>
-          </aside>
-        </section>
-
-        <section class="public-grid" id="links">
-          <section class="public-card" aria-labelledby="social-links-title">
-            <div class="public-section-head">
-              <div>
-                <div class="section-heading">Links</div>
-                <h2 id="social-links-title">Find Mason</h2>
-              </div>
-              <p>Official social profiles only. External links ask before opening so you always know where you are going.</p>
-            </div>
-            <div class="links" data-social-links></div>
-          </section>
-
-          <section class="social-stats-panel" data-social-stats aria-live="polite">
-            <div class="social-stats-head">
-              <div>
-                <div class="section-heading">TikTok</div>
-                <div class="social-stats-title">Creator figures</div>
-              </div>
-              <div class="social-stats-source">From mas0ng social data</div>
-            </div>
-            <div class="social-stats-grid">
-              <div class="social-stat"><span>Followers</span><strong data-social-followers>...</strong></div>
-              <div class="social-stat"><span>Total likes</span><strong data-social-likes>...</strong></div>
-              <div class="social-stat"><span>365 day views</span><strong data-social-views>...</strong></div>
-            </div>
-            <p class="social-stats-updated" data-social-updated>Loading latest figures...</p>
-            <p class="social-stats-error" data-social-error hidden>TikTok figures could not be fetched.</p>
-          </section>
-        </section>
-      </main>
-    </div>
-
-    <div class="privacy-banner" data-privacy-banner aria-live="polite">
-      <span>No third-party tracking. <a href="/legal/privacy/">Privacy policy</a>.</span>
-      <button type="button" data-privacy-choice="seen">Got it</button>
-    </div>
-
-    <div class="external-modal" data-external-modal aria-hidden="true">
-      <div class="external-panel" role="dialog" aria-modal="true" aria-labelledby="external-title">
-        <div class="external-label">EXTERNAL LINK</div>
-        <h2 id="external-title">Leaving mas0ng.com</h2>
-        <p>You are about to visit an external website. Double-check the destination before continuing.</p>
-        <div class="external-host" data-external-host></div>
-        <div class="external-actions">
-          <button class="external-cancel" type="button" data-external-cancel>Stay here</button>
-          <button class="external-continue" type="button" data-external-continue>Continue</button>
+  <body>
+    <main>
+      <section class="error-panel" aria-labelledby="page-title">
+        <div class="status-code" aria-hidden="true">401</div>
+        <h1 id="page-title">Unauthorised</h1>
+        <p>You need to log in before you can access mas0ng.com.</p>
+        <div class="actions">
+          <a class="login-action" href="https://auth.mas0ng.com/login?return_to=%2Fsecure%2Fapps%2F">
+            <i data-lucide="log-in" class="h-4 w-4"></i>
+            Log in
+          </a>
+          <a class="legal-action" href="/legal/">
+            <i data-lucide="file-text" class="h-4 w-4"></i>
+            Legal
+          </a>
         </div>
-      </div>
-    </div>
-
-    <script>
-      const banner = document.querySelector("[data-privacy-banner]");
-      const externalModal = document.querySelector("[data-external-modal]");
-      const externalHost = document.querySelector("[data-external-host]");
-      const externalCancel = document.querySelector("[data-external-cancel]");
-      const externalContinue = document.querySelector("[data-external-continue]");
-      const socialLinksContainer = document.querySelector("[data-social-links]");
-      const socialStatsPanel = document.querySelector("[data-social-stats]");
-      const socialStatsError = document.querySelector("[data-social-error]");
-      const socialStatsUpdated = document.querySelector("[data-social-updated]");
-      const socialFollowers = document.querySelector("[data-social-followers]");
-      const socialLikes = document.querySelector("[data-social-likes]");
-      const socialViews = document.querySelector("[data-social-views]");
-
-      const socials = [
-        {
-          name: "Instagram",
-          username: "@mas0ngi",
-          url: "https://www.instagram.com/mas0ngi",
-          icon: "/public_assets/social_icons/instagram.svg"
-        },
-        {
-          name: "TikTok",
-          username: "@mas0ng",
-          url: "https://www.tiktok.com/@mas0ng",
-          icon: "/public_assets/social_icons/tiktok.svg"
-        },
-        {
-          name: "Snapchat",
-          username: "mas0ng",
-          url: "https://www.snapchat.com/add/mas0ng",
-          icon: "/public_assets/social_icons/snapchat.svg"
-        }
-      ];
-
-      let pendingExternalUrl = "";
-
-      bootPage();
-      renderSocialLinks();
-      loadSocialStats();
-
-      document.addEventListener("click", (event) => {
-        const externalLink = event.target.closest("[data-external-link]");
-        if (externalLink) {
-          event.preventDefault();
-          openExternalWarning(externalLink.href);
-          return;
-        }
-
-        const button = event.target.closest("[data-privacy-choice]");
-        if (!button) return;
-        try {
-          localStorage.setItem("mas0ng_privacy_choice", "seen");
-        } catch {}
-        banner.dataset.open = "false";
-      });
-
-      externalCancel.addEventListener("click", closeExternalWarning);
-
-      externalContinue.addEventListener("click", () => {
-        if (!pendingExternalUrl) return;
-        const nextUrl = pendingExternalUrl;
-        closeExternalWarning();
-        window.open(nextUrl, "_blank", "noopener,noreferrer");
-      });
-
-      externalModal.addEventListener("click", (event) => {
-        if (event.target === externalModal) closeExternalWarning();
-      });
-
-      window.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") closeExternalWarning();
-      });
-
-      function bootPage() {
-        showPrivacyBanner();
-      }
-
-      function renderSocialLinks() {
-        socialLinksContainer.replaceChildren(...socials.map((social) => {
-          const link = document.createElement("a");
-          link.className = "link-card";
-          link.href = social.url;
-          link.target = "_blank";
-          link.rel = "noopener noreferrer";
-          link.dataset.externalLink = "";
-
-          link.innerHTML = `
-            <div class="icon-shell">
-              <img class="social-icon" src="${social.icon}" alt="" width="26" height="26">
-            </div>
-            <div class="link-text">
-              <div class="name">${social.name}</div>
-              <div class="handle">${social.username}</div>
-            </div>
-            <div class="link-arrow" aria-hidden="true">
-              <i data-lucide="arrow-up-right" class="h-5 w-5"></i>
-            </div>
-          `;
-          return link;
-        }));
-        window.mas0ngLoadDesignLibraries?.then?.(() => window.lucide?.createIcons?.());
-      }
-
-      async function loadSocialStats() {
-        try {
-          const data = await fetchSocialData();
-          const tiktok = data?.tiktok || data?.tikTok || data?.social?.tiktok || data;
-          const followers = pickMetric(tiktok, ["totalFollowers", "followers", "followerCount", "followersTotal"]);
-          const likes = pickMetric(tiktok, ["totalLikes", "likes", "likeCount", "likesTotal"]);
-          const views = pickMetric(tiktok, ["viewsPast365Days", "views365", "past365Views", "viewsLast365Days", "last365DaysViews"]);
-          const updated = pickValue(tiktok, ["updatedAt", "lastUpdated", "retrievedAt", "updated"]);
-          if (![followers, likes, views].every((value) => Number.isFinite(value))) throw new Error("Missing TikTok metrics");
-          socialFollowers.textContent = formatMetric(followers);
-          socialLikes.textContent = formatMetric(likes);
-          socialViews.textContent = formatMetric(views);
-          socialStatsUpdated.textContent = updated ? `Last updated ${formatDate(updated)}` : "Last updated date unavailable";
-          socialStatsError.hidden = true;
-        } catch {
-          socialStatsPanel.dataset.error = "true";
-          socialFollowers.textContent = "--";
-          socialLikes.textContent = "--";
-          socialViews.textContent = "--";
-          socialStatsUpdated.textContent = "";
-          socialStatsError.hidden = false;
-        }
-      }
-
-      async function fetchSocialData() {
-        const urls = ["/public-api/social-data", "https://mas0ng.com/public-api/social-data"];
-        let lastError = null;
-        for (const url of urls) {
-          try {
-            const response = await fetch(url, {
-              headers: { "Accept": "application/json" },
-              cache: "no-store"
-            });
-            if (!response.ok) throw new Error("Social data request failed");
-            return await response.json();
-          } catch (error) {
-            lastError = error;
-          }
-        }
-        throw lastError || new Error("Social data unavailable");
-      }
-
-      function pickMetric(source, keys) {
-        const value = pickValue(source, keys);
-        const number = typeof value === "string" ? Number(value.replace(/,/g, "")) : Number(value);
-        return Number.isFinite(number) ? number : NaN;
-      }
-
-      function pickValue(source, keys) {
-        for (const key of keys) {
-          const value = key.split(".").reduce((node, part) => node?.[part], source);
-          if (value !== undefined && value !== null && value !== "") return value;
-        }
-        return undefined;
-      }
-
-      function formatMetric(value) {
-        return new Intl.NumberFormat("en-GB", { notation: "compact", maximumFractionDigits: value >= 1000 ? 1 : 0 }).format(value);
-      }
-
-      function formatDate(value) {
-        const date = new Date(value);
-        if (Number.isNaN(date.getTime())) return String(value);
-        return new Intl.DateTimeFormat("en-GB", { dateStyle: "medium", timeStyle: "short" }).format(date);
-      }
-
-      function openExternalWarning(url) {
-        let host = "external site";
-        try {
-          host = new URL(url).hostname.replace(/^www\./, "");
-        } catch {}
-        pendingExternalUrl = url;
-        externalHost.textContent = host;
-        externalModal.dataset.open = "true";
-        externalModal.setAttribute("aria-hidden", "false");
-        externalContinue.focus();
-      }
-
-      function closeExternalWarning() {
-        pendingExternalUrl = "";
-        externalModal.dataset.open = "false";
-        externalModal.setAttribute("aria-hidden", "true");
-      }
-
-      function showPrivacyBanner() {
-        let choice = "";
-        try {
-          choice = localStorage.getItem("mas0ng_privacy_choice") || "";
-        } catch {}
-        if (!choice) banner.dataset.open = "true";
-      }
-    </script>
+      </section>
+    </main>
   </body>
 </html>
