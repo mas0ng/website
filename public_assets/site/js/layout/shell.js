@@ -48,6 +48,10 @@
   }
 
   function resolveAssetUrl(url) {
+    if (typeof d.resolveAssetUrl === 'function') {
+      return d.resolveAssetUrl(url);
+    }
+
     if (!url || /^https?:\/\//i.test(url) || url.startsWith('data:')) {
       return url;
     }
