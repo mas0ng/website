@@ -16,10 +16,17 @@ window.MAS0NG_SITE = {
     { id: 'cookies', label: 'Cookies', href: '/legal/cookies.html' },
     { id: 'security', label: 'Security', href: '/legal/security.html' }
   ],
+  profile: {
+    name: 'Mason',
+    imageWebp: '/public_assets/site_branding/profile.webp',
+    imageFallback: '/public_assets/site_branding/profile.svg'
+  },
   assets: {
     etnaWoff2: '/public_assets/fonts/etna.woff2',
     etnaWoff: '/public_assets/fonts/etna.woff',
     favicon: '/public_assets/site_branding/favicon.svg',
+    profileWebp: '/public_assets/site_branding/profile.webp',
+    profileSvg: '/public_assets/site_branding/profile.svg',
     siteCss: '/public_assets/site/css/site.css',
     legalCss: '/public_assets/site/css/legal.css',
     authCss: '/public_assets/site/css/auth.css',

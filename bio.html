@@ -27,7 +27,27 @@
     <section class="bio-masthead" aria-labelledby="bio-title">
       <div class="bio-masthead__bg" aria-hidden="true"></div>
       <div class="bio-hero__inner">
+        <figure class="bio-profile">
+          <span class="bio-avatar-ring" aria-hidden="true"></span>
+          <picture class="bio-avatar">
+            <source srcset="/public_assets/site_branding/profile.webp" type="image/webp" />
+            <img
+              src="/public_assets/site_branding/profile.svg"
+              alt="Mason"
+              width="128"
+              height="128"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </picture>
+        </figure>
         <h1 class="hero__title" id="bio-title">Mason</h1>
+        <p class="bio-tagline">Social links and contact</p>
+        <nav class="bio-meta-links" aria-label="Site links">
+          <a href="/legal/privacy/">Privacy policy</a>
+          <a href="/legal/">Legal hub</a>
+          <a href="/">mas0ng.com</a>
+        </nav>
       </div>
     </section>
 

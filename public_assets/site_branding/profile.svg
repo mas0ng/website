@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Mason">
+  <defs>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="52%" stop-color="#174ea6"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+    <linearGradient id="face" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0%" stop-color="#102a4a"/>
+      <stop offset="100%" stop-color="#061224"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="35%" cy="28%" r="68%">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity=".42"/>
+      <stop offset="100%" stop-color="#061224" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="128" cy="128" r="124" fill="url(#ring)"/>
+  <circle cx="128" cy="128" r="112" fill="url(#face)"/>
+  <circle cx="128" cy="128" r="112" fill="url(#glow)"/>
+  <path d="M72 188V68h28l28 48 28-48h28v120h-26V118l-30 52h-24l-30-52v70z" fill="#f8fbff"/>
+</svg>
