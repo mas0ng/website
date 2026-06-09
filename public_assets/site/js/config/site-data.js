@@ -18,15 +18,13 @@ window.MAS0NG_SITE = {
   ],
   profile: {
     name: 'Mason',
-    imageWebp: '/public_assets/site_branding/profile.webp',
-    imageFallback: '/public_assets/site_branding/profile.svg'
+    image: '/public_assets/social_icons/pfp.jpg'
   },
   assets: {
     etnaWoff2: '/public_assets/fonts/etna.woff2',
     etnaWoff: '/public_assets/fonts/etna.woff',
     favicon: '/public_assets/site_branding/favicon.svg',
-    profileWebp: '/public_assets/site_branding/profile.webp',
-    profileSvg: '/public_assets/site_branding/profile.svg',
+    profileImage: '/public_assets/social_icons/pfp.jpg',
     siteCss: '/public_assets/site/css/site.css',
     legalCss: '/public_assets/site/css/legal.css',
     authCss: '/public_assets/site/css/auth.css',

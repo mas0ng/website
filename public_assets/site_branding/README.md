@@ -7,8 +7,7 @@ Single favicon for mas0ng.com and all workers.
 | Filename | Size (viewBox) | Where used | What to draw |
 | --- | --- | --- | --- |
 | `favicon.svg` | `32×32` | Public site, workers, auth OG/Twitter fallback | Primary mas0ng.com mark |
-| `profile.svg` | `256×256` | Bio page fallback avatar | Circular branded monogram |
-| `profile.webp` | `256×256` or larger | Bio page (optional) | Square photo; shown when present |
+| `profile.svg` | `256×256` | Optional fallback avatar | Circular branded monogram |
 
 ## Spec
 
@@ -30,8 +29,6 @@ Workers on subdomains may use the absolute URL: `https://mas0ng.com/public_asset
 
 - Public `website/` pages (`index.html`, `bio.html`, `404.html`, legal)
 
-## Bio profile photo
 
-Drop a square `profile.webp` into this folder to replace the default SVG on `/bio`. The page uses `<picture>` so the WebP is preferred when the file exists; otherwise `profile.svg` is shown.
 - `workers/auth`, `workers/apps`, `workers/dash`, `workers/ai`, `workers/music`
 - `website/public_assets/site/js/config/site-data.js` (`assets.favicon`)
