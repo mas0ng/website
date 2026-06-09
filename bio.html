@@ -12,6 +12,14 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" />
   <link rel="stylesheet" href="/public_assets/site/css/site.css" />
   <link rel="stylesheet" href="/index_assets/css/bio.css" />
+  <script>
+    (function () {
+      var desktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      if (desktop) {
+        window.location.replace('/#social');
+      }
+    })();
+  </script>
 </head>
 <body data-page="bio">
   <div id="site-main">

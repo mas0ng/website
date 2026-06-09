@@ -19,6 +19,10 @@
   boot();
 
   async function boot() {
+    if (window.location.hostname === "auth.mas0ng.com") {
+      return;
+    }
+
     if (await loadSharedNavbarIfLoggedIn()) {
       return;
     }

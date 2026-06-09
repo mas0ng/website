@@ -3,10 +3,16 @@
 body.worker-page {
   background: var(--page-light);
   color: var(--text);
-  padding-top: var(--nav-h);
+  min-height: 100dvh;
 }
 
-body.worker-page .nav {
+/* In-flow nav on workers — not overlaid like the home masthead */
+body.worker-page > .nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 120;
   background: #fff;
   border-bottom-color: rgba(0, 0, 0, 0.08);
 }

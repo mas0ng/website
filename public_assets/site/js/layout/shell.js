@@ -9,7 +9,10 @@
   boot();
 
   async function boot() {
-    if (await loadSharedNavbarIfLoggedIn()) {
+    const publicOnly = window.location.hostname === 'auth.mas0ng.com'
+      || script?.dataset.publicOnly !== undefined;
+
+    if (!publicOnly && await loadSharedNavbarIfLoggedIn()) {
       return;
     }
 
@@ -18,7 +21,10 @@
       document.documentElement.setAttribute('data-nav-solid', '');
     }
 
-    await loadSocials();
+    if (page !== 'auth') {
+      await loadSocials();
+    }
+
     await window.MAS0NG_LOADER.run(buildCoreTasks(page));
     mountShell(active);
     initNav();
@@ -153,13 +159,14 @@
           </div>`
       : '';
 
+    const siteRoot = d.siteOrigin || '';
     const nav = document.createElement('header');
     nav.className = 'nav';
     nav.id = 'site-nav';
     nav.setAttribute('aria-label', 'Primary');
     nav.innerHTML = `
       <div class="nav__inner">
-        <a class="nav__brand" href="/">${d.siteName}</a>
+        <a class="nav__brand" href="${siteRoot}/">${d.siteName}</a>
         <div class="nav__cluster" role="navigation" aria-label="Sections">
           ${navItems}
           <div class="nav__dropdown" id="nav-legal-dropdown">
@@ -171,7 +178,7 @@
           </div>
         </div>
         <div class="nav__end">
-          <a class="nav__login" id="nav-login" href="${d.loginUrl}">
+          <a class="nav__login${activeId === 'login' ? ' is-active' : ''}" id="nav-login" href="${d.loginUrl}"${activeId === 'login' ? ' aria-current="page"' : ''}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
             Log in
           </a>
@@ -183,7 +190,7 @@
       <nav class="nav__drawer" id="nav-drawer" aria-label="Mobile">
         ${d.nav.map((item) => `<a class="nav__drawer-link" href="${item.href}">${item.label}</a>`).join('')}
         <div class="nav__drawer-group" id="nav-drawer-legal">${drawerLegal}</div>
-        <a class="nav__drawer-login" id="nav-login-drawer" href="${d.loginUrl}">
+        <a class="nav__drawer-login${activeId === 'login' ? ' is-active' : ''}" id="nav-login-drawer" href="${d.loginUrl}"${activeId === 'login' ? ' aria-current="page"' : ''}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
           Log in
         </a>

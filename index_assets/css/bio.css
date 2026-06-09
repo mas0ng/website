@@ -5,8 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: min(68svh, 560px);
-  padding: clamp(40px, 8vw, 72px) 22px clamp(56px, 10vw, 88px);
+  padding: clamp(24px, 4vw, 36px) 22px clamp(20px, 3.5vw, 28px);
   overflow: clip;
   text-align: center;
   color: var(--text-inverse);
@@ -31,7 +30,9 @@
 }
 
 .bio-masthead .hero__title {
-  font-size: clamp(1.75rem, 4.5vw, 2.75rem);
+  font-size: clamp(1.35rem, 3.5vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .bio-main .section__title {
@@ -52,10 +53,6 @@
 }
 
 @media (max-width: 480px) {
-  .bio-masthead {
-    min-height: 58svh;
-  }
-
   .bio-main .social-tile {
     padding: 16px 18px;
   }
