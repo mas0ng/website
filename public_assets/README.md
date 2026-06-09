@@ -8,7 +8,7 @@ All **new** icons and branding for the redesign should be **SVG**. Drop files in
 
 | Folder | Purpose | README |
 | --- | --- | --- |
-| `site_branding/` | Favicons, OG card, nav mark | [site_branding/README.md](site_branding/README.md) |
+| `site_branding/` | Site favicon | [site_branding/README.md](site_branding/README.md) |
 | `social_icons/` | Public social link tiles + footer | [social_icons/README.md](social_icons/README.md) |
 | `app_icons/` | Private app launcher + worker favicons | [app_icons/README.md](app_icons/README.md) |
 | `fonts/` | Etna display font files | [fonts/README.md](fonts/README.md) |

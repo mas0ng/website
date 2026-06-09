@@ -220,7 +220,13 @@
     `;
 
     if (!footerOnly) {
-      main.before(nav);
+      const heroHost = window.MAS0NG_NAV_SCROLL?.findHero?.(main) || main.querySelector('.masthead, .legal-hero, .worker-masthead, .playlist-hero');
+      if (heroHost) {
+        heroHost.prepend(nav);
+      } else {
+        main.before(nav);
+        document.documentElement.setAttribute('data-nav-solid', '');
+      }
     }
     main.append(footer);
   }
@@ -287,14 +293,19 @@
       const masthead = document.getElementById('masthead');
       if (!masthead) return;
 
+      const morphRange = () => Math.max(1, window.innerHeight - NAV_H);
+
       update = () => {
         ticking = false;
-        const range = Math.max(1, masthead.offsetHeight - NAV_H);
         const y = window.scrollY;
-        const morph = Math.min(1, Math.max(0, y / range));
+        const range = morphRange();
+        const morph = y <= 1 ? 0 : Math.min(1, Math.max(0, y / range));
 
         document.documentElement.style.setProperty('--morph', morph.toFixed(4));
-        document.documentElement.toggleAttribute('data-nav-solid', y > 56);
+        document.documentElement.toggleAttribute(
+          'data-nav-solid',
+          window.MAS0NG_NAV_SCROLL?.heroNavSolid(masthead) ?? false
+        );
         masthead.classList.toggle('is-compact', morph > 0.88);
       };
 
@@ -308,7 +319,10 @@
 
       update = () => {
         ticking = false;
-        document.documentElement.toggleAttribute('data-nav-solid', window.scrollY > 56);
+        document.documentElement.toggleAttribute(
+          'data-nav-solid',
+          window.MAS0NG_NAV_SCROLL?.heroNavSolid(hero) ?? window.scrollY > 1
+        );
       };
     } else {
       return;

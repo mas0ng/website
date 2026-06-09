@@ -2,8 +2,8 @@
   {
     "id": "instagram",
     "label": "Instagram",
-    "handle": "@mas0ng",
-    "href": "https://instagram.com/mas0ng",
+    "handle": "@mas0ngi",
+    "href": "https://instagram.com/mas0ngi",
     "icon": "/public_assets/social_icons/instagram.svg"
   },
   {
@@ -38,14 +38,14 @@
     "id": "github",
     "label": "GitHub",
     "handle": "mas0ng",
-    "href": "#",
+    "href": "https://github.com/mas0ng",
     "icon": "/public_assets/social_icons/github.svg"
   },
   {
     "id": "discord",
     "label": "Discord",
     "handle": "mas0ng",
-    "href": "#",
+    "href": "http://discord.com/users/1167173941048123452",
     "icon": "/public_assets/social_icons/discord.svg"
   },
   {

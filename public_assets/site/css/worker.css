@@ -99,3 +99,11 @@ body.worker-page {
 .worker-topbar .code-line {
   opacity: 0.78;
 }
+
+.playlist-hero {
+  overflow-anchor: none;
+}
+
+body.worker-page {
+  padding-top: 0 !important;
+}

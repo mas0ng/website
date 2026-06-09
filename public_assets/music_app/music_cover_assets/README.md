@@ -18,7 +18,7 @@ Default artwork for the private music worker player. These stay **raster** (not 
 
 ## Optional SVG branding
 
-If you add SVG marks for music, put favicon-style files in `site_branding/favicon-music.svg`, not here.
+Site favicon lives in `site_branding/favicon.svg` (shared with all apps). Do not add separate favicon files here.
 
 ## Code references
 

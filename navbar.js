@@ -158,9 +158,13 @@
       </div>
     `;
 
-    document.body.prepend(nav);
+    const heroHost = document.querySelector(".masthead, .worker-masthead, .legal-hero, .playlist-hero");
+    if (heroHost) {
+      heroHost.prepend(nav);
+    } else {
+      document.body.prepend(nav);
+    }
     document.body.classList.remove("pt-16", "pt-20", "pt-24");
-    document.body.classList.add("pt-20");
     bindMobile(nav);
     bindPageLoadIndicator(nav);
     window.lucide?.createIcons?.();
