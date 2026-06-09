@@ -105,11 +105,13 @@
   }
 
   function showSetup() {
+    document.getElementById('timer-page')?.classList.add('timer-page--setup');
     if (els.setup) els.setup.hidden = false;
     if (els.app) els.app.hidden = true;
   }
 
   function showApp() {
+    document.getElementById('timer-page')?.classList.remove('timer-page--setup');
     if (els.setup) els.setup.hidden = true;
     if (els.app) els.app.hidden = false;
   }
