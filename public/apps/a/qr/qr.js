@@ -43,6 +43,7 @@
 
   const SIZE_MIN = 180;
   const SIZE_MAX = 720;
+  const PREVIEW_MAX = 280;
 
   const els = {
     typePicker: document.getElementById('qr-type-picker'),
@@ -71,6 +72,8 @@
   let renderTimer = 0;
   let statusTimer = 0;
   let rendering = false;
+
+  const exportCanvas = document.createElement('canvas');
 
   if (!els.typePicker || !els.fields || !els.canvas || !window.QRCode) {
     console.error('QR generator failed to initialise.');
@@ -182,6 +185,29 @@
     }
 
     return clampSize(Number(activeSize || 320));
+  }
+
+  function previewSize() {
+    const previewWidth = els.preview?.clientWidth || PREVIEW_MAX;
+    const framePadding = 72;
+    const fit = previewWidth - framePadding;
+    return Math.max(160, Math.min(PREVIEW_MAX, Math.round(fit)));
+  }
+
+  function qrOptions(size) {
+    return {
+      width: size,
+      margin: 4,
+      errorCorrectionLevel: els.ecc?.value || 'M',
+      color: {
+        dark: els.fg?.value || '#174ea6',
+        light: els.bg?.value || '#ffffff'
+      }
+    };
+  }
+
+  async function drawCode(canvas, payload, size) {
+    await window.QRCode.toCanvas(canvas, payload, qrOptions(size));
   }
 
   function updateSizeReadout() {
@@ -317,17 +343,7 @@
     rendering = true;
 
     try {
-      const size = outputSize();
-
-      await window.QRCode.toCanvas(els.canvas, payload, {
-        width: size,
-        margin: 4,
-        errorCorrectionLevel: els.ecc?.value || 'M',
-        color: {
-          dark: els.fg?.value || '#174ea6',
-          light: els.bg?.value || '#ffffff'
-        }
-      });
+      await drawCode(els.canvas, payload, previewSize());
 
       els.preview.classList.add('has-code');
       els.previewFrame.hidden = false;
@@ -402,8 +418,15 @@
 
     setStatus('Preparing image…');
 
+    try {
+      await drawCode(exportCanvas, currentPayload, outputSize());
+    } catch {
+      setStatus('Could not export the image.', true);
+      return;
+    }
+
     const blob = await new Promise((resolve) => {
-      els.canvas.toBlob(resolve, 'image/png', 0.95);
+      exportCanvas.toBlob(resolve, 'image/png', 0.95);
     });
 
     if (!blob) {
