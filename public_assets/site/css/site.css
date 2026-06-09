@@ -1197,9 +1197,7 @@ body[data-page="app"] .html-viewer-page {
   padding-top: calc(var(--nav-h, 64px) + clamp(18px, 3vw, 28px));
 }
 
-body[data-page="app"] .timer-page--setup {
-  padding-top: calc(var(--nav-h, 64px) + clamp(18px, 3vw, 28px));
-}
+
 
 body.html-viewer-lock {
   overflow: hidden;

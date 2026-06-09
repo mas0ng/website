@@ -132,8 +132,8 @@
 
   function enterApp() {
     closeSettings();
-    applyTheme(state.theme);
     showApp();
+    applyTheme(state.theme);
     syncThemeUi();
     syncModeUi();
     syncDurationInputs();
@@ -144,7 +144,10 @@
   }
 
   function showSetup() {
-    document.getElementById('timer-page')?.classList.add('timer-page--setup');
+    const page = document.getElementById('timer-page');
+    page?.classList.add('timer-page--setup');
+    page?.classList.remove('timer-page--active');
+    clearPageTheme(page);
     if (els.setup) els.setup.hidden = false;
     if (els.app) els.app.hidden = true;
 
@@ -159,7 +162,9 @@
   }
 
   function showApp() {
-    document.getElementById('timer-page')?.classList.remove('timer-page--setup');
+    const page = document.getElementById('timer-page');
+    page?.classList.remove('timer-page--setup');
+    page?.classList.add('timer-page--active');
     if (els.setup) els.setup.hidden = true;
     if (els.app) els.app.hidden = false;
   }
@@ -251,17 +256,32 @@
   }
 
   function applyTheme(theme) {
-    if (!els.stage) return;
     const nextTheme = `theme-${theme || 'slate'}`;
-    [...els.stage.classList].forEach((className) => {
-      if (className.startsWith('theme-')) {
-        els.stage.classList.remove(className);
-      }
+    const page = document.getElementById('timer-page');
+    [els.stage, page].forEach((element) => {
+      if (!element) return;
+      [...element.classList].forEach((className) => {
+        if (className.startsWith('theme-')) {
+          element.classList.remove(className);
+        }
+      });
     });
+
+    if (!els.stage) return;
     if (!els.stage.classList.contains('timer-stage')) {
       els.stage.classList.add('timer-stage');
     }
     els.stage.classList.add(nextTheme);
+    page?.classList.add(nextTheme);
+  }
+
+  function clearPageTheme(page) {
+    if (!page) return;
+    [...page.classList].forEach((className) => {
+      if (className.startsWith('theme-')) {
+        page.classList.remove(className);
+      }
+    });
   }
 
   function isBrowserFullscreen() {

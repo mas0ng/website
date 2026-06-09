@@ -18,14 +18,7 @@
     <main class="timer-page" id="timer-page">
       <div class="timer-shell">
         <div class="timer-setup" id="timer-setup" hidden>
-          <header class="app-tool-header">
-            <p class="app-tool-kicker">Public app</p>
-            <h1 class="section__title">Timer</h1>
-            <p class="timer-hint">Stopwatch or countdown with millisecond precision. Pick a mode to start, or recover your last session after a refresh.</p>
-          </header>
-          <section class="timer-panel timer-panel--setup">
-            <h2 class="timer-panel__title">Choose a mode</h2>
-            <div class="timer-setup__choices">
+          <div class="timer-setup__choices">
               <button class="timer-setup__choice" type="button" data-mode="stopwatch">
                 <span class="timer-setup__choice-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v5l3 2"/><path d="M9 2h6"/></svg>
@@ -48,15 +41,15 @@
                 <span id="timer-recover-hint">Continue your last session</span>
               </button>
             </div>
-          </section>
         </div>
 
         <div class="timer-app" id="timer-app" hidden>
           <section class="timer-stage theme-slate" id="timer-stage" aria-label="Timer display">
             <div class="timer-stage__toolbar timer-stage__toolbar--left">
-              <button class="timer-tool-btn" type="button" id="timer-settings-toggle" aria-label="Open settings" aria-expanded="false" aria-controls="timer-settings" title="Settings">
-                <svg class="timer-tool-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+              <button class="timer-tool-btn timer-tool-btn--icon" type="button" id="timer-settings-toggle" aria-label="Open settings" aria-expanded="false" aria-controls="timer-settings" title="Settings">
+                <svg class="timer-tool-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+                  <circle cx="12" cy="12" r="3"/>
                 </svg>
               </button>
             </div>
@@ -135,45 +128,36 @@
             </div>
 
             <div class="timer-stage__inner">
-              <div class="timer-display-card">
-                <div class="timer-stage__meta">
-                  <span class="timer-stage__badge" id="timer-mode-badge">Stopwatch</span>
-                  <span class="timer-stage__status" id="timer-status" data-state="idle">Ready</span>
+              <div class="timer-display" id="timer-display" aria-live="polite" aria-atomic="true">
+                <span class="timer-stage__status timer-sr-only" id="timer-status" data-state="idle">Ready</span>
+                <span class="timer-sr-only" id="timer-mode-badge">Stopwatch</span>
+                <div class="timer-display__unit">
+                  <span class="timer-digit" id="timer-h">00</span>
                 </div>
+                <span class="timer-sep" aria-hidden="true">:</span>
+                <div class="timer-display__unit">
+                  <span class="timer-digit" id="timer-m">00</span>
+                </div>
+                <span class="timer-sep" aria-hidden="true">:</span>
+                <div class="timer-display__unit">
+                  <span class="timer-digit" id="timer-s">00</span>
+                </div>
+                <span class="timer-sep timer-sep--ms" aria-hidden="true">.</span>
+                <div class="timer-display__unit timer-display__unit--ms">
+                  <span class="timer-digit timer-digit--ms" id="timer-ms">000</span>
+                </div>
+              </div>
 
-                <div class="timer-display" id="timer-display" aria-live="polite" aria-atomic="true">
-                  <div class="timer-display__unit">
-                    <span class="timer-digit" id="timer-h">00</span>
-                    <span class="timer-display__label">Hours</span>
-                  </div>
-                  <span class="timer-sep" aria-hidden="true">:</span>
-                  <div class="timer-display__unit">
-                    <span class="timer-digit" id="timer-m">00</span>
-                    <span class="timer-display__label">Mins</span>
-                  </div>
-                  <span class="timer-sep" aria-hidden="true">:</span>
-                  <div class="timer-display__unit">
-                    <span class="timer-digit" id="timer-s">00</span>
-                    <span class="timer-display__label">Secs</span>
-                  </div>
-                  <span class="timer-sep timer-sep--ms" aria-hidden="true">.</span>
-                  <div class="timer-display__unit timer-display__unit--ms">
-                    <span class="timer-digit timer-digit--ms" id="timer-ms">000</span>
-                    <span class="timer-display__label">Ms</span>
-                  </div>
+              <div class="timer-progress" id="timer-progress" hidden>
+                <div class="timer-progress__track">
+                  <div class="timer-progress__bar" id="timer-progress-bar"></div>
                 </div>
+                <p class="timer-progress__label" id="timer-progress-label">0% elapsed</p>
+              </div>
 
-                <div class="timer-progress" id="timer-progress" hidden>
-                  <div class="timer-progress__track">
-                    <div class="timer-progress__bar" id="timer-progress-bar"></div>
-                  </div>
-                  <p class="timer-progress__label" id="timer-progress-label">0% elapsed</p>
-                </div>
-
-                <div class="timer-controls">
-                  <button class="timer-btn timer-btn--primary" type="button" id="timer-toggle">Start</button>
-                  <button class="timer-btn timer-btn--ghost" type="button" id="timer-reset">Reset</button>
-                </div>
+              <div class="timer-controls">
+                <button class="timer-btn timer-btn--primary" type="button" id="timer-toggle">Start</button>
+                <button class="timer-btn timer-btn--ghost" type="button" id="timer-reset">Reset</button>
               </div>
             </div>
           </section>
