@@ -4,19 +4,23 @@
   const footerOnly = script?.dataset.footerOnly !== undefined
     || document.body.dataset.page === 'bio';
   const d = window.MAS0NG_SITE;
-  if (!d) return;
+  if (!d) {
+    window.MAS0NG_LOADER?.hide?.(true);
+    return;
+  }
 
   boot();
 
   async function boot() {
-    await window.MAS0NG_CACHE?.ready;
+    try {
+      await window.MAS0NG_CACHE?.ready;
 
-    const publicOnly = window.location.hostname === 'auth.mas0ng.com'
-      || script?.dataset.publicOnly !== undefined;
+      const publicOnly = window.location.hostname === 'auth.mas0ng.com'
+        || script?.dataset.publicOnly !== undefined;
 
-    if (!publicOnly && await loadSharedNavbarIfLoggedIn()) {
-      return;
-    }
+      if (!publicOnly && await loadSharedNavbarIfLoggedIn()) {
+        return;
+      }
 
     const page = document.body.dataset.page || 'page';
     const initialHashTarget = resolveHashTarget(window.location.hash);
@@ -47,8 +51,11 @@
     }
 
     initHashNavigation();
-    window.addEventListener('pageshow', () => window.MAS0NG_LOADER?.hide?.());
+    window.addEventListener('pageshow', () => window.MAS0NG_LOADER?.hide?.(true));
     document.dispatchEvent(new CustomEvent('mas0ng:shell-ready'));
+    } finally {
+      window.MAS0NG_LOADER?.hide?.(true);
+    }
   }
 
   function resolveAssetUrl(url) {
@@ -158,20 +165,49 @@
     }
   }
 
+  function scriptIsReady(script) {
+    if (!script) return false;
+    if (script.dataset.loaded === 'true') return true;
+
+    const readyState = script.readyState;
+    if (readyState === 'complete' || readyState === 'loaded') {
+      script.dataset.loaded = 'true';
+      return true;
+    }
+
+    return false;
+  }
+
   function loadScript(src) {
-    return new Promise((resolve, reject) => {
-      const existing = document.querySelector(`script[src="${src}"]`);
-      if (existing) {
-        existing.addEventListener('load', resolve, { once: true });
-        existing.addEventListener('error', reject, { once: true });
-        return;
+    const existing = document.querySelector(`script[src="${src}"]`);
+    if (existing) {
+      if (scriptIsReady(existing)) {
+        return Promise.resolve();
       }
 
+      return new Promise((resolve, reject) => {
+        const finish = () => {
+          existing.dataset.loaded = 'true';
+          resolve();
+        };
+
+        existing.addEventListener('load', finish, { once: true });
+        existing.addEventListener('error', reject, { once: true });
+        window.setTimeout(() => {
+          if (scriptIsReady(existing)) finish();
+        }, 0);
+      });
+    }
+
+    return new Promise((resolve, reject) => {
       const el = document.createElement('script');
       el.src = src;
       el.async = true;
-      el.onload = resolve;
-      el.onerror = reject;
+      el.addEventListener('load', () => {
+        el.dataset.loaded = 'true';
+        resolve();
+      }, { once: true });
+      el.addEventListener('error', reject, { once: true });
       document.head.append(el);
     });
   }

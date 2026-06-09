@@ -89,11 +89,32 @@ html.is-loading:not(.has-page-loader)::after {
     window.scrollTo(0, 0);
   }
 
+  const FAILSAFE_MS = 15000;
+
   let overlay = null;
   let showTimer = null;
+  let failsafeTimer = null;
   let visible = false;
   let activeOps = 0;
   let primed = false;
+
+  function armFailsafe() {
+    clearTimeout(failsafeTimer);
+    failsafeTimer = window.setTimeout(() => {
+      if (!document.documentElement.classList.contains('is-loading') && !visible) {
+        return;
+      }
+
+      console.warn('[MAS0NG_LOADER] Failsafe timeout — forcing hide');
+      activeOps = 0;
+      hide(true);
+    }, FAILSAFE_MS);
+  }
+
+  function clearFailsafe() {
+    clearTimeout(failsafeTimer);
+    failsafeTimer = null;
+  }
 
   function injectCriticalCss() {
     if (document.getElementById('mas0ng-loader-critical')) {
@@ -184,6 +205,7 @@ html.is-loading:not(.has-page-loader)::after {
       injectCriticalCss();
       ensureOverlay();
       document.documentElement.classList.add('is-loading');
+      armFailsafe();
     };
 
     if (immediate || SHOW_DELAY_MS <= 0) {
@@ -201,12 +223,14 @@ html.is-loading:not(.has-page-loader)::after {
 
     if (!overlay || !visible) {
       document.documentElement.classList.remove('is-loading', 'has-page-loader');
+      clearFailsafe();
       return;
     }
 
     overlay.classList.add('is-done');
     overlay.setAttribute('aria-busy', 'false');
     document.documentElement.classList.remove('is-loading', 'has-page-loader');
+    clearFailsafe();
     window.setTimeout(() => {
       overlay?.remove();
       overlay = null;
@@ -223,6 +247,7 @@ html.is-loading:not(.has-page-loader)::after {
     injectCriticalCss();
     document.documentElement.classList.add('is-loading');
     show(true);
+    armFailsafe();
   }
 
   async function runTaskLoop(tasks, immediate = true) {
@@ -287,6 +312,21 @@ html.is-loading:not(.has-page-loader)::after {
       }
     }
   };
+
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+      activeOps = 0;
+      hide(true);
+    }
+  });
+
+  window.addEventListener('load', () => {
+    window.setTimeout(() => {
+      if (document.documentElement.classList.contains('is-loading') && activeOps === 0) {
+        hide(true);
+      }
+    }, 500);
+  });
 
   prime();
 })();
