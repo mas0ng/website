@@ -231,7 +231,9 @@
       const page = document.body.dataset.page || 'page';
       const masthead = page === 'home'
         ? (window.MAS0NG_NAV_SCROLL?.findHero?.(main) || main.querySelector('.masthead'))
-        : null;
+        : page === 'auth'
+          ? main.querySelector('.worker-masthead')
+          : null;
 
       if (masthead) {
         masthead.prepend(nav);
@@ -348,6 +350,20 @@
           'data-nav-solid',
           window.MAS0NG_NAV_SCROLL?.heroNavSolid(hero) ?? window.scrollY > 1
         );
+      };
+    } else if (page === 'auth') {
+      const hero = document.querySelector('.worker-masthead');
+      if (!hero) return;
+
+      let navSolid = false;
+
+      update = () => {
+        ticking = false;
+        const nextNavSolid = window.MAS0NG_NAV_SCROLL?.heroNavSolid(hero) ?? window.scrollY > 8;
+        if (nextNavSolid !== navSolid) {
+          navSolid = nextNavSolid;
+          document.documentElement.toggleAttribute('data-nav-solid', navSolid);
+        }
       };
     } else {
       return;

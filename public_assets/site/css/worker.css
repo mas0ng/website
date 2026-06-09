@@ -17,6 +17,14 @@ body.worker-page > .nav {
   border-bottom-color: rgba(0, 0, 0, 0.08);
 }
 
+.worker-masthead > .nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 120;
+}
+
 body.worker-page .nav__brand,
 body.worker-page .nav__item:not(.is-active),
 body.worker-page .nav__toggle {

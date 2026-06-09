@@ -1,40 +1,40 @@
-/* Login page — clean centered card under full-width public nav */
+/* Login page — worker masthead + overlapping sign-in panel (matches apps/diagnostics) */
+
+body[data-page="auth"].worker-page {
+  min-height: 100dvh;
+}
 
 body[data-page="auth"] #site-main {
   display: flex;
   flex-direction: column;
-  min-height: 100svh;
+  min-height: 100dvh;
+}
+
+body[data-page="auth"] .worker-masthead > .nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+body[data-page="auth"] .worker-masthead {
   padding-top: var(--nav-h);
 }
 
-body[data-page="auth"] .nav {
-  background: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-body[data-page="auth"] .nav__brand,
-body[data-page="auth"] .nav__item:not(.is-active),
-body[data-page="auth"] .nav__toggle {
-  color: var(--text);
-}
-
-body[data-page="auth"] .nav__cluster {
-  background: rgba(255, 255, 255, 0.88);
-  border-color: rgba(0, 0, 0, 0.06);
+.auth-page {
+  flex: 1;
+  padding-bottom: 72px;
 }
 
 .auth-shell {
-  flex: 1;
-  display: grid;
-  place-items: center;
-  width: 100%;
-  margin: 0;
-  padding: clamp(32px, 6vw, 56px) 20px 80px;
+  width: min(var(--max), calc(100% - 32px));
+  margin: 0 auto;
+  padding: 0 0 24px;
 }
 
 .auth-panel {
   position: relative;
-  width: min(480px, calc(100% - 32px));
+  width: 100%;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -42,28 +42,8 @@ body[data-page="auth"] .nav__cluster {
 
 .auth-panel__body {
   display: grid;
-  gap: 22px;
-  padding: clamp(28px, 5vw, 36px) clamp(22px, 4vw, 28px) clamp(24px, 4vw, 30px);
-}
-
-.auth-panel__intro {
-  text-align: center;
-}
-
-.auth-panel__title {
-  margin: 0 0 8px;
-  font-family: var(--font-display);
-  font-size: clamp(1.65rem, 4vw, 2rem);
-  font-weight: 900;
-  letter-spacing: -0.025em;
-  line-height: 1.1;
-  color: var(--text);
-}
-
-.auth-panel__intro p {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.55;
+  gap: 20px;
+  padding: clamp(26px, 4vw, 34px) clamp(22px, 4vw, 30px) clamp(22px, 4vw, 28px);
 }
 
 .auth-fields {
@@ -75,16 +55,16 @@ body[data-page="auth"] .nav__cluster {
   display: grid;
   gap: 6px;
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text);
 }
 
 .auth-fields input {
   width: 100%;
-  min-height: 52px;
-  padding: 14px 16px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 14px;
+  min-height: 50px;
+  padding: 13px 15px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
   background: #fff;
   color: var(--text);
   font-size: 1rem;
@@ -92,7 +72,7 @@ body[data-page="auth"] .nav__cluster {
 }
 
 .auth-fields input::placeholder {
-  color: rgba(100, 116, 139, 0.72);
+  color: var(--muted);
 }
 
 .auth-fields input:focus {
@@ -103,36 +83,38 @@ body[data-page="auth"] .nav__cluster {
 
 .auth-otp {
   display: grid;
-  gap: 14px;
-  padding-top: 8px;
+  gap: 12px;
+  padding-top: 4px;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
-  text-align: center;
 }
 
 .auth-otp__title {
   margin: 0;
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--text);
 }
 
 .auth-otp__lead {
   margin: 0;
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   color: var(--muted);
+  line-height: 1.5;
 }
 
 .auth-otp__inputs {
   display: flex;
   gap: 8px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .auth-otp__inputs input {
   width: 46px;
-  height: 54px;
+  height: 52px;
   padding: 0;
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 800;
 }
 
@@ -143,13 +125,13 @@ body[data-page="auth"] .nav__cluster {
   gap: 10px;
   width: 100%;
   min-height: 50px;
-  margin-top: 4px;
+  margin-top: 2px;
   border: 1px solid var(--login-border);
-  border-radius: 14px;
+  border-radius: 12px;
   background: var(--login-bg);
   color: var(--login-text);
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 800;
   transition: background 0.18s ease, transform 0.15s ease;
 }
 
@@ -167,8 +149,12 @@ body[data-page="auth"] .nav__cluster {
   min-height: 1.25rem;
   text-align: center;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #b3261e;
+}
+
+.auth-error:empty {
+  display: none;
 }
 
 .auth-checking {
@@ -179,6 +165,7 @@ body[data-page="auth"] .nav__cluster {
   place-items: center;
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(8px);
+  border-radius: inherit;
 }
 
 .auth-panel[data-submitting="true"] .auth-checking {
@@ -191,9 +178,9 @@ body[data-page="auth"] .nav__cluster {
   gap: 10px;
   padding: 20px 24px;
   border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 18px;
+  border-radius: 16px;
   background: #fff;
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
 }
 
 .auth-checking__card strong {
@@ -234,12 +221,12 @@ body[data-page="auth"] .nav__cluster {
 
 @media (max-width: 520px) {
   .auth-panel__body {
-    padding: 24px 18px;
+    padding: 22px 18px 20px;
   }
 
   .auth-otp__inputs input {
     width: 40px;
-    height: 48px;
-    font-size: 1.25rem;
+    height: 46px;
+    font-size: 1.2rem;
   }
 }
