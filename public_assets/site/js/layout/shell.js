@@ -17,6 +17,7 @@
     }
 
     const page = document.body.dataset.page || 'page';
+    const initialHashTarget = resolveHashTarget(window.location.hash);
     if (page === 'error') {
       document.documentElement.setAttribute('data-nav-solid', '');
     }
@@ -25,10 +26,24 @@
       await loadSocials();
     }
 
-    await window.MAS0NG_LOADER.run(buildCoreTasks(page));
+    const bootTasks = buildCoreTasks(page);
+    if (page === 'home' && initialHashTarget) {
+      await window.MAS0NG_LOADER.runQuiet(bootTasks);
+    } else {
+      await window.MAS0NG_LOADER.run(bootTasks);
+    }
+
     mountShell(active);
     initNav();
     initScrollState(page);
+
+    if (initialHashTarget) {
+      await settleLayout();
+      scrollToTarget(initialHashTarget, 'auto');
+      document.documentElement.setAttribute('data-nav-solid', '');
+      window.dispatchEvent(new Event('scroll'));
+    }
+
     initHashNavigation();
     window.addEventListener('pageshow', () => window.MAS0NG_LOADER?.hide?.());
     document.dispatchEvent(new CustomEvent('mas0ng:shell-ready'));
@@ -415,11 +430,23 @@
       history.pushState(null, '', '#social');
     });
 
-    if (isHome && window.location.hash === '#social') {
-      window.requestAnimationFrame(() => {
-        scrollToTarget(document.getElementById('social'), 'auto');
-      });
+  }
+
+  function resolveHashTarget(hash) {
+    if (!hash || hash === '#') return null;
+    try {
+      return document.querySelector(hash);
+    } catch {
+      return null;
     }
+  }
+
+  function settleLayout() {
+    return new Promise((resolve) => {
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(resolve);
+      });
+    });
   }
 
   function waitForStylesheet(href) {

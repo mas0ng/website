@@ -1,4 +1,9 @@
 (function () {
+  if (window.location.hash) {
+    window.history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+  }
+
   const SHOW_DELAY_MS = 420;
   let overlay = null;
   let showTimer = null;
@@ -136,6 +141,12 @@
         activeOps = Math.max(0, activeOps - 1);
         setProgress(1);
         hide(true);
+      }
+    },
+
+    async runQuiet(tasks) {
+      for (const task of tasks) {
+        await task.run();
       }
     }
   };
