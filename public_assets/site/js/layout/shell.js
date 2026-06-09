@@ -22,9 +22,7 @@
       document.documentElement.setAttribute('data-nav-solid', '');
     }
 
-    if (page !== 'auth') {
-      await loadSocials();
-    }
+    await loadSocials();
 
     const bootTasks = buildCoreTasks(page);
     if (page === 'home' && initialHashTarget) {
