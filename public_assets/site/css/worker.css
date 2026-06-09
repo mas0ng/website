@@ -25,21 +25,47 @@ body.worker-page > .nav {
   z-index: 120;
 }
 
-body.worker-page .nav__brand,
-body.worker-page .nav__item:not(.is-active),
-body.worker-page .nav__toggle {
+/* In-flow worker navbars sit on a light page background */
+body.worker-page > .nav .nav__brand,
+body.worker-page > .nav .nav__item:not(.is-active),
+body.worker-page > .nav .nav__toggle {
   color: var(--text);
 }
 
-body.worker-page .nav__cluster {
+body.worker-page > .nav .nav__cluster {
   background: rgba(255, 255, 255, 0.88);
   border-color: rgba(0, 0, 0, 0.06);
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
 }
 
-body.worker-page .nav__item:hover {
+body.worker-page > .nav .nav__item:hover {
   color: var(--text);
   background: rgba(0, 0, 0, 0.04);
+}
+
+/* Masthead overlay nav keeps inverse chrome until the hero scrolls away */
+html:not([data-nav-solid]) body.worker-page .worker-masthead > .nav .nav__brand {
+  color: var(--text-inverse);
+}
+
+html:not([data-nav-solid]) body.worker-page .worker-masthead > .nav .nav__item:not(.is-active),
+html:not([data-nav-solid]) body.worker-page .worker-masthead > .nav .nav__toggle {
+  color: rgba(248, 251, 255, 0.92);
+}
+
+html:not([data-nav-solid]) body.worker-page .worker-masthead > .nav .nav__cluster {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+}
+
+html:not([data-nav-solid]) body.worker-page .worker-masthead > .nav .nav__item:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+html:not([data-nav-solid]) body.worker-page .worker-masthead > .nav .nav__login {
+  color: var(--login-text);
 }
 
 body.worker-page .nav__status {
