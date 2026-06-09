@@ -1,0 +1,51 @@
+{
+  "public": [
+    {
+      "id": "mosaic",
+      "name": "Mosaic",
+      "label": "Mosaic blur",
+      "description": "Paint blur over any photo, pick the effect, and save the result.",
+      "href": "/public/apps/a/mosaic/",
+      "icon": "/public_assets/app_icons/mosaic.svg",
+      "featured": true
+    }
+  ],
+  "private": [
+    {
+      "id": "dash",
+      "name": "Dash",
+      "label": "mas0ng.com dash",
+      "description": "Private control panel and server-side API tools.",
+      "href": "/secure/dash/apis",
+      "icon": "/public_assets/app_icons/dash.svg",
+      "lucide": "layout-dashboard"
+    },
+    {
+      "id": "ai",
+      "name": "AI",
+      "label": "mas0ng.com ai",
+      "description": "Private model picker, chat workspace, and compressed uploads.",
+      "href": "/secure/ai/",
+      "icon": "/public_assets/site_branding/favicon.svg",
+      "lucide": "bot"
+    },
+    {
+      "id": "music",
+      "name": "Music",
+      "label": "mas0ng.com music",
+      "description": "Private R2-backed music library and player.",
+      "href": "/secure/music/",
+      "icon": "/public_assets/app_icons/music.svg",
+      "lucide": "music"
+    },
+    {
+      "id": "diagnostics",
+      "name": "Diagnostics",
+      "label": "mas0ng.com diagnostics",
+      "description": "Private service health and availability monitor.",
+      "href": "/secure/diagnostics/",
+      "icon": "/public_assets/app_icons/diagnostics.svg",
+      "lucide": "activity"
+    }
+  ]
+}

@@ -7,6 +7,8 @@
   const loaderScript = document.currentScript;
   const SITE_ORIGIN = "https://mas0ng.com";
 
+  const APPS_CONFIG_URL = SITE_ORIGIN + "/public_assets/configs/apps.json";
+
   const legalLinks = [
     { id: "legal", label: "Legal hub", href: SITE_ORIGIN + "/legal/", icon: "scale" },
     { id: "privacy", label: "Privacy policy", href: SITE_ORIGIN + "/legal/privacy/", icon: "shield" },
@@ -27,8 +29,26 @@
       return;
     }
 
+    const apps = await loadAppsConfig();
     await loadExternalLibraries();
-    mountPublicNavbar();
+    mountPublicNavbar(apps);
+  }
+
+  async function loadAppsConfig() {
+    try {
+      const response = await fetch(APPS_CONFIG_URL, { cache: "default" });
+      if (!response.ok) throw new Error("HTTP " + response.status);
+      const data = await response.json();
+      return (data.public || []).map((app) => ({
+        ...app,
+        id: app.id,
+        label: app.name,
+        href: app.href.startsWith("http") ? app.href : SITE_ORIGIN + app.href,
+        icon: app.icon?.startsWith("http") ? app.icon : SITE_ORIGIN + app.icon
+      }));
+    } catch {
+      return [];
+    }
   }
 
   async function loadSharedNavbarIfLoggedIn() {
@@ -114,7 +134,7 @@
     });
   }
 
-  function mountPublicNavbar() {
+  function mountPublicNavbar(publicApps) {
     if (document.getElementById(NAV_ID)) {
       return;
     }
@@ -135,6 +155,7 @@
         <div class="hidden min-w-0 flex-1 items-center justify-center px-3 lg:flex">
           <div class="flex items-center gap-1 rounded-2xl border border-white/10 bg-white/5 p-1 backdrop-blur">
             <a href="${SITE_ORIGIN}/" class="${desktopLinkClass(active === "home")}">Home</a>
+            ${publicApps.length ? desktopAppsDropdown(publicApps, active) : ""}
             ${desktopDropdown("Legal", legalLinks, active)}
           </div>
         </div>
@@ -155,6 +176,7 @@
       <div class="mobile-menu absolute left-0 top-full box-border max-h-0 w-full overflow-hidden border-b border-white/10 bg-slate-950 opacity-0 shadow-xl transition-all duration-300 lg:hidden">
         <div class="max-h-[calc(100vh-64px)] overflow-y-auto px-4 pb-6 pt-2">
           <a href="${SITE_ORIGIN}/" class="block rounded-xl px-4 py-3 text-base font-semibold text-white no-underline hover:bg-white/10">Home</a>
+          ${publicApps.length ? mobileAppsDropdown(publicApps, active) : ""}
           ${mobileDropdown("Legal", legalLinks, active)}
           <div class="my-4 h-px bg-slate-100"></div>
           <a href="${LOGIN_URL}" class="flex items-center justify-center rounded-2xl bg-white py-2.5 text-sm font-bold text-slate-950 shadow-md transition hover:bg-blue-50">Log in</a>
@@ -173,6 +195,23 @@
     bindMobile(nav);
     bindPageLoadIndicator(nav);
     window.lucide?.createIcons?.();
+  }
+
+  function desktopAppsDropdown(apps, active) {
+    const links = apps.map((app) => ({
+      id: app.id,
+      label: app.name,
+      href: app.href,
+      icon: "grid-3x3"
+    }));
+    links.push({ id: "all-apps", label: "All apps", href: SITE_ORIGIN + "/public/apps/", icon: "layout-grid" });
+    return desktopDropdown("Apps", links, active === "apps" ? "all-apps" : active);
+  }
+
+  function mobileAppsDropdown(apps, active) {
+    const links = apps.map((app) => ({ id: app.id, label: app.name, href: app.href }));
+    links.push({ id: "all-apps", label: "All apps", href: SITE_ORIGIN + "/public/apps/" });
+    return mobileDropdown("Apps", links, active === "apps" ? "all-apps" : active);
   }
 
   function desktopDropdown(label, links, active) {
@@ -264,6 +303,7 @@
     if (path.endsWith("/terms.html")) return "terms";
     if (path.endsWith("/cookies.html")) return "cookies";
     if (path.endsWith("/security.html")) return "security";
+    if (path.startsWith("/public/apps")) return "apps";
     if (path.startsWith("/legal")) return "legal";
     return "home";
   }

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <script src="/public_assets/site/js/layout/loader.js?v=20260610-loader1"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mas0ng.com | mosaic blur</title>
+  <meta name="description" content="Paint blur over any photo and save the result." />
+  <meta name="theme-color" content="#07111f" />
+  <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" />
+  <link rel="stylesheet" href="/public_assets/site/css/site.css" />
+  <link rel="stylesheet" href="mosaic.css" />
+</head>
+<body data-page="app">
+  <div id="site-main">
+    <main class="mosaic-page">
+      <div class="mosaic-shell">
+        <header>
+          <h1 class="section__title" style="text-align:left;margin-bottom:6px;">Mosaic blur</h1>
+          <p class="mosaic-hint">Upload a photo, paint where you want blur, then save. On phones, save opens the share sheet so you can add the image to your camera roll.</p>
+        </header>
+
+        <div class="mosaic-toolbar">
+          <div class="mosaic-toolbar__row">
+            <button class="mosaic-btn" type="button" id="mosaic-open">Choose photo</button>
+            <input id="mosaic-file" type="file" accept="image/*" hidden />
+            <button class="mosaic-btn" type="button" id="mosaic-clear" disabled>Clear blur</button>
+            <button class="mosaic-btn mosaic-btn--primary" type="button" id="mosaic-save" disabled>Save image</button>
+          </div>
+          <div class="mosaic-toolbar__row">
+            <label class="mosaic-field">
+              <span>Blur style</span>
+              <select id="mosaic-blur-type">
+                <option value="gaussian">Soft blur</option>
+                <option value="strong">Heavy blur</option>
+                <option value="pixel">Mosaic pixels</option>
+              </select>
+            </label>
+            <label class="mosaic-field">
+              <span>Blur strength</span>
+              <input id="mosaic-blur-amount" type="range" min="4" max="36" value="14" />
+            </label>
+            <label class="mosaic-field">
+              <span>Brush size</span>
+              <input id="mosaic-brush-size" type="range" min="12" max="120" value="42" />
+            </label>
+          </div>
+        </div>
+
+        <div class="mosaic-stage" id="mosaic-stage">
+          <div class="mosaic-empty" id="mosaic-empty">
+            <strong>No photo yet</strong>
+            <span>Choose or drop an image to start painting blur.</span>
+          </div>
+          <canvas id="mosaic-output" hidden aria-label="Editable image preview"></canvas>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/public_assets/site/js/config/site-data.js"></script>
+  <script src="/public_assets/site/js/lib/app-tiles.js"></script>
+  <script src="/public_assets/site/js/lib/cache.js"></script>
+  <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
+  <script src="/public_assets/site/js/layout/shell.js" data-active="apps" defer></script>
+  <script src="mosaic.js" defer></script>
+</body>
+</html>

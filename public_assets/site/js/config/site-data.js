@@ -31,6 +31,7 @@ window.MAS0NG_SITE = {
     authCss: '/public_assets/site/css/auth.css',
     homeJs: '/index_assets/js/home.js',
     socialConfig: '/public_assets/configs/socials.json',
+    appsConfig: '/public_assets/configs/apps.json',
     abeeZee: 'https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap'
   }
 };

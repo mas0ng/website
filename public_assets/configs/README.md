@@ -7,6 +7,7 @@ Editable JSON configs shared across the public site. Loaded at runtime by `publi
 | File | Purpose |
 | --- | --- |
 | `socials.json` | Social platform links — home grid, footer, icon preload |
+| `apps.json` | Public and private app registry — nav dropdowns, home featured apps, secure apps launcher |
 
 ## `socials.json` fields
 

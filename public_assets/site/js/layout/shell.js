@@ -23,6 +23,7 @@
     }
 
     await loadSocials();
+    await loadApps();
 
     const bootTasks = buildCoreTasks(page);
     if (page === 'home' && initialHashTarget) {
@@ -59,6 +60,22 @@
 
     const origin = (d.siteOrigin || window.location.origin).replace(/\/$/, '');
     return `${origin}${url.startsWith('/') ? url : `/${url}`}`;
+  }
+
+  async function loadApps() {
+    if (!window.MAS0NG_APP_TILES) {
+      d.apps = { public: [], private: [], all: [] };
+      return;
+    }
+
+    const url = resolveAssetUrl(d.assets.appsConfig || '/public_assets/configs/apps.json');
+
+    try {
+      d.apps = await window.MAS0NG_APP_TILES.loadApps(url, d.siteOrigin || window.location.origin);
+    } catch (error) {
+      console.warn('Failed to load apps config:', error);
+      d.apps = { public: [], private: [], all: [] };
+    }
   }
 
   async function loadSocials() {
@@ -101,6 +118,16 @@
       liveSocials().forEach((item) => {
         tasks.push({
           label: `${item.label} icon`,
+          detail: item.icon,
+          run: () => window.MAS0NG_CACHE.preloadImage(item.icon)
+        });
+      });
+    }
+
+    if (page === 'home' || page === 'apps') {
+      (d.apps?.public || []).forEach((item) => {
+        tasks.push({
+          label: `${item.name} icon`,
           detail: item.icon,
           run: () => window.MAS0NG_CACHE.preloadImage(item.icon)
         });
@@ -161,9 +188,21 @@
       return `<a class="nav__item${isActive}" href="${item.href}"${current}>${item.label}</a>`;
     }).join('');
 
+    const publicApps = d.apps?.public || [];
+    const appsMenu = window.MAS0NG_APP_TILES
+      ? window.MAS0NG_APP_TILES.renderMenuItems(publicApps)
+      : '';
+    const appsMenuFooter = publicApps.length
+      ? `<a class="nav__menu-item nav__menu-item--all" href="/public/apps/" role="menuitem">All apps</a>`
+      : '';
+
     const legalMenu = d.legal.map((item) =>
       `<a class="nav__menu-item" href="${item.href}" role="menuitem">${item.label}</a>`
     ).join('');
+
+    const drawerApps = publicApps.length
+      ? `<p class="nav__drawer-label">Apps</p>${publicApps.map((item) => `<a class="nav__drawer-link" href="${item.href}">${item.name}</a>`).join('')}<a class="nav__drawer-link" href="/public/apps/">All apps</a>`
+      : '';
 
     const drawerLegal = `
       <p class="nav__drawer-label">Legal</p>
@@ -204,6 +243,13 @@
         <a class="nav__brand" href="${siteRoot}/">${d.siteName}</a>
         <div class="nav__cluster" role="navigation" aria-label="Sections">
           ${navItems}
+          ${publicApps.length ? `<div class="nav__dropdown" id="nav-apps-dropdown">
+            <button class="nav__item nav__item--btn${activeId === 'apps' ? ' is-active' : ''}" type="button" aria-expanded="false" aria-controls="nav-apps-menu" id="nav-apps-btn">
+              Apps
+              <svg class="nav__chevron" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+            <div class="nav__menu" id="nav-apps-menu" role="menu">${appsMenu}${appsMenuFooter}</div>
+          </div>` : ''}
           <div class="nav__dropdown" id="nav-legal-dropdown">
             <button class="nav__item nav__item--btn${activeId === 'legal' ? ' is-active' : ''}" type="button" aria-expanded="false" aria-controls="nav-legal-menu" id="nav-legal-btn">
               Legal
@@ -224,6 +270,7 @@
       </div>
       <nav class="nav__drawer" id="nav-drawer" aria-label="Mobile">
         ${d.nav.map((item) => `<a class="nav__drawer-link" href="${item.href}">${item.label}</a>`).join('')}
+        ${drawerApps ? `<div class="nav__drawer-group" id="nav-drawer-apps">${drawerApps}</div>` : ''}
         <div class="nav__drawer-group" id="nav-drawer-legal">${drawerLegal}</div>
         <a class="nav__drawer-login${activeId === 'login' ? ' is-active' : ''}" id="nav-login-drawer" href="${d.loginUrl}"${activeId === 'login' ? ' aria-current="page"' : ''}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
@@ -286,6 +333,8 @@
     const toggle = document.getElementById('nav-toggle');
     const legalBtn = document.getElementById('nav-legal-btn');
     const legalDropdown = document.getElementById('nav-legal-dropdown');
+    const appsBtn = document.getElementById('nav-apps-btn');
+    const appsDropdown = document.getElementById('nav-apps-dropdown');
     if (!drawer || !toggle || !legalBtn || !legalDropdown) return;
 
     function closeDrawer() {
@@ -299,27 +348,46 @@
       legalBtn.setAttribute('aria-expanded', 'false');
     }
 
+    function closeAppsMenu() {
+      if (!appsDropdown || !appsBtn) return;
+      appsDropdown.classList.remove('is-open');
+      appsBtn.setAttribute('aria-expanded', 'false');
+    }
+
     toggle.addEventListener('click', () => {
       const open = drawer.classList.toggle('is-open');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       document.body.classList.toggle('menu-open', open);
-      if (open) closeLegalMenu();
+      if (open) {
+        closeLegalMenu();
+        closeAppsMenu();
+      }
     });
 
     legalBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       const open = legalDropdown.classList.toggle('is-open');
       legalBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) closeAppsMenu();
+    });
+
+    appsBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = appsDropdown.classList.toggle('is-open');
+      appsBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) closeLegalMenu();
     });
 
     document.addEventListener('click', (e) => {
       if (!legalDropdown.contains(e.target)) closeLegalMenu();
+      if (appsDropdown && !appsDropdown.contains(e.target)) closeAppsMenu();
     });
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeDrawer();
         closeLegalMenu();
+        closeAppsMenu();
       }
     });
 
@@ -516,6 +584,7 @@
   function inferActive() {
     const path = window.location.pathname;
     if (path === '/' || path === '/index.html') return 'home';
+    if (path.startsWith('/public/apps')) return 'apps';
     if (path.startsWith('/legal')) return 'legal';
     return 'page';
   }

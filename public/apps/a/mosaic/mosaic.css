@@ -1,0 +1,145 @@
+.mosaic-page {
+  min-height: calc(100vh - var(--nav-h, 64px));
+  padding: 18px 18px 28px;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef3f9 100%);
+}
+
+.mosaic-shell {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+}
+
+.mosaic-toolbar {
+  display: grid;
+  gap: 12px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.94);
+  padding: 14px 16px;
+  box-shadow: 0 14px 36px rgba(15, 23, 42, 0.08);
+}
+
+.mosaic-toolbar__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.mosaic-btn {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--text);
+  padding: 0 14px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.mosaic-btn--primary {
+  border-color: #174ea6;
+  background: #174ea6;
+  color: #fff;
+}
+
+.mosaic-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.mosaic-field {
+  display: grid;
+  gap: 6px;
+  min-width: min(100%, 180px);
+  flex: 1 1 160px;
+}
+
+.mosaic-field span {
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.mosaic-field select,
+.mosaic-field input[type="range"] {
+  width: 100%;
+}
+
+.mosaic-field select {
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  padding: 0 12px;
+  font: inherit;
+  font-weight: 700;
+}
+
+.mosaic-stage {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background:
+    linear-gradient(45deg, #edf2f7 25%, transparent 25%, transparent 75%, #edf2f7 75%),
+    linear-gradient(45deg, #edf2f7 25%, transparent 25%, transparent 75%, #edf2f7 75%);
+  background-size: 18px 18px;
+  background-position: 0 0, 9px 9px;
+  box-shadow: 0 18px 46px rgba(15, 23, 42, 0.1);
+  touch-action: none;
+}
+
+.mosaic-stage canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.mosaic-empty {
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+  gap: 10px;
+  padding: 28px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.mosaic-empty strong {
+  color: var(--text);
+  font-size: 1.05rem;
+}
+
+.mosaic-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .mosaic-page {
+    padding: 12px 12px 22px;
+  }
+
+  .mosaic-toolbar__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mosaic-toolbar__row .mosaic-btn--primary {
+    grid-column: 1 / -1;
+  }
+}
