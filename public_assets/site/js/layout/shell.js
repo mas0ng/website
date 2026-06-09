@@ -26,9 +26,10 @@
 
     const bootTasks = buildCoreTasks(page);
     if (page === 'home' && initialHashTarget) {
+      window.MAS0NG_LOADER.hide(true);
       await window.MAS0NG_LOADER.runQuiet(bootTasks);
     } else {
-      await window.MAS0NG_LOADER.run(bootTasks);
+      await window.MAS0NG_LOADER.runBoot(bootTasks);
     }
 
     mountShell(active);

@@ -25,6 +25,7 @@ window.MAS0NG_SITE = {
     etnaWoff: '/public_assets/fonts/etna.woff',
     favicon: '/public_assets/site_branding/favicon.svg',
     profileImage: '/public_assets/social_icons/pfp.jpg',
+    loaderJs: '/public_assets/site/js/layout/loader.js?v=20260610-loader1',
     siteCss: '/public_assets/site/css/site.css',
     legalCss: '/public_assets/site/css/legal.css',
     authCss: '/public_assets/site/css/auth.css',
