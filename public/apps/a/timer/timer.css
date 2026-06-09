@@ -14,6 +14,11 @@
   width: 100%;
 }
 
+#timer-app[hidden],
+#timer-setup[hidden] {
+  display: none !important;
+}
+
 /* ── Mode picker (before timer is shown) ── */
 body[data-page="app"] .timer-page--setup {
   flex: 1;
@@ -193,7 +198,7 @@ body[data-page="app"] .timer-page--setup {
   transition: background 0.18s ease, border-color 0.18s ease, transform 0.15s ease;
 }
 
-.timer-page--active.theme-slate .timer-tool-btn {
+.timer-stage.theme-slate .timer-tool-btn {
   border-color: rgba(15, 23, 42, 0.12);
   background: rgba(255, 255, 255, 0.72);
   color: #334155;
@@ -204,7 +209,7 @@ body[data-page="app"] .timer-page--setup {
   background: rgba(255, 255, 255, 0.24);
 }
 
-.timer-page--active.theme-slate .timer-tool-btn:hover {
+.timer-stage.theme-slate .timer-tool-btn:hover {
   background: #fff;
 }
 
@@ -226,7 +231,7 @@ body[data-page="app"] .timer-page--setup {
   border-color: rgba(255, 255, 255, 0.45);
 }
 
-.timer-page--active.theme-slate .timer-stage.is-settings-open .timer-tool-btn#timer-settings-toggle {
+.timer-stage.theme-slate.is-settings-open .timer-tool-btn#timer-settings-toggle {
   background: #fff;
   border-color: #174ea6;
   color: #174ea6;
@@ -266,7 +271,7 @@ body[data-page="app"] .timer-page--setup {
   color: #f8fafc;
 }
 
-.timer-page--active.theme-slate .timer-settings__panel {
+.timer-stage.theme-slate .timer-settings__panel {
   border-color: rgba(15, 23, 42, 0.1);
   background: rgba(255, 255, 255, 0.94);
   color: #0f172a;
@@ -310,7 +315,7 @@ body[data-page="app"] .timer-page--setup {
   border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
-.timer-page--active.theme-slate .timer-mode-switch {
+.timer-stage.theme-slate .timer-mode-switch {
   background: #f1f5f9;
   border-color: #e2e8f0;
 }
@@ -336,7 +341,7 @@ body[data-page="app"] .timer-page--setup {
   box-shadow: 0 2px 8px rgba(2, 6, 23, 0.12);
 }
 
-.timer-page--active.theme-slate .timer-mode-btn.is-active {
+.timer-stage.theme-slate .timer-mode-btn.is-active {
   background: #fff;
   color: #174ea6;
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
@@ -375,7 +380,7 @@ body[data-page="app"] .timer-page--setup {
   transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
 }
 
-.timer-page--active.theme-slate .timer-duration-field input {
+.timer-stage.theme-slate .timer-duration-field input {
   border-color: #e2e8f0;
   background: #f8fafc;
 }
@@ -387,7 +392,7 @@ body[data-page="app"] .timer-page--setup {
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
 }
 
-.timer-page--active.theme-slate .timer-duration-field input:focus {
+.timer-stage.theme-slate .timer-duration-field input:focus {
   background: #fff;
 }
 
@@ -417,7 +422,7 @@ body[data-page="app"] .timer-page--setup {
   box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.22);
 }
 
-.timer-page--active.theme-slate .timer-theme-option.is-active {
+.timer-stage.theme-slate .timer-theme-option.is-active {
   border-color: #174ea6;
   box-shadow: 0 0 0 3px rgba(23, 78, 166, 0.16);
 }
@@ -513,7 +518,7 @@ body[data-page="app"] .timer-page--setup {
   overflow: hidden;
 }
 
-.timer-page--active.theme-slate .timer-progress__track {
+.timer-stage.theme-slate .timer-progress__track {
   background: rgba(15, 23, 42, 0.08);
 }
 
@@ -525,8 +530,8 @@ body[data-page="app"] .timer-page--setup {
   transition: width 0.08s linear;
 }
 
-.timer-page--active.theme-sunset .timer-progress__bar,
-.timer-page--active.theme-lavender .timer-progress__bar {
+.timer-stage.theme-sunset .timer-progress__bar,
+.timer-stage.theme-lavender .timer-progress__bar {
   background: linear-gradient(90deg, #fbbf24 0%, #f97316 100%);
 }
 
@@ -547,7 +552,7 @@ body[data-page="app"] .timer-page--setup {
   background: rgba(0, 0, 0, 0.06);
 }
 
-.timer-page--active.theme-slate .timer-controls {
+.timer-stage.theme-slate .timer-controls {
   background: rgba(15, 23, 42, 0.05);
 }
 
@@ -574,13 +579,13 @@ body[data-page="app"] .timer-page--setup {
   box-shadow: 0 8px 24px rgba(2, 6, 23, 0.14);
 }
 
-.timer-page--active.theme-slate .timer-btn--primary {
+.timer-stage.theme-slate .timer-btn--primary {
   border-color: #174ea6;
   background: #174ea6;
   color: #fff;
 }
 
-.timer-page--active.theme-slate .timer-btn--primary:hover {
+.timer-stage.theme-slate .timer-btn--primary:hover {
   background: #1d4ed8;
 }
 
@@ -594,7 +599,7 @@ body[data-page="app"] .timer-page--setup {
   color: inherit;
 }
 
-.timer-page--active.theme-slate .timer-btn--ghost {
+.timer-stage.theme-slate .timer-btn--ghost {
   border-color: #cbd5e1;
   background: rgba(255, 255, 255, 0.7);
   color: var(--text);
@@ -604,11 +609,11 @@ body[data-page="app"] .timer-page--setup {
   background: rgba(255, 255, 255, 0.1);
 }
 
-.timer-page--active.theme-slate .timer-btn--ghost:hover {
+.timer-stage.theme-slate .timer-btn--ghost:hover {
   background: #fff;
 }
 
-/* ── Browser fullscreen ── */
+/* ── Browser fullscreen (theme travels with the stage element) ── */
 .timer-stage:fullscreen,
 .timer-stage:-webkit-full-screen {
   width: 100vw;
@@ -617,6 +622,42 @@ body[data-page="app"] .timer-page--setup {
   max-height: 100vh;
   margin: 0;
   padding: clamp(20px, 4vw, 48px);
+}
+
+.timer-stage.theme-slate:fullscreen,
+.timer-stage.theme-slate:-webkit-full-screen {
+  background: linear-gradient(168deg, #f8fafc 0%, #d6e0ec 100%);
+  color: #0f172a;
+}
+
+.timer-stage.theme-midnight:fullscreen,
+.timer-stage.theme-midnight:-webkit-full-screen {
+  background: radial-gradient(circle at 50% -10%, #1e293b 0%, #020617 72%);
+  color: #f8fafc;
+}
+
+.timer-stage.theme-ocean:fullscreen,
+.timer-stage.theme-ocean:-webkit-full-screen {
+  background: radial-gradient(circle at 18% 0%, rgba(56, 189, 248, 0.32) 0%, transparent 42%), linear-gradient(168deg, #0c4a6e 0%, #082f49 58%, #020617 100%);
+  color: #f0f9ff;
+}
+
+.timer-stage.theme-forest:fullscreen,
+.timer-stage.theme-forest:-webkit-full-screen {
+  background: radial-gradient(circle at 82% 0%, rgba(74, 222, 128, 0.26) 0%, transparent 38%), linear-gradient(168deg, #14532d 0%, #052e16 58%, #022c22 100%);
+  color: #ecfdf5;
+}
+
+.timer-stage.theme-sunset:fullscreen,
+.timer-stage.theme-sunset:-webkit-full-screen {
+  background: radial-gradient(circle at 50% 0%, rgba(251, 146, 60, 0.34) 0%, transparent 44%), linear-gradient(168deg, #9a3412 0%, #7c2d12 52%, #431407 100%);
+  color: #fff7ed;
+}
+
+.timer-stage.theme-lavender:fullscreen,
+.timer-stage.theme-lavender:-webkit-full-screen {
+  background: radial-gradient(circle at 28% 0%, rgba(196, 181, 253, 0.3) 0%, transparent 40%), linear-gradient(168deg, #5b21b6 0%, #4c1d95 58%, #2e1065 100%);
+  color: #f5f3ff;
 }
 
 .timer-stage:fullscreen .timer-stage__toolbar,

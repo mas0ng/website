@@ -62,7 +62,6 @@
   function boot() {
     savedState = loadState();
     state = createDefaultState();
-    applyTheme('slate');
     bindEvents();
     showSetup();
   }
@@ -147,7 +146,8 @@
     const page = document.getElementById('timer-page');
     page?.classList.add('timer-page--setup');
     page?.classList.remove('timer-page--active');
-    clearPageTheme(page);
+    clearThemes();
+    closeSettings();
     if (els.setup) els.setup.hidden = false;
     if (els.app) els.app.hidden = true;
 
@@ -275,11 +275,16 @@
     page?.classList.add(nextTheme);
   }
 
-  function clearPageTheme(page) {
-    if (!page) return;
-    [...page.classList].forEach((className) => {
+  function clearThemes() {
+    clearThemeFrom(document.getElementById('timer-page'));
+    clearThemeFrom(els.stage);
+  }
+
+  function clearThemeFrom(element) {
+    if (!element) return;
+    [...element.classList].forEach((className) => {
       if (className.startsWith('theme-')) {
-        page.classList.remove(className);
+        element.classList.remove(className);
       }
     });
   }
