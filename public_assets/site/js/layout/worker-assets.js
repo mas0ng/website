@@ -1,19 +1,61 @@
 (function () {
   const TAILWIND_URL = 'https://cdn.tailwindcss.com';
-  const LUCIDE_URL = 'https://unpkg.com/lucide@latest';
+  const LUCIDE_URL = 'https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js';
   const INTER_FONT_URL = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap';
 
   function hasScript(src) {
     return Boolean(document.querySelector(`script[src="${src}"]`));
   }
 
+  function scriptIsReady(script, src) {
+    if (!script) {
+      return false;
+    }
+
+    if (script.dataset.loaded === 'true') {
+      return true;
+    }
+
+    const readyState = script.readyState;
+    if (readyState === 'complete' || readyState === 'loaded') {
+      script.dataset.loaded = 'true';
+      return true;
+    }
+
+    if (src.includes('lucide') && window.lucide?.createIcons) {
+      script.dataset.loaded = 'true';
+      return true;
+    }
+
+    if (src.includes('tailwindcss') && window.tailwind) {
+      script.dataset.loaded = 'true';
+      return true;
+    }
+
+    return false;
+  }
+
   function loadScript(src) {
     if (hasScript(src)) {
       const existing = document.querySelector(`script[src="${src}"]`);
-      if (existing.dataset.loaded === 'true') return Promise.resolve();
+      if (scriptIsReady(existing, src)) {
+        return Promise.resolve();
+      }
+
       return new Promise((resolve, reject) => {
-        existing.addEventListener('load', () => resolve(), { once: true });
+        const finish = () => {
+          existing.dataset.loaded = 'true';
+          resolve();
+        };
+
+        existing.addEventListener('load', finish, { once: true });
         existing.addEventListener('error', reject, { once: true });
+
+        window.setTimeout(() => {
+          if (scriptIsReady(existing, src)) {
+            finish();
+          }
+        }, 0);
       });
     }
 
