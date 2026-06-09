@@ -1,12 +1,6 @@
 window.MAS0NG_NAV_SCROLL = (function () {
   const NAV_H = 64;
-  const HERO_SELECTORS = [
-    '.masthead',
-    '.worker-masthead',
-    '.playlist-hero',
-    '.bio-masthead',
-    '.legal-hero'
-  ].join(', ');
+  const HERO_SELECTORS = '.masthead';
 
   function findHero(root) {
     return (root || document).querySelector(HERO_SELECTORS);

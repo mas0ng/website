@@ -158,11 +158,12 @@
       </div>
     `;
 
-    const heroHost = document.querySelector(".masthead, .worker-masthead, .legal-hero, .playlist-hero");
-    if (heroHost) {
-      heroHost.prepend(nav);
+    const masthead = document.querySelector(".masthead");
+    if (masthead) {
+      masthead.prepend(nav);
     } else {
       document.body.prepend(nav);
+      document.documentElement.setAttribute("data-nav-solid", "");
     }
     document.body.classList.remove("pt-16", "pt-20", "pt-24");
     bindMobile(nav);

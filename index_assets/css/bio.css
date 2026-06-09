@@ -30,6 +30,14 @@
   margin: 0 auto;
 }
 
+.bio-masthead .hero__title {
+  font-size: clamp(1.75rem, 4.5vw, 2.75rem);
+}
+
+.bio-main .section__title {
+  font-size: clamp(1.2rem, 3vw, 1.55rem);
+}
+
 .bio-main {
   padding: clamp(28px, 5vw, 48px) 0 56px;
 }

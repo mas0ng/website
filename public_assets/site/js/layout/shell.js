@@ -220,9 +220,13 @@
     `;
 
     if (!footerOnly) {
-      const heroHost = window.MAS0NG_NAV_SCROLL?.findHero?.(main) || main.querySelector('.masthead, .legal-hero, .worker-masthead, .playlist-hero');
-      if (heroHost) {
-        heroHost.prepend(nav);
+      const page = document.body.dataset.page || 'page';
+      const masthead = page === 'home'
+        ? (window.MAS0NG_NAV_SCROLL?.findHero?.(main) || main.querySelector('.masthead'))
+        : null;
+
+      if (masthead) {
+        masthead.prepend(nav);
       } else {
         main.before(nav);
         document.documentElement.setAttribute('data-nav-solid', '');
