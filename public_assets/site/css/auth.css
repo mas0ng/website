@@ -1,76 +1,68 @@
-/* Login page — matches public legal/light site styling */
+/* Login page — clean centered card under full-width public nav */
 
-.auth-shell {
-  max-width: none;
-  margin: 0 auto;
-  padding: 0 0 80px;
+body[data-page="auth"] #site-main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  padding-top: var(--nav-h);
 }
 
-.auth-hero {
-  padding-bottom: 72px;
+body[data-page="auth"] .nav {
+  background: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+body[data-page="auth"] .nav__brand,
+body[data-page="auth"] .nav__item:not(.is-active),
+body[data-page="auth"] .nav__toggle {
+  color: var(--text);
+}
+
+body[data-page="auth"] .nav__cluster {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+.auth-shell {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  margin: 0;
+  padding: clamp(32px, 6vw, 56px) 20px 80px;
 }
 
 .auth-panel {
   position: relative;
-  width: min(520px, calc(100% - 32px));
-  margin: -36px auto 0;
+  width: min(480px, calc(100% - 32px));
+  margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
-.auth-panel__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 18px 22px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  background: #f8fafc;
+.auth-panel__body {
+  display: grid;
+  gap: 22px;
+  padding: clamp(28px, 5vw, 36px) clamp(22px, 4vw, 28px) clamp(24px, 4vw, 30px);
 }
 
-.auth-panel__eyebrow {
-  margin: 0;
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #174ea6;
+.auth-panel__intro {
+  text-align: center;
 }
 
 .auth-panel__title {
-  margin: 4px 0 0;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.auth-panel__badge {
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--login-text);
-  background: var(--login-bg);
-  border: 1px solid var(--login-border);
-}
-
-.auth-panel__body {
-  display: grid;
-  gap: 20px;
-  padding: 28px 22px 24px;
-}
-
-.auth-panel__intro h2 {
-  margin: 0 0 6px;
+  margin: 0 0 8px;
   font-family: var(--font-display);
-  font-size: clamp(1.35rem, 3vw, 1.65rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.65rem, 4vw, 2rem);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--text);
 }
 
 .auth-panel__intro p {
   margin: 0;
-  color: var(--text-muted);
+  color: var(--muted);
   line-height: 1.55;
 }
 
@@ -126,7 +118,7 @@
 .auth-otp__lead {
   margin: 0;
   font-size: 0.88rem;
-  color: var(--text-muted);
+  color: var(--muted);
 }
 
 .auth-otp__inputs {
@@ -210,7 +202,7 @@
 
 .auth-checking__card span {
   font-size: 0.84rem;
-  color: var(--text-muted);
+  color: var(--muted);
 }
 
 .auth-spinner {

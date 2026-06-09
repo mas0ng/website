@@ -30,6 +30,7 @@
     initNav();
     initScrollState(page);
     initHashNavigation();
+    window.addEventListener('pageshow', () => window.MAS0NG_LOADER?.hide?.());
     document.dispatchEvent(new CustomEvent('mas0ng:shell-ready'));
   }
 
@@ -285,6 +286,16 @@
     });
 
     drawer.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeDrawer));
+
+    document.querySelectorAll('#site-nav a[href], #nav-drawer a[href]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('mailto:') || link.target === '_blank') return;
+        if (link.origin && link.origin !== window.location.origin) return;
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        window.MAS0NG_LOADER?.show?.();
+      });
+    });
   }
 
   const NAV_H = 64;
@@ -306,17 +317,20 @@
 
       const morphRange = () => Math.max(1, window.innerHeight - NAV_H);
 
+      let navSolid = false;
+
       update = () => {
         ticking = false;
         const y = window.scrollY;
         const range = morphRange();
         const morph = y <= 1 ? 0 : Math.min(1, Math.max(0, y / range));
+        const nextNavSolid = window.MAS0NG_NAV_SCROLL?.heroNavSolid(masthead) ?? false;
 
         document.documentElement.style.setProperty('--morph', morph.toFixed(4));
-        document.documentElement.toggleAttribute(
-          'data-nav-solid',
-          window.MAS0NG_NAV_SCROLL?.heroNavSolid(masthead) ?? false
-        );
+        if (nextNavSolid !== navSolid) {
+          navSolid = nextNavSolid;
+          document.documentElement.toggleAttribute('data-nav-solid', navSolid);
+        }
         masthead.classList.toggle('is-compact', morph > 0.88);
       };
 

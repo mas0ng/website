@@ -244,12 +244,16 @@
 
   function bindPageLoadIndicator(nav) {
     nav.querySelectorAll("a[href]").forEach((link) => {
-      link.addEventListener("click", () => {
-        document.documentElement.classList.add("mas0ng-page-loading");
+      link.addEventListener("click", (event) => {
+        const href = link.getAttribute("href");
+        if (!href || href.startsWith("#") || href.startsWith("mailto:") || link.target === "_blank") return;
+        if (link.origin && link.origin !== window.location.origin) return;
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        window.MAS0NG_LOADER?.show?.();
       });
     });
     window.addEventListener("pageshow", () => {
-      document.documentElement.classList.remove("mas0ng-page-loading");
+      window.MAS0NG_LOADER?.hide?.();
     });
   }
 

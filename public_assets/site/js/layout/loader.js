@@ -3,6 +3,7 @@
   let overlay = null;
   let showTimer = null;
   let visible = false;
+  let activeOps = 0;
 
   function ensureOverlay() {
     if (overlay) return overlay;
@@ -25,9 +26,15 @@
     return overlay;
   }
 
+  function formatStatus(detail) {
+    if (!detail) return 'Loading…';
+    if (/^https?:\/\//.test(detail)) return `Waiting on ${detail}`;
+    return detail;
+  }
+
   function setStatus(detail) {
     const status = overlay?.querySelector('#loader-status');
-    if (status) status.textContent = detail ? `Waiting on ${detail}` : 'Loading…';
+    if (status) status.textContent = formatStatus(detail);
   }
 
   function setProgress(ratio) {
@@ -36,16 +43,32 @@
     bar.style.width = `${Math.min(100, Math.max(0, ratio * 100))}%`;
   }
 
-  function show() {
-    if (visible) return;
-    visible = true;
-    ensureOverlay();
-    document.documentElement.classList.add('is-loading');
-  }
-
-  function hide() {
+  function show(immediate = false) {
     clearTimeout(showTimer);
     showTimer = null;
+    if (visible) return;
+
+    const reveal = () => {
+      showTimer = null;
+      if (visible) return;
+      visible = true;
+      ensureOverlay();
+      document.documentElement.classList.add('is-loading');
+    };
+
+    if (immediate) {
+      reveal();
+      return;
+    }
+
+    showTimer = window.setTimeout(reveal, SHOW_DELAY_MS);
+  }
+
+  function hide(force = false) {
+    clearTimeout(showTimer);
+    showTimer = null;
+    if (!force && activeOps > 0) return;
+
     if (!overlay || !visible) {
       document.documentElement.classList.remove('is-loading');
       return;
@@ -61,28 +84,58 @@
     }, 360);
   }
 
+  async function runTaskLoop(tasks, immediate) {
+    activeOps += 1;
+    const started = performance.now();
+    show(immediate);
+
+    let done = 0;
+    const total = Math.max(1, tasks.length);
+
+    try {
+      for (const task of tasks) {
+        setStatus(task.detail || task.label);
+        await task.run();
+        done += 1;
+        if (visible) setProgress(done / total);
+      }
+    } finally {
+      const elapsed = performance.now() - started;
+      activeOps = Math.max(0, activeOps - 1);
+      clearTimeout(showTimer);
+      showTimer = null;
+      if (visible || elapsed >= SHOW_DELAY_MS || immediate) {
+        if (visible) setProgress(1);
+        hide(true);
+      }
+    }
+  }
+
   window.MAS0NG_LOADER = {
+    setStatus,
+    setProgress,
+    show: () => show(true),
+    hide: () => hide(true),
+
     async run(tasks) {
-      const started = performance.now();
-      showTimer = window.setTimeout(show, SHOW_DELAY_MS);
+      return runTaskLoop(tasks, false);
+    },
 
-      let done = 0;
-      const total = Math.max(1, tasks.length);
+    async runBoot(tasks) {
+      return runTaskLoop(tasks, true);
+    },
 
+    async runWhile(message, task) {
+      activeOps += 1;
+      show(true);
+      setStatus(message);
+      setProgress(0.35);
       try {
-        for (const task of tasks) {
-          setStatus(task.detail || task.label);
-          await task.run();
-          done += 1;
-          if (visible) setProgress(done / total);
-        }
+        return await task();
       } finally {
-        const elapsed = performance.now() - started;
-        clearTimeout(showTimer);
-        if (visible || elapsed >= SHOW_DELAY_MS) {
-          if (visible) setProgress(1);
-          hide();
-        }
+        activeOps = Math.max(0, activeOps - 1);
+        setProgress(1);
+        hide(true);
       }
     }
   };

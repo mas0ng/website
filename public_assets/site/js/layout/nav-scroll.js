@@ -7,9 +7,9 @@ window.MAS0NG_NAV_SCROLL = (function () {
   }
 
   function heroNavSolid(hero) {
-    if (window.scrollY > 1) return true;
+    if (window.scrollY > 8) return true;
     if (!hero) return true;
-    return hero.getBoundingClientRect().bottom <= NAV_H + 6;
+    return hero.getBoundingClientRect().bottom <= NAV_H + 2;
   }
 
   function init(options = {}) {
