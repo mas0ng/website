@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mason — bio</title>
+  <meta name="description" content="Bio and social links for Mason." />
+  <meta name="theme-color" content="#07111f" />
+  <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="/public_assets/fonts/etna.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" />
+  <link rel="stylesheet" href="/public_assets/site/css/site.css" />
+  <link rel="stylesheet" href="/index_assets/css/bio.css" />
+</head>
+<body data-page="bio">
+  <div id="site-main">
+    <section class="bio-masthead" aria-labelledby="bio-title">
+      <div class="bio-masthead__bg" aria-hidden="true"></div>
+      <div class="bio-hero__inner">
+        <h1 class="hero__title" id="bio-title">Mason</h1>
+      </div>
+    </section>
+
+    <main class="bio-main">
+      <section class="section" id="social" aria-labelledby="social-title">
+        <div class="section__inner">
+          <h2 class="section__title" id="social-title">Social links</h2>
+          <p class="section__lead">External links open in a new tab.</p>
+          <div class="social-grid" id="social-grid"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/public_assets/site/js/config/site-data.js"></script>
+  <script src="/public_assets/site/js/lib/social-tiles.js"></script>
+  <script src="/public_assets/site/js/lib/cache.js"></script>
+  <script src="/public_assets/site/js/layout/loader.js"></script>
+  <script src="/public_assets/site/js/layout/shell.js" data-footer-only defer></script>
+  <script src="/index_assets/js/bio.js" defer></script>
+</body>
+</html>

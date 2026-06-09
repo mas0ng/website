@@ -7,12 +7,14 @@
     <meta name="description" content="Cookie notice for mas0ng.com.">
     <meta name="theme-color" content="#f7f8fb">
     <link rel="icon" type="image/svg+xml" sizes="128x128" href="/public_assets/site_branding/favicon.svg">
-    <link rel="stylesheet" href="/legal/legal.css">
-    <link rel="stylesheet" href="/site-theme.css">
-    <script src="/site-libs.js"></script>
-    <script defer src="/navbar.js" data-active="legal"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="/public_assets/fonts/etna.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" />
+    <link rel="stylesheet" href="/public_assets/site/css/site.css" />
+    <link rel="stylesheet" href="/public_assets/site/css/legal.css" />
   </head>
-  <body class="min-h-screen text-slate-900 antialiased">
+  <body data-page="legal">
+    <div id="site-main">
     <main class="legal-shell">
       <section class="legal-hero">
         <p class="legal-kicker">Cookie notice</p>
@@ -58,5 +60,10 @@
         </section>
       </section>
     </main>
-  </body>
+  </div>
+  <script src="/public_assets/site/js/config/site-data.js"></script>
+  <script src="/public_assets/site/js/lib/cache.js"></script>
+  <script src="/public_assets/site/js/layout/loader.js"></script>
+  <script src="/public_assets/site/js/layout/shell.js" data-active="legal" defer></script>
+</body>
 </html>

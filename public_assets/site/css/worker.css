@@ -1,0 +1,101 @@
+/* mas0ng.com — shared styles for private worker pages */
+
+body.worker-page {
+  background: var(--page-light);
+  color: var(--text);
+}
+
+.worker-masthead {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
+  padding: calc(var(--nav-h) + clamp(32px, 5vw, 56px)) 20px clamp(48px, 8vw, 72px);
+  text-align: center;
+  color: var(--text-inverse);
+}
+
+.worker-masthead__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    radial-gradient(circle at 14% 100%, rgba(59, 130, 246, 0.24), transparent 360px),
+    radial-gradient(circle at 86% 0%, rgba(20, 184, 166, 0.18), transparent 320px),
+    linear-gradient(135deg, #061224 0%, #111827 56%, #020617 100%);
+  background-size: 24px 24px, auto, auto, auto;
+}
+
+.worker-masthead__inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max);
+}
+
+.worker-kicker {
+  margin: 0 0 8px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #bfdbfe;
+}
+
+.worker-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.85rem);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+
+.worker-lead {
+  margin: 14px 0 0;
+  max-width: 52ch;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+
+.worker-shell {
+  width: min(var(--max), calc(100% - 32px));
+  margin: 0 auto;
+  padding: 0 0 48px;
+}
+
+.worker-overlap {
+  position: relative;
+  z-index: 2;
+  width: min(var(--max), calc(100% - 32px));
+  margin: -32px auto 24px;
+}
+
+.worker-panel {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+}
+
+.worker-topbar {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line) !important;
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(135deg, #061224 0%, #111827 56%, #020617 100%) !important;
+  background-size: 24px 24px, auto !important;
+  color: var(--text-inverse) !important;
+}
+
+.worker-topbar h1,
+.worker-topbar .title-input,
+.worker-topbar .code-line {
+  color: var(--text-inverse) !important;
+}
+
+.worker-topbar .code-line {
+  opacity: 0.78;
+}

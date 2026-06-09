@@ -1,25 +1,34 @@
-# Music App Icons
+# Music app UI icons
 
-The music app no longer uses uploaded PNG icons from this folder.
+Playback controls in the music worker currently use **Lucide** icons in the browser (see table below). You do **not** need PNGs here for the app to work.
 
-All playback, library, volume, like, delete, refresh, logout, and jump controls now render from Lucide icons in the browser. You do not need to upload replacement icon files here.
+If the redesign adds **custom SVG** controls, use this spec:
 
-## Lucide Icons Used
+## Optional custom SVG spec
 
-| Control | Lucide icon | Runtime colour |
-| --- | --- | --- |
-| Play | `play` | Inherits the button text colour, usually `#ffffff` |
-| Pause | `pause` | Inherits the button text colour, usually `#ffffff` |
-| Previous | `skip-back` | Inherits the button text colour |
-| Next | `skip-forward` | Inherits the button text colour |
-| Shuffle | `shuffle` | Inherits the button text colour |
-| Like | `heart` | Inherits the button text colour |
-| Liked | `heart` with fill | Inherits the button text colour |
-| Refresh library | `refresh-cw` | Inherits the button text colour |
-| Delete / clear queue | `trash-2` | Inherits the button text colour |
-| Logout | `log-out` | Inherits the button text colour |
-| Jump to current | `crosshair` | Inherits the button text colour |
-| Volume | `volume-2` | Inherits the button text colour |
-| Muted volume | `volume-x` | Inherits the button text colour |
+| Property | Value |
+| --- | --- |
+| Format | SVG |
+| Canvas | `24×24` viewBox |
+| Display | `20–24px` inline in buttons |
+| Colour | `currentColor` strokes/fills so CSS can theme hover/active/liked states |
 
-Button colours are controlled by the music app CSS, so icons stay consistent with hover, active, liked, and disabled states.
+## Lucide icons in use today
+
+| Control | Lucide name |
+| --- | --- |
+| Play | `play` |
+| Pause | `pause` |
+| Previous | `skip-back` |
+| Next | `skip-forward` |
+| Shuffle | `shuffle` |
+| Like | `heart` |
+| Liked | `heart` (filled) |
+| Refresh library | `refresh-cw` |
+| Delete / clear queue | `trash-2` |
+| Logout | `log-out` |
+| Jump to current | `crosshair` |
+| Volume | `volume-2` |
+| Muted | `volume-x` |
+
+To swap in custom SVGs, replace the Lucide markup in `workers/music/public/` JS/CSS and name files clearly (e.g. `play.svg`, `pause.svg`) in this folder.

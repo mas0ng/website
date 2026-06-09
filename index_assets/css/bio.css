@@ -1,0 +1,54 @@
+/* Bio page — no navbar, hero + social links */
+
+.bio-masthead {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: min(68svh, 560px);
+  padding: clamp(40px, 8vw, 72px) 22px clamp(56px, 10vw, 88px);
+  overflow: clip;
+  text-align: center;
+  color: var(--text-inverse);
+}
+
+.bio-masthead__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    radial-gradient(circle at 14% 100%, rgba(59, 130, 246, 0.24), transparent 360px),
+    radial-gradient(circle at 86% 0%, rgba(20, 184, 166, 0.18), transparent 320px),
+    linear-gradient(135deg, #061224 0%, #111827 56%, #020617 100%);
+  background-size: 24px 24px, auto, auto, auto;
+}
+
+.bio-hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.bio-main {
+  padding: clamp(28px, 5vw, 48px) 0 56px;
+}
+
+.bio-main .section__inner {
+  padding: 0 22px;
+}
+
+.bio-main .social-grid {
+  max-width: calc(var(--max) + 40px);
+  margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+  .bio-masthead {
+    min-height: 58svh;
+  }
+
+  .bio-main .social-tile {
+    padding: 16px 18px;
+  }
+}
