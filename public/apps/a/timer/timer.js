@@ -23,7 +23,11 @@
     progressBar: document.getElementById('timer-progress-bar'),
     progressLabel: document.getElementById('timer-progress-label'),
     toggle: document.getElementById('timer-toggle'),
-    reset: document.getElementById('timer-reset')
+    reset: document.getElementById('timer-reset'),
+    fullscreen: document.getElementById('timer-fullscreen'),
+    fullscreenLabel: document.getElementById('timer-fullscreen-label'),
+    fullscreenIconEnter: document.querySelector('.timer-fs-btn__icon--enter'),
+    fullscreenIconExit: document.querySelector('.timer-fs-btn__icon--exit')
   };
 
   let state = createDefaultState();
@@ -88,6 +92,8 @@
 
     els.toggle?.addEventListener('click', toggleRunning);
     els.reset?.addEventListener('click', resetTimer);
+    els.fullscreen?.addEventListener('click', toggleBrowserFullscreen);
+    document.addEventListener('fullscreenchange', syncFullscreenUi);
 
     window.addEventListener('pagehide', persistState);
   }
@@ -165,7 +171,52 @@
 
   function applyTheme(theme) {
     if (!els.stage) return;
-    els.stage.className = `timer-stage theme-${theme || 'slate'}`;
+    const nextTheme = `theme-${theme || 'slate'}`;
+    [...els.stage.classList].forEach((className) => {
+      if (className.startsWith('theme-')) {
+        els.stage.classList.remove(className);
+      }
+    });
+    if (!els.stage.classList.contains('timer-stage')) {
+      els.stage.classList.add('timer-stage');
+    }
+    els.stage.classList.add(nextTheme);
+  }
+
+  function isBrowserFullscreen() {
+    return document.fullscreenElement === els.stage;
+  }
+
+  function toggleBrowserFullscreen() {
+    if (!els.stage) return;
+
+    if (isBrowserFullscreen()) {
+      document.exitFullscreen?.().catch(() => undefined);
+      return;
+    }
+
+    els.stage.requestFullscreen?.().catch(() => undefined);
+  }
+
+  function syncFullscreenUi() {
+    const active = isBrowserFullscreen();
+
+    if (els.fullscreen) {
+      els.fullscreen.setAttribute('aria-label', active ? 'Exit browser fullscreen' : 'Enter browser fullscreen');
+      els.fullscreen.title = active ? 'Exit fullscreen' : 'Browser fullscreen';
+    }
+
+    if (els.fullscreenLabel) {
+      els.fullscreenLabel.textContent = active ? 'Exit' : 'Fullscreen';
+    }
+
+    if (els.fullscreenIconEnter) {
+      els.fullscreenIconEnter.hidden = active;
+    }
+
+    if (els.fullscreenIconExit) {
+      els.fullscreenIconExit.hidden = !active;
+    }
   }
 
   function syncStatusUi() {

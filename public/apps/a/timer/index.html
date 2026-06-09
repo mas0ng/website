@@ -46,9 +46,8 @@
 
         <div class="timer-app" id="timer-app" hidden>
           <section class="timer-config" aria-labelledby="timer-config-title">
-            <div class="timer-config__head">
+            <div class="timer-config__bar">
               <h2 class="timer-config__title" id="timer-config-title">Settings</h2>
-            </div>
 
             <div class="timer-config__grid">
               <div class="timer-config__block">
@@ -105,10 +104,24 @@
                 </div>
               </div>
             </div>
+            </div>
           </section>
 
           <section class="timer-stage theme-slate" id="timer-stage" aria-label="Timer display">
+            <div class="timer-stage__toolbar">
+              <button class="timer-fs-btn" type="button" id="timer-fullscreen" aria-label="Enter browser fullscreen" title="Browser fullscreen">
+                <svg class="timer-fs-btn__icon timer-fs-btn__icon--enter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/>
+                </svg>
+                <svg class="timer-fs-btn__icon timer-fs-btn__icon--exit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden>
+                  <path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/>
+                </svg>
+                <span class="timer-fs-btn__label" id="timer-fullscreen-label">Fullscreen</span>
+              </button>
+            </div>
+
             <div class="timer-stage__inner">
+              <div class="timer-display-card">
               <div class="timer-stage__meta">
                 <span class="timer-stage__badge" id="timer-mode-badge">Stopwatch</span>
                 <span class="timer-stage__status" id="timer-status" data-state="idle">Ready</span>
@@ -146,6 +159,7 @@
               <div class="timer-controls">
                 <button class="timer-btn timer-btn--primary" type="button" id="timer-toggle">Start</button>
                 <button class="timer-btn timer-btn--ghost" type="button" id="timer-reset">Reset</button>
+              </div>
               </div>
             </div>
           </section>
