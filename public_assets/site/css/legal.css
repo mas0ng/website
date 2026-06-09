@@ -61,7 +61,22 @@
   top: 0;
   left: 0;
   right: 0;
+  width: 100%;
+  max-width: none;
+  justify-self: stretch;
+  text-align: left;
   z-index: 120;
+}
+
+.legal-hero > .nav .nav__menu {
+  left: 0;
+  right: auto;
+  text-align: left;
+  transform: translateY(-6px);
+}
+
+.legal-hero > .nav .nav__dropdown.is-open .nav__menu {
+  transform: translateY(0);
 }
 
 html:not([data-nav-solid]) body[data-page="legal"] .legal-hero > .nav .nav__brand {
@@ -86,6 +101,38 @@ html:not([data-nav-solid]) body[data-page="legal"] .legal-hero > .nav .nav__item
 
 html:not([data-nav-solid]) body[data-page="legal"] .legal-hero > .nav .nav__login {
   color: var(--login-text);
+}
+
+html:not([data-nav-solid]) body[data-page="apps"] .legal-hero > .nav .nav__brand {
+  color: var(--text-inverse);
+}
+
+html:not([data-nav-solid]) body[data-page="apps"] .legal-hero > .nav .nav__item:not(.is-active),
+html:not([data-nav-solid]) body[data-page="apps"] .legal-hero > .nav .nav__toggle {
+  color: rgba(248, 251, 255, 0.92);
+}
+
+html:not([data-nav-solid]) body[data-page="apps"] .legal-hero > .nav .nav__cluster {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+}
+
+html:not([data-nav-solid]) body[data-page="apps"] .legal-hero > .nav .nav__item:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+html:not([data-nav-solid]) body[data-page="apps"] .legal-hero > .nav .nav__login {
+  color: var(--login-text);
+}
+
+.apps-grid {
+  width: min(100% - 32px, 1040px);
+  margin: -38px auto 0;
+  position: relative;
+  z-index: 2;
+  padding-bottom: 80px;
 }
 
 .legal-kicker {

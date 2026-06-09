@@ -8,6 +8,15 @@
       "href": "/public/apps/a/mosaic/",
       "icon": "/public_assets/app_icons/mosaic.svg",
       "featured": true
+    },
+    {
+      "id": "qr",
+      "name": "QR Generator",
+      "label": "QR Generator",
+      "description": "Create QR codes for links, text, email, phone, and Wi‑Fi.",
+      "href": "/public/apps/a/qr/",
+      "icon": "/public_assets/app_icons/qr.svg",
+      "featured": true
     }
   ],
   "private": [

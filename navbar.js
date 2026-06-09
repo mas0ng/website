@@ -204,13 +204,13 @@
       href: app.href,
       icon: "grid-3x3"
     }));
-    links.push({ id: "all-apps", label: "All apps", href: SITE_ORIGIN + "/public/apps/", icon: "layout-grid" });
+    links.push({ id: "all-apps", label: "Browse all", href: SITE_ORIGIN + "/public/apps/", icon: "layout-grid" });
     return desktopDropdown("Apps", links, active === "apps" ? "all-apps" : active);
   }
 
   function mobileAppsDropdown(apps, active) {
     const links = apps.map((app) => ({ id: app.id, label: app.name, href: app.href }));
-    links.push({ id: "all-apps", label: "All apps", href: SITE_ORIGIN + "/public/apps/" });
+    links.push({ id: "all-apps", label: "Browse all", href: SITE_ORIGIN + "/public/apps/" });
     return mobileDropdown("Apps", links, active === "apps" ? "all-apps" : active);
   }
 

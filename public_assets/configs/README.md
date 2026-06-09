@@ -8,6 +8,17 @@ Editable JSON configs shared across the public site. Loaded at runtime by `publi
 | --- | --- |
 | `socials.json` | Social platform links — home grid, footer, icon preload |
 | `apps.json` | Public and private app registry — nav dropdowns, home featured apps, secure apps launcher |
+| `cache-versions.json` | Cache bust manifest — **must be bumped on every deploy** (see `documentation/CACHE_VERSION_DOCUMENTATION.md`) |
+
+## `cache-versions.json`
+
+Use `major.minor` strings (`1.0`, `1.1`, `1.11`, `2.0`, …). Bump the key for each area you change before deploying.
+
+Full rules — when to use `1.1` vs `2.0`, area keys, and deploy checklist:
+
+```text
+documentation/CACHE_VERSION_DOCUMENTATION.md
+```
 
 ## `socials.json` fields
 

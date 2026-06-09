@@ -300,7 +300,8 @@ html[data-nav-solid] .nav__dropdown.is-open .nav__item--btn {
 .nav__menu {
   position: absolute;
   top: calc(100% + 10px);
-  left: 50%;
+  left: 0;
+  right: auto;
   min-width: 228px;
   padding: 6px;
   border-radius: 14px;
@@ -309,16 +310,17 @@ html[data-nav-solid] .nav__dropdown.is-open .nav__item--btn {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 18px 44px rgba(15, 23, 42, 0.14);
+  text-align: left;
   opacity: 0;
   visibility: hidden;
-  transform: translateX(-50%) translateY(-6px);
+  transform: translateY(-6px);
   transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
 }
 
 .nav__dropdown.is-open .nav__menu {
   opacity: 1;
   visibility: visible;
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(0);
 }
 
 .nav__menu-item {
@@ -328,15 +330,14 @@ html[data-nav-solid] .nav__dropdown.is-open .nav__item--btn {
   font-size: 14px;
   font-weight: 500;
   color: var(--text);
+  text-align: left;
   transition: background 0.15s;
 }
 
-.nav__menu-item--all {
-  margin-top: 4px;
-  border-top: 1px solid var(--line);
-  padding-top: 10px;
-  font-weight: 800;
-  color: #174ea6;
+.nav__menu-divider {
+  height: 1px;
+  margin: 4px 10px;
+  background: rgba(0, 0, 0, 0.08);
 }
 
 .nav__menu-item:hover {
@@ -593,7 +594,8 @@ html[data-nav-solid] .nav__toggle:hover { background: rgba(0, 0, 0, 0.05); }
   padding: clamp(40px, 8vw, 72px) 22px clamp(48px, 9vw, 80px);
 }
 
-#social {
+#social,
+#apps {
   scroll-margin-top: calc(var(--nav-h) + 20px);
 }
 
@@ -622,6 +624,59 @@ html[data-nav-solid] .nav__toggle:hover { background: rgba(0, 0, 0, 0.05); }
   display: grid;
   gap: 16px;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.tile-skeleton {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 22px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.04);
+  pointer-events: none;
+}
+
+.tile-skeleton__icon {
+  width: 52px;
+  height: 52px;
+  flex: 0 0 auto;
+  border-radius: 14px;
+}
+
+.tile-skeleton__body {
+  flex: 1 1 auto;
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.tile-skeleton__line {
+  display: block;
+  height: 14px;
+  border-radius: 999px;
+}
+
+.tile-skeleton__line--short {
+  width: 62%;
+  height: 12px;
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #e8edf4 0%, #f8fafc 42%, #e8edf4 84%);
+  background-size: 220% 100%;
+  animation: skeleton-shimmer 1.35s ease-in-out infinite;
+}
+
+.social-grid.is-loading,
+.app-grid.is-loading {
+  min-height: 120px;
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 120% 0; }
+  100% { background-position: -120% 0; }
 }
 
 .app-tile {
@@ -1055,6 +1110,7 @@ html[data-nav-solid] .nav__toggle:hover { background: rgba(0, 0, 0, 0.05); }
     padding: 16px 22px 28px;
     background: rgba(251, 251, 253, 0.98);
     backdrop-filter: blur(20px);
+    color: var(--text);
     overflow-y: auto;
     transform: translateY(-8px);
     opacity: 0;
@@ -1073,6 +1129,7 @@ html[data-nav-solid] .nav__toggle:hover { background: rgba(0, 0, 0, 0.05); }
     padding: 14px 0;
     font-size: 1.2rem;
     font-weight: 500;
+    color: var(--text);
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   }
 
@@ -1108,7 +1165,8 @@ html[data-nav-solid] .nav__toggle:hover { background: rgba(0, 0, 0, 0.05); }
   .nav__drawer,
   .nav__chevron,
   .scroll-hint__chevron,
-  .page-loader__spinner { transition: none; animation: none; }
+  .page-loader__spinner,
+  .skeleton-shimmer { transition: none; animation: none; }
   .hero,
   .scroll-hint,
   .nav__cluster { transform: none; }
@@ -1124,6 +1182,32 @@ html[data-nav-solid] .nav__toggle:hover { background: rgba(0, 0, 0, 0.05); }
 /* Heroes extend to the top; fixed nav overlays them — no padding gap */
 body[data-page="error"] #site-main {
   padding-top: var(--nav-h);
+}
+
+/* Public browser tools — fixed nav sits above content */
+body[data-page="app"] .mosaic-page,
+body[data-page="app"] .qr-page {
+  padding-top: calc(var(--nav-h, 64px) + clamp(18px, 3vw, 28px));
+}
+
+.app-tool-header {
+  display: grid;
+  gap: 8px;
+}
+
+.app-tool-kicker {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+body[data-page="app"] .app-tool-header .section__title {
+  margin: 0;
+  text-align: left;
+  font-size: clamp(1.65rem, 4vw, 2.1rem);
 }
 
 #site-footer {

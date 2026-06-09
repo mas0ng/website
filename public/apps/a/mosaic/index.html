@@ -17,8 +17,9 @@
   <div id="site-main">
     <main class="mosaic-page">
       <div class="mosaic-shell">
-        <header>
-          <h1 class="section__title" style="text-align:left;margin-bottom:6px;">Mosaic blur</h1>
+        <header class="app-tool-header">
+          <p class="app-tool-kicker">Public app</p>
+          <h1 class="section__title">Mosaic blur</h1>
           <p class="mosaic-hint">Upload a photo, paint where you want blur, then save. On phones, save opens the share sheet so you can add the image to your camera roll.</p>
         </header>
 
@@ -29,15 +30,13 @@
             <button class="mosaic-btn" type="button" id="mosaic-clear" disabled>Clear blur</button>
             <button class="mosaic-btn mosaic-btn--primary" type="button" id="mosaic-save" disabled>Save image</button>
           </div>
+
+          <div class="mosaic-blur-panel">
+            <p class="mosaic-field-label">Blur style</p>
+            <div class="mosaic-blur-picker" id="mosaic-blur-picker" role="listbox" aria-label="Blur style"></div>
+          </div>
+
           <div class="mosaic-toolbar__row">
-            <label class="mosaic-field">
-              <span>Blur style</span>
-              <select id="mosaic-blur-type">
-                <option value="gaussian">Soft blur</option>
-                <option value="strong">Heavy blur</option>
-                <option value="pixel">Mosaic pixels</option>
-              </select>
-            </label>
             <label class="mosaic-field">
               <span>Blur strength</span>
               <input id="mosaic-blur-amount" type="range" min="4" max="36" value="14" />
@@ -48,6 +47,8 @@
             </label>
           </div>
         </div>
+
+        <p class="mosaic-status" id="mosaic-status" hidden></p>
 
         <div class="mosaic-stage" id="mosaic-stage">
           <div class="mosaic-empty" id="mosaic-empty">

@@ -9,6 +9,8 @@
   boot();
 
   async function boot() {
+    await window.MAS0NG_CACHE?.ready;
+
     const publicOnly = window.location.hostname === 'auth.mas0ng.com'
       || script?.dataset.publicOnly !== undefined;
 
@@ -182,7 +184,12 @@
     const main = document.getElementById('site-main');
     if (!main || document.getElementById('site-nav')) return;
 
-    const navItems = d.nav.map((item) => {
+    const isHome = activeId === 'home';
+    const navLinks = isHome
+      ? [...d.nav, { id: 'apps', label: 'Apps', href: '#apps' }]
+      : d.nav;
+
+    const navItems = navLinks.map((item) => {
       const isActive = item.id === activeId ? ' is-active' : '';
       const current = item.id === activeId ? ' aria-current="page"' : '';
       return `<a class="nav__item${isActive}" href="${item.href}"${current}>${item.label}</a>`;
@@ -193,7 +200,7 @@
       ? window.MAS0NG_APP_TILES.renderMenuItems(publicApps)
       : '';
     const appsMenuFooter = publicApps.length
-      ? `<a class="nav__menu-item nav__menu-item--all" href="/public/apps/" role="menuitem">All apps</a>`
+      ? `<div class="nav__menu-divider" role="separator"></div><a class="nav__menu-item" href="/public/apps/" role="menuitem">Browse all</a>`
       : '';
 
     const legalMenu = d.legal.map((item) =>
@@ -201,7 +208,7 @@
     ).join('');
 
     const drawerApps = publicApps.length
-      ? `<p class="nav__drawer-label">Apps</p>${publicApps.map((item) => `<a class="nav__drawer-link" href="${item.href}">${item.name}</a>`).join('')}<a class="nav__drawer-link" href="/public/apps/">All apps</a>`
+      ? `<p class="nav__drawer-label">Apps</p>${publicApps.map((item) => `<a class="nav__drawer-link" href="${item.href}">${item.name}</a>`).join('')}<a class="nav__drawer-link" href="/public/apps/">Browse all</a>`
       : '';
 
     const drawerLegal = `
@@ -243,7 +250,7 @@
         <a class="nav__brand" href="${siteRoot}/">${d.siteName}</a>
         <div class="nav__cluster" role="navigation" aria-label="Sections">
           ${navItems}
-          ${publicApps.length ? `<div class="nav__dropdown" id="nav-apps-dropdown">
+          ${!isHome && publicApps.length ? `<div class="nav__dropdown" id="nav-apps-dropdown">
             <button class="nav__item nav__item--btn${activeId === 'apps' ? ' is-active' : ''}" type="button" aria-expanded="false" aria-controls="nav-apps-menu" id="nav-apps-btn">
               Apps
               <svg class="nav__chevron" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
@@ -259,23 +266,23 @@
           </div>
         </div>
         <div class="nav__end">
-          <a class="nav__login${activeId === 'login' ? ' is-active' : ''}" id="nav-login" href="${d.loginUrl}"${activeId === 'login' ? ' aria-current="page"' : ''}>
+          ${isHome ? '' : `<a class="nav__login${activeId === 'login' ? ' is-active' : ''}" id="nav-login" href="${d.loginUrl}"${activeId === 'login' ? ' aria-current="page"' : ''}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
             Log in
-          </a>
+          </a>`}
           <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer" id="nav-toggle">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><path d="M1 4h16v1.2H1zm0 4.4h16v1.2H1zM1 13h16v1.2H1z"/></svg>
           </button>
         </div>
       </div>
       <nav class="nav__drawer" id="nav-drawer" aria-label="Mobile">
-        ${d.nav.map((item) => `<a class="nav__drawer-link" href="${item.href}">${item.label}</a>`).join('')}
-        ${drawerApps ? `<div class="nav__drawer-group" id="nav-drawer-apps">${drawerApps}</div>` : ''}
+        ${navLinks.map((item) => `<a class="nav__drawer-link" href="${item.href}">${item.label}</a>`).join('')}
+        ${!isHome && drawerApps ? `<div class="nav__drawer-group" id="nav-drawer-apps">${drawerApps}</div>` : ''}
         <div class="nav__drawer-group" id="nav-drawer-legal">${drawerLegal}</div>
-        <a class="nav__drawer-login${activeId === 'login' ? ' is-active' : ''}" id="nav-login-drawer" href="${d.loginUrl}"${activeId === 'login' ? ' aria-current="page"' : ''}>
+        ${isHome ? '' : `<a class="nav__drawer-login${activeId === 'login' ? ' is-active' : ''}" id="nav-login-drawer" href="${d.loginUrl}"${activeId === 'login' ? ' aria-current="page"' : ''}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
           Log in
-        </a>
+        </a>`}
       </nav>
     `;
 
@@ -314,7 +321,7 @@
         ? (window.MAS0NG_NAV_SCROLL?.findHero?.(main) || main.querySelector('.masthead'))
         : page === 'auth'
           ? main.querySelector('.worker-masthead')
-          : page === 'legal'
+          : page === 'legal' || page === 'apps'
             ? main.querySelector('.legal-hero')
             : null;
 
@@ -466,7 +473,7 @@
         e.preventDefault();
         scrollToTarget(document.getElementById('social'));
       });
-    } else if (page === 'legal') {
+    } else if (page === 'legal' || page === 'apps') {
       const hero = document.querySelector('.legal-hero');
       if (!hero) return;
 
@@ -509,16 +516,26 @@
 
   function initHashNavigation() {
     const isHome = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
+    const hashTargets = {
+      social: ['#social', '/#social'],
+      apps: ['#apps', '/#apps']
+    };
 
     document.addEventListener('click', (e) => {
-      const link = e.target.closest('a[href="#social"], a[href="/#social"]');
-      if (!link || !isHome) return;
-      e.preventDefault();
-      window.MAS0NG_LOADER?.hide?.();
-      scrollToTarget(document.getElementById('social'));
-      history.pushState(null, '', '#social');
-    });
+      if (!isHome) return;
 
+      for (const [id, hrefs] of Object.entries(hashTargets)) {
+        const link = hrefs.map((href) => `a[href="${href}"]`).join(', ');
+        const target = e.target.closest(link);
+        if (!target) continue;
+
+        e.preventDefault();
+        window.MAS0NG_LOADER?.hide?.();
+        scrollToTarget(document.getElementById(id));
+        history.pushState(null, '', `#${id}`);
+        return;
+      }
+    });
   }
 
   function resolveHashTarget(hash) {

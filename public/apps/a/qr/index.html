@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <script src="/public_assets/site/js/layout/loader.js?v=20260610-loader1"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mas0ng.com | qr generator</title>
+  <meta name="description" content="Create QR codes for links, text, email, phone, and Wi‑Fi. Works in the browser on mobile and desktop." />
+  <meta name="theme-color" content="#07111f" />
+  <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" />
+  <link rel="stylesheet" href="/public_assets/site/css/site.css" />
+  <link rel="stylesheet" href="qr.css" />
+</head>
+<body data-page="app">
+  <div id="site-main">
+    <main class="qr-page">
+      <div class="qr-shell">
+        <header class="app-tool-header">
+          <p class="app-tool-kicker">Public app</p>
+          <h1 class="section__title">QR generator</h1>
+          <p class="qr-hint">Create a QR code from a link, text, email, phone number, or Wi‑Fi details. Everything runs in your browser — nothing is uploaded.</p>
+        </header>
+
+        <div class="qr-layout">
+          <section class="qr-panel" aria-labelledby="qr-content-title">
+            <h2 class="qr-panel__title" id="qr-content-title">Content</h2>
+
+            <div class="qr-type-picker" id="qr-type-picker" role="tablist" aria-label="QR content type">
+              <button class="qr-type is-active" type="button" role="tab" aria-selected="true" data-type="url">Link</button>
+              <button class="qr-type" type="button" role="tab" aria-selected="false" data-type="text">Text</button>
+              <button class="qr-type" type="button" role="tab" aria-selected="false" data-type="email">Email</button>
+              <button class="qr-type" type="button" role="tab" aria-selected="false" data-type="phone">Phone</button>
+              <button class="qr-type" type="button" role="tab" aria-selected="false" data-type="wifi">Wi‑Fi</button>
+            </div>
+
+            <div class="qr-fields" id="qr-fields"></div>
+
+            <div class="qr-options">
+              <div class="qr-field qr-field--full">
+                <span>Size <em class="qr-size-readout" id="qr-size-readout">320 × 320 px</em></span>
+                <div class="qr-size-picker" id="qr-size-picker" role="radiogroup" aria-label="Output size">
+                  <button class="qr-size" type="button" role="radio" aria-checked="false" data-size="256">256</button>
+                  <button class="qr-size is-active" type="button" role="radio" aria-checked="true" data-size="320">320</button>
+                  <button class="qr-size" type="button" role="radio" aria-checked="false" data-size="512">512</button>
+                  <button class="qr-size" type="button" role="radio" aria-checked="false" data-size="custom">Custom</button>
+                </div>
+                <label class="qr-field qr-field--custom" id="qr-size-custom-wrap">
+                  <span>Custom size (px)</span>
+                  <input id="qr-size" type="number" min="180" max="720" step="1" value="400" inputmode="numeric" aria-label="Custom output size in pixels" />
+                </label>
+              </div>
+              <label class="qr-field">
+                <span>Error correction</span>
+                <select id="qr-ecc">
+                  <option value="L">Low</option>
+                  <option value="M" selected>Medium</option>
+                  <option value="Q">Quartile</option>
+                  <option value="H">High</option>
+                </select>
+              </label>
+              <label class="qr-field qr-field--color">
+                <span>Code colour</span>
+                <input id="qr-fg" type="color" value="#174ea6" />
+              </label>
+              <label class="qr-field qr-field--color">
+                <span>Background</span>
+                <input id="qr-bg" type="color" value="#ffffff" />
+              </label>
+            </div>
+          </section>
+
+          <section class="qr-preview-panel" aria-labelledby="qr-preview-title">
+            <h2 class="qr-panel__title" id="qr-preview-title">Preview</h2>
+            <div class="qr-preview" id="qr-preview">
+              <div class="qr-preview__empty" id="qr-preview-empty">
+                <strong>Enter content to generate</strong>
+                <span>Your QR code will appear here.</span>
+              </div>
+              <div class="qr-preview__frame" id="qr-preview-frame" hidden>
+                <canvas id="qr-canvas" aria-label="QR code preview"></canvas>
+              </div>
+            </div>
+            <p class="qr-payload" id="qr-payload" hidden></p>
+            <p class="qr-status" id="qr-status" hidden></p>
+            <div class="qr-actions">
+              <button class="qr-btn" type="button" id="qr-copy" disabled>Copy text</button>
+              <button class="qr-btn qr-btn--primary" type="button" id="qr-save" disabled>Save image</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/public_assets/site/js/config/site-data.js"></script>
+  <script src="/public_assets/site/js/lib/app-tiles.js"></script>
+  <script src="/public_assets/site/js/lib/cache.js"></script>
+  <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
+  <script src="/public_assets/site/js/lib/qrcode.min.js"></script>
+  <script src="/public_assets/site/js/layout/shell.js" data-active="apps" defer></script>
+  <script src="qr.js" defer></script>
+</body>
+</html>
