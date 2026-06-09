@@ -74,6 +74,7 @@
     progressLabel: document.getElementById('html-viewer-progress-label'),
     frame: document.getElementById('html-viewer-frame'),
     notice: document.getElementById('html-viewer-notice'),
+    noticeClose: document.getElementById('html-viewer-notice-close'),
     noticeTitle: document.getElementById('html-viewer-notice-title'),
     noticeText: document.getElementById('html-viewer-notice-text')
   };
@@ -91,6 +92,7 @@
   let previewHasErrors = false;
   let previewFatal = false;
   let previewErrorMessage = '';
+  let noticeDismissed = false;
 
   if (!els.workspace || !els.overlay || !els.frame) {
     console.error('HTML viewer failed to initialise.');
@@ -127,6 +129,7 @@
     els.fileInput?.addEventListener('change', onFileSelected);
     els.previewBtn?.addEventListener('click', startPreview);
     els.clearBtn?.addEventListener('click', clearAll);
+    els.noticeClose?.addEventListener('click', dismissPreviewNotice);
   }
 
   function selectMode(mode, button) {
@@ -236,7 +239,13 @@
     if (els.noticeText) els.noticeText.textContent = '';
   }
 
+  function dismissPreviewNotice() {
+    noticeDismissed = true;
+    hidePreviewNotice();
+  }
+
   function showPreviewNotice(fatal, message) {
+    if (noticeDismissed) return;
     if (!els.notice || !els.noticeTitle || !els.noticeText) return;
     previewHasErrors = true;
     if (fatal) previewFatal = true;
@@ -325,6 +334,7 @@
     previewHasErrors = false;
     previewFatal = false;
     previewErrorMessage = '';
+    noticeDismissed = false;
 
     const estimateMs = estimateRenderMs(prepared);
     renderStartedAt = performance.now();
