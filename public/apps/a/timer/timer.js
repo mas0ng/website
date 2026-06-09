@@ -31,7 +31,8 @@
     fullscreen: document.getElementById('timer-fullscreen'),
     fullscreenLabel: document.getElementById('timer-fullscreen-label'),
     fullscreenIconEnter: document.querySelector('.timer-fs-btn__icon--enter'),
-    fullscreenIconExit: document.querySelector('.timer-fs-btn__icon--exit')
+    fullscreenIconExit: document.querySelector('.timer-fs-btn__icon--exit'),
+    finish: document.getElementById('timer-finish')
   };
 
   let state = createDefaultState();
@@ -139,6 +140,9 @@
     syncToggleLabel();
     updateDisplay();
     if (state.running) startTicking();
+    if (state.countdownFinished) {
+      els.stage?.classList.add('is-finished');
+    }
     persistState();
   }
 
@@ -147,6 +151,7 @@
     page?.classList.add('timer-page--setup');
     page?.classList.remove('timer-page--active');
     clearThemes();
+    clearFinishAnimation();
     closeSettings();
     if (els.setup) els.setup.hidden = false;
     if (els.app) els.app.hidden = true;
@@ -196,6 +201,7 @@
   function setMode(mode) {
     if (mode === state.mode) return;
     pause();
+    clearFinishAnimation();
     state.mode = mode;
     state.countdownFinished = false;
     syncModeUi();
@@ -479,7 +485,39 @@
     syncToggleLabel();
     syncModeUi();
     updateDisplay();
+    playFinishAnimation();
     persistState();
+  }
+
+  function playFinishAnimation() {
+    clearFinishAnimation();
+
+    els.stage?.classList.add('is-finished');
+    els.display?.classList.add('is-finish-pop');
+
+    if (!els.finish) return;
+
+    els.finish.hidden = false;
+    els.finish.setAttribute('aria-hidden', 'false');
+
+    window.requestAnimationFrame(() => {
+      els.finish?.classList.add('is-active');
+    });
+
+    window.setTimeout(() => {
+      els.display?.classList.remove('is-finish-pop');
+    }, 900);
+  }
+
+  function clearFinishAnimation() {
+    els.stage?.classList.remove('is-finished');
+    els.display?.classList.remove('is-finish-pop');
+
+    if (!els.finish) return;
+
+    els.finish.classList.remove('is-active');
+    els.finish.hidden = true;
+    els.finish.setAttribute('aria-hidden', 'true');
   }
 
   function toggleRunning() {
@@ -495,6 +533,7 @@
 
     if (state.mode === 'countdown') {
       if (state.countdownFinished || getCountdownRemainingMs() <= 0) {
+        clearFinishAnimation();
         state.countdownTargetMs = durationToMs();
         state.countdownFinished = false;
         state.countdownRemainingMs = null;
@@ -541,6 +580,7 @@
 
   function resetTimer() {
     pause();
+    clearFinishAnimation();
     if (state.mode === 'stopwatch') {
       state.stopwatchTotalMs = 0;
       state.stopwatchRunningSince = null;

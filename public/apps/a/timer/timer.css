@@ -458,6 +458,222 @@ body[data-page="app"] .timer-page--setup {
   text-align: center;
 }
 
+/* ── Countdown finished animation ── */
+.timer-stage.is-finished::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(circle at 50% 42%, rgba(239, 68, 68, 0.34) 0%, transparent 58%);
+  animation: timer-finish-flash 1.1s ease-out forwards;
+  pointer-events: none;
+}
+
+.timer-finish {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.timer-finish[hidden] {
+  display: none !important;
+}
+
+.timer-finish__rings {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.timer-finish__rings span {
+  position: absolute;
+  width: clamp(120px, 28vmin, 280px);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  border: 3px solid rgba(248, 113, 113, 0.72);
+  opacity: 0;
+  transform: scale(0.35);
+}
+
+.timer-finish.is-active .timer-finish__rings span:nth-child(1) {
+  animation: timer-finish-ring 1.35s ease-out 0s forwards;
+}
+
+.timer-finish.is-active .timer-finish__rings span:nth-child(2) {
+  animation: timer-finish-ring 1.35s ease-out 0.18s forwards;
+}
+
+.timer-finish.is-active .timer-finish__rings span:nth-child(3) {
+  animation: timer-finish-ring 1.35s ease-out 0.36s forwards;
+}
+
+.timer-finish__burst {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.timer-finish__burst span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 999px;
+  background: #fbbf24;
+  opacity: 0;
+  transform: translate(0, 0) scale(0.4);
+}
+
+.timer-finish.is-active .timer-finish__burst span:nth-child(1) { animation: timer-finish-burst-1 0.85s ease-out 0.05s forwards; background: #f87171; }
+.timer-finish.is-active .timer-finish__burst span:nth-child(2) { animation: timer-finish-burst-2 0.85s ease-out 0.08s forwards; background: #fbbf24; }
+.timer-finish.is-active .timer-finish__burst span:nth-child(3) { animation: timer-finish-burst-3 0.85s ease-out 0.06s forwards; background: #fb923c; }
+.timer-finish.is-active .timer-finish__burst span:nth-child(4) { animation: timer-finish-burst-4 0.85s ease-out 0.1s forwards; background: #f472b6; }
+.timer-finish.is-active .timer-finish__burst span:nth-child(5) { animation: timer-finish-burst-5 0.85s ease-out 0.04s forwards; background: #60a5fa; }
+.timer-finish.is-active .timer-finish__burst span:nth-child(6) { animation: timer-finish-burst-6 0.85s ease-out 0.09s forwards; background: #facc15; }
+.timer-finish.is-active .timer-finish__burst span:nth-child(7) { animation: timer-finish-burst-7 0.85s ease-out 0.07s forwards; background: #4ade80; }
+.timer-finish.is-active .timer-finish__burst span:nth-child(8) { animation: timer-finish-burst-8 0.85s ease-out 0.11s forwards; background: #c084fc; }
+
+.timer-finish__label {
+  position: relative;
+  z-index: 1;
+  margin: clamp(120px, 24vh, 220px) 0 0;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #fff;
+  font-size: clamp(1rem, 2.6vw, 1.35rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(18px) scale(0.92);
+  box-shadow: 0 16px 40px rgba(2, 6, 23, 0.28);
+}
+
+.timer-stage.theme-slate .timer-finish__label {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+
+.timer-finish.is-active .timer-finish__label {
+  animation: timer-finish-label 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.12s forwards;
+}
+
+.timer-display.is-finish-pop {
+  animation: timer-finish-pop 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.timer-display.is-finish-pop .timer-digit,
+.timer-display.is-finish-pop .timer-sep {
+  color: #ef4444;
+  text-shadow: 0 0 28px rgba(239, 68, 68, 0.45);
+}
+
+.timer-stage.theme-midnight .timer-display.is-finish-pop .timer-digit,
+.timer-stage.theme-midnight .timer-display.is-finish-pop .timer-sep,
+.timer-stage.theme-ocean .timer-display.is-finish-pop .timer-digit,
+.timer-stage.theme-ocean .timer-display.is-finish-pop .timer-sep,
+.timer-stage.theme-forest .timer-display.is-finish-pop .timer-digit,
+.timer-stage.theme-forest .timer-display.is-finish-pop .timer-sep,
+.timer-stage.theme-sunset .timer-display.is-finish-pop .timer-digit,
+.timer-stage.theme-sunset .timer-display.is-finish-pop .timer-sep,
+.timer-stage.theme-lavender .timer-display.is-finish-pop .timer-digit,
+.timer-stage.theme-lavender .timer-display.is-finish-pop .timer-sep {
+  color: #fca5a5;
+}
+
+@keyframes timer-finish-flash {
+  0% { opacity: 0; }
+  18% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes timer-finish-ring {
+  0% {
+    opacity: 0.85;
+    transform: scale(0.35);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.8);
+  }
+}
+
+@keyframes timer-finish-label {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes timer-finish-pop {
+  0% { transform: scale(1); }
+  20% { transform: scale(1.14); }
+  40% { transform: scale(0.94); }
+  60% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+@keyframes timer-finish-burst-1 {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.4); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-92px, -48px) scale(1); }
+}
+
+@keyframes timer-finish-burst-2 {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.4); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: translate(84px, -62px) scale(1); }
+}
+
+@keyframes timer-finish-burst-3 {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.4); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: translate(108px, 12px) scale(1); }
+}
+
+@keyframes timer-finish-burst-4 {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.4); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: translate(52px, 88px) scale(1); }
+}
+
+@keyframes timer-finish-burst-5 {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.4); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-58px, 96px) scale(1); }
+}
+
+@keyframes timer-finish-burst-6 {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.4); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-118px, 28px) scale(1); }
+}
+
+@keyframes timer-finish-burst-7 {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.4); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-36px, -108px) scale(1); }
+}
+
+@keyframes timer-finish-burst-8 {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.4); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: translate(18px, -118px) scale(1); }
+}
+
 .timer-display {
   display: flex;
   align-items: flex-end;
@@ -688,6 +904,26 @@ body[data-page="app"] .timer-page--setup {
 .timer-stage:fullscreen .timer-tool-btn__label,
 .timer-stage:-webkit-full-screen .timer-tool-btn__label {
   display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timer-stage.is-finished::after,
+  .timer-finish.is-active .timer-finish__rings span,
+  .timer-finish.is-active .timer-finish__burst span,
+  .timer-finish.is-active .timer-finish__label,
+  .timer-display.is-finish-pop {
+    animation: none !important;
+  }
+
+  .timer-finish.is-active .timer-finish__label {
+    opacity: 1;
+    transform: none;
+  }
+
+  .timer-finish.is-active .timer-finish__rings span,
+  .timer-finish.is-active .timer-finish__burst span {
+    opacity: 0;
+  }
 }
 
 @media (max-width: 760px) {
