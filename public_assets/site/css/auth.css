@@ -226,18 +226,34 @@ body[data-page="auth"] .worker-masthead__inner {
 }
 
 .auth-turnstile {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  place-items: center;
+  justify-items: center;
   min-height: 68px;
   padding: 12px 10px;
   border: 1px solid var(--line);
   border-radius: 12px;
   background: #fff;
   overflow: hidden;
+  text-align: center;
 }
 
 .auth-turnstile .cf-turnstile {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
   max-width: 100%;
+  margin: 0 auto;
+}
+
+.auth-turnstile .cf-turnstile > div {
+  margin: 0 auto;
+}
+
+.auth-turnstile iframe {
+  display: block;
+  margin: 0 auto;
 }
 
 .auth-submit {
