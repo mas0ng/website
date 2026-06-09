@@ -3,10 +3,11 @@
   const TICK_MS = 16;
 
   const els = {
-    page: document.getElementById('timer-page'),
-    stage: document.getElementById('timer-stage'),
     setup: document.getElementById('timer-setup'),
     app: document.getElementById('timer-app'),
+    clockCard: document.getElementById('timer-clock-card'),
+    modeBadge: document.getElementById('timer-mode-badge'),
+    status: document.getElementById('timer-status'),
     modeStopwatch: document.getElementById('timer-mode-stopwatch'),
     modeCountdown: document.getElementById('timer-mode-countdown'),
     displayH: document.getElementById('timer-h'),
@@ -76,7 +77,7 @@
     els.modeStopwatch?.addEventListener('click', () => setMode('stopwatch'));
     els.modeCountdown?.addEventListener('click', () => setMode('countdown'));
 
-    document.querySelectorAll('.timer-theme-swatch').forEach((button) => {
+    document.querySelectorAll('.timer-theme-option').forEach((button) => {
       button.addEventListener('click', () => setTheme(button.dataset.theme, button));
     });
 
@@ -140,13 +141,19 @@
     if (els.progress) {
       els.progress.hidden = state.mode !== 'countdown';
     }
+
+    if (els.modeBadge) {
+      els.modeBadge.textContent = stopwatchActive ? 'Stopwatch' : 'Countdown';
+    }
+
+    syncStatusUi();
   }
 
   function setTheme(theme, button) {
     if (!theme) return;
     state.theme = theme;
     applyTheme(theme);
-    document.querySelectorAll('.timer-theme-swatch').forEach((item) => {
+    document.querySelectorAll('.timer-theme-option').forEach((item) => {
       const active = item === button || item.dataset.theme === theme;
       item.classList.toggle('is-active', active);
       item.setAttribute('aria-checked', active ? 'true' : 'false');
@@ -155,8 +162,37 @@
   }
 
   function applyTheme(theme) {
-    if (!els.page) return;
-    els.page.className = `timer-page theme-${theme || 'slate'}`;
+    if (!els.clockCard) return;
+    els.clockCard.className = `timer-clock theme-${theme || 'slate'}`;
+  }
+
+  function syncStatusUi() {
+    if (!els.status) return;
+
+    if (state.running) {
+      els.status.textContent = 'Running';
+      els.status.dataset.state = 'running';
+      return;
+    }
+
+    if (state.mode === 'countdown' && state.countdownFinished) {
+      els.status.textContent = 'Finished';
+      els.status.dataset.state = 'finished';
+      return;
+    }
+
+    const hasProgress = state.mode === 'stopwatch'
+      ? state.stopwatchTotalMs > 0
+      : getCountdownRemainingMs() < state.countdownTargetMs;
+
+    if (hasProgress) {
+      els.status.textContent = 'Paused';
+      els.status.dataset.state = 'paused';
+      return;
+    }
+
+    els.status.textContent = 'Ready';
+    els.status.dataset.state = 'idle';
   }
 
   function onDurationChange() {
@@ -357,17 +393,21 @@
     if (!els.toggle) return;
     if (state.running) {
       els.toggle.textContent = 'Pause';
+      syncStatusUi();
       return;
     }
     if (state.mode === 'countdown' && getCountdownRemainingMs() < state.countdownTargetMs && getCountdownRemainingMs() > 0) {
       els.toggle.textContent = 'Resume';
+      syncStatusUi();
       return;
     }
     if (state.mode === 'stopwatch' && state.stopwatchTotalMs > 0) {
       els.toggle.textContent = 'Resume';
+      syncStatusUi();
       return;
     }
     els.toggle.textContent = 'Start';
+    syncStatusUi();
   }
 
   function startTicking() {
