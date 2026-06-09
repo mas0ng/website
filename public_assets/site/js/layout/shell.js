@@ -47,8 +47,17 @@
     document.dispatchEvent(new CustomEvent('mas0ng:shell-ready'));
   }
 
+  function resolveAssetUrl(url) {
+    if (!url || /^https?:\/\//i.test(url) || url.startsWith('data:')) {
+      return url;
+    }
+
+    const origin = (d.siteOrigin || window.location.origin).replace(/\/$/, '');
+    return `${origin}${url.startsWith('/') ? url : `/${url}`}`;
+  }
+
   async function loadSocials() {
-    const url = d.assets.socialConfig || '/public_assets/configs/socials.json';
+    const url = resolveAssetUrl(d.assets.socialConfig || '/public_assets/configs/socials.json');
 
     try {
       const response = await fetch(url, { cache: 'default' });
@@ -57,7 +66,9 @@
       }
 
       const data = await response.json();
-      d.social = Array.isArray(data) ? data : [];
+      d.social = Array.isArray(data)
+        ? data.map((item) => ({ ...item, icon: resolveAssetUrl(item.icon) }))
+        : [];
     } catch (error) {
       console.warn('Failed to load social config:', error);
       d.social = [];
@@ -65,15 +76,20 @@
   }
 
   function buildCoreTasks(page) {
+    const siteCss = resolveAssetUrl(d.assets.siteCss);
+    const etnaWoff2 = resolveAssetUrl(d.assets.etnaWoff2);
+    const etnaWoff = resolveAssetUrl(d.assets.etnaWoff);
+    const favicon = resolveAssetUrl(d.assets.favicon);
+
     const tasks = [
-      { label: 'Stylesheet', detail: d.assets.siteCss, run: () => waitForStylesheet(d.assets.siteCss) },
+      { label: 'Stylesheet', detail: siteCss, run: () => waitForStylesheet(siteCss) },
       {
         label: 'Etna display font',
-        detail: d.assets.etnaWoff2,
-        run: () => window.MAS0NG_CACHE.loadFontFace('Etna', [d.assets.etnaWoff2, d.assets.etnaWoff])
+        detail: etnaWoff2,
+        run: () => window.MAS0NG_CACHE.loadFontFace('Etna', [etnaWoff2, etnaWoff])
       },
       { label: 'ABeeZee body font', detail: d.assets.abeeZee, run: () => waitForGoogleFont('ABeeZee') },
-      { label: 'Brand favicon', detail: d.assets.favicon, run: () => window.MAS0NG_CACHE.preloadImage(d.assets.favicon) }
+      { label: 'Brand favicon', detail: favicon, run: () => window.MAS0NG_CACHE.preloadImage(favicon) }
     ];
 
     if (page === 'home' || page === 'bio') {

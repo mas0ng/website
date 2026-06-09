@@ -31,7 +31,7 @@ body[data-page="auth"] .worker-masthead__inner {
 }
 
 .auth-shell {
-  width: min(420px, calc(100% - 32px));
+  width: min(860px, calc(100% - 32px));
   margin: clamp(32px, 5vw, 48px) auto 0;
   padding: 0 0 32px;
 }
@@ -46,17 +46,34 @@ body[data-page="auth"] .worker-masthead__inner {
 
 .auth-panel__body {
   display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 0;
+  align-items: stretch;
+}
+
+.auth-panel__col {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.auth-panel__col--secondary {
+  border-left: 1px solid var(--line);
+}
+
+.auth-panel__col .auth-block + .auth-block {
+  border-top: 1px solid var(--line);
 }
 
 .auth-block {
   display: grid;
   gap: 14px;
   padding: clamp(18px, 3vw, 24px) clamp(20px, 3.5vw, 24px);
+  flex: 1 1 auto;
 }
 
-.auth-block + .auth-block {
-  border-top: 1px solid var(--line);
+.auth-block--consent {
+  margin-top: auto;
 }
 
 .auth-block--actions {
@@ -149,7 +166,7 @@ body[data-page="auth"] .worker-masthead__inner {
 .auth-otp__inputs {
   display: flex;
   gap: 8px;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   padding-top: 4px;
 }
@@ -322,6 +339,25 @@ body[data-page="auth"] .worker-masthead__inner {
 
 @keyframes authSpin {
   to { transform: rotate(360deg); }
+}
+
+@media (max-width: 760px) {
+  .auth-panel__body {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-panel__col--secondary {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .auth-block--consent {
+    margin-top: 0;
+  }
+
+  .auth-otp__inputs {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 520px) {
