@@ -458,15 +458,38 @@ body[data-page="app"] .timer-page--setup {
   text-align: center;
 }
 
-/* ── Countdown finished animation ── */
-.timer-stage.is-finished::after {
+/* ── Countdown finished animation (loops until Stop animation) ── */
+.timer-stage.is-finished.is-finish-loop::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 2;
   background: radial-gradient(circle at 50% 42%, rgba(239, 68, 68, 0.34) 0%, transparent 58%);
-  animation: timer-finish-flash 1.1s ease-out forwards;
+  animation: timer-finish-flash 1.1s ease-out infinite;
   pointer-events: none;
+}
+
+.timer-stage.is-finish-loop .timer-display {
+  animation: timer-finish-pulse 1.15s ease-in-out infinite;
+}
+
+.timer-stage.is-finish-loop .timer-display .timer-digit,
+.timer-stage.is-finish-loop .timer-display .timer-sep {
+  color: #ef4444;
+  text-shadow: 0 0 28px rgba(239, 68, 68, 0.45);
+}
+
+.timer-stage.theme-midnight.is-finish-loop .timer-display .timer-digit,
+.timer-stage.theme-midnight.is-finish-loop .timer-display .timer-sep,
+.timer-stage.theme-ocean.is-finish-loop .timer-display .timer-digit,
+.timer-stage.theme-ocean.is-finish-loop .timer-display .timer-sep,
+.timer-stage.theme-forest.is-finish-loop .timer-display .timer-digit,
+.timer-stage.theme-forest.is-finish-loop .timer-display .timer-sep,
+.timer-stage.theme-sunset.is-finish-loop .timer-display .timer-digit,
+.timer-stage.theme-sunset.is-finish-loop .timer-display .timer-sep,
+.timer-stage.theme-lavender.is-finish-loop .timer-display .timer-digit,
+.timer-stage.theme-lavender.is-finish-loop .timer-display .timer-sep {
+  color: #fca5a5;
 }
 
 .timer-finish {
@@ -478,6 +501,10 @@ body[data-page="app"] .timer-page--setup {
   pointer-events: none;
 }
 
+.timer-finish.is-active {
+  pointer-events: auto;
+}
+
 .timer-finish[hidden] {
   display: none !important;
 }
@@ -487,6 +514,7 @@ body[data-page="app"] .timer-page--setup {
   inset: 0;
   display: grid;
   place-items: center;
+  pointer-events: none;
 }
 
 .timer-finish__rings span {
@@ -499,22 +527,23 @@ body[data-page="app"] .timer-page--setup {
   transform: scale(0.35);
 }
 
-.timer-finish.is-active .timer-finish__rings span:nth-child(1) {
-  animation: timer-finish-ring 1.35s ease-out 0s forwards;
+.timer-finish.is-finish-loop .timer-finish__rings span:nth-child(1) {
+  animation: timer-finish-ring 1.35s ease-out 0s infinite;
 }
 
-.timer-finish.is-active .timer-finish__rings span:nth-child(2) {
-  animation: timer-finish-ring 1.35s ease-out 0.18s forwards;
+.timer-finish.is-finish-loop .timer-finish__rings span:nth-child(2) {
+  animation: timer-finish-ring 1.35s ease-out 0.18s infinite;
 }
 
-.timer-finish.is-active .timer-finish__rings span:nth-child(3) {
-  animation: timer-finish-ring 1.35s ease-out 0.36s forwards;
+.timer-finish.is-finish-loop .timer-finish__rings span:nth-child(3) {
+  animation: timer-finish-ring 1.35s ease-out 0.36s infinite;
 }
 
 .timer-finish__burst {
   position: absolute;
   width: 0;
   height: 0;
+  pointer-events: none;
 }
 
 .timer-finish__burst span {
@@ -530,19 +559,26 @@ body[data-page="app"] .timer-page--setup {
   transform: translate(0, 0) scale(0.4);
 }
 
-.timer-finish.is-active .timer-finish__burst span:nth-child(1) { animation: timer-finish-burst-1 0.85s ease-out 0.05s forwards; background: #f87171; }
-.timer-finish.is-active .timer-finish__burst span:nth-child(2) { animation: timer-finish-burst-2 0.85s ease-out 0.08s forwards; background: #fbbf24; }
-.timer-finish.is-active .timer-finish__burst span:nth-child(3) { animation: timer-finish-burst-3 0.85s ease-out 0.06s forwards; background: #fb923c; }
-.timer-finish.is-active .timer-finish__burst span:nth-child(4) { animation: timer-finish-burst-4 0.85s ease-out 0.1s forwards; background: #f472b6; }
-.timer-finish.is-active .timer-finish__burst span:nth-child(5) { animation: timer-finish-burst-5 0.85s ease-out 0.04s forwards; background: #60a5fa; }
-.timer-finish.is-active .timer-finish__burst span:nth-child(6) { animation: timer-finish-burst-6 0.85s ease-out 0.09s forwards; background: #facc15; }
-.timer-finish.is-active .timer-finish__burst span:nth-child(7) { animation: timer-finish-burst-7 0.85s ease-out 0.07s forwards; background: #4ade80; }
-.timer-finish.is-active .timer-finish__burst span:nth-child(8) { animation: timer-finish-burst-8 0.85s ease-out 0.11s forwards; background: #c084fc; }
+.timer-finish.is-finish-loop .timer-finish__burst span:nth-child(1) { animation: timer-finish-burst-1 0.85s ease-out 0.05s infinite; background: #f87171; }
+.timer-finish.is-finish-loop .timer-finish__burst span:nth-child(2) { animation: timer-finish-burst-2 0.85s ease-out 0.08s infinite; background: #fbbf24; }
+.timer-finish.is-finish-loop .timer-finish__burst span:nth-child(3) { animation: timer-finish-burst-3 0.85s ease-out 0.06s infinite; background: #fb923c; }
+.timer-finish.is-finish-loop .timer-finish__burst span:nth-child(4) { animation: timer-finish-burst-4 0.85s ease-out 0.1s infinite; background: #f472b6; }
+.timer-finish.is-finish-loop .timer-finish__burst span:nth-child(5) { animation: timer-finish-burst-5 0.85s ease-out 0.04s infinite; background: #60a5fa; }
+.timer-finish.is-finish-loop .timer-finish__burst span:nth-child(6) { animation: timer-finish-burst-6 0.85s ease-out 0.09s infinite; background: #facc15; }
+.timer-finish.is-finish-loop .timer-finish__burst span:nth-child(7) { animation: timer-finish-burst-7 0.85s ease-out 0.07s infinite; background: #4ade80; }
+.timer-finish.is-finish-loop .timer-finish__burst span:nth-child(8) { animation: timer-finish-burst-8 0.85s ease-out 0.11s infinite; background: #c084fc; }
 
-.timer-finish__label {
+.timer-finish__content {
   position: relative;
   z-index: 1;
-  margin: clamp(120px, 24vh, 220px) 0 0;
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  margin-top: clamp(120px, 24vh, 220px);
+}
+
+.timer-finish__label {
+  margin: 0;
   padding: 12px 24px;
   border-radius: 999px;
   background: rgba(15, 23, 42, 0.72);
@@ -552,8 +588,6 @@ body[data-page="app"] .timer-page--setup {
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  opacity: 0;
-  transform: translateY(18px) scale(0.92);
   box-shadow: 0 16px 40px rgba(2, 6, 23, 0.28);
 }
 
@@ -564,30 +598,42 @@ body[data-page="app"] .timer-page--setup {
 }
 
 .timer-finish.is-active .timer-finish__label {
-  animation: timer-finish-label 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.12s forwards;
+  animation: timer-finish-label-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.timer-display.is-finish-pop {
-  animation: timer-finish-pop 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+.timer-finish.is-finish-loop .timer-finish__label {
+  animation: timer-finish-label-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards, timer-finish-label-pulse 1.4s ease-in-out 0.55s infinite;
 }
 
-.timer-display.is-finish-pop .timer-digit,
-.timer-display.is-finish-pop .timer-sep {
-  color: #ef4444;
-  text-shadow: 0 0 28px rgba(239, 68, 68, 0.45);
+.timer-finish__stop {
+  min-height: 42px;
+  padding: 0 20px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
 }
 
-.timer-stage.theme-midnight .timer-display.is-finish-pop .timer-digit,
-.timer-stage.theme-midnight .timer-display.is-finish-pop .timer-sep,
-.timer-stage.theme-ocean .timer-display.is-finish-pop .timer-digit,
-.timer-stage.theme-ocean .timer-display.is-finish-pop .timer-sep,
-.timer-stage.theme-forest .timer-display.is-finish-pop .timer-digit,
-.timer-stage.theme-forest .timer-display.is-finish-pop .timer-sep,
-.timer-stage.theme-sunset .timer-display.is-finish-pop .timer-digit,
-.timer-stage.theme-sunset .timer-display.is-finish-pop .timer-sep,
-.timer-stage.theme-lavender .timer-display.is-finish-pop .timer-digit,
-.timer-stage.theme-lavender .timer-display.is-finish-pop .timer-sep {
-  color: #fca5a5;
+.timer-stage.theme-slate .timer-finish__stop {
+  border-color: #fecaca;
+  background: rgba(255, 255, 255, 0.88);
+  color: #991b1b;
+}
+
+.timer-finish__stop:hover {
+  transform: translateY(-1px);
+  background: rgba(15, 23, 42, 0.72);
+}
+
+.timer-stage.theme-slate .timer-finish__stop:hover {
+  background: #fff;
 }
 
 @keyframes timer-finish-flash {
@@ -607,7 +653,7 @@ body[data-page="app"] .timer-page--setup {
   }
 }
 
-@keyframes timer-finish-label {
+@keyframes timer-finish-label-in {
   0% {
     opacity: 0;
     transform: translateY(18px) scale(0.92);
@@ -618,12 +664,14 @@ body[data-page="app"] .timer-page--setup {
   }
 }
 
-@keyframes timer-finish-pop {
-  0% { transform: scale(1); }
-  20% { transform: scale(1.14); }
-  40% { transform: scale(0.94); }
-  60% { transform: scale(1.06); }
-  100% { transform: scale(1); }
+@keyframes timer-finish-label-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes timer-finish-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
 }
 
 @keyframes timer-finish-burst-1 {
@@ -907,11 +955,11 @@ body[data-page="app"] .timer-page--setup {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .timer-stage.is-finished::after,
-  .timer-finish.is-active .timer-finish__rings span,
-  .timer-finish.is-active .timer-finish__burst span,
-  .timer-finish.is-active .timer-finish__label,
-  .timer-display.is-finish-pop {
+  .timer-stage.is-finished.is-finish-loop::after,
+  .timer-finish.is-finish-loop .timer-finish__rings span,
+  .timer-finish.is-finish-loop .timer-finish__burst span,
+  .timer-finish.is-finish-loop .timer-finish__label,
+  .timer-stage.is-finish-loop .timer-display {
     animation: none !important;
   }
 
@@ -920,8 +968,8 @@ body[data-page="app"] .timer-page--setup {
     transform: none;
   }
 
-  .timer-finish.is-active .timer-finish__rings span,
-  .timer-finish.is-active .timer-finish__burst span {
+  .timer-finish.is-finish-loop .timer-finish__rings span,
+  .timer-finish.is-finish-loop .timer-finish__burst span {
     opacity: 0;
   }
 }

@@ -32,7 +32,8 @@
     fullscreenLabel: document.getElementById('timer-fullscreen-label'),
     fullscreenIconEnter: document.querySelector('.timer-fs-btn__icon--enter'),
     fullscreenIconExit: document.querySelector('.timer-fs-btn__icon--exit'),
-    finish: document.getElementById('timer-finish')
+    finish: document.getElementById('timer-finish'),
+    finishStop: document.getElementById('timer-finish-stop')
   };
 
   let state = createDefaultState();
@@ -94,6 +95,7 @@
     els.toggle?.addEventListener('click', toggleRunning);
     els.reset?.addEventListener('click', resetTimer);
     els.fullscreen?.addEventListener('click', toggleBrowserFullscreen);
+    els.finishStop?.addEventListener('click', stopFinishAnimation);
     document.addEventListener('fullscreenchange', syncFullscreenUi);
 
     document.addEventListener('click', (event) => {
@@ -140,9 +142,7 @@
     syncToggleLabel();
     updateDisplay();
     if (state.running) startTicking();
-    if (state.countdownFinished) {
-      els.stage?.classList.add('is-finished');
-    }
+
     persistState();
   }
 
@@ -492,8 +492,7 @@
   function playFinishAnimation() {
     clearFinishAnimation();
 
-    els.stage?.classList.add('is-finished');
-    els.display?.classList.add('is-finish-pop');
+    els.stage?.classList.add('is-finished', 'is-finish-loop');
 
     if (!els.finish) return;
 
@@ -501,21 +500,20 @@
     els.finish.setAttribute('aria-hidden', 'false');
 
     window.requestAnimationFrame(() => {
-      els.finish?.classList.add('is-active');
+      els.finish?.classList.add('is-active', 'is-finish-loop');
     });
+  }
 
-    window.setTimeout(() => {
-      els.display?.classList.remove('is-finish-pop');
-    }, 900);
+  function stopFinishAnimation() {
+    clearFinishAnimation();
   }
 
   function clearFinishAnimation() {
-    els.stage?.classList.remove('is-finished');
-    els.display?.classList.remove('is-finish-pop');
+    els.stage?.classList.remove('is-finished', 'is-finish-loop');
 
     if (!els.finish) return;
 
-    els.finish.classList.remove('is-active');
+    els.finish.classList.remove('is-active', 'is-finish-loop');
     els.finish.hidden = true;
     els.finish.setAttribute('aria-hidden', 'true');
   }
