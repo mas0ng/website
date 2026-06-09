@@ -5,7 +5,7 @@
   const els = {
     setup: document.getElementById('timer-setup'),
     app: document.getElementById('timer-app'),
-    clockCard: document.getElementById('timer-clock-card'),
+    stage: document.getElementById('timer-stage'),
     modeBadge: document.getElementById('timer-mode-badge'),
     status: document.getElementById('timer-status'),
     modeStopwatch: document.getElementById('timer-mode-stopwatch'),
@@ -162,8 +162,8 @@
   }
 
   function applyTheme(theme) {
-    if (!els.clockCard) return;
-    els.clockCard.className = `timer-clock theme-${theme || 'slate'}`;
+    if (!els.stage) return;
+    els.stage.className = `timer-stage theme-${theme || 'slate'}`;
   }
 
   function syncStatusUi() {

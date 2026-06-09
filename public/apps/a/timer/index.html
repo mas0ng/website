@@ -17,16 +17,14 @@
   <div id="site-main">
     <main class="timer-page" id="timer-page">
       <div class="timer-shell">
-        <header class="app-tool-header">
-          <p class="app-tool-kicker">Public app</p>
-          <h1 class="section__title">Timer</h1>
-          <p class="timer-hint">Stopwatch or countdown with millisecond precision. Your mode, theme, and timer state are saved if you refresh the page.</p>
-        </header>
-
         <div class="timer-setup" id="timer-setup" hidden>
+          <header class="app-tool-header">
+            <p class="app-tool-kicker">Public app</p>
+            <h1 class="section__title">Timer</h1>
+            <p class="timer-hint">Stopwatch or countdown with millisecond precision. Your settings are saved if you refresh.</p>
+          </header>
           <section class="timer-panel timer-panel--setup">
             <h2 class="timer-panel__title">Choose a mode</h2>
-            <p class="timer-setup__lead">Pick how you want to measure time. You can switch later in settings.</p>
             <div class="timer-setup__choices">
               <button class="timer-setup__choice" type="button" data-mode="stopwatch">
                 <span class="timer-setup__choice-icon" aria-hidden="true">
@@ -46,14 +44,74 @@
           </section>
         </div>
 
-        <div class="timer-layout" id="timer-app" hidden>
-          <section class="timer-panel timer-panel--clock" aria-labelledby="timer-clock-title">
-            <h2 class="timer-panel__title" id="timer-clock-title">Clock</h2>
+        <div class="timer-app" id="timer-app" hidden>
+          <section class="timer-config" aria-labelledby="timer-config-title">
+            <div class="timer-config__head">
+              <h2 class="timer-config__title" id="timer-config-title">Settings</h2>
+            </div>
 
-            <div class="timer-clock theme-slate" id="timer-clock-card">
-              <div class="timer-clock__top">
-                <span class="timer-clock__badge" id="timer-mode-badge">Stopwatch</span>
-                <span class="timer-clock__status" id="timer-status" data-state="idle">Ready</span>
+            <div class="timer-config__grid">
+              <div class="timer-config__block">
+                <p class="timer-config__label">Mode</p>
+                <div class="timer-mode-switch" role="tablist" aria-label="Timer mode">
+                  <button class="timer-mode-btn is-active" type="button" role="tab" aria-selected="true" data-mode="stopwatch" id="timer-mode-stopwatch">Stopwatch</button>
+                  <button class="timer-mode-btn" type="button" role="tab" aria-selected="false" data-mode="countdown" id="timer-mode-countdown">Countdown</button>
+                </div>
+              </div>
+
+              <div class="timer-config__block" id="timer-countdown-setup" hidden>
+                <p class="timer-config__label">Duration</p>
+                <div class="timer-duration-fields">
+                  <label class="timer-duration-field">
+                    <span>H</span>
+                    <input id="timer-cd-h" type="number" min="0" max="99" step="1" value="0" inputmode="numeric" aria-label="Hours" />
+                  </label>
+                  <label class="timer-duration-field">
+                    <span>M</span>
+                    <input id="timer-cd-m" type="number" min="0" max="59" step="1" value="5" inputmode="numeric" aria-label="Minutes" />
+                  </label>
+                  <label class="timer-duration-field">
+                    <span>S</span>
+                    <input id="timer-cd-s" type="number" min="0" max="59" step="1" value="0" inputmode="numeric" aria-label="Seconds" />
+                  </label>
+                  <label class="timer-duration-field">
+                    <span>Ms</span>
+                    <input id="timer-cd-ms" type="number" min="0" max="999" step="1" value="0" inputmode="numeric" aria-label="Milliseconds" />
+                  </label>
+                </div>
+              </div>
+
+              <div class="timer-config__block timer-config__block--themes">
+                <p class="timer-config__label">Theme</p>
+                <div class="timer-theme-picker" role="radiogroup" aria-label="Timer theme">
+                  <button class="timer-theme-option is-active" type="button" role="radio" aria-checked="true" data-theme="slate" title="Slate">
+                    <span class="timer-theme-option__swatch" style="--swatch:#e8eef5"></span>
+                  </button>
+                  <button class="timer-theme-option" type="button" role="radio" aria-checked="false" data-theme="midnight" title="Midnight">
+                    <span class="timer-theme-option__swatch" style="--swatch:#0f172a"></span>
+                  </button>
+                  <button class="timer-theme-option" type="button" role="radio" aria-checked="false" data-theme="ocean" title="Ocean">
+                    <span class="timer-theme-option__swatch" style="--swatch:#0c4a6e"></span>
+                  </button>
+                  <button class="timer-theme-option" type="button" role="radio" aria-checked="false" data-theme="forest" title="Forest">
+                    <span class="timer-theme-option__swatch" style="--swatch:#14532d"></span>
+                  </button>
+                  <button class="timer-theme-option" type="button" role="radio" aria-checked="false" data-theme="sunset" title="Sunset">
+                    <span class="timer-theme-option__swatch" style="--swatch:#9a3412"></span>
+                  </button>
+                  <button class="timer-theme-option" type="button" role="radio" aria-checked="false" data-theme="lavender" title="Lavender">
+                    <span class="timer-theme-option__swatch" style="--swatch:#5b21b6"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="timer-stage theme-slate" id="timer-stage" aria-label="Timer display">
+            <div class="timer-stage__inner">
+              <div class="timer-stage__meta">
+                <span class="timer-stage__badge" id="timer-mode-badge">Stopwatch</span>
+                <span class="timer-stage__status" id="timer-status" data-state="idle">Ready</span>
               </div>
 
               <div class="timer-display" id="timer-display" aria-live="polite" aria-atomic="true">
@@ -84,77 +142,13 @@
                 </div>
                 <p class="timer-progress__label" id="timer-progress-label">0% elapsed</p>
               </div>
-            </div>
 
-            <div class="timer-controls">
-              <button class="timer-btn timer-btn--primary" type="button" id="timer-toggle">Start</button>
-              <button class="timer-btn" type="button" id="timer-reset">Reset</button>
+              <div class="timer-controls">
+                <button class="timer-btn timer-btn--primary" type="button" id="timer-toggle">Start</button>
+                <button class="timer-btn timer-btn--ghost" type="button" id="timer-reset">Reset</button>
+              </div>
             </div>
           </section>
-
-          <aside class="timer-panel timer-panel--settings" aria-labelledby="timer-settings-title">
-            <h2 class="timer-panel__title" id="timer-settings-title">Settings</h2>
-
-            <div class="timer-settings-block">
-              <p class="timer-settings-block__label">Mode</p>
-              <div class="timer-mode-switch" role="tablist" aria-label="Timer mode">
-                <button class="timer-mode-btn is-active" type="button" role="tab" aria-selected="true" data-mode="stopwatch" id="timer-mode-stopwatch">Stopwatch</button>
-                <button class="timer-mode-btn" type="button" role="tab" aria-selected="false" data-mode="countdown" id="timer-mode-countdown">Countdown</button>
-              </div>
-            </div>
-
-            <div class="timer-settings-block" id="timer-countdown-setup" hidden>
-              <p class="timer-settings-block__label">Countdown duration</p>
-              <div class="timer-duration-fields">
-                <label class="timer-duration-field">
-                  <span>Hours</span>
-                  <input id="timer-cd-h" type="number" min="0" max="99" step="1" value="0" inputmode="numeric" />
-                </label>
-                <label class="timer-duration-field">
-                  <span>Mins</span>
-                  <input id="timer-cd-m" type="number" min="0" max="59" step="1" value="5" inputmode="numeric" />
-                </label>
-                <label class="timer-duration-field">
-                  <span>Secs</span>
-                  <input id="timer-cd-s" type="number" min="0" max="59" step="1" value="0" inputmode="numeric" />
-                </label>
-                <label class="timer-duration-field">
-                  <span>Ms</span>
-                  <input id="timer-cd-ms" type="number" min="0" max="999" step="1" value="0" inputmode="numeric" />
-                </label>
-              </div>
-            </div>
-
-            <div class="timer-settings-block">
-              <p class="timer-settings-block__label">Clock theme</p>
-              <div class="timer-theme-picker" role="radiogroup" aria-label="Clock theme">
-                <button class="timer-theme-option is-active" type="button" role="radio" aria-checked="true" data-theme="slate">
-                  <span class="timer-theme-option__swatch" style="--swatch:#e8eef5"></span>
-                  <span class="timer-theme-option__name">Slate</span>
-                </button>
-                <button class="timer-theme-option" type="button" role="radio" aria-checked="false" data-theme="midnight">
-                  <span class="timer-theme-option__swatch" style="--swatch:#0f172a"></span>
-                  <span class="timer-theme-option__name">Midnight</span>
-                </button>
-                <button class="timer-theme-option" type="button" role="radio" aria-checked="false" data-theme="ocean">
-                  <span class="timer-theme-option__swatch" style="--swatch:#0c4a6e"></span>
-                  <span class="timer-theme-option__name">Ocean</span>
-                </button>
-                <button class="timer-theme-option" type="button" role="radio" aria-checked="false" data-theme="forest">
-                  <span class="timer-theme-option__swatch" style="--swatch:#14532d"></span>
-                  <span class="timer-theme-option__name">Forest</span>
-                </button>
-                <button class="timer-theme-option" type="button" role="radio" aria-checked="false" data-theme="sunset">
-                  <span class="timer-theme-option__swatch" style="--swatch:#9a3412"></span>
-                  <span class="timer-theme-option__name">Sunset</span>
-                </button>
-                <button class="timer-theme-option" type="button" role="radio" aria-checked="false" data-theme="lavender">
-                  <span class="timer-theme-option__swatch" style="--swatch:#5b21b6"></span>
-                  <span class="timer-theme-option__name">Lavender</span>
-                </button>
-              </div>
-            </div>
-          </aside>
         </div>
       </div>
     </main>
