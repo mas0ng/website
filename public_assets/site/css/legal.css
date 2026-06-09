@@ -15,6 +15,7 @@
 
 .legal-shell {
   max-width: none;
+  width: 100%;
   margin: 0 auto;
   padding: 0 0 80px;
 }
@@ -24,18 +25,64 @@
   display: grid;
   justify-items: center;
   overflow: hidden;
-  padding: calc(var(--nav-h) + clamp(40px, 6vw, 72px)) 20px 84px;
+  width: 100%;
+  padding: clamp(32px, 5vw, 56px) 20px clamp(48px, 8vw, 72px);
+  padding-top: calc(var(--nav-h, 64px) + clamp(24px, 4vw, 40px));
   border: 0;
-  border-radius: 0 0 48px 48px;
-  margin-top: 0;
+  border-radius: 0;
+  margin: 0;
+  text-align: center;
+  color: #fff;
+}
+
+.legal-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   background:
     radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
     radial-gradient(circle at 14% 100%, rgba(59, 130, 246, 0.24), transparent 360px),
     radial-gradient(circle at 86% 0%, rgba(20, 184, 166, 0.18), transparent 320px),
     linear-gradient(135deg, #061224 0%, #111827 56%, #020617 100%);
   background-size: 24px 24px, auto, auto, auto;
-  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.22);
-  text-align: center;
+}
+
+.legal-hero > :not(.nav) {
+  position: relative;
+  z-index: 1;
+}
+
+.legal-hero > .nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 120;
+}
+
+html:not([data-nav-solid]) body[data-page="legal"] .legal-hero > .nav .nav__brand {
+  color: var(--text-inverse);
+}
+
+html:not([data-nav-solid]) body[data-page="legal"] .legal-hero > .nav .nav__item:not(.is-active),
+html:not([data-nav-solid]) body[data-page="legal"] .legal-hero > .nav .nav__toggle {
+  color: rgba(248, 251, 255, 0.92);
+}
+
+html:not([data-nav-solid]) body[data-page="legal"] .legal-hero > .nav .nav__cluster {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+}
+
+html:not([data-nav-solid]) body[data-page="legal"] .legal-hero > .nav .nav__item:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+html:not([data-nav-solid]) body[data-page="legal"] .legal-hero > .nav .nav__login {
+  color: var(--login-text);
 }
 
 .legal-kicker {
@@ -102,6 +149,10 @@
   font-size: 0.9rem;
   line-height: 1.5;
   color: #64748b;
+}
+
+.legal-hero + .paper {
+  margin-top: 36px;
 }
 
 .legal-stack {
@@ -178,6 +229,10 @@
   margin-top: 20px;
 }
 
+.legal-hero .legal-meta {
+  color: #94a3b8;
+}
+
 .paper > h1,
 .paper > .lead {
   border: 1px solid var(--legal-line);
@@ -239,7 +294,7 @@
   }
 
   .legal-hero {
-    border-radius: 0 0 32px 32px;
+    padding-top: calc(var(--nav-h, 64px) + 20px);
   }
 
   .legal-card {

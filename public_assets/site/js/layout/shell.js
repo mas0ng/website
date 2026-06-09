@@ -262,7 +262,9 @@
         ? (window.MAS0NG_NAV_SCROLL?.findHero?.(main) || main.querySelector('.masthead'))
         : page === 'auth'
           ? main.querySelector('.worker-masthead')
-          : null;
+          : page === 'legal'
+            ? main.querySelector('.legal-hero')
+            : null;
 
       if (masthead) {
         masthead.prepend(nav);
