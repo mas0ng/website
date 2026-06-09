@@ -5,7 +5,7 @@
   <script src="/public_assets/site/js/layout/loader.js?v=20260610-loader1"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>mas0ng.com | html viewer</title>
-  <meta name="description" content="Paste or upload HTML and preview it full screen on desktop. Captures console output and errors when you exit." />
+  <meta name="description" content="Paste or upload HTML and preview it full screen on desktop. Reload to close preview; console output is saved until you clear it." />
   <meta name="theme-color" content="#07111f" />
   <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,7 +20,7 @@
         <header class="app-tool-header">
           <p class="app-tool-kicker">Public app</p>
           <h1 class="section__title">HTML viewer</h1>
-          <p class="html-viewer-hint">Paste HTML or upload an <code>.html</code> file, then preview it full screen over the page. Desktop only — your markup runs locally in a sandboxed frame.</p>
+          <p class="html-viewer-hint">Paste HTML or upload an <code>.html</code> file, then preview it full screen over the page. Reload the page to close preview — console output is kept until you press Clear. Desktop only.</p>
         </header>
 
         <div class="html-viewer-mobile" id="html-viewer-mobile">
@@ -78,7 +78,7 @@
         </div>
         <p class="html-viewer-progress__label" id="html-viewer-progress-label">Preparing preview…</p>
       </div>
-      <p class="html-viewer-overlay__hint">To exit full screen, press the <kbd>Esc</kbd> key <strong>3 times</strong>.</p>
+      <p class="html-viewer-overlay__hint">To exit full screen, <strong>reload this page</strong>. Console output will still be here when the page loads again.</p>
     </div>
     <iframe
       class="html-viewer-frame"
@@ -90,7 +90,6 @@
       <strong id="html-viewer-notice-title">Preview loaded with errors</strong>
       <p id="html-viewer-notice-text"></p>
     </div>
-    <p class="html-viewer-toast" id="html-viewer-toast" hidden></p>
   </div>
 
   <script src="/public_assets/site/js/config/site-data.js"></script>

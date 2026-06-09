@@ -2,9 +2,8 @@
   const RENDER_BASE_MS = 700;
   const RENDER_PER_KB_MS = 45;
   const RENDER_MAX_MS = 5000;
-  const REVEAL_MAX_MS = 900;
-  const ESC_RESET_MS = 1800;
-  const ESC_REQUIRED = 3;
+  const MIN_RENDER_MS = 3000;
+  const CONSOLE_STORAGE_KEY = 'mas0ng:html-viewer:last-console';
   const MESSAGE_SOURCE = 'mas0ng-html-viewer';
 
   const CONSOLE_HOOK = `<script data-html-viewer-hook>
@@ -76,23 +75,19 @@
     frame: document.getElementById('html-viewer-frame'),
     notice: document.getElementById('html-viewer-notice'),
     noticeTitle: document.getElementById('html-viewer-notice-title'),
-    noticeText: document.getElementById('html-viewer-notice-text'),
-    toast: document.getElementById('html-viewer-toast')
+    noticeText: document.getElementById('html-viewer-notice-text')
   };
 
   let activeMode = 'paste';
   let uploadedHtml = '';
   let uploadedName = '';
   let previewOpen = false;
-  let escCount = 0;
-  let escTimer = 0;
-  let toastTimer = 0;
   let capturedLogs = [];
   let renderSession = 0;
   let progressFrame = 0;
   let progressValue = 0;
   let revealTimer = 0;
-  let frameObjectUrl = '';
+  let renderStartedAt = 0;
   let previewHasErrors = false;
   let previewFatal = false;
   let previewErrorMessage = '';
@@ -117,10 +112,11 @@
 
   function boot() {
     applyDeviceMode();
+    restoreConsoleState();
     if (!isDesktop) return;
     bindEvents();
     window.addEventListener('message', onFrameMessage);
-    document.addEventListener('keydown', onKeyDown);
+    window.addEventListener('pagehide', persistConsoleState);
   }
 
   function bindEvents() {
@@ -209,7 +205,7 @@
     const tick = (now) => {
       if (session !== renderSession) return;
       const elapsed = now - startedAt;
-      const target = Math.min(96, (elapsed / estimateMs) * 100);
+      const target = Math.min(96, (elapsed / Math.max(estimateMs, MIN_RENDER_MS)) * 100);
       const label = target < 28 ? 'Preparing preview…' : target < 62 ? 'Building document…' : 'Loading preview…';
       if (target > progressValue) setProgress(target, label);
       if (target < 96) progressFrame = requestAnimationFrame(tick);
@@ -226,10 +222,6 @@
   function clearFrame() {
     els.frame.removeAttribute('srcdoc');
     els.frame.removeAttribute('src');
-    if (frameObjectUrl) {
-      URL.revokeObjectURL(frameObjectUrl);
-      frameObjectUrl = '';
-    }
   }
 
   function loadFrameContent(html) {
@@ -252,8 +244,8 @@
     els.notice.classList.toggle('html-viewer-notice--warn', !fatal);
     els.noticeTitle.textContent = fatal ? 'Fatal error in your HTML' : 'Preview loaded with errors';
     els.noticeText.textContent = fatal
-      ? `${summary} The preview is still shown below, but part of the page may be missing or broken. Press Esc 3 times to close preview and read the full console output.`
-      : `${summary} Press Esc 3 times to close preview and read the full console output.`;
+      ? `${summary} The preview is still shown below, but part of the page may be missing or broken. Reload this page to close preview and read the full console output.`
+      : `${summary} Reload this page to close preview and read the full console output.`;
     els.notice.hidden = false;
   }
 
@@ -285,18 +277,21 @@
     if (showNotice || fatal || previewHasErrors) {
       showPreviewNotice(fatal || previewFatal, previewErrorMessage || message);
     }
+
+    persistConsoleState();
   }
 
-  function scheduleReveal(session, estimateMs) {
-    clearTimers();
-    const revealDelay = Math.min(REVEAL_MAX_MS, Math.max(320, Math.round(estimateMs * 0.35)));
+  function requestFinishPreview(session, options = {}) {
+    if (session !== renderSession) return;
+
+    const elapsed = performance.now() - renderStartedAt;
+    const waitMs = Math.max(0, MIN_RENDER_MS - elapsed);
+
+    window.clearTimeout(revealTimer);
     revealTimer = window.setTimeout(() => {
       if (session !== renderSession) return;
-      finishPreview(session, {
-        label: previewHasErrors ? 'Preview loaded with errors' : 'Showing preview',
-        showNotice: previewHasErrors
-      });
-    }, revealDelay);
+      finishPreview(session, options);
+    }, waitMs);
   }
 
   function startPreview() {
@@ -322,30 +317,27 @@
     }
 
     const session = ++renderSession;
+    clearTimers();
     clearFrame();
     hidePreviewNotice();
-    hideToast();
 
     capturedLogs = [];
     previewHasErrors = false;
     previewFatal = false;
     previewErrorMessage = '';
-    escCount = 0;
 
     const estimateMs = estimateRenderMs(prepared);
-    const startedAt = performance.now();
+    renderStartedAt = performance.now();
 
     previewOpen = true;
     document.body.classList.add('html-viewer-lock');
     els.overlay.hidden = false;
     els.overlay.classList.add('is-open', 'is-rendering');
     els.overlay.classList.remove('is-previewing');
-    startProgressLoop(session, estimateMs, startedAt);
-    scheduleReveal(session, estimateMs);
+    startProgressLoop(session, estimateMs, renderStartedAt);
 
     const onFrameLoad = () => {
-      if (session !== renderSession) return;
-      finishPreview(session, {
+      requestFinishPreview(session, {
         label: previewHasErrors ? 'Preview loaded with errors' : 'Preview ready',
         showNotice: previewHasErrors
       });
@@ -359,7 +351,7 @@
     } catch (error) {
       previewFatal = true;
       previewErrorMessage = error?.message || 'The browser could not load this HTML.';
-      finishPreview(session, {
+      requestFinishPreview(session, {
         fatal: true,
         message: previewErrorMessage,
         label: 'Could not load preview',
@@ -382,6 +374,7 @@
     };
 
     capturedLogs.push(entry);
+    persistConsoleState();
 
     if (entry.kind === 'runtime-error' || entry.level === 'error') {
       previewHasErrors = true;
@@ -392,7 +385,7 @@
     }
 
     if (entry.kind === 'ready') {
-      finishPreview(renderSession, {
+      requestFinishPreview(renderSession, {
         label: entry.fatal ? 'Preview loaded with errors' : 'Preview ready',
         fatal: entry.fatal,
         message: entry.fatal ? previewErrorMessage : '',
@@ -403,40 +396,54 @@
 
     if (els.overlay.classList.contains('is-previewing') && (entry.kind === 'runtime-error' || entry.fatal)) {
       showPreviewNotice(true, previewErrorMessage);
+      persistConsoleState();
     }
   }
 
-  function onKeyDown(event) {
-    if (!previewOpen || event.key !== 'Escape') return;
-    event.preventDefault();
-    escCount += 1;
-    if (escCount === 1) showToast('Press Esc 3 times to close preview');
-    else if (escCount === 2) showToast('Press Esc one more time to close preview');
-    else if (escCount >= ESC_REQUIRED) closePreview();
-    window.clearTimeout(escTimer);
-    escTimer = window.setTimeout(() => {
-      escCount = 0;
-      hideToast();
-    }, ESC_RESET_MS);
+  function consoleSnapshot() {
+    return {
+      logs: capturedLogs,
+      fatal: previewFatal,
+      hasErrors: previewHasErrors,
+      errorMessage: previewErrorMessage
+    };
   }
 
-  function closePreview() {
-    renderSession += 1;
-    clearTimers();
-    previewOpen = false;
-    escCount = 0;
-    hideToast();
-    hidePreviewNotice();
-    clearFrame();
+  function persistConsoleState() {
+    if (!capturedLogs.length && !previewHasErrors && !previewFatal) return;
+    try {
+      sessionStorage.setItem(CONSOLE_STORAGE_KEY, JSON.stringify(consoleSnapshot()));
+    } catch {
+      return undefined;
+    }
+  }
 
-    els.overlay.classList.remove('is-open', 'is-rendering', 'is-previewing');
-    els.overlay.hidden = true;
-    setProgress(0, 'Preparing preview…');
-    document.body.classList.remove('html-viewer-lock');
+  function restoreConsoleState() {
+    let saved = null;
+    try {
+      const raw = sessionStorage.getItem(CONSOLE_STORAGE_KEY);
+      if (!raw) return;
+      saved = JSON.parse(raw);
+    } catch {
+      return;
+    }
 
+    if (!saved || !Array.isArray(saved.logs) || !saved.logs.length) return;
+
+    capturedLogs = saved.logs;
+    previewFatal = Boolean(saved.fatal);
+    previewHasErrors = Boolean(saved.hasErrors);
+    previewErrorMessage = String(saved.errorMessage || '');
     renderConsole();
     els.consolePanel.hidden = false;
-    els.consolePanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function clearConsoleState() {
+    try {
+      sessionStorage.removeItem(CONSOLE_STORAGE_KEY);
+    } catch {
+      return undefined;
+    }
   }
 
   function renderConsole() {
@@ -471,26 +478,11 @@
     previewHasErrors = false;
     previewFatal = false;
     previewErrorMessage = '';
+    clearConsoleState();
     if (els.console) els.console.innerHTML = '';
     els.consolePanel.hidden = true;
     hidePreviewNotice();
     setStatus('');
-  }
-
-  function showToast(message) {
-    if (!els.toast) return;
-    window.clearTimeout(toastTimer);
-    els.toast.textContent = message;
-    els.toast.hidden = false;
-    toastTimer = window.setTimeout(() => {
-      if (escCount < ESC_REQUIRED) hideToast();
-    }, 2600);
-  }
-
-  function hideToast() {
-    if (!els.toast) return;
-    els.toast.hidden = true;
-    els.toast.textContent = '';
   }
 
   function setStatus(message, isError = false) {

@@ -432,24 +432,6 @@
   color: #fef3c7;
 }
 
-.html-viewer-toast {
-  position: fixed;
-  left: 50%;
-  bottom: 28px;
-  z-index: 3;
-  transform: translateX(-50%);
-  margin: 0;
-  padding: 12px 18px;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.92);
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  color: #f8fafc;
-  font-size: 0.9rem;
-  font-weight: 700;
-  box-shadow: 0 16px 40px rgba(2, 6, 23, 0.45);
-  pointer-events: none;
-}
-
 @media (max-width: 640px) {
   .html-viewer-page {
     padding-left: 12px;
