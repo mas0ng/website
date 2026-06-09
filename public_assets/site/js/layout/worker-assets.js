@@ -1,6 +1,6 @@
 (function () {
   const TAILWIND_URL = 'https://cdn.tailwindcss.com';
-  const LUCIDE_URL = 'https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js';
+  const LUCIDE_URL = 'https://unpkg.com/lucide@latest';
   const INTER_FONT_URL = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap';
 
   function hasScript(src) {
