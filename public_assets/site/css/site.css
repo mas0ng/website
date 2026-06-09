@@ -619,11 +619,16 @@ html[data-nav-solid] .nav__toggle:hover { background: rgba(0, 0, 0, 0.05); }
   color: var(--muted);
 }
 
-.social-grid,
-.app-grid {
+.social-grid {
   display: grid;
   gap: 16px;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.app-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .tile-skeleton {
@@ -1186,8 +1191,14 @@ body[data-page="error"] #site-main {
 
 /* Public browser tools — fixed nav sits above content */
 body[data-page="app"] .mosaic-page,
-body[data-page="app"] .qr-page {
+body[data-page="app"] .qr-page,
+body[data-page="app"] .dice-page,
+body[data-page="app"] .html-viewer-page {
   padding-top: calc(var(--nav-h, 64px) + clamp(18px, 3vw, 28px));
+}
+
+body.html-viewer-lock {
+  overflow: hidden;
 }
 
 .app-tool-header {

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <script src="/public_assets/site/js/layout/loader.js?v=20260610-loader1"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mas0ng.com | dice roll</title>
+  <meta name="description" content="Roll virtual dice in your browser. Choose how many dice, sides per die, and modifiers. Works on mobile and desktop." />
+  <meta name="theme-color" content="#07111f" />
+  <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" />
+  <link rel="stylesheet" href="/public_assets/site/css/site.css" />
+  <link rel="stylesheet" href="dice.css" />
+</head>
+<body data-page="app">
+  <div id="site-main">
+    <main class="dice-page">
+      <div class="dice-shell">
+        <header class="app-tool-header">
+          <p class="app-tool-kicker">Public app</p>
+          <h1 class="section__title">Dice roll</h1>
+          <p class="dice-hint">Roll any combination of dice in your browser. Pick how many dice, how many sides each die has, and an optional modifier. Nothing is sent to a server.</p>
+        </header>
+
+        <div class="dice-layout">
+          <section class="dice-panel" aria-labelledby="dice-setup-title">
+            <h2 class="dice-panel__title" id="dice-setup-title">Setup</h2>
+
+            <div class="dice-field dice-field--full">
+              <span>Number of dice</span>
+              <div class="dice-picker" id="dice-count-picker" role="radiogroup" aria-label="Number of dice">
+                <button class="dice-pill" type="button" role="radio" aria-checked="false" data-count="1">1</button>
+                <button class="dice-pill is-active" type="button" role="radio" aria-checked="true" data-count="2">2</button>
+                <button class="dice-pill" type="button" role="radio" aria-checked="false" data-count="3">3</button>
+                <button class="dice-pill" type="button" role="radio" aria-checked="false" data-count="4">4</button>
+                <button class="dice-pill" type="button" role="radio" aria-checked="false" data-count="5">5</button>
+                <button class="dice-pill" type="button" role="radio" aria-checked="false" data-count="custom">Custom</button>
+              </div>
+              <label class="dice-field dice-field--custom" id="dice-count-custom-wrap">
+                <span>Custom count</span>
+                <input id="dice-count-custom" type="number" min="1" max="24" step="1" value="6" inputmode="numeric" aria-label="Custom number of dice" />
+              </label>
+            </div>
+
+            <div class="dice-field dice-field--full">
+              <span>Sides per die</span>
+              <div class="dice-picker" id="dice-sides-picker" role="radiogroup" aria-label="Sides per die">
+                <button class="dice-pill" type="button" role="radio" aria-checked="false" data-sides="4">d4</button>
+                <button class="dice-pill is-active" type="button" role="radio" aria-checked="true" data-sides="6">d6</button>
+                <button class="dice-pill" type="button" role="radio" aria-checked="false" data-sides="8">d8</button>
+                <button class="dice-pill" type="button" role="radio" aria-checked="false" data-sides="10">d10</button>
+                <button class="dice-pill" type="button" role="radio" aria-checked="false" data-sides="12">d12</button>
+                <button class="dice-pill" type="button" role="radio" aria-checked="false" data-sides="20">d20</button>
+                <button class="dice-pill" type="button" role="radio" aria-checked="false" data-sides="100">d100</button>
+                <button class="dice-pill" type="button" role="radio" aria-checked="false" data-sides="custom">Custom</button>
+              </div>
+              <label class="dice-field dice-field--custom" id="dice-sides-custom-wrap">
+                <span>Custom sides</span>
+                <input id="dice-sides-custom" type="number" min="2" max="1000" step="1" value="30" inputmode="numeric" aria-label="Custom sides per die" />
+              </label>
+            </div>
+
+            <label class="dice-field">
+              <span>Modifier <em class="dice-field__note">added to the total</em></span>
+              <input id="dice-modifier" type="number" min="-99" max="99" step="1" value="0" inputmode="numeric" aria-label="Roll modifier" />
+            </label>
+
+            <label class="dice-field dice-field--check">
+              <input id="dice-sort" type="checkbox" />
+              <span>Sort results low → high</span>
+            </label>
+          </section>
+
+          <section class="dice-stage-panel" aria-labelledby="dice-results-title">
+            <h2 class="dice-panel__title" id="dice-results-title">Results</h2>
+
+            <div class="dice-stage" id="dice-stage" aria-live="polite" aria-atomic="true">
+              <div class="dice-stage__empty" id="dice-empty">
+                <strong>Ready to roll</strong>
+                <span>Press roll or tap the dice tray.</span>
+              </div>
+              <div class="dice-tray" id="dice-tray" hidden></div>
+            </div>
+
+            <p class="dice-summary" id="dice-summary" hidden></p>
+
+            <div class="dice-actions">
+              <button class="dice-btn dice-btn--primary" type="button" id="dice-roll">Roll dice</button>
+              <button class="dice-btn" type="button" id="dice-clear">Clear</button>
+            </div>
+
+            <div class="dice-history-wrap" id="dice-history-wrap" hidden>
+              <h3 class="dice-history__title">Recent rolls</h3>
+              <ol class="dice-history" id="dice-history"></ol>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/public_assets/site/js/config/site-data.js"></script>
+  <script src="/public_assets/site/js/lib/app-tiles.js"></script>
+  <script src="/public_assets/site/js/lib/cache.js"></script>
+  <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
+  <script src="/public_assets/site/js/layout/shell.js" data-active="apps" defer></script>
+  <script src="dice.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <script src="/public_assets/site/js/layout/loader.js?v=20260610-loader1"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mas0ng.com | html viewer</title>
+  <meta name="description" content="Paste or upload HTML and preview it full screen on desktop. Captures console output and errors when you exit." />
+  <meta name="theme-color" content="#07111f" />
+  <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" />
+  <link rel="stylesheet" href="/public_assets/site/css/site.css" />
+  <link rel="stylesheet" href="html-viewer.css" />
+</head>
+<body data-page="app">
+  <div id="site-main">
+    <main class="html-viewer-page is-desktop">
+      <div class="html-viewer-shell">
+        <header class="app-tool-header">
+          <p class="app-tool-kicker">Public app</p>
+          <h1 class="section__title">HTML viewer</h1>
+          <p class="html-viewer-hint">Paste HTML or upload an <code>.html</code> file, then preview it full screen over the page. Desktop only — your markup runs locally in a sandboxed frame.</p>
+        </header>
+
+        <div class="html-viewer-mobile" id="html-viewer-mobile">
+          <strong>Desktop only</strong>
+          <p>HTML viewer needs a desktop browser with a keyboard. Open this page on a computer to paste or upload HTML and use full-screen preview.</p>
+        </div>
+
+        <div class="html-viewer-workspace" id="html-viewer-workspace">
+          <section class="html-viewer-panel" aria-labelledby="html-source-title">
+            <h2 class="html-viewer-panel__title" id="html-source-title">Source</h2>
+
+            <div class="html-viewer-tabs" id="html-viewer-tabs" role="tablist" aria-label="HTML input method">
+              <button class="html-viewer-tab is-active" type="button" role="tab" aria-selected="true" data-mode="paste">Paste HTML</button>
+              <button class="html-viewer-tab" type="button" role="tab" aria-selected="false" data-mode="upload">Upload file</button>
+            </div>
+
+            <div class="html-viewer-pane is-active" id="html-pane-paste" role="tabpanel">
+              <label class="html-viewer-field">
+                <span>HTML markup</span>
+                <textarea id="html-paste" spellcheck="false" placeholder="&lt;!DOCTYPE html&gt;&#10;&lt;html&gt;&#10;  &lt;body&gt;&#10;    &lt;h1&gt;Hello&lt;/h1&gt;&#10;  &lt;/body&gt;&#10;&lt;/html&gt;"></textarea>
+              </label>
+            </div>
+
+            <div class="html-viewer-pane" id="html-pane-upload" role="tabpanel" hidden>
+              <div class="html-viewer-upload">
+                <button class="html-viewer-btn" type="button" id="html-upload-btn">Choose .html file</button>
+                <input id="html-file" type="file" accept=".html,text/html" hidden />
+                <p class="html-viewer-upload__name" id="html-file-name">No file selected</p>
+              </div>
+            </div>
+
+            <div class="html-viewer-actions">
+              <button class="html-viewer-btn html-viewer-btn--primary" type="button" id="html-preview">Full screen preview</button>
+              <button class="html-viewer-btn" type="button" id="html-clear">Clear</button>
+            </div>
+            <p class="html-viewer-status" id="html-status" hidden></p>
+          </section>
+
+          <section class="html-viewer-panel html-viewer-panel--console" aria-labelledby="html-console-title" id="html-console-panel" hidden>
+            <h2 class="html-viewer-panel__title" id="html-console-title">Console output</h2>
+            <p class="html-viewer-console__lead" id="html-console-lead">Messages captured from the last preview session.</p>
+            <div class="html-viewer-console" id="html-console" role="log" aria-live="polite"></div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="html-viewer-overlay" id="html-viewer-overlay" hidden>
+    <div class="html-viewer-overlay__rendering" id="html-viewer-rendering">
+      <p class="html-viewer-overlay__title">Rendering HTML…</p>
+      <div class="html-viewer-progress" aria-hidden="false">
+        <div class="html-viewer-progress__track" aria-hidden="true">
+          <div class="html-viewer-progress__bar" id="html-viewer-progress-bar"></div>
+        </div>
+        <p class="html-viewer-progress__label" id="html-viewer-progress-label">Preparing preview…</p>
+      </div>
+      <p class="html-viewer-overlay__hint">To exit full screen, press the <kbd>Esc</kbd> key <strong>3 times</strong>.</p>
+    </div>
+    <iframe
+      class="html-viewer-frame"
+      id="html-viewer-frame"
+      title="HTML preview"
+      sandbox="allow-scripts allow-same-origin allow-forms allow-modals"
+    ></iframe>
+    <div class="html-viewer-notice" id="html-viewer-notice" hidden role="alert">
+      <strong id="html-viewer-notice-title">Preview loaded with errors</strong>
+      <p id="html-viewer-notice-text"></p>
+    </div>
+    <p class="html-viewer-toast" id="html-viewer-toast" hidden></p>
+  </div>
+
+  <script src="/public_assets/site/js/config/site-data.js"></script>
+  <script src="/public_assets/site/js/lib/app-tiles.js"></script>
+  <script src="/public_assets/site/js/lib/cache.js"></script>
+  <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
+  <script src="/public_assets/site/js/layout/shell.js" data-active="apps" defer></script>
+  <script src="html-viewer.js" defer></script>
+</body>
+</html>

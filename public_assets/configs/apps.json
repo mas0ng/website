@@ -17,6 +17,24 @@
       "href": "/public/apps/a/qr/",
       "icon": "/public_assets/app_icons/qr.svg",
       "featured": true
+    },
+    {
+      "id": "dice",
+      "name": "Dice Roll",
+      "label": "Dice roll",
+      "description": "Roll virtual dice with custom sides, counts, and modifiers.",
+      "href": "/public/apps/a/dice/",
+      "icon": "/public_assets/app_icons/dice.svg",
+      "featured": true
+    },
+    {
+      "id": "html-viewer",
+      "name": "HTML Viewer",
+      "label": "HTML viewer",
+      "description": "Paste or upload HTML and preview it full screen on desktop.",
+      "href": "/public/apps/a/html-viewer/",
+      "icon": "/public_assets/app_icons/html.svg",
+      "featured": true
     }
   ],
   "private": [
