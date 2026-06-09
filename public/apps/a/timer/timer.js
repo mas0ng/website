@@ -6,6 +6,10 @@
     setup: document.getElementById('timer-setup'),
     app: document.getElementById('timer-app'),
     stage: document.getElementById('timer-stage'),
+    recover: document.getElementById('timer-recover'),
+    recoverHint: document.getElementById('timer-recover-hint'),
+    settingsToggle: document.getElementById('timer-settings-toggle'),
+    settings: document.getElementById('timer-settings'),
     modeBadge: document.getElementById('timer-mode-badge'),
     status: document.getElementById('timer-status'),
     modeStopwatch: document.getElementById('timer-mode-stopwatch'),
@@ -31,8 +35,9 @@
   };
 
   let state = createDefaultState();
+  let savedState = null;
   let tickTimer = 0;
-  let configured = false;
+  let settingsOpen = false;
 
   boot();
 
@@ -55,27 +60,23 @@
   }
 
   function boot() {
-    state = { ...createDefaultState(), ...loadState() };
-    configured = Boolean(loadState());
-    applyTheme(state.theme);
+    savedState = loadState();
+    state = createDefaultState();
+    applyTheme('slate');
     bindEvents();
-
-    if (!configured) {
-      showSetup();
-      return;
-    }
-
-    showApp();
-    syncModeUi();
-    syncDurationInputs();
-    syncToggleLabel();
-    updateDisplay();
-    if (state.running) startTicking();
+    showSetup();
   }
 
   function bindEvents() {
-    els.setup?.querySelectorAll('[data-mode]').forEach((button) => {
+    els.setup?.querySelectorAll('.timer-setup__choice[data-mode]').forEach((button) => {
       button.addEventListener('click', () => chooseInitialMode(button.dataset.mode));
+    });
+
+    els.recover?.addEventListener('click', recoverSession);
+
+    els.settingsToggle?.addEventListener('click', (event) => {
+      event.stopPropagation();
+      toggleSettings();
     });
 
     els.modeStopwatch?.addEventListener('click', () => setMode('stopwatch'));
@@ -95,18 +96,50 @@
     els.fullscreen?.addEventListener('click', toggleBrowserFullscreen);
     document.addEventListener('fullscreenchange', syncFullscreenUi);
 
+    document.addEventListener('click', (event) => {
+      if (!settingsOpen) return;
+      const target = event.target;
+      if (target instanceof Node && els.settings?.contains(target)) return;
+      if (target instanceof Node && els.settingsToggle?.contains(target)) return;
+      closeSettings();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && settingsOpen) {
+        closeSettings();
+      }
+    });
+
     window.addEventListener('pagehide', persistState);
   }
 
   function chooseInitialMode(mode) {
     if (mode !== 'stopwatch' && mode !== 'countdown') return;
-    state.mode = mode;
-    configured = true;
+    state = {
+      ...createDefaultState(),
+      mode,
+      theme: savedState?.theme || 'slate'
+    };
+    enterApp();
+    persistState();
+  }
+
+  function recoverSession() {
+    if (!savedState) return;
+    state = { ...createDefaultState(), ...savedState };
+    enterApp();
+  }
+
+  function enterApp() {
+    closeSettings();
+    applyTheme(state.theme);
     showApp();
+    syncThemeUi();
     syncModeUi();
     syncDurationInputs();
     syncToggleLabel();
     updateDisplay();
+    if (state.running) startTicking();
     persistState();
   }
 
@@ -114,12 +147,45 @@
     document.getElementById('timer-page')?.classList.add('timer-page--setup');
     if (els.setup) els.setup.hidden = false;
     if (els.app) els.app.hidden = true;
+
+    const canRecover = Boolean(savedState);
+    if (els.recover) els.recover.hidden = !canRecover;
+
+    if (els.recoverHint && canRecover) {
+      const modeLabel = savedState.mode === 'countdown' ? 'Countdown' : 'Stopwatch';
+      const statusLabel = savedState.running ? 'running' : 'saved';
+      els.recoverHint.textContent = `Continue your ${modeLabel.toLowerCase()} session (${statusLabel})`;
+    }
   }
 
   function showApp() {
     document.getElementById('timer-page')?.classList.remove('timer-page--setup');
     if (els.setup) els.setup.hidden = true;
     if (els.app) els.app.hidden = false;
+  }
+
+  function toggleSettings() {
+    if (settingsOpen) {
+      closeSettings();
+      return;
+    }
+    openSettings();
+  }
+
+  function openSettings() {
+    settingsOpen = true;
+    if (els.settings) els.settings.hidden = false;
+    els.settingsToggle?.setAttribute('aria-expanded', 'true');
+    els.settingsToggle?.setAttribute('aria-label', 'Close settings');
+    els.stage?.classList.add('is-settings-open');
+  }
+
+  function closeSettings() {
+    settingsOpen = false;
+    if (els.settings) els.settings.hidden = true;
+    els.settingsToggle?.setAttribute('aria-expanded', 'false');
+    els.settingsToggle?.setAttribute('aria-label', 'Open settings');
+    els.stage?.classList.remove('is-settings-open');
   }
 
   function setMode(mode) {
@@ -146,9 +212,7 @@
       els.countdownSetup.hidden = !showDuration;
     }
 
-    if (els.progress) {
-      els.progress.hidden = state.mode !== 'countdown';
-    }
+    syncProgressUi();
 
     if (els.modeBadge) {
       els.modeBadge.textContent = stopwatchActive ? 'Stopwatch' : 'Countdown';
@@ -157,16 +221,33 @@
     syncStatusUi();
   }
 
+  function syncProgressUi() {
+    if (!els.progress) return;
+
+    if (state.mode !== 'countdown') {
+      els.progress.hidden = true;
+      return;
+    }
+
+    const remaining = getCountdownRemainingMs();
+    const hasStarted = state.running || remaining < state.countdownTargetMs || state.countdownFinished;
+    els.progress.hidden = !hasStarted;
+  }
+
   function setTheme(theme, button) {
     if (!theme) return;
     state.theme = theme;
     applyTheme(theme);
+    syncThemeUi(button);
+    persistState();
+  }
+
+  function syncThemeUi(activeButton) {
     document.querySelectorAll('.timer-theme-option').forEach((item) => {
-      const active = item === button || item.dataset.theme === theme;
+      const active = item === activeButton || item.dataset.theme === state.theme;
       item.classList.toggle('is-active', active);
       item.setAttribute('aria-checked', active ? 'true' : 'false');
     });
-    persistState();
   }
 
   function applyTheme(theme) {
@@ -195,6 +276,7 @@
       return;
     }
 
+    closeSettings();
     els.stage.requestFullscreen?.().catch(() => undefined);
   }
 
@@ -352,7 +434,11 @@
           ? 'Countdown finished'
           : `${Math.round(ratio * 100)}% elapsed`;
       }
+    } else if (els.progressBar) {
+      els.progressBar.style.width = '0%';
     }
+
+    syncProgressUi();
 
     if (state.mode === 'countdown' && state.running && ms <= 0) {
       finishCountdown();
@@ -380,6 +466,8 @@
   }
 
   function start() {
+    closeSettings();
+
     if (state.mode === 'countdown') {
       if (state.countdownFinished || getCountdownRemainingMs() <= 0) {
         state.countdownTargetMs = durationToMs();
@@ -489,6 +577,8 @@
       durationSeconds: state.durationSeconds,
       durationMilliseconds: state.durationMilliseconds
     };
+
+    savedState = snapshot;
 
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(snapshot));

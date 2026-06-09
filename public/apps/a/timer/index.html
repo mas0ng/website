@@ -21,7 +21,7 @@
           <header class="app-tool-header">
             <p class="app-tool-kicker">Public app</p>
             <h1 class="section__title">Timer</h1>
-            <p class="timer-hint">Stopwatch or countdown with millisecond precision. Your settings are saved if you refresh.</p>
+            <p class="timer-hint">Stopwatch or countdown with millisecond precision. Pick a mode to start, or recover your last session after a refresh.</p>
           </header>
           <section class="timer-panel timer-panel--setup">
             <h2 class="timer-panel__title">Choose a mode</h2>
@@ -40,126 +40,140 @@
                 <strong>Countdown</strong>
                 <span>Counts down to zero</span>
               </button>
+              <button class="timer-setup__choice timer-setup__choice--recover" type="button" id="timer-recover" hidden>
+                <span class="timer-setup__choice-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 3v6h6"/></svg>
+                </span>
+                <strong>Recover</strong>
+                <span id="timer-recover-hint">Continue your last session</span>
+              </button>
             </div>
           </section>
         </div>
 
         <div class="timer-app" id="timer-app" hidden>
-          <section class="timer-config" aria-labelledby="timer-config-title">
-            <div class="timer-config__bar">
-              <h2 class="timer-config__title" id="timer-config-title">Settings</h2>
-
-            <div class="timer-config__grid">
-              <div class="timer-config__block">
-                <p class="timer-config__label">Mode</p>
-                <div class="timer-mode-switch" role="tablist" aria-label="Timer mode">
-                  <button class="timer-mode-btn is-active" type="button" role="tab" aria-selected="true" data-mode="stopwatch" id="timer-mode-stopwatch">Stopwatch</button>
-                  <button class="timer-mode-btn" type="button" role="tab" aria-selected="false" data-mode="countdown" id="timer-mode-countdown">Countdown</button>
-                </div>
-              </div>
-
-              <div class="timer-config__block" id="timer-countdown-setup" hidden>
-                <p class="timer-config__label">Duration</p>
-                <div class="timer-duration-fields">
-                  <label class="timer-duration-field">
-                    <span>H</span>
-                    <input id="timer-cd-h" type="number" min="0" max="99" step="1" value="0" inputmode="numeric" aria-label="Hours" />
-                  </label>
-                  <label class="timer-duration-field">
-                    <span>M</span>
-                    <input id="timer-cd-m" type="number" min="0" max="59" step="1" value="5" inputmode="numeric" aria-label="Minutes" />
-                  </label>
-                  <label class="timer-duration-field">
-                    <span>S</span>
-                    <input id="timer-cd-s" type="number" min="0" max="59" step="1" value="0" inputmode="numeric" aria-label="Seconds" />
-                  </label>
-                  <label class="timer-duration-field">
-                    <span>Ms</span>
-                    <input id="timer-cd-ms" type="number" min="0" max="999" step="1" value="0" inputmode="numeric" aria-label="Milliseconds" />
-                  </label>
-                </div>
-              </div>
-
-              <div class="timer-config__block timer-config__block--themes">
-                <p class="timer-config__label">Theme</p>
-                <div class="timer-theme-picker" role="radiogroup" aria-label="Timer theme">
-                  <button class="timer-theme-option is-active" type="button" role="radio" aria-checked="true" data-theme="slate" title="Slate">
-                    <span class="timer-theme-option__swatch" style="--swatch:#e8eef5"></span>
-                  </button>
-                  <button class="timer-theme-option" type="button" role="radio" aria-checked="false" data-theme="midnight" title="Midnight">
-                    <span class="timer-theme-option__swatch" style="--swatch:#0f172a"></span>
-                  </button>
-                  <button class="timer-theme-option" type="button" role="radio" aria-checked="false" data-theme="ocean" title="Ocean">
-                    <span class="timer-theme-option__swatch" style="--swatch:#0c4a6e"></span>
-                  </button>
-                  <button class="timer-theme-option" type="button" role="radio" aria-checked="false" data-theme="forest" title="Forest">
-                    <span class="timer-theme-option__swatch" style="--swatch:#14532d"></span>
-                  </button>
-                  <button class="timer-theme-option" type="button" role="radio" aria-checked="false" data-theme="sunset" title="Sunset">
-                    <span class="timer-theme-option__swatch" style="--swatch:#9a3412"></span>
-                  </button>
-                  <button class="timer-theme-option" type="button" role="radio" aria-checked="false" data-theme="lavender" title="Lavender">
-                    <span class="timer-theme-option__swatch" style="--swatch:#5b21b6"></span>
-                  </button>
-                </div>
-              </div>
-            </div>
-            </div>
-          </section>
-
           <section class="timer-stage theme-slate" id="timer-stage" aria-label="Timer display">
-            <div class="timer-stage__toolbar">
-              <button class="timer-fs-btn" type="button" id="timer-fullscreen" aria-label="Enter browser fullscreen" title="Browser fullscreen">
-                <svg class="timer-fs-btn__icon timer-fs-btn__icon--enter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <div class="timer-stage__toolbar timer-stage__toolbar--left">
+              <button class="timer-tool-btn" type="button" id="timer-settings-toggle" aria-label="Open settings" aria-expanded="false" aria-controls="timer-settings" title="Settings">
+                <svg class="timer-tool-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="timer-stage__toolbar timer-stage__toolbar--right">
+              <button class="timer-tool-btn timer-tool-btn--text" type="button" id="timer-fullscreen" aria-label="Enter browser fullscreen" title="Browser fullscreen">
+                <svg class="timer-tool-btn__icon timer-fs-btn__icon--enter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                   <path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/>
                 </svg>
-                <svg class="timer-fs-btn__icon timer-fs-btn__icon--exit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden>
+                <svg class="timer-tool-btn__icon timer-fs-btn__icon--exit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden>
                   <path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/>
                 </svg>
-                <span class="timer-fs-btn__label" id="timer-fullscreen-label">Fullscreen</span>
+                <span class="timer-tool-btn__label" id="timer-fullscreen-label">Fullscreen</span>
               </button>
+            </div>
+
+            <div class="timer-settings" id="timer-settings" hidden>
+              <div class="timer-settings__panel" role="dialog" aria-labelledby="timer-settings-title">
+                <h2 class="timer-settings__title" id="timer-settings-title">Settings</h2>
+                <div class="timer-settings__grid">
+                  <div class="timer-settings__block">
+                    <p class="timer-settings__label">Mode</p>
+                    <div class="timer-mode-switch" role="tablist" aria-label="Timer mode">
+                      <button class="timer-mode-btn is-active" type="button" role="tab" aria-selected="true" data-mode="stopwatch" id="timer-mode-stopwatch">Stopwatch</button>
+                      <button class="timer-mode-btn" type="button" role="tab" aria-selected="false" data-mode="countdown" id="timer-mode-countdown">Countdown</button>
+                    </div>
+                  </div>
+
+                  <div class="timer-settings__block" id="timer-countdown-setup" hidden>
+                    <p class="timer-settings__label">Duration</p>
+                    <div class="timer-duration-fields">
+                      <label class="timer-duration-field">
+                        <span>H</span>
+                        <input id="timer-cd-h" type="number" min="0" max="99" step="1" value="0" inputmode="numeric" aria-label="Hours" />
+                      </label>
+                      <label class="timer-duration-field">
+                        <span>M</span>
+                        <input id="timer-cd-m" type="number" min="0" max="59" step="1" value="5" inputmode="numeric" aria-label="Minutes" />
+                      </label>
+                      <label class="timer-duration-field">
+                        <span>S</span>
+                        <input id="timer-cd-s" type="number" min="0" max="59" step="1" value="0" inputmode="numeric" aria-label="Seconds" />
+                      </label>
+                      <label class="timer-duration-field">
+                        <span>Ms</span>
+                        <input id="timer-cd-ms" type="number" min="0" max="999" step="1" value="0" inputmode="numeric" aria-label="Milliseconds" />
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="timer-settings__block timer-settings__block--themes">
+                    <p class="timer-settings__label">Theme</p>
+                    <div class="timer-theme-picker" role="radiogroup" aria-label="Timer theme">
+                      <button class="timer-theme-option is-active" type="button" role="radio" aria-checked="true" data-theme="slate" title="Slate">
+                        <span class="timer-theme-option__swatch" style="--swatch:#e8eef5"></span>
+                      </button>
+                      <button class="timer-theme-option" type="button" role="radio" aria-checked="false" data-theme="midnight" title="Midnight">
+                        <span class="timer-theme-option__swatch" style="--swatch:#0f172a"></span>
+                      </button>
+                      <button class="timer-theme-option" type="button" role="radio" aria-checked="false" data-theme="ocean" title="Ocean">
+                        <span class="timer-theme-option__swatch" style="--swatch:#0c4a6e"></span>
+                      </button>
+                      <button class="timer-theme-option" type="button" role="radio" aria-checked="false" data-theme="forest" title="Forest">
+                        <span class="timer-theme-option__swatch" style="--swatch:#14532d"></span>
+                      </button>
+                      <button class="timer-theme-option" type="button" role="radio" aria-checked="false" data-theme="sunset" title="Sunset">
+                        <span class="timer-theme-option__swatch" style="--swatch:#9a3412"></span>
+                      </button>
+                      <button class="timer-theme-option" type="button" role="radio" aria-checked="false" data-theme="lavender" title="Lavender">
+                        <span class="timer-theme-option__swatch" style="--swatch:#5b21b6"></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="timer-stage__inner">
               <div class="timer-display-card">
-              <div class="timer-stage__meta">
-                <span class="timer-stage__badge" id="timer-mode-badge">Stopwatch</span>
-                <span class="timer-stage__status" id="timer-status" data-state="idle">Ready</span>
-              </div>
+                <div class="timer-stage__meta">
+                  <span class="timer-stage__badge" id="timer-mode-badge">Stopwatch</span>
+                  <span class="timer-stage__status" id="timer-status" data-state="idle">Ready</span>
+                </div>
 
-              <div class="timer-display" id="timer-display" aria-live="polite" aria-atomic="true">
-                <div class="timer-display__unit">
-                  <span class="timer-digit" id="timer-h">00</span>
-                  <span class="timer-display__label">Hours</span>
+                <div class="timer-display" id="timer-display" aria-live="polite" aria-atomic="true">
+                  <div class="timer-display__unit">
+                    <span class="timer-digit" id="timer-h">00</span>
+                    <span class="timer-display__label">Hours</span>
+                  </div>
+                  <span class="timer-sep" aria-hidden="true">:</span>
+                  <div class="timer-display__unit">
+                    <span class="timer-digit" id="timer-m">00</span>
+                    <span class="timer-display__label">Mins</span>
+                  </div>
+                  <span class="timer-sep" aria-hidden="true">:</span>
+                  <div class="timer-display__unit">
+                    <span class="timer-digit" id="timer-s">00</span>
+                    <span class="timer-display__label">Secs</span>
+                  </div>
+                  <span class="timer-sep timer-sep--ms" aria-hidden="true">.</span>
+                  <div class="timer-display__unit timer-display__unit--ms">
+                    <span class="timer-digit timer-digit--ms" id="timer-ms">000</span>
+                    <span class="timer-display__label">Ms</span>
+                  </div>
                 </div>
-                <span class="timer-sep" aria-hidden="true">:</span>
-                <div class="timer-display__unit">
-                  <span class="timer-digit" id="timer-m">00</span>
-                  <span class="timer-display__label">Mins</span>
-                </div>
-                <span class="timer-sep" aria-hidden="true">:</span>
-                <div class="timer-display__unit">
-                  <span class="timer-digit" id="timer-s">00</span>
-                  <span class="timer-display__label">Secs</span>
-                </div>
-                <span class="timer-sep timer-sep--ms" aria-hidden="true">.</span>
-                <div class="timer-display__unit timer-display__unit--ms">
-                  <span class="timer-digit timer-digit--ms" id="timer-ms">000</span>
-                  <span class="timer-display__label">Ms</span>
-                </div>
-              </div>
 
-              <div class="timer-progress" id="timer-progress" hidden>
-                <div class="timer-progress__track">
-                  <div class="timer-progress__bar" id="timer-progress-bar"></div>
+                <div class="timer-progress" id="timer-progress" hidden>
+                  <div class="timer-progress__track">
+                    <div class="timer-progress__bar" id="timer-progress-bar"></div>
+                  </div>
+                  <p class="timer-progress__label" id="timer-progress-label">0% elapsed</p>
                 </div>
-                <p class="timer-progress__label" id="timer-progress-label">0% elapsed</p>
-              </div>
 
-              <div class="timer-controls">
-                <button class="timer-btn timer-btn--primary" type="button" id="timer-toggle">Start</button>
-                <button class="timer-btn timer-btn--ghost" type="button" id="timer-reset">Reset</button>
-              </div>
+                <div class="timer-controls">
+                  <button class="timer-btn timer-btn--primary" type="button" id="timer-toggle">Start</button>
+                  <button class="timer-btn timer-btn--ghost" type="button" id="timer-reset">Reset</button>
+                </div>
               </div>
             </div>
           </section>
