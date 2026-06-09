@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 
 Disallow: /404.html
+Disallow: /bio.html
 
 Sitemap: https://mas0ng.com/sitemap.xml
