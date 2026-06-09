@@ -31,7 +31,7 @@ body[data-page="auth"] .worker-masthead__inner {
 }
 
 .auth-shell {
-  width: min(360px, calc(100% - 32px));
+  width: min(420px, calc(100% - 32px));
   margin: clamp(32px, 5vw, 48px) auto 0;
   padding: 0 0 32px;
 }
@@ -41,7 +41,7 @@ body[data-page="auth"] .worker-masthead__inner {
   width: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .auth-panel__body {
@@ -212,10 +212,15 @@ body[data-page="auth"] .worker-masthead__inner {
   display: flex;
   justify-content: center;
   min-height: 68px;
-  padding: 12px 14px;
+  padding: 12px 10px;
   border: 1px solid var(--line);
   border-radius: 12px;
   background: #fff;
+  overflow: hidden;
+}
+
+.auth-turnstile .cf-turnstile {
+  max-width: 100%;
 }
 
 .auth-submit {
