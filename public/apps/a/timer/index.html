@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <script src="/public_assets/site/js/layout/loader.js?v=20260610-loader1"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mas0ng.com | timer</title>
+  <meta name="description" content="Full-screen stopwatch or countdown timer with themes. Saves your mode, theme, and running state across reloads." />
+  <meta name="theme-color" content="#07111f" />
+  <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" />
+  <link rel="stylesheet" href="/public_assets/site/css/site.css" />
+  <link rel="stylesheet" href="timer.css" />
+</head>
+<body data-page="app">
+  <div id="site-main">
+    <main class="timer-page theme-slate" id="timer-page">
+      <div class="timer-stage" id="timer-stage">
+        <div class="timer-setup" id="timer-setup" hidden>
+          <p class="timer-setup__kicker">Choose a mode</p>
+          <h1 class="timer-setup__title">Timer</h1>
+          <p class="timer-setup__lead">Pick stopwatch or countdown. Your choice is saved for next time.</p>
+          <div class="timer-setup__choices">
+            <button class="timer-setup__choice" type="button" data-mode="stopwatch">
+              <span class="timer-setup__choice-icon" aria-hidden="true">⏱</span>
+              <strong>Stopwatch</strong>
+              <span>Counts up from zero</span>
+            </button>
+            <button class="timer-setup__choice" type="button" data-mode="countdown">
+              <span class="timer-setup__choice-icon" aria-hidden="true">⏳</span>
+              <strong>Countdown</strong>
+              <span>Counts down to zero</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="timer-app" id="timer-app" hidden>
+          <div class="timer-toolbar">
+            <div class="timer-mode-switch" role="tablist" aria-label="Timer mode">
+              <button class="timer-mode-btn is-active" type="button" role="tab" aria-selected="true" data-mode="stopwatch" id="timer-mode-stopwatch">Stopwatch</button>
+              <button class="timer-mode-btn" type="button" role="tab" aria-selected="false" data-mode="countdown" id="timer-mode-countdown">Countdown</button>
+            </div>
+
+            <div class="timer-theme-picker" role="radiogroup" aria-label="Background theme">
+              <button class="timer-theme-swatch is-active" type="button" role="radio" aria-checked="true" data-theme="slate" title="Slate" style="--swatch:#e8eef5"></button>
+              <button class="timer-theme-swatch" type="button" role="radio" aria-checked="false" data-theme="midnight" title="Midnight" style="--swatch:#0f172a"></button>
+              <button class="timer-theme-swatch" type="button" role="radio" aria-checked="false" data-theme="ocean" title="Ocean" style="--swatch:#0c4a6e"></button>
+              <button class="timer-theme-swatch" type="button" role="radio" aria-checked="false" data-theme="forest" title="Forest" style="--swatch:#14532d"></button>
+              <button class="timer-theme-swatch" type="button" role="radio" aria-checked="false" data-theme="sunset" title="Sunset" style="--swatch:#9a3412"></button>
+              <button class="timer-theme-swatch" type="button" role="radio" aria-checked="false" data-theme="lavender" title="Lavender" style="--swatch:#5b21b6"></button>
+            </div>
+          </div>
+
+          <div class="timer-display-wrap">
+            <div class="timer-display" id="timer-display" aria-live="polite" aria-atomic="true">
+              <span class="timer-digit" id="timer-h">00</span><span class="timer-sep">:</span><span class="timer-digit" id="timer-m">00</span><span class="timer-sep">:</span><span class="timer-digit" id="timer-s">00</span><span class="timer-sep timer-sep--ms">.</span><span class="timer-digit timer-digit--ms" id="timer-ms">000</span>
+            </div>
+          </div>
+
+          <div class="timer-countdown-setup" id="timer-countdown-setup" hidden>
+            <p class="timer-countdown-setup__label">Set countdown</p>
+            <div class="timer-duration-fields">
+              <label class="timer-duration-field">
+                <span>Hours</span>
+                <input id="timer-cd-h" type="number" min="0" max="99" step="1" value="0" inputmode="numeric" />
+              </label>
+              <label class="timer-duration-field">
+                <span>Mins</span>
+                <input id="timer-cd-m" type="number" min="0" max="59" step="1" value="5" inputmode="numeric" />
+              </label>
+              <label class="timer-duration-field">
+                <span>Secs</span>
+                <input id="timer-cd-s" type="number" min="0" max="59" step="1" value="0" inputmode="numeric" />
+              </label>
+              <label class="timer-duration-field">
+                <span>Ms</span>
+                <input id="timer-cd-ms" type="number" min="0" max="999" step="1" value="0" inputmode="numeric" />
+              </label>
+            </div>
+          </div>
+
+          <div class="timer-progress" id="timer-progress" hidden>
+            <div class="timer-progress__track">
+              <div class="timer-progress__bar" id="timer-progress-bar"></div>
+            </div>
+            <p class="timer-progress__label" id="timer-progress-label">0% elapsed</p>
+          </div>
+
+          <div class="timer-controls">
+            <button class="timer-btn timer-btn--primary" type="button" id="timer-toggle">Start</button>
+            <button class="timer-btn" type="button" id="timer-reset">Reset</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/public_assets/site/js/config/site-data.js"></script>
+  <script src="/public_assets/site/js/lib/app-tiles.js"></script>
+  <script src="/public_assets/site/js/lib/cache.js"></script>
+  <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
+  <script src="/public_assets/site/js/layout/shell.js" data-active="apps" defer></script>
+  <script src="timer.js" defer></script>
+</body>
+</html>

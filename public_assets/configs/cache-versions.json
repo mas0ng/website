@@ -8,5 +8,6 @@
   "apps_qr_generator": "1.4",
   "apps_dice_roll": "1.1",
   "apps_html_viewer": "1.6",
-  "shared_configs": "1.2"
+  "apps_timer": "1.0",
+  "shared_configs": "1.3"
 }

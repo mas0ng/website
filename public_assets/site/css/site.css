@@ -1193,7 +1193,8 @@ body[data-page="error"] #site-main {
 body[data-page="app"] .mosaic-page,
 body[data-page="app"] .qr-page,
 body[data-page="app"] .dice-page,
-body[data-page="app"] .html-viewer-page {
+body[data-page="app"] .html-viewer-page,
+body[data-page="app"] .timer-page {
   padding-top: calc(var(--nav-h, 64px) + clamp(18px, 3vw, 28px));
 }
 

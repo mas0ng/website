@@ -95,6 +95,7 @@
     if (path.startsWith('/public/apps/a/qr')) return 'apps_qr_generator';
     if (path.startsWith('/public/apps/a/dice')) return 'apps_dice_roll';
     if (path.startsWith('/public/apps/a/html-viewer')) return 'apps_html_viewer';
+    if (path.startsWith('/public/apps/a/timer')) return 'apps_timer';
     if (page === 'app') return 'site_shell';
     if (page === 'error') return 'site_shell';
     return 'site_shell';

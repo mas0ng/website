@@ -35,6 +35,15 @@
       "href": "/public/apps/a/html-viewer/",
       "icon": "/public_assets/app_icons/html.svg",
       "featured": true
+    },
+    {
+      "id": "timer",
+      "name": "Timer",
+      "label": "Timer",
+      "description": "Stopwatch or countdown with themes. Saves your state across reloads.",
+      "href": "/public/apps/a/timer/",
+      "icon": "/public_assets/app_icons/timer.svg",
+      "featured": true
     }
   ],
   "private": [
