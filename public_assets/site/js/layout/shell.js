@@ -292,12 +292,34 @@
     document.querySelectorAll('#site-nav a[href], #nav-drawer a[href]').forEach((link) => {
       link.addEventListener('click', (event) => {
         const href = link.getAttribute('href');
-        if (!href || href.startsWith('#') || href.startsWith('mailto:') || link.target === '_blank') return;
+        if (!href || href.startsWith('mailto:') || link.target === '_blank') return;
+        if (isSamePageNavigation(href)) return;
         if (link.origin && link.origin !== window.location.origin) return;
         if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         window.MAS0NG_LOADER?.show?.();
       });
     });
+  }
+
+  function normalizePath(pathname) {
+    const path = pathname || '/';
+    if (path.endsWith('/index.html')) {
+      return path.slice(0, -'/index.html'.length) || '/';
+    }
+    return path;
+  }
+
+  function isSamePageNavigation(href) {
+    if (href.startsWith('#')) return true;
+
+    try {
+      const target = new URL(href, window.location.href);
+      const current = new URL(window.location.href);
+      if (target.origin !== current.origin) return false;
+      return normalizePath(target.pathname) === normalizePath(current.pathname);
+    } catch {
+      return false;
+    }
   }
 
   const NAV_H = 64;
@@ -388,6 +410,7 @@
       const link = e.target.closest('a[href="#social"], a[href="/#social"]');
       if (!link || !isHome) return;
       e.preventDefault();
+      window.MAS0NG_LOADER?.hide?.();
       scrollToTarget(document.getElementById('social'));
       history.pushState(null, '', '#social');
     });
