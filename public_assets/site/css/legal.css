@@ -3,6 +3,9 @@
    ========================================= */
 :root {
   color-scheme: light;
+  --legal-line: #e2e8f0;
+  --legal-line-strong: #cbd5e1;
+  --legal-panel: #ffffff;
 }
 
 .legal-title,
@@ -151,6 +154,7 @@ html:not([data-nav-solid]) body[data-page="legal"] .legal-hero > .nav .nav__logi
   color: #64748b;
 }
 
+.legal-hero + .legal-stack,
 .legal-hero + .paper {
   margin-top: 36px;
 }
@@ -160,11 +164,103 @@ html:not([data-nav-solid]) body[data-page="legal"] .legal-hero > .nav .nav__logi
   margin: 36px auto 0;
 }
 
+.legal-notice {
+  padding: 20px 24px;
+  border: 1px solid #bfdbfe;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #eff6ff 0%, #f8fafc 100%);
+  margin-bottom: 20px;
+}
+
+.legal-notice p {
+  margin: 0;
+  font-size: 0.97rem;
+  line-height: 1.75;
+  color: #334155;
+}
+
+.legal-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.legal-summary-card {
+  min-height: 10rem;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(16, 24, 40, 0.045);
+}
+
+.legal-summary-card strong {
+  display: block;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.legal-summary-card span {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #475569;
+}
+
+.legal-summary-card--blue {
+  border-color: #bfdbfe;
+  background: #eff6ff;
+}
+
+.legal-summary-card--emerald {
+  border-color: #a7f3d0;
+  background: #ecfdf5;
+}
+
+.legal-summary-card--amber {
+  border-color: #fde68a;
+  background: #fffbeb;
+}
+
+.legal-summary-card--teal {
+  border-color: #99f6e4;
+  background: #f0fdfa;
+}
+
+.legal-rights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.legal-right-card {
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.legal-right-card strong {
+  display: block;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.legal-right-card span {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #475569;
+}
+
 .legal-section,
-.policy-section,
-.paper {
-  max-width: 720px;
-  margin: 0 auto;
+.policy-section {
+  max-width: none;
+  margin: 20px 0 0;
 }
 
 .legal-section {
@@ -252,42 +348,64 @@ html:not([data-nav-solid]) body[data-page="legal"] .legal-hero > .nav .nav__logi
   box-shadow: 0 18px 45px rgba(16, 24, 40, 0.08);
 }
 
-.paper .notice,
-.paper .summary-card,
-.paper .right-card {
-  border: 1px solid var(--legal-line) !important;
-  border-radius: 10px !important;
-  background: rgba(255, 255, 255, 0.96) !important;
-  box-shadow: 0 8px 22px rgba(16, 24, 40, 0.045) !important;
-}
-
-.paper .summary {
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)) !important;
-}
-
 .data-table {
-  border-color: var(--legal-line-strong) !important;
-  border-radius: 10px !important;
+  display: grid;
+  margin-top: 16px;
+  overflow: hidden;
+  border: 1px solid var(--legal-line-strong);
+  border-radius: 12px;
+  background: #fff;
 }
 
 .data-row {
-  background: #ffffff;
+  display: grid;
+  grid-template-columns: minmax(180px, 0.8fr) minmax(0, 1.4fr) minmax(0, 1fr);
+  border-bottom: 1px solid var(--legal-line);
+  background: #fff;
+}
+
+.data-row:last-child {
+  border-bottom: 0;
 }
 
 .data-row:nth-child(even) {
   background: #f8fafc;
 }
 
-.rights-grid {
-  border-radius: 10px;
+.data-row dt {
+  margin: 0;
+  padding: 16px;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.data-row dd {
+  margin: 0;
+  padding: 16px;
+  font-size: 0.97rem;
+  line-height: 1.65;
+  color: #334155;
+  border-top: 1px solid var(--legal-line);
+}
+
+@media (min-width: 768px) {
+  .data-row dd {
+    border-top: 0;
+    border-left: 1px solid var(--legal-line);
+  }
+}
+
+@media (max-width: 767px) {
+  .data-row {
+    grid-template-columns: 1fr;
+  }
+
+  .data-row dd {
+    border-left: 0;
+  }
 }
 
 @media (max-width: 720px) {
-  .legal-shell,
-  .paper {
-    padding-top: 24px;
-  }
-
   .legal-shell {
     width: 100%;
     padding-top: 0;
