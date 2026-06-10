@@ -232,6 +232,8 @@
       ? [...d.nav, { id: 'apps', label: 'Apps', href: '#apps' }]
       : d.nav;
 
+    const esc = window.MAS0NG_HTML || { escapeHtml: (v) => String(v), safeHref: (v) => String(v || '#') };
+
     const navItems = navLinks.map((item) => {
       const isActive = item.id === activeId ? ' is-active' : '';
       const current = item.id === activeId ? ' aria-current="page"' : '';
@@ -245,7 +247,6 @@
       ? `<div class="nav__menu-divider" role="separator"></div><a class="nav__menu-item" href="/public/apps/" role="menuitem">Browse all</a>`
       : '';
 
-    const esc = window.MAS0NG_HTML || { escapeHtml: (v) => String(v), safeHref: (v) => String(v || '#') };
     const legalMenu = d.legal.map((item) =>
       `<a class="nav__menu-item" href="${esc.safeHref(item.href)}" role="menuitem">${esc.escapeHtml(item.label)}</a>`
     ).join('');
