@@ -25,7 +25,12 @@
     if (!window.MAS0NG_SOCIAL_TILES || !socialGrid) return;
 
     try {
-      socialGrid.innerHTML = window.MAS0NG_SOCIAL_TILES.renderGrid(d.social);
+      let toRender = d.social || [];
+      if (window.MAS0NG_SOCIAL_TILES && window.MAS0NG_SOCIAL_TILES.fetchSocialStats) {
+        const statsData = await window.MAS0NG_SOCIAL_TILES.fetchSocialStats().catch(() => null);
+        toRender = window.MAS0NG_SOCIAL_TILES.enrichSocials(d.social, statsData);
+      }
+      socialGrid.innerHTML = window.MAS0NG_SOCIAL_TILES.renderGrid(toRender);
       if (skeletons) {
         await skeletons.waitForImages(socialGrid);
         skeletons.done(socialGrid);
@@ -35,11 +40,5 @@
       skeletons?.done(socialGrid);
       console.warn('Failed to render social links:', error);
     }
-  }
-
-  // TikTok stats (non-blocking, above the grid)
-  const tiktokContainer = document.getElementById('tiktok-stats');
-  if (tiktokContainer && window.MAS0NG_TIKTOK_STATS) {
-    window.MAS0NG_TIKTOK_STATS.mount(tiktokContainer);
   }
 })();
