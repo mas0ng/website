@@ -26,4 +26,10 @@
       console.warn('Failed to render social links:', error);
     }
   }
+
+  // TikTok stats (non-blocking, above the grid)
+  const tiktokContainer = document.getElementById('tiktok-stats');
+  if (tiktokContainer && window.MAS0NG_TIKTOK_STATS) {
+    window.MAS0NG_TIKTOK_STATS.mount(tiktokContainer);
+  }
 })();

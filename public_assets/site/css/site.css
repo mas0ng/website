@@ -1291,3 +1291,204 @@ body[data-page="app"] .app-tool-header .section__title {
   color: var(--text);
   border: 1px solid var(--line);
 }
+
+/* ── TikTok stats (above social grid on home + bio) ──
+   Compact single horizontal row for the three metrics to save vertical space.
+   Label explicitly says "TikTok stats - all my accounts" (with icon) so it's
+   clear this covers stats across all TikTok accounts (linked or unlinked).
+*/
+.tiktok-stats {
+  max-width: var(--max);
+  margin: 0 auto 14px;
+}
+
+.tiktok-stats__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  padding: 0 2px;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.tiktok-stats__brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.tiktok-stats__icon {
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.tiktok-stats__updated {
+  font-size: 0.68rem;
+  font-feature-settings: "tnum";
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.tiktok-stats__grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 5px;
+}
+
+.tiktok-stats__item {
+  flex: 1 1 0;
+  min-width: 0;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 14px;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+  min-height: 48px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  text-align: center;
+}
+
+.tiktok-stats__item:hover {
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.tiktok-stats__item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.tiktok-stats__label {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1;
+}
+
+.tiktok-stats__value {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--text);
+  font-feature-settings: "tnum";
+}
+
+.tiktok-stats.is-loading {
+  opacity: 0.6;
+}
+
+.tiktok-stats.is-error {
+  opacity: 0.75;
+}
+
+/* Bio page */
+.bio-main .tiktok-stats__item {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.bio-main .tiktok-stats__item:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 480px) {
+  .tiktok-stats {
+    margin-bottom: 12px;
+  }
+  .tiktok-stats__grid {
+    gap: 4px;
+  }
+  .tiktok-stats__item {
+    padding: 10px 8px;
+    min-height: 42px;
+    border-radius: 12px;
+  }
+  .tiktok-stats__value {
+    font-size: 0.95rem;
+  }
+  .tiktok-stats__header {
+    margin-bottom: 5px;
+    font-size: 0.68rem;
+  }
+  .tiktok-stats__brand,
+  .tiktok-stats__updated {
+    font-size: 0.62rem;
+  }
+}
+
+/* Index page only: make stat labels match social tile text size (1.05rem), numbers a bit bigger.
+   Bio remains unchanged. */
+body[data-page="home"] .tiktok-stats__label {
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+}
+
+body[data-page="home"] .tiktok-stats__value {
+  font-size: 1.25rem;
+}
+
+@media (max-width: 480px) {
+  body[data-page="home"] .tiktok-stats__label {
+    font-size: 0.95rem;
+  }
+  body[data-page="home"] .tiktok-stats__value {
+    font-size: 1.1rem;
+  }
+}
+
+/* Cool hover animations + colors only on index page (bio unchanged) */
+body[data-page="home"] .tiktok-stats__item {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body[data-page="home"] .tiktok-stats__item:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 
+              0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+body[data-page="home"] .tiktok-stats__value {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+              color 0.2s ease;
+}
+
+body[data-page="home"] .tiktok-stats__item:hover .tiktok-stats__value {
+  transform: scale(1.15);
+}
+
+/* Colors for the stat values (labels stay muted but can inherit tint on hover) */
+body[data-page="home"] .tiktok-stats__grid .tiktok-stats__item:nth-child(1) .tiktok-stats__value { /* Followers */
+  color: #3b82f6;
+}
+body[data-page="home"] .tiktok-stats__grid .tiktok-stats__item:nth-child(2) .tiktok-stats__value { /* Likes */
+  color: #ef4444;
+}
+body[data-page="home"] .tiktok-stats__grid .tiktok-stats__item:nth-child(3) .tiktok-stats__value { /* Views */
+  color: #14b8a6;
+}
+
+/* Subtle color tint on labels for the themed items */
+body[data-page="home"] .tiktok-stats__grid .tiktok-stats__item:nth-child(1) .tiktok-stats__label { color: #3b82f6; }
+body[data-page="home"] .tiktok-stats__grid .tiktok-stats__item:nth-child(2) .tiktok-stats__label { color: #ef4444; }
+body[data-page="home"] .tiktok-stats__grid .tiktok-stats__item:nth-child(3) .tiktok-stats__label { color: #14b8a6; }
+
+/* On hover, labels also pop a bit */
+body[data-page="home"] .tiktok-stats__item:hover .tiktok-stats__label {
+  opacity: 0.9;
+}
