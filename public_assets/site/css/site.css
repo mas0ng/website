@@ -621,7 +621,7 @@ html[data-nav-solid] .nav__toggle:hover { background: rgba(0, 0, 0, 0.05); }
 
 .social-grid {
   display: grid;
-  gap: 16px;
+  gap: 18px;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
@@ -943,7 +943,7 @@ html[data-nav-solid] .nav__toggle:hover { background: rgba(0, 0, 0, 0.05); }
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
 .social-tile__label {
@@ -994,7 +994,7 @@ html[data-nav-solid] .nav__toggle:hover { background: rgba(0, 0, 0, 0.05); }
 }
 
 .social-tile__stat {
-  margin-top: 3px;
+  margin-top: 4px;
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--muted);
