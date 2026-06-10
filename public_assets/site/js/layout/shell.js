@@ -21,14 +21,14 @@
       let authenticated = false;
       if (!publicOnly) {
         authenticated = await fetchSession();
-        if (authenticated) {
-          await loadScript(d.sharedNavUrl);
-          return;
-        }
       }
 
       d.authenticated = authenticated;
 
+      // Always load page data (socials, apps) so that content scripts on public pages
+      // (like home.js for social cards) work even for logged-in users.
+      // The early return below only skips the *public* nav/footer mounting in favor of the
+      // shared logged-in navbar.
       const page = document.body.dataset.page || 'page';
       const initialHashTarget = resolveHashTarget(window.location.hash);
       if (page === 'error') {
@@ -40,6 +40,14 @@
 
       if (!authenticated) {
         d.apps.public = [];
+      }
+
+      if (authenticated) {
+        await loadScript(d.sharedNavUrl);
+        // Fire the ready event so page content scripts (home.js, etc.) can render
+        // things like the social grid using the now-populated d.social.
+        document.dispatchEvent(new CustomEvent('mas0ng:shell-ready'));
+        return;
       }
 
       const bootTasks = buildCoreTasks(page);
