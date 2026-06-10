@@ -82,6 +82,15 @@
       "href": "/secure/diagnostics/",
       "icon": "/public_assets/app_icons/diagnostics.svg",
       "lucide": "activity"
+    },
+    {
+      "id": "localsend",
+      "name": "Local Send",
+      "label": "Local Send",
+      "description": "Securely send and receive files directly between your devices using QR codes and local WebRTC.",
+      "href": "/secure/localsend/",
+      "icon": "/public_assets/app_icons/dash.svg",
+      "lucide": "send"
     }
   ]
 }
