@@ -13,7 +13,7 @@
   if (document.getElementById('site-nav')) init();
 
   function init() {
-    ['footer-login', 'nav-login', 'nav-login-drawer'].forEach((id) => {
+    ['footer-login', 'nav-login', 'nav-login-drawer', 'hero-login'].forEach((id) => {
       const el = document.getElementById(id);
       if (el) el.href = d.loginUrl;
     });
