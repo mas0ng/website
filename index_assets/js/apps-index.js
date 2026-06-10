@@ -1,5 +1,28 @@
 (function () {
-  document.addEventListener('mas0ng:shell-ready', init, { once: true });
+  const SESSION_URL = 'https://auth.mas0ng.com/session';
+
+  async function isAuthenticated() {
+    try {
+      const response = await fetch(SESSION_URL, {
+        credentials: 'include',
+        cache: 'no-store',
+        headers: { Accept: 'application/json' }
+      });
+      const data = await response.json().catch(() => ({}));
+      return response.ok && data.authenticated === true;
+    } catch {
+      return false;
+    }
+  }
+
+  async function boot() {
+    if (!await isAuthenticated()) {
+      window.location.replace('/');
+      return;
+    }
+
+    document.addEventListener('mas0ng:shell-ready', init, { once: true });
+  }
 
   async function init() {
     const grid = document.getElementById('public-apps-grid');
@@ -13,4 +36,6 @@
       console.warn('Failed to load public apps:', error);
     }
   }
+
+  boot();
 })();

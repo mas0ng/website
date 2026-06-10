@@ -1,9 +1,9 @@
 {
-  "site_shell": "2.0",
-  "home_page": "1.4",
+  "site_shell": "2.1",
+  "home_page": "1.5",
   "bio_page": "1.0",
   "legal_pages": "1.1",
-  "public_apps_index": "1.4",
+  "public_apps_index": "1.5",
   "apps_mosaic": "1.0",
   "apps_qr_generator": "1.4",
   "apps_dice_roll": "1.1",

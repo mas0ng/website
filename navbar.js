@@ -7,8 +7,6 @@
   const loaderScript = document.currentScript;
   const SITE_ORIGIN = "https://mas0ng.com";
 
-  const APPS_CONFIG_URL = SITE_ORIGIN + "/public_assets/configs/apps.json";
-
   const legalLinks = [
     { id: "legal", label: "Legal hub", href: SITE_ORIGIN + "/legal/", icon: "scale" },
     { id: "privacy", label: "Privacy policy", href: SITE_ORIGIN + "/legal/privacy/", icon: "shield" },
@@ -29,26 +27,8 @@
       return;
     }
 
-    const apps = await loadAppsConfig();
     await loadExternalLibraries();
-    mountPublicNavbar(apps);
-  }
-
-  async function loadAppsConfig() {
-    try {
-      const response = await fetch(APPS_CONFIG_URL, { cache: "default" });
-      if (!response.ok) throw new Error("HTTP " + response.status);
-      const data = await response.json();
-      return (data.public || []).map((app) => ({
-        ...app,
-        id: app.id,
-        label: app.name,
-        href: app.href.startsWith("http") ? app.href : SITE_ORIGIN + app.href,
-        icon: app.icon?.startsWith("http") ? app.icon : SITE_ORIGIN + app.icon
-      }));
-    } catch {
-      return [];
-    }
+    mountPublicNavbar([]);
   }
 
   async function loadSharedNavbarIfLoggedIn() {

@@ -18,41 +18,52 @@
       const publicOnly = window.location.hostname === 'auth.mas0ng.com'
         || script?.dataset.publicOnly !== undefined;
 
-      if (!publicOnly && await loadSharedNavbarIfLoggedIn()) {
-        return;
+      let authenticated = false;
+      if (!publicOnly) {
+        authenticated = await fetchSession();
+        if (authenticated) {
+          await loadScript(d.sharedNavUrl);
+          return;
+        }
       }
 
-    const page = document.body.dataset.page || 'page';
-    const initialHashTarget = resolveHashTarget(window.location.hash);
-    if (page === 'error') {
-      document.documentElement.setAttribute('data-nav-solid', '');
-    }
+      d.authenticated = authenticated;
 
-    await loadSocials();
-    await loadApps();
+      const page = document.body.dataset.page || 'page';
+      const initialHashTarget = resolveHashTarget(window.location.hash);
+      if (page === 'error') {
+        document.documentElement.setAttribute('data-nav-solid', '');
+      }
 
-    const bootTasks = buildCoreTasks(page);
-    if (page === 'home' && initialHashTarget) {
-      window.MAS0NG_LOADER.hide(true);
-      await window.MAS0NG_LOADER.runQuiet(bootTasks);
-    } else {
-      await window.MAS0NG_LOADER.runBoot(bootTasks);
-    }
+      await loadSocials();
+      await loadApps();
 
-    mountShell(active);
-    initNav();
-    initScrollState(page);
+      if (!authenticated) {
+        d.apps.public = [];
+      }
 
-    if (initialHashTarget) {
-      await settleLayout();
-      scrollToTarget(initialHashTarget, 'auto');
-      document.documentElement.setAttribute('data-nav-solid', '');
-      window.dispatchEvent(new Event('scroll'));
-    }
+      const bootTasks = buildCoreTasks(page);
+      if (page === 'home' && initialHashTarget) {
+        window.MAS0NG_LOADER.hide(true);
+        await window.MAS0NG_LOADER.runQuiet(bootTasks);
+      } else {
+        await window.MAS0NG_LOADER.runBoot(bootTasks);
+      }
 
-    initHashNavigation();
-    window.addEventListener('pageshow', () => window.MAS0NG_LOADER?.hide?.(true));
-    document.dispatchEvent(new CustomEvent('mas0ng:shell-ready'));
+      mountShell(active);
+      initNav();
+      initScrollState(page);
+
+      if (initialHashTarget) {
+        await settleLayout();
+        scrollToTarget(initialHashTarget, 'auto');
+        document.documentElement.setAttribute('data-nav-solid', '');
+        window.dispatchEvent(new Event('scroll'));
+      }
+
+      initHashNavigation();
+      window.addEventListener('pageshow', () => window.MAS0NG_LOADER?.hide?.(true));
+      document.dispatchEvent(new CustomEvent('mas0ng:shell-ready'));
     } finally {
       window.MAS0NG_LOADER?.hide?.(true);
     }
@@ -146,7 +157,7 @@
     return tasks;
   }
 
-  async function loadSharedNavbarIfLoggedIn() {
+  async function fetchSession() {
     try {
       const response = await fetch('https://auth.mas0ng.com/session', {
         credentials: 'include',
@@ -154,12 +165,7 @@
         headers: { Accept: 'application/json' }
       });
       const data = await response.json().catch(() => ({}));
-      if (!response.ok || !data.authenticated) {
-        return false;
-      }
-
-      await loadScript(d.sharedNavUrl);
-      return true;
+      return response.ok && data.authenticated === true;
     } catch {
       return false;
     }
@@ -221,7 +227,8 @@
     if (!main || document.getElementById('site-nav')) return;
 
     const isHome = activeId === 'home';
-    const navLinks = isHome
+    const publicApps = d.apps?.public || [];
+    const navLinks = isHome && publicApps.length && document.getElementById('apps')
       ? [...d.nav, { id: 'apps', label: 'Apps', href: '#apps' }]
       : d.nav;
 
@@ -231,7 +238,6 @@
       return `<a class="nav__item${isActive}" href="${item.href}"${current}>${item.label}</a>`;
     }).join('');
 
-    const publicApps = d.apps?.public || [];
     const appsMenu = window.MAS0NG_APP_TILES
       ? window.MAS0NG_APP_TILES.renderMenuItems(publicApps)
       : '';
@@ -553,9 +559,12 @@
   function initHashNavigation() {
     const isHome = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
     const hashTargets = {
-      social: ['#social', '/#social'],
-      apps: ['#apps', '/#apps']
+      social: ['#social', '/#social']
     };
+
+    if (document.getElementById('apps')) {
+      hashTargets.apps = ['#apps', '/#apps'];
+    }
 
     document.addEventListener('click', (e) => {
       if (!isHome) return;
