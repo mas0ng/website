@@ -235,7 +235,7 @@
     const navItems = navLinks.map((item) => {
       const isActive = item.id === activeId ? ' is-active' : '';
       const current = item.id === activeId ? ' aria-current="page"' : '';
-      return `<a class="nav__item${isActive}" href="${item.href}"${current}>${item.label}</a>`;
+      return `<a class="nav__item${isActive}" href="${esc.safeHref(item.href)}"${current}>${esc.escapeHtml(item.label)}</a>`;
     }).join('');
 
     const appsMenu = window.MAS0NG_APP_TILES
@@ -245,32 +245,33 @@
       ? `<div class="nav__menu-divider" role="separator"></div><a class="nav__menu-item" href="/public/apps/" role="menuitem">Browse all</a>`
       : '';
 
+    const esc = window.MAS0NG_HTML || { escapeHtml: (v) => String(v), safeHref: (v) => String(v || '#') };
     const legalMenu = d.legal.map((item) =>
-      `<a class="nav__menu-item" href="${item.href}" role="menuitem">${item.label}</a>`
+      `<a class="nav__menu-item" href="${esc.safeHref(item.href)}" role="menuitem">${esc.escapeHtml(item.label)}</a>`
     ).join('');
 
     const drawerApps = publicApps.length
-      ? `<p class="nav__drawer-label">Apps</p>${publicApps.map((item) => `<a class="nav__drawer-link" href="${item.href}">${item.name}</a>`).join('')}<a class="nav__drawer-link" href="/public/apps/">Browse all</a>`
+      ? `<p class="nav__drawer-label">Apps</p>${publicApps.map((item) => `<a class="nav__drawer-link" href="${esc.safeHref(item.href)}">${esc.escapeHtml(item.name)}</a>`).join('')}<a class="nav__drawer-link" href="/public/apps/">Browse all</a>`
       : '';
 
     const drawerLegal = `
       <p class="nav__drawer-label">Legal</p>
-      ${d.legal.map((item) => `<a class="nav__drawer-link" href="${item.href}">${item.label}</a>`).join('')}
+      ${d.legal.map((item) => `<a class="nav__drawer-link" href="${esc.safeHref(item.href)}">${esc.escapeHtml(item.label)}</a>`).join('')}
     `;
 
     const footerLegal = d.legal.map((item) =>
-      `<li><a href="${item.href}">${item.label}</a></li>`
+      `<li><a href="${esc.safeHref(item.href)}">${esc.escapeHtml(item.label)}</a></li>`
     ).join('');
 
     const footerSite = d.nav.map((item) =>
-      `<li><a href="${item.href}">${item.label}</a></li>`
+      `<li><a href="${esc.safeHref(item.href)}">${esc.escapeHtml(item.label)}</a></li>`
     ).join('');
 
     const footerSocial = liveSocials().map((item) => `
       <li>
-        <a class="footer__social-link" href="${item.href}" target="_blank" rel="noopener noreferrer" title="${item.label}">
-          <img src="${item.icon}" alt="" width="20" height="20" loading="lazy" decoding="async" />
-          <span class="footer__social-label">${item.label}</span>
+        <a class="footer__social-link" href="${esc.safeHref(item.href)}" target="_blank" rel="noopener noreferrer" title="${esc.escapeHtml(item.label)}">
+          <img src="${esc.safeHref(item.icon)}" alt="" width="20" height="20" loading="lazy" decoding="async" />
+          <span class="footer__social-label">${esc.escapeHtml(item.label)}</span>
         </a>
       </li>
     `).join('');
@@ -318,10 +319,10 @@
         </div>
       </div>
       <nav class="nav__drawer" id="nav-drawer" aria-label="Mobile">
-        ${navLinks.map((item) => `<a class="nav__drawer-link" href="${item.href}">${item.label}</a>`).join('')}
+        ${navLinks.map((item) => `<a class="nav__drawer-link" href="${esc.safeHref(item.href)}">${esc.escapeHtml(item.label)}</a>`).join('')}
         ${!isHome && drawerApps ? `<div class="nav__drawer-group" id="nav-drawer-apps">${drawerApps}</div>` : ''}
         <div class="nav__drawer-group" id="nav-drawer-legal">${drawerLegal}</div>
-        <a class="nav__drawer-login${activeId === 'login' ? ' is-active' : ''}" id="nav-login-drawer" href="${d.loginUrl}"${activeId === 'login' ? ' aria-current="page"' : ''}>
+        <a class="nav__drawer-login${activeId === 'login' ? ' is-active' : ''}" id="nav-login-drawer" href="${esc.safeHref(d.loginUrl)}"${activeId === 'login' ? ' aria-current="page"' : ''}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
           Log in
         </a>
@@ -339,7 +340,7 @@
             <h3>Site</h3>
             <ul>
               ${footerSite}
-              <li><a id="footer-login" href="${d.loginUrl}">Log in</a></li>
+              <li><a id="footer-login" href="${esc.safeHref(d.loginUrl)}">Log in</a></li>
             </ul>
           </div>
           <div class="footer__col">
