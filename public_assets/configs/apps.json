@@ -91,6 +91,15 @@
       "href": "/secure/localsend/",
       "icon": "/public_assets/app_icons/dash.svg",
       "lucide": "send"
+    },
+    {
+      "id": "remote",
+      "name": "Remote Access",
+      "label": "remote.mas0ng.com",
+      "description": "Secure browser access to the remote desktop control session.",
+      "href": "https://remote.mas0ng.com/",
+      "icon": "/public_assets/app_icons/dash.svg",
+      "lucide": "monitor-up"
     }
   ]
 }
