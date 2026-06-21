@@ -201,6 +201,37 @@ html:not([data-nav-solid]) body[data-page="apps"] .legal-hero > .nav .nav__login
   color: #64748b;
 }
 
+.bot-card {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  align-items: center;
+  gap: 18px;
+}
+
+.bot-card__icon {
+  width: 76px;
+  height: 76px;
+  border-radius: 22%;
+  object-fit: cover;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.16);
+}
+
+.policy-choice {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: min(100% - 32px, 760px);
+  margin-top: -38px;
+}
+
+.legal-breadcrumb {
+  margin: 0 0 14px;
+  font-size: 0.9rem;
+}
+
+.legal-breadcrumb a {
+  color: #0f766e;
+  font-weight: 600;
+}
+
 .legal-hero + .legal-stack,
 .legal-hero + .paper {
   margin-top: 36px;
@@ -464,5 +495,18 @@ html:not([data-nav-solid]) body[data-page="apps"] .legal-hero > .nav .nav__login
 
   .legal-card {
     min-height: 150px;
+  }
+
+  .bot-card {
+    grid-template-columns: 64px 1fr;
+  }
+
+  .bot-card__icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .policy-choice {
+    grid-template-columns: 1fr;
   }
 }

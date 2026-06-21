@@ -12,6 +12,7 @@ window.MAS0NG_SITE = {
     { id: 'legal', label: 'Legal hub', href: '/legal/' },
     { id: 'privacy', label: 'Privacy policy', href: '/legal/privacy/' },
     { id: 'ai', label: 'AI policy', href: '/legal/ai.html' },
+    { id: 'discord-bots', label: 'Discord bot policies', href: '/legal/discord-bot.html' },
     { id: 'terms', label: 'Terms', href: '/legal/terms.html' },
     { id: 'cookies', label: 'Cookies', href: '/legal/cookies.html' },
     { id: 'security', label: 'Security', href: '/legal/security.html' }
