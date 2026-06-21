@@ -7,77 +7,66 @@
     <title>mas0ng.com | security notes</title>
     <meta name="description" content="Security notes for mas0ng.com.">
     <meta name="theme-color" content="#f7f8fb">
-    <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="/public_assets/fonts/etna.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" />
-    <link rel="stylesheet" href="/public_assets/site/css/site.css" />
-    <link rel="stylesheet" href="/public_assets/site/css/legal.css" />
+    <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="/public_assets/fonts/etna.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap">
+    <link rel="stylesheet" href="/public_assets/site/css/site.css">
+    <link rel="stylesheet" href="/public_assets/site/css/legal.css">
   </head>
   <body data-page="legal">
     <div id="site-main">
-    <main class="legal-shell">
-      <section class="legal-hero">
-        <p class="legal-kicker">Security notes</p>
-        <h1 class="legal-title">Keeping private apps protected.</h1>
-        <p class="legal-lead">These notes explain intended access controls, session checks, server-side secrets, upload limits, and how to report security concerns.</p>
-        <p class="legal-meta">Last updated: 9 June 2026</p>
-      </section>
-
-      <section class="legal-stack">
-        <section class="legal-section">
-          <h2>Authorised access</h2>
-          <p>Private pages and Worker API routes are intended for authorised users only. Browser sign-in is handled at <a class="legal-link" href="https://auth.mas0ng.com/login">auth.mas0ng.com</a>. Session cookies, server-side auth verification, and route checks protect private areas.</p>
+      <main class="legal-shell">
+        <section class="legal-hero">
+          <p class="legal-kicker">Security notes</p>
+          <h1 class="legal-title">Protecting private access.</h1>
+          <p class="legal-lead">These notes explain security monitoring, user responsibilities, and how to report a concern without publishing sensitive implementation details.</p>
+          <p class="legal-meta">Last updated: 22 June 2026</p>
         </section>
 
-        <section class="legal-section">
-          <h2>Sign-in monitoring and automated analysis</h2>
-          <p>Sign-in and protected requests may be logged, rate-limited, challenged, or blocked. This can include IP addresses, timestamps, user agents, request paths, failed login reasons, session checks, and related security metadata.</p>
-          <p>Automated systems — including AI-assisted analysis — may be used to review login attempts and request patterns for unusual behaviour, brute-force activity, suspicious timing, or other signs of abuse. These checks are intended to keep private areas secure, not to profile ordinary public visitors.</p>
-          <p>Before signing in, you must agree to this monitoring notice on the login page. If you do not agree, access to protected areas should be refused.</p>
-        </section>
+        <section class="legal-stack">
+          <section class="legal-section">
+            <h2>Authorised access</h2>
+            <p>Protected pages and features are available only to authorised users with a valid session. Access may be refused, revoked, or restricted where authentication fails or a request appears unsafe or abusive.</p>
+          </section>
 
-        <section class="legal-section">
-          <h2>Cloudflare Turnstile</h2>
-          <p>The login page may use Cloudflare Turnstile to help distinguish genuine sign-in attempts from automated abuse. Turnstile may process browser and request signals according to Cloudflare's own terms and privacy practices.</p>
-        </section>
+          <section class="legal-section">
+            <h2>Security information</h2>
+            <p>Sign-in and protected requests may record IP address, timestamp, user agent, requested page, authentication outcome, challenge result, failed-login reason, rate-limit event, and related security information. This is used to authenticate users, detect abuse, investigate faults, and protect private services.</p>
+            <p>Limited alerts about successful, failed, or blocked sign-in attempts may be sent through a third-party notification service. The <a class="legal-link" href="/legal/privacy/">Privacy Policy</a> identifies relevant recipients and explains retention and rights.</p>
+          </section>
 
-        <section class="legal-section">
-          <h2>AI token protection</h2>
-          <p>AI provider keys should stay server-side in Worker secrets. The browser should call the private AI Worker, and the Worker should verify the session before sending requests to providers such as OpenAI or DeepSeek.</p>
-        </section>
+          <section class="legal-section">
+            <h2>Automated checks</h2>
+            <p>Automated checks may validate sessions, apply rate limits, require a challenge, or allow or block a request based on authentication and security signals. They protect private areas and are not used to profile ordinary public visitors or make legal or similarly significant decisions about them.</p>
+          </section>
 
-        <section class="legal-section">
-          <h2>Upload limits</h2>
-          <p>The AI app enforces compressed file limits, total upload allowance, same-origin checks for unsafe requests, and retention rules for pinned and recent chats. These controls reduce storage abuse and accidental cost exposure.</p>
-        </section>
+          <section class="legal-section">
+            <h2>Cloudflare Turnstile</h2>
+            <p>The sign-in page uses Cloudflare Turnstile to help prevent automated abuse. Turnstile processes browser and request signals under Cloudflare's applicable privacy terms.</p>
+          </section>
 
-        <section class="legal-section">
-          <h2>Session safety</h2>
-          <ul>
-            <li>Keep login details private.</li>
-            <li>Sign out when using a shared device.</li>
-            <li>Clear browser cookies if a device is lost or no longer trusted.</li>
-            <li>Report unexpected login, session, AI usage, upload, or dashboard behaviour.</li>
-          </ul>
-        </section>
+          <section class="legal-section">
+            <h2>Your responsibilities</h2>
+            <ul>
+              <li>Keep login details, one-time codes, and sessions private.</li>
+              <li>Do not attempt to bypass authentication, challenges, rate limits, or access controls.</li>
+              <li>Sign out on shared devices and clear site cookies if a device is lost or no longer trusted.</li>
+              <li>Report unexpected sign-in, session, upload, AI, or protected-app activity promptly.</li>
+            </ul>
+          </section>
 
-        <section class="legal-section">
-          <h2>UK applicable law</h2>
-          <p>These notes are written for users in the United Kingdom and are intended to align with UK online and data protection law, including the UK GDPR, the Data Protection Act 2018, PECR, the Online Safety Act 2023 where relevant, and related computer misuse and fraud offences that may apply to unauthorised access attempts.</p>
-          <p>mas0ng.com is a personal site with private authorised access. It is not operated as a large public user-to-user platform, but unlawful, harmful, abusive, or exploitative use remains prohibited under UK law and the site <a class="legal-link" href="/legal/terms.html">Terms of Use</a>.</p>
+          <section class="legal-section">
+            <h2>Reporting a security issue</h2>
+            <p>Send security concerns to <a class="legal-link" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>. Include enough information to understand and reproduce the issue, but do not include passwords, active session values, API keys, or unnecessary personal data.</p>
+            <p>Please allow reasonable time to investigate before publicly disclosing an unresolved issue. Do not access, alter, retain, or share data that is not yours.</p>
+          </section>
         </section>
-
-        <section class="legal-section">
-          <h2>Reporting concerns</h2>
-          <p>If you believe you have found a security issue, contact <a class="legal-link" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a> with enough detail to understand and reproduce the issue.</p>
-        </section>
-      </section>
-    </main>
-  </div>
-  <script src="/public_assets/site/js/config/site-data.js"></script>
-  <script src="/public_assets/site/js/lib/cache.js"></script>
-  <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
-  <script src="/public_assets/site/js/layout/shell.js" data-active="legal" defer></script>
-</body>
+      </main>
+    </div>
+    <script src="/public_assets/site/js/config/site-data.js"></script>
+    <script src="/public_assets/site/js/lib/cache.js"></script>
+    <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
+    <script src="/public_assets/site/js/layout/shell.js" data-active="legal" defer></script>
+  </body>
 </html>

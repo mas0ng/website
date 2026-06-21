@@ -4,94 +4,78 @@
     <meta charset="utf-8">
     <script src="/public_assets/site/js/layout/loader.js?v=20260610-loader1"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>mas0ng.com | ai policy</title>
+    <title>mas0ng.com | AI policy</title>
     <meta name="description" content="AI policy for mas0ng.com.">
     <meta name="theme-color" content="#f7f8fb">
-    <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="/public_assets/fonts/etna.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" />
-    <link rel="stylesheet" href="/public_assets/site/css/site.css" />
-    <link rel="stylesheet" href="/public_assets/site/css/legal.css" />
+    <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="/public_assets/fonts/etna.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap">
+    <link rel="stylesheet" href="/public_assets/site/css/site.css">
+    <link rel="stylesheet" href="/public_assets/site/css/legal.css">
   </head>
   <body data-page="legal">
     <div id="site-main">
-    <main class="legal-shell">
-      <section class="legal-hero">
-        <p class="legal-kicker">AI policy</p>
-        <h1 class="legal-title">Private AI app policy.</h1>
-        <p class="legal-lead">This policy explains how the private mas0ng.com AI app handles prompts, model providers, chats, uploaded files, extracted text, and AI output.</p>
-        <p class="legal-meta">Last updated: 9 June 2026</p>
-      </section>
-
-      <section class="legal-stack">
-        <section class="legal-section">
-          <h2>What the AI app does</h2>
-          <p>The private AI app lets an authorised user choose a model provider, send chat messages, upload files, and receive AI-generated responses. It is intended as a private assistant interface, not a public service.</p>
+      <main class="legal-shell">
+        <section class="legal-hero">
+          <p class="legal-kicker">AI policy</p>
+          <h1 class="legal-title">Using private AI features.</h1>
+          <p class="legal-lead">This policy explains what is processed when an authorised user sends prompts or files to an AI feature.</p>
+          <p class="legal-meta">Last updated: 22 June 2026</p>
         </section>
 
-        <section class="legal-section">
-          <h2>Model providers</h2>
-          <p>Prompts, selected chat history, model settings, attachment metadata, and extracted readable text may be sent to configured model providers such as OpenAI or DeepSeek. Provider API keys should remain server-side in Worker secrets and should not be exposed to the browser.</p>
-        </section>
+        <section class="legal-stack">
+          <section class="legal-section">
+            <h2>What is processed</h2>
+            <p>AI features may process prompts, selected conversation history, model settings, filenames, file content, extracted text, generated images, responses, and usage information. Only submit content that you are permitted to process.</p>
+          </section>
 
-        <section class="legal-section">
-          <h2>UK law and transparency</h2>
-          <p>This policy is written for users in the United Kingdom and is intended to align with UK GDPR, the Data Protection Act 2018, PECR where browser storage is involved, and broader UK online law including the Online Safety Act 2023 where relevant.</p>
-          <p>Where AI app content includes personal data, the main purposes are to provide the requested private AI response, maintain chat history, attach files, extract readable file context, secure the service, and enforce upload or message limits. The likely lawful bases are legitimate interests in operating and securing the private app, and contract or steps requested by the authorised user where a specific AI feature is used.</p>
-          <p>Security-related AI or automated analysis used for login monitoring, abuse detection, or request review is separate from the private chat AI app and is explained in the <a class="legal-link" href="/legal/security.html">Security Notes</a> and <a class="legal-link" href="/legal/privacy/">Privacy Policy</a>.</p>
-        </section>
+          <section class="legal-section">
+            <h2>AI providers</h2>
+            <p>Prompts and relevant conversation context are sent to the provider selected for the request, currently OpenAI or DeepSeek. Those providers process the content to generate a response and may process it outside the UK under their own applicable terms and privacy information.</p>
+          </section>
 
-        <section class="legal-section">
-          <h2>Chats and memory</h2>
-          <p>Chats may be stored in Worker/R2-backed storage so they can be reopened later. The app may send recent conversation context back to the selected provider so the model can respond coherently. Long-term personal memory should be treated as separate, editable app data if enabled later.</p>
-        </section>
+          <section class="legal-section">
+            <h2>Uploaded files and text extraction</h2>
+            <p>Readable text files may be processed to provide attachment context. Images and PDF files may be sent to OpenAI to extract visible text, even if DeepSeek or another provider is selected for the later conversation. Extracted text may then be included with a prompt sent to the selected provider.</p>
+            <p>A file may still be stored and shown as attached when its contents cannot be extracted. Do not upload confidential, sensitive, or third-party material unless it is necessary, lawful, and appropriate to send to the relevant providers.</p>
+          </section>
 
-        <section class="legal-section">
-          <h2>Uploaded files</h2>
-          <p>Files may be compressed in the browser before upload. Supported text-like files may be decoded and text-extracted server-side, then included in prompts when attached to a message. Unsupported binary files may be stored and shown as attached, but their contents may not be readable by the AI.</p>
-        </section>
+          <section class="legal-section">
+            <h2>Storage and retention</h2>
+            <p>Chats and files may be saved so they can be reopened. Deleting a chat removes its saved chat and attached files. Files are retained for pinned chats and a limited number of recent unpinned chats; files from older unpinned chats may be deleted while chat text remains. Temporary chats are not saved after the tab is closed.</p>
+          </section>
 
-        <section class="legal-section">
-          <h2>Provider processing and transfers</h2>
-          <p>Model providers may process prompt and attachment context outside the UK depending on their own infrastructure and terms. Do not submit personal data, confidential data, or third-party data unless it is necessary for the AI task and you accept that provider processing may occur.</p>
-        </section>
+          <section class="legal-section">
+            <h2>Lawful basis and rights</h2>
+            <p>Processing is based mainly on legitimate interests in providing and securing the requested private feature. Legal obligations may apply in limited circumstances. Information about recipients, international processing, retention, and UK data protection rights is in the <a class="legal-link" href="/legal/privacy/">Privacy Policy</a>.</p>
+          </section>
 
-        <section class="legal-section">
-          <h2>Retention and limits</h2>
-          <p>Files are retained for pinned chats and the most recent unpinned chats according to the app settings. Older unpinned chat files may be deleted while chat text remains. Upload and message limits may block new attachments or oversized prompts while keeping the chat interface available.</p>
-        </section>
+          <section class="legal-section">
+            <h2>Limits of AI output</h2>
+            <p>AI responses can be inaccurate, incomplete, biased, outdated, or unsuitable. Review important output before acting on it. Do not rely on AI output as legal, medical, financial, security, or other professional advice, or as the sole basis for a high-impact decision.</p>
+          </section>
 
-        <section class="legal-section">
-          <h2>Output limits</h2>
-          <p>AI responses can be wrong, incomplete, outdated, or misleading. Do not rely on them as professional advice. Review outputs carefully before using them for code changes, publishing, security decisions, financial decisions, legal decisions, or anything high impact.</p>
-        </section>
+          <section class="legal-section">
+            <h2>Do not submit or request</h2>
+            <ul>
+              <li>Passwords, API keys, authentication codes, or other secrets.</li>
+              <li>Unnecessary health, financial, identity, or other sensitive personal data.</li>
+              <li>Personal data about another person without a lawful reason and permission.</li>
+              <li>Illegal, harmful, abusive, exploitative, or rights-infringing material.</li>
+            </ul>
+          </section>
 
-        <section class="legal-section">
-          <h2>Rights and requests</h2>
-          <p>Privacy rights that may apply to AI app data are explained in the <a class="legal-link" href="/legal/privacy/">Privacy Policy</a>. Requests may require enough information to verify the request and identify the relevant chat, upload, or session.</p>
+          <section class="legal-section">
+            <h2>Contact</h2>
+            <p>Questions or data requests concerning AI features can be sent to <a class="legal-link" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>.</p>
+          </section>
         </section>
-
-        <section class="legal-section">
-          <h2>Do not submit</h2>
-          <ul>
-            <li>Passwords, API keys, or secrets unless they are strictly needed and you accept the risk.</li>
-            <li>Highly sensitive personal data, medical data, financial data, identity documents, or private third-party data.</li>
-            <li>Illegal, harmful, abusive, or exploitative material.</li>
-            <li>Content you do not have permission to process.</li>
-          </ul>
-        </section>
-
-        <section class="legal-section">
-          <h2>Contact</h2>
-          <p>Questions about AI features can be sent to <a class="legal-link" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>.</p>
-        </section>
-      </section>
-    </main>
-  </div>
-  <script src="/public_assets/site/js/config/site-data.js"></script>
-  <script src="/public_assets/site/js/lib/cache.js"></script>
-  <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
-  <script src="/public_assets/site/js/layout/shell.js" data-active="legal" defer></script>
-</body>
+      </main>
+    </div>
+    <script src="/public_assets/site/js/config/site-data.js"></script>
+    <script src="/public_assets/site/js/lib/cache.js"></script>
+    <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
+    <script src="/public_assets/site/js/layout/shell.js" data-active="legal" defer></script>
+  </body>
 </html>

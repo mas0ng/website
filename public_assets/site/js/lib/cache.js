@@ -4,8 +4,11 @@
   const LEGACY_PREFIXES = ['font:', 'img:'];
   const VERSIONS_URL = '/public_assets/configs/cache-versions.json';
   const memory = new Map();
+  const storageFreePage = new Set(['home', 'legal', 'error', 'bio'])
+    .has(document.body?.dataset?.page || 'page');
 
   function readStore(key, persistent = false) {
+    if (storageFreePage) return null;
     try {
       return (persistent ? localStorage : sessionStorage).getItem(key);
     } catch {
@@ -14,6 +17,7 @@
   }
 
   function writeStore(key, value, persistent = false) {
+    if (storageFreePage) return undefined;
     try {
       (persistent ? localStorage : sessionStorage).setItem(key, value);
     } catch {
@@ -22,6 +26,7 @@
   }
 
   function removeStore(key, persistent = false) {
+    if (storageFreePage) return undefined;
     try {
       (persistent ? localStorage : sessionStorage).removeItem(key);
     } catch {
@@ -119,6 +124,8 @@
     const cleaned = Object.fromEntries(
       Object.entries(manifest || {}).filter(([key]) => !key.startsWith('_'))
     );
+
+    if (storageFreePage) return cleaned;
 
     const previous = readManifest();
     if (!previous || manifestChanged(previous, cleaned)) {

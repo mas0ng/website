@@ -15,6 +15,9 @@
     try {
       await window.MAS0NG_CACHE?.ready;
 
+      const page = document.body.dataset.page || 'page';
+      await loadPrivacyNotice(page);
+
       const publicOnly = window.location.hostname === 'auth.mas0ng.com'
         || script?.dataset.publicOnly !== undefined;
 
@@ -29,7 +32,6 @@
       // (like home.js for social cards) work even for logged-in users.
       // The early return below only skips the *public* nav/footer mounting in favor of the
       // shared logged-in navbar.
-      const page = document.body.dataset.page || 'page';
       const initialHashTarget = resolveHashTarget(window.location.hash);
       if (page === 'error') {
         document.documentElement.setAttribute('data-nav-solid', '');
@@ -44,6 +46,7 @@
 
       if (authenticated) {
         await loadScript(d.sharedNavUrl);
+        initSocialLinkDialog();
         // Fire the ready event so page content scripts (home.js, etc.) can render
         // things like the social grid using the now-populated d.social.
         document.dispatchEvent(new CustomEvent('mas0ng:shell-ready'));
@@ -60,6 +63,7 @@
 
       mountShell(active);
       initNav();
+      initSocialLinkDialog();
       initScrollState(page);
 
       if (initialHashTarget) {
@@ -88,6 +92,17 @@
 
     const origin = (d.siteOrigin || window.location.origin).replace(/\/$/, '');
     return `${origin}${url.startsWith('/') ? url : `/${url}`}`;
+  }
+
+  async function loadPrivacyNotice(page) {
+    if (page === 'bio' || page === 'app') return;
+
+    try {
+      await loadScript(resolveAssetUrl('/public_assets/site/js/lib/privacy-notice.js'));
+      window.MAS0NG_PRIVACY_NOTICE?.init();
+    } catch (error) {
+      console.warn('Failed to load privacy notice:', error);
+    }
   }
 
   async function loadApps() {
@@ -228,6 +243,110 @@
 
   function liveSocials() {
     return d.social.filter((item) => item.href && item.href !== '#');
+  }
+
+  function initSocialLinkDialog() {
+    const desktopPointer = window.matchMedia('(min-width: 734px) and (hover: hover) and (pointer: fine)');
+    const dialog = document.createElement('dialog');
+    let sourceLink = null;
+
+    dialog.className = 'social-dialog';
+    dialog.setAttribute('aria-labelledby', 'social-dialog-title');
+    dialog.innerHTML = `
+      <div class="social-dialog__panel">
+        <button class="social-dialog__close" type="button" aria-label="Close social link dialog">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <div class="social-dialog__heading">
+          <img class="social-dialog__icon" alt="" width="44" height="44">
+          <div>
+            <p class="social-dialog__kicker">Continue on your phone</p>
+            <h2 class="social-dialog__title" id="social-dialog-title"></h2>
+          </div>
+        </div>
+        <div class="social-dialog__qr-wrap">
+          <canvas class="social-dialog__qr" role="img"></canvas>
+          <p class="social-dialog__status" aria-live="polite">Creating QR code...</p>
+        </div>
+        <p class="social-dialog__copy"></p>
+        <p class="social-dialog__notice"></p>
+        <div class="social-dialog__divider" aria-hidden="true"><span>or</span></div>
+        <a class="social-dialog__open" target="_blank" rel="noopener noreferrer"></a>
+      </div>
+    `;
+    document.body.append(dialog);
+
+    const closeButton = dialog.querySelector('.social-dialog__close');
+    const icon = dialog.querySelector('.social-dialog__icon');
+    const title = dialog.querySelector('.social-dialog__title');
+    const canvas = dialog.querySelector('.social-dialog__qr');
+    const status = dialog.querySelector('.social-dialog__status');
+    const copy = dialog.querySelector('.social-dialog__copy');
+    const thirdPartyNotice = dialog.querySelector('.social-dialog__notice');
+    const openLink = dialog.querySelector('.social-dialog__open');
+
+    closeButton.addEventListener('click', () => dialog.close());
+    desktopPointer.addEventListener('change', () => {
+      if (!desktopPointer.matches && dialog.open) dialog.close();
+    });
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+    dialog.addEventListener('close', () => {
+      document.body.classList.remove('social-dialog-open');
+      sourceLink?.focus({ preventScroll: true });
+      sourceLink = null;
+    });
+
+    document.addEventListener('click', async (event) => {
+      const link = event.target.closest('.social-tile, .footer__social-link');
+      if (!link || !desktopPointer.matches || event.defaultPrevented) return;
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+      const href = link.href;
+      if (!href) return;
+
+      const social = liveSocials().find((item) => {
+        try {
+          return new URL(item.href, window.location.href).href === href;
+        } catch {
+          return item.href === link.getAttribute('href');
+        }
+      });
+      if (!social) return;
+
+      event.preventDefault();
+      sourceLink = link;
+      icon.src = social.icon;
+      title.textContent = social.label;
+      canvas.setAttribute('aria-label', `QR code for ${social.label}`);
+      copy.textContent = `Scan with your phone to open ${social.label}.`;
+      thirdPartyNotice.textContent = `${social.label} is not operated by us. Its privacy policy and terms of service may differ from ours.`;
+      openLink.href = href;
+      openLink.textContent = `Open ${social.label} in a new tab`;
+      status.textContent = 'Creating QR code...';
+      status.hidden = false;
+      canvas.hidden = true;
+      document.body.classList.add('social-dialog-open');
+      dialog.showModal();
+
+      try {
+        if (!window.QRCode) {
+          await loadScript(resolveAssetUrl('/public_assets/site/js/lib/qrcode.min.js'));
+        }
+        await window.QRCode.toCanvas(canvas, href, {
+          width: 220,
+          margin: 2,
+          errorCorrectionLevel: 'M',
+          color: { dark: '#07111fff', light: '#ffffffff' }
+        });
+        canvas.hidden = false;
+        status.hidden = true;
+      } catch (error) {
+        status.textContent = 'The QR code could not be created. You can still use the button below.';
+        console.warn('Failed to create social QR code:', error);
+      }
+    });
   }
 
   function mountShell(activeId) {
