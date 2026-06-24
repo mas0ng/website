@@ -18,6 +18,7 @@
   <div id="site-main">
     <section class="masthead" id="masthead">
       <div class="masthead__bg" aria-hidden="true"></div>
+      <canvas class="masthead__canvas" id="masthead-canvas"></canvas>
 
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero__inner">
@@ -34,6 +35,46 @@
     </section>
 
     <main>
+      <section class="section" id="highlights" aria-labelledby="highlights-title">
+        <div class="section__inner">
+          <h2 class="section__title" id="highlights-title">Built on TikTok. Backed by results.</h2>
+          <p class="section__lead">Stats from one of my TikTok accounts, showing the audience, views, likes, and sponsorships I’ve built through short-form content.</p>
+          
+          <div class="stats-grid" id="stats-grid">
+            <div class="tile-skeleton">
+              <div class="tile-skeleton__icon skeleton-shimmer"></div>
+              <div class="tile-skeleton__body">
+                <div class="tile-skeleton__line skeleton-shimmer"></div>
+                <div class="tile-skeleton__line tile-skeleton__line--short skeleton-shimmer"></div>
+              </div>
+            </div>
+            <div class="tile-skeleton">
+              <div class="tile-skeleton__icon skeleton-shimmer"></div>
+              <div class="tile-skeleton__body">
+                <div class="tile-skeleton__line skeleton-shimmer"></div>
+                <div class="tile-skeleton__line tile-skeleton__line--short skeleton-shimmer"></div>
+              </div>
+            </div>
+            <div class="tile-skeleton">
+              <div class="tile-skeleton__icon skeleton-shimmer"></div>
+              <div class="tile-skeleton__body">
+                <div class="tile-skeleton__line skeleton-shimmer"></div>
+                <div class="tile-skeleton__line tile-skeleton__line--short skeleton-shimmer"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sponsors-carousel-container" id="sponsors-carousel-container" style="display: none;">
+            <span class="sponsors-label">Brands I've received sponsorship offers from</span>
+            <div class="sponsors-belt">
+              <div class="sponsors-belt__track" id="sponsors-belt-track">
+                <!-- Loaded via JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="section" id="social" aria-labelledby="social-title">
         <div class="section__inner">
           <h2 class="section__title" id="social-title">Social links</h2>
@@ -51,6 +92,17 @@
   <script src="/public_assets/site/js/lib/cache.js"></script>
   <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
   <script src="/public_assets/site/js/layout/shell.js" data-active="home" defer></script>
+  <script src="/index_assets/js/masthead-canvas.js" defer></script>
+  <script src="/index_assets/js/highlights.js" defer></script>
   <script src="/index_assets/js/home.js" defer></script>
+
+  <svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="liquid-metaball">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="9" result="blur" />
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="liquid" />
+      </filter>
+    </defs>
+  </svg>
 </body>
 </html>
