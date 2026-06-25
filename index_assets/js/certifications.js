@@ -203,6 +203,9 @@
       const credentialId = cert.credential_id
         ? `<p class="certification-card__meta">Credential ID: ${escapeHtml(cert.credential_id)}</p>`
         : '';
+      const completedThrough = cert.completed_through
+        ? `<p class="certification-card__meta">Completed through: ${escapeHtml(cert.completed_through)}</p>`
+        : '';
 
       return `
         <article class="certification-card">
@@ -215,6 +218,7 @@
           <div class="certification-card__body">
             <h2>${escapeHtml(cert.name)}</h2>
             <p>${escapeHtml(cert.issuing_organization)}</p>
+            ${completedThrough}
             ${credentialId}
           </div>
           ${link}

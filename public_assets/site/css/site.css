@@ -178,6 +178,27 @@ h1, h2, h3,
   mix-blend-mode: screen;
 }
 
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
+  body[data-page="home"] .masthead {
+    min-height: 100svh;
+  }
+
+  body[data-page="home"] .masthead__bg {
+    opacity: 1;
+    transform: none;
+    background:
+      radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+      radial-gradient(circle at 14% 100%, rgba(59, 130, 246, 0.24), transparent 360px),
+      radial-gradient(circle at 86% 0%, rgba(20, 184, 166, 0.18), transparent 320px),
+      linear-gradient(135deg, #061224 0%, #111827 56%, #020617 100%);
+    background-size: 24px 24px, auto, auto, auto;
+  }
+
+  body[data-page="home"] .masthead__canvas {
+    display: none;
+  }
+}
+
 
 /* ── Nav ── */
 .masthead > .nav {

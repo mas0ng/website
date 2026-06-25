@@ -14,6 +14,13 @@
     "icon": "/public_assets/social_icons/tiktok.svg"
   },
   {
+    "id": "linkedin",
+    "label": "LinkedIn",
+    "handle": "Mason Gibbs",
+    "href": "https://www.linkedin.com/in/mason-gibbs-3348512a6/",
+    "icon": "/public_assets/social_icons/linkedin.svg"
+  },
+  {
     "id": "snapchat",
     "label": "Snapchat",
     "handle": "mas0ng",
@@ -47,13 +54,6 @@
     "handle": "mas0ngi",
     "href": "http://discord.com/users/1167173941048123452",
     "icon": "/public_assets/social_icons/discord.svg"
-  },
-  {
-    "id": "linkedin",
-    "label": "LinkedIn",
-    "handle": "mas0ng",
-    "href": "#",
-    "icon": "/public_assets/social_icons/linkedin.svg"
   },
   {
     "id": "bluesky",

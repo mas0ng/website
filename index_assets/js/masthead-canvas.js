@@ -3,6 +3,12 @@
   if (!canvas) return;
   const masthead = document.getElementById('masthead');
   if (!masthead) return;
+  const staticMasthead = window.matchMedia('(max-width: 768px), (hover: none) and (pointer: coarse)');
+  if (staticMasthead.matches) {
+    canvas.hidden = true;
+    canvas.setAttribute('aria-hidden', 'true');
+    return;
+  }
   const ctx = canvas.getContext('2d');
 
   // Physics and interaction configuration
