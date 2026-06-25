@@ -1,5 +1,5 @@
 window.MAS0NG_TIKTOK_STATS = (function () {
-  const ENDPOINT = 'https://sharedassets.mas0ng.com/public_data_api/tiktok/stats';
+  const ENDPOINT = '/api/social-stats';
   const CACHE_TTL_MS = 2 * 60 * 1000; // 2 min client cache
 
   let cached = null;

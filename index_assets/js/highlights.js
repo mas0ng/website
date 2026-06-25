@@ -3,13 +3,17 @@
   const FALLBACK_URL = 'https://www.mas0ng.com/api/social-stats';
   
   const fallbackData = {
-    likes: 1250,
-    views: 48200,
-    followers: 31000,
+    likes: 2600000,
+    views: 26000000,
+    followers: 27100,
     sponsers: [
       "/public_assets/sponsor_icons/topmediai.svg",
-      "/public_assets/sponsor_icons/topmediai.svg",
-      "/public_assets/sponsor_icons/topmediai.svg"
+      "/public_assets/sponsor_icons/flashloop.png",
+      "/public_assets/sponsor_icons/verdent.png",
+      "/public_assets/sponsor_icons/supercell.png",
+      "/public_assets/sponsor_icons/polybuzz.png",
+      "/public_assets/sponsor_icons/hacoo.png",
+      "/public_assets/sponsor_icons/dola.png"
     ]
   };
 

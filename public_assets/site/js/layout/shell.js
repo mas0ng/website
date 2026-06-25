@@ -494,7 +494,9 @@
           ? main.querySelector('.worker-masthead')
           : page === 'legal' || page === 'apps'
             ? main.querySelector('.legal-hero')
-            : null;
+            : page === 'certifications'
+              ? main.querySelector('.certifications-hero')
+              : null;
 
       if (masthead) {
         masthead.prepend(nav);
@@ -642,10 +644,10 @@
 
       document.getElementById('scroll-hint')?.addEventListener('click', (e) => {
         e.preventDefault();
-        scrollToTarget(document.getElementById('social'));
+        scrollToTarget(document.getElementById('certifications'));
       });
-    } else if (page === 'legal' || page === 'apps') {
-      const hero = document.querySelector('.legal-hero');
+    } else if (page === 'legal' || page === 'apps' || page === 'certifications') {
+      const hero = document.querySelector('.legal-hero, .certifications-hero');
       if (!hero) return;
 
       update = () => {
@@ -688,6 +690,7 @@
   function initHashNavigation() {
     const isHome = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
     const hashTargets = {
+      certifications: ['#certifications', '/#certifications'],
       social: ['#social', '/#social']
     };
 
@@ -775,6 +778,7 @@
   function inferActive() {
     const path = window.location.pathname;
     if (path === '/' || path === '/index.html') return 'home';
+    if (path.endsWith('/certifications.html')) return 'certifications';
     if (path.startsWith('/public/apps')) return 'apps';
     if (path.startsWith('/legal')) return 'legal';
     return 'page';

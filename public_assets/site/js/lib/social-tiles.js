@@ -1,5 +1,5 @@
 window.MAS0NG_SOCIAL_TILES = (function () {
-  const SOCIAL_STATS_ENDPOINT = 'https://sharedassets.mas0ng.com/public_data_api/social/stats';
+  const SOCIAL_STATS_ENDPOINT = '/api/social-platforms';
   const CACHE_TTL_MS = 2 * 60 * 1000; // 2 min client cache
 
   let cachedStats = null;

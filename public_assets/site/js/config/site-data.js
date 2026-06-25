@@ -5,6 +5,7 @@ window.MAS0NG_SITE = {
   siteOrigin: '',
   nav: [
     { id: 'home', label: 'Home', href: '/' },
+    { id: 'certifications', label: 'Certifications', href: '/certifications.html' },
     { id: 'social', label: 'Social links', href: '/#social' }
   ],
   social: [],

@@ -25,11 +25,7 @@
     if (!window.MAS0NG_SOCIAL_TILES || !socialGrid) return;
 
     try {
-      let toRender = d.social || [];
-      if (window.MAS0NG_SOCIAL_TILES && window.MAS0NG_SOCIAL_TILES.fetchSocialStats) {
-        const statsData = await window.MAS0NG_SOCIAL_TILES.fetchSocialStats().catch(() => null);
-        toRender = window.MAS0NG_SOCIAL_TILES.enrichSocials(d.social, statsData);
-      }
+      const toRender = d.social || [];
       socialGrid.innerHTML = window.MAS0NG_SOCIAL_TILES.renderGrid(toRender);
       if (skeletons) {
         await skeletons.waitForImages(socialGrid);

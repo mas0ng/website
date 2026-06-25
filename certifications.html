@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <script src="/public_assets/site/js/layout/loader.js?v=20260610-loader1"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mas0ng.com | certifications</title>
+  <meta name="description" content="Certifications and verified credentials for Mason." />
+  <link rel="canonical" href="https://mas0ng.com/certifications.html" />
+  <meta name="theme-color" content="#07111f" />
+  <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="/public_assets/fonts/etna.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" />
+  <link rel="stylesheet" href="/public_assets/site/css/site.css" />
+</head>
+<body data-page="certifications">
+  <div id="site-main">
+    <main class="certifications-shell">
+      <section class="certifications-hero" aria-labelledby="certifications-title">
+        <div class="section__inner">
+          <p class="certifications-kicker">Certifications</p>
+          <h1 class="section__title" id="certifications-title">Certifications</h1>
+          <p class="section__lead">Verified credentials, grouped so you can filter by type and issuer.</p>
+        </div>
+      </section>
+
+      <section class="section certifications-section" aria-labelledby="certifications-list-title">
+        <div class="section__inner">
+          <div class="certifications-toolbar">
+            <h2 class="certifications-heading" id="certifications-list-title">All certifications</h2>
+            <span class="certifications-count" id="certification-count">Loading...</span>
+          </div>
+          <div class="certification-filters" id="certification-filters" aria-label="Filter certifications">
+            <p class="certification-filters__loading">Loading filters...</p>
+          </div>
+          <div class="qualification-grid certification-grid" id="certification-grid">
+            <div class="tile-skeleton">
+              <div class="tile-skeleton__icon skeleton-shimmer"></div>
+              <div class="tile-skeleton__body">
+                <div class="tile-skeleton__line skeleton-shimmer"></div>
+                <div class="tile-skeleton__line tile-skeleton__line--short skeleton-shimmer"></div>
+              </div>
+            </div>
+            <div class="tile-skeleton">
+              <div class="tile-skeleton__icon skeleton-shimmer"></div>
+              <div class="tile-skeleton__body">
+                <div class="tile-skeleton__line skeleton-shimmer"></div>
+                <div class="tile-skeleton__line tile-skeleton__line--short skeleton-shimmer"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="credential-dialog" id="credential-dialog" aria-labelledby="credential-dialog-title">
+      <div class="credential-dialog__panel">
+        <button class="credential-dialog__close" type="button" aria-label="Close credential warning" id="credential-dialog-close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <p class="credential-dialog__kicker">External link</p>
+        <h2 class="credential-dialog__title" id="credential-dialog-title">Open credential?</h2>
+        <p class="credential-dialog__copy">This credential is hosted on another website. Check the URL before opening it.</p>
+        <p class="credential-dialog__url" id="credential-dialog-url"></p>
+        <div class="credential-dialog__actions">
+          <button class="credential-dialog__button credential-dialog__button--ghost" type="button" id="credential-dialog-cancel">Cancel</button>
+          <a class="credential-dialog__button credential-dialog__button--primary" href="#" target="_blank" rel="noopener noreferrer" id="credential-dialog-open">Open in new tab</a>
+        </div>
+      </div>
+    </dialog>
+  </div>
+
+  <script src="/public_assets/site/js/config/site-data.js"></script>
+  <script src="/public_assets/site/js/lib/cache.js"></script>
+  <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
+  <script src="/public_assets/site/js/layout/shell.js" data-active="certifications" defer></script>
+  <script src="/index_assets/js/certifications.js" defer></script>
+</body>
+</html>
