@@ -1,0 +1,442 @@
+/* Bio page: shell-free mobile profile with a wider desktop presentation. */
+
+body[data-page="bio"] {
+  min-width: 0;
+  background: #000;
+  color: #fff;
+}
+
+.bio-masthead {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 430px;
+  padding: 42px 22px 96px;
+  overflow: clip;
+  text-align: center;
+  color: var(--text-inverse);
+  border-bottom: 0;
+  background: transparent;
+}
+
+.bio-masthead__bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: #000;
+}
+
+.bio-masthead__canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  opacity: 0.62;
+}
+
+.bio-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 20px;
+  width: min(100%, 580px);
+  margin: 0 auto;
+}
+
+.bio-profile-card {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  padding: 26px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 28px;
+  background: rgba(0, 0, 0, 0.72);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(18px);
+}
+
+.bio-profile {
+  position: relative;
+  width: 112px;
+  height: 112px;
+  margin: 0;
+}
+
+.bio-avatar-ring {
+  position: absolute;
+  inset: -6px;
+  border: 2px solid rgba(147, 197, 253, 0.92);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 42px rgba(2, 6, 23, 0.3), 0 0 0 5px rgba(20, 184, 166, 0.12);
+}
+
+.bio-avatar {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 112px;
+  height: 112px;
+  border: 3px solid rgba(255, 255, 255, 0.92);
+  border-radius: 50%;
+  object-fit: cover;
+  background: #061224;
+}
+
+.bio-identity {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+
+.bio-masthead .hero__title {
+  margin: 0;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.1;
+}
+
+.bio-handle {
+  margin: 2px 0 0;
+  color: #bfdbfe;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.bio-main {
+  position: relative;
+  z-index: 2;
+  padding: 0 0 52px;
+  background: transparent;
+}
+
+.bio-main .section {
+  padding: 0 0 56px;
+  background: transparent;
+}
+
+.bio-main .section__inner {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 680px);
+  margin: -88px auto 0;
+  padding: 26px 22px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 26px;
+  background: rgba(0, 0, 0, 0.78);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.48);
+  backdrop-filter: blur(18px);
+}
+
+.bio-section-head {
+  margin: 0 0 20px;
+  text-align: left;
+}
+
+.bio-section-head h2 {
+  margin: 0 0 6px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  line-height: 1.1;
+}
+
+.bio-section-head > p:last-child {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 0.9rem;
+}
+
+.bio-main .social-grid {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.bio-main .social-tile {
+  min-height: 82px;
+  padding: 14px 16px;
+  border-color: rgba(255, 255, 255, 0.13);
+  border-radius: 14px;
+  background: rgba(8, 8, 8, 0.84);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.34);
+}
+
+.bio-main .social-tile__label {
+  color: #fff;
+}
+
+.bio-main .social-tile__handle,
+.bio-main .social-tile__arrow {
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.bio-main .social-tile__glow {
+  display: none;
+}
+
+.bio-main .social-tile__icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+}
+
+.bio-main .social-tile__label {
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+
+.bio-main .social-tile__handle {
+  font-size: 0.84rem;
+}
+
+@media (min-width: 734px) {
+  body[data-page="bio"] {
+    background: var(--page-light);
+    color: var(--text);
+  }
+
+  body[data-page="bio"] #site-main {
+    min-height: 100svh;
+    padding-top: var(--nav-h);
+    background:
+      radial-gradient(circle at 6% 34%, rgba(59, 130, 246, 0.12), transparent 34rem),
+      radial-gradient(circle at 96% 62%, rgba(20, 184, 166, 0.1), transparent 30rem),
+      linear-gradient(180deg, #f6f8fb 0%, #eef4f9 100%);
+  }
+
+  .bio-masthead {
+    min-height: 530px;
+    padding: 92px 48px 188px;
+    isolation: isolate;
+  }
+
+  .bio-masthead__bg {
+    position: absolute;
+    background:
+      radial-gradient(circle at 12% 100%, rgba(37, 99, 235, 0.42), transparent 28rem),
+      radial-gradient(circle at 86% 0%, rgba(14, 165, 233, 0.25), transparent 26rem),
+      radial-gradient(circle at 72% 82%, rgba(20, 184, 166, 0.16), transparent 24rem),
+      linear-gradient(132deg, #020617 0%, #0b1729 52%, #07111f 100%);
+  }
+
+  .bio-masthead__canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.48;
+  }
+
+  .bio-hero__inner {
+    width: min(100%, 940px);
+  }
+
+  .bio-profile-card {
+    position: relative;
+    grid-template-columns: auto minmax(0, 1fr);
+    justify-items: start;
+    gap: 42px;
+    padding: 46px 52px;
+    overflow: hidden;
+    border-color: rgba(255, 255, 255, 0.25);
+    border-radius: 36px;
+    background: linear-gradient(135deg, rgba(2, 6, 23, 0.74), rgba(15, 23, 42, 0.52));
+    box-shadow:
+      0 40px 100px rgba(0, 0, 0, 0.38),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    text-align: left;
+  }
+
+  .bio-profile-card::before {
+    content: "";
+    position: absolute;
+    right: -130px;
+    bottom: -180px;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.2), transparent 68%);
+    pointer-events: none;
+  }
+
+  .bio-profile-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.12) 0.8px, transparent 0.8px);
+    background-size: 18px 18px;
+    opacity: 0.2;
+    -webkit-mask-image: linear-gradient(90deg, transparent 35%, #000 100%);
+    mask-image: linear-gradient(90deg, transparent 35%, #000 100%);
+    pointer-events: none;
+  }
+
+  .bio-profile {
+    z-index: 1;
+    width: 158px;
+    height: 158px;
+  }
+
+  .bio-avatar {
+    width: 158px;
+    height: 158px;
+    border-width: 4px;
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.32);
+  }
+
+  .bio-avatar-ring {
+    inset: -9px;
+    border: 2px solid rgba(147, 197, 253, 0.96);
+    box-shadow:
+      0 0 0 7px rgba(56, 189, 248, 0.08),
+      0 0 54px rgba(56, 189, 248, 0.22);
+  }
+
+  .bio-identity {
+    position: relative;
+    z-index: 1;
+    align-self: center;
+    justify-items: start;
+    gap: 10px;
+  }
+
+  .bio-masthead .hero__title {
+    font-size: clamp(3.1rem, 6vw, 5rem);
+    letter-spacing: -0.035em;
+  }
+
+  .bio-handle {
+    padding: 7px 13px;
+    border: 1px solid rgba(191, 219, 254, 0.18);
+    border-radius: 999px;
+    background: rgba(191, 219, 254, 0.08);
+    color: #dbeafe;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .bio-main {
+    flex: 1;
+    padding-bottom: 96px;
+  }
+
+  .bio-main .section {
+    padding-bottom: 0;
+  }
+
+  .bio-main .section__inner {
+    width: min(calc(100% - 80px), 1080px);
+    margin-top: -134px;
+    padding: 42px;
+    border-color: rgba(15, 23, 42, 0.08);
+    border-radius: 34px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow:
+      0 34px 80px rgba(15, 23, 42, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(24px);
+  }
+
+  .bio-section-head {
+    margin-bottom: 30px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  }
+
+  .bio-section-head h2 {
+    color: var(--text);
+    font-size: 2.35rem;
+    letter-spacing: -0.025em;
+  }
+
+  .bio-section-head > p:last-child {
+    color: var(--muted);
+  }
+
+  .bio-main .social-grid {
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 16px;
+    max-width: none;
+  }
+
+  .bio-main .social-tile {
+    min-height: 104px;
+    padding: 20px;
+    border-color: rgba(15, 23, 42, 0.08);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.07);
+  }
+
+  .bio-main .social-tile:hover {
+    border-color: rgba(37, 99, 235, 0.18);
+    box-shadow: 0 20px 44px rgba(15, 23, 42, 0.12);
+  }
+
+  .bio-main .social-tile__glow {
+    display: block;
+  }
+
+  .bio-main .social-tile__label {
+    color: var(--text);
+  }
+
+  .bio-main .social-tile__handle,
+  .bio-main .social-tile__external {
+    color: var(--muted);
+  }
+
+  body[data-page="bio"] #site-footer {
+    position: relative;
+    z-index: 3;
+  }
+}
+
+@media (max-width: 733px) {
+  body[data-page="bio"] #site-nav,
+  body[data-page="bio"] #mas0ng-shared-navbar,
+  body[data-page="bio"] #site-footer {
+    display: none !important;
+  }
+
+  body[data-page="bio"] #site-main {
+    min-height: 100svh;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .bio-masthead {
+    min-height: 400px;
+    padding: 34px 18px 88px;
+  }
+
+  .bio-main .social-tile {
+    padding: 13px 14px;
+  }
+
+  .bio-main .section__inner {
+    width: calc(100% - 24px);
+    margin-top: -88px;
+    padding: 22px 14px 8px;
+    border-radius: 22px;
+  }
+}
+
+@media not all {
+  body[data-page="bio"],
+  .bio-main {
+    background: #07111f;
+  }
+
+  .bio-main .social-tile {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
+}

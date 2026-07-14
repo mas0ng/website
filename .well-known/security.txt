@@ -1,0 +1,6 @@
+Contact: mailto:mason@mas0ng.com
+Contact: https://mas0ng.com/legal/security.html
+Expires: 2027-07-01T00:00:00Z
+Preferred-Languages: en
+Canonical: https://mas0ng.com/.well-known/security.txt
+Policy: https://mas0ng.com/legal/security.html

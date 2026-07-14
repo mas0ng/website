@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Open social profile | mas0ng.com</title>
+  <meta name="description" content="Continue from TikTok to an external social profile." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#07111f" />
+  <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="/public_assets/fonts/etna.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" />
+  <link rel="stylesheet" href="/public_assets/site/css/site.css" />
+  <link rel="stylesheet" href="/redirect/tiktok.css" />
+</head>
+<body class="tiktok-redirect-page">
+  <div class="redirect-cue" aria-hidden="true">
+    <span class="redirect-cue__label">Tap the menu</span>
+    <svg class="redirect-cue__arrow redirect-cue__arrow--one" viewBox="0 0 64 64" fill="none">
+      <path d="M10 52C25 48 42 35 50 14M37 18L51 13L54 28" />
+    </svg>
+    <svg class="redirect-cue__arrow redirect-cue__arrow--two" viewBox="0 0 64 64" fill="none">
+      <path d="M14 54C29 46 42 33 51 12M38 17L52 11L55 26" />
+    </svg>
+  </div>
+
+  <main class="redirect-main">
+    <section class="redirect-panel" aria-labelledby="redirect-title">
+      <div class="redirect-service">
+        <span class="redirect-service__icon-wrap">
+          <img class="redirect-service__icon" id="redirect-icon" alt="" width="52" height="52" />
+        </span>
+        <div>
+          <p class="redirect-service__kicker">Leaving TikTok</p>
+          <h1 class="redirect-service__title" id="redirect-title">Open in your browser</h1>
+          <p class="redirect-service__username" id="redirect-username"></p>
+        </div>
+      </div>
+
+      <div class="redirect-instructions" id="redirect-instructions">
+        <p class="redirect-copy" id="redirect-copy"></p>
+        <ol class="redirect-steps">
+          <li><span>1</span>Tap the <strong>...</strong> menu in the top-right corner.</li>
+          <li><span>2</span>Choose <strong class="redirect-step-action">Open in browser</strong>.</li>
+        </ol>
+      </div>
+
+      <a class="redirect-back" href="/bio.html">Back to social links</a>
+      <p class="redirect-status" id="redirect-status" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <script src="/public_assets/site/js/lib/social-tiles.js"></script>
+  <script src="/redirect/tiktok.js" defer></script>
+</body>
+</html>

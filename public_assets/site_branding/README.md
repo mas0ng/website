@@ -1,0 +1,36 @@
+# Site branding (SVG)
+
+Single favicon for mas0ng.com and all workers.
+
+## File
+
+| Filename | Size (viewBox) | Where used | What to draw |
+| --- | --- | --- | --- |
+| `favicon.svg` | `32×32` | Public site, workers, auth OG/Twitter fallback | Primary mas0ng.com mark |
+| `profile.svg` | `256×256` | Optional fallback avatar | Circular branded monogram |
+
+## Spec
+
+| Property | Value |
+| --- | --- |
+| Format | SVG |
+| Style | Simple mark readable at 16px; no fine text |
+| Colours | Align with site palette: dark blues `#061224`–`#07111f`, accents `#38bdf8`, `#14b8a6` |
+
+## HTML
+
+```html
+<link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg" />
+```
+
+Workers on subdomains may use the absolute URL: `https://mas0ng.com/public_assets/site_branding/favicon.svg`.
+
+Social-preview and structured-profile artwork is specified in [`meta/README.md`](meta/README.md).
+
+## Referenced by
+
+- Public `website/` pages (`index.html`, `bio.html`, `404.html`, legal)
+
+
+- `workers/auth`, `workers/apps`, `workers/dash`, `workers/ai`, `workers/music`
+- `website/public_assets/site/js/config/site-data.js` (`assets.favicon`)

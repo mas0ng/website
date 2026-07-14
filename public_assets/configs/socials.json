@@ -1,0 +1,72 @@
+[
+  {
+    "id": "instagram",
+    "label": "Instagram",
+    "handle": "@mas0ngi",
+    "href": "https://instagram.com/mas0ngi",
+    "icon": "/public_assets/social_icons/instagram.svg"
+  },
+  {
+    "id": "tiktok",
+    "label": "TikTok",
+    "handle": "@mas0ng",
+    "href": "https://tiktok.com/@mas0ng",
+    "icon": "/public_assets/social_icons/tiktok.svg"
+  },
+  {
+    "id": "linkedin",
+    "label": "LinkedIn",
+    "handle": "Mason Gibbs",
+    "href": "#",
+    "icon": "/public_assets/social_icons/linkedin.svg"
+  },
+  {
+    "id": "snapchat",
+    "label": "Snapchat",
+    "handle": "mas0ng",
+    "href": "https://snapchat.com/add/mas0ng",
+    "icon": "/public_assets/social_icons/snapchat.svg"
+  },
+  {
+    "id": "youtube",
+    "label": "YouTube",
+    "handle": "@mas0ng",
+    "href": "#",
+    "icon": "/public_assets/social_icons/youtube.svg"
+  },
+  {
+    "id": "x",
+    "label": "X",
+    "handle": "@mas0ng",
+    "href": "#",
+    "icon": "/public_assets/social_icons/x.svg"
+  },
+  {
+    "id": "github",
+    "label": "GitHub",
+    "handle": "mas0ng",
+    "href": "https://github.com/mas0ng",
+    "icon": "/public_assets/social_icons/github.svg"
+  },
+  {
+    "id": "discord",
+    "label": "Discord",
+    "handle": "mas0ngi",
+    "href": "https://discord.com/users/1167173941048123452",
+    "icon": "/public_assets/social_icons/discord.svg"
+  },
+  {
+    "id": "bluesky",
+    "label": "Bluesky",
+    "handle": "@mas0ng",
+    "href": "#",
+    "icon": "/public_assets/social_icons/bluesky.svg"
+  },
+  {
+    "id": "threads",
+    "label": "Threads",
+    "handle": "@mas0ng",
+    "href": "#",
+    "icon": "/public_assets/social_icons/threads.svg"
+  }
+]

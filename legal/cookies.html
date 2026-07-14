@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8">
+    <script src="/public_assets/site/js/layout/loader.js?v=20260610-loader1"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>mas0ng.com | cookie notice</title>
+    <meta name="description" content="Cookie and browser storage notice for mas0ng.com.">
+    <meta name="theme-color" content="#f7f8fb">
+    <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="/public_assets/fonts/etna.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap">
+    <link rel="stylesheet" href="/public_assets/site/css/site.css">
+    <link rel="stylesheet" href="/public_assets/site/css/legal.css">
+  </head>
+  <body data-page="legal">
+    <div id="site-main">
+      <main class="legal-shell">
+        <section class="legal-hero">
+          <p class="legal-kicker">Cookie notice</p>
+          <h1 class="legal-title">Cookies and browser storage.</h1>
+          <p class="legal-lead">This notice explains the limited cookies and browser storage used by public pages, sign-in, and site tools.</p>
+          <p class="legal-meta">Last updated: 11 July 2026</p>
+        </section>
+
+        <section class="legal-stack">
+          <section class="legal-section">
+            <h2>Public pages</h2>
+            <p>Public pages do not use cookies or similar technologies for analytics, advertising, behavioural tracking, or tracking across websites.</p>
+            <p>After you select “Dismiss notice”, informational public pages store one local value so the notice stays dismissed. It does not identify an account or record browsing for advertising or analytics.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>The privacy notice</h2>
+            <p>Selecting “Dismiss notice” stores <code>mas0ng_privacy_notice_acknowledged_v1</code> in local storage until it is cleared or replaced. This records a user-interface preference; the notice is informational and the button is not a request for consent.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>Sign-in cookies</h2>
+            <p>The sign-in page first shows a full-screen explanation. Continuing acknowledges the explanation; it is not consent to optional tracking. The security technologies below are necessary to provide the private sign-in service and are not used for advertising or analytics.</p>
+            <ul>
+              <li><code>mas0ng_session</code> (or the configured equivalent) is an HttpOnly, Secure, SameSite=Lax authentication cookie. It normally expires after seven days, or earlier on logout, revocation, or security invalidation.</li>
+              <li><code>mas0ng_session_bootstrap</code> is an HttpOnly, Secure, SameSite=Lax verification cookie used to make a newly issued session available safely across mas0ng.com subdomains. It expires after 90 seconds.</li>
+              <li>Short-lived server-side login challenges expire after five minutes; QR login records expire after two minutes; failed-attempt rate-limit records expire after 15 minutes.</li>
+            </ul>
+            <p>Public pages may send an existing session cookie to the authentication service to determine whether the browser is already signed in. An anonymous check does not create a session.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>Cloudflare Turnstile</h2>
+            <p>The sign-in page loads Cloudflare Turnstile only after the required sign-in notice is acknowledged. The security-report page loads it only when you choose to open the report form. Turnstile may store or access information and process browser, device, network, and challenge signals needed to distinguish legitimate requests from automated abuse. See <a class="legal-link" href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare's privacy policy</a>.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>Tools and protected apps</h2>
+            <p>Some tools store information in local or session storage when you request their features, such as timer state, temporary console output, interface preferences, music preferences, caches, or draft state. Protected apps may also hold temporary browser state while a feature is in use. This information stays in the browser unless the relevant feature says it will be uploaded or saved to an account. Its duration depends on the feature: session storage ends with the browser session; local storage remains until the feature replaces it or you clear it.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>No analytics or advertising storage</h2>
+            <p>The current public pages do not set analytics, advertising, or behavioural tracking cookies. If that changes, this notice and the site's controls will be updated and consent will be requested where UK law requires it.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>Your controls</h2>
+            <p>You can clear cookies, local storage, and session storage through your browser settings. Clearing authentication cookies signs you out. Blocking the strictly necessary sign-in technologies means the private service cannot authenticate or protect a session. Public pages remain available.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>Contact</h2>
+            <p>Questions about cookies or browser storage can be sent to <a class="legal-link" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>. Personal-data information is available in the <a class="legal-link" href="/legal/privacy/">Privacy Policy</a>.</p>
+          </section>
+        </section>
+      </main>
+    </div>
+    <script src="/public_assets/site/js/config/site-data.js"></script>
+    <script src="/public_assets/site/js/lib/cache.js"></script>
+    <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
+    <script src="/public_assets/site/js/layout/shell.js?v=20260711-legal3" data-active="legal" defer></script>
+  </body>
+</html>

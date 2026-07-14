@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8">
+    <script src="/public_assets/site/js/layout/loader.js?v=20260610-loader1"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>mas0ng.com | security notes</title>
+    <meta name="description" content="Security notes for mas0ng.com.">
+    <meta name="theme-color" content="#f7f8fb">
+    <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="/public_assets/fonts/etna.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap">
+    <link rel="stylesheet" href="/public_assets/site/css/site.css">
+    <link rel="stylesheet" href="/public_assets/site/css/legal.css">
+    <style>
+      /* --- Security Banner --- */
+      .security-banner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        background-color: #fef2f2; /* Premium soft red/rose background */
+        border: 1px solid #fee2e2;
+        border-left: 4px solid #ef4444; /* Rose red accent border */
+        border-radius: 18px; /* Same border-radius as .legal-section */
+        padding: 28px 32px; /* Same padding as .legal-section */
+        margin: 0 auto 20px;
+        width: 100%; /* Explicitly set width to fill max-width container */
+        max-width: 720px; /* Same max-width as .legal-section */
+        box-shadow: 0 10px 30px rgba(239, 68, 68, 0.05);
+      }
+      .security-banner__content h3 {
+        margin: 0 0 6px;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #991b1b; /* Rose-800 */
+      }
+      .security-banner__content p {
+        margin: 0;
+        font-size: 0.92rem;
+        line-height: 1.55;
+        color: #b91c1c; /* Rose-700 */
+      }
+      .security-banner__btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ef4444; /* Rose-500 */
+        color: #ffffff;
+        font-size: 0.9rem;
+        font-weight: 700;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 10px;
+        white-space: nowrap;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+      }
+      .security-banner__btn:hover {
+        background-color: #dc2626; /* Rose-600 */
+        transform: translateY(-1px);
+        box-shadow: 0 6px 16px rgba(239, 68, 68, 0.3);
+      }
+      .security-banner__btn:active {
+        transform: translateY(0);
+      }
+
+      /* --- Security Modal --- */
+      .security-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 20000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.25s ease, visibility 0.25s ease;
+      }
+      .security-modal.is-open {
+        opacity: 1;
+        visibility: visible;
+      }
+      .security-modal__overlay {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
+      .security-modal__container {
+        position: relative;
+        z-index: 20001;
+        background-color: #ffffff;
+        border: 1px solid #fca5a5; /* Rose border */
+        border-top: 6px solid #ef4444; /* Top accent red border */
+        border-radius: 24px;
+        width: min(100% - 32px, 780px); /* Increased width from 680px to 780px */
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+        box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+        padding: 32px;
+        transform: scale(0.95);
+        transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .security-modal.is-open .security-modal__container {
+        transform: scale(1);
+      }
+      .security-modal__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+        border-bottom: 1px solid #fee2e2;
+        padding-bottom: 16px;
+      }
+      .security-modal__header h2 {
+        font-family: var(--font-display), sans-serif;
+        font-size: 1.45rem;
+        font-weight: 700;
+        color: #991b1b; /* Rose-800 red header */
+        margin: 0;
+      }
+      .security-modal__close {
+        background: none;
+        border: none;
+        font-size: 1.75rem;
+        font-weight: 400;
+        color: #fca5a5;
+        cursor: pointer;
+        padding: 0;
+        line-height: 1;
+        transition: color 0.15s ease;
+      }
+      .security-modal__close:hover {
+        color: #991b1b;
+      }
+      
+      /* Form elements */
+      .security-modal__form .form-group {
+        margin-bottom: 18px;
+      }
+      .security-modal__form label {
+        display: block;
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: #4c0519; /* Deep rose label */
+        margin-bottom: 6px;
+      }
+      .security-modal__form label .required {
+        color: #ef4444;
+      }
+      .security-modal__form input[type="email"],
+      .security-modal__form input[type="text"],
+      .security-modal__form select,
+      .security-modal__form textarea {
+        width: 100%;
+        font-family: inherit;
+        font-size: 0.95rem;
+        padding: 12px 16px; /* Increased padding for easier typing */
+        border: 1px solid #cbd5e1; /* Neutral grey border */
+        border-radius: 10px;
+        background-color: #ffffff; /* Clean white background */
+        color: #0f172a;
+        transition: all 0.15s ease;
+        outline: none;
+      }
+      .security-modal__form input:focus,
+      .security-modal__form select:focus,
+      .security-modal__form textarea:focus {
+        border-color: #ef4444; /* Red focus border to highlight active field */
+        background-color: #ffffff;
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15); /* Soft red focus ring */
+      }
+      .security-modal__form select {
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        background-size: 16px;
+        padding-right: 40px;
+      }
+      .security-modal__form textarea {
+        resize: vertical;
+        min-height: 110px;
+      }
+      .form-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+        margin-top: 28px;
+        border-top: 1px solid #fee2e2;
+        padding-top: 20px;
+      }
+      
+      /* Buttons */
+      .btn-primary, .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        font-weight: 700;
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        border: none;
+      }
+      .btn-primary {
+        background-color: #ef4444; /* Rose red submit button */
+        color: #ffffff;
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+      }
+      .btn-primary:hover {
+        background-color: #dc2626;
+      }
+      .btn-primary:disabled {
+        background-color: #fca5a5;
+        cursor: not-allowed;
+        box-shadow: none;
+      }
+      .btn-secondary {
+        background-color: #fff5f5;
+        color: #991b1b;
+        border: 1px solid #fee2e2;
+      }
+      .btn-secondary:hover {
+        background-color: #fee2e2;
+        color: #7f1d1d;
+      }
+      
+      /* Success State */
+      .security-modal__success {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px 0;
+      }
+      .success-icon {
+        width: 64px;
+        height: 64px;
+        background-color: #fee2e2; /* Red/rose success background */
+        color: #ef4444; /* Red success checkmark */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.1);
+      }
+      .security-modal__success h3 {
+        font-size: 1.3rem;
+        color: #991b1b; /* Rose-800 success title */
+        margin: 0 0 10px;
+      }
+      .security-modal__success p {
+        color: #b91c1c; /* Rose-700 success text */
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin: 0 0 24px;
+        max-width: 360px;
+      }
+
+      /* Triage and screens styling */
+      .security-modal__triage {
+        padding: 20px 0;
+        text-align: center;
+      }
+      .triage-intro {
+        font-size: 0.96rem;
+        color: #475569;
+        margin-bottom: 24px;
+        line-height: 1.6;
+        text-align: center;
+      }
+      .triage-question {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: #4c0519;
+        margin-bottom: 24px;
+        line-height: 1.5;
+      }
+      .triage-actions {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+      }
+      .triage-actions button {
+        min-width: 100px;
+        padding: 12px 24px;
+        font-size: 1rem;
+      }
+      .security-modal__github-notice {
+        padding: 10px 0;
+        color: #b91c1c;
+      }
+      .security-modal__github-notice p {
+        font-size: 0.98rem;
+        line-height: 1.6;
+        margin-bottom: 14px;
+      }
+
+      /* Responsive rules */
+      @media (max-width: 640px) {
+        .security-banner {
+          flex-direction: column;
+          align-items: stretch;
+          text-align: left;
+          gap: 18px;
+        }
+        .security-banner__btn {
+          align-self: flex-start;
+          width: 100%;
+        }
+        .security-modal__container {
+          padding: 24px;
+          height: 100%;
+          width: 100%;
+          max-height: 100%;
+          border-radius: 0;
+        }
+        .form-actions {
+          flex-direction: column-reverse;
+        }
+        .form-actions button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body data-page="legal">
+    <div id="site-main">
+      <main class="legal-shell">
+        <section class="legal-hero">
+          <p class="legal-kicker">Security notes</p>
+          <h1 class="legal-title">Protecting private access.</h1>
+          <p class="legal-lead">These notes explain security monitoring, user responsibilities, and how to report a concern without publishing sensitive implementation details.</p>
+          <p class="legal-meta">Last updated: 11 July 2026</p>
+        </section>
+
+        <section class="legal-stack">
+          <section class="security-banner">
+            <div class="security-banner__content">
+              <h3>Have you found a security vulnerability?</h3>
+              <p>Help us keep mas0ng.com secure. Report potential vulnerabilities or security concerns directly using our secure report form.</p>
+            </div>
+            <button type="button" class="security-banner__btn" id="open-report-modal">
+              Report Concern
+            </button>
+          </section>
+          <section class="legal-section">
+            <h2>Authorised access</h2>
+            <p>Protected pages and features are available only to authorised users with a valid session. Access may be refused, revoked, or restricted where authentication fails or a request appears unsafe or abusive.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>Security information</h2>
+            <p>Sign-in and protected requests may record IP address, timestamp, user agent, requested page, authentication outcome, challenge result, failed-login reason, rate-limit event, and related security information. This is used to authenticate users, detect abuse, investigate faults, and protect private services.</p>
+            <p>Limited alerts about successful, failed, or blocked sign-in attempts may be sent through a third-party notification service. The <a class="legal-link" href="/legal/privacy/">Privacy Policy</a> identifies relevant recipients and explains retention and rights.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>Automated checks</h2>
+            <p>Automated checks may validate sessions, apply rate limits, require a challenge, or allow or block a request based on authentication and security signals. They protect private areas and are not used to profile ordinary public visitors or make legal or similarly significant decisions about them.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>Cloudflare Turnstile</h2>
+            <p>The sign-in page shows a required privacy and security explanation before loading Cloudflare Turnstile or starting QR login. Turnstile then processes browser and request signals to help prevent automated abuse under <a class="legal-link" href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare's privacy policy</a>. The acknowledgement is not consent to advertising or analytics.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>Your responsibilities</h2>
+            <ul>
+              <li>Keep login details, one-time codes, and sessions private.</li>
+              <li>Do not attempt to bypass authentication, challenges, rate limits, or access controls.</li>
+              <li>Sign out on shared devices and clear site cookies if a device is lost or no longer trusted.</li>
+              <li>Report unexpected sign-in, session, upload, AI, or protected-app activity promptly.</li>
+            </ul>
+          </section>
+
+          <section class="legal-section">
+            <h2>Reporting a security issue</h2>
+            <p>You can report security concerns directly to us by using our secure reporting form (accessible via the banner at the top of this page) or by emailing <a class="legal-link" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>.</p>
+            <p>When submitting a report, please include enough information to understand and reproduce the issue (such as steps to reproduce, HTTP requests, or a proof of concept). Do not include active passwords, session keys, or other sensitive personal data.</p>
+            <p>Please allow reasonable time to investigate before publicly disclosing an unresolved issue. Do not access, alter, retain, or share data that is not yours.</p>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <!-- Security Report Modal -->
+    <div class="security-modal" id="security-report-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+      <div class="security-modal__overlay" id="security-modal-overlay"></div>
+      <div class="security-modal__container">
+        <div class="security-modal__header">
+          <h2 id="modal-title">Report a Security Vulnerability</h2>
+          <button type="button" class="security-modal__close" id="close-report-modal" aria-label="Close modal">&times;</button>
+        </div>
+
+        <!-- Triage Screen (Step 1) -->
+        <div class="security-modal__triage" id="triage-screen">
+          <p class="triage-intro">Thank you for helping keep our services safe. To ensure your report reaches the right place, please answer the question below:</p>
+          <p class="triage-question">Is this relating to a public open-source project published on GitHub?</p>
+          <div class="triage-actions">
+            <button type="button" class="btn-primary" id="triage-yes-btn">Yes</button>
+            <button type="button" class="btn-secondary" id="triage-no-btn">No</button>
+          </div>
+        </div>
+
+        <!-- GitHub Notice Screen (Step 2 - Yes) -->
+        <div class="security-modal__github-notice" id="github-notice-screen" style="display: none;">
+          <p>For public open-source projects hosted on GitHub, please submit a security advisory directly via the repository's **Security** tab.</p>
+          <p>This allows us to handle disclosures securely, coordinate patches, and assign CVEs appropriately within the correct repository context.</p>
+          <div style="margin: 20px 0; text-align: center;">
+            <a class="legal-link" href="https://github.com/mas0ng" target="_blank" rel="noopener noreferrer" style="font-size: 1.05rem; font-weight: 600;">Visit our GitHub Profile &rarr;</a>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-secondary" id="github-back-btn">Back</button>
+            <button type="button" class="btn-primary" id="github-close-btn">Close</button>
+          </div>
+        </div>
+
+        <!-- Main Reporting Form (Step 2 - No) -->
+        <form class="security-modal__form" id="security-report-form" style="display: none;">
+          <div class="form-group">
+            <label for="reporter-email">Your Email Address <span class="required">*</span></label>
+            <input type="email" id="reporter-email" name="email" required placeholder="name@example.com">
+          </div>
+          <div class="form-group">
+            <label for="vuln-service">Affected Service or Software <span class="required">*</span></label>
+            <input type="text" id="vuln-service" name="service" required placeholder="e.g. mas0ng.com, authentication service, Discord bot">
+          </div>
+          <div class="form-group">
+            <label for="vuln-type">Vulnerability Type <span class="required">*</span></label>
+            <select id="vuln-type" name="type" required>
+              <option value="" disabled selected>Select vulnerability type</option>
+              <option value="xss">Cross-Site Scripting (XSS)</option>
+              <option value="csrf">Cross-Site Request Forgery (CSRF)</option>
+              <option value="auth">Authentication / Authorization Bypass</option>
+              <option value="sqli">SQL Injection / Database Issue</option>
+              <option value="data-exposure">Sensitive Data Exposure</option>
+              <option value="other">Other / Security Concern</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="vuln-subject">Subject <span class="required">*</span></label>
+            <input type="text" id="vuln-subject" name="subject" required placeholder="Brief summary of the issue">
+          </div>
+          <div class="form-group">
+            <label for="vuln-description">Steps to Reproduce &amp; Description <span class="required">*</span></label>
+            <textarea id="vuln-description" name="description" rows="5" required placeholder="Please provide clear steps to reproduce, HTTP requests, or proof of concept. Do NOT include active session tokens or passwords."></textarea>
+          </div>
+          <div class="form-group" style="margin: 20px 0; display: flex; justify-content: center;">
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAADxkgA5NpUEHFOO3"></div>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-secondary" id="form-back-btn">Back</button>
+            <button type="submit" class="btn-primary" id="submit-report-btn">Submit Report</button>
+          </div>
+        </form>
+        
+        <!-- Success Message (hidden by default) -->
+        <div class="security-modal__success" id="report-success-msg" style="display: none;">
+          <div class="success-icon">&check;</div>
+          <h3>Report Submitted</h3>
+          <p>Thank you for helping us keep mas0ng.com secure! We have received your report and will review it as soon as possible.</p>
+          <button type="button" class="btn-primary" id="success-close-btn">Close</button>
+        </div>
+      </div>
+    </div>
+    <script src="/public_assets/site/js/config/site-data.js"></script>
+    <script src="/public_assets/site/js/lib/cache.js"></script>
+    <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
+    <script src="/public_assets/site/js/layout/shell.js?v=20260711-legal3" data-active="legal" defer></script>
+    <script src="https://sharedassets.mas0ng.com/app-encryption.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('security-report-modal');
+        const openBtn = document.getElementById('open-report-modal');
+        const closeBtn = document.getElementById('close-report-modal');
+        const overlay = document.getElementById('security-modal-overlay');
+        const form = document.getElementById('security-report-form');
+        const successMsg = document.getElementById('report-success-msg');
+        const successCloseBtn = document.getElementById('success-close-btn');
+        const submitBtn = document.getElementById('submit-report-btn');
+        let turnstileLoading = false;
+
+        const loadTurnstile = () => {
+          if (window.turnstile || turnstileLoading) return;
+          turnstileLoading = true;
+          const script = document.createElement('script');
+          script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+          script.async = true;
+          script.defer = true;
+          script.addEventListener('error', () => { turnstileLoading = false; });
+          document.head.appendChild(script);
+        };
+
+        // Triage elements
+        const triageScreen = document.getElementById('triage-screen');
+        const triageYesBtn = document.getElementById('triage-yes-btn');
+        const triageNoBtn = document.getElementById('triage-no-btn');
+        
+        // GitHub Screen
+        const githubNoticeScreen = document.getElementById('github-notice-screen');
+        const githubBackBtn = document.getElementById('github-back-btn');
+        const githubCloseBtn = document.getElementById('github-close-btn');
+        
+        // Form back button
+        const formBackBtn = document.getElementById('form-back-btn');
+
+        // Open modal
+        const openModal = () => {
+          modal?.classList.add('is-open');
+          modal?.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden'; // prevent background scrolling
+          resetModalScreens();
+        };
+
+        openBtn?.addEventListener('click', openModal);
+
+        // Helper to reset modal screens to Step 1 (Triage)
+        const resetModalScreens = () => {
+          triageScreen.style.display = 'block';
+          githubNoticeScreen.style.display = 'none';
+          form.style.display = 'none';
+          successMsg.style.display = 'none';
+          form.reset();
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit Report';
+        };
+
+        // Close modal helper
+        const closeModal = () => {
+          modal?.classList.remove('is-open');
+          modal?.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+          
+          // Reset form after animation finishes
+          setTimeout(resetModalScreens, 300);
+        };
+
+        closeBtn?.addEventListener('click', closeModal);
+        overlay?.addEventListener('click', closeModal);
+        successCloseBtn?.addEventListener('click', closeModal);
+        githubCloseBtn?.addEventListener('click', closeModal);
+
+        // Triage button handlers
+        triageYesBtn?.addEventListener('click', () => {
+          triageScreen.style.display = 'none';
+          githubNoticeScreen.style.display = 'block';
+        });
+
+        triageNoBtn?.addEventListener('click', () => {
+          triageScreen.style.display = 'none';
+          form.style.display = 'block';
+          loadTurnstile();
+          
+          // Auto-focus the email input when the form is shown
+          setTimeout(() => {
+            document.getElementById('reporter-email')?.focus();
+          }, 100);
+        });
+
+        // Back buttons
+        githubBackBtn?.addEventListener('click', () => {
+          githubNoticeScreen.style.display = 'none';
+          triageScreen.style.display = 'block';
+        });
+
+        formBackBtn?.addEventListener('click', () => {
+          form.style.display = 'none';
+          triageScreen.style.display = 'block';
+        });
+
+        // Escape key to close
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && modal?.classList.contains('is-open')) {
+            closeModal();
+          }
+        });
+
+        // Handle Form Submission
+        form?.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          const token = form.querySelector('[name="cf-turnstile-response"]')?.value;
+          if (!token) {
+            alert('Please complete the Turnstile verification.');
+            return;
+          }
+
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Submitting...';
+
+          const email = document.getElementById('reporter-email').value;
+          const service = document.getElementById('vuln-service').value;
+          const type = document.getElementById('vuln-type').value;
+          const subject = document.getElementById('vuln-subject').value;
+          const description = document.getElementById('vuln-description').value;
+
+          const payload = {
+            token,
+            name: email.split('@')[0],
+            email,
+            title: `[${type.toUpperCase()}] ${subject} (${service})`,
+            description,
+            steps: `Service: ${service}\nType: ${type}`
+          };
+
+          try {
+            const response = await window.MAS0NG_APP_ENCRYPTION.secureFetch('https://dev.mas0ng.com/api/security/report', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(payload)
+            });
+
+            const result = await response.json();
+            if (response.ok && result.success) {
+              form.style.display = 'none';
+              successMsg.style.display = 'flex';
+            } else {
+              alert(result.error || 'Failed to submit report. Please try again.');
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Submit Report';
+              if (window.turnstile) {
+                window.turnstile.reset();
+              }
+            }
+          } catch (err) {
+            console.error(err);
+            alert('An error occurred while submitting. Please check your connection.');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit Report';
+            if (window.turnstile) {
+              window.turnstile.reset();
+            }
+          }
+        });
+
+        // Auto-open if query parameter exists
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('reportModalPopup') === 'true') {
+          openModal();
+
+          // Clear query param from URL without page reload
+          const newUrl = window.location.pathname + window.location.hash;
+          window.history.replaceState({}, document.title, newUrl);
+        }
+      });
+    </script>
+  </body>
+</html>

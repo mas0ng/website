@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">mas0ng filestore</title>
+  <defs>
+    <linearGradient id="g" x1="8" y1="7" x2="56" y2="57" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4f7cf7"/>
+      <stop offset="1" stop-color="#174ea6"/>
+    </linearGradient>
+  </defs>
+  <rect x="5" y="5" width="54" height="54" rx="16" fill="url(#g)"/>
+  <path d="M15 25a5 5 0 0 1 5-5h9l5 5h10a5 5 0 0 1 5 5v13a5 5 0 0 1-5 5H20a5 5 0 0 1-5-5Z" fill="#fff" fill-opacity=".96"/>
+  <path d="M20 20h9l5 5H20a5 5 0 0 0-5 5v-5a5 5 0 0 1 5-5Z" fill="#cfe0ff"/>
+  <path d="M25 36h14M32 29v14" fill="none" stroke="#174ea6" stroke-linecap="round" stroke-width="3"/>
+</svg>

@@ -1,0 +1,286 @@
+:root {
+  --mas-page: #07111f;
+  --mas-surface: #0d1828;
+  --mas-surface-2: #111f33;
+  --mas-text: #f8fbff;
+  --mas-muted: #a8b5c8;
+  --mas-soft: #74839a;
+  --mas-line: rgba(255, 255, 255, .10);
+  --mas-blue: #38bdf8;
+  --mas-blue-strong: #174ea6;
+  --mas-green: #22c55e;
+  --mas-card-light: #ffffff;
+  color-scheme: light;
+}
+
+html.mas0ng-page-loading::after {
+  content: "";
+  position: fixed;
+  top: 64px;
+  left: 0;
+  z-index: 2147482501;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--mas-blue), #a7f3d0, transparent);
+  background-size: 220% 100%;
+  animation: masPageLoading .78s linear infinite;
+  pointer-events: none;
+}
+
+body {
+  background:
+    radial-gradient(circle at 10% 0%, rgba(56, 189, 248, .15), transparent 340px),
+    radial-gradient(circle at 90% 10%, rgba(34, 197, 94, .10), transparent 320px),
+    linear-gradient(180deg, #07111f 0%, #0a1628 44%, #f6f8fb 44%, #eef3f9 100%) !important;
+  color: #0f172a;
+}
+
+#mas0ng-public-navbar a[class*="bg-blue-100"],
+#mas0ng-public-navbar a[aria-current="page"] {
+  border: 1px solid #93c5fd !important;
+  background: #dbeafe !important;
+  color: #061224 !important;
+}
+
+#mas0ng-public-navbar a[class*="bg-blue-100"] *,
+#mas0ng-public-navbar a[class*="bg-blue-100"] svg,
+#mas0ng-public-navbar a[aria-current="page"] *,
+#mas0ng-public-navbar a[aria-current="page"] svg {
+  color: #020617 !important;
+  stroke: #020617 !important;
+}
+
+.page main {
+  width: min(100%, 1120px);
+  padding-top: clamp(34px, 7vh, 72px);
+}
+
+.profile-hero,
+.legal-hero,
+.not-found-panel {
+  border: 1px solid rgba(255,255,255,.12) !important;
+  border-radius: 30px !important;
+  background:
+    radial-gradient(circle at 14% 100%, rgba(56, 189, 248, .25), transparent 360px),
+    radial-gradient(circle at 88% 4%, rgba(34, 197, 94, .14), transparent 320px),
+    linear-gradient(135deg, #10233b 0%, #07111f 58%, #020617 100%) !important;
+  color: var(--mas-text);
+  box-shadow: 0 28px 80px rgba(2, 6, 23, .28) !important;
+}
+
+.home-hero {
+  min-height: clamp(300px, 42vw, 430px);
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 360px);
+  align-items: end !important;
+  gap: clamp(22px, 5vw, 64px) !important;
+  padding: clamp(34px, 6vw, 64px) !important;
+  overflow: hidden;
+}
+
+.home-hero-copy {
+  max-width: 720px;
+}
+
+.home-lead {
+  max-width: 58ch;
+  margin-top: 16px;
+  color: #cbd5e1;
+  font-size: clamp(1rem, 2vw, 1.22rem);
+  line-height: 1.65;
+  font-weight: 650;
+}
+
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.home-actions a {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 14px;
+  padding: 0 18px;
+  background: rgba(255,255,255,.08);
+  color: #f8fbff;
+  font-size: .92rem;
+  font-weight: 850;
+}
+
+.home-actions a:last-child {
+  border-color: #93c5fd;
+  background: #dbeafe;
+  color: #061224;
+}
+
+.home-signal-panel {
+  min-height: 220px;
+  display: grid;
+  align-content: end;
+  gap: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 22px;
+  background: rgba(255,255,255,.06);
+  padding: 18px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.home-signal-panel span {
+  height: 18px;
+  display: block;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(56,189,248,.34), rgba(167,243,208,.18));
+}
+
+.home-signal-panel span:nth-child(2) {
+  width: 78%;
+}
+
+.home-signal-panel span:nth-child(3) {
+  width: 54%;
+}
+
+.profile {
+  border-color: rgba(255,255,255,.12) !important;
+  background: rgba(255,255,255,.08) !important;
+  color: var(--mas-text);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06) !important;
+  backdrop-filter: blur(14px);
+}
+
+.avatar-ring,
+.avatar {
+  background: linear-gradient(135deg, #38bdf8, #174ea6) !important;
+}
+
+.main-title {
+  color: #fff !important;
+}
+
+.section-heading {
+  color: #93c5fd !important;
+}
+
+.link-card,
+.legal-card,
+.legal-section,
+.policy-section,
+.paper > h1,
+.paper > .lead,
+.paper .notice,
+.paper .summary-card,
+.paper .right-card,
+.not-found-card {
+  border-color: #e2e8f0 !important;
+  border-radius: 20px !important;
+  background: rgba(255,255,255,.96) !important;
+  box-shadow: 0 18px 46px rgba(15, 23, 42, .08) !important;
+}
+
+.link-card:hover,
+.legal-card:hover {
+  border-color: #bfdbfe !important;
+  background: #f8fbff !important;
+  transform: translateY(-2px);
+}
+
+.icon-shell {
+  background: #eff6ff !important;
+}
+
+.legal-shell {
+  padding-bottom: 92px;
+}
+
+.legal-hero {
+  width: min(100% - 32px, 1120px);
+  margin: 34px auto 0;
+  padding: clamp(54px, 8vw, 96px) 22px !important;
+  border-radius: 30px !important;
+}
+
+.legal-grid {
+  margin-top: -34px;
+}
+
+.legal-card span {
+  display: inline-flex;
+  margin-top: 18px;
+  color: #174ea6;
+  font-weight: 850;
+}
+
+.legal-title {
+  color: #ffffff !important;
+}
+
+.legal-lead,
+.legal-meta {
+  color: #cbd5e1 !important;
+}
+
+.legal-kicker {
+  color: #93c5fd !important;
+}
+
+.legal-link,
+.legal-section a,
+.policy-section a {
+  color: #174ea6 !important;
+}
+
+.data-table {
+  border-color: #e2e8f0 !important;
+}
+
+.not-found-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(56, 189, 248, .16), transparent 340px),
+    linear-gradient(180deg, #07111f 0%, #0a1628 52%, #f6f8fb 52%, #eef3f9 100%) !important;
+}
+
+.not-found-panel {
+  max-width: 720px;
+  margin: clamp(34px, 8vh, 76px) auto 0;
+  padding: clamp(28px, 5vw, 48px);
+}
+
+.not-found-code {
+  color: rgba(147, 197, 253, .28);
+}
+
+.not-found-panel h1,
+.not-found-panel p {
+  color: #ffffff;
+}
+
+.not-found-panel p {
+  color: #cbd5e1;
+}
+
+@keyframes masPageLoading {
+  to { background-position: -220% 0; }
+}
+
+@media (max-width: 760px) {
+  .home-hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .home-signal-panel {
+    display: none;
+  }
+
+  .legal-hero,
+  .profile-hero,
+  .not-found-panel {
+    border-radius: 0 0 28px 28px !important;
+  }
+}
