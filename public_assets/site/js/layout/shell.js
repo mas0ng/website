@@ -808,7 +808,6 @@
   function inferActive() {
     const path = window.location.pathname;
     if (path === '/' || path === '/index.html') return 'home';
-    if (path.startsWith('/portfolio')) return 'portfolio';
     if (path.endsWith('/certifications.html')) return 'certifications';
     if (path.startsWith('/legal')) return 'legal';
     return 'page';

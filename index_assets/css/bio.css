@@ -198,105 +198,94 @@ body[data-page="bio"] {
 
 @media (min-width: 734px) {
   body[data-page="bio"] {
-    background: var(--page-light);
-    color: var(--text);
+    background: #000;
+    color: #fff;
   }
 
   body[data-page="bio"] #site-main {
     min-height: 100svh;
     padding-top: var(--nav-h);
-    background:
-      radial-gradient(circle at 6% 34%, rgba(59, 130, 246, 0.12), transparent 34rem),
-      radial-gradient(circle at 96% 62%, rgba(20, 184, 166, 0.1), transparent 30rem),
-      linear-gradient(180deg, #f6f8fb 0%, #eef4f9 100%);
+    background: transparent;
   }
 
   .bio-masthead {
-    min-height: 530px;
-    padding: 92px 48px 188px;
+    min-height: 520px;
+    padding: 76px 40px 154px;
     isolation: isolate;
   }
 
   .bio-masthead__bg {
-    position: absolute;
+    position: fixed;
     background:
-      radial-gradient(circle at 12% 100%, rgba(37, 99, 235, 0.42), transparent 28rem),
-      radial-gradient(circle at 86% 0%, rgba(14, 165, 233, 0.25), transparent 26rem),
-      radial-gradient(circle at 72% 82%, rgba(20, 184, 166, 0.16), transparent 24rem),
-      linear-gradient(132deg, #020617 0%, #0b1729 52%, #07111f 100%);
+      radial-gradient(circle at 18% 22%, rgba(132, 176, 255, 0.2), transparent 29rem),
+      radial-gradient(circle at 84% 34%, rgba(114, 224, 210, 0.15), transparent 27rem),
+      radial-gradient(circle at 54% 88%, rgba(150, 119, 255, 0.12), transparent 34rem),
+      #000;
   }
 
   .bio-masthead__canvas {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0.48;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.52;
   }
 
   .bio-hero__inner {
-    width: min(100%, 940px);
+    width: min(100%, 900px);
   }
 
   .bio-profile-card {
     position: relative;
     grid-template-columns: auto minmax(0, 1fr);
     justify-items: start;
-    gap: 42px;
-    padding: 46px 52px;
+    gap: 38px;
+    padding: 42px 46px;
     overflow: hidden;
-    border-color: rgba(255, 255, 255, 0.25);
-    border-radius: 36px;
-    background: linear-gradient(135deg, rgba(2, 6, 23, 0.74), rgba(15, 23, 42, 0.52));
+    border-color: rgba(255, 255, 255, 0.16);
+    border-radius: 28px;
+    background: rgba(0, 0, 0, 0.78);
     box-shadow:
-      0 40px 100px rgba(0, 0, 0, 0.38),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      0 28px 70px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
     text-align: left;
+    backdrop-filter: blur(18px);
   }
 
   .bio-profile-card::before {
     content: "";
     position: absolute;
-    right: -130px;
+    right: -108px;
     bottom: -180px;
-    width: 420px;
-    height: 420px;
+    width: 360px;
+    height: 360px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.2), transparent 68%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.09), transparent 68%);
     pointer-events: none;
   }
 
   .bio-profile-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.12) 0.8px, transparent 0.8px);
-    background-size: 18px 18px;
-    opacity: 0.2;
-    -webkit-mask-image: linear-gradient(90deg, transparent 35%, #000 100%);
-    mask-image: linear-gradient(90deg, transparent 35%, #000 100%);
-    pointer-events: none;
+    display: none;
   }
 
   .bio-profile {
     z-index: 1;
-    width: 158px;
-    height: 158px;
+    width: 146px;
+    height: 146px;
   }
 
   .bio-avatar {
-    width: 158px;
-    height: 158px;
+    width: 146px;
+    height: 146px;
     border-width: 4px;
     box-shadow: 0 20px 44px rgba(0, 0, 0, 0.32);
   }
 
   .bio-avatar-ring {
-    inset: -9px;
-    border: 2px solid rgba(147, 197, 253, 0.96);
+    inset: -8px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
     box-shadow:
-      0 0 0 7px rgba(56, 189, 248, 0.08),
-      0 0 54px rgba(56, 189, 248, 0.22);
+      0 0 0 6px rgba(255, 255, 255, 0.05),
+      0 18px 42px rgba(0, 0, 0, 0.38);
   }
 
   .bio-identity {
@@ -308,23 +297,25 @@ body[data-page="bio"] {
   }
 
   .bio-masthead .hero__title {
-    font-size: clamp(3.1rem, 6vw, 5rem);
-    letter-spacing: -0.035em;
+    font-family: var(--font-display);
+    font-size: clamp(3.2rem, 5.8vw, 5.25rem);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 0.94;
   }
 
   .bio-handle {
-    padding: 7px 13px;
-    border: 1px solid rgba(191, 219, 254, 0.18);
-    border-radius: 999px;
-    background: rgba(191, 219, 254, 0.08);
-    color: #dbeafe;
-    font-size: 1rem;
-    letter-spacing: 0.02em;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.64);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
   }
 
   .bio-main {
     flex: 1;
-    padding-bottom: 96px;
+    padding-bottom: 88px;
   }
 
   .bio-main .section {
@@ -332,32 +323,36 @@ body[data-page="bio"] {
   }
 
   .bio-main .section__inner {
-    width: min(calc(100% - 80px), 1080px);
-    margin-top: -134px;
-    padding: 42px;
-    border-color: rgba(15, 23, 42, 0.08);
-    border-radius: 34px;
-    background: rgba(255, 255, 255, 0.92);
+    width: min(calc(100% - 48px), 1160px);
+    margin-top: -108px;
+    padding: clamp(34px, 4vw, 48px);
+    border-color: rgba(255, 255, 255, 0.16);
+    border-radius: 28px;
+    background: rgba(0, 0, 0, 0.78);
     box-shadow:
-      0 34px 80px rgba(15, 23, 42, 0.14),
-      inset 0 1px 0 rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(24px);
+      0 28px 70px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(18px);
   }
 
   .bio-section-head {
-    margin-bottom: 30px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    max-width: 680px;
+    margin: 0 auto 34px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+    text-align: center;
   }
 
   .bio-section-head h2 {
-    color: var(--text);
-    font-size: 2.35rem;
-    letter-spacing: -0.025em;
+    color: #fff;
+    font-size: clamp(2.35rem, 4.2vw, 3.6rem);
+    font-weight: 400;
+    letter-spacing: -0.03em;
   }
 
   .bio-section-head > p:last-child {
-    color: var(--muted);
+    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.64);
   }
 
   .bio-main .social-grid {
@@ -367,17 +362,18 @@ body[data-page="bio"] {
   }
 
   .bio-main .social-tile {
-    min-height: 104px;
+    min-height: 112px;
     padding: 20px;
-    border-color: rgba(15, 23, 42, 0.08);
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.94);
-    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.07);
+    border-color: rgba(255, 255, 255, 0.13);
+    border-radius: 16px;
+    background: rgba(8, 8, 8, 0.84);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
   }
 
   .bio-main .social-tile:hover {
-    border-color: rgba(37, 99, 235, 0.18);
-    box-shadow: 0 20px 44px rgba(15, 23, 42, 0.12);
+    border-color: rgba(255, 255, 255, 0.32);
+    background: rgba(20, 20, 20, 0.92);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.38);
   }
 
   .bio-main .social-tile__glow {
@@ -385,17 +381,50 @@ body[data-page="bio"] {
   }
 
   .bio-main .social-tile__label {
-    color: var(--text);
+    color: #fff;
   }
 
   .bio-main .social-tile__handle,
   .bio-main .social-tile__external {
-    color: var(--muted);
+    color: rgba(255, 255, 255, 0.64);
+  }
+
+  body[data-page="bio"] #site-nav {
+    border-bottom-color: rgba(255, 255, 255, 0.13) !important;
+    color: #fff !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(18px);
+  }
+
+  body[data-page="bio"] #site-nav .nav__brand,
+  body[data-page="bio"] #site-nav .nav__item:not(.is-active),
+  body[data-page="bio"] #site-nav .nav__toggle {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  body[data-page="bio"] #site-nav .nav__cluster {
+    border-color: rgba(255, 255, 255, 0.14) !important;
+    background: rgba(255, 255, 255, 0.07) !important;
+  }
+
+  body[data-page="bio"] #site-nav .nav__item:hover,
+  body[data-page="bio"] #site-nav .nav__item:focus-visible,
+  body[data-page="bio"] #site-nav .nav__menu-item:hover,
+  body[data-page="bio"] #site-nav .nav__menu-item:focus-visible,
+  body[data-page="bio"] #site-nav .nav__drawer-link:hover,
+  body[data-page="bio"] #site-nav .nav__drawer-link:focus-visible,
+  body[data-page="bio"] #site-nav .nav__login:hover,
+  body[data-page="bio"] #site-nav .nav__login:focus-visible {
+    color: #fff !important;
+    background: #2d2d2a !important;
   }
 
   body[data-page="bio"] #site-footer {
     position: relative;
     z-index: 3;
+    border-top-color: rgba(255, 255, 255, 0.13);
+    color: #fff;
+    background: #000;
   }
 }
 
