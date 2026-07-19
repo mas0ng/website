@@ -37,28 +37,33 @@
       "about": { "@id": "https://mas0ng.com/#person" }
     }
   </script>
-  <meta name="theme-color" content="#07111f" />
+  <meta name="theme-color" content="#000000" />
   <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" href="/public_assets/fonts/etna.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" />
-  <link rel="stylesheet" href="/public_assets/site/css/site.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Manrope:wght@500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="/public_assets/site/css/site.css?v=20260712-home9" />
+  <link rel="stylesheet" href="/index_assets/css/certifications.css?v=20260719-cert1" />
 </head>
 <body data-page="certifications">
   <div id="site-main">
     <main class="certifications-shell">
       <section class="certifications-hero" aria-labelledby="certifications-title">
         <div class="section__inner">
-          <p class="certifications-kicker">Certifications</p>
-          <h1 class="section__title" id="certifications-title">Certifications</h1>
-          <p class="section__lead">Verified credentials, grouped so you can filter by type and issuer.</p>
+          <div class="certifications-hero__copy">
+            <h1 class="section__title" id="certifications-title">Certifications.</h1>
+            <p class="section__lead">Courses and credentials I&rsquo;ve completed, with links to the issuing organisations.</p>
+          </div>
         </div>
       </section>
 
       <section class="section certifications-section" aria-labelledby="certifications-list-title">
         <div class="section__inner">
           <div class="certifications-toolbar">
-            <h2 class="certifications-heading" id="certifications-list-title">All certifications</h2>
+            <div>
+              <p class="certifications-kicker">Credential archive</p>
+              <h2 class="certifications-heading" id="certifications-list-title">Completed learning.</h2>
+            </div>
             <span class="certifications-count" id="certification-count">Loading...</span>
           </div>
           <div class="certification-filters" id="certification-filters" aria-label="Filter certifications">

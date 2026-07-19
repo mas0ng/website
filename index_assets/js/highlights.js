@@ -10,7 +10,9 @@
       "/public_assets/sponsor_icons/supercell.png",
       "/public_assets/sponsor_icons/polybuzz.png",
       "/public_assets/sponsor_icons/hacoo.png",
-      "/public_assets/sponsor_icons/dola.png"
+      "/public_assets/sponsor_icons/dola.png",
+      "/public_assets/sponsor_icons/capcut.svg",
+      "/public_assets/sponsor_icons/meete.png"
     ]
   };
 

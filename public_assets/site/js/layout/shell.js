@@ -679,8 +679,7 @@
   function initHashNavigation() {
     const isHome = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
     const hashTargets = {
-      certifications: ['#certifications', '/#certifications'],
-      social: ['#social', '/#social']
+      certifications: ['#certifications', '/#certifications']
     };
 
     if (document.getElementById('apps')) {
@@ -809,6 +808,7 @@
   function inferActive() {
     const path = window.location.pathname;
     if (path === '/' || path === '/index.html') return 'home';
+    if (path.startsWith('/portfolio')) return 'portfolio';
     if (path.endsWith('/certifications.html')) return 'certifications';
     if (path.startsWith('/legal')) return 'legal';
     return 'page';

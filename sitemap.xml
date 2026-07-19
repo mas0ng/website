@@ -2,91 +2,103 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mas0ng.com/</loc>
-    <lastmod>2026-07-13</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://mas0ng.com/bio.html</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mas0ng.com/portfolio/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://mas0ng.com/portfolio/gcse-dt-nea-2026/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mas0ng.com/portfolio/tiktok-content/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://mas0ng.com/certifications.html</loc>
-    <lastmod>2026-07-13</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mas0ng.com/legal/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mas0ng.com/legal/privacy/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mas0ng.com/legal/ai.html</loc>
-    <lastmod>2026-06-22</lastmod>
+    <loc>https://mas0ng.com/legal/ai</loc>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mas0ng.com/legal/terms.html</loc>
-    <lastmod>2026-06-22</lastmod>
+    <loc>https://mas0ng.com/legal/terms</loc>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mas0ng.com/legal/cookies.html</loc>
-    <lastmod>2026-06-22</lastmod>
+    <loc>https://mas0ng.com/legal/cookies</loc>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mas0ng.com/legal/security.html</loc>
-    <lastmod>2026-06-22</lastmod>
+    <loc>https://mas0ng.com/legal/security</loc>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mas0ng.com/legal/licences.html</loc>
-    <lastmod>2026-06-22</lastmod>
+    <loc>https://mas0ng.com/legal/licences</loc>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mas0ng.com/legal/downloads.html</loc>
-    <lastmod>2026-07-08</lastmod>
+    <loc>https://mas0ng.com/legal/downloads</loc>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mas0ng.com/legal/discord-bots/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://mas0ng.com/legal/discord-bots/lockin-larry/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mas0ng.com/legal/discord-bots/lockin-larry/tos/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://mas0ng.com/legal/discord-bots/lockin-larry/privacy/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

@@ -302,6 +302,11 @@ html[data-nav-solid] .nav__item:hover {
   box-shadow: inset 0 0 0 1px var(--login-border);
 }
 
+html:not([data-nav-solid]) .nav__item.is-active:hover,
+html:not([data-nav-solid]) .nav__dropdown.is-open .nav__item--btn.is-active:hover {
+  color: #fff;
+}
+
 .nav__item--btn { cursor: pointer; }
 
 html:not([data-nav-solid]) .nav__dropdown.is-open .nav__item--btn {
