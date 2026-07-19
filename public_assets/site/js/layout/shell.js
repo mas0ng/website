@@ -1,4 +1,5 @@
 (function () {
+  const APP_ENCRYPTION_URL = 'https://sharedassets.mas0ng.com/app-encryption.js';
   const script = document.currentScript;
   const active = script?.dataset.active || inferActive();
   const shellMode = script?.dataset.shell || '';
@@ -184,7 +185,16 @@
 
   async function fetchSession() {
     try {
-      const response = await fetch('https://auth.mas0ng.com/session', {
+      if (typeof window.MAS0NG_APP_ENCRYPTION?.secureFetch !== 'function') {
+        await loadScript(APP_ENCRYPTION_URL);
+      }
+
+      const secureFetch = window.MAS0NG_APP_ENCRYPTION?.secureFetch;
+      if (typeof secureFetch !== 'function') {
+        throw new Error('app_encryption_unavailable');
+      }
+
+      const response = await secureFetch('https://auth.mas0ng.com/session', {
         credentials: 'include',
         cache: 'no-store',
         headers: { Accept: 'application/json' }
