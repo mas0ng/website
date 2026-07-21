@@ -19,18 +19,16 @@ body[data-page="certifications"] #site-main,
   background: transparent;
 }
 
+.certifications-shell {
+  isolation: isolate;
+}
+
 .certifications-shell::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
-  background:
-    radial-gradient(ellipse 28% 18% at 8% 15%, rgba(255, 255, 255, 0.18) 0 43%, transparent 48%),
-    radial-gradient(ellipse 22% 30% at 94% 24%, rgba(255, 255, 255, 0.12) 0 43%, transparent 48%),
-    radial-gradient(ellipse 34% 20% at 4% 66%, rgba(255, 255, 255, 0.1) 0 43%, transparent 48%),
-    radial-gradient(ellipse 24% 16% at 88% 76%, rgba(255, 255, 255, 0.14) 0 43%, transparent 49%),
-    radial-gradient(circle at 28% 88%, rgba(255, 255, 255, 0.08) 0 6%, transparent 6.5%),
-    #000;
+  background: #000;
 }
 
 body[data-page="certifications"] #site-nav,
@@ -73,50 +71,73 @@ body[data-page="certifications"] #site-nav .nav__login:focus-visible {
 }
 
 .certifications-hero {
+  position: relative;
   display: grid;
-  min-height: clamp(480px, 68svh, 650px);
-  padding: var(--nav-h, 64px) 16px 0;
+  min-height: 0;
+  padding: calc(var(--nav-h, 64px) + clamp(36px, 6vw, 68px)) 16px clamp(28px, 4vw, 42px);
+  overflow: visible;
   place-items: center;
   background: transparent;
   text-align: center;
 }
 
+.certifications-hero .masthead__bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  opacity: 1;
+  transform: none;
+  background: #000;
+}
+
+.certifications-hero .masthead__canvas {
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.56;
+}
+
 .certifications-hero > .section__inner {
+  position: relative;
+  z-index: 2;
   display: grid;
   width: min(100%, 900px);
   min-height: 0;
   margin: 0 auto;
-  padding: clamp(90px, 13vw, 150px) 24px clamp(72px, 10vw, 110px);
+  padding: 0 24px;
   place-items: center;
 }
 
 .certifications-hero__copy {
   display: grid;
   justify-items: center;
-  gap: 22px;
+  gap: 18px;
 }
 
 .certifications-hero .section__title {
   margin: 0;
   color: #fff;
-  font-size: clamp(3.8rem, 9vw, 7rem);
+  font-size: clamp(3rem, 7vw, 5.7rem);
   font-weight: 700;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.055em;
   line-height: 1;
   text-align: center;
-  text-shadow: 0 0 36px rgba(255, 255, 255, 0.14);
+  text-shadow: 0 0 36px rgba(255, 255, 255, 0.2);
 }
 
 .certifications-hero .section__lead {
   max-width: 54ch;
   margin: 0;
-  color: var(--cert-muted);
+  color: rgba(255, 255, 255, 0.68);
   font-size: 0.98rem;
   line-height: 1.75;
   text-align: center;
 }
 
 .certifications-section {
+  position: relative;
+  z-index: 2;
   width: min(calc(100% - 32px), 1160px);
   margin: 0 auto clamp(56px, 9vw, 96px);
   padding: 0;
@@ -385,8 +406,15 @@ body[data-page="certifications"] #site-nav .nav__login:focus-visible {
 }
 
 .certification-card__type {
+  display: inline-flex;
+  min-height: 28px;
+  padding: 6px 10px;
+  align-items: center;
   max-width: 52%;
-  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.08);
   font-size: 0.58rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -586,8 +614,21 @@ body[data-page="certifications"] .footer__social-link img {
 }
 
 @media (max-width: 620px) {
+  .certifications-shell::before {
+    background:
+      radial-gradient(ellipse 30% 18% at 8% 14%, rgba(255, 255, 255, 0.2) 0 46%, transparent 49%),
+      radial-gradient(ellipse 22% 32% at 94% 22%, rgba(255, 255, 255, 0.14) 0 45%, transparent 49%),
+      radial-gradient(ellipse 34% 20% at 4% 61%, rgba(255, 255, 255, 0.12) 0 44%, transparent 48%),
+      radial-gradient(ellipse 24% 16% at 86% 72%, rgba(255, 255, 255, 0.18) 0 44%, transparent 49%),
+      radial-gradient(circle at 23% 87%, rgba(255, 255, 255, 0.09) 0 7%, transparent 7.5%),
+      radial-gradient(circle at 72% 44%, rgba(255, 255, 255, 0.08) 0 5%, transparent 5.5%),
+      #000;
+  }
+
   .certifications-hero {
-    min-height: 440px;
+    min-height: 0;
+    padding-top: calc(var(--nav-h, 64px) + 32px);
+    padding-bottom: 26px;
     padding-inline: 12px;
   }
 
@@ -596,7 +637,15 @@ body[data-page="certifications"] .footer__social-link img {
   }
 
   .certifications-hero .section__title {
-    font-size: clamp(3.2rem, 16vw, 5rem);
+    font-size: clamp(2.65rem, 13.5vw, 4.4rem);
+  }
+
+  .certifications-hero .masthead__canvas {
+    display: none;
+  }
+
+  .certifications-hero .masthead__bg {
+    display: none;
   }
 
   .certifications-section {

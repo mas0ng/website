@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <script src="/public_assets/site/js/layout/loader.js?v=20260610-loader1"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Something went wrong | mas0ng.com</title>
+  <meta name="description" content="An error prevented this request from being completed." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="referrer" content="no-referrer" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="/public_assets/site/css/site.css?v=20260712-errors1" />
+  <link rel="stylesheet" href="/public_assets/site/css/error.css?v=20260721-error5" />
+  <link rel="stylesheet" href="/errors/default.css?v=20260721-3" />
+</head>
+<body data-page="error" data-severity="error">
+  <div id="site-main">
+    <div class="error-stage">
+      <main class="page-panel error-template" aria-labelledby="error-title">
+        <div class="error-card__visual" aria-hidden="true">
+          <span class="error-template__mark">!</span>
+        </div>
+
+        <div class="error-card__content">
+          <h1 class="page-panel__title" id="error-title">Something went wrong.</h1>
+          <p class="page-panel__lead" id="error-description">We couldn't complete that request. Please try again or return to the home page.</p>
+
+          <dl class="error-template__details" id="error-details" hidden>
+            <div id="error-from-row" hidden>
+              <dt>From</dt>
+              <dd id="error-from"></dd>
+            </div>
+            <div id="error-code-row" hidden>
+              <dt>Reference</dt>
+              <dd id="error-code"></dd>
+            </div>
+          </dl>
+
+          <div class="page-panel__actions">
+            <a class="page-panel__btn page-panel__btn--primary" id="error-action" href="/">
+              <span id="error-action-label">Go home</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <div class="error-template__invalid" id="error-invalid-destination" role="alert" hidden>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v5M12 16.5v.5"/><circle cx="12" cy="12" r="9"/></svg>
+              <span><strong>Suggested link unavailable</strong>The destination was blocked because it does not belong to mas0ng.com.</span>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="/public_assets/site/js/config/site-data.js"></script>
+  <script src="/public_assets/site/js/lib/cache.js"></script>
+  <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
+  <script src="/errors/default.js?v=20260721-3" defer></script>
+  <script src="/public_assets/site/js/layout/shell.js?v=20260719-session1" data-active="" defer></script>
+</body>
+</html>

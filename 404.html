@@ -24,38 +24,49 @@
   <meta name="theme-color" content="#000000" />
   <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" href="/public_assets/fonts/etna.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Manrope:wght@500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" />
   <link rel="stylesheet" href="/public_assets/site/css/site.css?v=20260714-4047" />
-  <link rel="stylesheet" href="/public_assets/site/css/error.css?v=20260719-error4" />
+  <link rel="stylesheet" href="/public_assets/site/css/error.css?v=20260721-error5" />
 </head>
-<body data-page="error">
+<body data-page="error" data-error-kind="not-found">
   <div id="site-main">
-    <aside class="dev-page-suggestion" id="dev-page-suggestion" aria-live="polite" hidden>
-      <span class="dev-page-suggestion__icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/><path d="M8.5 11h5M11 8.5v5"/></svg>
-      </span>
-      <div class="dev-page-suggestion__copy">
-        <p><strong>Found on dev.mas0ng.com</strong><span>We scanned the same path. Did you intend to open this page?</span></p>
-        <a class="dev-page-suggestion__link" id="dev-page-suggestion-link" href="https://dev.mas0ng.com/">
-          <span class="dev-page-suggestion__result">
-            <strong id="dev-page-suggestion-title"></strong>
-            <span id="dev-page-suggestion-url"></span>
-          </span>
-          <svg class="dev-page-suggestion__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </div>
-    </aside>
-    <main class="page-panel" aria-labelledby="error-title">
-      <h1 class="page-panel__title" id="error-title">Page not found.</h1>
-      <p class="page-panel__lead">The page you're looking for doesn't exist or may have moved.</p>
-      <div class="page-panel__actions">
-        <a class="page-panel__btn page-panel__btn--primary" href="/">
-          <span>Go home</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </div>
-    </main>
+    <div class="error-stage">
+      <main class="page-panel" aria-labelledby="error-title">
+        <div class="error-card__visual error-card__visual--404" aria-hidden="true">
+          <div class="error-card__code-wrap">
+            <span class="page-panel__code">404</span>
+            <span class="error-card__visual-label">Lost in the link</span>
+          </div>
+        </div>
+
+        <div class="error-card__content">
+          <h1 class="page-panel__title" id="error-title">Page not found.</h1>
+          <p class="page-panel__lead">The address may be incorrect, or the page may have moved somewhere new.</p>
+          <div class="page-panel__actions">
+            <a class="page-panel__btn page-panel__btn--primary" href="/">
+              <span>Return home</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </main>
+
+      <aside class="dev-page-suggestion" id="dev-page-suggestion" aria-live="polite" hidden>
+        <span class="dev-page-suggestion__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/><path d="M8.5 11h5M11 8.5v5"/></svg>
+        </span>
+        <div class="dev-page-suggestion__copy">
+          <p><strong>Found on dev.mas0ng.com</strong><span>We scanned the same path. Did you intend to open this page?</span></p>
+          <a class="dev-page-suggestion__link" id="dev-page-suggestion-link" href="https://dev.mas0ng.com/">
+            <span class="dev-page-suggestion__result">
+              <strong id="dev-page-suggestion-title"></strong>
+              <span id="dev-page-suggestion-url"></span>
+            </span>
+            <svg class="dev-page-suggestion__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </aside>
+    </div>
   </div>
   <script src="/public_assets/site/js/config/site-data.js"></script>
   <script src="/public_assets/site/js/lib/cache.js"></script>

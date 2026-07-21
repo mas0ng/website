@@ -5,7 +5,8 @@
   if (!masthead) return;
   const isBioPage = document.body?.dataset.page === 'bio';
   const isHomePage = document.body?.dataset.page === 'home';
-  const isLiquidPage = isBioPage || isHomePage;
+  const isCertificationsPage = document.body?.dataset.page === 'certifications';
+  const isLiquidPage = isBioPage || isHomePage || isCertificationsPage;
   const staticMasthead = window.matchMedia('(max-width: 768px), (hover: none) and (pointer: coarse)');
   if (staticMasthead.matches && !isLiquidPage) {
     canvas.hidden = true;
