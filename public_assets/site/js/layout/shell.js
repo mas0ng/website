@@ -374,6 +374,15 @@
     if (!main || document.getElementById('site-nav')) return;
 
     const navLinks = d.nav;
+    const mobileActiveId = inferActive();
+    const mobileNavLinks = navLinks.filter((item) => item.id !== 'dev');
+    if (!mobileNavLinks.some((item) => item.id === 'bio')) {
+      mobileNavLinks.push({ id: 'bio', label: 'Bio', href: '/bio.html' });
+    }
+    const mobileLegalLinks = [
+      { ...d.legal.find((item) => item.id === 'privacy'), label: 'Privacy Policy' },
+      { ...d.legal.find((item) => item.id === 'legal'), label: 'All Policies' }
+    ].filter((item) => item.id && item.href);
 
     const esc = window.MAS0NG_HTML || { escapeHtml: (v) => String(v), safeHref: (v) => String(v || '#') };
 
@@ -389,7 +398,10 @@
 
     const drawerLegal = `
       <p class="nav__drawer-label">Legal</p>
-      ${d.legal.map((item) => `<a class="nav__drawer-link" href="${esc.safeHref(item.href)}">${esc.escapeHtml(item.label)}</a>`).join('')}
+      ${mobileLegalLinks.map((item) => {
+        const current = item.id === mobileActiveId ? ' aria-current="page"' : '';
+        return `<a class="nav__drawer-link" href="${esc.safeHref(item.href)}"${current}>${esc.escapeHtml(item.label)}</a>`;
+      }).join('')}
     `;
 
     const footerLegal = d.legal.map((item) =>
@@ -444,8 +456,18 @@
           </button>
         </div>
       </div>
-      <nav class="nav__drawer" id="nav-drawer" aria-label="Mobile">
-        ${navLinks.map((item) => `<a class="nav__drawer-link" href="${esc.safeHref(item.href)}">${esc.escapeHtml(item.label)}</a>`).join('')}
+      <button class="nav__drawer-backdrop" id="nav-drawer-backdrop" type="button" aria-label="Close menu" tabindex="-1"></button>
+      <nav class="nav__drawer" id="nav-drawer" aria-label="Mobile" aria-hidden="true" tabindex="-1">
+        <div class="nav__drawer-head">
+          <span>Menu</span>
+          <button class="nav__drawer-close" id="nav-drawer-close" type="button" aria-label="Close menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+        ${mobileNavLinks.map((item) => {
+          const current = item.id === mobileActiveId ? ' aria-current="page"' : '';
+          return `<a class="nav__drawer-link" href="${esc.safeHref(item.href)}"${current}>${esc.escapeHtml(item.label)}</a>`;
+        }).join('')}
         <div class="nav__drawer-group" id="nav-drawer-legal">${drawerLegal}</div>
         <a class="nav__drawer-login${activeId === 'login' ? ' is-active' : ''}" id="nav-login-drawer" href="${esc.safeHref(d.loginUrl)}"${activeId === 'login' ? ' aria-current="page"' : ''}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
@@ -510,6 +532,8 @@
   function initNav() {
     const drawer = document.getElementById('nav-drawer');
     const toggle = document.getElementById('nav-toggle');
+    const drawerClose = document.getElementById('nav-drawer-close');
+    const drawerBackdrop = document.getElementById('nav-drawer-backdrop');
     const legalBtn = document.getElementById('nav-legal-btn');
     const legalDropdown = document.getElementById('nav-legal-dropdown');
     const appsBtn = document.getElementById('nav-apps-btn');
@@ -518,6 +542,8 @@
 
     function closeDrawer() {
       drawer.classList.remove('is-open');
+      drawerBackdrop?.classList.remove('is-open');
+      drawer.setAttribute('aria-hidden', 'true');
       toggle.setAttribute('aria-expanded', 'false');
       document.body.classList.remove('menu-open');
     }
@@ -535,13 +561,22 @@
 
     toggle.addEventListener('click', () => {
       const open = drawer.classList.toggle('is-open');
+      drawerBackdrop?.classList.toggle('is-open', open);
+      drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       document.body.classList.toggle('menu-open', open);
       if (open) {
         closeLegalMenu();
         closeAppsMenu();
+        window.setTimeout(() => drawerClose?.focus({ preventScroll: true }), 0);
       }
     });
+
+    drawerClose?.addEventListener('click', () => {
+      closeDrawer();
+      toggle.focus({ preventScroll: true });
+    });
+    drawerBackdrop?.addEventListener('click', closeDrawer);
 
     legalBtn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -819,6 +854,8 @@
     const path = window.location.pathname;
     if (path === '/' || path === '/index.html') return 'home';
     if (path.endsWith('/certifications.html')) return 'certifications';
+    if (path.endsWith('/bio.html')) return 'bio';
+    if (path.startsWith('/legal/privacy')) return 'privacy';
     if (path.startsWith('/legal')) return 'legal';
     return 'page';
   }

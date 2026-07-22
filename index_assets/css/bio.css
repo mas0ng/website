@@ -1,4 +1,4 @@
-/* Bio page: shell-free mobile profile with a wider desktop presentation. */
+/* Bio page: compact mobile profile with the standard site shell. */
 
 body[data-page="bio"] {
   min-width: 0;
@@ -194,6 +194,11 @@ body[data-page="bio"] {
 
 .bio-main .social-tile__handle {
   font-size: 0.84rem;
+}
+
+body[data-page="bio"] #site-footer .footer__social-link img {
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
 }
 
 @media (min-width: 734px) {
@@ -430,14 +435,31 @@ body[data-page="bio"] {
 
 @media (max-width: 733px) {
   body[data-page="bio"] #site-nav,
-  body[data-page="bio"] #mas0ng-shared-navbar,
+  body[data-page="bio"] #mas0ng-shared-navbar {
+    border-bottom-color: rgba(255, 255, 255, 0.13) !important;
+    color: #fff !important;
+    background: rgba(0, 0, 0, 0.88) !important;
+    backdrop-filter: blur(18px);
+  }
+
+  body[data-page="bio"] #site-nav .nav__brand,
+  body[data-page="bio"] #site-nav .nav__toggle,
+  body[data-page="bio"] #mas0ng-shared-navbar .nav__brand,
+  body[data-page="bio"] #mas0ng-shared-navbar .nav__toggle {
+    color: rgba(255, 255, 255, 0.92) !important;
+  }
+
   body[data-page="bio"] #site-footer {
-    display: none !important;
+    position: relative;
+    z-index: 3;
+    border-top-color: rgba(255, 255, 255, 0.13);
+    color: #fff;
+    background: #000;
   }
 
   body[data-page="bio"] #site-main {
     min-height: 100svh;
-    padding-top: 0;
+    padding-top: var(--nav-h);
   }
 }
 

@@ -499,7 +499,8 @@ html[data-nav-solid] .nav__toggle { color: var(--text); }
 
 html[data-nav-solid] .nav__toggle:hover { background: rgba(0, 0, 0, 0.05); }
 
-.nav__drawer { display: none; }
+.nav__drawer,
+.nav__drawer-backdrop { display: none; }
 
 /* ── Hero ── */
 .hero {
@@ -2004,6 +2005,9 @@ body.social-dialog-open {
 }
 
 @media (max-width: 733px) {
+  body.menu-open #site-nav,
+  body.menu-open #mas0ng-shared-navbar { z-index: 1200 !important; }
+
   .nav__inner {
     display: flex;
     justify-content: space-between;
@@ -2014,48 +2018,116 @@ body.social-dialog-open {
 
   .nav__cluster { display: none; }
 
-  .nav__login {
-    font-size: 14px;
-    padding: 9px 16px;
-  }
+  .nav__login { display: none !important; }
 
   .nav__toggle { display: inline-flex; }
+
+  .nav__end > .nav__apps,
+  .nav__end > .nav__logout-form { display: none !important; }
 
   .nav__drawer {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 4px;
     position: fixed;
-    inset: var(--nav-h) 0 0;
-    z-index: 260;
-    padding: 16px 22px 28px;
-    background: rgba(251, 251, 253, 0.98);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 262;
+    width: min(86vw, 370px);
+    height: 100dvh;
+    min-height: 100svh;
+    padding: max(18px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
+    background: rgba(251, 251, 253, 0.985);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     color: var(--text);
+    text-align: left;
     overflow-y: auto;
-    transform: translateY(-8px);
-    opacity: 0;
+    box-shadow: -24px 0 70px rgba(2, 6, 23, 0.22);
+    transform: translateX(104%);
     pointer-events: none;
-    transition: opacity 0.25s, transform 0.25s;
+    visibility: hidden;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.3s;
   }
 
   .nav__drawer.is-open {
-    opacity: 1;
     transform: none;
     pointer-events: auto;
+    visibility: visible;
+  }
+
+  .nav__drawer-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 261;
+    border: 0;
+    background: rgba(2, 6, 23, 0.54);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .nav__drawer-backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav__drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+    padding: 0 2px 16px;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.09);
+    color: #0f172a;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .nav__drawer-close {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    flex: 0 0 auto;
+    border: 1px solid rgba(15, 23, 42, 0.09);
+    border-radius: 13px;
+    background: #f1f5f9;
+    color: #0f172a;
+    cursor: pointer;
+  }
+
+  .nav__drawer-close:hover {
+    background: #e2e8f0;
   }
 
   .nav__drawer-link {
     display: block;
-    padding: 14px 0;
-    font-size: 1.2rem;
-    font-weight: 500;
+    padding: 13px 14px;
+    border-radius: 12px;
+    font-size: 1.06rem;
+    font-weight: 650;
     color: var(--text);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    border: 0;
+    transition: color 0.16s ease, background 0.16s ease;
+  }
+
+  .nav__drawer-link:hover,
+  .nav__drawer-link[aria-current="page"] {
+    color: #174ea6;
+    background: #eaf3ff;
+    text-decoration: none;
   }
 
   .nav__drawer-label {
-    margin: 12px 0 4px;
+    margin: 18px 14px 6px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(15, 23, 42, 0.09);
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.06em;
@@ -2068,7 +2140,7 @@ body.social-dialog-open {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    margin-top: 20px;
+    margin-top: auto;
     padding: 14px 18px;
     border-radius: 980px;
     border: 1px solid var(--login-border);
@@ -2084,6 +2156,7 @@ body.social-dialog-open {
   .social-tile,
   .nav__menu,
   .nav__drawer,
+  .nav__drawer-backdrop,
   .nav__chevron,
   .scroll-hint__chevron,
   .page-loader__spinner,
