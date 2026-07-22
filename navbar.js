@@ -1,6 +1,6 @@
 (function () {
   const NAV_ID = "mas0ng-public-navbar";
-  const SHARED_NAV_URL = "https://sharedassets.mas0ng.com/navbar.js?v=20260719-apps3";
+  const SHARED_NAV_URL = "https://sharedassets.mas0ng.com/navbar.js?v=20260722-mobile2";
   const APP_ENCRYPTION_URL = "https://sharedassets.mas0ng.com/app-encryption.js";
   const TAILWIND_URL = "https://cdn.tailwindcss.com";
   const LUCIDE_URL = "https://unpkg.com/lucide@latest";
