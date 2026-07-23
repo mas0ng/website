@@ -643,7 +643,11 @@ body.auth-notice-pending {
 }
 
 .auth-notice-gate__panel {
+  display: flex;
+  flex-direction: column;
   width: min(760px, 100%);
+  max-height: calc(100dvh - 40px);
+  overflow: hidden;
   padding: clamp(26px, 5vw, 54px);
   border: 1px solid var(--line);
   border-radius: 24px;
@@ -662,6 +666,15 @@ body.auth-notice-pending {
 .auth-notice-gate li {
   color: var(--muted);
   line-height: 1.6;
+}
+
+.auth-notice-gate__terms {
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 12px;
+  border-bottom: 1px solid rgba(23, 78, 166, 0.14);
 }
 
 .auth-notice-gate ul {
@@ -684,6 +697,7 @@ body.auth-notice-pending {
 }
 
 .auth-notice-gate__check {
+  flex: 0 0 auto;
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 12px;
@@ -705,16 +719,15 @@ body.auth-notice-pending {
 }
 
 .auth-notice-gate__actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px;
+  display: grid;
+  flex: 0 0 auto;
+  gap: 10px;
   margin-top: 18px;
 }
 
 .auth-notice-gate__actions .auth-submit {
-  width: auto;
-  min-width: min(100%, 260px);
+  width: 100%;
+  min-width: 0;
 }
 
 .auth-notice-gate__actions .auth-submit:disabled {

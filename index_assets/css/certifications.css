@@ -36,7 +36,8 @@ body[data-page="certifications"] #mas0ng-shared-navbar {
   z-index: 2147481000 !important;
 }
 
-body[data-page="certifications"] #site-nav {
+body[data-page="certifications"] #site-nav,
+body[data-page="certifications"] #mas0ng-shared-navbar {
   position: fixed !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
   color: #fff !important;
@@ -48,7 +49,10 @@ body[data-page="certifications"] #site-nav {
 
 body[data-page="certifications"] #site-nav .nav__brand,
 body[data-page="certifications"] #site-nav .nav__item:not(.is-active),
-body[data-page="certifications"] #site-nav .nav__toggle {
+body[data-page="certifications"] #site-nav .nav__toggle,
+body[data-page="certifications"] #mas0ng-shared-navbar .nav__brand,
+body[data-page="certifications"] #mas0ng-shared-navbar .nav__apps,
+body[data-page="certifications"] #mas0ng-shared-navbar .nav__toggle {
   color: rgba(255, 255, 255, 0.9) !important;
 }
 
@@ -605,6 +609,45 @@ body[data-page="certifications"] .footer__note-inline {
 
 body[data-page="certifications"] .footer__social-link img {
   filter: brightness(0) invert(1);
+}
+
+@media (max-width: 733px) {
+  body[data-page="certifications"] #site-nav,
+  body[data-page="certifications"] #mas0ng-shared-navbar {
+    inset: 0 0 auto !important;
+    min-height: var(--nav-h, 64px);
+    background: rgba(0, 0, 0, 0.88) !important;
+  }
+
+  body[data-page="certifications"] #site-nav .nav__inner,
+  body[data-page="certifications"] #mas0ng-shared-navbar .nav__inner {
+    display: flex;
+    min-height: var(--nav-h, 64px);
+    padding: 8px 20px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  body[data-page="certifications"] #site-nav .nav__cluster {
+    display: none !important;
+  }
+
+  body[data-page="certifications"] #site-nav .nav__login,
+  body[data-page="certifications"] #mas0ng-shared-navbar .nav__apps,
+  body[data-page="certifications"] #mas0ng-shared-navbar .nav__logout-form {
+    display: none !important;
+  }
+
+  body[data-page="certifications"] #site-nav .nav__toggle,
+  body[data-page="certifications"] #mas0ng-shared-navbar .nav__toggle {
+    display: inline-flex !important;
+  }
+
+  body[data-page="certifications"] #site-nav .nav__drawer-link:hover,
+  body[data-page="certifications"] #site-nav .nav__drawer-link[aria-current="page"] {
+    color: #174ea6 !important;
+    background: #eaf3ff !important;
+  }
 }
 
 @media (max-width: 900px) {

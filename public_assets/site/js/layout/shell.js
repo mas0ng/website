@@ -408,7 +408,7 @@
       `<li><a href="${esc.safeHref(item.href)}">${esc.escapeHtml(item.label)}</a></li>`
     ).join('');
 
-    const footerSite = d.nav.map((item) =>
+    const footerSite = d.nav.filter((item) => item.id !== 'dev').map((item) =>
       `<li><a href="${esc.safeHref(item.href)}">${esc.escapeHtml(item.label)}</a></li>`
     ).join('');
 
@@ -459,7 +459,6 @@
       <button class="nav__drawer-backdrop" id="nav-drawer-backdrop" type="button" aria-label="Close menu" tabindex="-1"></button>
       <nav class="nav__drawer" id="nav-drawer" aria-label="Mobile" aria-hidden="true" tabindex="-1">
         <div class="nav__drawer-head">
-          <span>Menu</span>
           <button class="nav__drawer-close" id="nav-drawer-close" type="button" aria-label="Close menu">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
           </button>
@@ -469,10 +468,16 @@
           return `<a class="nav__drawer-link" href="${esc.safeHref(item.href)}"${current}>${esc.escapeHtml(item.label)}</a>`;
         }).join('')}
         <div class="nav__drawer-group" id="nav-drawer-legal">${drawerLegal}</div>
-        <a class="nav__drawer-login${activeId === 'login' ? ' is-active' : ''}" id="nav-login-drawer" href="${esc.safeHref(d.loginUrl)}"${activeId === 'login' ? ' aria-current="page"' : ''}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
-          Log in
-        </a>
+        <div class="nav__drawer-actions">
+          <a class="nav__drawer-report" href="${siteRoot}/legal/security.html?reportModalPopup=true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="M12 8v4M12 16h.01"/></svg>
+            Report a security concern
+          </a>
+          <a class="nav__drawer-login${activeId === 'login' ? ' is-active' : ''}" id="nav-login-drawer" href="${esc.safeHref(d.loginUrl)}"${activeId === 'login' ? ' aria-current="page"' : ''}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+            Log in
+          </a>
+        </div>
       </nav>
     `;
 
@@ -487,6 +492,7 @@
             <h3>Site</h3>
             <ul>
               ${footerSite}
+              <li class="footer__security-report"><a href="${siteRoot}/legal/security.html?reportModalPopup=true">Report a security concern</a></li>
               <li><a id="footer-login" href="${esc.safeHref(d.loginUrl)}">Log in</a></li>
             </ul>
           </div>
