@@ -17,8 +17,21 @@
     }
   }
 
+  function applyResetRequest() {
+    const url = new URL(window.location.href);
+    if (url.searchParams.get('privacyNotice') !== 'reset') return;
+    try {
+      window.localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // The notice still appears for this page view when storage is unavailable.
+    }
+    url.searchParams.delete('privacyNotice');
+    window.history.replaceState({}, document.title, `${url.pathname}${url.search}${url.hash}`);
+  }
+
   function init() {
     if (document.body.matches('[data-page="auth"]')) return;
+    applyResetRequest();
     if (wasAcknowledged() || document.getElementById('privacy-notice')) return;
 
     const notice = document.createElement('aside');

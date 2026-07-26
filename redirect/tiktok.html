@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Open social profile | mas0ng.com</title>
-  <meta name="description" content="Continue from TikTok to an external social profile." />
+  <meta name="description" content="Continue from a social app's built-in browser to an approved external profile." />
   <meta name="robots" content="noindex, nofollow" />
   <meta name="theme-color" content="#07111f" />
   <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg" />
@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/public_assets/site/css/site.css" />
   <link rel="stylesheet" href="/redirect/tiktok.css" />
 </head>
-<body class="tiktok-redirect-page">
+<body class="social-redirect-page">
   <div class="redirect-cue" aria-hidden="true">
     <span class="redirect-cue__label">Tap the menu</span>
     <svg class="redirect-cue__arrow redirect-cue__arrow--one" viewBox="0 0 64 64" fill="none">
@@ -32,7 +32,7 @@
           <img class="redirect-service__icon" id="redirect-icon" alt="" width="52" height="52" />
         </span>
         <div>
-          <p class="redirect-service__kicker">Leaving TikTok</p>
+          <p class="redirect-service__kicker" id="redirect-kicker">Leaving the in-app browser</p>
           <h1 class="redirect-service__title" id="redirect-title">Open in your browser</h1>
           <p class="redirect-service__username" id="redirect-username"></p>
         </div>
@@ -46,12 +46,12 @@
         </ol>
       </div>
 
-      <a class="redirect-back" href="/bio.html">Back to social links</a>
+      <a class="redirect-back" href="/bio.html">Back to mas0ng bio</a>
       <p class="redirect-status" id="redirect-status" role="status" aria-live="polite"></p>
     </section>
   </main>
 
-  <script src="/public_assets/site/js/lib/social-tiles.js"></script>
-  <script src="/redirect/tiktok.js" defer></script>
+  <script src="/public_assets/site/js/lib/social-tiles.js?v=20260726-social-handoff1"></script>
+  <script src="/redirect/tiktok.js?v=20260726-social-handoff1" defer></script>
 </body>
 </html>

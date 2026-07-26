@@ -8,13 +8,53 @@ window.MAS0NG_SOCIAL_TILES = (function () {
     return /tiktok|musical_ly|musically|bytedancewebview|com\.zhiliaoapp\.musically/.test(ua);
   }
 
-  function buildTikTokRedirectUrl(social) {
+  function isInstagramBrowser(userAgent) {
+    const ua = String(userAgent || window.navigator.userAgent || '').toLowerCase();
+    return /instagram/.test(ua);
+  }
+
+  function isSocialInAppBrowser(userAgent) {
+    return isTikTokBrowser(userAgent) || isInstagramBrowser(userAgent);
+  }
+
+  function socialIdentity(social) {
+    const site = String(social?.id || '').trim().toLowerCase();
+    let url;
+    try {
+      url = new URL(social?.href || '');
+    } catch {
+      return null;
+    }
+    if (url.protocol !== 'https:' || url.username || url.password || url.search || url.hash) return null;
+    const host = url.hostname.toLowerCase().replace(/^www\./, '');
+    let parts;
+    try {
+      parts = url.pathname.split('/').filter(Boolean).map((part) => decodeURIComponent(part));
+    } catch {
+      return null;
+    }
+    let username = '';
+
+    if (site === 'instagram' && host === 'instagram.com' && parts.length === 1) username = parts[0];
+    if (site === 'tiktok' && host === 'tiktok.com' && parts.length === 1 && parts[0].startsWith('@')) username = parts[0].slice(1);
+    if (site === 'snapchat' && host === 'snapchat.com' && parts.length === 2 && parts[0] === 'add') username = parts[1];
+    if (site === 'github' && host === 'github.com' && parts.length === 1) username = parts[0];
+    if (site === 'linkedin' && host === 'linkedin.com' && parts.length === 2 && parts[0] === 'in') username = parts[1];
+    if (site === 'youtube' && host === 'youtube.com' && parts.length === 1 && parts[0].startsWith('@')) username = parts[0].slice(1);
+    if (site === 'x' && host === 'x.com' && parts.length === 1) username = parts[0];
+    if (site === 'threads' && host === 'threads.net' && parts.length === 1 && parts[0].startsWith('@')) username = parts[0].slice(1);
+    if (site === 'bluesky' && host === 'bsky.app' && parts.length === 2 && parts[0] === 'profile') username = parts[1];
+    if (site === 'discord' && host === 'discord.com' && parts.length === 2 && parts[0] === 'users') username = parts[1];
+
+    return username ? { site, username } : null;
+  }
+
+  function buildSocialRedirectUrl(social) {
+    const identity = socialIdentity(social);
+    if (!identity) return '';
     const params = new URLSearchParams({
-      open: social.id || '',
-      url: social.href || '',
-      service: social.label || 'Social profile',
-      username: social.handle || '',
-      iconurl: social.icon || ''
+      site: identity.site,
+      username: identity.username
     });
     return `/redirect/tiktok.html?${params.toString()}`;
   }
@@ -24,8 +64,12 @@ window.MAS0NG_SOCIAL_TILES = (function () {
   }
 
   function renderTile(social) {
+    const redirectUrl = buildSocialRedirectUrl(social);
+    const useHandoff = isSocialInAppBrowser() && redirectUrl;
+    const href = useHandoff ? redirectUrl : social.href;
+    const target = useHandoff ? '_self' : '_blank';
     return `
-      <a class="social-tile social-tile--${social.id}" href="${social.href}" target="_blank" rel="noopener noreferrer">
+      <a class="social-tile social-tile--${social.id}" href="${href}" target="${target}" rel="noopener noreferrer">
         <div class="social-tile__glow" aria-hidden="true"></div>
         <div class="social-tile__icon-wrap">
           <img src="${social.icon}" alt="" width="32" height="32" loading="lazy" decoding="async" />
@@ -55,7 +99,11 @@ window.MAS0NG_SOCIAL_TILES = (function () {
   return {
     isPending,
     isTikTokBrowser,
-    buildTikTokRedirectUrl,
+    isInstagramBrowser,
+    isSocialInAppBrowser,
+    socialIdentity,
+    buildSocialRedirectUrl,
+    buildTikTokRedirectUrl: buildSocialRedirectUrl,
     filterLive,
     renderTile,
     renderGrid,

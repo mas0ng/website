@@ -20,7 +20,7 @@
         <section class="legal-hero">
           <h1 class="legal-title">Privacy Policy</h1>
           <p class="legal-lead">This policy explains what information is handled when you visit public pages, sign in, or use protected features, and the choices and rights available to you.</p>
-          <p class="legal-meta">Last updated: 11 July 2026</p>
+          <p class="legal-meta">Last updated: 26 July 2026</p>
         </section>
 
         <section class="legal-stack">
@@ -59,8 +59,13 @@
               </div>
               <div class="data-row">
                 <dt>Browser storage</dt>
-                <dd>A value that remembers the privacy notice acknowledgement.</dd>
-                <dd>Used only to keep the notice dismissed on that device.</dd>
+                <dd>Separate values on mas0ng.com and bio.mas0ng.com that remember a privacy-notice preference.</dd>
+                <dd>Used only to keep the relevant notice dismissed on that browser.</dd>
+              </div>
+              <div class="data-row">
+                <dt>Public bio profiles</dt>
+                <dd>The published name, handle, profile picture, introduction, and approved social-profile links for each listed person.</dd>
+                <dd>Used to provide the public bio page and link to profiles that person has chosen to publish.</dd>
               </div>
               <div class="data-row">
                 <dt>Sign-in and security</dt>
@@ -71,6 +76,11 @@
                 <dt>Protected app activity</dt>
                 <dd>Actions, settings, and content submitted when an authorised user asks a private feature to perform a task.</dd>
                 <dd>Used to provide the requested feature.</dd>
+              </div>
+              <div class="data-row">
+                <dt>Filestore content</dt>
+                <dd>Files, folders, filenames, file metadata, and change requests submitted by authorised Filestore users.</dd>
+                <dd>Used to store, preview, download, organise, and protect private files.</dd>
               </div>
               <div class="data-row">
                 <dt>AI chats and files</dt>
@@ -89,13 +99,14 @@
           <section class="legal-section">
             <h2>Public pages and external resources</h2>
             <p>Public pages do not use third-party analytics, advertising, or behavioural tracking. They do make ordinary requests needed to deliver the site and public content. Hosting and security providers receive standard request information such as IP address, user agent, requested URL, and time.</p>
+            <p>Public bio pages display only profile details selected for publication. The <code>go.mas0ng.com</code> short-link service and social-app handoff page use fixed, operator-controlled destination formats. They do not use click analytics or allow a visitor to supply an arbitrary redirect destination. The external platform receives ordinary request information after you choose to continue.</p>
             <p>The site loads a body font from Google Fonts. This causes the browser to contact Google and disclose standard request information, including the browser's IP address.</p>
             <p>Public pages may ask the authentication service whether the browser already has a valid session. This request uses any existing session cookie but does not create a session for an anonymous visitor.</p>
           </section>
 
           <section class="legal-section">
             <h2>Cookies and browser storage</h2>
-            <p>Informational public pages store one local value after “Dismiss notice” is selected so the notice stays dismissed. It is not used to track behaviour across websites and the button is not a consent control.</p>
+            <p>Informational public pages on mas0ng.com and bio.mas0ng.com each store a local value after “Dismiss notice” is selected so the relevant notice stays dismissed. These values are not used to track behaviour across websites. The Cookie Notice provides links that remove the preferences without requiring all browser data to be cleared.</p>
             <p>After a successful sign-in, essential cookies keep the session authenticated. Public pages may use those cookies to check whether the browser is already signed in.</p>
             <p>More information is in the <a class="legal-link" href="/legal/cookies.html">Cookie Notice</a>.</p>
           </section>
@@ -104,6 +115,12 @@
             <h2>AI processing</h2>
             <p>When an AI feature is used, the prompt, relevant conversation context, selected settings, and readable attachment content may be sent to OpenAI or DeepSeek to generate a response. Images and PDF files may be sent to OpenAI to extract readable text even when a different provider is selected for the conversation. Extracted text may then be included in a later request to the selected model provider.</p>
             <p>Chats and files may be saved so they can be reopened. Files are retained for pinned chats and a limited number of recent unpinned chats; older files may be deleted while chat text remains. You can delete chats through the app. See the <a class="legal-link" href="/legal/ai.html">AI Policy</a> for more detail.</p>
+          </section>
+
+          <section class="legal-section">
+            <h2>Filestore processing</h2>
+            <p>Filestore files and metadata are stored on an owner-controlled Media0 filesystem rather than a public object-storage bucket. Access still passes through Cloudflare-hosted Workers for delivery, authentication, authorisation, and security controls. Only authorised users can browse or download files, and every create, upload, rename, or delete action also requires a short-lived Media0 server-control session.</p>
+            <p>Do not place another person's confidential, sensitive, or rights-protected material in Filestore unless it is necessary, lawful, and within the permission granted to you.</p>
           </section>
 
           <section class="legal-section">
@@ -147,6 +164,7 @@
               <li>Normal sessions expire after seven days; the cross-subdomain bootstrap cookie expires after 90 seconds. Either can end sooner on logout, revocation, or security invalidation.</li>
               <li>Login challenges expire after five minutes, QR login requests after two minutes, and failed-attempt rate-limit records after 15 minutes. Provider security and delivery logs may have separate retention periods.</li>
               <li>AI chats remain until deleted. Attached files remain for pinned chats and the five most recent unpinned chats by default; older unpinned attachments may be removed while chat text remains.</li>
+              <li>Filestore files remain until an authorised user deletes them or they are removed for security, maintenance, legal, capacity, or service-discontinuation reasons. Deleted files may remain in device or infrastructure backups until those backups rotate.</li>
               <li>Contact messages are kept as long as needed to respond and maintain an appropriate record.</li>
               <li>Service providers retain their own records under their applicable settings and policies.</li>
             </ul>
