@@ -492,7 +492,6 @@
             <h3>Site</h3>
             <ul>
               ${footerSite}
-              <li class="footer__security-report"><a href="${siteRoot}/legal/security.html?reportModalPopup=true">Report a security concern</a></li>
               <li><a id="footer-login" href="${esc.safeHref(d.loginUrl)}">Log in</a></li>
             </ul>
           </div>
