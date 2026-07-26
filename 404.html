@@ -35,18 +35,19 @@
         <div class="error-card__visual error-card__visual--404" aria-hidden="true">
           <div class="error-card__code-wrap">
             <span class="page-panel__code">404</span>
-            <span class="error-card__visual-label">Lost in the link</span>
+            <span class="error-card__visual-label" id="error-visual-label">Lost in the link</span>
           </div>
         </div>
 
         <div class="error-card__content">
           <h1 class="page-panel__title" id="error-title">Page not found.</h1>
-          <p class="page-panel__lead">The address may be incorrect, or the page may have moved somewhere new.</p>
+          <p class="page-panel__lead" id="error-lead">The address may be incorrect, or the page may have moved somewhere new.</p>
           <div class="page-panel__actions">
-            <a class="page-panel__btn page-panel__btn--primary" href="/">
-              <span>Return home</span>
+            <a class="page-panel__btn page-panel__btn--primary" id="error-primary-action" href="/">
+              <span id="error-primary-label">Return home</span>
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
+            <a class="page-panel__btn page-panel__btn--ghost" id="error-secondary-action" href="/" hidden>mas0ng.com home</a>
           </div>
         </div>
       </main>
@@ -71,7 +72,7 @@
   <script src="/public_assets/site/js/config/site-data.js?v=20260723-mobile-nav3"></script>
   <script src="/public_assets/site/js/lib/cache.js"></script>
   <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
-  <script src="/public_assets/site/js/pages/404.js?v=20260714-2" defer></script>
+  <script src="/public_assets/site/js/pages/404.js?v=20260726-bio1" defer></script>
   <script src="/public_assets/site/js/layout/shell.js?v=20260723-mobile-nav3" data-active="home" defer></script>
 </body>
 </html>
