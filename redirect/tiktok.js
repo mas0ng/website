@@ -104,7 +104,18 @@
     return;
   }
 
-  status.textContent = 'After choosing Open in browser, this page will continue automatically.';
+  status.textContent = 'After choosing Open in browser, the external tab will continue automatically and this page will return to your bio.';
+
+  let returnedFromHandoff = false;
+  document.addEventListener('visibilitychange', () => {
+    if (returnedFromHandoff || document.visibilityState !== 'hidden') return;
+    returnedFromHandoff = true;
+    if (window.history.length > 1) {
+      window.history.back();
+      return;
+    }
+    window.location.replace('/bio.html');
+  });
 
   function cleanUsername(value) {
     return String(value || '').trim().replace(/^@/, '').slice(0, 253);
