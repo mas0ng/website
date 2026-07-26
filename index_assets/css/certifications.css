@@ -668,19 +668,34 @@ body[data-page="certifications"] .footer__social-link img {
       #000;
   }
 
+  .certifications-hero::before {
+    content: none;
+  }
+
   .certifications-hero {
-    min-height: 0;
-    padding-top: calc(var(--nav-h, 64px) + 32px);
-    padding-bottom: 26px;
-    padding-inline: 12px;
+    min-height: 290px;
+    padding: calc(var(--nav-h, 64px) + 42px) 18px 46px;
+    background: transparent;
   }
 
   .certifications-hero > .section__inner {
-    padding-inline: 8px;
+    width: 100%;
+    padding-inline: 0;
+  }
+
+  .certifications-hero__copy {
+    gap: 16px;
   }
 
   .certifications-hero .section__title {
-    font-size: clamp(2.65rem, 13.5vw, 4.4rem);
+    font-size: clamp(3rem, 14vw, 4.2rem);
+    letter-spacing: -0.055em;
+  }
+
+  .certifications-hero .section__lead {
+    max-width: 34ch;
+    font-size: 0.92rem;
+    line-height: 1.7;
   }
 
   .certifications-hero .masthead__canvas {
@@ -692,26 +707,59 @@ body[data-page="certifications"] .footer__social-link img {
   }
 
   .certifications-section {
-    width: calc(100% - 24px);
-    margin-bottom: 48px;
+    width: calc(100% - 20px);
+    margin: 0 auto 52px;
   }
 
   .certifications-section > .section__inner {
-    padding: 24px 14px;
-    border-radius: 22px;
+    padding: 28px 16px 18px;
+    border-radius: 24px;
+  }
+
+  .certifications-toolbar {
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .certifications-heading {
+    font-size: clamp(1.75rem, 9vw, 2.3rem);
   }
 
   .certification-filters {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 20px;
   }
 
   .certification-filter-group {
     width: 100%;
   }
 
+  .certification-filter-toggle {
+    min-height: 60px;
+    padding: 10px 11px;
+    border-radius: 14px;
+  }
+
+  .certification-filter-toggle__label {
+    font-size: 0.53rem;
+  }
+
+  .certification-filter-toggle__summary {
+    overflow: hidden;
+    font-size: 0.7rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   .certification-filter-menu {
-    width: 100%;
+    width: min(280px, calc(100vw - 48px));
+  }
+
+  .certification-filter-group:last-child .certification-filter-menu {
+    right: 0;
+    left: auto;
   }
 
   .certification-grid {
@@ -720,7 +768,9 @@ body[data-page="certifications"] .footer__social-link img {
   }
 
   .certification-card {
-    min-height: 300px;
+    min-height: 330px;
+    padding: 22px;
+    border-radius: 16px;
   }
 
   .credential-dialog__actions {

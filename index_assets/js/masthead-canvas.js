@@ -6,9 +6,10 @@
   const isBioPage = document.body?.dataset.page === 'bio';
   const isHomePage = document.body?.dataset.page === 'home';
   const isCertificationsPage = document.body?.dataset.page === 'certifications';
-  const isLiquidPage = isBioPage || isHomePage || isCertificationsPage;
+  const isLegalPage = document.body?.dataset.page === 'legal';
+  const isLiquidPage = isBioPage || isHomePage || isCertificationsPage || isLegalPage;
   const staticMasthead = window.matchMedia('(max-width: 768px), (hover: none) and (pointer: coarse)');
-  if (staticMasthead.matches && !isLiquidPage) {
+  if (staticMasthead.matches) {
     canvas.hidden = true;
     canvas.setAttribute('aria-hidden', 'true');
     return;
@@ -225,8 +226,8 @@
   // Capture user interactions on the masthead container
   masthead.addEventListener('mousemove', (e) => {
     const rect = masthead.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
+    mouse.x = isLegalPage ? e.clientX : e.clientX - rect.left;
+    mouse.y = isLegalPage ? e.clientY : e.clientY - rect.top;
     mouse.active = true;
     wake();
   });
@@ -244,8 +245,8 @@
   masthead.addEventListener('touchmove', (e) => {
     if (e.touches.length > 0) {
       const rect = masthead.getBoundingClientRect();
-      mouse.x = e.touches[0].clientX - rect.left;
-      mouse.y = e.touches[0].clientY - rect.top;
+      mouse.x = isLegalPage ? e.touches[0].clientX : e.touches[0].clientX - rect.left;
+      mouse.y = isLegalPage ? e.touches[0].clientY : e.touches[0].clientY - rect.top;
       mouse.active = true;
       wake();
     }
