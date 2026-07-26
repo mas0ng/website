@@ -7,7 +7,9 @@
   <meta name="robots" content="noindex" />
   <link rel="canonical" href="/legal/privacy/" />
   <meta http-equiv="refresh" content="0; url=/legal/privacy/" />
-  <script>window.location.replace('/legal/privacy/');</script>
+  <script>
+    window.location.replace(`/legal/privacy/${window.location.search}${window.location.hash}`);
+  </script>
 </head>
 <body>
   <p><a href="/legal/privacy/">Privacy Policy</a></p>
