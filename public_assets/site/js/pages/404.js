@@ -53,8 +53,7 @@
     const lead = document.getElementById('error-lead');
     const primaryAction = document.getElementById('error-primary-action');
     const primaryLabel = document.getElementById('error-primary-label');
-    const secondaryAction = document.getElementById('error-secondary-action');
-    if (!visualLabel || !pageTitle || !lead || !primaryAction || !primaryLabel || !secondaryAction) {
+    if (!visualLabel || !pageTitle || !lead || !primaryAction || !primaryLabel) {
       return false;
     }
 
@@ -63,11 +62,10 @@
     visualLabel.textContent = 'Profile unavailable';
     pageTitle.textContent = 'Bio page not found.';
     lead.textContent = profile
-      ? `The public bio profile "${profile}" is not available. Check the address or return to the main bio page.`
-      : 'That bio address is invalid or no longer available. Check the address or return to the main bio page.';
-    primaryAction.href = 'https://bio.mas0ng.com/';
-    primaryLabel.textContent = 'Return to bio';
-    secondaryAction.hidden = false;
+      ? `The public bio profile "${profile}" is not available. Check the address or return to mas0ng.com.`
+      : 'That bio address is invalid or no longer available. Check the address or return to mas0ng.com.';
+    primaryAction.href = '/';
+    primaryLabel.textContent = 'mas0ng.com home';
     return true;
   }
 })();
