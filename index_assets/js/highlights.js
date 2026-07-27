@@ -1,8 +1,10 @@
 (function () {
   const statsData = {
-    likes: 2700000,
-    views: 28100000,
-    followers: 28700,
+    views: 38900000,
+    likes: 4400000,
+    shares: 885300,
+    profileViews: 198000,
+    followers: 33200,
     sponsers: [
       "/public_assets/sponsor_icons/topmediai.svg",
       "/public_assets/sponsor_icons/flashloop.png",
@@ -38,10 +40,29 @@
     </svg>
   `;
 
+  const SHARE_SVG = `
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="18" cy="5" r="3"></circle>
+      <circle cx="6" cy="12" r="3"></circle>
+      <circle cx="18" cy="19" r="3"></circle>
+      <path d="m8.6 10.5 6.8-4"></path>
+      <path d="m8.6 13.5 6.8 4"></path>
+    </svg>
+  `;
+
+  const PROFILE_SVG = `
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="9" cy="8" r="4"></circle>
+      <path d="M2.5 21a6.5 6.5 0 0 1 13 0"></path>
+      <path d="M16 8h6"></path>
+      <path d="m19 5 3 3-3 3"></path>
+    </svg>
+  `;
+
   function formatNumber(n) {
     if (n == null || isNaN(n)) return '—';
     if (n >= 1_000_000) return (n / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M';
-    if (n >= 1_000) return (n / 1_000).toFixed(1).replace(/\.0$/, '') + 'k';
+    if (n >= 1_000) return (n / 1_000).toFixed(1).replace(/\.0$/, '') + 'K';
     return n.toLocaleString();
   }
 
@@ -77,31 +98,54 @@
     const statsGrid = document.getElementById('stats-grid');
     if (statsGrid) {
       statsGrid.innerHTML = `
-        <div class="stat-card">
+        <div class="stat-card stat-card--views">
           <div class="stat-card__icon-wrap" style="color: #60a5fa; background: rgba(96, 165, 250, 0.12);">
             ${EYE_SVG}
           </div>
           <div class="stat-card__body">
-            <span class="stat-card__value" id="stat-views-value">0</span>
             <span class="stat-card__label">Views</span>
+            <span class="stat-card__value" id="stat-views-value">0</span>
+            <span class="stat-card__meta">Last 365 days</span>
           </div>
         </div>
-        <div class="stat-card">
+        <div class="stat-card stat-card--desktop-only">
           <div class="stat-card__icon-wrap" style="color: #fb7185; background: rgba(251, 113, 133, 0.12);">
             ${HEART_SVG}
           </div>
           <div class="stat-card__body">
-            <span class="stat-card__value" id="stat-likes-value">0</span>
             <span class="stat-card__label">Likes</span>
+            <span class="stat-card__value" id="stat-likes-value">0</span>
+            <span class="stat-card__meta">Total</span>
           </div>
         </div>
-        <div class="stat-card">
+        <div class="stat-card stat-card--desktop-only">
+          <div class="stat-card__icon-wrap" style="color: #c084fc; background: rgba(192, 132, 252, 0.12);">
+            ${SHARE_SVG}
+          </div>
+          <div class="stat-card__body">
+            <span class="stat-card__label">Shares</span>
+            <span class="stat-card__value" id="stat-shares-value">0</span>
+            <span class="stat-card__meta">Last 365 days</span>
+          </div>
+        </div>
+        <div class="stat-card stat-card--desktop-only">
+          <div class="stat-card__icon-wrap" style="color: #fbbf24; background: rgba(251, 191, 36, 0.12);">
+            ${PROFILE_SVG}
+          </div>
+          <div class="stat-card__body">
+            <span class="stat-card__label">Profile views</span>
+            <span class="stat-card__value" id="stat-profile-views-value">0</span>
+            <span class="stat-card__meta">Last 365 days</span>
+          </div>
+        </div>
+        <div class="stat-card stat-card--followers">
           <div class="stat-card__icon-wrap" style="color: #10b981; background: rgba(16, 185, 129, 0.08);">
             ${USERS_SVG}
           </div>
           <div class="stat-card__body">
-            <span class="stat-card__value" id="stat-followers-value">0</span>
             <span class="stat-card__label">Followers</span>
+            <span class="stat-card__value" id="stat-followers-value">0</span>
+            <span class="stat-card__meta">Total</span>
           </div>
         </div>
       `;
@@ -112,6 +156,8 @@
         statsGrid.classList.add('is-visible');
         animateCount(document.getElementById('stat-views-value'), data.views, 1200);
         animateCount(document.getElementById('stat-likes-value'), data.likes, 1000);
+        animateCount(document.getElementById('stat-shares-value'), data.shares, 1100);
+        animateCount(document.getElementById('stat-profile-views-value'), data.profileViews, 1100);
         animateCount(document.getElementById('stat-followers-value'), data.followers, 1400);
       } else {
         const observer = new IntersectionObserver((entries) => {
@@ -123,6 +169,8 @@
               // Trigger JavaScript count-up animation
               animateCount(document.getElementById('stat-views-value'), data.views, 1200);
               animateCount(document.getElementById('stat-likes-value'), data.likes, 1000);
+              animateCount(document.getElementById('stat-shares-value'), data.shares, 1100);
+              animateCount(document.getElementById('stat-profile-views-value'), data.profileViews, 1100);
               animateCount(document.getElementById('stat-followers-value'), data.followers, 1400);
               
               // Disconnect observer so it only triggers once
