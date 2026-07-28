@@ -2622,6 +2622,10 @@ body[data-page="error"] .page-panel__btn--primary {
   display: none;
 }
 
+.social-lead__mobile {
+  display: none;
+}
+
 .sponsors-belt {
   position: relative;
   overflow: hidden;
@@ -3398,6 +3402,14 @@ body[data-page="home"] .skeleton-shimmer {
   }
 
   body[data-page="home"] .sponsors-label__mobile {
+    display: inline;
+  }
+
+  body[data-page="home"] .social-lead__desktop {
+    display: none;
+  }
+
+  body[data-page="home"] .social-lead__mobile {
     display: inline;
   }
 

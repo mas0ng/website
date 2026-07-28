@@ -6,7 +6,7 @@ window.MAS0NG_SITE = {
   nav: [
     { id: 'home', label: 'Home', href: '/' },
     { id: 'certifications', label: 'Certifications', href: '/certifications.html' },
-    { id: 'dev', label: 'Dev', href: 'https://dev.mas0ng.com/' }
+    { id: 'bio', label: 'Bio', href: '/bio.html' }
   ],
   social: [],
   legal: [
@@ -34,7 +34,7 @@ window.MAS0NG_SITE = {
     legalCss: '/public_assets/site/css/legal.css',
     authCss: '/public_assets/site/css/auth.css',
     homeJs: '/index_assets/js/home.js',
-    socialConfig: '/public_assets/configs/socials.json',
+    socialConfig: 'https://mas0ng.com/unencrypted/api/social-links?v=20260728-social-icons1',
     cacheVersions: '/public_assets/configs/cache-versions.json',
     abeeZee: 'https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap'
   }

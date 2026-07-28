@@ -125,7 +125,7 @@
   }
 
   async function loadSocials() {
-    const url = resolveAssetUrl(d.assets.socialConfig || '/public_assets/configs/socials.json');
+    const url = resolveAssetUrl(d.assets.socialConfig || 'https://mas0ng.com/unencrypted/api/social-links?v=20260728-social-icons1');
 
     try {
       const response = await fetch(url, { cache: 'default' });
@@ -134,8 +134,9 @@
       }
 
       const data = await response.json();
-      d.social = Array.isArray(data)
-        ? data.map((item) => ({ ...item, icon: resolveAssetUrl(item.icon) }))
+      const socialLinks = Array.isArray(data) ? data : data?.social_links;
+      d.social = Array.isArray(socialLinks)
+        ? socialLinks.map((item) => ({ ...item, icon: resolveAssetUrl(item.icon) }))
         : [];
     } catch (error) {
       console.warn('Failed to load social config:', error);

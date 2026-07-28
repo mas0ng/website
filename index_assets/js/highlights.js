@@ -1,38 +1,21 @@
 (function () {
-  const statsData = {
-    views: 38900000,
-    likes: 4400000,
-    shares: 885300,
-    profileViews: 198000,
-    followers: 33200,
-    sponsers: [
-      "/public_assets/sponsor_icons/topmediai.svg",
-      "/public_assets/sponsor_icons/flashloop.png",
-      "/public_assets/sponsor_icons/verdent.png",
-      "/public_assets/sponsor_icons/supercell.png",
-      "/public_assets/sponsor_icons/polybuzz.png",
-      "/public_assets/sponsor_icons/hacoo.png",
-      "/public_assets/sponsor_icons/dola.png",
-      "/public_assets/sponsor_icons/capcut.svg",
-      "/public_assets/sponsor_icons/meete.png"
-    ]
-  };
+  const API_URL = 'https://mas0ng.com/unencrypted/api/';
 
   const HEART_SVG = `
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
     </svg>
   `;
 
   const EYE_SVG = `
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
       <circle cx="12" cy="12" r="3"></circle>
     </svg>
   `;
 
   const USERS_SVG = `
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
       <circle cx="9" cy="7" r="4"></circle>
       <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -41,7 +24,7 @@
   `;
 
   const SHARE_SVG = `
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <circle cx="18" cy="5" r="3"></circle>
       <circle cx="6" cy="12" r="3"></circle>
       <circle cx="18" cy="19" r="3"></circle>
@@ -51,7 +34,7 @@
   `;
 
   const PROFILE_SVG = `
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <circle cx="9" cy="8" r="4"></circle>
       <path d="M2.5 21a6.5 6.5 0 0 1 13 0"></path>
       <path d="M16 8h6"></path>
@@ -59,163 +42,195 @@
     </svg>
   `;
 
-  function formatNumber(n) {
-    if (n == null || isNaN(n)) return '—';
-    if (n >= 1_000_000) return (n / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M';
-    if (n >= 1_000) return (n / 1_000).toFixed(1).replace(/\.0$/, '') + 'K';
-    return n.toLocaleString();
+  const STAT_CARDS = Object.freeze([
+    {
+      key: 'views',
+      label: 'Views',
+      meta: 'Last 365 days',
+      className: 'stat-card--views',
+      color: '#60a5fa',
+      background: 'rgba(96, 165, 250, 0.12)',
+      icon: EYE_SVG,
+      duration: 1200
+    },
+    {
+      key: 'likes',
+      label: 'Likes',
+      meta: 'Total',
+      className: 'stat-card--desktop-only',
+      color: '#fb7185',
+      background: 'rgba(251, 113, 133, 0.12)',
+      icon: HEART_SVG,
+      duration: 1000
+    },
+    {
+      key: 'shares',
+      label: 'Shares',
+      meta: 'Last 365 days',
+      className: 'stat-card--desktop-only',
+      color: '#c084fc',
+      background: 'rgba(192, 132, 252, 0.12)',
+      icon: SHARE_SVG,
+      duration: 1100
+    },
+    {
+      key: 'profile_views',
+      label: 'Profile views',
+      meta: 'Last 365 days',
+      className: 'stat-card--desktop-only',
+      color: '#fbbf24',
+      background: 'rgba(251, 191, 36, 0.12)',
+      icon: PROFILE_SVG,
+      duration: 1100
+    },
+    {
+      key: 'followers',
+      label: 'Followers',
+      meta: 'Total',
+      className: 'stat-card--followers',
+      color: '#10b981',
+      background: 'rgba(16, 185, 129, 0.08)',
+      icon: USERS_SVG,
+      duration: 1400
+    }
+  ]);
+
+  function publicNumber(value) {
+    const number = Number(value);
+    return Number.isFinite(number) && number >= 0 ? Math.floor(number) : null;
   }
 
-  // Smooth easeOutQuad counter animation
-  function animateCount(element, targetValue, durationMs = 1200) {
-    if (!element) return;
-    const start = 0;
+  function formatNumber(value) {
+    if (value === null) return '—';
+    if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1).replace(/\.0$/, '')}M`;
+    if (value >= 1_000) return `${(value / 1_000).toFixed(1).replace(/\.0$/, '')}K`;
+    return value.toLocaleString();
+  }
+
+  function animateCount(element, targetValue, durationMs) {
+    if (!element || targetValue === null) {
+      if (element) element.textContent = '—';
+      return;
+    }
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      element.textContent = formatNumber(targetValue);
+      return;
+    }
+
     const startTime = performance.now();
-    
     function update(currentTime) {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / durationMs, 1.0);
-      
-      const easeProgress = progress * (2 - progress); // easeOutQuad
-      const current = Math.floor(start + (targetValue - start) * easeProgress);
-      
-      element.textContent = formatNumber(current);
-      
-      if (progress < 1.0) {
+      const progress = Math.min((currentTime - startTime) / durationMs, 1);
+      const eased = progress * (2 - progress);
+      element.textContent = formatNumber(Math.floor(targetValue * eased));
+      if (progress < 1) {
         requestAnimationFrame(update);
       } else {
         element.textContent = formatNumber(targetValue);
       }
     }
-    
     requestAnimationFrame(update);
   }
 
-  async function init() {
-    const data = statsData;
-    
-    // Render Statistics Grid layout first
-    const statsGrid = document.getElementById('stats-grid');
-    if (statsGrid) {
-      statsGrid.innerHTML = `
-        <div class="stat-card stat-card--views">
-          <div class="stat-card__icon-wrap" style="color: #60a5fa; background: rgba(96, 165, 250, 0.12);">
-            ${EYE_SVG}
-          </div>
-          <div class="stat-card__body">
-            <span class="stat-card__label">Views</span>
-            <span class="stat-card__value" id="stat-views-value">0</span>
-            <span class="stat-card__meta">Last 365 days</span>
-          </div>
+  function renderStats(statsGrid, stats) {
+    statsGrid.innerHTML = STAT_CARDS.map((card) => `
+      <div class="stat-card ${card.className}">
+        <div class="stat-card__icon-wrap" style="color: ${card.color}; background: ${card.background};">
+          ${card.icon}
         </div>
-        <div class="stat-card stat-card--desktop-only">
-          <div class="stat-card__icon-wrap" style="color: #fb7185; background: rgba(251, 113, 133, 0.12);">
-            ${HEART_SVG}
-          </div>
-          <div class="stat-card__body">
-            <span class="stat-card__label">Likes</span>
-            <span class="stat-card__value" id="stat-likes-value">0</span>
-            <span class="stat-card__meta">Total</span>
-          </div>
+        <div class="stat-card__body">
+          <span class="stat-card__label">${card.label}</span>
+          <span class="stat-card__value" data-stat-value="${card.key}">0</span>
+          <span class="stat-card__meta">${card.meta}</span>
         </div>
-        <div class="stat-card stat-card--desktop-only">
-          <div class="stat-card__icon-wrap" style="color: #c084fc; background: rgba(192, 132, 252, 0.12);">
-            ${SHARE_SVG}
-          </div>
-          <div class="stat-card__body">
-            <span class="stat-card__label">Shares</span>
-            <span class="stat-card__value" id="stat-shares-value">0</span>
-            <span class="stat-card__meta">Last 365 days</span>
-          </div>
-        </div>
-        <div class="stat-card stat-card--desktop-only">
-          <div class="stat-card__icon-wrap" style="color: #fbbf24; background: rgba(251, 191, 36, 0.12);">
-            ${PROFILE_SVG}
-          </div>
-          <div class="stat-card__body">
-            <span class="stat-card__label">Profile views</span>
-            <span class="stat-card__value" id="stat-profile-views-value">0</span>
-            <span class="stat-card__meta">Last 365 days</span>
-          </div>
-        </div>
-        <div class="stat-card stat-card--followers">
-          <div class="stat-card__icon-wrap" style="color: #10b981; background: rgba(16, 185, 129, 0.08);">
-            ${USERS_SVG}
-          </div>
-          <div class="stat-card__body">
-            <span class="stat-card__label">Followers</span>
-            <span class="stat-card__value" id="stat-followers-value">0</span>
-            <span class="stat-card__meta">Total</span>
-          </div>
-        </div>
-      `;
+      </div>
+    `).join('');
 
-      // Set up IntersectionObserver to trigger animations once scrolled into view
-      if (!window.IntersectionObserver) {
-        // Fallback for browsers without IntersectionObserver support
-        statsGrid.classList.add('is-visible');
-        animateCount(document.getElementById('stat-views-value'), data.views, 1200);
-        animateCount(document.getElementById('stat-likes-value'), data.likes, 1000);
-        animateCount(document.getElementById('stat-shares-value'), data.shares, 1100);
-        animateCount(document.getElementById('stat-profile-views-value'), data.profileViews, 1100);
-        animateCount(document.getElementById('stat-followers-value'), data.followers, 1400);
-      } else {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              // Trigger CSS card fade-ins
-              statsGrid.classList.add('is-visible');
-              
-              // Trigger JavaScript count-up animation
-              animateCount(document.getElementById('stat-views-value'), data.views, 1200);
-              animateCount(document.getElementById('stat-likes-value'), data.likes, 1000);
-              animateCount(document.getElementById('stat-shares-value'), data.shares, 1100);
-              animateCount(document.getElementById('stat-profile-views-value'), data.profileViews, 1100);
-              animateCount(document.getElementById('stat-followers-value'), data.followers, 1400);
-              
-              // Disconnect observer so it only triggers once
-              observer.unobserve(statsGrid);
-            }
-          });
-        }, {
-          threshold: 0.15 // Triggers when 15% of the stats section is in viewport
-        });
-        
-        observer.observe(statsGrid);
-      }
+    const startCounters = () => {
+      statsGrid.classList.add('is-visible');
+      STAT_CARDS.forEach((card) => {
+        const element = statsGrid.querySelector(`[data-stat-value="${card.key}"]`);
+        animateCount(element, publicNumber(stats[card.key]), card.duration);
+      });
+    };
+
+    if (!window.IntersectionObserver) {
+      startCounters();
+      return;
     }
 
-    // Render Sponsors Conveyor Carousel
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      observer.disconnect();
+      startCounters();
+    }, { threshold: 0.15 });
+    observer.observe(statsGrid);
+  }
+
+  function safeSponsorPath(value) {
+    const path = String(value || '').trim();
+    return /^\/public_assets\/sponsor_icons\/[A-Za-z0-9._-]+$/.test(path) ? path : '';
+  }
+
+  function renderSponsors(sponsors) {
     const carouselContainer = document.getElementById('sponsors-carousel-container');
     const beltTrack = document.getElementById('sponsors-belt-track');
-    
-    // Support either "sponsers" or "sponsors" key from API response
-    const sponsors = data.sponsers || data.sponsors;
-    
-    if (carouselContainer && beltTrack && sponsors && sponsors.length > 0) {
-      // Repeat the logos until we have at least 8 to make the looping belt look continuous
-      let list = [...sponsors];
-      while (list.length < 8) {
-        list = list.concat(sponsors);
-      }
-      // Double the track list so translation transitions seamlessly
-      const doubleList = list.concat(list);
-      
-      beltTrack.innerHTML = doubleList.map(src => `
-        <div class="sponsor-card">
-          <img src="${src}" alt="Sponsor Logo" loading="lazy" />
-        </div>
-      `).join('');
-      
-      carouselContainer.style.display = 'block';
-    } else if (carouselContainer) {
+    if (!carouselContainer || !beltTrack) return;
+
+    const safeSponsors = (Array.isArray(sponsors) ? sponsors : [])
+      .map(safeSponsorPath)
+      .filter(Boolean);
+    if (!safeSponsors.length) {
       carouselContainer.style.display = 'none';
+      return;
+    }
+
+    let list = [...safeSponsors];
+    while (list.length < 8) list = list.concat(safeSponsors);
+    beltTrack.replaceChildren(...list.concat(list).map((src) => {
+      const card = document.createElement('div');
+      card.className = 'sponsor-card';
+      const image = document.createElement('img');
+      image.src = src;
+      image.alt = '';
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      card.append(image);
+      return card;
+    }));
+    carouselContainer.style.display = 'block';
+  }
+
+  async function init() {
+    const statsGrid = document.getElementById('stats-grid');
+    const summary = document.getElementById('highlights-summary');
+    if (!statsGrid) return;
+
+    try {
+      const response = await fetch(API_URL, {
+        headers: { Accept: 'application/json' }
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      const bot = data?.bOt;
+      if (!data?.ok || !bot || typeof bot.stats !== 'object') {
+        throw new Error('invalid_public_api_response');
+      }
+
+      if (summary && typeof bot.summary === 'string' && bot.summary.trim()) {
+        summary.textContent = bot.summary.trim();
+      }
+      renderStats(statsGrid, bot.stats);
+      renderSponsors(bot.sponsors);
+    } catch (error) {
+      statsGrid.innerHTML = '<p class="qualification-empty">TikTok statistics could not be loaded right now.</p>';
+      renderSponsors([]);
+      console.warn('Failed to load public homepage statistics:', error);
     }
   }
 
-  // Run on load
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', init, { once: true });
   } else {
     init();
   }

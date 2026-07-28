@@ -93,6 +93,7 @@ html.is-loading:not(.has-page-loader)::after {
 
   let overlay = null;
   let showTimer = null;
+  let removeTimer = null;
   let failsafeTimer = null;
   let visible = false;
   let activeOps = 0;
@@ -196,7 +197,16 @@ html.is-loading:not(.has-page-loader)::after {
   function show(immediate = true) {
     clearTimeout(showTimer);
     showTimer = null;
-    if (visible) return;
+    clearTimeout(removeTimer);
+    removeTimer = null;
+
+    if (visible) {
+      overlay?.classList.remove('is-done');
+      overlay?.setAttribute('aria-busy', 'true');
+      document.documentElement.classList.add('is-loading', 'has-page-loader');
+      armFailsafe();
+      return;
+    }
 
     const reveal = () => {
       showTimer = null;
@@ -231,8 +241,16 @@ html.is-loading:not(.has-page-loader)::after {
     overlay.setAttribute('aria-busy', 'false');
     document.documentElement.classList.remove('is-loading', 'has-page-loader');
     clearFailsafe();
-    window.setTimeout(() => {
-      overlay?.remove();
+
+    const finishedOverlay = overlay;
+    clearTimeout(removeTimer);
+    removeTimer = window.setTimeout(() => {
+      removeTimer = null;
+      if (overlay !== finishedOverlay || !finishedOverlay.classList.contains('is-done')) {
+        return;
+      }
+
+      finishedOverlay.remove();
       overlay = null;
       visible = false;
     }, 360);
@@ -272,7 +290,7 @@ html.is-loading:not(.has-page-loader)::after {
       showTimer = null;
       if (visible || elapsed >= SHOW_DELAY_MS || immediate) {
         if (visible) setProgress(1);
-        hide(true);
+        hide();
       }
     }
   }
@@ -302,7 +320,7 @@ html.is-loading:not(.has-page-loader)::after {
       } finally {
         activeOps = Math.max(0, activeOps - 1);
         setProgress(1);
-        hide(true);
+        hide();
       }
     },
 
@@ -321,6 +339,14 @@ html.is-loading:not(.has-page-loader)::after {
   });
 
   window.addEventListener('load', () => {
+    const shellOwnsBootLifecycle = Boolean(
+      document.querySelector('script[src*="/site/js/layout/shell.js"]')
+    );
+
+    if (shellOwnsBootLifecycle) {
+      return;
+    }
+
     window.setTimeout(() => {
       if (document.documentElement.classList.contains('is-loading') && activeOps === 0) {
         hide(true);

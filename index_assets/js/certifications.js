@@ -1,6 +1,5 @@
 (function () {
-  const API_URL = '/api/certifications/list?range=all';
-  const FALLBACK_URL = 'https://www.mas0ng.com/api/certifications/list?range=all';
+  const API_URL = 'https://mas0ng.com/unencrypted/api/certifications?range=all';
 
   const grid = document.getElementById('certification-grid');
   const filters = document.getElementById('certification-filters');
@@ -52,15 +51,8 @@
       if (!response.ok) throw new Error('HTTP ' + response.status);
       return await response.json();
     } catch (error) {
-      console.warn('Certifications fetch failed, trying absolute fallback:', error);
-      try {
-        const response = await fetch(FALLBACK_URL, { headers: { Accept: 'application/json' } });
-        if (!response.ok) throw new Error('HTTP ' + response.status);
-        return await response.json();
-      } catch (fallbackError) {
-        console.warn('Certifications fallback fetch failed:', fallbackError);
-        return { certifications: [], types: [] };
-      }
+      console.warn('Certifications fetch failed:', error);
+      return { certifications: [], types: [] };
     }
   }
 

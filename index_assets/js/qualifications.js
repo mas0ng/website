@@ -1,8 +1,7 @@
 (function () {
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
   const limit = isMobile ? 3 : 6;
-  const API_URL = `/api/certifications/list?limit=${limit}`;
-  const FALLBACK_URL = `https://www.mas0ng.com/api/certifications/list?limit=${limit}`;
+  const API_URL = `https://mas0ng.com/unencrypted/api/certifications?limit=${limit}`;
 
   const grid = document.getElementById('qualification-preview-grid');
   const moreIndicator = document.getElementById('qualification-more');
@@ -35,15 +34,8 @@
       if (!response.ok) throw new Error('HTTP ' + response.status);
       return await response.json();
     } catch (error) {
-      console.warn('Certifications preview fetch failed, trying absolute fallback:', error);
-      try {
-        const response = await fetch(FALLBACK_URL, { headers: { Accept: 'application/json' } });
-        if (!response.ok) throw new Error('HTTP ' + response.status);
-        return await response.json();
-      } catch (fallbackError) {
-        console.warn('Certifications fallback fetch failed:', fallbackError);
-        return { certifications: [] };
-      }
+      console.warn('Certifications preview fetch failed:', error);
+      return { certifications: [] };
     }
   }
 

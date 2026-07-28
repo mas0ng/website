@@ -1,4 +1,20 @@
 window.MAS0NG_SOCIAL_TILES = (function () {
+  function escapeHtml(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function safeAssetPath(value) {
+    const path = String(value || '').trim();
+    return path.startsWith('/') && !path.startsWith('//')
+      ? path
+      : '/public_assets/site_branding/favicon.svg';
+  }
+
   function isPending(href) {
     return !href || href === '#';
   }
@@ -60,7 +76,7 @@ window.MAS0NG_SOCIAL_TILES = (function () {
   }
 
   function filterLive(socials) {
-    return (socials || []).filter((social) => !isPending(social.href));
+    return (socials || []).filter((social) => !isPending(social.href) && socialIdentity(social));
   }
 
   function renderTile(social) {
@@ -69,14 +85,14 @@ window.MAS0NG_SOCIAL_TILES = (function () {
     const href = useHandoff ? redirectUrl : social.href;
     const target = useHandoff ? '_self' : '_blank';
     return `
-      <a class="social-tile social-tile--${social.id}" href="${href}" target="${target}" rel="noopener noreferrer">
+      <a class="social-tile social-tile--${escapeHtml(social.id)}" href="${escapeHtml(href)}" target="${target}" rel="noopener noreferrer">
         <div class="social-tile__glow" aria-hidden="true"></div>
         <div class="social-tile__icon-wrap">
-          <img src="${social.icon}" alt="" width="32" height="32" loading="lazy" decoding="async" />
+          <img src="${escapeHtml(safeAssetPath(social.icon))}" alt="" width="32" height="32" loading="lazy" decoding="async" />
         </div>
         <div class="social-tile__body">
-          <span class="social-tile__label">${social.label}</span>
-          <span class="social-tile__handle">${social.handle}</span>
+          <span class="social-tile__label">${escapeHtml(social.label)}</span>
+          <span class="social-tile__handle">${escapeHtml(social.handle)}</span>
         </div>
         <span class="social-tile__external" aria-hidden="true">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
@@ -90,10 +106,14 @@ window.MAS0NG_SOCIAL_TILES = (function () {
   }
 
   async function loadSocials(url) {
-    const response = await fetch(url || '/public_assets/configs/socials.json', { cache: 'default' });
+    const response = await fetch(url || 'https://mas0ng.com/unencrypted/api/social-links?v=20260728-social-icons1', { cache: 'default' });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
-    return Array.isArray(data) ? data : [];
+    return Array.isArray(data)
+      ? data
+      : Array.isArray(data?.social_links)
+        ? data.social_links
+        : [];
   }
 
   return {

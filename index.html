@@ -2,7 +2,7 @@
 <html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
-  <script src="/public_assets/site/js/layout/loader.js?v=20260610-loader1"></script>
+  <script src="/public_assets/site/js/layout/loader.js?v=20260728-loader2"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mason Gibbs (@mas0ng) | Official site</title>
   <meta name="description" content="The official mas0ng.com home for Mason Gibbs (@mas0ng), with social profiles, verified certifications, public information, and site links." />
@@ -64,7 +64,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" href="/public_assets/fonts/etna.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" />
-  <link rel="stylesheet" href="/public_assets/site/css/site.css?v=20260728-home10" />
+  <link rel="stylesheet" href="/public_assets/site/css/site.css?v=20260728-public-api2" />
   <style>
     .home-wordmark[data-animation-pending] span {
       animation: none;
@@ -132,7 +132,7 @@
       <section class="section" id="highlights" aria-labelledby="highlights-title">
         <div class="section__inner">
           <h2 class="section__title" id="highlights-title">Built on TikTok. Backed by results.</h2>
-          <p class="section__lead">A snapshot from one of my TikTok accounts, including 38.9M views in the last 365 days and the audience behind them.</p>
+          <p class="section__lead" id="highlights-summary">A snapshot from one of my TikTok accounts and the audience behind it.</p>
           
           <div class="stats-grid" id="stats-grid">
             <div class="tile-skeleton">
@@ -175,7 +175,10 @@
       <section class="section" id="social" aria-labelledby="social-title">
         <div class="section__inner">
           <h2 class="section__title" id="social-title">Social links</h2>
-          <p class="section__lead">On desktop, choose a link to scan it with your phone or open it in a new tab.</p>
+          <p class="section__lead social-lead">
+            <span class="social-lead__desktop">Choose a link to scan it with your phone or open it in a new tab.</span>
+            <span class="social-lead__mobile">Choose a social profile to open it.</span>
+          </p>
           <div class="social-grid" id="social-grid"></div>
         </div>
       </section>
@@ -183,16 +186,16 @@
     </main>
   </div>
 
-  <script src="/public_assets/site/js/config/site-data.js?v=20260723-mobile-nav3"></script>
+  <script src="/public_assets/site/js/config/site-data.js?v=20260728-public-api2"></script>
   <script src="/public_assets/site/js/lib/grid-skeletons.js"></script>
-  <script src="/public_assets/site/js/lib/social-tiles.js?v=20260726-social-handoff1"></script>
+  <script src="/public_assets/site/js/lib/social-tiles.js?v=20260728-public-api2"></script>
   <script src="/public_assets/site/js/lib/cache.js"></script>
   <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
-  <script src="/public_assets/site/js/layout/shell.js?v=20260723-mobile-nav3" data-active="home" defer></script>
+  <script src="/public_assets/site/js/layout/shell.js?v=20260728-public-api2" data-active="home" defer></script>
   <script src="/index_assets/js/masthead-canvas.js?v=20260726-static1" defer></script>
-  <script src="/index_assets/js/qualifications.js?v=20260711-more1" defer></script>
-  <script src="/index_assets/js/highlights.js?v=20260728-stats5" defer></script>
-  <script src="/index_assets/js/home.js" defer></script>
+  <script src="/index_assets/js/qualifications.js?v=20260728-public-api1" defer></script>
+  <script src="/index_assets/js/highlights.js?v=20260728-public-api1" defer></script>
+  <script src="/index_assets/js/home.js?v=20260728-public-api1" defer></script>
   <script>
     (() => {
       const wordmark = document.getElementById('hero-title');
