@@ -10,9 +10,24 @@ window.MAS0NG_SOCIAL_TILES = (function () {
 
   function safeAssetPath(value) {
     const path = String(value || '').trim();
-    return path.startsWith('/') && !path.startsWith('//')
-      ? path
-      : '/public_assets/site_branding/favicon.svg';
+    const fallback = '/public_assets/site_branding/favicon.svg';
+    const isSocialIconPath = (pathname) => /^\/public_assets\/social_icons\/[A-Za-z0-9._-]+\.(?:svg|png|jpe?g|webp)$/i.test(pathname);
+
+    if (path.startsWith('/') && !path.startsWith('//')) {
+      return isSocialIconPath(path) ? path : fallback;
+    }
+
+    try {
+      const url = new URL(path);
+      const localOrigin = window.location?.origin || '';
+      const approvedOrigin = ['https://mas0ng.com', 'https://www.mas0ng.com'].includes(url.origin)
+        || (localOrigin && localOrigin !== 'null' && url.origin === localOrigin);
+      return approvedOrigin && !url.search && !url.hash && isSocialIconPath(url.pathname)
+        ? url.href
+        : fallback;
+    } catch {
+      return fallback;
+    }
   }
 
   function isPending(href) {
