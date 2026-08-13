@@ -1,6 +1,6 @@
 window.MAS0NG_SITE = {
   loginUrl: 'https://auth.mas0ng.com/login?return_to=%2Fsecure%2Fapps%2F',
-  sharedNavUrl: 'https://sharedassets.mas0ng.com/navbar.js?v=20260813-command-silo-orbit1',
+  sharedNavUrl: 'https://sharedassets.mas0ng.com/navbar.js?v=20260813-apps-modal-thumbnails1',
   siteName: 'mas0ng.com',
   siteOrigin: '',
   nav: [
