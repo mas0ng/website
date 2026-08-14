@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Roblox placeholder</title>
+  <desc id="desc">Black and white Roblox platform placeholder for SCRIPT KIT.</desc>
+  <rect width="1600" height="900" fill="#050505"/>
+  <g transform="translate(800 390) rotate(14)">
+    <rect x="-205" y="-205" width="410" height="410" rx="24" fill="#fff"/>
+    <rect x="-70" y="-70" width="140" height="140" fill="#050505"/>
+  </g>
+  <text x="800" y="750" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="86" font-weight="700" letter-spacing="15" text-anchor="middle">ROBLOX</text>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">SCRIPT KIT placeholder</title>
+  <desc id="desc">Black and white placeholder artwork for SCRIPT KIT.</desc>
+  <rect width="1600" height="900" fill="#050505"/>
+  <path d="M0 700 700 0h280L280 900H0Zm810 200 700-700h90v280l-420 420Z" fill="#151515"/>
+  <rect x="116" y="116" width="1368" height="668" rx="48" fill="none" stroke="#fff" stroke-width="8"/>
+  <path d="m520 340-140 110 140 110m560-220 140 110-140 110M890 292 710 608" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="42"/>
+  <text x="800" y="708" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="700" letter-spacing="18" text-anchor="middle">SCRIPT KIT</text>
+</svg>
