@@ -6,81 +6,1455 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>mas0ng.com | terms of use</title>
     <meta name="description" content="Terms of use for mas0ng.com.">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#ffffff">
     <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="/public_assets/fonts/etna.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap">
     <link rel="stylesheet" href="/public_assets/site/css/site.css">
-    <link rel="stylesheet" href="/public_assets/site/css/legal.css?v=20260726-legal10">
+
+    <style>
+      :root {
+              --legal-ink: #171717;
+              --legal-copy: #505050;
+              --legal-muted: #8a8a8a;
+              --legal-soft: #f6f6f6;
+              --legal-line: #e8e8e8;
+              --legal-accent: #171717;
+            }
+
+            html {
+              scroll-behavior: smooth;
+            }
+
+            html,
+            body[data-page="legal"],
+            body[data-page="legal"] #site-main,
+            body[data-page="legal"] .legal-shell {
+              background: #ffffff !important;
+            }
+
+            body[data-page="legal"] {
+              color: var(--legal-ink);
+              opacity: 1 !important;
+              filter: none !important;
+              mix-blend-mode: normal !important;
+              isolation: isolate;
+            }
+
+            body[data-page="legal"] #site-main,
+            body[data-page="legal"] .legal-shell,
+            body[data-page="legal"] .legal-hero,
+            body[data-page="legal"] .legal-layout,
+            body[data-page="legal"] .legal-stack {
+              min-height: 0;
+              opacity: 1 !important;
+              filter: none !important;
+              backdrop-filter: none !important;
+              -webkit-backdrop-filter: none !important;
+              mix-blend-mode: normal !important;
+            }
+
+            body[data-page="legal"]::before,
+            body[data-page="legal"]::after,
+            body[data-page="legal"] #site-main::before,
+            body[data-page="legal"] #site-main::after,
+            body[data-page="legal"] .legal-shell::before,
+            body[data-page="legal"] .legal-shell::after {
+              content: none !important;
+              display: none !important;
+            }
+
+            body[data-page="legal"] #site-main [class*="liquid"],
+            body[data-page="legal"] #site-main > canvas {
+              display: none !important;
+            }
+
+            body[data-page="legal"] :is(header, #site-header, .site-header, #site-nav, .site-nav, .navbar, .nav-shell) {
+              --nav-color: #1d1d1f;
+              --nav-text: #1d1d1f;
+              --nav-link-color: #1d1d1f;
+            }
+
+            body[data-page="legal"] :is(header, #site-header, .site-header, #site-nav, .site-nav, .navbar, .nav-shell) :is(a, button, span) {
+              color: #1d1d1f !important;
+              opacity: 1 !important;
+            }
+
+            body[data-page="legal"] :is(header, #site-header, .site-header, #site-nav, .site-nav, .navbar, .nav-shell) :is(svg, path) {
+              opacity: 1 !important;
+            }
+
+            body[data-page="legal"] :is(header, #site-header, .site-header, #site-nav, .site-nav, .navbar, .nav-shell) {
+              backdrop-filter: none !important;
+              -webkit-backdrop-filter: none !important;
+              box-shadow: none !important;
+            }
+
+            .legal-shell {
+              width: min(1260px, calc(100% - 72px));
+              margin: 0 auto;
+              padding: 96px 0 120px;
+              background: transparent;
+            }
+
+            .legal-hero {
+              width: 100%;
+              margin: 0 0 56px;
+              padding-top: 12px;
+              text-align: center;
+            }
+
+            .legal-banner {
+              position: relative;
+              display: grid;
+              width: 100%;
+              aspect-ratio: 10 / 1;
+              place-items: center;
+              overflow: hidden;
+              border: 0;
+              border-radius: 22px;
+              outline: 0;
+              background: url("/public_assets/site_branding/header/compact/white.jpg") center / cover no-repeat;
+              box-shadow: none;
+            }
+
+
+            .legal-banner__content {
+              display: flex;
+              width: min(100% - 48px, 1080px);
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              gap: 8px;
+              text-align: center;
+            }
+
+            .legal-title {
+              margin: 0;
+              color: #111111;
+              font-family: "ABeeZee", sans-serif;
+              font-size: clamp(1.7rem, 2.9vw, 2.8rem);
+              font-weight: 400;
+              letter-spacing: -0.04em;
+              line-height: 1;
+            }
+
+            .legal-meta {
+              margin: 0;
+              color: #5f5f5f;
+              font-family: "ABeeZee", sans-serif;
+              font-size: clamp(0.68rem, 0.82vw, 0.78rem);
+              line-height: 1.35;
+            }
+
+            .legal-layout {
+              display: grid;
+              grid-template-columns: 236px minmax(0, 820px);
+              gap: clamp(58px, 7vw, 104px);
+              align-items: start;
+            }
+
+            .legal-toc {
+              position: sticky;
+              top: 104px;
+              max-height: calc(100vh - 132px);
+              padding-right: 10px;
+              align-self: start;
+              overflow-y: auto;
+              overscroll-behavior: contain;
+              scrollbar-width: thin;
+              scrollbar-color: #d5d5d5 transparent;
+              font-family: "ABeeZee", sans-serif;
+            }
+
+            .legal-toc::before {
+              content: "";
+              position: absolute;
+              top: 38px;
+              bottom: 4px;
+              left: 0;
+              width: 1px;
+              background: #e2e2e2;
+            }
+
+            .legal-toc-label {
+              margin: 0 0 17px;
+              color: #919191;
+              font-size: 0.68rem;
+              letter-spacing: 0.12em;
+              line-height: 1.4;
+              text-transform: uppercase;
+            }
+
+            .legal-toc nav {
+              display: flex;
+              flex-direction: column;
+              gap: 3px;
+            }
+
+            .legal-toc a {
+              position: relative;
+              display: grid;
+              grid-template-columns: 24px 1fr;
+              gap: 7px;
+              align-items: baseline;
+              padding: 7px 0 7px 17px;
+              color: #777777;
+              font-size: 0.8rem;
+              line-height: 1.45;
+              text-decoration: none;
+              transition: color 160ms ease, transform 160ms ease;
+            }
+
+            .legal-toc a::before {
+              content: attr(data-index);
+              color: #b0b0b0;
+              font-size: 0.66rem;
+              font-variant-numeric: tabular-nums;
+              transition: color 160ms ease;
+            }
+
+            .legal-toc a::after {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: -1px;
+              width: 3px;
+              height: 0;
+              border-radius: 999px;
+              background: #171717;
+              transform: translateY(-50%);
+              transition: height 160ms ease;
+            }
+
+            .legal-toc a:hover,
+            .legal-toc a:focus-visible,
+            .legal-toc a.is-active {
+              color: #171717;
+              transform: translateX(3px);
+            }
+
+            .legal-toc a.is-active {
+              font-weight: 700;
+            }
+
+            .legal-toc a:hover::before,
+            .legal-toc a:focus-visible::before,
+            .legal-toc a.is-active::before {
+              color: #171717;
+            }
+
+            .legal-toc a:hover::after,
+            .legal-toc a:focus-visible::after,
+            .legal-toc a.is-active::after {
+              height: 26px;
+            }
+
+            .legal-toc a:focus-visible,
+            .legal-link:focus-visible,
+            .legal-card:focus-visible,
+            .security-banner__btn:focus-visible,
+            .btn-primary:focus-visible,
+            .btn-secondary:focus-visible,
+            .report-route:focus-visible,
+            .security-modal__close:focus-visible {
+              outline: 2px solid #171717;
+              outline-offset: 4px;
+              border-radius: 4px;
+            }
+
+            .legal-stack {
+              min-width: 0;
+              counter-reset: legal-section;
+            }
+
+            .legal-section {
+              position: relative;
+              scroll-margin-top: 118px;
+              margin: 0;
+              padding: 0 0 50px;
+              border-bottom: 1px solid var(--legal-line);
+              counter-increment: legal-section;
+            }
+
+            .legal-section + .legal-section {
+              padding-top: 50px;
+            }
+
+            .legal-section:last-child {
+              padding-bottom: 0;
+              border-bottom: 0;
+            }
+
+            .legal-section h2 {
+              display: grid;
+              grid-template-columns: 34px minmax(0, 1fr);
+              gap: 10px;
+              align-items: baseline;
+              margin: 0 0 19px;
+              color: #151515;
+              font-family: "ABeeZee", sans-serif;
+              font-size: clamp(1.23rem, 1.8vw, 1.46rem);
+              font-weight: 400;
+              letter-spacing: -0.02em;
+              line-height: 1.32;
+            }
+
+            .legal-section h2::before {
+              content: counter(legal-section, decimal-leading-zero);
+              color: #adadad;
+              font-size: 0.67rem;
+              font-variant-numeric: tabular-nums;
+              letter-spacing: 0.02em;
+            }
+
+            .legal-section h3 {
+              margin: 24px 0 9px 44px;
+              color: #202020;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 1rem;
+              font-weight: 700;
+              line-height: 1.5;
+            }
+
+            .legal-section p,
+            .legal-section > ul,
+            .legal-section > ol,
+            .legal-section > dl,
+            .legal-section > .legal-note,
+            .legal-section > .legal-right-callout {
+              margin-left: 44px;
+            }
+
+            .legal-section p,
+            .legal-section li,
+            .legal-section dd,
+            .legal-note,
+            .legal-right-callout {
+              color: var(--legal-copy);
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.95rem;
+              line-height: 1.82;
+            }
+
+            .legal-section p {
+              margin-top: 0;
+              margin-bottom: 0;
+            }
+
+            .legal-section p + p {
+              margin-top: 17px;
+            }
+
+            .legal-section > ul,
+            .legal-section > ol {
+              display: grid;
+              gap: 10px;
+              margin-top: 9px;
+              margin-bottom: 0;
+              padding: 0;
+            }
+
+            .legal-section ul {
+              list-style: none;
+            }
+
+            .legal-section ol {
+              padding-left: 21px;
+            }
+
+            .legal-section li {
+              position: relative;
+            }
+
+            .legal-section > ul > li {
+              padding-left: 20px;
+            }
+
+            .legal-section > ul > li::before {
+              content: "";
+              position: absolute;
+              top: 0.82em;
+              left: 1px;
+              width: 5px;
+              height: 5px;
+              border-radius: 50%;
+              background: #222222;
+            }
+
+            .legal-section li ul {
+              display: grid;
+              gap: 7px;
+              margin: 8px 0 0;
+              padding: 0 0 0 18px;
+              list-style: none;
+            }
+
+            .legal-section li ul li {
+              padding-left: 17px;
+            }
+
+            .legal-section li ul li::before {
+              content: "";
+              position: absolute;
+              top: 0.84em;
+              left: 1px;
+              width: 4px;
+              height: 4px;
+              border-radius: 50%;
+              background: #9a9a9a;
+            }
+
+            .legal-link {
+              color: #171717;
+              font-weight: 400;
+              text-decoration-color: #b7b7b7;
+              text-decoration-thickness: 1px;
+              text-underline-offset: 4px;
+              transition: text-decoration-color 160ms ease;
+            }
+
+            .legal-link:hover {
+              text-decoration-color: #171717;
+            }
+
+            code {
+              padding: 0.16em 0.42em;
+              border: 1px solid #e7e7e7;
+              border-radius: 5px;
+              background: #f7f7f7;
+              color: #353535;
+              font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+              font-size: 0.88em;
+            }
+
+            .legal-note,
+            .legal-right-callout {
+              margin-top: 20px;
+              padding: 16px 18px;
+              border-left: 3px solid #171717;
+              background: #f7f7f7;
+            }
+
+            .legal-note strong,
+            .legal-right-callout strong {
+              color: #171717;
+            }
+
+            .legal-section dl {
+              margin-top: 4px;
+              margin-bottom: 0;
+            }
+
+            .data-table {
+              border-top: 1px solid var(--legal-line);
+            }
+
+            .data-row {
+              display: grid;
+              grid-template-columns: 150px 1.25fr 1fr;
+              gap: 18px;
+              padding: 18px 0;
+              border-bottom: 1px solid var(--legal-line);
+            }
+
+            .data-row dt {
+              color: #222222;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.86rem;
+              font-weight: 700;
+              line-height: 1.6;
+            }
+
+            .data-row dd {
+              margin: 0;
+              font-size: 0.86rem;
+              line-height: 1.7;
+            }
+
+            .legal-section:target h2 {
+              color: #000000;
+            }
+
+            .legal-index-shell {
+              width: min(1100px, calc(100% - 72px));
+            }
+
+            .legal-index-intro {
+              max-width: 780px;
+              margin: -28px auto 42px;
+              color: #777;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.84rem;
+              line-height: 1.7;
+              text-align: center;
+            }
+
+            .legal-grid {
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              border-top: 1px solid var(--legal-line);
+            }
+
+            .legal-card {
+              position: relative;
+              display: flex;
+              min-height: 190px;
+              padding: 30px 32px;
+              flex-direction: column;
+              justify-content: space-between;
+              gap: 28px;
+              color: #171717;
+              border-bottom: 1px solid var(--legal-line);
+              text-decoration: none;
+              transition: background 160ms ease, transform 160ms ease;
+            }
+
+            .legal-card:nth-child(odd) {
+              border-right: 1px solid var(--legal-line);
+            }
+
+            .legal-card:hover {
+              background: #fafafa;
+            }
+
+            .legal-card h2 {
+              margin: 0 0 10px;
+              color: #171717;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 1.2rem;
+              font-weight: 400;
+              letter-spacing: -0.02em;
+            }
+
+            .legal-card p {
+              margin: 0;
+              color: #666;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.88rem;
+              line-height: 1.72;
+            }
+
+            .legal-card span {
+              color: #858585;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.76rem;
+              letter-spacing: 0.02em;
+            }
+
+            .legal-index-contact {
+              max-width: 760px;
+              margin: 54px auto 0;
+              padding-top: 34px;
+              border-top: 1px solid var(--legal-line);
+              text-align: center;
+            }
+
+            .legal-index-contact h2 {
+              margin: 0 0 12px;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 1.15rem;
+              font-weight: 400;
+            }
+
+            .legal-index-contact p {
+              margin: 0;
+              color: #666;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.88rem;
+              line-height: 1.7;
+            }
+
+            .security-banner {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 26px;
+              margin: 0 0 44px;
+              padding: 22px 24px;
+              border: 1px solid var(--legal-line);
+              background: #fafafa;
+            }
+
+            .security-banner__content h3 {
+              margin: 0 0 7px;
+              color: #171717;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 1rem;
+              font-weight: 700;
+            }
+
+            .security-banner__content p {
+              margin: 0;
+              color: #666;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.86rem;
+              line-height: 1.65;
+            }
+
+            .security-banner__btn,
+            .btn-primary,
+            .btn-secondary,
+            .github-report-link {
+              display: inline-flex;
+              min-height: 44px;
+              align-items: center;
+              justify-content: center;
+              padding: 10px 17px;
+              border-radius: 999px;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.84rem;
+              font-weight: 700;
+              cursor: pointer;
+              text-decoration: none;
+            }
+
+            .security-banner__btn,
+            .btn-primary,
+            .github-report-link {
+              border: 1px solid #171717;
+              color: #fff;
+              background: #171717;
+            }
+
+            .security-banner__btn:hover,
+            .btn-primary:hover,
+            .github-report-link:hover {
+              background: #343434;
+            }
+
+            .btn-secondary {
+              border: 1px solid #dcdcdc;
+              color: #303030;
+              background: #fff;
+            }
+
+            .btn-secondary:hover {
+              background: #f7f7f7;
+            }
+
+            .btn-primary:disabled {
+              opacity: 0.55;
+              cursor: not-allowed;
+            }
+
+            .security-modal {
+              position: fixed;
+              inset: 0;
+              z-index: 20000;
+              display: flex;
+              padding: 20px;
+              align-items: center;
+              justify-content: center;
+              opacity: 0;
+              visibility: hidden;
+              transition: opacity 180ms ease, visibility 180ms ease;
+            }
+
+            .security-modal.is-open {
+              opacity: 1;
+              visibility: visible;
+            }
+
+            .security-modal__overlay {
+              position: absolute;
+              inset: 0;
+              background: rgba(17, 17, 17, 0.56);
+              backdrop-filter: blur(7px);
+              -webkit-backdrop-filter: blur(7px);
+            }
+
+            .security-modal__container {
+              position: relative;
+              z-index: 20001;
+              display: flex;
+              width: min(100%, 820px);
+              max-height: calc(100vh - 40px);
+              flex-direction: column;
+              overflow: hidden;
+              border: 1px solid #dedede;
+              border-radius: 18px;
+              background: #fff;
+              box-shadow: 0 24px 80px rgba(0,0,0,0.16);
+              transform: translateY(8px) scale(0.99);
+              transition: transform 180ms ease;
+            }
+
+            .security-modal.is-open .security-modal__container {
+              transform: translateY(0) scale(1);
+            }
+
+            .security-modal__header {
+              position: relative;
+              padding: 26px 76px 22px 28px;
+              border-bottom: 1px solid var(--legal-line);
+            }
+
+            .security-modal__eyebrow,
+            .screen-kicker {
+              margin: 0 0 7px;
+              color: #919191;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.68rem;
+              font-weight: 700;
+              letter-spacing: 0.12em;
+              line-height: 1.3;
+              text-transform: uppercase;
+            }
+
+            .security-modal__header h2 {
+              margin: 0;
+              color: #171717;
+              font-family: "ABeeZee", sans-serif;
+              font-size: clamp(1.35rem, 3vw, 1.72rem);
+              font-weight: 400;
+              letter-spacing: -0.03em;
+              line-height: 1.22;
+            }
+
+            .security-modal__subtitle {
+              max-width: 620px;
+              margin: 8px 0 0;
+              color: #686868;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.86rem;
+              line-height: 1.6;
+            }
+
+            .security-modal__close {
+              position: absolute;
+              top: 20px;
+              right: 22px;
+              display: grid;
+              width: 42px;
+              height: 42px;
+              padding: 0;
+              place-items: center;
+              border: 1px solid #dedede;
+              border-radius: 50%;
+              color: #444;
+              background: #fff;
+              font-size: 1.55rem;
+              line-height: 1;
+              cursor: pointer;
+            }
+
+            .security-modal__close:hover {
+              background: #f7f7f7;
+            }
+
+            .security-modal__body {
+              min-height: 0;
+              padding: 28px;
+              flex: 1;
+              overflow-y: auto;
+              overscroll-behavior: contain;
+            }
+
+            .triage-question {
+              margin: 0 0 8px;
+              color: #171717;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 1.12rem;
+              font-weight: 700;
+              line-height: 1.5;
+            }
+
+            .triage-intro,
+            .github-notice-card p,
+            .form-intro p:last-child,
+            .security-modal__success p {
+              color: #666;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.86rem;
+              line-height: 1.65;
+            }
+
+            .triage-intro {
+              max-width: 640px;
+              margin: 0 0 22px;
+            }
+
+            .triage-actions {
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              gap: 14px;
+            }
+
+            .report-route {
+              display: grid;
+              min-height: 150px;
+              padding: 20px;
+              grid-template-columns: 44px minmax(0, 1fr);
+              align-content: start;
+              gap: 6px 14px;
+              border: 1px solid #dedede;
+              border-radius: 14px;
+              color: #333;
+              background: #fff;
+              text-align: left;
+              cursor: pointer;
+              transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+            }
+
+            .report-route:hover {
+              border-color: #bdbdbd;
+              background: #fafafa;
+              transform: translateY(-2px);
+            }
+
+            .report-route__icon {
+              display: grid;
+              width: 44px;
+              height: 44px;
+              grid-row: 1 / span 2;
+              place-items: center;
+              border-radius: 11px;
+              color: #fff;
+              background: #171717;
+            }
+
+            .report-route__icon svg {
+              width: 22px;
+              height: 22px;
+              fill: none;
+              stroke: currentColor;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              stroke-width: 1.8;
+            }
+
+            .report-route strong {
+              align-self: end;
+              color: #171717;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.96rem;
+            }
+
+            .report-route small {
+              color: #6f6f6f;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.77rem;
+              font-weight: 400;
+              line-height: 1.55;
+            }
+
+            .github-notice-card {
+              padding: 21px;
+              border: 1px solid var(--legal-line);
+              background: #fafafa;
+            }
+
+            .github-notice-card h3,
+            .form-intro h3,
+            .security-modal__success h3 {
+              margin: 0 0 8px;
+              color: #171717;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 1.1rem;
+            }
+
+            .github-notice-card p {
+              margin: 0;
+            }
+
+            .github-notice-card p + p {
+              margin-top: 9px;
+            }
+
+            .github-report-link {
+              margin-top: 17px;
+            }
+
+            .form-intro {
+              margin-bottom: 22px;
+            }
+
+            .form-intro p:last-child {
+              margin: 0;
+            }
+
+            .form-grid {
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              gap: 18px;
+            }
+
+            .security-modal__form .form-group {
+              min-width: 0;
+              margin-bottom: 18px;
+            }
+
+            .security-modal__form .form-grid .form-group {
+              margin-bottom: 0;
+            }
+
+            .security-modal__form label {
+              display: block;
+              margin-bottom: 7px;
+              color: #333;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.84rem;
+              font-weight: 700;
+            }
+
+            .security-modal__form label .required {
+              color: #555;
+            }
+
+            .security-modal__form input[type="email"],
+            .security-modal__form input[type="text"],
+            .security-modal__form select,
+            .security-modal__form textarea {
+              width: 100%;
+              min-height: 48px;
+              box-sizing: border-box;
+              padding: 12px 14px;
+              border: 1px solid #d8d8d8;
+              border-radius: 10px;
+              outline: none;
+              background: #fff;
+              color: #171717;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.94rem;
+              transition: border-color 150ms ease, box-shadow 150ms ease;
+            }
+
+            .security-modal__form textarea {
+              min-height: 150px;
+              resize: vertical;
+              line-height: 1.55;
+            }
+
+            .security-modal__form input:focus,
+            .security-modal__form select:focus,
+            .security-modal__form textarea:focus {
+              border-color: #888;
+              box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
+            }
+
+            .security-modal__form select {
+              appearance: none;
+              background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+              background-repeat: no-repeat;
+              background-position: right 14px center;
+              background-size: 16px;
+              padding-right: 40px;
+            }
+
+            .field-hint {
+              display: block;
+              margin-top: 7px;
+              color: #777;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.75rem;
+              line-height: 1.5;
+            }
+
+            .turnstile-wrap {
+              display: flex;
+              width: 100%;
+              min-height: 65px;
+              margin: 4px 0 0;
+              align-items: center;
+              justify-content: center;
+              overflow: hidden;
+              border: 1px dashed #d7d7d7;
+              border-radius: 12px;
+              background: #fafafa;
+            }
+
+            .form-status {
+              margin-top: 16px;
+              padding: 12px 14px;
+              border: 1px solid #e5bcbc;
+              border-radius: 10px;
+              color: #7d2424;
+              background: #fff7f7;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.82rem;
+              line-height: 1.5;
+            }
+
+            .form-status[hidden] {
+              display: none;
+            }
+
+            .form-actions {
+              display: flex;
+              align-items: center;
+              justify-content: flex-end;
+              gap: 11px;
+              margin-top: 24px;
+              padding-top: 19px;
+              border-top: 1px solid var(--legal-line);
+            }
+
+            .security-modal__success {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              padding: 10px 0;
+              text-align: center;
+            }
+
+            .success-icon {
+              display: grid;
+              width: 58px;
+              height: 58px;
+              margin-bottom: 18px;
+              place-items: center;
+              border-radius: 50%;
+              color: #fff;
+              background: #171717;
+              font-size: 1.5rem;
+            }
+
+            .security-modal__success p {
+              max-width: 420px;
+              margin: 0 0 22px;
+            }
+
+            @media (max-width: 940px) {
+              .legal-shell,
+              .legal-index-shell {
+                width: min(100% - 42px, 820px);
+                padding-top: 82px;
+                padding-bottom: 88px;
+              }
+
+              .legal-hero {
+                padding-top: 10px;
+              }
+
+              .legal-hero {
+                margin-bottom: 42px;
+              }
+
+              .legal-banner {
+                aspect-ratio: 8 / 1;
+                border-radius: 18px;
+                background-position: center;
+              }
+
+              .legal-banner__content {
+                width: calc(100% - 38px);
+              }
+
+              .legal-layout {
+                display: block;
+              }
+
+              .legal-toc {
+                display: none;
+              }
+
+              .legal-grid {
+                grid-template-columns: 1fr;
+              }
+
+              .legal-card:nth-child(odd) {
+                border-right: 0;
+              }
+            }
+
+            @media (max-width: 640px) {
+              .legal-banner {
+                aspect-ratio: 5 / 1;
+                background-position: center;
+              }
+
+              .data-row {
+                grid-template-columns: 1fr;
+                gap: 6px;
+              }
+
+              .security-banner {
+                align-items: stretch;
+                flex-direction: column;
+              }
+
+              .security-banner__btn {
+                align-self: flex-start;
+              }
+
+              .security-modal {
+                padding: 0;
+                align-items: stretch;
+              }
+
+              .security-modal__container {
+                width: 100%;
+                height: 100dvh;
+                max-height: none;
+                border: 0;
+                border-radius: 0;
+              }
+
+              .security-modal__header {
+                padding: calc(18px + env(safe-area-inset-top)) 66px 17px 18px;
+              }
+
+              .security-modal__close {
+                top: calc(14px + env(safe-area-inset-top));
+                right: 14px;
+              }
+
+              .security-modal__body {
+                padding: 22px 18px calc(24px + env(safe-area-inset-bottom));
+              }
+
+              .triage-actions,
+              .form-grid {
+                grid-template-columns: 1fr;
+              }
+
+              .report-route {
+                min-height: 124px;
+                padding: 17px;
+              }
+
+              .form-actions {
+                flex-direction: column-reverse;
+              }
+
+              .form-actions button {
+                width: 100%;
+              }
+            }
+
+            @media (max-width: 560px) {
+              .legal-shell,
+              .legal-index-shell {
+                width: min(100% - 30px, 820px);
+                padding-top: 88px;
+              }
+
+              .legal-hero {
+                padding-top: 14px;
+              }
+
+              .legal-banner {
+                aspect-ratio: 4 / 1;
+                border-radius: 12px;
+                background-position: center;
+              }
+
+              .legal-banner__content {
+                width: calc(100% - 22px);
+                display: flex;
+                justify-content: center;
+                text-align: center;
+              }
+
+
+              .legal-title {
+                font-size: clamp(1.05rem, 5.4vw, 1.4rem);
+                letter-spacing: -0.035em;
+              }
+
+              .legal-meta {
+                font-size: 0.72rem;
+                line-height: 1.3;
+              }
+
+              .legal-section {
+                padding-bottom: 38px;
+              }
+
+              .legal-section + .legal-section {
+                padding-top: 38px;
+              }
+
+              .legal-section h2 {
+                grid-template-columns: 28px minmax(0, 1fr);
+                gap: 8px;
+                margin-bottom: 16px;
+              }
+
+              .legal-section p,
+              .legal-section > ul,
+              .legal-section > ol,
+              .legal-section > dl,
+              .legal-section > .legal-note,
+              .legal-section > .legal-right-callout,
+              .legal-section h3 {
+                margin-left: 36px;
+              }
+
+              .legal-section p,
+              .legal-section li,
+              .legal-section dd,
+              .legal-note,
+              .legal-right-callout {
+                font-size: 0.9rem;
+                line-height: 1.76;
+              }
+
+              .legal-card {
+                min-height: 0;
+                padding: 25px 4px;
+              }
+            }
+
+            /* The shared mobile shell can inject a full-screen navigation scrim.
+               Legal pages intentionally use no page-dimming backdrop. */
+            body[data-page="legal"] :is(
+              .nav-overlay,
+              .nav-backdrop,
+              .nav-scrim,
+              .mobile-nav-overlay,
+              .mobile-nav-backdrop,
+              .mobile-nav-scrim,
+              .mobile-menu-overlay,
+              .mobile-menu-backdrop,
+              .menu-overlay,
+              .menu-backdrop,
+              .site-nav-overlay,
+              .site-nav-backdrop,
+              .site-overlay,
+              [data-nav-overlay],
+              [data-nav-backdrop],
+              [data-mobile-nav-overlay],
+              [data-mobile-nav-backdrop],
+              [data-menu-overlay],
+              [data-menu-backdrop]
+            ) {
+              display: none !important;
+              visibility: hidden !important;
+              opacity: 0 !important;
+              pointer-events: none !important;
+              background: transparent !important;
+              backdrop-filter: none !important;
+              -webkit-backdrop-filter: none !important;
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+              html {
+                scroll-behavior: auto;
+              }
+
+              .legal-toc a,
+              .legal-card,
+              .report-route,
+              .security-modal,
+              .security-modal__container {
+                transition: none;
+              }
+            }
+    </style>
   </head>
   <body data-page="legal">
     <div id="site-main">
       <main class="legal-shell">
-        <section class="legal-hero">
-          <p class="legal-kicker">Policies and notices</p>
-          <h1 class="legal-title">Terms of Use</h1>
-          <p class="legal-lead">These terms apply to public pages and any protected feature you are authorised to use.</p>
-          <p class="legal-meta">Last updated: 26 July 2026</p>
+        <section class="legal-hero" aria-labelledby="page-title">
+          <div class="legal-banner">
+            <div class="legal-banner__content">
+              <h1 class="legal-title" id="page-title">Terms of Use</h1>
+              <p class="legal-meta">Last updated: 17 August 2026</p>
+            </div>
+          </div>
         </section>
 
-        <section class="legal-stack">
-          <section class="legal-section">
-            <h2>Accepting these terms</h2>
-            <p>These terms are between you and Mason, the UK-based operator of mas0ng.com. By using the service, you agree to them. If you do not agree, do not use its protected features. The <a class="legal-link" href="/legal/privacy/">Privacy Policy</a> and <a class="legal-link" href="/legal/cookies.html">Cookie Notice</a> explain data handling and are notices rather than contractual consent requests. The <a class="legal-link" href="/legal/ai.html">AI Policy</a> also applies when AI features are used.</p>
-          </section>
+        <div class="legal-layout">
+          <aside class="legal-toc" aria-label="On this page">
+            <p class="legal-toc-label">On this page</p>
+            <nav>
+              <a href="#about-these-terms-and-uk-scope" data-index="01">About these terms and UK scope</a>
+              <a href="#accepting-the-terms" data-index="02">Accepting the terms</a>
+              <a href="#eligibility-and-authorised-access" data-index="03">Eligibility and authorised access</a>
+              <a href="#acceptable-use" data-index="04">Acceptable use</a>
+              <a href="#your-content-and-uploads" data-index="05">Your content and uploads</a>
+              <a href="#ai-and-generated-content" data-index="06">AI and generated content</a>
+              <a href="#filestore-and-stored-material" data-index="07">Filestore and stored material</a>
+              <a href="#intellectual-property-and-software" data-index="08">Intellectual property and software</a>
+              <a href="#external-services" data-index="09">External services</a>
+              <a href="#paid-services-and-consumer-rights" data-index="10">Paid services and consumer rights</a>
+              <a href="#availability-suspension-and-changes" data-index="11">Availability, suspension, and changes</a>
+              <a href="#liability" data-index="12">Liability</a>
+              <a href="#general-terms" data-index="13">General terms</a>
+              <a href="#governing-law-and-contact" data-index="14">Governing law and contact</a>
+            </nav>
+          </aside>
 
-          <section class="legal-section">
-            <h2>Permitted use</h2>
-            <ul>
-              <li>Use the site lawfully and only for its intended purposes.</li>
-              <li>Access protected areas only when you are authorised.</li>
-              <li>Do not interfere with the site, overload services, evade limits, or bypass security controls.</li>
-              <li>Do not submit unlawful, harmful, abusive, exploitative, rights-infringing, or unnecessarily sensitive content.</li>
-              <li>Do not use another person's data or content without a lawful basis and any required permission.</li>
-            </ul>
-          </section>
+          <div>
 
-          <section class="legal-section">
-            <h2>Protected features</h2>
-            <p>Private apps are for authorised users only. Access may be logged, challenged, rate-limited, suspended, or revoked for security, maintenance, legal, or abuse-prevention reasons. You are responsible for keeping your login details and sessions secure.</p>
-          </section>
+            <section class="legal-stack" aria-label="Terms of Use sections">
+            <section class="legal-section" id="about-these-terms-and-uk-scope">
+              <h2>About these terms and UK scope</h2>
+              <p>These Terms of Use are between you and Mason, the UK-based operator of mas0ng.com. They apply to public pages and to any protected feature that you are authorised to use.</p>
+              <p>mas0ng.com is operated from the United Kingdom and is directed to people in the UK. It is not marketed to users outside the UK. If you access it from elsewhere, you are responsible for complying with laws that apply to you, and access may be restricted. This does not exclude any law that applies regardless of the site's intended audience.</p>
+              <p>The <a class="legal-link" href="/legal/privacy/">Privacy Policy</a> and <a class="legal-link" href="/legal/cookies.html">Cookie Notice</a> explain data handling. The <a class="legal-link" href="/legal/ai.html">AI Policy</a> applies when AI features are used.</p>
+            </section>
 
-          <section class="legal-section">
-            <h2>AI, uploads, and stored files</h2>
-            <p>AI content may be processed by OpenAI or DeepSeek, and supported files may be sent to OpenAI for text extraction. AI output may be inaccurate or unsuitable. Review it carefully and do not treat it as professional advice or the sole basis for a high-impact decision.</p>
-            <p>You must have the right to upload and process any content you submit. Storage limits and displayed retention rules may remove older files. More information is in the <a class="legal-link" href="/legal/ai.html">AI Policy</a>.</p>
-            <p>You keep ownership of content you submit. You grant only the limited permission needed for mas0ng.com and its stated providers to host, copy, transmit, transform, and process that content to provide, secure, and maintain the feature you requested. This permission ends when the content is deleted, except for residual copies or records lawfully retained for security, backup, or legal reasons.</p>
-            <p>Filestore content is private to authorised users but is provided on an as-available basis through the Media0 server. You are responsible for keeping an independent copy of anything important. Files may be removed for security, maintenance, legal, capacity, or service-discontinuation reasons.</p>
-          </section>
+            <section class="legal-section" id="accepting-the-terms">
+              <h2>Accepting the terms</h2>
+              <p>By using a protected feature, creating or using an authorised session, downloading software subject to these terms, or otherwise using a feature that expressly refers to these terms, you agree to them. If you do not agree, do not use that feature.</p>
+              <p>Simply reading a public informational page does not remove any statutory right or make the privacy notices contractual consent requests.</p>
+            </section>
 
-          <section class="legal-section">
-            <h2>External services</h2>
-            <p>The site links to or uses services operated by other organisations. Those services have their own terms, privacy practices, availability, and content. A link or integration does not mean mas0ng.com controls or endorses the external service.</p>
-          </section>
+            <section class="legal-section" id="eligibility-and-authorised-access">
+              <h2>Eligibility and authorised access</h2>
+              <p>Protected features are only for users who have been authorised by the operator. You must not share login credentials, sessions, one-time codes, or access methods with another person unless the feature expressly allows it.</p>
+              <p>Protected services are not intended for children under 13. A user under 18 should use a protected feature only where access has been specifically authorised and the feature is appropriate for that user.</p>
+            </section>
 
-          <section class="legal-section">
-            <h2>Availability and changes</h2>
-            <p>The site is provided on an as-available basis. Features may change, move, be limited, or be withdrawn. Terms may be updated prospectively when the service or applicable requirements change. Material changes will be presented clearly before they apply to continued protected use where reasonably practicable; the revision date above will also be updated.</p>
-          </section>
+            <section class="legal-section" id="acceptable-use">
+              <h2>Acceptable use</h2>
+              <ul>
+                <li>Use the site lawfully and only for its intended purpose.</li>
+                <li>Do not bypass authentication, authorisation, rate limits, regional restrictions, security challenges, or technical safeguards.</li>
+                <li>Do not disrupt, overload, scrape at an abusive rate, probe, or interfere with the site, networks, APIs, Workers, or private infrastructure.</li>
+                <li>Do not submit malware, unlawful content, exploitative material, rights-infringing content, or unnecessary sensitive personal data.</li>
+                <li>Do not impersonate another person or use another person's data or content without a lawful basis and any permission that is required.</li>
+                <li>Do not use a private feature to facilitate fraud, unauthorised access, harassment, or any other unlawful activity.</li>
+              </ul>
+            </section>
 
-          <section class="legal-section">
-            <h2>Liability</h2>
-            <p>Nothing in these terms excludes or limits liability where doing so would be unlawful, including liability for fraud or fraudulent misrepresentation, death or personal injury caused by negligence, or your statutory rights as a consumer. Subject to those rights, no promise is made that a free, experimental service will always be available or error-free. Reasonable care and skill will be used where the law requires it.</p>
-          </section>
+            <section class="legal-section" id="your-content-and-uploads">
+              <h2>Your content and uploads</h2>
+              <p>You keep ownership of content that you submit. You grant mas0ng.com and the providers identified in the applicable privacy or feature notice only the limited permission needed to host, copy, transmit, transform, and process that content to provide, secure, maintain, and troubleshoot the feature you requested.</p>
+              <p>You must have the necessary rights and permissions for anything you upload or submit. The permission above ends when the content is deleted from the active service, except for temporary residual copies, backups, security records, or information that must lawfully be retained.</p>
+            </section>
 
-          <section class="legal-section">
-            <h2>Governing law and contact</h2>
-            <p>These terms are governed by the laws of England and Wales, subject to mandatory rights that apply where you live. Consumers resident in Scotland or Northern Ireland may also bring proceedings in their local courts. Questions can be sent to <a class="legal-link" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>.</p>
-          </section>
-        </section>
+            <section class="legal-section" id="ai-and-generated-content">
+              <h2>AI and generated content</h2>
+              <p>AI output may be inaccurate, incomplete, biased, outdated, or unsuitable. You are responsible for reviewing output before relying on, publishing, or acting on it. Do not treat it as professional advice or as the sole basis for a high-impact decision.</p>
+              <p>AI prompts and files may be processed by OpenAI or DeepSeek, and supported files may be sent to OpenAI for text extraction. More detail is in the <a class="legal-link" href="/legal/ai.html">AI Policy</a>.</p>
+            </section>
+
+            <section class="legal-section" id="filestore-and-stored-material">
+              <h2>Filestore and stored material</h2>
+              <p>Filestore and other private storage features are provided for authorised use and may be subject to capacity, retention, and security limits. You are responsible for keeping an independent copy of anything important.</p>
+              <p>Files may be removed or access may be suspended where reasonably necessary for security, maintenance, legal compliance, capacity management, account protection, or discontinuation of a feature. This does not affect any consumer right that cannot lawfully be excluded.</p>
+            </section>
+
+            <section class="legal-section" id="intellectual-property-and-software">
+              <h2>Intellectual property and software</h2>
+              <p>Unless a specific licence says otherwise, the site design, original code, graphics, branding, documentation, and other original material are protected by intellectual-property law and are not licensed for copying, redistribution, or commercial reuse merely because they can be viewed online.</p>
+              <p>Software downloads and open-source components may have separate licence terms. Where a specific licence applies, that licence controls the rights it grants. See <a class="legal-link" href="/legal/licences.html">Software Licensing</a> and <a class="legal-link" href="/legal/downloads.html">Download Terms</a>.</p>
+            </section>
+
+            <section class="legal-section" id="external-services">
+              <h2>External services</h2>
+              <p>The site may link to or integrate services operated by third parties. Those services have their own terms, privacy practices, availability, and content. A link or integration does not mean mas0ng.com controls, guarantees, or endorses the third-party service.</p>
+            </section>
+
+            <section class="legal-section" id="paid-services-and-consumer-rights">
+              <h2>Paid services and consumer rights</h2>
+              <p>If a feature, subscription, download, or other digital service is offered for payment, the offer or checkout flow should provide the price, main characteristics, term, compatibility or functionality information where relevant, and any cancellation or renewal information required by UK consumer law before the contract is made.</p>
+              <p>Nothing in these terms removes statutory consumer rights. Where digital content is supplied immediately during a cancellation period, any loss of a cancellation right will apply only if the legally required express request, consent, and acknowledgement have been obtained.</p>
+            </section>
+
+            <section class="legal-section" id="availability-suspension-and-changes">
+              <h2>Availability, suspension, and changes</h2>
+              <p>The site and free or experimental features are provided on an as-available basis. Features may change, move, be rate-limited, be suspended, or be withdrawn for maintenance, security, legal, technical, or operational reasons.</p>
+              <p>These terms may be updated prospectively when the service or legal requirements change. Material changes affecting continued protected use will be presented clearly where reasonably practicable before they take effect.</p>
+            </section>
+
+            <section class="legal-section" id="liability">
+              <h2>Liability</h2>
+              <p>Nothing in these terms excludes or limits liability where doing so would be unlawful, including liability for fraud or fraudulent misrepresentation, death or personal injury caused by negligence, or any mandatory consumer right.</p>
+              <p>Subject to those rights, no promise is made that a free or experimental feature will be uninterrupted, error-free, permanently available, or suitable for a purpose that has not been agreed. If you use the site for business purposes, any separate business or software licence may contain additional lawful limitations.</p>
+            </section>
+
+            <section class="legal-section" id="general-terms">
+              <h2>General terms</h2>
+              <p>If any part of these terms is found unenforceable, the remaining provisions continue to apply so far as the law allows. A delay in enforcing a right does not automatically waive it. No person other than you and the operator has a right to enforce these terms unless a specific provision or law says otherwise.</p>
+            </section>
+
+            <section class="legal-section" id="governing-law-and-contact">
+              <h2>Governing law and contact</h2>
+              <p>These terms are governed by the laws of England and Wales, subject to mandatory rights that apply where you live. A consumer resident in Scotland or Northern Ireland may also bring proceedings in their local courts where the law allows.</p>
+              <p>Questions can be sent to <a class="legal-link" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>.</p>
+            </section>
+            </section>
+          </div>
+        </div>
       </main>
     </div>
+
     <script src="/public_assets/site/js/config/site-data.js?v=20260728-bio-nav1"></script>
-    <script src="/public_assets/site/js/lib/cache.js"></script>
-    <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
-    <script src="/public_assets/site/js/layout/shell.js?v=20260723-mobile-nav3" data-active="legal" defer></script>
-    <script src="/public_assets/site/js/pages/legal-liquid.js?v=20260726-legal1" defer></script>
-    <script src="/index_assets/js/masthead-canvas.js?v=20260726-static1" defer></script>
+        <script src="/public_assets/site/js/lib/cache.js"></script>
+        <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
+        <script src="/public_assets/site/js/layout/shell.js?v=20260723-mobile-nav3" data-active="legal" defer></script>
+    <script>
+          (() => {
+            const overlayName = /(overlay|backdrop|scrim|dimmer|veil)/i;
+            const navName = /(nav|menu|shell|drawer)/i;
+    
+            const removeInitialNavTint = () => {
+              document.querySelectorAll('body *').forEach((element) => {
+                if (element.closest('.security-modal')) return;
+    
+                const name = `${element.id || ''} ${typeof element.className === 'string' ? element.className : ''}`;
+                if (!overlayName.test(name) || !navName.test(name)) return;
+    
+                const style = getComputedStyle(element);
+                if (style.position !== 'fixed' && style.position !== 'absolute') return;
+    
+                const rect = element.getBoundingClientRect();
+                const coversViewport = rect.width >= window.innerWidth * 0.85 && rect.height >= window.innerHeight * 0.85;
+                if (!coversViewport) return;
+    
+                element.style.setProperty('display', 'none', 'important');
+                element.style.setProperty('visibility', 'hidden', 'important');
+                element.style.setProperty('opacity', '0', 'important');
+                element.style.setProperty('pointer-events', 'none', 'important');
+                element.style.setProperty('background', 'transparent', 'important');
+                element.style.setProperty('backdrop-filter', 'none', 'important');
+                element.style.setProperty('-webkit-backdrop-filter', 'none', 'important');
+              });
+            };
+    
+            window.addEventListener('DOMContentLoaded', () => {
+              removeInitialNavTint();
+              requestAnimationFrame(removeInitialNavTint);
+              setTimeout(removeInitialNavTint, 150);
+              setTimeout(removeInitialNavTint, 600);
+            });
+          })();
+        </script>
+    <script>
+          (() => {
+            const links = [...document.querySelectorAll('.legal-toc a')];
+            const sections = links.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+            if (!links.length || !sections.length) return;
+            const setActive = id => {
+              links.forEach(link => {
+                const active = link.getAttribute('href') === `#${id}`;
+                link.classList.toggle('is-active', active);
+                if (active) link.setAttribute('aria-current', 'true');
+                else link.removeAttribute('aria-current');
+              });
+            };
+            const updateActiveSection = () => {
+              const marker = window.innerHeight * 0.3;
+              let current = sections[0];
+              for (const section of sections) {
+                if (section.getBoundingClientRect().top <= marker) current = section;
+                else break;
+              }
+              if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+                current = sections[sections.length - 1];
+              }
+              setActive(current.id);
+            };
+            let ticking = false;
+            const onScroll = () => {
+              if (ticking) return;
+              ticking = true;
+              requestAnimationFrame(() => {
+                updateActiveSection();
+                ticking = false;
+              });
+            };
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', updateActiveSection);
+            updateActiveSection();
+          })();
+        </script>
+
   </body>
 </html>

@@ -4,99 +4,1440 @@
     <meta charset="utf-8">
     <script src="/public_assets/site/js/layout/loader.js?v=20260610-loader1"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>mas0ng.com | software downloads terms</title>
-    <meta name="description" content="Software downloads terms for mas0ng.com.">
-    <meta name="theme-color" content="#000000">
+    <title>mas0ng.com | download terms</title>
+    <meta name="description" content="Software download terms for mas0ng.com.">
+    <meta name="theme-color" content="#ffffff">
     <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="/public_assets/fonts/etna.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap">
     <link rel="stylesheet" href="/public_assets/site/css/site.css">
-    <link rel="stylesheet" href="/public_assets/site/css/legal.css?v=20260726-legal10">
+
+    <style>
+      :root {
+              --legal-ink: #171717;
+              --legal-copy: #505050;
+              --legal-muted: #8a8a8a;
+              --legal-soft: #f6f6f6;
+              --legal-line: #e8e8e8;
+              --legal-accent: #171717;
+            }
+
+            html {
+              scroll-behavior: smooth;
+            }
+
+            html,
+            body[data-page="legal"],
+            body[data-page="legal"] #site-main,
+            body[data-page="legal"] .legal-shell {
+              background: #ffffff !important;
+            }
+
+            body[data-page="legal"] {
+              color: var(--legal-ink);
+              opacity: 1 !important;
+              filter: none !important;
+              mix-blend-mode: normal !important;
+              isolation: isolate;
+            }
+
+            body[data-page="legal"] #site-main,
+            body[data-page="legal"] .legal-shell,
+            body[data-page="legal"] .legal-hero,
+            body[data-page="legal"] .legal-layout,
+            body[data-page="legal"] .legal-stack {
+              min-height: 0;
+              opacity: 1 !important;
+              filter: none !important;
+              backdrop-filter: none !important;
+              -webkit-backdrop-filter: none !important;
+              mix-blend-mode: normal !important;
+            }
+
+            body[data-page="legal"]::before,
+            body[data-page="legal"]::after,
+            body[data-page="legal"] #site-main::before,
+            body[data-page="legal"] #site-main::after,
+            body[data-page="legal"] .legal-shell::before,
+            body[data-page="legal"] .legal-shell::after {
+              content: none !important;
+              display: none !important;
+            }
+
+            body[data-page="legal"] #site-main [class*="liquid"],
+            body[data-page="legal"] #site-main > canvas {
+              display: none !important;
+            }
+
+            body[data-page="legal"] :is(header, #site-header, .site-header, #site-nav, .site-nav, .navbar, .nav-shell) {
+              --nav-color: #1d1d1f;
+              --nav-text: #1d1d1f;
+              --nav-link-color: #1d1d1f;
+            }
+
+            body[data-page="legal"] :is(header, #site-header, .site-header, #site-nav, .site-nav, .navbar, .nav-shell) :is(a, button, span) {
+              color: #1d1d1f !important;
+              opacity: 1 !important;
+            }
+
+            body[data-page="legal"] :is(header, #site-header, .site-header, #site-nav, .site-nav, .navbar, .nav-shell) :is(svg, path) {
+              opacity: 1 !important;
+            }
+
+            body[data-page="legal"] :is(header, #site-header, .site-header, #site-nav, .site-nav, .navbar, .nav-shell) {
+              backdrop-filter: none !important;
+              -webkit-backdrop-filter: none !important;
+              box-shadow: none !important;
+            }
+
+            .legal-shell {
+              width: min(1260px, calc(100% - 72px));
+              margin: 0 auto;
+              padding: 96px 0 120px;
+              background: transparent;
+            }
+
+            .legal-hero {
+              width: 100%;
+              margin: 0 0 56px;
+              padding-top: 12px;
+              text-align: center;
+            }
+
+            .legal-banner {
+              position: relative;
+              display: grid;
+              width: 100%;
+              aspect-ratio: 10 / 1;
+              place-items: center;
+              overflow: hidden;
+              border: 0;
+              border-radius: 22px;
+              outline: 0;
+              background: url("/public_assets/site_branding/header/compact/white.jpg") center / cover no-repeat;
+              box-shadow: none;
+            }
+
+
+            .legal-banner__content {
+              display: flex;
+              width: min(100% - 48px, 1080px);
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              gap: 8px;
+              text-align: center;
+            }
+
+            .legal-title {
+              margin: 0;
+              color: #111111;
+              font-family: "ABeeZee", sans-serif;
+              font-size: clamp(1.7rem, 2.9vw, 2.8rem);
+              font-weight: 400;
+              letter-spacing: -0.04em;
+              line-height: 1;
+            }
+
+            .legal-meta {
+              margin: 0;
+              color: #5f5f5f;
+              font-family: "ABeeZee", sans-serif;
+              font-size: clamp(0.68rem, 0.82vw, 0.78rem);
+              line-height: 1.35;
+            }
+
+            .legal-layout {
+              display: grid;
+              grid-template-columns: 236px minmax(0, 820px);
+              gap: clamp(58px, 7vw, 104px);
+              align-items: start;
+            }
+
+            .legal-toc {
+              position: sticky;
+              top: 104px;
+              max-height: calc(100vh - 132px);
+              padding-right: 10px;
+              align-self: start;
+              overflow-y: auto;
+              overscroll-behavior: contain;
+              scrollbar-width: thin;
+              scrollbar-color: #d5d5d5 transparent;
+              font-family: "ABeeZee", sans-serif;
+            }
+
+            .legal-toc::before {
+              content: "";
+              position: absolute;
+              top: 38px;
+              bottom: 4px;
+              left: 0;
+              width: 1px;
+              background: #e2e2e2;
+            }
+
+            .legal-toc-label {
+              margin: 0 0 17px;
+              color: #919191;
+              font-size: 0.68rem;
+              letter-spacing: 0.12em;
+              line-height: 1.4;
+              text-transform: uppercase;
+            }
+
+            .legal-toc nav {
+              display: flex;
+              flex-direction: column;
+              gap: 3px;
+            }
+
+            .legal-toc a {
+              position: relative;
+              display: grid;
+              grid-template-columns: 24px 1fr;
+              gap: 7px;
+              align-items: baseline;
+              padding: 7px 0 7px 17px;
+              color: #777777;
+              font-size: 0.8rem;
+              line-height: 1.45;
+              text-decoration: none;
+              transition: color 160ms ease, transform 160ms ease;
+            }
+
+            .legal-toc a::before {
+              content: attr(data-index);
+              color: #b0b0b0;
+              font-size: 0.66rem;
+              font-variant-numeric: tabular-nums;
+              transition: color 160ms ease;
+            }
+
+            .legal-toc a::after {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: -1px;
+              width: 3px;
+              height: 0;
+              border-radius: 999px;
+              background: #171717;
+              transform: translateY(-50%);
+              transition: height 160ms ease;
+            }
+
+            .legal-toc a:hover,
+            .legal-toc a:focus-visible,
+            .legal-toc a.is-active {
+              color: #171717;
+              transform: translateX(3px);
+            }
+
+            .legal-toc a.is-active {
+              font-weight: 700;
+            }
+
+            .legal-toc a:hover::before,
+            .legal-toc a:focus-visible::before,
+            .legal-toc a.is-active::before {
+              color: #171717;
+            }
+
+            .legal-toc a:hover::after,
+            .legal-toc a:focus-visible::after,
+            .legal-toc a.is-active::after {
+              height: 26px;
+            }
+
+            .legal-toc a:focus-visible,
+            .legal-link:focus-visible,
+            .legal-card:focus-visible,
+            .security-banner__btn:focus-visible,
+            .btn-primary:focus-visible,
+            .btn-secondary:focus-visible,
+            .report-route:focus-visible,
+            .security-modal__close:focus-visible {
+              outline: 2px solid #171717;
+              outline-offset: 4px;
+              border-radius: 4px;
+            }
+
+            .legal-stack {
+              min-width: 0;
+              counter-reset: legal-section;
+            }
+
+            .legal-section {
+              position: relative;
+              scroll-margin-top: 118px;
+              margin: 0;
+              padding: 0 0 50px;
+              border-bottom: 1px solid var(--legal-line);
+              counter-increment: legal-section;
+            }
+
+            .legal-section + .legal-section {
+              padding-top: 50px;
+            }
+
+            .legal-section:last-child {
+              padding-bottom: 0;
+              border-bottom: 0;
+            }
+
+            .legal-section h2 {
+              display: grid;
+              grid-template-columns: 34px minmax(0, 1fr);
+              gap: 10px;
+              align-items: baseline;
+              margin: 0 0 19px;
+              color: #151515;
+              font-family: "ABeeZee", sans-serif;
+              font-size: clamp(1.23rem, 1.8vw, 1.46rem);
+              font-weight: 400;
+              letter-spacing: -0.02em;
+              line-height: 1.32;
+            }
+
+            .legal-section h2::before {
+              content: counter(legal-section, decimal-leading-zero);
+              color: #adadad;
+              font-size: 0.67rem;
+              font-variant-numeric: tabular-nums;
+              letter-spacing: 0.02em;
+            }
+
+            .legal-section h3 {
+              margin: 24px 0 9px 44px;
+              color: #202020;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 1rem;
+              font-weight: 700;
+              line-height: 1.5;
+            }
+
+            .legal-section p,
+            .legal-section > ul,
+            .legal-section > ol,
+            .legal-section > dl,
+            .legal-section > .legal-note,
+            .legal-section > .legal-right-callout {
+              margin-left: 44px;
+            }
+
+            .legal-section p,
+            .legal-section li,
+            .legal-section dd,
+            .legal-note,
+            .legal-right-callout {
+              color: var(--legal-copy);
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.95rem;
+              line-height: 1.82;
+            }
+
+            .legal-section p {
+              margin-top: 0;
+              margin-bottom: 0;
+            }
+
+            .legal-section p + p {
+              margin-top: 17px;
+            }
+
+            .legal-section > ul,
+            .legal-section > ol {
+              display: grid;
+              gap: 10px;
+              margin-top: 9px;
+              margin-bottom: 0;
+              padding: 0;
+            }
+
+            .legal-section ul {
+              list-style: none;
+            }
+
+            .legal-section ol {
+              padding-left: 21px;
+            }
+
+            .legal-section li {
+              position: relative;
+            }
+
+            .legal-section > ul > li {
+              padding-left: 20px;
+            }
+
+            .legal-section > ul > li::before {
+              content: "";
+              position: absolute;
+              top: 0.82em;
+              left: 1px;
+              width: 5px;
+              height: 5px;
+              border-radius: 50%;
+              background: #222222;
+            }
+
+            .legal-section li ul {
+              display: grid;
+              gap: 7px;
+              margin: 8px 0 0;
+              padding: 0 0 0 18px;
+              list-style: none;
+            }
+
+            .legal-section li ul li {
+              padding-left: 17px;
+            }
+
+            .legal-section li ul li::before {
+              content: "";
+              position: absolute;
+              top: 0.84em;
+              left: 1px;
+              width: 4px;
+              height: 4px;
+              border-radius: 50%;
+              background: #9a9a9a;
+            }
+
+            .legal-link {
+              color: #171717;
+              font-weight: 400;
+              text-decoration-color: #b7b7b7;
+              text-decoration-thickness: 1px;
+              text-underline-offset: 4px;
+              transition: text-decoration-color 160ms ease;
+            }
+
+            .legal-link:hover {
+              text-decoration-color: #171717;
+            }
+
+            code {
+              padding: 0.16em 0.42em;
+              border: 1px solid #e7e7e7;
+              border-radius: 5px;
+              background: #f7f7f7;
+              color: #353535;
+              font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+              font-size: 0.88em;
+            }
+
+            .legal-note,
+            .legal-right-callout {
+              margin-top: 20px;
+              padding: 16px 18px;
+              border-left: 3px solid #171717;
+              background: #f7f7f7;
+            }
+
+            .legal-note strong,
+            .legal-right-callout strong {
+              color: #171717;
+            }
+
+            .legal-section dl {
+              margin-top: 4px;
+              margin-bottom: 0;
+            }
+
+            .data-table {
+              border-top: 1px solid var(--legal-line);
+            }
+
+            .data-row {
+              display: grid;
+              grid-template-columns: 150px 1.25fr 1fr;
+              gap: 18px;
+              padding: 18px 0;
+              border-bottom: 1px solid var(--legal-line);
+            }
+
+            .data-row dt {
+              color: #222222;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.86rem;
+              font-weight: 700;
+              line-height: 1.6;
+            }
+
+            .data-row dd {
+              margin: 0;
+              font-size: 0.86rem;
+              line-height: 1.7;
+            }
+
+            .legal-section:target h2 {
+              color: #000000;
+            }
+
+            .legal-index-shell {
+              width: min(1100px, calc(100% - 72px));
+            }
+
+            .legal-index-intro {
+              max-width: 780px;
+              margin: -28px auto 42px;
+              color: #777;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.84rem;
+              line-height: 1.7;
+              text-align: center;
+            }
+
+            .legal-grid {
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              border-top: 1px solid var(--legal-line);
+            }
+
+            .legal-card {
+              position: relative;
+              display: flex;
+              min-height: 190px;
+              padding: 30px 32px;
+              flex-direction: column;
+              justify-content: space-between;
+              gap: 28px;
+              color: #171717;
+              border-bottom: 1px solid var(--legal-line);
+              text-decoration: none;
+              transition: background 160ms ease, transform 160ms ease;
+            }
+
+            .legal-card:nth-child(odd) {
+              border-right: 1px solid var(--legal-line);
+            }
+
+            .legal-card:hover {
+              background: #fafafa;
+            }
+
+            .legal-card h2 {
+              margin: 0 0 10px;
+              color: #171717;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 1.2rem;
+              font-weight: 400;
+              letter-spacing: -0.02em;
+            }
+
+            .legal-card p {
+              margin: 0;
+              color: #666;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.88rem;
+              line-height: 1.72;
+            }
+
+            .legal-card span {
+              color: #858585;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.76rem;
+              letter-spacing: 0.02em;
+            }
+
+            .legal-index-contact {
+              max-width: 760px;
+              margin: 54px auto 0;
+              padding-top: 34px;
+              border-top: 1px solid var(--legal-line);
+              text-align: center;
+            }
+
+            .legal-index-contact h2 {
+              margin: 0 0 12px;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 1.15rem;
+              font-weight: 400;
+            }
+
+            .legal-index-contact p {
+              margin: 0;
+              color: #666;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.88rem;
+              line-height: 1.7;
+            }
+
+            .security-banner {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 26px;
+              margin: 0 0 44px;
+              padding: 22px 24px;
+              border: 1px solid var(--legal-line);
+              background: #fafafa;
+            }
+
+            .security-banner__content h3 {
+              margin: 0 0 7px;
+              color: #171717;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 1rem;
+              font-weight: 700;
+            }
+
+            .security-banner__content p {
+              margin: 0;
+              color: #666;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.86rem;
+              line-height: 1.65;
+            }
+
+            .security-banner__btn,
+            .btn-primary,
+            .btn-secondary,
+            .github-report-link {
+              display: inline-flex;
+              min-height: 44px;
+              align-items: center;
+              justify-content: center;
+              padding: 10px 17px;
+              border-radius: 999px;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.84rem;
+              font-weight: 700;
+              cursor: pointer;
+              text-decoration: none;
+            }
+
+            .security-banner__btn,
+            .btn-primary,
+            .github-report-link {
+              border: 1px solid #171717;
+              color: #fff;
+              background: #171717;
+            }
+
+            .security-banner__btn:hover,
+            .btn-primary:hover,
+            .github-report-link:hover {
+              background: #343434;
+            }
+
+            .btn-secondary {
+              border: 1px solid #dcdcdc;
+              color: #303030;
+              background: #fff;
+            }
+
+            .btn-secondary:hover {
+              background: #f7f7f7;
+            }
+
+            .btn-primary:disabled {
+              opacity: 0.55;
+              cursor: not-allowed;
+            }
+
+            .security-modal {
+              position: fixed;
+              inset: 0;
+              z-index: 20000;
+              display: flex;
+              padding: 20px;
+              align-items: center;
+              justify-content: center;
+              opacity: 0;
+              visibility: hidden;
+              transition: opacity 180ms ease, visibility 180ms ease;
+            }
+
+            .security-modal.is-open {
+              opacity: 1;
+              visibility: visible;
+            }
+
+            .security-modal__overlay {
+              position: absolute;
+              inset: 0;
+              background: rgba(17, 17, 17, 0.56);
+              backdrop-filter: blur(7px);
+              -webkit-backdrop-filter: blur(7px);
+            }
+
+            .security-modal__container {
+              position: relative;
+              z-index: 20001;
+              display: flex;
+              width: min(100%, 820px);
+              max-height: calc(100vh - 40px);
+              flex-direction: column;
+              overflow: hidden;
+              border: 1px solid #dedede;
+              border-radius: 18px;
+              background: #fff;
+              box-shadow: 0 24px 80px rgba(0,0,0,0.16);
+              transform: translateY(8px) scale(0.99);
+              transition: transform 180ms ease;
+            }
+
+            .security-modal.is-open .security-modal__container {
+              transform: translateY(0) scale(1);
+            }
+
+            .security-modal__header {
+              position: relative;
+              padding: 26px 76px 22px 28px;
+              border-bottom: 1px solid var(--legal-line);
+            }
+
+            .security-modal__eyebrow,
+            .screen-kicker {
+              margin: 0 0 7px;
+              color: #919191;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.68rem;
+              font-weight: 700;
+              letter-spacing: 0.12em;
+              line-height: 1.3;
+              text-transform: uppercase;
+            }
+
+            .security-modal__header h2 {
+              margin: 0;
+              color: #171717;
+              font-family: "ABeeZee", sans-serif;
+              font-size: clamp(1.35rem, 3vw, 1.72rem);
+              font-weight: 400;
+              letter-spacing: -0.03em;
+              line-height: 1.22;
+            }
+
+            .security-modal__subtitle {
+              max-width: 620px;
+              margin: 8px 0 0;
+              color: #686868;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.86rem;
+              line-height: 1.6;
+            }
+
+            .security-modal__close {
+              position: absolute;
+              top: 20px;
+              right: 22px;
+              display: grid;
+              width: 42px;
+              height: 42px;
+              padding: 0;
+              place-items: center;
+              border: 1px solid #dedede;
+              border-radius: 50%;
+              color: #444;
+              background: #fff;
+              font-size: 1.55rem;
+              line-height: 1;
+              cursor: pointer;
+            }
+
+            .security-modal__close:hover {
+              background: #f7f7f7;
+            }
+
+            .security-modal__body {
+              min-height: 0;
+              padding: 28px;
+              flex: 1;
+              overflow-y: auto;
+              overscroll-behavior: contain;
+            }
+
+            .triage-question {
+              margin: 0 0 8px;
+              color: #171717;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 1.12rem;
+              font-weight: 700;
+              line-height: 1.5;
+            }
+
+            .triage-intro,
+            .github-notice-card p,
+            .form-intro p:last-child,
+            .security-modal__success p {
+              color: #666;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.86rem;
+              line-height: 1.65;
+            }
+
+            .triage-intro {
+              max-width: 640px;
+              margin: 0 0 22px;
+            }
+
+            .triage-actions {
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              gap: 14px;
+            }
+
+            .report-route {
+              display: grid;
+              min-height: 150px;
+              padding: 20px;
+              grid-template-columns: 44px minmax(0, 1fr);
+              align-content: start;
+              gap: 6px 14px;
+              border: 1px solid #dedede;
+              border-radius: 14px;
+              color: #333;
+              background: #fff;
+              text-align: left;
+              cursor: pointer;
+              transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+            }
+
+            .report-route:hover {
+              border-color: #bdbdbd;
+              background: #fafafa;
+              transform: translateY(-2px);
+            }
+
+            .report-route__icon {
+              display: grid;
+              width: 44px;
+              height: 44px;
+              grid-row: 1 / span 2;
+              place-items: center;
+              border-radius: 11px;
+              color: #fff;
+              background: #171717;
+            }
+
+            .report-route__icon svg {
+              width: 22px;
+              height: 22px;
+              fill: none;
+              stroke: currentColor;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              stroke-width: 1.8;
+            }
+
+            .report-route strong {
+              align-self: end;
+              color: #171717;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.96rem;
+            }
+
+            .report-route small {
+              color: #6f6f6f;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.77rem;
+              font-weight: 400;
+              line-height: 1.55;
+            }
+
+            .github-notice-card {
+              padding: 21px;
+              border: 1px solid var(--legal-line);
+              background: #fafafa;
+            }
+
+            .github-notice-card h3,
+            .form-intro h3,
+            .security-modal__success h3 {
+              margin: 0 0 8px;
+              color: #171717;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 1.1rem;
+            }
+
+            .github-notice-card p {
+              margin: 0;
+            }
+
+            .github-notice-card p + p {
+              margin-top: 9px;
+            }
+
+            .github-report-link {
+              margin-top: 17px;
+            }
+
+            .form-intro {
+              margin-bottom: 22px;
+            }
+
+            .form-intro p:last-child {
+              margin: 0;
+            }
+
+            .form-grid {
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              gap: 18px;
+            }
+
+            .security-modal__form .form-group {
+              min-width: 0;
+              margin-bottom: 18px;
+            }
+
+            .security-modal__form .form-grid .form-group {
+              margin-bottom: 0;
+            }
+
+            .security-modal__form label {
+              display: block;
+              margin-bottom: 7px;
+              color: #333;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.84rem;
+              font-weight: 700;
+            }
+
+            .security-modal__form label .required {
+              color: #555;
+            }
+
+            .security-modal__form input[type="email"],
+            .security-modal__form input[type="text"],
+            .security-modal__form select,
+            .security-modal__form textarea {
+              width: 100%;
+              min-height: 48px;
+              box-sizing: border-box;
+              padding: 12px 14px;
+              border: 1px solid #d8d8d8;
+              border-radius: 10px;
+              outline: none;
+              background: #fff;
+              color: #171717;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.94rem;
+              transition: border-color 150ms ease, box-shadow 150ms ease;
+            }
+
+            .security-modal__form textarea {
+              min-height: 150px;
+              resize: vertical;
+              line-height: 1.55;
+            }
+
+            .security-modal__form input:focus,
+            .security-modal__form select:focus,
+            .security-modal__form textarea:focus {
+              border-color: #888;
+              box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
+            }
+
+            .security-modal__form select {
+              appearance: none;
+              background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+              background-repeat: no-repeat;
+              background-position: right 14px center;
+              background-size: 16px;
+              padding-right: 40px;
+            }
+
+            .field-hint {
+              display: block;
+              margin-top: 7px;
+              color: #777;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.75rem;
+              line-height: 1.5;
+            }
+
+            .turnstile-wrap {
+              display: flex;
+              width: 100%;
+              min-height: 65px;
+              margin: 4px 0 0;
+              align-items: center;
+              justify-content: center;
+              overflow: hidden;
+              border: 1px dashed #d7d7d7;
+              border-radius: 12px;
+              background: #fafafa;
+            }
+
+            .form-status {
+              margin-top: 16px;
+              padding: 12px 14px;
+              border: 1px solid #e5bcbc;
+              border-radius: 10px;
+              color: #7d2424;
+              background: #fff7f7;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.82rem;
+              line-height: 1.5;
+            }
+
+            .form-status[hidden] {
+              display: none;
+            }
+
+            .form-actions {
+              display: flex;
+              align-items: center;
+              justify-content: flex-end;
+              gap: 11px;
+              margin-top: 24px;
+              padding-top: 19px;
+              border-top: 1px solid var(--legal-line);
+            }
+
+            .security-modal__success {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              padding: 10px 0;
+              text-align: center;
+            }
+
+            .success-icon {
+              display: grid;
+              width: 58px;
+              height: 58px;
+              margin-bottom: 18px;
+              place-items: center;
+              border-radius: 50%;
+              color: #fff;
+              background: #171717;
+              font-size: 1.5rem;
+            }
+
+            .security-modal__success p {
+              max-width: 420px;
+              margin: 0 0 22px;
+            }
+
+            @media (max-width: 940px) {
+              .legal-shell,
+              .legal-index-shell {
+                width: min(100% - 42px, 820px);
+                padding-top: 82px;
+                padding-bottom: 88px;
+              }
+
+              .legal-hero {
+                padding-top: 10px;
+              }
+
+              .legal-hero {
+                margin-bottom: 42px;
+              }
+
+              .legal-banner {
+                aspect-ratio: 8 / 1;
+                border-radius: 18px;
+                background-position: center;
+              }
+
+              .legal-banner__content {
+                width: calc(100% - 38px);
+              }
+
+              .legal-layout {
+                display: block;
+              }
+
+              .legal-toc {
+                display: none;
+              }
+
+              .legal-grid {
+                grid-template-columns: 1fr;
+              }
+
+              .legal-card:nth-child(odd) {
+                border-right: 0;
+              }
+            }
+
+            @media (max-width: 640px) {
+              .legal-banner {
+                aspect-ratio: 5 / 1;
+                background-position: center;
+              }
+
+              .data-row {
+                grid-template-columns: 1fr;
+                gap: 6px;
+              }
+
+              .security-banner {
+                align-items: stretch;
+                flex-direction: column;
+              }
+
+              .security-banner__btn {
+                align-self: flex-start;
+              }
+
+              .security-modal {
+                padding: 0;
+                align-items: stretch;
+              }
+
+              .security-modal__container {
+                width: 100%;
+                height: 100dvh;
+                max-height: none;
+                border: 0;
+                border-radius: 0;
+              }
+
+              .security-modal__header {
+                padding: calc(18px + env(safe-area-inset-top)) 66px 17px 18px;
+              }
+
+              .security-modal__close {
+                top: calc(14px + env(safe-area-inset-top));
+                right: 14px;
+              }
+
+              .security-modal__body {
+                padding: 22px 18px calc(24px + env(safe-area-inset-bottom));
+              }
+
+              .triage-actions,
+              .form-grid {
+                grid-template-columns: 1fr;
+              }
+
+              .report-route {
+                min-height: 124px;
+                padding: 17px;
+              }
+
+              .form-actions {
+                flex-direction: column-reverse;
+              }
+
+              .form-actions button {
+                width: 100%;
+              }
+            }
+
+            @media (max-width: 560px) {
+              .legal-shell,
+              .legal-index-shell {
+                width: min(100% - 30px, 820px);
+                padding-top: 88px;
+              }
+
+              .legal-hero {
+                padding-top: 14px;
+              }
+
+              .legal-banner {
+                aspect-ratio: 4 / 1;
+                border-radius: 12px;
+                background-position: center;
+              }
+
+              .legal-banner__content {
+                width: calc(100% - 22px);
+                display: flex;
+                justify-content: center;
+                text-align: center;
+              }
+
+
+              .legal-title {
+                font-size: clamp(1.05rem, 5.4vw, 1.4rem);
+                letter-spacing: -0.035em;
+              }
+
+              .legal-meta {
+                font-size: 0.72rem;
+                line-height: 1.3;
+              }
+
+              .legal-section {
+                padding-bottom: 38px;
+              }
+
+              .legal-section + .legal-section {
+                padding-top: 38px;
+              }
+
+              .legal-section h2 {
+                grid-template-columns: 28px minmax(0, 1fr);
+                gap: 8px;
+                margin-bottom: 16px;
+              }
+
+              .legal-section p,
+              .legal-section > ul,
+              .legal-section > ol,
+              .legal-section > dl,
+              .legal-section > .legal-note,
+              .legal-section > .legal-right-callout,
+              .legal-section h3 {
+                margin-left: 36px;
+              }
+
+              .legal-section p,
+              .legal-section li,
+              .legal-section dd,
+              .legal-note,
+              .legal-right-callout {
+                font-size: 0.9rem;
+                line-height: 1.76;
+              }
+
+              .legal-card {
+                min-height: 0;
+                padding: 25px 4px;
+              }
+            }
+
+            /* The shared mobile shell can inject a full-screen navigation scrim.
+               Legal pages intentionally use no page-dimming backdrop. */
+            body[data-page="legal"] :is(
+              .nav-overlay,
+              .nav-backdrop,
+              .nav-scrim,
+              .mobile-nav-overlay,
+              .mobile-nav-backdrop,
+              .mobile-nav-scrim,
+              .mobile-menu-overlay,
+              .mobile-menu-backdrop,
+              .menu-overlay,
+              .menu-backdrop,
+              .site-nav-overlay,
+              .site-nav-backdrop,
+              .site-overlay,
+              [data-nav-overlay],
+              [data-nav-backdrop],
+              [data-mobile-nav-overlay],
+              [data-mobile-nav-backdrop],
+              [data-menu-overlay],
+              [data-menu-backdrop]
+            ) {
+              display: none !important;
+              visibility: hidden !important;
+              opacity: 0 !important;
+              pointer-events: none !important;
+              background: transparent !important;
+              backdrop-filter: none !important;
+              -webkit-backdrop-filter: none !important;
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+              html {
+                scroll-behavior: auto;
+              }
+
+              .legal-toc a,
+              .legal-card,
+              .report-route,
+              .security-modal,
+              .security-modal__container {
+                transition: none;
+              }
+            }
+    </style>
   </head>
   <body data-page="legal">
     <div id="site-main">
       <main class="legal-shell">
-        <section class="legal-hero">
-          <p class="legal-kicker">Policies and notices</p>
-          <h1 class="legal-title">Download Terms</h1>
-          <p class="legal-lead">These terms govern any software, binary files, packages, or libraries downloaded from mas0ng.com.</p>
-          <p class="legal-meta">Last updated: 11 July 2026</p>
+        <section class="legal-hero" aria-labelledby="page-title">
+          <div class="legal-banner">
+            <div class="legal-banner__content">
+              <h1 class="legal-title" id="page-title">Download Terms</h1>
+              <p class="legal-meta">Last updated: 17 August 2026</p>
+            </div>
+          </div>
         </section>
 
-        <section class="legal-stack">
-          <section class="legal-section">
-            <h2>Agreement to terms</h2>
-            <p>By downloading, installing, copying, or using any software from mas0ng.com, you agree to these Software Download Terms. If you do not agree to these terms, do not download, install, or use the software.</p>
-          </section>
+        <div class="legal-layout">
+          <aside class="legal-toc" aria-label="On this page">
+            <p class="legal-toc-label">On this page</p>
+            <nav>
+              <a href="#scope-and-agreement" data-index="01">Scope and agreement</a>
+              <a href="#specific-licences-take-priority" data-index="02">Specific licences take priority</a>
+              <a href="#compatibility-functionality-and-updates" data-index="03">Compatibility, functionality, and updates</a>
+              <a href="#uk-consumer-rights" data-index="04">UK consumer rights</a>
+              <a href="#paid-downloads-and-cancellation" data-index="05">Paid downloads and cancellation</a>
+              <a href="#security-and-installation" data-index="06">Security and installation</a>
+              <a href="#device-or-data-damage" data-index="07">Device or data damage</a>
+              <a href="#acceptable-use-and-reverse-engineering" data-index="08">Acceptable use and reverse engineering</a>
+              <a href="#third-party-components" data-index="09">Third-party components</a>
+              <a href="#export-controls-and-sanctions" data-index="10">Export controls and sanctions</a>
+              <a href="#liability" data-index="11">Liability</a>
+              <a href="#governing-law-and-contact" data-index="12">Governing law and contact</a>
+            </nav>
+          </aside>
 
-          <section class="legal-section">
-            <h2>License agreements</h2>
-            <p>Software downloads may be subject to a separate license agreement (such as an open-source license or a proprietary End User License Agreement). If a separate license is provided with or is applicable to the software, those terms govern your use of the software. These general download terms supplement any such specific licenses. In the event of a conflict, the specific software license terms take precedence.</p>
-          </section>
+          <div>
 
-          <section class="legal-section">
-            <h2>UK consumer rights and digital content</h2>
-            <p>If you are a consumer and the Consumer Rights Act 2015 applies, digital content must be of satisfactory quality, fit for a particular purpose made known to us, and match its description. Your statutory remedies cannot be excluded or restricted by these terms. In particular:</p>
-            <ul>
-              <li>Software supplied entirely free of charge is provided on an "as-is" and "as-available" basis only to the extent the law permits.</li>
-              <li>Where digital content is supplied for money or in exchange for personal data beyond what is necessary to supply it or comply with law, the applicable consumer protections and remedies may include repair, replacement, price reduction, or compensation for certain device damage.</li>
-            </ul>
-          </section>
+            <section class="legal-stack" aria-label="Download Terms sections">
+            <section class="legal-section" id="scope-and-agreement">
+              <h2>Scope and agreement</h2>
+              <p>These Download Terms apply to software, binaries, packages, libraries, installers, or other digital files made available for download from mas0ng.com where the download refers to these terms.</p>
+              <p>By downloading, installing, copying, or using the software, you agree to these terms and to any specific licence supplied with the software. If you do not agree, do not download, install, or use it.</p>
+            </section>
 
-          <section class="legal-section">
-            <h2>Limitation of liability</h2>
-            <p>Nothing in these terms excludes or limits our liability for:</p>
-            <ul>
-              <li>Death or personal injury caused by our negligence;</li>
-              <li>Fraud or fraudulent misrepresentation; or</li>
-              <li>Any other liability that cannot be lawfully excluded or limited under the laws of England and Wales.</li>
-            </ul>
-            <p>If you are a consumer, we are responsible for losses that are a foreseeable result of our breach or failure to use reasonable care and skill, but not for business losses or losses that were not foreseeable. If you use the software for business purposes, liability may be limited by the applicable software licence; no limitation applies where unlawful.</p>
-          </section>
+            <section class="legal-section" id="specific-licences-take-priority">
+              <h2>Specific licences take priority</h2>
+              <p>A download may be subject to a separate open-source licence, proprietary End User Licence Agreement, notice, or repository licence. The specific licence supplied with or clearly identified for the software controls the rights it grants. These general Download Terms supplement it only where they do not conflict.</p>
+              <p>If no licence is identified, no additional copyright permission is granted merely because the file is publicly downloadable.</p>
+            </section>
 
-          <section class="legal-section">
-            <h2>Damage to your device or digital content</h2>
-            <p>If digital content we supply damages a device or digital content belonging to you as a result of our failure to use reasonable care and skill, we will either repair the damage or pay you reasonable compensation. However, we will not be liable for damage that you could have avoided by:</p>
-            <ul>
-              <li>Following our advice to install a free update or patch;</li>
-              <li>Ensuring your device meets the minimum system requirements; or</li>
-              <li>Maintaining standard security measures, including running up-to-date antivirus and firewall software.</li>
-            </ul>
-          </section>
+            <section class="legal-section" id="compatibility-functionality-and-updates">
+              <h2>Compatibility, functionality, and updates</h2>
+              <p>Where relevant, the download page should identify material system requirements, compatibility information, dependencies, or functionality that a reasonable user needs to know before downloading or purchasing the software.</p>
+              <p>Updates, patches, or support may be provided where stated, but no ongoing update commitment is created unless the download page, licence, or applicable consumer law requires it.</p>
+            </section>
 
-          <section class="legal-section">
-            <h2>Security and safety disclaimer</h2>
-            <p>While we take reasonable precautions to ensure that software available for download is safe and secure, we do not guarantee that the software is free from bugs, vulnerabilities, malware, or viruses. You are solely responsible for:</p>
-            <ul>
-              <li>Running your own security checks and antivirus scans on any downloaded files before execution;</li>
-              <li>Backing up your data and system configuration before installing any new software; and</li>
-              <li>Verifying the authenticity and integrity of downloaded files (such as by checking cryptographic hashes where provided).</li>
-            </ul>
-          </section>
+            <section class="legal-section" id="uk-consumer-rights">
+              <h2>UK consumer rights</h2>
+              <p>Nothing in these terms excludes or restricts a consumer right that cannot lawfully be excluded. Where the Consumer Rights Act 2015 applies to digital content, the software must meet the statutory standards that apply, including requirements relating to quality, fitness for a particular purpose made known to the trader, and matching its description.</p>
+              <p>Available statutory remedies depend on the circumstances and may include repair or replacement, price reduction, or compensation for certain damage to a device or other digital content caused by a failure to use reasonable care and skill.</p>
+            </section>
 
-          <section class="legal-section">
-            <h2>Acceptable use and restrictions</h2>
-            <p>You agree not to use the software for any unlawful purpose. Except to the extent permitted by applicable law (including UK copyright exceptions), you must not disassemble, decompile, reverse-engineer, or attempt to derive the source code of any proprietary binaries provided on this site without our express prior written permission.</p>
-          </section>
+            <section class="legal-section" id="paid-downloads-and-cancellation">
+              <h2>Paid downloads and cancellation</h2>
+              <p>If digital content is sold online, the required pre-contract information must be provided before purchase and the contract must be confirmed in a durable form such as email where UK law requires it.</p>
+              <p>If you ask for a paid download to begin immediately during the normal cancellation period, you will lose the relevant cancellation right only where the legally required express consent and acknowledgement have been obtained before supply begins. If those steps are not taken, statutory cancellation rights are not removed by these terms.</p>
+            </section>
 
-          <section class="legal-section">
-            <h2>Export controls</h2>
-            <p>The software may be subject to export control laws and trade sanctions of the United Kingdom, the European Union, the United States, and other jurisdictions. You agree not to download, export, re-export, or transfer the software in violation of any such laws or regulations.</p>
-          </section>
+            <section class="legal-section" id="security-and-installation">
+              <h2>Security and installation</h2>
+              <p>Reasonable precautions may be taken before software is published, but software can contain defects and no security process can guarantee that every vulnerability will be found. Before installation, you should use reasonable security precautions appropriate to your device and the importance of the data on it.</p>
+              <ul>
+                <li>Download files only from the official location or another source you trust.</li>
+                <li>Check signatures or cryptographic hashes where they are provided.</li>
+                <li>Maintain current security software and operating-system updates.</li>
+                <li>Keep an independent backup of important data before installing software that could affect it.</li>
+              </ul>
+            </section>
 
-          <section class="legal-section">
-            <h2>Governing law</h2>
-            <p>These terms, their subject matter, and their formation are governed by the laws of England and Wales. You and we both agree that the courts of England and Wales will have exclusive jurisdiction over any disputes, except that if you are a resident of Northern Ireland you may also bring proceedings in Northern Ireland, and if you are a resident of Scotland you may also bring proceedings in Scotland.</p>
-          </section>
-        </section>
+            <section class="legal-section" id="device-or-data-damage">
+              <h2>Device or data damage</h2>
+              <p>If digital content supplied to a consumer damages a device or other digital content because of a failure to use reasonable care and skill, any statutory right to repair the damage or receive appropriate compensation is preserved.</p>
+              <p>A user remains responsible for losses caused by ignoring clear compatibility requirements, deliberately disabling required safeguards, or continuing to use a version after a necessary security update has been clearly made available, to the extent the law permits that responsibility to be taken into account.</p>
+            </section>
+
+            <section class="legal-section" id="acceptable-use-and-reverse-engineering">
+              <h2>Acceptable use and reverse engineering</h2>
+              <p>You must not use downloaded software for an unlawful purpose. Restrictions on copying, modification, redistribution, decompilation, disassembly, or reverse engineering are determined by the applicable software licence and by rights that cannot lawfully be excluded, including any mandatory UK copyright exceptions.</p>
+            </section>
+
+            <section class="legal-section" id="third-party-components">
+              <h2>Third-party components</h2>
+              <p>Software may include or depend on third-party components. Those components may be licensed separately, and their notices or licence files continue to apply. Third-party names and trademarks remain the property of their respective owners.</p>
+            </section>
+
+            <section class="legal-section" id="export-controls-and-sanctions">
+              <h2>Export controls and sanctions</h2>
+              <p>You must not download, export, re-export, make available, or use software in a way that breaches applicable UK sanctions or export-control law. Other jurisdictions' controls may also apply depending on the software, destination, or user.</p>
+            </section>
+
+            <section class="legal-section" id="liability">
+              <h2>Liability</h2>
+              <p>Nothing in these terms excludes or limits liability for fraud or fraudulent misrepresentation, death or personal injury caused by negligence, or any other liability or consumer right that cannot lawfully be excluded.</p>
+              <p>For a consumer, responsibility for losses is determined by applicable consumer law and the specific licence. For business use, any lawful limitation in the applicable software licence also applies.</p>
+            </section>
+
+            <section class="legal-section" id="governing-law-and-contact">
+              <h2>Governing law and contact</h2>
+              <p>These terms are governed by the laws of England and Wales, subject to mandatory consumer rights that apply where you live. A consumer resident in Scotland or Northern Ireland may also bring proceedings in their local courts where the law allows.</p>
+              <p>Questions about a download or its licence can be sent to <a class="legal-link" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>.</p>
+            </section>
+            </section>
+          </div>
+        </div>
       </main>
     </div>
+
     <script src="/public_assets/site/js/config/site-data.js?v=20260728-bio-nav1"></script>
-    <script src="/public_assets/site/js/lib/cache.js"></script>
-    <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
-    <script src="/public_assets/site/js/layout/shell.js?v=20260723-mobile-nav3" data-active="legal" defer></script>
-    <script src="/public_assets/site/js/pages/legal-liquid.js?v=20260726-legal1" defer></script>
-    <script src="/index_assets/js/masthead-canvas.js?v=20260726-static1" defer></script>
+        <script src="/public_assets/site/js/lib/cache.js"></script>
+        <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
+        <script src="/public_assets/site/js/layout/shell.js?v=20260723-mobile-nav3" data-active="legal" defer></script>
+    <script>
+          (() => {
+            const overlayName = /(overlay|backdrop|scrim|dimmer|veil)/i;
+            const navName = /(nav|menu|shell|drawer)/i;
+    
+            const removeInitialNavTint = () => {
+              document.querySelectorAll('body *').forEach((element) => {
+                if (element.closest('.security-modal')) return;
+    
+                const name = `${element.id || ''} ${typeof element.className === 'string' ? element.className : ''}`;
+                if (!overlayName.test(name) || !navName.test(name)) return;
+    
+                const style = getComputedStyle(element);
+                if (style.position !== 'fixed' && style.position !== 'absolute') return;
+    
+                const rect = element.getBoundingClientRect();
+                const coversViewport = rect.width >= window.innerWidth * 0.85 && rect.height >= window.innerHeight * 0.85;
+                if (!coversViewport) return;
+    
+                element.style.setProperty('display', 'none', 'important');
+                element.style.setProperty('visibility', 'hidden', 'important');
+                element.style.setProperty('opacity', '0', 'important');
+                element.style.setProperty('pointer-events', 'none', 'important');
+                element.style.setProperty('background', 'transparent', 'important');
+                element.style.setProperty('backdrop-filter', 'none', 'important');
+                element.style.setProperty('-webkit-backdrop-filter', 'none', 'important');
+              });
+            };
+    
+            window.addEventListener('DOMContentLoaded', () => {
+              removeInitialNavTint();
+              requestAnimationFrame(removeInitialNavTint);
+              setTimeout(removeInitialNavTint, 150);
+              setTimeout(removeInitialNavTint, 600);
+            });
+          })();
+        </script>
+    <script>
+          (() => {
+            const links = [...document.querySelectorAll('.legal-toc a')];
+            const sections = links.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+            if (!links.length || !sections.length) return;
+            const setActive = id => {
+              links.forEach(link => {
+                const active = link.getAttribute('href') === `#${id}`;
+                link.classList.toggle('is-active', active);
+                if (active) link.setAttribute('aria-current', 'true');
+                else link.removeAttribute('aria-current');
+              });
+            };
+            const updateActiveSection = () => {
+              const marker = window.innerHeight * 0.3;
+              let current = sections[0];
+              for (const section of sections) {
+                if (section.getBoundingClientRect().top <= marker) current = section;
+                else break;
+              }
+              if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+                current = sections[sections.length - 1];
+              }
+              setActive(current.id);
+            };
+            let ticking = false;
+            const onScroll = () => {
+              if (ticking) return;
+              ticking = true;
+              requestAnimationFrame(() => {
+                updateActiveSection();
+                ticking = false;
+              });
+            };
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', updateActiveSection);
+            updateActiveSection();
+          })();
+        </script>
+
   </body>
 </html>

@@ -6,79 +6,1409 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>mas0ng.com | cookie notice</title>
     <meta name="description" content="Cookie and browser storage notice for mas0ng.com.">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#ffffff">
     <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon.svg">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="/public_assets/fonts/etna.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap">
     <link rel="stylesheet" href="/public_assets/site/css/site.css">
-    <link rel="stylesheet" href="/public_assets/site/css/legal.css?v=20260726-legal10">
+
+    <style>
+      :root {
+              --legal-ink: #171717;
+              --legal-copy: #505050;
+              --legal-muted: #8a8a8a;
+              --legal-soft: #f6f6f6;
+              --legal-line: #e8e8e8;
+              --legal-accent: #171717;
+            }
+
+            html {
+              scroll-behavior: smooth;
+            }
+
+            html,
+            body[data-page="legal"],
+            body[data-page="legal"] #site-main,
+            body[data-page="legal"] .legal-shell {
+              background: #ffffff !important;
+            }
+
+            body[data-page="legal"] {
+              color: var(--legal-ink);
+              opacity: 1 !important;
+              filter: none !important;
+              mix-blend-mode: normal !important;
+              isolation: isolate;
+            }
+
+            body[data-page="legal"] #site-main,
+            body[data-page="legal"] .legal-shell,
+            body[data-page="legal"] .legal-hero,
+            body[data-page="legal"] .legal-layout,
+            body[data-page="legal"] .legal-stack {
+              min-height: 0;
+              opacity: 1 !important;
+              filter: none !important;
+              backdrop-filter: none !important;
+              -webkit-backdrop-filter: none !important;
+              mix-blend-mode: normal !important;
+            }
+
+            body[data-page="legal"]::before,
+            body[data-page="legal"]::after,
+            body[data-page="legal"] #site-main::before,
+            body[data-page="legal"] #site-main::after,
+            body[data-page="legal"] .legal-shell::before,
+            body[data-page="legal"] .legal-shell::after {
+              content: none !important;
+              display: none !important;
+            }
+
+            body[data-page="legal"] #site-main [class*="liquid"],
+            body[data-page="legal"] #site-main > canvas {
+              display: none !important;
+            }
+
+            body[data-page="legal"] :is(header, #site-header, .site-header, #site-nav, .site-nav, .navbar, .nav-shell) {
+              --nav-color: #1d1d1f;
+              --nav-text: #1d1d1f;
+              --nav-link-color: #1d1d1f;
+            }
+
+            body[data-page="legal"] :is(header, #site-header, .site-header, #site-nav, .site-nav, .navbar, .nav-shell) :is(a, button, span) {
+              color: #1d1d1f !important;
+              opacity: 1 !important;
+            }
+
+            body[data-page="legal"] :is(header, #site-header, .site-header, #site-nav, .site-nav, .navbar, .nav-shell) :is(svg, path) {
+              opacity: 1 !important;
+            }
+
+            body[data-page="legal"] :is(header, #site-header, .site-header, #site-nav, .site-nav, .navbar, .nav-shell) {
+              backdrop-filter: none !important;
+              -webkit-backdrop-filter: none !important;
+              box-shadow: none !important;
+            }
+
+            .legal-shell {
+              width: min(1260px, calc(100% - 72px));
+              margin: 0 auto;
+              padding: 96px 0 120px;
+              background: transparent;
+            }
+
+            .legal-hero {
+              width: 100%;
+              margin: 0 0 56px;
+              padding-top: 12px;
+              text-align: center;
+            }
+
+            .legal-banner {
+              position: relative;
+              display: grid;
+              width: 100%;
+              aspect-ratio: 10 / 1;
+              place-items: center;
+              overflow: hidden;
+              border: 0;
+              border-radius: 22px;
+              outline: 0;
+              background: url("/public_assets/site_branding/header/compact/white.jpg") center / cover no-repeat;
+              box-shadow: none;
+            }
+
+
+            .legal-banner__content {
+              display: flex;
+              width: min(100% - 48px, 1080px);
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              gap: 8px;
+              text-align: center;
+            }
+
+            .legal-title {
+              margin: 0;
+              color: #111111;
+              font-family: "ABeeZee", sans-serif;
+              font-size: clamp(1.7rem, 2.9vw, 2.8rem);
+              font-weight: 400;
+              letter-spacing: -0.04em;
+              line-height: 1;
+            }
+
+            .legal-meta {
+              margin: 0;
+              color: #5f5f5f;
+              font-family: "ABeeZee", sans-serif;
+              font-size: clamp(0.68rem, 0.82vw, 0.78rem);
+              line-height: 1.35;
+            }
+
+            .legal-layout {
+              display: grid;
+              grid-template-columns: 236px minmax(0, 820px);
+              gap: clamp(58px, 7vw, 104px);
+              align-items: start;
+            }
+
+            .legal-toc {
+              position: sticky;
+              top: 104px;
+              max-height: calc(100vh - 132px);
+              padding-right: 10px;
+              align-self: start;
+              overflow-y: auto;
+              overscroll-behavior: contain;
+              scrollbar-width: thin;
+              scrollbar-color: #d5d5d5 transparent;
+              font-family: "ABeeZee", sans-serif;
+            }
+
+            .legal-toc::before {
+              content: "";
+              position: absolute;
+              top: 38px;
+              bottom: 4px;
+              left: 0;
+              width: 1px;
+              background: #e2e2e2;
+            }
+
+            .legal-toc-label {
+              margin: 0 0 17px;
+              color: #919191;
+              font-size: 0.68rem;
+              letter-spacing: 0.12em;
+              line-height: 1.4;
+              text-transform: uppercase;
+            }
+
+            .legal-toc nav {
+              display: flex;
+              flex-direction: column;
+              gap: 3px;
+            }
+
+            .legal-toc a {
+              position: relative;
+              display: grid;
+              grid-template-columns: 24px 1fr;
+              gap: 7px;
+              align-items: baseline;
+              padding: 7px 0 7px 17px;
+              color: #777777;
+              font-size: 0.8rem;
+              line-height: 1.45;
+              text-decoration: none;
+              transition: color 160ms ease, transform 160ms ease;
+            }
+
+            .legal-toc a::before {
+              content: attr(data-index);
+              color: #b0b0b0;
+              font-size: 0.66rem;
+              font-variant-numeric: tabular-nums;
+              transition: color 160ms ease;
+            }
+
+            .legal-toc a::after {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: -1px;
+              width: 3px;
+              height: 0;
+              border-radius: 999px;
+              background: #171717;
+              transform: translateY(-50%);
+              transition: height 160ms ease;
+            }
+
+            .legal-toc a:hover,
+            .legal-toc a:focus-visible,
+            .legal-toc a.is-active {
+              color: #171717;
+              transform: translateX(3px);
+            }
+
+            .legal-toc a.is-active {
+              font-weight: 700;
+            }
+
+            .legal-toc a:hover::before,
+            .legal-toc a:focus-visible::before,
+            .legal-toc a.is-active::before {
+              color: #171717;
+            }
+
+            .legal-toc a:hover::after,
+            .legal-toc a:focus-visible::after,
+            .legal-toc a.is-active::after {
+              height: 26px;
+            }
+
+            .legal-toc a:focus-visible,
+            .legal-link:focus-visible,
+            .legal-card:focus-visible,
+            .security-banner__btn:focus-visible,
+            .btn-primary:focus-visible,
+            .btn-secondary:focus-visible,
+            .report-route:focus-visible,
+            .security-modal__close:focus-visible {
+              outline: 2px solid #171717;
+              outline-offset: 4px;
+              border-radius: 4px;
+            }
+
+            .legal-stack {
+              min-width: 0;
+              counter-reset: legal-section;
+            }
+
+            .legal-section {
+              position: relative;
+              scroll-margin-top: 118px;
+              margin: 0;
+              padding: 0 0 50px;
+              border-bottom: 1px solid var(--legal-line);
+              counter-increment: legal-section;
+            }
+
+            .legal-section + .legal-section {
+              padding-top: 50px;
+            }
+
+            .legal-section:last-child {
+              padding-bottom: 0;
+              border-bottom: 0;
+            }
+
+            .legal-section h2 {
+              display: grid;
+              grid-template-columns: 34px minmax(0, 1fr);
+              gap: 10px;
+              align-items: baseline;
+              margin: 0 0 19px;
+              color: #151515;
+              font-family: "ABeeZee", sans-serif;
+              font-size: clamp(1.23rem, 1.8vw, 1.46rem);
+              font-weight: 400;
+              letter-spacing: -0.02em;
+              line-height: 1.32;
+            }
+
+            .legal-section h2::before {
+              content: counter(legal-section, decimal-leading-zero);
+              color: #adadad;
+              font-size: 0.67rem;
+              font-variant-numeric: tabular-nums;
+              letter-spacing: 0.02em;
+            }
+
+            .legal-section h3 {
+              margin: 24px 0 9px 44px;
+              color: #202020;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 1rem;
+              font-weight: 700;
+              line-height: 1.5;
+            }
+
+            .legal-section p,
+            .legal-section > ul,
+            .legal-section > ol,
+            .legal-section > dl,
+            .legal-section > .legal-note,
+            .legal-section > .legal-right-callout {
+              margin-left: 44px;
+            }
+
+            .legal-section p,
+            .legal-section li,
+            .legal-section dd,
+            .legal-note,
+            .legal-right-callout {
+              color: var(--legal-copy);
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.95rem;
+              line-height: 1.82;
+            }
+
+            .legal-section p {
+              margin-top: 0;
+              margin-bottom: 0;
+            }
+
+            .legal-section p + p {
+              margin-top: 17px;
+            }
+
+            .legal-section > ul,
+            .legal-section > ol {
+              display: grid;
+              gap: 10px;
+              margin-top: 9px;
+              margin-bottom: 0;
+              padding: 0;
+            }
+
+            .legal-section ul {
+              list-style: none;
+            }
+
+            .legal-section ol {
+              padding-left: 21px;
+            }
+
+            .legal-section li {
+              position: relative;
+            }
+
+            .legal-section > ul > li {
+              padding-left: 20px;
+            }
+
+            .legal-section > ul > li::before {
+              content: "";
+              position: absolute;
+              top: 0.82em;
+              left: 1px;
+              width: 5px;
+              height: 5px;
+              border-radius: 50%;
+              background: #222222;
+            }
+
+            .legal-section li ul {
+              display: grid;
+              gap: 7px;
+              margin: 8px 0 0;
+              padding: 0 0 0 18px;
+              list-style: none;
+            }
+
+            .legal-section li ul li {
+              padding-left: 17px;
+            }
+
+            .legal-section li ul li::before {
+              content: "";
+              position: absolute;
+              top: 0.84em;
+              left: 1px;
+              width: 4px;
+              height: 4px;
+              border-radius: 50%;
+              background: #9a9a9a;
+            }
+
+            .legal-link {
+              color: #171717;
+              font-weight: 400;
+              text-decoration-color: #b7b7b7;
+              text-decoration-thickness: 1px;
+              text-underline-offset: 4px;
+              transition: text-decoration-color 160ms ease;
+            }
+
+            .legal-link:hover {
+              text-decoration-color: #171717;
+            }
+
+            code {
+              padding: 0.16em 0.42em;
+              border: 1px solid #e7e7e7;
+              border-radius: 5px;
+              background: #f7f7f7;
+              color: #353535;
+              font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+              font-size: 0.88em;
+            }
+
+            .legal-note,
+            .legal-right-callout {
+              margin-top: 20px;
+              padding: 16px 18px;
+              border-left: 3px solid #171717;
+              background: #f7f7f7;
+            }
+
+            .legal-note strong,
+            .legal-right-callout strong {
+              color: #171717;
+            }
+
+            .legal-section dl {
+              margin-top: 4px;
+              margin-bottom: 0;
+            }
+
+            .data-table {
+              border-top: 1px solid var(--legal-line);
+            }
+
+            .data-row {
+              display: grid;
+              grid-template-columns: 150px 1.25fr 1fr;
+              gap: 18px;
+              padding: 18px 0;
+              border-bottom: 1px solid var(--legal-line);
+            }
+
+            .data-row dt {
+              color: #222222;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.86rem;
+              font-weight: 700;
+              line-height: 1.6;
+            }
+
+            .data-row dd {
+              margin: 0;
+              font-size: 0.86rem;
+              line-height: 1.7;
+            }
+
+            .legal-section:target h2 {
+              color: #000000;
+            }
+
+            .legal-index-shell {
+              width: min(1100px, calc(100% - 72px));
+            }
+
+            .legal-index-intro {
+              max-width: 780px;
+              margin: -28px auto 42px;
+              color: #777;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.84rem;
+              line-height: 1.7;
+              text-align: center;
+            }
+
+            .legal-grid {
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              border-top: 1px solid var(--legal-line);
+            }
+
+            .legal-card {
+              position: relative;
+              display: flex;
+              min-height: 190px;
+              padding: 30px 32px;
+              flex-direction: column;
+              justify-content: space-between;
+              gap: 28px;
+              color: #171717;
+              border-bottom: 1px solid var(--legal-line);
+              text-decoration: none;
+              transition: background 160ms ease, transform 160ms ease;
+            }
+
+            .legal-card:nth-child(odd) {
+              border-right: 1px solid var(--legal-line);
+            }
+
+            .legal-card:hover {
+              background: #fafafa;
+            }
+
+            .legal-card h2 {
+              margin: 0 0 10px;
+              color: #171717;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 1.2rem;
+              font-weight: 400;
+              letter-spacing: -0.02em;
+            }
+
+            .legal-card p {
+              margin: 0;
+              color: #666;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.88rem;
+              line-height: 1.72;
+            }
+
+            .legal-card span {
+              color: #858585;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.76rem;
+              letter-spacing: 0.02em;
+            }
+
+            .legal-index-contact {
+              max-width: 760px;
+              margin: 54px auto 0;
+              padding-top: 34px;
+              border-top: 1px solid var(--legal-line);
+              text-align: center;
+            }
+
+            .legal-index-contact h2 {
+              margin: 0 0 12px;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 1.15rem;
+              font-weight: 400;
+            }
+
+            .legal-index-contact p {
+              margin: 0;
+              color: #666;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.88rem;
+              line-height: 1.7;
+            }
+
+            .security-banner {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 26px;
+              margin: 0 0 44px;
+              padding: 22px 24px;
+              border: 1px solid var(--legal-line);
+              background: #fafafa;
+            }
+
+            .security-banner__content h3 {
+              margin: 0 0 7px;
+              color: #171717;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 1rem;
+              font-weight: 700;
+            }
+
+            .security-banner__content p {
+              margin: 0;
+              color: #666;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.86rem;
+              line-height: 1.65;
+            }
+
+            .security-banner__btn,
+            .btn-primary,
+            .btn-secondary,
+            .github-report-link {
+              display: inline-flex;
+              min-height: 44px;
+              align-items: center;
+              justify-content: center;
+              padding: 10px 17px;
+              border-radius: 999px;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.84rem;
+              font-weight: 700;
+              cursor: pointer;
+              text-decoration: none;
+            }
+
+            .security-banner__btn,
+            .btn-primary,
+            .github-report-link {
+              border: 1px solid #171717;
+              color: #fff;
+              background: #171717;
+            }
+
+            .security-banner__btn:hover,
+            .btn-primary:hover,
+            .github-report-link:hover {
+              background: #343434;
+            }
+
+            .btn-secondary {
+              border: 1px solid #dcdcdc;
+              color: #303030;
+              background: #fff;
+            }
+
+            .btn-secondary:hover {
+              background: #f7f7f7;
+            }
+
+            .btn-primary:disabled {
+              opacity: 0.55;
+              cursor: not-allowed;
+            }
+
+            .security-modal {
+              position: fixed;
+              inset: 0;
+              z-index: 20000;
+              display: flex;
+              padding: 20px;
+              align-items: center;
+              justify-content: center;
+              opacity: 0;
+              visibility: hidden;
+              transition: opacity 180ms ease, visibility 180ms ease;
+            }
+
+            .security-modal.is-open {
+              opacity: 1;
+              visibility: visible;
+            }
+
+            .security-modal__overlay {
+              position: absolute;
+              inset: 0;
+              background: rgba(17, 17, 17, 0.56);
+              backdrop-filter: blur(7px);
+              -webkit-backdrop-filter: blur(7px);
+            }
+
+            .security-modal__container {
+              position: relative;
+              z-index: 20001;
+              display: flex;
+              width: min(100%, 820px);
+              max-height: calc(100vh - 40px);
+              flex-direction: column;
+              overflow: hidden;
+              border: 1px solid #dedede;
+              border-radius: 18px;
+              background: #fff;
+              box-shadow: 0 24px 80px rgba(0,0,0,0.16);
+              transform: translateY(8px) scale(0.99);
+              transition: transform 180ms ease;
+            }
+
+            .security-modal.is-open .security-modal__container {
+              transform: translateY(0) scale(1);
+            }
+
+            .security-modal__header {
+              position: relative;
+              padding: 26px 76px 22px 28px;
+              border-bottom: 1px solid var(--legal-line);
+            }
+
+            .security-modal__eyebrow,
+            .screen-kicker {
+              margin: 0 0 7px;
+              color: #919191;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.68rem;
+              font-weight: 700;
+              letter-spacing: 0.12em;
+              line-height: 1.3;
+              text-transform: uppercase;
+            }
+
+            .security-modal__header h2 {
+              margin: 0;
+              color: #171717;
+              font-family: "ABeeZee", sans-serif;
+              font-size: clamp(1.35rem, 3vw, 1.72rem);
+              font-weight: 400;
+              letter-spacing: -0.03em;
+              line-height: 1.22;
+            }
+
+            .security-modal__subtitle {
+              max-width: 620px;
+              margin: 8px 0 0;
+              color: #686868;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.86rem;
+              line-height: 1.6;
+            }
+
+            .security-modal__close {
+              position: absolute;
+              top: 20px;
+              right: 22px;
+              display: grid;
+              width: 42px;
+              height: 42px;
+              padding: 0;
+              place-items: center;
+              border: 1px solid #dedede;
+              border-radius: 50%;
+              color: #444;
+              background: #fff;
+              font-size: 1.55rem;
+              line-height: 1;
+              cursor: pointer;
+            }
+
+            .security-modal__close:hover {
+              background: #f7f7f7;
+            }
+
+            .security-modal__body {
+              min-height: 0;
+              padding: 28px;
+              flex: 1;
+              overflow-y: auto;
+              overscroll-behavior: contain;
+            }
+
+            .triage-question {
+              margin: 0 0 8px;
+              color: #171717;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 1.12rem;
+              font-weight: 700;
+              line-height: 1.5;
+            }
+
+            .triage-intro,
+            .github-notice-card p,
+            .form-intro p:last-child,
+            .security-modal__success p {
+              color: #666;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.86rem;
+              line-height: 1.65;
+            }
+
+            .triage-intro {
+              max-width: 640px;
+              margin: 0 0 22px;
+            }
+
+            .triage-actions {
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              gap: 14px;
+            }
+
+            .report-route {
+              display: grid;
+              min-height: 150px;
+              padding: 20px;
+              grid-template-columns: 44px minmax(0, 1fr);
+              align-content: start;
+              gap: 6px 14px;
+              border: 1px solid #dedede;
+              border-radius: 14px;
+              color: #333;
+              background: #fff;
+              text-align: left;
+              cursor: pointer;
+              transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+            }
+
+            .report-route:hover {
+              border-color: #bdbdbd;
+              background: #fafafa;
+              transform: translateY(-2px);
+            }
+
+            .report-route__icon {
+              display: grid;
+              width: 44px;
+              height: 44px;
+              grid-row: 1 / span 2;
+              place-items: center;
+              border-radius: 11px;
+              color: #fff;
+              background: #171717;
+            }
+
+            .report-route__icon svg {
+              width: 22px;
+              height: 22px;
+              fill: none;
+              stroke: currentColor;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              stroke-width: 1.8;
+            }
+
+            .report-route strong {
+              align-self: end;
+              color: #171717;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.96rem;
+            }
+
+            .report-route small {
+              color: #6f6f6f;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.77rem;
+              font-weight: 400;
+              line-height: 1.55;
+            }
+
+            .github-notice-card {
+              padding: 21px;
+              border: 1px solid var(--legal-line);
+              background: #fafafa;
+            }
+
+            .github-notice-card h3,
+            .form-intro h3,
+            .security-modal__success h3 {
+              margin: 0 0 8px;
+              color: #171717;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 1.1rem;
+            }
+
+            .github-notice-card p {
+              margin: 0;
+            }
+
+            .github-notice-card p + p {
+              margin-top: 9px;
+            }
+
+            .github-report-link {
+              margin-top: 17px;
+            }
+
+            .form-intro {
+              margin-bottom: 22px;
+            }
+
+            .form-intro p:last-child {
+              margin: 0;
+            }
+
+            .form-grid {
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              gap: 18px;
+            }
+
+            .security-modal__form .form-group {
+              min-width: 0;
+              margin-bottom: 18px;
+            }
+
+            .security-modal__form .form-grid .form-group {
+              margin-bottom: 0;
+            }
+
+            .security-modal__form label {
+              display: block;
+              margin-bottom: 7px;
+              color: #333;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.84rem;
+              font-weight: 700;
+            }
+
+            .security-modal__form label .required {
+              color: #555;
+            }
+
+            .security-modal__form input[type="email"],
+            .security-modal__form input[type="text"],
+            .security-modal__form select,
+            .security-modal__form textarea {
+              width: 100%;
+              min-height: 48px;
+              box-sizing: border-box;
+              padding: 12px 14px;
+              border: 1px solid #d8d8d8;
+              border-radius: 10px;
+              outline: none;
+              background: #fff;
+              color: #171717;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.94rem;
+              transition: border-color 150ms ease, box-shadow 150ms ease;
+            }
+
+            .security-modal__form textarea {
+              min-height: 150px;
+              resize: vertical;
+              line-height: 1.55;
+            }
+
+            .security-modal__form input:focus,
+            .security-modal__form select:focus,
+            .security-modal__form textarea:focus {
+              border-color: #888;
+              box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
+            }
+
+            .security-modal__form select {
+              appearance: none;
+              background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+              background-repeat: no-repeat;
+              background-position: right 14px center;
+              background-size: 16px;
+              padding-right: 40px;
+            }
+
+            .field-hint {
+              display: block;
+              margin-top: 7px;
+              color: #777;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.75rem;
+              line-height: 1.5;
+            }
+
+            .turnstile-wrap {
+              display: flex;
+              width: 100%;
+              min-height: 65px;
+              margin: 4px 0 0;
+              align-items: center;
+              justify-content: center;
+              overflow: hidden;
+              border: 1px dashed #d7d7d7;
+              border-radius: 12px;
+              background: #fafafa;
+            }
+
+            .form-status {
+              margin-top: 16px;
+              padding: 12px 14px;
+              border: 1px solid #e5bcbc;
+              border-radius: 10px;
+              color: #7d2424;
+              background: #fff7f7;
+              font-family: "ABeeZee", sans-serif;
+              font-size: 0.82rem;
+              line-height: 1.5;
+            }
+
+            .form-status[hidden] {
+              display: none;
+            }
+
+            .form-actions {
+              display: flex;
+              align-items: center;
+              justify-content: flex-end;
+              gap: 11px;
+              margin-top: 24px;
+              padding-top: 19px;
+              border-top: 1px solid var(--legal-line);
+            }
+
+            .security-modal__success {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              padding: 10px 0;
+              text-align: center;
+            }
+
+            .success-icon {
+              display: grid;
+              width: 58px;
+              height: 58px;
+              margin-bottom: 18px;
+              place-items: center;
+              border-radius: 50%;
+              color: #fff;
+              background: #171717;
+              font-size: 1.5rem;
+            }
+
+            .security-modal__success p {
+              max-width: 420px;
+              margin: 0 0 22px;
+            }
+
+            @media (max-width: 940px) {
+              .legal-shell,
+              .legal-index-shell {
+                width: min(100% - 42px, 820px);
+                padding-top: 82px;
+                padding-bottom: 88px;
+              }
+
+              .legal-hero {
+                padding-top: 10px;
+              }
+
+              .legal-hero {
+                margin-bottom: 42px;
+              }
+
+              .legal-banner {
+                aspect-ratio: 8 / 1;
+                border-radius: 18px;
+                background-position: center;
+              }
+
+              .legal-banner__content {
+                width: calc(100% - 38px);
+              }
+
+              .legal-layout {
+                display: block;
+              }
+
+              .legal-toc {
+                display: none;
+              }
+
+              .legal-grid {
+                grid-template-columns: 1fr;
+              }
+
+              .legal-card:nth-child(odd) {
+                border-right: 0;
+              }
+            }
+
+            @media (max-width: 640px) {
+              .legal-banner {
+                aspect-ratio: 5 / 1;
+                background-position: center;
+              }
+
+              .data-row {
+                grid-template-columns: 1fr;
+                gap: 6px;
+              }
+
+              .security-banner {
+                align-items: stretch;
+                flex-direction: column;
+              }
+
+              .security-banner__btn {
+                align-self: flex-start;
+              }
+
+              .security-modal {
+                padding: 0;
+                align-items: stretch;
+              }
+
+              .security-modal__container {
+                width: 100%;
+                height: 100dvh;
+                max-height: none;
+                border: 0;
+                border-radius: 0;
+              }
+
+              .security-modal__header {
+                padding: calc(18px + env(safe-area-inset-top)) 66px 17px 18px;
+              }
+
+              .security-modal__close {
+                top: calc(14px + env(safe-area-inset-top));
+                right: 14px;
+              }
+
+              .security-modal__body {
+                padding: 22px 18px calc(24px + env(safe-area-inset-bottom));
+              }
+
+              .triage-actions,
+              .form-grid {
+                grid-template-columns: 1fr;
+              }
+
+              .report-route {
+                min-height: 124px;
+                padding: 17px;
+              }
+
+              .form-actions {
+                flex-direction: column-reverse;
+              }
+
+              .form-actions button {
+                width: 100%;
+              }
+            }
+
+            @media (max-width: 560px) {
+              .legal-shell,
+              .legal-index-shell {
+                width: min(100% - 30px, 820px);
+                padding-top: 88px;
+              }
+
+              .legal-hero {
+                padding-top: 14px;
+              }
+
+              .legal-banner {
+                aspect-ratio: 4 / 1;
+                border-radius: 12px;
+                background-position: center;
+              }
+
+              .legal-banner__content {
+                width: calc(100% - 22px);
+                display: flex;
+                justify-content: center;
+                text-align: center;
+              }
+
+
+              .legal-title {
+                font-size: clamp(1.05rem, 5.4vw, 1.4rem);
+                letter-spacing: -0.035em;
+              }
+
+              .legal-meta {
+                font-size: 0.72rem;
+                line-height: 1.3;
+              }
+
+              .legal-section {
+                padding-bottom: 38px;
+              }
+
+              .legal-section + .legal-section {
+                padding-top: 38px;
+              }
+
+              .legal-section h2 {
+                grid-template-columns: 28px minmax(0, 1fr);
+                gap: 8px;
+                margin-bottom: 16px;
+              }
+
+              .legal-section p,
+              .legal-section > ul,
+              .legal-section > ol,
+              .legal-section > dl,
+              .legal-section > .legal-note,
+              .legal-section > .legal-right-callout,
+              .legal-section h3 {
+                margin-left: 36px;
+              }
+
+              .legal-section p,
+              .legal-section li,
+              .legal-section dd,
+              .legal-note,
+              .legal-right-callout {
+                font-size: 0.9rem;
+                line-height: 1.76;
+              }
+
+              .legal-card {
+                min-height: 0;
+                padding: 25px 4px;
+              }
+            }
+
+            /* The shared mobile shell can inject a full-screen navigation scrim.
+               Legal pages intentionally use no page-dimming backdrop. */
+            body[data-page="legal"] :is(
+              .nav-overlay,
+              .nav-backdrop,
+              .nav-scrim,
+              .mobile-nav-overlay,
+              .mobile-nav-backdrop,
+              .mobile-nav-scrim,
+              .mobile-menu-overlay,
+              .mobile-menu-backdrop,
+              .menu-overlay,
+              .menu-backdrop,
+              .site-nav-overlay,
+              .site-nav-backdrop,
+              .site-overlay,
+              [data-nav-overlay],
+              [data-nav-backdrop],
+              [data-mobile-nav-overlay],
+              [data-mobile-nav-backdrop],
+              [data-menu-overlay],
+              [data-menu-backdrop]
+            ) {
+              display: none !important;
+              visibility: hidden !important;
+              opacity: 0 !important;
+              pointer-events: none !important;
+              background: transparent !important;
+              backdrop-filter: none !important;
+              -webkit-backdrop-filter: none !important;
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+              html {
+                scroll-behavior: auto;
+              }
+
+              .legal-toc a,
+              .legal-card,
+              .report-route,
+              .security-modal,
+              .security-modal__container {
+                transition: none;
+              }
+            }
+    </style>
   </head>
   <body data-page="legal">
     <div id="site-main">
       <main class="legal-shell">
-        <section class="legal-hero">
-          <p class="legal-kicker">Policies and notices</p>
-          <h1 class="legal-title">Cookie Notice</h1>
-          <p class="legal-lead">This notice explains the limited cookies and browser storage used by public pages, sign-in, and site tools.</p>
-          <p class="legal-meta">Last updated: 26 July 2026</p>
+        <section class="legal-hero" aria-labelledby="page-title">
+          <div class="legal-banner">
+            <div class="legal-banner__content">
+              <h1 class="legal-title" id="page-title">Cookie Notice</h1>
+              <p class="legal-meta">Last updated: 17 August 2026</p>
+            </div>
+          </div>
         </section>
 
-        <section class="legal-stack">
-          <section class="legal-section">
-            <h2>Public pages</h2>
-            <p>Public pages do not use cookies or similar technologies for analytics, advertising, behavioural tracking, or tracking across websites.</p>
-            <p>After you select “Dismiss notice”, informational public pages store a local preference so the relevant notice stays dismissed. It does not identify an account or record browsing for advertising or analytics.</p>
-          </section>
+        <div class="legal-layout">
+          <aside class="legal-toc" aria-label="On this page">
+            <p class="legal-toc-label">On this page</p>
+            <nav>
+              <a href="#scope" data-index="01">Scope</a>
+              <a href="#public-page-preferences" data-index="02">Public-page preferences</a>
+              <a href="#sign-in-cookies-and-security-storage" data-index="03">Sign-in cookies and security storage</a>
+              <a href="#cloudflare-turnstile" data-index="04">Cloudflare Turnstile</a>
+              <a href="#tools-and-protected-apps" data-index="05">Tools and protected apps</a>
+              <a href="#when-consent-or-an-exception-is-used" data-index="06">When consent or an exception is used</a>
+              <a href="#your-controls" data-index="07">Your controls</a>
+              <a href="#changes-and-contact" data-index="08">Changes and contact</a>
+            </nav>
+          </aside>
 
-          <section class="legal-section">
-            <h2>The privacy notice</h2>
-            <p>Selecting “Dismiss notice” stores <code>mas0ng_privacy_notice_acknowledged_v1</code> on mas0ng.com or <code>mas0ng-bio-privacy-notice-v1</code> on bio.mas0ng.com until it is cleared or replaced. Each value is limited to the origin that set it and records only a user-interface preference.</p>
-          </section>
+          <div>
 
-          <section class="legal-section">
-            <h2>Sign-in cookies</h2>
-            <p>The sign-in page first shows a full-screen explanation. Continuing acknowledges the explanation; it is not consent to optional tracking. The security technologies below are necessary to provide the private sign-in service and are not used for advertising or analytics.</p>
-            <ul>
-              <li><code>mas0ng_session</code> (or the configured equivalent) is an HttpOnly, Secure, SameSite=Lax authentication cookie. It normally expires after seven days, or earlier on logout, revocation, or security invalidation.</li>
-              <li><code>mas0ng_session_bootstrap</code> is an HttpOnly, Secure, SameSite=Lax verification cookie used to make a newly issued session available safely across mas0ng.com subdomains. It expires after 90 seconds.</li>
-              <li>Short-lived server-side login challenges expire after five minutes; QR login records expire after two minutes; failed-attempt rate-limit records expire after 15 minutes.</li>
-            </ul>
-            <p>Public pages may send an existing session cookie to the authentication service to determine whether the browser is already signed in. An anonymous check does not create a session.</p>
-          </section>
+            <section class="legal-stack" aria-label="Cookie Notice sections">
+            <section class="legal-section" id="scope">
+              <h2>Scope</h2>
+              <p>This notice covers cookies, local storage, session storage, scripts, tags, and other technologies that store information on or access information from a browser or device when mas0ng.com is used.</p>
+              <p>The current public pages do not use these technologies for behavioural advertising, cross-site tracking, or third-party advertising analytics.</p>
+            </section>
 
-          <section class="legal-section">
-            <h2>Cloudflare Turnstile</h2>
-            <p>The sign-in page loads Cloudflare Turnstile only after the required sign-in notice is acknowledged. The security-report page loads it only when you choose to open the report form. Turnstile may store or access information and process browser, device, network, and challenge signals needed to distinguish legitimate requests from automated abuse. See <a class="legal-link" href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare's privacy policy</a>.</p>
-          </section>
+            <section class="legal-section" id="public-page-preferences">
+              <h2>Public-page preferences</h2>
+              <p>When you choose to dismiss an informational privacy notice, the site stores a small local preference so that the same notice does not immediately appear again. The current values are <code>mas0ng_privacy_notice_acknowledged_v1</code> on mas0ng.com and <code>mas0ng-bio-privacy-notice-v1</code> on bio.mas0ng.com.</p>
+              <p>These values record only a user-interface choice. They are limited to the origin that set them and remain until cleared or replaced.</p>
+            </section>
 
-          <section class="legal-section">
-            <h2>Tools and protected apps</h2>
-            <p>Some tools store information in local or session storage when you request their features, such as timer state, temporary console output, interface preferences, music preferences, caches, or draft state. Protected apps may also hold temporary browser state while a feature is in use. This information stays in the browser unless the relevant feature says it will be uploaded or saved to an account. Its duration depends on the feature: session storage ends with the browser session; local storage remains until the feature replaces it or you clear it.</p>
-          </section>
+            <section class="legal-section" id="sign-in-cookies-and-security-storage">
+              <h2>Sign-in cookies and security storage</h2>
+              <p>The private sign-in service uses storage that is necessary to authenticate users, protect sessions, and prevent abuse. The current authentication cookie is <code>mas0ng_session</code> (or a configured equivalent), which is normally HttpOnly, Secure, SameSite=Lax, and expires after seven days or sooner on logout, revocation, or security invalidation.</p>
+              <p><code>mas0ng_session_bootstrap</code> is a short-lived HttpOnly, Secure, SameSite=Lax cookie used to make a newly issued session available safely across mas0ng.com subdomains. It expires after about 90 seconds. Server-side login challenges normally expire after five minutes, QR login records after two minutes, and failed-attempt rate-limit records after 15 minutes.</p>
+              <p>Public pages may send an existing session cookie to the authentication service to check whether the browser is already signed in. An anonymous status check does not create a session.</p>
+            </section>
 
-          <section class="legal-section">
-            <h2>No analytics or advertising storage</h2>
-            <p>The current public pages do not set analytics, advertising, or behavioural tracking cookies. If that changes, this notice and the site's controls will be updated and consent will be requested where UK law requires it.</p>
-          </section>
+            <section class="legal-section" id="cloudflare-turnstile">
+              <h2>Cloudflare Turnstile</h2>
+              <p>Cloudflare Turnstile is loaded only when a feature needs a security challenge, such as sign-in or the private security-report form. It may store or access information and process browser, device, network, and challenge signals to distinguish legitimate requests from automated abuse.</p>
+              <p>Turnstile is used for security rather than advertising. Its own technology and retention are governed by <a class="legal-link" href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare's privacy policy</a>.</p>
+            </section>
 
-          <section class="legal-section">
-            <h2>Your controls</h2>
-            <p>You can clear cookies, local storage, and session storage through your browser settings. To remove only a privacy-notice preference, use <a class="legal-link" href="/bio.html?privacyNotice=reset">show the mas0ng.com notice again</a> or <a class="legal-link" href="https://bio.mas0ng.com/mas0ng?privacyNotice=reset">show the bio.mas0ng.com notice again</a>. Clearing authentication cookies signs you out. Blocking the strictly necessary sign-in technologies means the private service cannot authenticate or protect a session. Public pages remain available.</p>
-          </section>
+            <section class="legal-section" id="tools-and-protected-apps">
+              <h2>Tools and protected apps</h2>
+              <p>Some tools store information locally when you request a feature, such as timer state, temporary console output, interface preferences, music preferences, caches, or draft state. Session storage normally ends with the browser session. Local storage remains until the feature replaces it or you clear it.</p>
+              <p>Local browser state stays on the device unless the relevant feature explains that it will be uploaded, synchronised, or saved to an account.</p>
+            </section>
 
-          <section class="legal-section">
-            <h2>Contact</h2>
-            <p>Questions about cookies or browser storage can be sent to <a class="legal-link" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>. Personal-data information is available in the <a class="legal-link" href="/legal/privacy/">Privacy Policy</a>.</p>
-          </section>
-        </section>
+            <section class="legal-section" id="when-consent-or-an-exception-is-used">
+              <h2>When consent or an exception is used</h2>
+              <p>UK rules generally require clear information and consent before storing or accessing information on a user's device unless a legal exception applies. Authentication, fraud prevention, security, and selections a user asks the service to remember may qualify for an exception where the legal conditions are met.</p>
+              <p>UK law also permits certain low-risk statistical or appearance and functionality uses without consent where the applicable conditions, including clear information and a simple free way to object, are met. mas0ng.com does not currently use that route for public-page analytics.</p>
+              <p>If non-exempt advertising, tracking, or other optional storage is introduced, it will not be activated before the required choice is obtained.</p>
+            </section>
+
+            <section class="legal-section" id="your-controls">
+              <h2>Your controls</h2>
+              <p>You can clear or block cookies, local storage, and session storage using browser settings. To remove only the current privacy-notice preference, use <a class="legal-link" href="/bio.html?privacyNotice=reset">show the mas0ng.com notice again</a> or <a class="legal-link" href="https://bio.mas0ng.com/mas0ng?privacyNotice=reset">show the bio.mas0ng.com notice again</a>.</p>
+              <p>Blocking storage that is necessary for authentication or security may prevent protected services from working. Public pages should remain available.</p>
+            </section>
+
+            <section class="legal-section" id="changes-and-contact">
+              <h2>Changes and contact</h2>
+              <p>This notice is reviewed when browser storage, security services, or site features change. Questions about cookies or device storage can be sent to <a class="legal-link" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>. Personal-data information is available in the <a class="legal-link" href="/legal/privacy/">Privacy Policy</a>.</p>
+            </section>
+            </section>
+          </div>
+        </div>
       </main>
     </div>
+
     <script src="/public_assets/site/js/config/site-data.js?v=20260728-bio-nav1"></script>
-    <script src="/public_assets/site/js/lib/cache.js"></script>
-    <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
-    <script src="/public_assets/site/js/layout/shell.js?v=20260723-mobile-nav3" data-active="legal" defer></script>
-    <script src="/public_assets/site/js/pages/legal-liquid.js?v=20260726-legal1" defer></script>
-    <script src="/index_assets/js/masthead-canvas.js?v=20260726-static1" defer></script>
+        <script src="/public_assets/site/js/lib/cache.js"></script>
+        <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
+        <script src="/public_assets/site/js/layout/shell.js?v=20260723-mobile-nav3" data-active="legal" defer></script>
+    <script>
+          (() => {
+            const overlayName = /(overlay|backdrop|scrim|dimmer|veil)/i;
+            const navName = /(nav|menu|shell|drawer)/i;
+    
+            const removeInitialNavTint = () => {
+              document.querySelectorAll('body *').forEach((element) => {
+                if (element.closest('.security-modal')) return;
+    
+                const name = `${element.id || ''} ${typeof element.className === 'string' ? element.className : ''}`;
+                if (!overlayName.test(name) || !navName.test(name)) return;
+    
+                const style = getComputedStyle(element);
+                if (style.position !== 'fixed' && style.position !== 'absolute') return;
+    
+                const rect = element.getBoundingClientRect();
+                const coversViewport = rect.width >= window.innerWidth * 0.85 && rect.height >= window.innerHeight * 0.85;
+                if (!coversViewport) return;
+    
+                element.style.setProperty('display', 'none', 'important');
+                element.style.setProperty('visibility', 'hidden', 'important');
+                element.style.setProperty('opacity', '0', 'important');
+                element.style.setProperty('pointer-events', 'none', 'important');
+                element.style.setProperty('background', 'transparent', 'important');
+                element.style.setProperty('backdrop-filter', 'none', 'important');
+                element.style.setProperty('-webkit-backdrop-filter', 'none', 'important');
+              });
+            };
+    
+            window.addEventListener('DOMContentLoaded', () => {
+              removeInitialNavTint();
+              requestAnimationFrame(removeInitialNavTint);
+              setTimeout(removeInitialNavTint, 150);
+              setTimeout(removeInitialNavTint, 600);
+            });
+          })();
+        </script>
+    <script>
+          (() => {
+            const links = [...document.querySelectorAll('.legal-toc a')];
+            const sections = links.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+            if (!links.length || !sections.length) return;
+            const setActive = id => {
+              links.forEach(link => {
+                const active = link.getAttribute('href') === `#${id}`;
+                link.classList.toggle('is-active', active);
+                if (active) link.setAttribute('aria-current', 'true');
+                else link.removeAttribute('aria-current');
+              });
+            };
+            const updateActiveSection = () => {
+              const marker = window.innerHeight * 0.3;
+              let current = sections[0];
+              for (const section of sections) {
+                if (section.getBoundingClientRect().top <= marker) current = section;
+                else break;
+              }
+              if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+                current = sections[sections.length - 1];
+              }
+              setActive(current.id);
+            };
+            let ticking = false;
+            const onScroll = () => {
+              if (ticking) return;
+              ticking = true;
+              requestAnimationFrame(() => {
+                updateActiveSection();
+                ticking = false;
+              });
+            };
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', updateActiveSection);
+            updateActiveSection();
+          })();
+        </script>
+
   </body>
 </html>

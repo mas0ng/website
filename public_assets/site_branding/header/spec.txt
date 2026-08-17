@@ -1,0 +1,91 @@
+# Header Banner Asset Specification
+
+## File structure
+
+```text
+headers/
+  compact/
+    blue.jpg
+    white.jpg
+    black.jpg
+  standard/
+    blue.jpg
+    white.jpg
+    black.jpg
+  large/
+    blue.jpg
+    white.jpg
+    black.jpg
+```
+
+## Header types
+
+| Header type | Dimensions | Aspect ratio | Use when                                                     |
+| ----------- | ---------: | -----------: | ------------------------------------------------------------ |
+| Compact     | 1920 × 192 |         10:1 | Legal pages, notices, settings, simple titles                |
+| Standard    | 1920 × 240 |          8:1 | Default header for most pages                                |
+| Large       | 1920 × 320 |          6:1 | More important page headers, feature pages, prominent titles |
+
+## Colour variants
+
+### blue
+
+* Dark blue background
+* Subtle pattern or texture in blue tones
+* Designed for **white text**
+
+### black
+
+* Black background
+* Subtle **white pattern**
+* Designed for **white text**
+
+### white
+
+* White background
+* Subtle **black pattern**
+* Designed for **black text**
+
+## Naming rules
+
+* Use lowercase file and folder names only
+* Use `.jpg` for all banner assets
+* Each banner type must contain the same three colour variants:
+
+  * `blue.jpg`
+  * `white.jpg`
+  * `black.jpg`
+
+## Example paths
+
+```text
+/public_assets/site_branding/header/compact/blue.jpg
+/public_assets/site_branding/header/compact/white.jpg
+/public_assets/site_branding/header/compact/black.jpg
+
+/public_assets/site_branding/header/standard/blue.jpg
+/public_assets/site_branding/header/standard/white.jpg
+/public_assets/site_branding/header/standard/black.jpg
+
+/public_assets/site_branding/header/large/blue.jpg
+/public_assets/site_branding/header/large/white.jpg
+/public_assets/site_branding/header/large/black.jpg
+```
+
+## Selection rules
+
+* Use **Compact** for legal, utility, or minimal pages
+* Use **Standard** as the default choice
+* Use **Large** only when the page title needs more presence
+
+## Notes for coding AI
+
+* Treat these as **page header banners only**, not hero banners
+* Preserve the exact aspect ratio for each header type
+* Keep title text centered or safely positioned within the middle area of the banner
+* Match text colour to the banner variant:
+
+  * `blue` → white text
+  * `black` → white text
+  * `white` → black text
+ 

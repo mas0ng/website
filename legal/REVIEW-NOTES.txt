@@ -1,0 +1,37 @@
+LEGAL REVIEW NOTES — 17 AUGUST 2026
+
+These pages have been rewritten to be substantially more comprehensive for a UK-operated website, but policy wording alone cannot make a site "100% legally covered". The site configuration and real-world processing must match the notices.
+
+Items to verify before publishing:
+
+1. CONTROLLER / TRADER IDENTITY
+   The uploaded files identify the operator only as "Mason". If mas0ng.com is operated commercially, under a trading name, as a sole trader, partnership, company or other business, add the full legal identity and any geographic/registered address, registration number and other trading disclosures that apply. Do not invent these details.
+
+2. DATA PROTECTION FEE
+   Use the ICO data protection fee self-assessment. Organisations and sole traders processing personal data electronically may need to pay unless an exemption applies.
+
+3. DATA PROTECTION COMPLAINTS PROCESS
+   From 19 June 2026, organisations must provide a way to complain, acknowledge data protection complaints within 30 days, investigate and keep the complainant informed without undue delay, and communicate the outcome without undue delay. The revised Privacy Policy now gives a clear email route, but the actual operational process must follow it.
+
+4. INTERNATIONAL TRANSFERS / PROVIDER CONTRACTS
+   Verify the exact OpenAI, DeepSeek, Cloudflare, Discord and other provider account terms, processor/controller roles, data processing agreements, and UK transfer mechanism for each restricted transfer. A policy cannot create a valid transfer safeguard by itself.
+
+5. CHILDREN
+   If an online service is likely to be accessed by under-18s, assess the ICO Children's Code / Age Appropriate Design Code and the 2026 child-data requirements. Merely saying the service is not intended for children does not automatically remove those obligations.
+
+6. COOKIES / STORAGE
+   Maintain an inventory of cookies, local storage, session storage, scripts and tags actually used. The revised Cookie Notice assumes the current claims are true: no public behavioural advertising or cross-site tracking. If that changes, implement the required consent or opt-out mechanism before use.
+
+7. PAID SERVICES / DIGITAL CONTENT
+   If you sell downloads, subscriptions or digital services, the checkout itself needs the required pre-contract information. For immediate digital downloads/streaming, obtain the legally required express consent and acknowledgement before supply if relying on loss of the 14-day cancellation right, and provide contract confirmation in a durable medium.
+
+8. SECURITY REPORTING
+   The revised Security Notes preserve the private report flow. Confirm the API endpoint, Turnstile configuration, security-report retention, and third-party notification path still match reality.
+
+9. DISCORD BOT PAGE
+   The uploaded discord-bot.html is only an instant redirect to /legal/discord-bots/. The actual target page was not included, so its content could not be reviewed or restyled.
+
+10. OPERATIONAL ACCURACY
+    Re-check retention periods, cookie names, AI providers, server architecture, notification recipients, and all linked URLs whenever the implementation changes.
+
+For certainty on a commercial launch, significant paid services, child-facing features, or higher-risk personal data, obtain a review from a UK solicitor or data-protection professional.
