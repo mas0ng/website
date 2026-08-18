@@ -11,7 +11,7 @@ window.MAS0NG_SITE = {
   social: [],
   legal: [
     { id: 'legal', label: 'Legal hub', href: '/legal/' },
-    { id: 'privacy', label: 'Privacy policy', href: '/legal/privacy/' },
+    { id: 'privacy', label: 'Privacy policy', href: '/legal/privacy' },
     { id: 'ai', label: 'AI policy', href: '/legal/ai.html' },
     { id: 'discord-bots', label: 'Discord bot status', href: '/legal/discord-bot.html' },
     { id: 'terms', label: 'Terms', href: '/legal/terms.html' },

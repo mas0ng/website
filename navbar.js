@@ -10,7 +10,7 @@
 
   const legalLinks = [
     { id: "legal", label: "Legal hub", href: SITE_ORIGIN + "/legal/", icon: "scale" },
-    { id: "privacy", label: "Privacy policy", href: SITE_ORIGIN + "/legal/privacy/", icon: "shield" },
+    { id: "privacy", label: "Privacy policy", href: SITE_ORIGIN + "/legal/privacy", icon: "shield" },
     { id: "ai", label: "AI policy", href: SITE_ORIGIN + "/legal/ai.html", icon: "bot" },
     { id: "terms", label: "Terms", href: SITE_ORIGIN + "/legal/terms.html", icon: "file-text" },
     { id: "cookies", label: "Cookies", href: SITE_ORIGIN + "/legal/cookies.html", icon: "cookie" },
