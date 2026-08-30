@@ -1,7 +1,7 @@
 (function () {
   const TAILWIND_URL = "https://cdn.tailwindcss.com";
   const LUCIDE_URL = "https://unpkg.com/lucide@latest";
-  const FONT_URL = "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap";
+  const FONT_URL = "https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap";
   let overlay = null;
   let useOverlay = false;
   let currentAsset = "";

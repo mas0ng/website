@@ -36,13 +36,13 @@
 
   function safeSrc(value) {
     const src = String(value || '').trim();
-    if (!src) return '/public_assets/site_branding/favicon.svg';
+    if (!src) return '/public_assets/site_branding/favicon/blue.svg';
     if (src.startsWith('/') && !src.startsWith('//')) return src;
     try {
       const url = new URL(src);
       if (url.protocol === 'https:' || url.protocol === 'http:') return src;
     } catch {}
-    return '/public_assets/site_branding/favicon.svg';
+    return '/public_assets/site_branding/favicon/blue.svg';
   }
 
   async function fetchCertifications() {

@@ -430,13 +430,18 @@
       : '';
 
     const siteRoot = d.siteOrigin || '';
+    const blackLogo = `${siteRoot}/public_assets/site_branding/favicon/black.svg`;
+    const whiteLogo = `${siteRoot}/public_assets/site_branding/favicon/white.svg`;
     const nav = document.createElement('header');
     nav.className = 'nav';
     nav.id = 'site-nav';
     nav.setAttribute('aria-label', 'Primary');
     nav.innerHTML = `
       <div class="nav__inner">
-        <a class="nav__brand" href="${siteRoot}/">${d.siteName}</a>
+        <a class="nav__brand" href="${siteRoot}/" aria-label="${esc.escapeHtml(d.siteName)} home">
+          <img class="nav__brand-logo nav__brand-logo--black" src="${blackLogo}" alt="" width="34" height="34">
+          <img class="nav__brand-logo nav__brand-logo--white" src="${whiteLogo}" alt="" width="34" height="34">
+        </a>
         <div class="nav__cluster" role="navigation" aria-label="Sections">
           ${navItems}
           <div class="nav__dropdown" id="nav-legal-dropdown">

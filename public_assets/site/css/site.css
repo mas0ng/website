@@ -5,7 +5,7 @@
   src:
     url("/public_assets/fonts/etna.woff2") format("woff2"),
     url("/public_assets/fonts/etna.woff") format("woff");
-  font-weight: 400 700;
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -62,13 +62,10 @@ img, svg { display: block; max-width: 100%; }
 
 button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
 
-h1, h2, h3,
-.hero__title,
-.section__title,
-.nav__brand,
-.social-tile__label,
-.footer__col h3 {
-  font-family: var(--font-display);
+h1,
+h1[class] {
+  font-family: var(--font-display) !important;
+  font-weight: 400 !important;
 }
 
 /* ── Page loader ── */
@@ -246,6 +243,27 @@ html[data-nav-solid] .nav {
 html[data-nav-solid] .nav__brand { color: var(--text); }
 
 .nav__brand:hover { opacity: 0.72; }
+
+.nav__brand-logo {
+  display: block;
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.nav__brand-logo--black { display: none; }
+
+html[data-nav-solid] .nav__brand-logo--black { display: block; }
+html[data-nav-solid] .nav__brand-logo--white { display: none; }
+
+html[data-nav-solid] body[data-page="home"] .nav__brand-logo--black,
+body[data-page="bio"] .nav__brand-logo--black { display: none !important; }
+
+html[data-nav-solid] body[data-page="home"] .nav__brand-logo--white,
+body[data-page="bio"] .nav__brand-logo--white { display: block !important; }
+
+body[data-page="legal"] .nav__brand-logo--black { display: block !important; }
+body[data-page="legal"] .nav__brand-logo--white { display: none !important; }
 
 .nav__cluster {
   display: flex;
@@ -1795,7 +1813,7 @@ body.social-dialog-open {
 
 .social-dialog__title {
   margin: 0;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 1.55rem;
   line-height: 1.1;
 }
@@ -1931,7 +1949,7 @@ body.social-dialog-open {
 
 .privacy-notice__title {
   margin: 1px 0 6px;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.2;
 }
@@ -3591,7 +3609,7 @@ body[data-page="error"] .footer {
 }
 
 .dev-page-suggestion__result strong {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: .95rem;
   line-height: 1.35;
 }

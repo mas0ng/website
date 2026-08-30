@@ -418,11 +418,11 @@ body[data-page="auth"] .worker-masthead__inner {
   place-items: center;
   width: 212px;
   aspect-ratio: 1;
-  border: 1px solid #27272a;
+  border: 1px solid #d7dce5;
   border-radius: 18px;
-  background: #111;
+  background: #fff;
   padding: 12px;
-  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.16);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.13);
   transition: filter 0.24s ease, transform 0.24s ease, opacity 0.24s ease;
 }
 
@@ -431,6 +431,18 @@ body[data-page="auth"] .worker-masthead__inner {
   width: 188px;
   height: 188px;
 }
+
+.auth-qr-consent-hint {
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+  padding: 16px;
+  color: #4b5563;
+  text-align: center;
+}
+
+.auth-qr-consent-hint strong { color: #111827; font-size: 0.78rem; }
+.auth-qr-consent-hint small { max-width: 18ch; color: #6b7280; font-size: 0.68rem; line-height: 1.4; }
 
 .auth-qr-scan-overlay {
   position: absolute;

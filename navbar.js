@@ -1,12 +1,14 @@
 (function () {
   const NAV_ID = "mas0ng-public-navbar";
-  const SHARED_NAV_URL = "https://sharedassets.mas0ng.com/navbar.js?v=20260813-unavailable-nav-button1";
+  const SHARED_NAV_URL = "https://sharedassets.mas0ng.com/navbar.js?v=20260830-update-popup1";
   const APP_ENCRYPTION_URL = "https://sharedassets.mas0ng.com/app-encryption.js";
   const TAILWIND_URL = "https://cdn.tailwindcss.com";
   const LUCIDE_URL = "https://unpkg.com/lucide@latest";
   const LOGIN_URL = "https://auth.mas0ng.com/login?return_to=%2Fsecure%2Fapps%2F";
   const loaderScript = document.currentScript;
   const SITE_ORIGIN = "https://mas0ng.com";
+  const BLACK_LOGO = SITE_ORIGIN + "/public_assets/site_branding/favicon/black.svg";
+  const WHITE_LOGO = SITE_ORIGIN + "/public_assets/site_branding/favicon/white.svg";
 
   const legalLinks = [
     { id: "legal", label: "Legal hub", href: SITE_ORIGIN + "/legal/", icon: "scale" },
@@ -140,7 +142,10 @@
     nav.innerHTML = `
       <div class="box-border flex h-16 w-full max-w-full items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
         <a class="flex shrink-0 items-center gap-3 no-underline" href="${SITE_ORIGIN}/" aria-label="mas0ng.com public home">
-          <span class="text-lg font-black tracking-tight text-white">mas0ng.com</span>
+          <span class="relative block h-[34px] w-[34px]" aria-hidden="true">
+            <img src="${WHITE_LOGO}" alt="" width="34" height="34" class="absolute inset-0 h-[34px] w-[34px] object-contain" data-navbar-logo="white">
+            <img src="${BLACK_LOGO}" alt="" width="34" height="34" class="absolute inset-0 hidden h-[34px] w-[34px] object-contain" data-navbar-logo="black">
+          </span>
         </a>
 
         <div class="hidden min-w-0 flex-1 items-center justify-center px-3 lg:flex">

@@ -1,7 +1,7 @@
 (function () {
   const TAILWIND_URL = 'https://cdn.tailwindcss.com';
   const LUCIDE_URL = 'https://unpkg.com/lucide@latest';
-  const INTER_FONT_URL = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap';
+  const INTER_FONT_URL = 'https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap';
 
   function hasScript(src) {
     return Boolean(document.querySelector(`script[src="${src}"]`));

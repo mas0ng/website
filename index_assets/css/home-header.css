@@ -1,0 +1,84 @@
+.home-wordmark {
+  font-family: var(--font-display, "Etna", "ABeeZee", sans-serif);
+  font-size: clamp(3rem, 8.6vw, 6.75rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 0.9;
+  text-wrap: balance;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+body[data-page="home"] .hero__inner {
+  gap: 22px;
+}
+
+.home-github-link {
+  position: relative;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 42px;
+  padding: 9px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  background: rgba(5, 13, 25, 0.48);
+  color: rgba(255, 255, 255, 0.88);
+  font-family: "ABeeZee", "Segoe UI", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(12px);
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.home-github-link:hover {
+  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.home-github-link:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.45);
+  outline-offset: 4px;
+}
+
+.home-wordmark--ascii {
+  width: min(96vw, 900px);
+  padding-inline: 0;
+}
+
+.home-wordmark--ascii pre {
+  margin: 0;
+  overflow: visible;
+  color: #fff;
+  font-family: "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: clamp(0.72rem, 2.5vw, 1.55rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.25;
+  text-align: center;
+  text-shadow: 0 0 34px rgba(255, 255, 255, 0.2);
+  white-space: pre;
+}
+
+@media (max-width: 520px) {
+  .home-wordmark {
+    font-size: clamp(2.65rem, 15vw, 4.25rem);
+  }
+
+  .home-wordmark--ascii pre {
+    font-size: clamp(0.54rem, 2.6vw, 0.82rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-github-link {
+    transition: none;
+  }
+}

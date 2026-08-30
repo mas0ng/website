@@ -2,55 +2,42 @@
 <html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
-  <script src="/public_assets/site/js/layout/loader.js?v=20260610-loader1"></script>
+  <script src="/public_assets/site/js/layout/loader.js?v=20260728-loader2"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>mas0ng.com | 404</title>
-  <meta name="description" content="This page could not be found or does not exist." />
-  <meta name="robots" content="noindex" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="mas0ng.com" />
-  <meta property="og:title" content="Page not found | mas0ng.com" />
-  <meta property="og:description" content="This page could not be found or does not exist." />
-  <meta property="og:image" content="https://mas0ng.com/public_assets/site_branding/meta/404-social-1200x630.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:alt" content="404 - page not found on mas0ng.com" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Page not found | mas0ng.com" />
-  <meta name="twitter:description" content="This page could not be found or does not exist." />
-  <meta name="twitter:image" content="https://mas0ng.com/public_assets/site_branding/meta/404-social-1200x630.png" />
-  <meta name="twitter:image:alt" content="404 - page not found on mas0ng.com" />
-  <meta name="theme-color" content="#000000" />
+  <title>Page not found | mas0ng.com</title>
+  <meta name="description" content="The page you requested could not be found." />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#07080b" />
   <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon/blue.svg" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" href="/public_assets/fonts/etna.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" />
-  <link rel="stylesheet" href="/public_assets/site/css/site.css?v=20260714-4047" />
-  <link rel="stylesheet" href="/public_assets/site/css/error.css?v=20260830-clean1" />
+  <link rel="stylesheet" href="/public_assets/site/css/site.css?v=20260728-public-api2" />
+  <link rel="stylesheet" href="/public_assets/site/css/404.css?v=20260830-simple2" />
 </head>
-<body data-page="error" data-error-kind="not-found">
+<body data-page="404">
   <div id="site-main">
-    <div class="error-stage">
-      <main class="page-panel page-panel--simple" aria-labelledby="error-title">
-        <div class="error-card__content">
-          <span class="page-panel__code">404</span>
-          <span class="error-card__visual-label" id="error-visual-label" hidden>Page unavailable</span>
-          <h1 class="page-panel__title" id="error-title">Page not found</h1>
-          <p class="page-panel__lead" id="error-lead">The address may be incorrect, or the page may have moved somewhere new.</p>
-          <div class="page-panel__actions">
-            <a class="page-panel__btn page-panel__btn--primary" id="error-primary-action" href="/">
-              <span id="error-primary-label">Return home</span>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-            <button class="page-panel__btn page-panel__btn--secondary" id="error-back-action" type="button">Go back</button>
-          </div>
+    <main class="not-found" aria-labelledby="not-found-title">
+      <section class="not-found__content">
+        <p class="not-found__code" aria-hidden="true">404</p>
+        <h1 class="not-found__title" id="not-found-title">Page not found</h1>
+        <p class="not-found__description">The page may have moved, been deleted, or never existed.</p>
+        <div class="not-found__actions" aria-label="Page recovery options">
+          <a class="not-found__button not-found__button--primary" id="error-primary-action" href="/">
+            <i data-lucide="house" aria-hidden="true"></i><span id="error-primary-label">Return home</span>
+          </a>
+          <button class="not-found__button not-found__button--secondary" id="error-back-action" type="button">
+            <i data-lucide="arrow-left" aria-hidden="true"></i><span>Go back</span>
+          </button>
         </div>
-      </main>
-
-    </div>
+      </section>
+    </main>
   </div>
-  <script src="/public_assets/site/js/pages/404.js?v=20260830-clean1" defer></script>
-  <script src="/public_assets/site/js/layout/shell.js?v=20260723-mobile-nav3" data-active="home" defer></script>
+  <script src="/public_assets/site/js/config/site-data.js?v=20260728-public-api2"></script>
+  <script src="/public_assets/site/js/lib/cache.js"></script>
+  <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+  <script src="/public_assets/site/js/pages/404.js?v=20260830-simple2" defer></script>
+  <script src="/public_assets/site/js/layout/shell.js?v=20260723-mobile-nav3" data-active="" defer></script>
 </body>
 </html>

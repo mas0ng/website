@@ -29,7 +29,7 @@ Items to verify before publishing:
    The revised Security Notes preserve the private report flow. Confirm the API endpoint, Turnstile configuration, security-report retention, and third-party notification path still match reality.
 
 9. DISCORD BOT PAGE
-   The uploaded discord-bot.html is only an instant redirect to /legal/discord-bots/. The actual target page was not included, so its content could not be reviewed or restyled.
+   The Discord bot status page now lives at /legal/discord-bots/ and states that no active Discord bots are operated. Keep this page updated before introducing any bot or user-facing Discord integration.
 
 10. OPERATIONAL ACCURACY
     Re-check retention periods, cookie names, AI providers, server architecture, notification recipients, and all linked URLs whenever the implementation changes.

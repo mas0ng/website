@@ -10,7 +10,7 @@ window.MAS0NG_SOCIAL_TILES = (function () {
 
   function safeAssetPath(value) {
     const path = String(value || '').trim();
-    const fallback = '/public_assets/site_branding/favicon.svg';
+    const fallback = '/public_assets/site_branding/favicon/blue.svg';
     const isSocialIconPath = (pathname) => /^\/public_assets\/social_icons\/[A-Za-z0-9._-]+\.(?:svg|png|jpe?g|webp)$/i.test(pathname);
 
     if (path.startsWith('/') && !path.startsWith('//')) {

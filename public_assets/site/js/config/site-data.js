@@ -1,6 +1,6 @@
 window.MAS0NG_SITE = {
   loginUrl: 'https://auth.mas0ng.com/login?return_to=%2Fsecure%2Fapps%2F',
-  sharedNavUrl: 'https://sharedassets.mas0ng.com/navbar.js?v=20260813-unavailable-nav-button1',
+  sharedNavUrl: 'https://sharedassets.mas0ng.com/navbar.js?v=20260830-update-popup1',
   siteName: 'mas0ng.com',
   siteOrigin: '',
   nav: [
@@ -13,7 +13,7 @@ window.MAS0NG_SITE = {
     { id: 'legal', label: 'Legal hub', href: '/legal/' },
     { id: 'privacy', label: 'Privacy policy', href: '/legal/privacy' },
     { id: 'ai', label: 'AI policy', href: '/legal/ai.html' },
-    { id: 'discord-bots', label: 'Discord bot status', href: '/legal/discord-bot.html' },
+    { id: 'discord-bots', label: 'Discord bot status', href: '/legal/discord-bots/' },
     { id: 'terms', label: 'Terms', href: '/legal/terms.html' },
     { id: 'cookies', label: 'Cookies', href: '/legal/cookies.html' },
     { id: 'security', label: 'Security', href: '/legal/security.html' },
@@ -27,7 +27,7 @@ window.MAS0NG_SITE = {
   assets: {
     etnaWoff2: '/public_assets/fonts/etna.woff2',
     etnaWoff: '/public_assets/fonts/etna.woff',
-    favicon: '/public_assets/site_branding/favicon.svg',
+    favicon: '/public_assets/site_branding/favicon/blue.svg',
     profileImage: '/public_assets/social_icons/pfp.jpg',
     loaderJs: '/public_assets/site/js/layout/loader.js?v=20260610-loader1',
     siteCss: '/public_assets/site/css/site.css?v=20260723-mobile-nav3',
