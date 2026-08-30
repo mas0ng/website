@@ -124,7 +124,7 @@ body[data-page="auth"] .worker-masthead__inner {
 
 .auth-block__title {
   margin: 0;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 1.12rem;
   font-weight: 900;
   letter-spacing: -0.02em;
@@ -418,11 +418,11 @@ body[data-page="auth"] .worker-masthead__inner {
   place-items: center;
   width: 212px;
   aspect-ratio: 1;
-  border: 1px solid var(--line);
+  border: 1px solid #27272a;
   border-radius: 18px;
-  background: #fff;
+  background: #111;
   padding: 12px;
-  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.1);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.16);
   transition: filter 0.24s ease, transform 0.24s ease, opacity 0.24s ease;
 }
 

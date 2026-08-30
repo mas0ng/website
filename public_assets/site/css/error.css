@@ -13,9 +13,43 @@ body[data-page="error"] {
   margin: 0;
   color: var(--error-white);
   background: #07080b;
-  font-family: "Manrope", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "ABeeZee", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   letter-spacing: -0.012em;
 }
+
+body[data-page="error"] .page-panel--simple {
+  display: block;
+  width: min(620px, 100%);
+  min-height: 0;
+  text-align: center;
+}
+
+body[data-page="error"] .page-panel--simple .error-card__content {
+  align-items: center;
+  padding: clamp(42px, 8vw, 72px);
+}
+
+body[data-page="error"] .page-panel--simple .page-panel__code {
+  margin-bottom: 24px;
+  font-family: "Etna", "ABeeZee", sans-serif;
+  font-weight: 400;
+}
+
+body[data-page="error"] .page-panel--simple .page-panel__title {
+  max-width: none;
+  font-family: "Etna", "ABeeZee", sans-serif;
+  font-weight: 400;
+}
+
+body[data-page="error"] .page-panel--simple .page-panel__lead,
+body[data-page="error"] .page-panel--simple .page-panel__btn {
+  font-family: "ABeeZee", ui-sans-serif, system-ui, sans-serif;
+}
+
+body[data-page="error"] .page-panel--simple .page-panel__actions { justify-content: center; }
+body[data-page="error"] .page-panel__btn--secondary { border-color: rgba(255,255,255,.18); color: #fff; background: transparent; box-shadow: none; }
+body[data-page="error"] .page-panel__btn--secondary:hover,
+body[data-page="error"] .page-panel__btn--secondary:focus-visible { color: #fff; background: rgba(255,255,255,.09); }
 
 body[data-page="error"] #site-main {
   position: relative;
@@ -181,9 +215,9 @@ body[data-page="error"] .page-panel__title {
   max-width: 12ch;
   margin: 0;
   color: #fff;
-  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  font-family: "Etna", "ABeeZee", ui-sans-serif, system-ui, sans-serif;
   font-size: clamp(2.65rem, 5.1vw, 4.65rem);
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: -0.065em;
   line-height: 0.98;
   text-wrap: balance;
@@ -193,7 +227,7 @@ body[data-page="error"] .page-panel__lead {
   max-width: 43ch;
   margin: 24px 0 0;
   color: var(--error-muted);
-  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  font-family: "ABeeZee", ui-sans-serif, system-ui, sans-serif;
   font-size: clamp(0.96rem, 1.4vw, 1.08rem);
   font-weight: 400;
   letter-spacing: -0.012em;
@@ -220,7 +254,7 @@ body[data-page="error"] .page-panel__btn {
   color: #08090c;
   background: #fff;
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24);
-  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  font-family: "ABeeZee", ui-sans-serif, system-ui, sans-serif;
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: -0.015em;
@@ -262,9 +296,9 @@ body[data-page="error"] .page-panel__btn:focus-visible svg {
 body[data-page="error"] .page-panel__code {
   margin: 0;
   color: #fff;
-  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  font-family: "Etna", "ABeeZee", ui-sans-serif, system-ui, sans-serif;
   font-size: clamp(5.8rem, 10.5vw, 9.2rem);
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: -0.09em;
   line-height: 0.82;
   text-shadow: 0 0 48px rgba(var(--error-accent-rgb), 0.22);
@@ -380,7 +414,7 @@ body[data-page="error"] .page-panel__code {
 
 .dev-page-suggestion__result strong {
   color: #fff;
-  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  font-family: "ABeeZee", ui-sans-serif, system-ui, sans-serif;
   font-size: 0.9rem;
   font-weight: 700;
   line-height: 1.35;
