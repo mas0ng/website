@@ -1,6 +1,6 @@
 (function () {
   const NAV_ID = "mas0ng-public-navbar";
-  const SHARED_NAV_URL = "https://sharedassets.mas0ng.com/navbar.js?v=20260831-ascii1";
+  const SHARED_NAV_URL = "https://sharedassets.mas0ng.com/navbar.js?v=20260831-release2";
   const APP_ENCRYPTION_URL = "https://sharedassets.mas0ng.com/app-encryption.js";
   const TAILWIND_URL = "https://cdn.tailwindcss.com";
   const LUCIDE_URL = "https://unpkg.com/lucide@latest";
@@ -12,7 +12,7 @@
 
   const legalLinks = [
     { id: "legal", label: "Legal hub", href: SITE_ORIGIN + "/legal/", icon: "scale" },
-    { id: "privacy", label: "Privacy policy", href: SITE_ORIGIN + "/legal/privacy", icon: "shield" },
+    { id: "privacy", label: "Privacy policy", href: SITE_ORIGIN + "/legal/privacy.html", icon: "shield" },
     { id: "ai", label: "AI policy", href: SITE_ORIGIN + "/legal/ai.html", icon: "bot" },
     { id: "terms", label: "Terms", href: SITE_ORIGIN + "/legal/terms.html", icon: "file-text" },
     { id: "cookies", label: "Cookies", href: SITE_ORIGIN + "/legal/cookies.html", icon: "cookie" },

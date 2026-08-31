@@ -878,11 +878,21 @@
   function loadAsciiBackground(pageName) {
     if (document.querySelector('script[data-shared-ascii-background]')) return;
     const asciiScript = document.createElement('script');
-    asciiScript.src = '/public_assets/site/js/ascii-background.js?v=20260830-ascii1';
+    asciiScript.src = '/public_assets/site/js/ascii-background.js?v=20260831-element1';
     asciiScript.defer = true;
     asciiScript.dataset.sharedAsciiBackground = '';
     if (pageName === 'bio' || pageName === 'certifications') {
       asciiScript.dataset.asciiCanvas = '#masthead-canvas';
+    } else if (pageName === 'legal') {
+      const banner = document.querySelector('.legal-banner');
+      if (banner) {
+        const canvas = document.createElement('canvas');
+        canvas.id = 'legal-ascii-background';
+        canvas.className = 'legal-banner__ascii';
+        canvas.setAttribute('aria-hidden', 'true');
+        banner.prepend(canvas);
+        asciiScript.dataset.asciiCanvas = '#legal-ascii-background';
+      }
     }
     document.head.append(asciiScript);
   }

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap">
     <link rel="stylesheet" href="/public_assets/site/css/site.css">
 
-    <link rel="stylesheet" href="/public_assets/site/css/legal-pages.css">
+    <link rel="stylesheet" href="/public_assets/site/css/legal-pages.css?v=20260831-ascii-header4">
   </head>
   <body data-page="legal">
     <div id="site-main">
@@ -22,7 +22,7 @@
           <div class="legal-banner">
             <div class="legal-banner__content">
               <h1 class="legal-title" id="page-title">Security Notes</h1>
-              <p class="legal-meta">Last updated: 17 August 2026</p>
+              <p class="legal-meta">Last updated: 31 August 2026</p>
             </div>
           </div>
         </section>
@@ -32,7 +32,7 @@
             <p class="legal-toc-label">On this page</p>
             <nav>
               <a href="#authorised-access" data-index="01">Authorised access</a>
-              <a href="#security-controls-and-filestore" data-index="02">Security controls and Filestore</a>
+              <a href="#security-controls-and-private-storage" data-index="02">Security controls and private storage</a>
               <a href="#security-information-and-monitoring" data-index="03">Security information and monitoring</a>
               <a href="#automated-security-checks" data-index="04">Automated security checks</a>
               <a href="#cloudflare-turnstile" data-index="05">Cloudflare Turnstile</a>
@@ -49,7 +49,7 @@
             <section class="security-banner" aria-label="Security reporting">
               <div class="security-banner__content">
                 <h3>Found a security vulnerability?</h3>
-                <p>Public static-site issues go to a private GitHub advisory. Authentication, API, Worker, and private-infrastructure issues use the private report form.</p>
+                <p>Public static-site issues go to a private GitHub advisory. Issues involving private services or infrastructure use the private report form.</p>
               </div>
               <button type="button" class="security-banner__btn" id="open-report-modal">Report concern</button>
             </section>
@@ -59,16 +59,16 @@
               <p>Protected pages and features are available only to authorised users with a valid session. Access may be refused, challenged, rate-limited, suspended, or revoked where authentication fails or a request appears unsafe, abusive, unauthorised, or inconsistent with the <a class="legal-link" href="/legal/terms.html">Terms of Use</a>.</p>
             </section>
 
-            <section class="legal-section" id="security-controls-and-filestore">
-              <h2>Security controls and Filestore</h2>
-              <p>Security controls can include session validation, per-user authorisation, origin checks, encrypted sensitive requests, path confinement, rate limiting, and challenge verification. Filestore browsing requires an authorised site session, while create, upload, rename, and delete actions may also require a separate short-lived Media0 server-control session.</p>
+            <section class="legal-section" id="security-controls-and-private-storage">
+              <h2>Security controls and private storage</h2>
+              <p>Security controls can include session validation, authorisation, origin checks, request protection, rate limiting, and challenge verification. Private storage features are available only through authorised use and may apply additional checks to changes or downloads.</p>
               <p>No description on this page is a guarantee that a particular control is infallible or a disclosure of every internal security measure.</p>
             </section>
 
             <section class="legal-section" id="security-information-and-monitoring">
               <h2>Security information and monitoring</h2>
               <p>Sign-in and protected requests may record IP address, timestamp, user agent, requested page, authentication outcome, challenge result, failed-login reason, rate-limit event, and related security information. This is used to authenticate users, detect abuse, investigate faults, and protect private services.</p>
-              <p>Limited alerts about successful, failed, or blocked sign-in attempts may be sent through a third-party notification service. The <a class="legal-link" href="/legal/privacy">Privacy Policy</a> identifies relevant recipients, retention, rights, and the data protection complaint process.</p>
+              <p>Limited alerts about successful, failed, or blocked sign-in attempts may be sent through a third-party notification service. The <a class="legal-link" href="/legal/privacy.html">Privacy Policy</a> identifies relevant recipients, retention, rights, and the data protection complaint process.</p>
             </section>
 
             <section class="legal-section" id="automated-security-checks">
@@ -95,7 +95,7 @@
 
             <section class="legal-section" id="reporting-a-vulnerability">
               <h2>Reporting a vulnerability</h2>
-              <p>Use the reporting flow above this policy. A vulnerability limited to the public static website can be reported through the website repository's private GitHub security advisory. Concerns involving authentication, sessions, authorisation, protected applications, APIs, Workers, or private infrastructure should use this page's private report form.</p>
+              <p>Use the reporting flow above this policy. A vulnerability limited to the public static website can be reported through the website repository's private GitHub security advisory. Concerns involving sign-in, account access, private services, APIs, or other non-public infrastructure should use this page's private report form.</p>
               <p>Include the affected service, impact, smallest reliable reproduction steps, and a redacted request or proof of concept where useful. Do not include live passwords, session tokens, private keys, or unrelated personal data. You can also email <a class="legal-link" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>.</p>
             </section>
 
@@ -108,16 +108,16 @@
             <section class="legal-section" id="your-responsibilities-as-an-authorised-user">
               <h2>Your responsibilities as an authorised user</h2>
               <ul>
-                <li>Keep login details, one-time codes, server-control codes, and sessions private.</li>
+                <li>Keep login details, one-time codes, and sessions private.</li>
                 <li>Sign out on shared devices and revoke or clear sessions if a device is lost or no longer trusted.</li>
                 <li>Do not disable or bypass authentication, challenges, rate limits, or access controls.</li>
-                <li>Report unexpected sign-in, session, upload, AI, or protected-app activity promptly.</li>
+                <li>Report unexpected sign-in, session, upload, AI, or protected-service activity promptly.</li>
               </ul>
             </section>
 
             <section class="legal-section" id="contact">
               <h2>Contact</h2>
-              <p>Security reports can use the reporting flow on this page. General security questions can be sent to <a class="legal-link" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>. Personal-data concerns and complaints are handled under the <a class="legal-link" href="/legal/privacy">Privacy Policy</a>.</p>
+              <p>Security reports can use the reporting flow on this page. General security questions can be sent to <a class="legal-link" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>. Personal-data concerns and complaints are handled under the <a class="legal-link" href="/legal/privacy.html">Privacy Policy</a>.</p>
             </section>
             </section>
           </div>
@@ -140,7 +140,7 @@
           <div class="security-modal__triage" id="triage-screen">
             <p class="screen-kicker">Step 1 of 2</p>
             <p class="triage-question">What does the concern affect?</p>
-            <p class="triage-intro">Static-site reports belong with the public website repository. Sensitive service reports stay in this private form.</p>
+            <p class="triage-intro">Public website reports belong with the public website repository. Sensitive private-service reports stay in this private form.</p>
             <div class="triage-actions">
               <button type="button" class="report-route" id="triage-yes-btn">
                 <span class="report-route__icon" aria-hidden="true">
@@ -153,8 +153,8 @@
                 <span class="report-route__icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"></rect><path d="M8.5 10V7.5a3.5 3.5 0 0 1 7 0V10M12 14v2"></path></svg>
                 </span>
-                <strong>Auth, API, or Worker</strong>
-                <small>Sign-in, sessions, protected apps, authorisation, backend APIs, Cloudflare Workers, or private infrastructure.</small>
+                <strong>Private service</strong>
+                <small>Sign-in, account access, private APIs, or other non-public services and infrastructure.</small>
               </button>
             </div>
           </div>
@@ -184,7 +184,7 @@
               </div>
               <div class="form-group">
                 <label for="vuln-service">Affected service <span class="required" aria-hidden="true">*</span></label>
-                <input type="text" id="vuln-service" name="service" required maxlength="120" placeholder="e.g. sign-in or protected app">
+              <input type="text" id="vuln-service" name="service" required maxlength="120" placeholder="e.g. sign-in or private service">
               </div>
               <div class="form-group">
                 <label for="vuln-type">Vulnerability type <span class="required" aria-hidden="true">*</span></label>
@@ -229,7 +229,7 @@
     <script src="/public_assets/site/js/config/site-data.js?v=20260728-bio-nav1"></script>
         <script src="/public_assets/site/js/lib/cache.js"></script>
         <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
-        <script src="/public_assets/site/js/layout/shell.js?v=20260831-ascii1" data-active="legal" defer></script>
+        <script src="/public_assets/site/js/layout/shell.js?v=20260831-legalheader1" data-active="legal" defer></script>
     <script>
           (() => {
             const overlayName = /(overlay|backdrop|scrim|dimmer|veil)/i;

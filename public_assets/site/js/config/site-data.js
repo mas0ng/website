@@ -1,6 +1,6 @@
 window.MAS0NG_SITE = {
   loginUrl: 'https://auth.mas0ng.com/login?return_to=%2Fsecure%2Fapps%2F',
-  sharedNavUrl: 'https://sharedassets.mas0ng.com/navbar.js?v=20260831-ascii1',
+  sharedNavUrl: 'https://sharedassets.mas0ng.com/navbar.js?v=20260831-release2',
   siteName: 'mas0ng.com',
   siteOrigin: '',
   nav: [
@@ -11,9 +11,8 @@ window.MAS0NG_SITE = {
   social: [],
   legal: [
     { id: 'legal', label: 'Legal hub', href: '/legal/' },
-    { id: 'privacy', label: 'Privacy policy', href: '/legal/privacy' },
+    { id: 'privacy', label: 'Privacy policy', href: '/legal/privacy.html' },
     { id: 'ai', label: 'AI policy', href: '/legal/ai.html' },
-    { id: 'discord-bots', label: 'Discord bot status', href: '/legal/discord-bots/' },
     { id: 'terms', label: 'Terms', href: '/legal/terms.html' },
     { id: 'cookies', label: 'Cookies', href: '/legal/cookies.html' },
     { id: 'security', label: 'Security', href: '/legal/security.html' },

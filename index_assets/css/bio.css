@@ -96,7 +96,7 @@ body[data-page="bio"] {
   margin: 0;
   color: #fff;
   font-size: 2rem;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 0;
   line-height: 1.1;
 }
@@ -214,8 +214,8 @@ body[data-page="bio"] #site-footer .footer__social-link img {
   }
 
   .bio-masthead {
-    min-height: 520px;
-    padding: 76px 40px 154px;
+    min-height: 430px;
+    padding: 64px 40px 92px;
     isolation: isolate;
   }
 
@@ -236,19 +236,19 @@ body[data-page="bio"] #site-footer .footer__social-link img {
   }
 
   .bio-hero__inner {
-    width: min(100%, 900px);
+    width: min(calc(100% - 48px), 780px);
   }
 
   .bio-profile-card {
     position: relative;
     grid-template-columns: auto minmax(0, 1fr);
     justify-items: start;
-    gap: 38px;
-    padding: 42px 46px;
+    gap: clamp(34px, 5vw, 52px);
+    padding: 46px 50px;
     overflow: hidden;
     border-color: rgba(255, 255, 255, 0.16);
-    border-radius: 28px;
-    background: rgba(0, 0, 0, 0.78);
+    border-radius: 32px;
+    background: linear-gradient(120deg, rgba(5, 5, 7, 0.94), rgba(12, 12, 15, 0.8));
     box-shadow:
       0 28px 70px rgba(0, 0, 0, 0.5),
       inset 0 1px 0 rgba(255, 255, 255, 0.06);
@@ -259,12 +259,12 @@ body[data-page="bio"] #site-footer .footer__social-link img {
   .bio-profile-card::before {
     content: "";
     position: absolute;
-    right: -108px;
-    bottom: -180px;
-    width: 360px;
-    height: 360px;
+    right: -130px;
+    bottom: -200px;
+    width: 400px;
+    height: 400px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.09), transparent 68%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.12), transparent 68%);
     pointer-events: none;
   }
 
@@ -274,13 +274,13 @@ body[data-page="bio"] #site-footer .footer__social-link img {
 
   .bio-profile {
     z-index: 1;
-    width: 146px;
-    height: 146px;
+    width: 164px;
+    height: 164px;
   }
 
   .bio-avatar {
-    width: 146px;
-    height: 146px;
+    width: 164px;
+    height: 164px;
     border-width: 4px;
     box-shadow: 0 20px 44px rgba(0, 0, 0, 0.32);
   }
@@ -298,12 +298,14 @@ body[data-page="bio"] #site-footer .footer__social-link img {
     z-index: 1;
     align-self: center;
     justify-items: start;
-    gap: 10px;
+    gap: 9px;
+    padding-left: clamp(30px, 4vw, 46px);
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
   }
 
   .bio-masthead .hero__title {
     font-family: var(--font-display);
-    font-size: clamp(3.2rem, 5.8vw, 5.25rem);
+    font-size: clamp(3.5rem, 5.6vw, 5.6rem);
     font-weight: 400;
     letter-spacing: -0.03em;
     line-height: 0.94;
@@ -328,12 +330,12 @@ body[data-page="bio"] #site-footer .footer__social-link img {
   }
 
   .bio-main .section__inner {
-    width: min(calc(100% - 48px), 1160px);
-    margin-top: -108px;
+    width: min(calc(100% - 48px), 1060px);
+    margin-top: -42px;
     padding: clamp(34px, 4vw, 48px);
     border-color: rgba(255, 255, 255, 0.16);
-    border-radius: 28px;
-    background: rgba(0, 0, 0, 0.78);
+    border-radius: 30px;
+    background: rgba(3, 3, 5, 0.9);
     box-shadow:
       0 28px 70px rgba(0, 0, 0, 0.5),
       inset 0 1px 0 rgba(255, 255, 255, 0.06);
@@ -345,12 +347,12 @@ body[data-page="bio"] #site-footer .footer__social-link img {
     margin: 0 auto 34px;
     padding-bottom: 28px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.13);
-    text-align: center;
+    text-align: left;
   }
 
   .bio-section-head h2 {
     color: #fff;
-    font-size: clamp(2.35rem, 4.2vw, 3.6rem);
+    font-size: clamp(2rem, 3.2vw, 2.7rem);
     font-weight: 400;
     letter-spacing: -0.03em;
   }
@@ -361,7 +363,7 @@ body[data-page="bio"] #site-footer .footer__social-link img {
   }
 
   .bio-main .social-grid {
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
     max-width: none;
   }

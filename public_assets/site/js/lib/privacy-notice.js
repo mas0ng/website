@@ -47,7 +47,7 @@
       <div class="privacy-notice__body">
         <h2 class="privacy-notice__title" id="privacy-notice-title">Your privacy on mas0ng.com</h2>
         <p class="privacy-notice__copy" id="privacy-notice-copy">This public site does not use analytics, advertising, or cross-site tracking. Dismissing this informational notice saves one preference on this device. Sign-in and the security-report form use separate, strictly necessary security technologies described in the cookie notice.</p>
-        <p class="privacy-notice__links"><a href="/legal/privacy">Privacy policy</a><span aria-hidden="true">&middot;</span><a href="/legal/cookies.html">Cookie notice</a></p>
+        <p class="privacy-notice__links"><a href="/legal/privacy.html">Privacy policy</a><span aria-hidden="true">&middot;</span><a href="/legal/cookies.html">Cookie notice</a></p>
       </div>
       <button class="privacy-notice__confirm" type="button">Dismiss notice</button>
     `;

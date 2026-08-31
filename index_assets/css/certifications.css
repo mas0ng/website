@@ -123,7 +123,7 @@ body[data-page="certifications"] #site-nav .nav__login:focus-visible {
   margin: 0;
   color: #fff;
   font-size: clamp(3rem, 7vw, 5.7rem);
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: -0.055em;
   line-height: 1;
   text-align: center;
@@ -161,11 +161,9 @@ body[data-page="certifications"] #site-nav .nav__login:focus-visible {
 }
 
 .certifications-toolbar {
-  display: grid;
-  justify-items: center;
-  gap: 14px;
-  margin-bottom: 30px;
-  text-align: center;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 14px;
 }
 
 .certifications-kicker {
@@ -188,16 +186,16 @@ body[data-page="certifications"] #site-nav .nav__login:focus-visible {
 }
 
 .certification-filters {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 10px;
   margin-bottom: 26px;
 }
 
 .certification-filter-group {
   position: relative;
-  width: min(100%, 280px);
+  width: 100%;
 }
 
 .certification-filter-toggle {
@@ -258,7 +256,7 @@ body[data-page="certifications"] #site-nav .nav__login:focus-visible {
   left: 0;
   z-index: 30;
   display: none;
-  width: max(100%, 280px);
+  width: 100%;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 16px;

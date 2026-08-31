@@ -28,8 +28,9 @@
 
   const resize = () => {
     const ratio = Math.min(window.devicePixelRatio || 1, 2);
-    width = Math.max(1, Math.round(window.innerWidth));
-    height = Math.max(1, Math.round(window.innerHeight));
+    const bounds = canvas.getBoundingClientRect();
+    width = Math.max(1, Math.round(bounds.width || window.innerWidth));
+    height = Math.max(1, Math.round(bounds.height || window.innerHeight));
     canvas.width = Math.round(width * ratio);
     canvas.height = Math.round(height * ratio);
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
