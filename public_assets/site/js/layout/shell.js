@@ -57,10 +57,15 @@
       d.apps = { public: [], private: [], all: [] };
 
       if (authenticated) {
+        let sharedNavbarReady = false;
         if (!(isLegalPage && hideNav)) {
-          await loadScript(d.sharedNavUrl);
+          sharedNavbarReady = await loadSharedNavbar();
         }
-        mountShell(active, true);
+        mountShell(active, sharedNavbarReady);
+        if (!sharedNavbarReady && !(isLegalPage && hideNav)) {
+          initNav();
+          window.setTimeout(() => loadSharedNavbar(), 1500);
+        }
         initSocialLinkDialog();
         if (isLegalPage && hideNav) {
           updateLegalLinks();
@@ -232,13 +237,24 @@
       }
 
       return new Promise((resolve, reject) => {
+        let settled = false;
+        const timeout = window.setTimeout(() => fail(), 4000);
         const finish = () => {
+          if (settled) return;
+          settled = true;
+          window.clearTimeout(timeout);
           existing.dataset.loaded = 'true';
           resolve();
         };
+        const fail = () => {
+          if (settled) return;
+          settled = true;
+          window.clearTimeout(timeout);
+          reject(new Error(`Failed to load ${src}`));
+        };
 
         existing.addEventListener('load', finish, { once: true });
-        existing.addEventListener('error', reject, { once: true });
+        existing.addEventListener('error', fail, { once: true });
         window.setTimeout(() => {
           if (scriptIsReady(existing)) finish();
         }, 0);
@@ -247,15 +263,41 @@
 
     return new Promise((resolve, reject) => {
       const el = document.createElement('script');
-      el.src = src;
-      el.async = true;
-      el.addEventListener('load', () => {
+      let settled = false;
+      const timeout = window.setTimeout(() => finish(new Error(`Timed out loading ${src}`)), 4000);
+      const finish = (error) => {
+        if (settled) return;
+        settled = true;
+        window.clearTimeout(timeout);
+        if (error) {
+          el.remove();
+          reject(error);
+          return;
+        }
         el.dataset.loaded = 'true';
         resolve();
-      }, { once: true });
-      el.addEventListener('error', reject, { once: true });
+      };
+      el.src = src;
+      el.async = true;
+      el.addEventListener('load', () => finish(), { once: true });
+      el.addEventListener('error', () => finish(new Error(`Failed to load ${src}`)), { once: true });
       document.head.append(el);
     });
+  }
+
+  async function loadSharedNavbar() {
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      if (document.getElementById('mas0ng-shared-navbar')) return true;
+      const target = new URL(d.sharedNavUrl, window.location.href);
+      if (attempt) target.searchParams.set('retry', String(attempt));
+      try {
+        await loadScript(target.toString());
+        if (document.getElementById('mas0ng-shared-navbar')) return true;
+      } catch {
+        // Retry with a unique URL so a transient failed script is not reused.
+      }
+    }
+    return Boolean(document.getElementById('mas0ng-shared-navbar'));
   }
 
   function liveSocials() {
