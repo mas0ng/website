@@ -14,8 +14,30 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" />
   <link rel="stylesheet" href="/public_assets/site/css/site.css?v=20260728-public-api2" />
   <link rel="stylesheet" href="/public_assets/site/css/404.css?v=20260830-simple2" />
+  <style>
+    .page-ascii-background {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      width: 100vw;
+      height: 100vh;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    body[data-page="404"] #site-main {
+      position: relative;
+      z-index: 1;
+      background: rgba(7, 8, 11, 0.28) !important;
+    }
+
+    body[data-page="404"] .not-found__content {
+      text-shadow: 0 2px 26px rgba(0, 0, 0, 0.9);
+    }
+  </style>
 </head>
 <body data-page="404">
+  <canvas class="page-ascii-background" id="page-ascii-background" aria-hidden="true"></canvas>
   <div id="site-main">
     <main class="not-found" aria-labelledby="not-found-title">
       <section class="not-found__content">
@@ -33,11 +55,87 @@
       </section>
     </main>
   </div>
+  <script>
+    (() => {
+      const canvas = document.getElementById('page-ascii-background');
+      const context = canvas?.getContext('2d');
+      if (!canvas || !context) return;
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const glyphs = ' .,:;+=xX#%@';
+      let width = 0;
+      let height = 0;
+      let columns = 0;
+      let rows = 0;
+      let animationFrame = 0;
+      let lastFrame = 0;
+
+      const resize = () => {
+        const ratio = Math.min(window.devicePixelRatio || 1, 2);
+        width = Math.max(1, Math.round(window.innerWidth));
+        height = Math.max(1, Math.round(window.innerHeight));
+        canvas.width = Math.round(width * ratio);
+        canvas.height = Math.round(height * ratio);
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+        context.setTransform(ratio, 0, 0, ratio, 0, 0);
+        columns = Math.ceil(width / 7.7);
+        rows = Math.ceil(height / 17);
+      };
+
+      const draw = (now = 0) => {
+        const time = now * 0.00055;
+        context.clearRect(0, 0, width, height);
+        context.font = '13px "Cascadia Mono", Consolas, monospace';
+        context.textBaseline = 'top';
+        context.shadowColor = 'rgba(96, 165, 250, 0.24)';
+        context.shadowBlur = 8;
+
+        for (let row = 0; row < rows; row += 1) {
+          let line = '';
+          for (let column = 0; column < columns; column += 1) {
+            const wave = Math.sin(column * 0.19 + time * 3.2)
+              + Math.cos(row * 0.31 - time * 2.4)
+              + Math.sin((column + row) * 0.075 + time);
+            const grain = Math.sin(column * 12.9898 + row * 78.233) * 0.45;
+            const value = Math.max(0, Math.min(0.999, (wave + grain + 3.35) / 6.7));
+            line += glyphs[Math.floor(value * glyphs.length)];
+          }
+          const glow = 0.14 + 0.14 * (0.5 + Math.sin(row * 0.17 - time * 2));
+          context.fillStyle = `rgba(147, 197, 253, ${glow.toFixed(3)})`;
+          context.fillText(line, -4, row * 17);
+        }
+      };
+
+      const animate = (now) => {
+        if (now - lastFrame >= 48) {
+          draw(now);
+          lastFrame = now;
+        }
+        animationFrame = window.requestAnimationFrame(animate);
+      };
+
+      resize();
+      draw();
+      if (!reduceMotion) animationFrame = window.requestAnimationFrame(animate);
+      window.addEventListener('resize', () => {
+        resize();
+        draw(performance.now());
+      }, { passive: true });
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          window.cancelAnimationFrame(animationFrame);
+        } else if (!reduceMotion) {
+          animationFrame = window.requestAnimationFrame(animate);
+        }
+      });
+    })();
+  </script>
   <script src="/public_assets/site/js/config/site-data.js?v=20260728-public-api2"></script>
   <script src="/public_assets/site/js/lib/cache.js"></script>
   <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
   <script src="/public_assets/site/js/pages/404.js?v=20260830-simple2" defer></script>
-  <script src="/public_assets/site/js/layout/shell.js?v=20260723-mobile-nav3" data-active="" defer></script>
+  <script src="/public_assets/site/js/layout/shell.js?v=20260831-ascii1" data-active="" defer></script>
 </body>
 </html>

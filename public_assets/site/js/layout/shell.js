@@ -12,6 +12,10 @@
   const isLegalPage = page === 'legal' || /^\/legal(?:\/|$)/.test(window.location.pathname);
   const shellHidden = shellMode === 'none' || (isLegalPage && hideNav);
 
+  if (page === 'bio' || page === 'certifications' || isLegalPage) {
+    loadAsciiBackground(page);
+  }
+
   if (isLegalPage && hideNav) {
     document.documentElement.setAttribute('data-hide-nav', 'true');
   }
@@ -869,5 +873,17 @@
     if (path.startsWith('/legal/privacy')) return 'privacy';
     if (path.startsWith('/legal')) return 'legal';
     return 'page';
+  }
+
+  function loadAsciiBackground(pageName) {
+    if (document.querySelector('script[data-shared-ascii-background]')) return;
+    const asciiScript = document.createElement('script');
+    asciiScript.src = '/public_assets/site/js/ascii-background.js?v=20260830-ascii1';
+    asciiScript.defer = true;
+    asciiScript.dataset.sharedAsciiBackground = '';
+    if (pageName === 'bio' || pageName === 'certifications') {
+      asciiScript.dataset.asciiCanvas = '#masthead-canvas';
+    }
+    document.head.append(asciiScript);
   }
 })();

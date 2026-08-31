@@ -491,3 +491,18 @@ body[data-page="bio"] #site-footer .footer__social-link img {
     border-color: rgba(255, 255, 255, 0.1) !important;
   }
 }
+
+body[data-page="bio"] #masthead-canvas.mas0ng-ascii-background {
+  position: fixed !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  opacity: 0.6 !important;
+  filter: none !important;
+  pointer-events: none;
+}
+
+body[data-page="bio"] .bio-masthead__bg {
+  background: #020305 !important;
+}

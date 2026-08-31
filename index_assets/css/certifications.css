@@ -791,3 +791,18 @@ body[data-page="certifications"] .footer__social-link img {
     transition: none;
   }
 }
+
+body[data-page="certifications"] #masthead-canvas.mas0ng-ascii-background {
+  position: fixed !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  opacity: 0.58 !important;
+  filter: none !important;
+  pointer-events: none;
+}
+
+body[data-page="certifications"] .certifications-hero .masthead__bg {
+  background: #020305 !important;
+}

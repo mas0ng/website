@@ -1370,3 +1370,21 @@
     transition: none !important;
   }
 }
+
+body[data-page="legal"] > .mas0ng-ascii-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: block !important;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+body[data-page="legal"] #site-main,
+body[data-page="legal"] .legal-shell {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.94) !important;
+}

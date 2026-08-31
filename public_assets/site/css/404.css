@@ -5,6 +5,7 @@ body[data-page="404"] {
   background: #07080b;
   font-family: "ABeeZee", "Segoe UI", sans-serif;
 }
+body[data-page="404"] :is(h1, h2, h3, p, a, button, strong, span) { font-weight: 400 !important; }
 body[data-page="404"] #site-main {
   display: flex;
   min-height: 100svh;
@@ -43,20 +44,22 @@ body[data-page="404"] #site-nav .nav__cluster {
 .not-found__code,
 .not-found__title {
   color: #fff;
-  font-family: "Etna", "ABeeZee", sans-serif;
+  font-family: "ABeeZee", "Segoe UI", sans-serif;
   font-weight: 400;
 }
 .not-found__code {
   margin: 0;
-  font-size: clamp(6.5rem, 18vw, 10rem);
-  letter-spacing: -0.075em;
-  line-height: 0.75;
+  color: rgba(255,255,255,.96);
+  font-size: clamp(5.8rem, 17vw, 9rem);
+  letter-spacing: .015em;
+  line-height: .85;
+  text-shadow: 0 0 42px rgba(147,197,253,.16);
 }
 .not-found__title {
-  margin: 32px 0 0;
-  font-size: clamp(2.35rem, 6vw, 4rem);
-  letter-spacing: -0.04em;
-  line-height: 1;
+  margin: 28px 0 0;
+  font-size: clamp(2rem, 5vw, 3.35rem);
+  letter-spacing: -.025em;
+  line-height: 1.08;
 }
 .not-found__description {
   max-width: 42ch;
@@ -85,7 +88,7 @@ body[data-page="404"] #site-nav .nav__cluster {
   background: transparent;
   font-family: "ABeeZee", "Segoe UI", sans-serif;
   font-size: 0.84rem;
-  font-weight: 700;
+  font-weight: 400;
   text-decoration: none;
   cursor: pointer;
   transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
