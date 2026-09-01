@@ -804,3 +804,86 @@ body[data-page="certifications"] #masthead-canvas.mas0ng-ascii-background {
 body[data-page="certifications"] .certifications-hero .masthead__bg {
   background: #020305 !important;
 }
+
+/* Contained banner treatment shared visually with the legal pages. */
+.certifications-hero {
+  width: min(1260px, calc(100% - 72px));
+  min-height: clamp(210px, 24vw, 300px);
+  margin: calc(var(--nav-h, 64px) + 28px) auto 56px;
+  padding: 34px 24px;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #030407;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.28);
+}
+
+.certifications-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(40, 66, 112, 0.14), transparent 60%),
+    linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.28));
+  pointer-events: none;
+}
+
+.certifications-hero .masthead__bg {
+  position: absolute;
+  inset: 0;
+}
+
+body[data-page="certifications"] #masthead-canvas.mas0ng-ascii-background {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0.72 !important;
+}
+
+.certifications-hero .section__title {
+  font-family: "ABeeZee", sans-serif;
+  font-size: clamp(1.7rem, 2.9vw, 2.8rem);
+  letter-spacing: 0;
+  line-height: 1.14;
+  text-shadow: none;
+}
+
+.certifications-hero .section__lead {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: clamp(0.72rem, 0.9vw, 0.84rem);
+  line-height: 1.55;
+}
+
+@media (max-width: 620px) {
+  .certifications-shell::before {
+    background: #000;
+  }
+
+  .certifications-hero {
+    width: calc(100% - 30px);
+    min-height: 0;
+    margin: calc(var(--nav-h, 64px) + 14px) auto 24px;
+    padding: 24px 18px;
+    border-radius: 12px;
+  }
+
+  .certifications-hero__copy {
+    gap: 9px;
+  }
+
+  .certifications-hero .section__title {
+    font-size: clamp(1.3rem, 7vw, 1.65rem);
+    letter-spacing: -0.02em;
+  }
+
+  .certifications-hero .section__lead {
+    max-width: 36ch;
+    font-size: 0.76rem;
+    line-height: 1.45;
+  }
+
+  body[data-page="certifications"] #masthead-canvas.mas0ng-ascii-background {
+    display: block !important;
+  }
+}

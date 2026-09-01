@@ -508,3 +508,81 @@ body[data-page="bio"] #masthead-canvas.mas0ng-ascii-background {
 body[data-page="bio"] .bio-masthead__bg {
   background: #020305 !important;
 }
+
+/* Desktop presentation: echo the contained, cinematic banner used by legal pages. */
+@media (min-width: 734px) {
+  .bio-masthead {
+    width: min(1260px, calc(100% - 72px));
+    min-height: clamp(260px, 24vw, 320px);
+    margin: 28px auto 56px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 22px;
+    background: #030407;
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.34);
+  }
+
+  .bio-masthead::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      radial-gradient(circle at 50% 45%, rgba(40, 66, 112, 0.16), transparent 60%),
+      linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.3));
+    pointer-events: none;
+  }
+
+  .bio-masthead__bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  body[data-page="bio"] #masthead-canvas.mas0ng-ascii-background {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 0.72 !important;
+  }
+
+  .bio-hero__inner {
+    z-index: 2;
+    width: min(100% - 48px, 920px);
+  }
+
+  .bio-profile-card {
+    width: auto;
+    padding: 38px 46px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  .bio-profile-card::before {
+    content: none;
+  }
+
+  .bio-profile {
+    width: 132px;
+    height: 132px;
+  }
+
+  .bio-avatar {
+    width: 132px;
+    height: 132px;
+  }
+
+  .bio-masthead .hero__title {
+    font-family: "ABeeZee", sans-serif;
+    font-size: clamp(2.25rem, 4vw, 3.7rem);
+    letter-spacing: 0;
+    line-height: 1.05;
+  }
+
+  .bio-main .section__inner {
+    margin-top: 0;
+  }
+}
