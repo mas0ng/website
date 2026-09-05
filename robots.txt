@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
 
-Disallow: /404.html
-
+# Allow crawling so page-level noindex directives can be read.
 Sitemap: https://mas0ng.com/sitemap.xml

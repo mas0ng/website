@@ -1,0 +1,16 @@
+# Mason Gibbs (@mas0ng) — mas0ng.com
+
+> The official website of Mason Gibbs, known online as mas0ng, with public social profiles, certifications, and site information.
+
+This overview contains only information already published on the public website. Use the linked pages for current details; certification and social information may change.
+
+## Public pages
+
+- [Official website](https://mas0ng.com/): Mason Gibbs's homepage, public social links, and certification highlights.
+- [Certifications](https://mas0ng.com/certifications.html): Public certifications and credential information.
+
+## Optional
+
+- [Legal information](https://mas0ng.com/legal/): The website's public policies.
+- [Privacy policy](https://mas0ng.com/legal/privacy.html): Information about the website's data handling.
+- [Sitemap](https://mas0ng.com/sitemap.xml): Canonical URLs for indexable public pages.

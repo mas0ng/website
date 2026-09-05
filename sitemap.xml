@@ -1,63 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- lastmod tracks documented content changes, not deployment or crawl dates.
+       Omitted for pages whose dynamic content modification date is not known. -->
   <url>
     <loc>https://mas0ng.com/</loc>
-    <lastmod>2026-07-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://mas0ng.com/certifications.html</loc>
-    <lastmod>2026-07-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mas0ng.com/legal/</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-08-31</lastmod>
   </url>
   <url>
     <loc>https://mas0ng.com/legal/privacy.html</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-08-31</lastmod>
   </url>
   <url>
-    <loc>https://mas0ng.com/legal/ai</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://mas0ng.com/legal/ai.html</loc>
+    <lastmod>2026-08-31</lastmod>
   </url>
   <url>
-    <loc>https://mas0ng.com/legal/terms</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://mas0ng.com/legal/terms.html</loc>
+    <lastmod>2026-08-31</lastmod>
   </url>
   <url>
-    <loc>https://mas0ng.com/legal/cookies</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://mas0ng.com/legal/cookies.html</loc>
+    <lastmod>2026-08-31</lastmod>
   </url>
   <url>
-    <loc>https://mas0ng.com/legal/security</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://mas0ng.com/legal/security.html</loc>
+    <lastmod>2026-08-31</lastmod>
   </url>
   <url>
-    <loc>https://mas0ng.com/legal/licences</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://mas0ng.com/legal/licences.html</loc>
+    <lastmod>2026-08-31</lastmod>
   </url>
   <url>
-    <loc>https://mas0ng.com/legal/downloads</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://mas0ng.com/legal/downloads.html</loc>
+    <lastmod>2026-09-02</lastmod>
   </url>
 </urlset>
