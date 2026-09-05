@@ -1,7 +1,7 @@
 {
-  "site_shell": "2.15",
+  "site_shell": "2.17",
   "home_page": "2.11",
-  "bio_page": "1.10",
-  "legal_pages": "1.8",
+  "bio_page": "1.11",
+  "legal_pages": "1.9",
   "shared_configs": "1.9"
 }

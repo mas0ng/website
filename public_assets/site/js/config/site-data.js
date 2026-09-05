@@ -1,6 +1,6 @@
 window.MAS0NG_SITE = {
   loginUrl: 'https://auth.mas0ng.com/login?return_to=%2Fsecure%2Fapps%2F',
-  sharedNavUrl: 'https://sharedassets.mas0ng.com/navbar.js?v=20260902-navbar13',
+  sharedNavUrl: 'https://sharedassets.mas0ng.com/navbar.js?v=20260905-navbar15',
   siteName: 'mas0ng.com',
   siteOrigin: '',
   nav: [
@@ -29,7 +29,7 @@ window.MAS0NG_SITE = {
     favicon: '/public_assets/site_branding/favicon/blue.svg',
     profileImage: '/public_assets/social_icons/pfp.jpg',
     loaderJs: '/public_assets/site/js/layout/loader.js?v=20260610-loader1',
-    siteCss: '/public_assets/site/css/site.css?v=20260723-mobile-nav3',
+    siteCss: '/public_assets/site/css/site.css?v=20260904-render1',
     legalCss: '/public_assets/site/css/legal.css',
     authCss: '/public_assets/site/css/auth.css',
     homeJs: '/index_assets/js/home.js',

@@ -2,7 +2,7 @@ body[data-page="404"] {
   min-height: 100svh;
   margin: 0;
   color: #f7f8fa;
-  background: #07080b;
+  background: #000;
   font-family: "ABeeZee", "Segoe UI", sans-serif;
 }
 body[data-page="404"] :is(h1, h2, h3, p, a, button, strong, span) { font-weight: 400 !important; }
@@ -11,7 +11,7 @@ body[data-page="404"] #site-main {
   min-height: 100svh;
   padding-top: var(--nav-h, 64px);
   flex-direction: column;
-  background: #07080b;
+  background: #000;
 }
 body[data-page="404"] #site-nav {
   position: fixed !important;
@@ -44,7 +44,7 @@ body[data-page="404"] #site-nav .nav__cluster {
 .not-found__code,
 .not-found__title {
   color: #fff;
-  font-family: "ABeeZee", "Segoe UI", sans-serif;
+  font-family: "Etna", "ABeeZee", sans-serif;
   font-weight: 400;
 }
 .not-found__code {
@@ -94,11 +94,11 @@ body[data-page="404"] #site-nav .nav__cluster {
   transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
 }
 .not-found__button svg { width: 17px; height: 17px; }
-.not-found__button--primary { border-color: #fff; color: #07080b; background: #fff; }
+.not-found__button--primary { border-color: #fff; color: #000; background: #fff; }
 .not-found__button:hover,
 .not-found__button:focus-visible { transform: translateY(-2px); }
 .not-found__button--primary:hover,
-.not-found__button--primary:focus-visible { color: #07080b; background: #e8ebef; }
+.not-found__button--primary:focus-visible { color: #000; background: #e8ebef; }
 .not-found__button--secondary:hover,
 .not-found__button--secondary:focus-visible { border-color: rgba(255, 255, 255, 0.38); background: rgba(255, 255, 255, 0.08); }
 body[data-page="404"] .footer {
