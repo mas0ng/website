@@ -38,3 +38,9 @@ window.MAS0NG_SITE = {
     abeeZee: 'https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap'
   }
 };
+
+// This contains only the public social fields already shown in the page.
+try {
+  const snapshot = JSON.parse(document.getElementById('public-social-snapshot')?.textContent || 'null');
+  if (Array.isArray(snapshot)) window.MAS0NG_SITE.social = snapshot;
+} catch {}

@@ -9,7 +9,7 @@
   <meta name="author" content="Mason Gibbs" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <link rel="canonical" href="https://mas0ng.com/certifications.html" />
-  <link rel="author" href="https://mas0ng.com/bio.html" />
+  <link rel="author" href="https://mas0ng.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="mas0ng.com" />
   <meta property="og:locale" content="en_GB" />
@@ -44,6 +44,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" />
   <link rel="stylesheet" href="/public_assets/site/css/site.css?v=20260904-render1" />
   <link rel="stylesheet" href="/index_assets/css/certifications.css?v=20260905-consistency1" />
+  <script type="application/json" id="public-certifications-snapshot">{"total":8,"certifications":[{"name":"Claude Code in Action","issuing_organization":"Anthropic","icon_url":"/public_assets/certification_icons/organisations/anthropic.svg","type":"Artificial Intelligence","completed_through":"Coursera","credential_id":"EBIRBPQRPKHG","credential_url":"https://www.coursera.org/account/accomplishments/records/EBIRBPQRPKHG"},{"name":"AI for App Building","issuing_organization":"Google","icon_url":"/public_assets/certification_icons/organisations/google.svg","type":"Artificial Intelligence","completed_through":"Coursera","credential_id":"42VIR4YCIJJT","credential_url":"https://www.coursera.org/account/accomplishments/verify/42VIR4YCIJJT"},{"name":"AI for Data Analysis","issuing_organization":"Google","icon_url":"/public_assets/certification_icons/organisations/google.svg","type":"Artificial Intelligence","completed_through":"Coursera","credential_id":"79EXN1UWJW9V","credential_url":"https://www.coursera.org/account/accomplishments/verify/79EXN1UWJW9V"},{"name":"AI for Content Creation","issuing_organization":"Google","icon_url":"/public_assets/certification_icons/organisations/google.svg","type":"Artificial Intelligence","completed_through":"Coursera","credential_id":"SC96QIOQZM11","credential_url":"https://www.coursera.org/account/accomplishments/verify/SC96QIOQZM11"},{"name":"AI for Writing and Communicating","issuing_organization":"Google","icon_url":"/public_assets/certification_icons/organisations/google.svg","type":"Artificial Intelligence","completed_through":"Coursera","credential_id":"XGPQ0DFFQXLB","credential_url":"https://www.coursera.org/account/accomplishments/verify/XGPQ0DFFQXLB"},{"name":"AI for Research and Insights","issuing_organization":"Google","icon_url":"/public_assets/certification_icons/organisations/google.svg","type":"Artificial Intelligence","completed_through":"Coursera","credential_id":"OQ5ZGTSWZHF5","credential_url":"https://www.coursera.org/account/accomplishments/verify/OQ5ZGTSWZHF5"},{"name":"AI for Brainstorming and Planning","issuing_organization":"Google","icon_url":"/public_assets/certification_icons/organisations/google.svg","type":"Artificial Intelligence","completed_through":"Coursera","credential_id":"2NRB7V8HED4S","credential_url":"https://www.coursera.org/account/accomplishments/verify/2NRB7V8HED4S"},{"name":"AI Fundamentals","issuing_organization":"Google","icon_url":"/public_assets/certification_icons/organisations/google.svg","type":"Artificial Intelligence","completed_through":"Coursera","credential_id":"RL2CCG9Q41I5","credential_url":"https://www.coursera.org/account/accomplishments/verify/RL2CCG9Q41I5"}]}</script>
 </head>
 <body data-page="certifications">
   <div id="site-main">
@@ -62,26 +63,187 @@
       <section class="section certifications-section" aria-label="Certification archive">
         <div class="section__inner">
           <div class="certifications-toolbar">
-            <span class="certifications-count" id="certification-count">Loading...</span>
+            <span class="certifications-count" id="certification-count">8 certifications</span>
           </div>
           <div class="certification-filters" id="certification-filters" aria-label="Filter certifications">
-            <p class="certification-filters__loading">Loading filters...</p>
+
+      <div class="certification-filter-group" data-filter-group="type">
+        <button class="certification-filter-toggle" type="button" aria-expanded="false" aria-controls="certification-type-menu" data-filter-toggle>
+          <span class="certification-filter-toggle__label">Type</span>
+          <span class="certification-filter-toggle__summary" data-filter-summary>All types</span>
+          <svg class="certification-filter-toggle__chevron" width="12" height="8" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="certification-filter-menu" id="certification-type-menu">
+          <div class="certification-filter-menu__options">
+
+        <label class="certification-filter-option">
+          <input type="checkbox" data-filter="type" value="artificial intelligence" />
+          <span class="certification-filter-option__mark" aria-hidden="true"></span>
+          <span class="certification-filter-option__text">Artificial Intelligence</span>
+        </label>
+
+          </div>
+          <button class="certification-filter-clear" type="button" data-filter-clear="type">Clear type</button>
+        </div>
+      </div>
+
+      <div class="certification-filter-group" data-filter-group="organization">
+        <button class="certification-filter-toggle" type="button" aria-expanded="false" aria-controls="certification-organization-menu" data-filter-toggle>
+          <span class="certification-filter-toggle__label">Issuing organization</span>
+          <span class="certification-filter-toggle__summary" data-filter-summary>All organizations</span>
+          <svg class="certification-filter-toggle__chevron" width="12" height="8" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="certification-filter-menu" id="certification-organization-menu">
+          <div class="certification-filter-menu__options">
+
+        <label class="certification-filter-option">
+          <input type="checkbox" data-filter="organization" value="anthropic" />
+          <span class="certification-filter-option__mark" aria-hidden="true"></span>
+          <span class="certification-filter-option__text">Anthropic</span>
+        </label>
+
+        <label class="certification-filter-option">
+          <input type="checkbox" data-filter="organization" value="google" />
+          <span class="certification-filter-option__mark" aria-hidden="true"></span>
+          <span class="certification-filter-option__text">Google</span>
+        </label>
+
+          </div>
+          <button class="certification-filter-clear" type="button" data-filter-clear="organization">Clear issuing organization</button>
+        </div>
+      </div>
+
           </div>
           <div class="qualification-grid certification-grid" id="certification-grid">
-            <div class="tile-skeleton">
-              <div class="tile-skeleton__icon skeleton-shimmer"></div>
-              <div class="tile-skeleton__body">
-                <div class="tile-skeleton__line skeleton-shimmer"></div>
-                <div class="tile-skeleton__line tile-skeleton__line--short skeleton-shimmer"></div>
-              </div>
+
+        <article class="certification-card">
+          <div class="certification-card__top">
+            <div class="qualification-card__icon">
+              <img src="/public_assets/certification_icons/organisations/anthropic.svg" alt="" width="44" height="44" loading="lazy" decoding="async" />
             </div>
-            <div class="tile-skeleton">
-              <div class="tile-skeleton__icon skeleton-shimmer"></div>
-              <div class="tile-skeleton__body">
-                <div class="tile-skeleton__line skeleton-shimmer"></div>
-                <div class="tile-skeleton__line tile-skeleton__line--short skeleton-shimmer"></div>
-              </div>
+            <span class="certification-card__type">Artificial Intelligence</span>
+          </div>
+          <div class="certification-card__body">
+            <h2>Claude Code in Action</h2>
+            <p>Anthropic</p>
+            <p class="certification-card__meta">Completed through: Coursera</p>
+            <p class="certification-card__meta">Credential ID: EBIRBPQRPKHG</p>
+          </div>
+          <a class="certification-card__link" href="https://www.coursera.org/account/accomplishments/records/EBIRBPQRPKHG" data-credential-url="https://www.coursera.org/account/accomplishments/records/EBIRBPQRPKHG">View credential</a>
+        </article>
+
+        <article class="certification-card">
+          <div class="certification-card__top">
+            <div class="qualification-card__icon">
+              <img src="/public_assets/certification_icons/organisations/google.svg" alt="" width="44" height="44" loading="lazy" decoding="async" />
             </div>
+            <span class="certification-card__type">Artificial Intelligence</span>
+          </div>
+          <div class="certification-card__body">
+            <h2>AI for App Building</h2>
+            <p>Google</p>
+            <p class="certification-card__meta">Completed through: Coursera</p>
+            <p class="certification-card__meta">Credential ID: 42VIR4YCIJJT</p>
+          </div>
+          <a class="certification-card__link" href="https://www.coursera.org/account/accomplishments/verify/42VIR4YCIJJT" data-credential-url="https://www.coursera.org/account/accomplishments/verify/42VIR4YCIJJT">View credential</a>
+        </article>
+
+        <article class="certification-card">
+          <div class="certification-card__top">
+            <div class="qualification-card__icon">
+              <img src="/public_assets/certification_icons/organisations/google.svg" alt="" width="44" height="44" loading="lazy" decoding="async" />
+            </div>
+            <span class="certification-card__type">Artificial Intelligence</span>
+          </div>
+          <div class="certification-card__body">
+            <h2>AI for Data Analysis</h2>
+            <p>Google</p>
+            <p class="certification-card__meta">Completed through: Coursera</p>
+            <p class="certification-card__meta">Credential ID: 79EXN1UWJW9V</p>
+          </div>
+          <a class="certification-card__link" href="https://www.coursera.org/account/accomplishments/verify/79EXN1UWJW9V" data-credential-url="https://www.coursera.org/account/accomplishments/verify/79EXN1UWJW9V">View credential</a>
+        </article>
+
+        <article class="certification-card">
+          <div class="certification-card__top">
+            <div class="qualification-card__icon">
+              <img src="/public_assets/certification_icons/organisations/google.svg" alt="" width="44" height="44" loading="lazy" decoding="async" />
+            </div>
+            <span class="certification-card__type">Artificial Intelligence</span>
+          </div>
+          <div class="certification-card__body">
+            <h2>AI for Content Creation</h2>
+            <p>Google</p>
+            <p class="certification-card__meta">Completed through: Coursera</p>
+            <p class="certification-card__meta">Credential ID: SC96QIOQZM11</p>
+          </div>
+          <a class="certification-card__link" href="https://www.coursera.org/account/accomplishments/verify/SC96QIOQZM11" data-credential-url="https://www.coursera.org/account/accomplishments/verify/SC96QIOQZM11">View credential</a>
+        </article>
+
+        <article class="certification-card">
+          <div class="certification-card__top">
+            <div class="qualification-card__icon">
+              <img src="/public_assets/certification_icons/organisations/google.svg" alt="" width="44" height="44" loading="lazy" decoding="async" />
+            </div>
+            <span class="certification-card__type">Artificial Intelligence</span>
+          </div>
+          <div class="certification-card__body">
+            <h2>AI for Writing and Communicating</h2>
+            <p>Google</p>
+            <p class="certification-card__meta">Completed through: Coursera</p>
+            <p class="certification-card__meta">Credential ID: XGPQ0DFFQXLB</p>
+          </div>
+          <a class="certification-card__link" href="https://www.coursera.org/account/accomplishments/verify/XGPQ0DFFQXLB" data-credential-url="https://www.coursera.org/account/accomplishments/verify/XGPQ0DFFQXLB">View credential</a>
+        </article>
+
+        <article class="certification-card">
+          <div class="certification-card__top">
+            <div class="qualification-card__icon">
+              <img src="/public_assets/certification_icons/organisations/google.svg" alt="" width="44" height="44" loading="lazy" decoding="async" />
+            </div>
+            <span class="certification-card__type">Artificial Intelligence</span>
+          </div>
+          <div class="certification-card__body">
+            <h2>AI for Research and Insights</h2>
+            <p>Google</p>
+            <p class="certification-card__meta">Completed through: Coursera</p>
+            <p class="certification-card__meta">Credential ID: OQ5ZGTSWZHF5</p>
+          </div>
+          <a class="certification-card__link" href="https://www.coursera.org/account/accomplishments/verify/OQ5ZGTSWZHF5" data-credential-url="https://www.coursera.org/account/accomplishments/verify/OQ5ZGTSWZHF5">View credential</a>
+        </article>
+
+        <article class="certification-card">
+          <div class="certification-card__top">
+            <div class="qualification-card__icon">
+              <img src="/public_assets/certification_icons/organisations/google.svg" alt="" width="44" height="44" loading="lazy" decoding="async" />
+            </div>
+            <span class="certification-card__type">Artificial Intelligence</span>
+          </div>
+          <div class="certification-card__body">
+            <h2>AI for Brainstorming and Planning</h2>
+            <p>Google</p>
+            <p class="certification-card__meta">Completed through: Coursera</p>
+            <p class="certification-card__meta">Credential ID: 2NRB7V8HED4S</p>
+          </div>
+          <a class="certification-card__link" href="https://www.coursera.org/account/accomplishments/verify/2NRB7V8HED4S" data-credential-url="https://www.coursera.org/account/accomplishments/verify/2NRB7V8HED4S">View credential</a>
+        </article>
+
+        <article class="certification-card">
+          <div class="certification-card__top">
+            <div class="qualification-card__icon">
+              <img src="/public_assets/certification_icons/organisations/google.svg" alt="" width="44" height="44" loading="lazy" decoding="async" />
+            </div>
+            <span class="certification-card__type">Artificial Intelligence</span>
+          </div>
+          <div class="certification-card__body">
+            <h2>AI Fundamentals</h2>
+            <p>Google</p>
+            <p class="certification-card__meta">Completed through: Coursera</p>
+            <p class="certification-card__meta">Credential ID: RL2CCG9Q41I5</p>
+          </div>
+          <a class="certification-card__link" href="https://www.coursera.org/account/accomplishments/verify/RL2CCG9Q41I5" data-credential-url="https://www.coursera.org/account/accomplishments/verify/RL2CCG9Q41I5">View credential</a>
+        </article>
+
           </div>
         </div>
       </section>
@@ -104,11 +266,11 @@
     </dialog>
   </div>
 
-  <script src="/public_assets/site/js/config/site-data.js?v=20260728-bio-nav1"></script>
+  <script src="/public_assets/site/js/config/site-data.js?v=20260906-public-snapshot1"></script>
   <script src="/public_assets/site/js/lib/cache.js"></script>
   <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
-  <script src="/public_assets/site/js/layout/shell.js?v=20260904-render1" data-active="certifications" defer></script>
-  <script src="/index_assets/js/certifications.js?v=20260728-public-api1" defer></script>
+  <script src="/public_assets/site/js/layout/shell.js?v=20260906-public-snapshot1" data-active="certifications" defer></script>
+  <script src="/index_assets/js/certifications.js?v=20260906-public-snapshot1" defer></script>
 
   <svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>

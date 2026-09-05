@@ -5,7 +5,7 @@
   const socialGrid = document.getElementById('social-grid');
   const skeletons = window.MAS0NG_GRID_SKELETONS;
 
-  if (skeletons) {
+  if (skeletons && !socialGrid?.querySelector('.social-tile')) {
     skeletons.mount(socialGrid, 'social', 4);
   }
 

@@ -144,12 +144,11 @@
 
       const data = await response.json();
       const socialLinks = Array.isArray(data) ? data : data?.social_links;
-      d.social = Array.isArray(socialLinks)
-        ? socialLinks.map((item) => ({ ...item, icon: resolveAssetUrl(item.icon) }))
-        : [];
+      if (!Array.isArray(socialLinks)) throw new Error('Invalid social links');
+      d.social = socialLinks.map((item) => ({ ...item, icon: resolveAssetUrl(item.icon) }));
     } catch (error) {
       console.warn('Failed to load social config:', error);
-      d.social = [];
+      // Keep the public HTML snapshot available when the refresh fails.
     }
   }
 

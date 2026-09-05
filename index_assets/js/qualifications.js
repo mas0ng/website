@@ -32,10 +32,12 @@
     try {
       const response = await fetch(API_URL, { headers: { Accept: 'application/json' } });
       if (!response.ok) throw new Error('HTTP ' + response.status);
-      return await response.json();
+      const data = await response.json();
+      if (!Array.isArray(data.certifications)) throw new Error('Invalid certifications');
+      return data;
     } catch (error) {
       console.warn('Certifications preview fetch failed:', error);
-      return { certifications: [] };
+      return null;
     }
   }
 
@@ -80,7 +82,18 @@
     moreIndicator.hidden = false;
   }
 
+  // Hydrate the same public snapshot already rendered in the HTML.
+  try {
+    const snapshot = JSON.parse(document.getElementById('public-certifications-snapshot')?.textContent || 'null');
+    if (Array.isArray(snapshot?.certifications)) {
+      const certifications = snapshot.certifications.slice(0, limit);
+      render(certifications);
+      renderMoreIndicator(snapshot, certifications.length);
+    }
+  } catch {}
+
   fetchCertifications().then((data) => {
+    if (!data) return;
     const certifications = Array.isArray(data.certifications) ? data.certifications : [];
     render(certifications);
     renderMoreIndicator(data, certifications.length);

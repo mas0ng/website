@@ -49,10 +49,12 @@
     try {
       const response = await fetch(API_URL, { headers: { Accept: 'application/json' } });
       if (!response.ok) throw new Error('HTTP ' + response.status);
-      return await response.json();
+      const data = await response.json();
+      if (!Array.isArray(data.certifications)) throw new Error('Invalid certifications');
+      return data;
     } catch (error) {
       console.warn('Certifications fetch failed:', error);
-      return { certifications: [], types: [] };
+      return null;
     }
   }
 
@@ -300,7 +302,7 @@
     credentialDialog?.close();
   }
 
-  fetchCertifications().then((data) => {
+  function applyData(data) {
     allCertifications = Array.isArray(data.certifications) ? data.certifications : [];
     const types = Array.isArray(data.types)
       ? data.types
@@ -308,5 +310,14 @@
     const organizations = allCertifications.map((cert) => cert.issuing_organization);
     renderFilters(types, organizations);
     renderGrid();
+  }
+
+  try {
+    const snapshot = JSON.parse(document.getElementById('public-certifications-snapshot')?.textContent || 'null');
+    if (Array.isArray(snapshot?.certifications)) applyData(snapshot);
+  } catch {}
+
+  fetchCertifications().then((data) => {
+    if (data) applyData(data);
   });
 })();

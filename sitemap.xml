@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- lastmod tracks documented content changes, not deployment or crawl dates.
-       Omitted for pages whose dynamic content modification date is not known. -->
+  <!-- lastmod tracks documented content changes, including published HTML snapshots. -->
   <url>
     <loc>https://mas0ng.com/</loc>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://mas0ng.com/certifications.html</loc>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://mas0ng.com/legal/</loc>
