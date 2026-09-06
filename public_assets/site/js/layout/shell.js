@@ -77,9 +77,10 @@
       }
 
       const bootTasks = buildCoreTasks(page);
-      if (page === 'home' && initialHashTarget) {
-        window.MAS0NG_LOADER.hide(true);
-        await window.MAS0NG_LOADER.runQuiet(bootTasks);
+      if (page === 'home') {
+        // home-ready.js owns the initial reveal; optional resources must never
+        // reopen the fullscreen loader or delay navigation initialization.
+        window.MAS0NG_LOADER.runQuiet(bootTasks).catch(() => {});
       } else {
         await window.MAS0NG_LOADER.runBoot(bootTasks);
       }
@@ -105,7 +106,7 @@
       window.addEventListener('pageshow', () => window.MAS0NG_LOADER?.hide?.(true));
       document.dispatchEvent(new CustomEvent('mas0ng:shell-ready'));
     } finally {
-      window.MAS0NG_LOADER?.hide?.(true);
+      if (page !== 'home') window.MAS0NG_LOADER?.hide?.(true);
     }
   }
 
