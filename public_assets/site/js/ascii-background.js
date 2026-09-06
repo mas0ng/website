@@ -7,6 +7,7 @@
     canvas = document.createElement("canvas");
     canvas.setAttribute("aria-hidden", "true");
     canvas.className = "mas0ng-ascii-background";
+    canvas.style.cssText = "position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0";
     document.body.prepend(canvas);
   }
 
@@ -17,7 +18,8 @@
   const context = canvas.getContext("2d");
   if (!context) return;
 
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const font = '13px "Cascadia Mono", Consolas, monospace';
   const glyphs = " .,:;+=xX#%@";
   let width = 0;
   let height = 0;
@@ -25,26 +27,37 @@
   let rows = 0;
   let animationFrame = 0;
   let lastFrame = 0;
+  let elapsed = 0;
+  let resizeFrame = 0;
+  let contextLost = false;
+  let pageHidden = false;
+  let inViewport = true;
 
   const resize = () => {
-    const ratio = Math.min(window.devicePixelRatio || 1, 2);
     const bounds = canvas.getBoundingClientRect();
-    width = Math.max(1, Math.round(bounds.width || window.innerWidth));
-    height = Math.max(1, Math.round(bounds.height || window.innerHeight));
-    canvas.width = Math.round(width * ratio);
-    canvas.height = Math.round(height * ratio);
-    context.setTransform(ratio, 0, 0, ratio, 0, 0);
-    columns = Math.ceil(width / 7.7);
+    width = Math.max(1, Math.round(bounds.width));
+    height = Math.max(1, Math.round(bounds.height));
+    // Bound both memory and dimensions on high-DPI and very large screens.
+    const ratio = Math.min(window.devicePixelRatio || 1, 2,
+      4096 / width, 4096 / height, Math.sqrt(4000000 / (width * height)));
+    const pixelWidth = Math.max(1, Math.floor(width * ratio));
+    const pixelHeight = Math.max(1, Math.floor(height * ratio));
+    if (canvas.width !== pixelWidth) canvas.width = pixelWidth;
+    if (canvas.height !== pixelHeight) canvas.height = pixelHeight;
+    context.setTransform(pixelWidth / width, 0, 0, pixelHeight / height, 0, 0);
+    context.font = font;
+    const characterWidth = context.measureText("M").width || 7.7;
+    columns = Math.ceil((width + 4) / characterWidth) + 1;
     rows = Math.ceil(height / 17);
   };
 
   const draw = (now = 0) => {
     const time = now * 0.00055;
     context.clearRect(0, 0, width, height);
-    context.font = '13px "Cascadia Mono", Consolas, monospace';
+    context.font = font;
     context.textBaseline = "top";
     context.shadowColor = "rgba(96, 165, 250, 0.28)";
-    context.shadowBlur = 8;
+    context.shadowBlur = 0;
 
     for (let row = 0; row < rows; row += 1) {
       let line = "";
@@ -63,27 +76,53 @@
   };
 
   const animate = (now) => {
+    animationFrame = 0;
+    if (document.hidden || pageHidden || !inViewport || contextLost || motionPreference.matches) return;
+    if (!lastFrame) lastFrame = now;
     if (now - lastFrame >= 48) {
-      draw(now);
+      elapsed += Math.min(now - lastFrame, 100);
+      draw(elapsed);
       lastFrame = now;
     }
     animationFrame = window.requestAnimationFrame(animate);
   };
 
-  resize();
-  draw();
-  if (!reduceMotion) animationFrame = window.requestAnimationFrame(animate);
-
-  window.addEventListener("resize", () => {
+  const syncAnimation = () => {
+    window.cancelAnimationFrame(animationFrame);
+    animationFrame = 0;
+    lastFrame = 0;
+    if (document.hidden || pageHidden || !inViewport || contextLost) return;
     resize();
-    draw(performance.now());
-  }, { passive: true });
-
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-      window.cancelAnimationFrame(animationFrame);
-    } else if (!reduceMotion) {
-      animationFrame = window.requestAnimationFrame(animate);
-    }
+    draw(elapsed);
+    if (!motionPreference.matches) animationFrame = window.requestAnimationFrame(animate);
+  };
+  const queueResize = () => {
+    if (resizeFrame) return;
+    resizeFrame = window.requestAnimationFrame(() => {
+      resizeFrame = 0;
+      syncAnimation();
+    });
+  };
+  window.addEventListener("resize", queueResize, { passive: true });
+  window.visualViewport?.addEventListener("resize", queueResize, { passive: true });
+  if (window.ResizeObserver) new ResizeObserver(queueResize).observe(canvas);
+  if (motionPreference.addEventListener) motionPreference.addEventListener("change", syncAnimation);
+  else motionPreference.addListener(syncAnimation);
+  document.addEventListener("visibilitychange", syncAnimation);
+  window.addEventListener("pagehide", () => { pageHidden = true; syncAnimation(); });
+  window.addEventListener("pageshow", () => { pageHidden = false; syncAnimation(); });
+  canvas.addEventListener("contextlost", (event) => {
+    event.preventDefault();
+    contextLost = true;
+    syncAnimation();
   });
+  canvas.addEventListener("contextrestored", () => { contextLost = false; syncAnimation(); });
+  document.fonts?.ready.then(queueResize);
+  if (window.IntersectionObserver) {
+    new IntersectionObserver(([entry]) => {
+      inViewport = entry.isIntersecting;
+      syncAnimation();
+    }).observe(canvas);
+  }
+  syncAnimation();
 })();

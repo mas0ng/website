@@ -1,0 +1,15 @@
+:root {
+  --font-body: "ABeeZee", sans-serif;
+  --font-display: "ABeeZee", sans-serif;
+  --surface-page: #000;
+  --surface-card: #111419;
+  --surface-raised: #171c24;
+  --content-primary: #e4e7ed;
+  --content-muted: #aab3c2;
+  --border-subtle: rgba(255,255,255,.1);
+  --border-strong: rgba(255,255,255,.18);
+  --accent-text: #9dc1ff;
+  --radius-card: 20px;
+  --space-small: 12px;
+  --space-medium: 24px;
+}

@@ -185,7 +185,7 @@
     }
 
     if (!certifications.length) {
-      grid.innerHTML = '<p class="qualification-empty">No certifications match this filter yet.</p>';
+      grid.innerHTML = '<p class="qualification-empty content-status" role="status">No certifications match this filter yet.</p>';
       return;
     }
 

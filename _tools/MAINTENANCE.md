@@ -13,3 +13,7 @@ The HTML includes escaped JSON copies for JavaScript initialization. Live refres
 Review and commit locally generated HTML with the source change. CI-generated snapshots are included in the deployment artifact without writing bot commits back to the repository. Changed snapshots update their sitemap `lastmod` dates automatically. A failed or incomplete fetch aborts generation before writing any pages. Never add private endpoints, account data, or private application details here.
 
 `package-pages.mjs` uses an explicit allowlist for the public artifact, excluding build tools, workflow files and Git metadata. The build needs the two public endpoints; visitors and crawlers receive the generated HTML and do not need them. Use the workflow's manual Run workflow action to publish a new snapshot when only public API data has changed.
+
+## Style maintenance
+
+Shared visual tokens live in public_assets/site/css/tokens.css; loading/error states live in content-states.css. Open _tools/style-reference/index.html through the local website server to review examples. The _tools directory is excluded from the Pages artifact, including this reference. Run node _tools/check-links.mjs for a lightweight local-asset check; the publish workflow runs it too. It checks the main and legal static pages without contacting remote sites or private Worker routes.

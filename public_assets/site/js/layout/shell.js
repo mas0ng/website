@@ -920,7 +920,7 @@
   function loadAsciiBackground(pageName) {
     if (document.querySelector('script[data-shared-ascii-background]')) return;
     const asciiScript = document.createElement('script');
-    asciiScript.src = '/public_assets/site/js/ascii-background.js?v=20260831-element1';
+    asciiScript.src = '/public_assets/site/js/ascii-background.js?v=20260906-shared1';
     asciiScript.defer = true;
     asciiScript.dataset.sharedAsciiBackground = '';
     if (pageName === 'bio' || pageName === 'certifications') {

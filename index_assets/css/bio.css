@@ -483,16 +483,7 @@ body[data-page="bio"] #site-footer .footer__social-link img {
   }
 }
 
-@media not all {
-  body[data-page="bio"],
-  .bio-main {
-    background: #07111f;
-  }
 
-  .bio-main .social-tile {
-    border-color: rgba(255, 255, 255, 0.1) !important;
-  }
-}
 
 body[data-page="bio"] #masthead-canvas.mas0ng-ascii-background {
   position: fixed !important;
@@ -585,10 +576,8 @@ body[data-page="bio"] .bio-masthead__bg {
   .bio-main .section__inner {
     margin-top: 0;
   }
-}
 
-/* Keep the mobile presentation; give desktop links a simple, open list. */
-@media (min-width: 734px) {
+  /* Desktop social list; mobile rules above remain unchanged. */
   .bio-main .section__inner {
     width: min(720px, calc(100% - 72px));
     margin-top: 0;

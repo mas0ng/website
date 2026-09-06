@@ -3,23 +3,6 @@
 
   // This deferred script runs after the ASCII renderer's first draw and after
   // the document's stylesheets have loaded. Images and API calls are optional.
-  const seen = new WeakSet();
-  function watchImages() {
-    document.querySelectorAll('#site-main .qualification-card__icon img, #site-main .social-tile__icon-wrap img').forEach((img) => {
-      if (seen.has(img)) return;
-      seen.add(img);
-      const slot = img.parentElement;
-      const done = () => slot.classList.remove('home-image-pending');
-      if (img.complete) return;
-      slot.classList.add('home-image-pending');
-      img.addEventListener('load', done, { once: true });
-      img.addEventListener('error', done, { once: true });
-      if (img.complete) done();
-    });
-  }
-  watchImages();
-  new MutationObserver(watchImages).observe(document.getElementById('site-main'), { childList: true, subtree: true });
-
   let revealed = false;
   const reveal = () => {
     if (revealed) return;

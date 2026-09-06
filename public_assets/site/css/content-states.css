@@ -1,0 +1,6 @@
+.image-pending, .image-unavailable { background: var(--surface-raised); }
+.image-pending { animation: image-placeholder 1.6s ease-in-out infinite; }
+.image-pending img, .image-unavailable img { opacity: 0; }
+.content-status { padding: var(--space-medium); border: 1px solid var(--border-subtle); border-radius: var(--radius-card); color: var(--content-muted); background: var(--surface-card); grid-column: 1 / -1; }
+@keyframes image-placeholder { 50% { background-color: #29313e; } }
+@media (prefers-reduced-motion: reduce) { .image-pending { animation: none; } }

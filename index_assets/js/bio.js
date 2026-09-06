@@ -18,11 +18,11 @@
       const toRender = d.social || [];
       socialGrid.innerHTML = window.MAS0NG_SOCIAL_TILES.renderGrid(toRender);
       if (skeletons) {
-        await skeletons.waitForImages(socialGrid);
+        // Image placeholders load independently of the social content.
         skeletons.done(socialGrid);
       }
     } catch (error) {
-      socialGrid.innerHTML = '<p class="section__lead">Social links could not be loaded right now.</p>';
+      if (!socialGrid.querySelector('.social-tile')) socialGrid.innerHTML = '<p class="content-status" role="status">Social links are temporarily unavailable. Please try again later.</p>';
       skeletons?.done(socialGrid);
       console.warn('Failed to render social links:', error);
     }
