@@ -94,7 +94,7 @@ const certifications = certResponse.certifications.map((item) => ({
   completed_through: text(item.completed_through || ''), credential_id: text(item.credential_id || ''),
   credential_url: item.credential_url ? href(item.credential_url) : ''
 }));
-if (!socials.length || !certifications.length || certifications.length !== certResponse.total) throw new Error('Incomplete public snapshot; leaving existing HTML unchanged');
+if (socialResponse.count !== socialResponse.social_links.length || certifications.length !== certResponse.total) throw new Error('Incomplete public snapshot; leaving existing HTML unchanged');
 const certData = { total: certifications.length, certifications };
 const [preview, archive] = await Promise.all([
   render('index_assets/js/qualifications.js', { ...certData, certifications: certifications.slice(0, 6) }),
@@ -115,6 +115,18 @@ let html = replaceGrid(await read('certifications.html'), 'certification-grid', 
 html = replaceGrid(html, 'certification-filters', archive.elements.get('certification-filters').innerHTML);
 html = html.replace(/(<span[^>]*id="certification-count"[^>]*>)[\s\S]*?(<\/span>)/, (_, start, end) => start + escape(archive.elements.get('certification-count').textContent) + end);
 output.set('certifications.html', snapshot(html, 'public-certifications-snapshot', certData));
+
+// Update modification dates only when published page content actually changes.
+let sitemap = await read('sitemap.xml');
+for (const file of ['index.html', 'certifications.html']) {
+  const normalize = (value) => value.replace(/\r\n/g, '\n');
+  if (normalize(output.get(file)) === normalize(await read(file))) continue;
+  const url = 'https://mas0ng.com/' + (file === 'index.html' ? '' : file);
+  const escapedUrl = url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const pattern = new RegExp('(<loc>' + escapedUrl + '</loc>)\\s*(?:<lastmod>[^<]*</lastmod>\\s*)?');
+  sitemap = sitemap.replace(pattern, '$1\n    <lastmod>' + new Date().toISOString().slice(0, 10) + '</lastmod>\n  ');
+}
+output.set('sitemap.xml', sitemap);
 
 // Write only after every fetch, validation and render has succeeded.
 for (const [file, value] of output) await write(file, value);

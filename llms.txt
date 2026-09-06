@@ -11,6 +11,8 @@ This overview contains only information already published on the public website.
 
 ## Optional
 
+- [Current public social links (JSON)](https://mas0ng.com/unencrypted/api/social-links): Optional read-only GET endpoint; no authentication required. Active profiles have a real URL in `social_links[].href`; `#` means the profile is not published. Prefer the homepage as the citation URL.
+- [Current public certifications (JSON)](https://mas0ng.com/unencrypted/api/certifications?range=all): Optional read-only GET endpoint; no authentication required. Returns the public certification list and total. Prefer the certifications page as the citation URL. If either endpoint is unavailable, use the HTML snapshots above.
 - [Legal information](https://mas0ng.com/legal/): The website's public policies.
 - [Privacy policy](https://mas0ng.com/legal/privacy.html): Information about the website's data handling.
 - [Sitemap](https://mas0ng.com/sitemap.xml): Canonical URLs for indexable public pages.
