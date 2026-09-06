@@ -1,6 +1,6 @@
 window.MAS0NG_SITE = {
   loginUrl: 'https://auth.mas0ng.com/login?return_to=%2Fsecure%2Fapps%2F',
-  sharedNavUrl: 'https://sharedassets.mas0ng.com/navbar.js?v=20260905-navbar15',
+  sharedNavUrl: 'https://sharedassets.mas0ng.com/navbar.js?v=20260906-navbar16',
   siteName: 'mas0ng.com',
   siteOrigin: '',
   nav: [

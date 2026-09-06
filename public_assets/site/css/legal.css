@@ -33,7 +33,7 @@ body[data-page="legal"] #site-main,
   width: 100%;
   margin: 0;
   padding: 0 0 clamp(72px, 9vw, 112px);
-  overflow: hidden;
+  overflow: clip;
   background: transparent;
 }
 
@@ -811,3 +811,7 @@ body[data-page="legal"] *, body[data-page="legal"] *::before, body[data-page="le
 .legal-summary-card, .legal-right-card, .data-row:nth-child(even) { background: #171c24; }
 .security-banner__btn, .btn-primary { color: #091320 !important; }
 @media print { :root { --legal-text: #111; --legal-surface: #fff; --legal-muted: #444; } .legal-header-ascii { display: none; } }
+
+/* Sticky contents must follow the document, not an overflow container. */
+body[data-page="legal"] #site-main, body[data-page="legal"] .legal-shell { overflow: visible; }
+.legal-toc { align-self: start; height: fit-content; overscroll-behavior: contain; }
