@@ -11,16 +11,16 @@
     <meta name="theme-color" content="#000000">
     <link rel="icon" type="image/svg+xml" href="/public_assets/site_branding/favicon/blue.svg">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="/public_assets/fonts/etna.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap">
     <link rel="stylesheet" href="/public_assets/site/css/site.css?v=20260904-render1">
 
-    <link rel="stylesheet" href="/public_assets/site/css/legal.css?v=20260905-consistency1">
+    <link rel="stylesheet" href="/public_assets/site/css/legal.css?v=20260906-dark1">
   </head>
   <body data-page="legal">
     <div id="site-main">
       <main class="legal-shell">
         <section class="legal-hero" aria-labelledby="page-title">
+          <canvas id="legal-header-ascii" class="legal-header-ascii" aria-hidden="true"></canvas>
           <div class="legal-banner">
             <div class="legal-banner__content">
               <h1 class="legal-title" id="page-title">Terms of Use</h1>
@@ -150,8 +150,7 @@
     <script src="/public_assets/site/js/config/site-data.js?v=20260728-bio-nav1"></script>
         <script src="/public_assets/site/js/lib/cache.js"></script>
         <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
-        <script src="/public_assets/site/js/pages/legal-liquid.js?v=20260905-consistency1" defer></script>
-        <script src="/index_assets/js/masthead-canvas.js?v=20260904-render1" defer></script>
+        <script src="/public_assets/site/js/ascii-background.js?v=20260831-element1" data-shared-ascii-background data-ascii-canvas="#legal-header-ascii" defer></script>
         <script src="/public_assets/site/js/layout/shell.js?v=20260904-render1" data-active="legal" defer></script>
     <script>
           (() => {
