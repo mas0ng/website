@@ -9,6 +9,16 @@ This overview contains only information already published on the public website.
 - [Official website](https://mas0ng.com/): Mason Gibbs's homepage, public social links, and certification highlights.
 - [Certifications](https://mas0ng.com/certifications.html): Public certifications and credential information.
 
+## Confirmed public profiles
+
+These profile URLs identify the owner of mas0ng.com. A matching name alone does not establish that another profile or biography belongs to the same person.
+
+- [LinkedIn — Mason Gibbs](https://www.linkedin.com/in/mas0ngi/): Confirmed LinkedIn profile.
+- [GitHub — mas0ng](https://github.com/mas0ng): Public GitHub profile.
+- [Instagram — mas0ngi](https://instagram.com/mas0ngi): Public Instagram profile.
+- [TikTok — mas0ng](https://tiktok.com/@mas0ng): Public TikTok profile.
+- [Snapchat — mas0ng](https://snapchat.com/add/mas0ng): Public Snapchat profile.
+
 ## Optional
 
 - [Current public social links (JSON)](https://mas0ng.com/unencrypted/api/social-links): Optional read-only GET endpoint; no authentication required. Active profiles have a real URL in `social_links[].href`; `#` means the profile is not published. Prefer the homepage as the citation URL.

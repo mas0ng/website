@@ -586,3 +586,42 @@ body[data-page="bio"] .bio-masthead__bg {
     margin-top: 0;
   }
 }
+
+/* Keep the mobile presentation; give desktop links a simple, open list. */
+@media (min-width: 734px) {
+  .bio-main .section__inner {
+    width: min(720px, calc(100% - 72px));
+    margin-top: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+  .bio-section-head {
+    max-width: none;
+    margin: 0 0 20px;
+    padding: 0;
+    border: 0;
+  }
+  .bio-section-head h2 { font-size: 1.65rem; letter-spacing: 0; }
+  .bio-main .social-grid { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .bio-main .social-tile {
+    min-height: 86px;
+    padding: 18px 12px;
+    border: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+  }
+  .bio-main .social-tile:hover,
+  .bio-main .social-tile:focus-visible {
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: none;
+    transform: none;
+  }
+  .bio-main .social-tile__glow { display: none; }
+}
