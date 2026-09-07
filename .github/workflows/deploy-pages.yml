@@ -27,6 +27,10 @@ jobs:
         run: node --test _tools/snapshot.test.mjs
       - name: Check static links and assets
         run: node _tools/check-links.mjs
+      - name: Refresh invisible search metadata
+        run: node _tools/refresh-seo.mjs
+      - name: Check indexing and structured data
+        run: node _tools/check-seo.mjs
       - name: Package public files
         run: node _tools/package-pages.mjs
       - uses: actions/upload-pages-artifact@v4

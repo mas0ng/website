@@ -21,3 +21,7 @@ Shared visual tokens live in public_assets/site/css/tokens.css; loading/error st
 ## Search metadata
 
 The bio page is indexable and included in sitemap.xml. Snapshot refresh updates its lastmod when the profile content changes. Main public pages share one Person identifier (https://mas0ng.com/#person); the dedicated ProfilePage is /bio.html#profile. All public HTML pages link to /llms.txt with rel="describedby" for compatible agents. This discovery hint does not guarantee Google rankings. Keep schema factual and consistent with published content.
+
+### Automated SEO consistency
+
+After public snapshots refresh, refresh-seo.mjs updates only head metadata: shared Person profile links, certification ItemList markup and legal WebPage descriptions. Credential metadata uses only published names, issuers and public verification links; it adds no ratings, accreditation or employment claims. The generator refuses body changes and keeps modification dates stable on unchanged builds. check-seo.mjs validates sitemap coverage, unique titles/descriptions, canonical and sharing URLs, JSON-LD, certificate counts, public indexing and error-page exclusions before publishing. Run both scripts after any manual metadata change.
