@@ -118,7 +118,7 @@ output.set('certifications.html', snapshot(html, 'public-certifications-snapshot
 
 // Update modification dates only when published page content actually changes.
 let sitemap = await read('sitemap.xml');
-for (const file of ['index.html', 'certifications.html']) {
+for (const file of ['index.html', 'bio.html', 'certifications.html']) {
   const normalize = (value) => value.replace(/\r\n/g, '\n');
   if (normalize(output.get(file)) === normalize(await read(file))) continue;
   const url = 'https://mas0ng.com/' + (file === 'index.html' ? '' : file);

@@ -17,3 +17,7 @@ Review and commit locally generated HTML with the source change. CI-generated sn
 ## Style maintenance
 
 Shared visual tokens live in public_assets/site/css/tokens.css; loading/error states live in content-states.css. Open _tools/style-reference/index.html through the local website server to review examples. The _tools directory is excluded from the Pages artifact, including this reference. Run node _tools/check-links.mjs for a lightweight local-asset check; the publish workflow runs it too. It checks the main and legal static pages without contacting remote sites or private Worker routes.
+
+## Search metadata
+
+The bio page is indexable and included in sitemap.xml. Snapshot refresh updates its lastmod when the profile content changes. Main public pages share one Person identifier (https://mas0ng.com/#person); the dedicated ProfilePage is /bio.html#profile. All public HTML pages link to /llms.txt with rel="describedby" for compatible agents. This discovery hint does not guarantee Google rankings. Keep schema factual and consistent with published content.
