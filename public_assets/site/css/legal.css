@@ -836,3 +836,33 @@ body[data-page="legal"] #site-main, body[data-page="legal"] .legal-shell { overf
 .security-modal :is(.triage-intro,.triage-question) { line-height:1.6; }
 .security-modal :focus-visible { outline:2px solid #9dc1ff; outline-offset:3px; }
 @media(max-width:540px) { .security-modal__header{padding:16px;gap:10px}.security-modal__body{padding:16px}.security-modal__header h2{font-size:1.2rem}.security-modal__subtitle{font-size:.78rem}.security-modal .form-actions > button{flex:1 1 140px} }
+
+/* Complete reporting components, scoped to the report dialog. */
+#security-report-modal { color-scheme:dark; margin:auto; }
+#security-report-modal *, #security-report-modal *::before, #security-report-modal *::after { box-sizing:border-box; }
+#security-report-modal .screen-kicker { margin:0 0 12px; color:#9dc1ff; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; }
+#security-report-modal .triage-question { margin:0 0 10px; color:#e4e7ed!important; font-size:1.2rem; font-weight:400; }
+#security-report-modal .triage-intro { margin:0; font-size:.88rem; }
+#security-report-modal .triage-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+#security-report-modal .report-route { display:flex; flex-direction:column; align-items:flex-start; gap:12px; min-width:0; padding:20px; border:1px solid #354052; border-radius:14px; background:#191f28; color:#e4e7ed; text-align:left; font:inherit; cursor:pointer; transition:background .15s,border-color .15s; }
+#security-report-modal .report-route:hover { background:#232d3a; border-color:#9dc1ff; }
+#security-report-modal .report-route strong { font-size:.95rem; font-weight:400; line-height:1.4; }
+#security-report-modal .report-route small { color:#aab3c2; font-size:.8rem; line-height:1.65; overflow-wrap:anywhere; }
+#security-report-modal .report-route__icon { display:grid; place-items:center; width:42px; height:42px; flex-shrink:0; border-radius:10px; background:#263449; color:#b7d4ff; }
+#security-report-modal .report-route__icon svg { display:block; width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+#security-report-modal .github-notice-card { padding:20px; border:1px solid #354052; border-radius:14px; background:#191f28; }
+#security-report-modal :is(.github-notice-card,.form-intro,.security-modal__success) h3 { margin:0 0 12px; color:#e4e7ed; font-size:1.15rem; font-weight:400; line-height:1.4; }
+#security-report-modal :is(.github-notice-card,.form-intro,.security-modal__success) p:not(.screen-kicker) { margin:0 0 12px; color:#aab3c2; font-size:.85rem; line-height:1.7; }
+#security-report-modal .github-report-link { display:inline-flex; align-items:center; justify-content:center; min-height:44px; margin-top:8px; padding:12px 16px; border-radius:10px; color:#101a2b; background:#c3d9ff; font-size:.85rem; line-height:1.5; text-decoration:none; }
+#security-report-modal .form-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 16px; }
+#security-report-modal .form-group { min-width:0; }
+#security-report-modal .security-modal__form label { font-size:.82rem; line-height:1.5; }
+#security-report-modal .required { color:#b7d4ff; }
+#security-report-modal input::placeholder, #security-report-modal textarea::placeholder { color:#8592a6; opacity:1; }
+#security-report-modal .form-actions { padding-top:20px; border-top:1px solid #303845; justify-content:flex-end; }
+#security-report-modal :is(.btn-primary,.btn-secondary) { border-radius:10px!important; font-size:.85rem; }
+#security-report-modal .turnstile-wrap { margin-top:22px; min-width:0; max-width:100%; }
+#security-report-modal .form-status:not([hidden]) { margin-top:16px; padding:14px; border:1px solid #785d38; border-radius:10px; background:#2a231a; color:#f5d5a2; font-size:.85rem; line-height:1.6; }
+#security-report-modal button:disabled { opacity:.6; cursor:wait; }
+#security-report-modal .success-icon { display:grid; place-items:center; width:48px; height:48px; margin:0 0 18px; border-radius:50%; font-size:1.4rem; background:#183b30!important; color:#9ae6c5!important; }
+@media(max-width:540px) { #security-report-modal .triage-actions, #security-report-modal .form-grid {grid-template-columns:1fr} #security-report-modal .report-route {padding:16px;gap:10px} #security-report-modal .github-notice-card {padding:16px} #security-report-modal .github-report-link {width:100%} }
