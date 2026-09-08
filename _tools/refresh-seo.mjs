@@ -35,6 +35,13 @@ const person = {
 };
 const files = ['index.html', 'bio.html', 'certifications.html', ...(await fs.readdir(new URL('legal/', root))).filter(f => f.endsWith('.html')).map(f => 'legal/' + f)];
 let sitemap = await read('sitemap.xml');
+sitemap = sitemap.replace('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">');
+// Include the original profile photo on the page where it is actually displayed.
+sitemap = sitemap.replace(/<url>([\s\S]*?)<\/url>/g, (entry, body) => {
+  if (!body.includes('<loc>https://mas0ng.com/bio.html</loc>')) return entry;
+  const clean = body.replace(/\s*<image:image>[\s\S]*?<\/image:image>/g, '').trimEnd();
+  return '<url>' + clean + '\n    <image:image><image:loc>' + person.image.contentUrl + '</image:loc></image:image>\n  </url>';
+});
 for (const file of files) {
   const original = await read(file);
   const canonical = original.match(/<link rel="canonical" href="([^"]+)"/)[1];
@@ -45,7 +52,7 @@ for (const file of files) {
   const data = pattern.test(html) ? JSON.parse(html.match(pattern)[1]) : { '@context': 'https://schema.org', '@type': 'WebPage', '@id': canonical + '#page', url: canonical, name: title, description, inLanguage: 'en-GB', isPartOf: { '@id': 'https://mas0ng.com/#website' } };
   for (const node of data['@graph'] || [data]) {
     if (node['@type'] === 'Person') { for (const key of Object.keys(node)) delete node[key]; Object.assign(node, person); }
-    if (node['@type'] === 'ProfilePage') { node.mainEntity = structuredClone(person); node.description = description; }
+    if (node['@type'] === 'ProfilePage') { node.mainEntity = structuredClone(person); node.primaryImageOfPage = structuredClone(person.image); node.description = description; }
     if (['WebPage', 'CollectionPage'].includes(node['@type'])) node.description = description;
   }
   if (file === 'certifications.html') {

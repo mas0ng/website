@@ -815,3 +815,24 @@ body[data-page="legal"] *, body[data-page="legal"] *::before, body[data-page="le
 /* Sticky contents must follow the document, not an overflow container. */
 body[data-page="legal"] #site-main, body[data-page="legal"] .legal-shell { overflow: visible; }
 .legal-toc { align-self: start; height: fit-content; overscroll-behavior: contain; }
+
+/* Native report dialog: top-layer focus containment and keyboard-aware height. */
+.security-modal { padding:0; border:0; background:transparent; color:var(--legal-text); width:min(680px,calc(100% - 24px)); max-width:none; max-height:calc(var(--report-viewport-height,100dvh) - 24px); overflow:visible; }
+.security-modal:not([open]) { display:none; }
+.security-modal::backdrop { background:rgba(0,0,0,.76); }
+.security-modal__container { display:flex; flex-direction:column; max-height:calc(var(--report-viewport-height,100dvh) - 24px); padding:0; overflow:hidden; }
+.security-modal__header { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; padding:22px 24px; border-bottom:1px solid var(--legal-line); flex-shrink:0; }
+.security-modal__header h2 { margin:6px 0 10px; font-size:1.5rem; }
+.security-modal__eyebrow { margin:0; color:var(--legal-muted); font-size:.75rem; }
+.security-modal__subtitle { margin:0; font-size:.85rem; line-height:1.5; color:var(--legal-muted); }
+.security-modal__close { flex:0 0 44px; height:44px; border:1px solid var(--legal-line); border-radius:10px; background:var(--surface-raised); font-size:1.5rem; cursor:pointer; }
+.security-modal__body { min-height:0; overflow-y:auto; overscroll-behavior:contain; padding:24px; -webkit-overflow-scrolling:touch; }
+.security-modal__form label { display:block; margin:18px 0 8px; }
+.security-modal__form :is(input[type=email],input[type=text],select,textarea) { display:block; width:100%; max-width:100%; padding:12px; font:16px/1.4 "ABeeZee",sans-serif; border:1px solid var(--legal-line); }
+.security-modal__form textarea { resize:vertical; }
+.security-modal .field-hint { display:block; margin-top:6px; color:var(--legal-muted); font-size:.78rem; }
+.security-modal :is(.form-actions,.triage-actions) { display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; }
+.security-modal :is(.btn-primary,.btn-secondary) { min-height:44px; padding:12px 18px; font:inherit; cursor:pointer; }
+.security-modal :is(.triage-intro,.triage-question) { line-height:1.6; }
+.security-modal :focus-visible { outline:2px solid #9dc1ff; outline-offset:3px; }
+@media(max-width:540px) { .security-modal__header{padding:16px;gap:10px}.security-modal__body{padding:16px}.security-modal__header h2{font-size:1.2rem}.security-modal__subtitle{font-size:.78rem}.security-modal .form-actions > button{flex:1 1 140px} }

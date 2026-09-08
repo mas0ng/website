@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap">
     <link rel="stylesheet" href="/public_assets/site/css/site.css?v=20260906-shared1">
 
-    <link rel="stylesheet" href="/public_assets/site/css/legal.css?v=20260906-sticky1">
+    <link rel="stylesheet" href="/public_assets/site/css/legal.css?v=20260907-report1">
     <link rel="stylesheet" href="/public_assets/site/css/tokens.css?v=20260906-shared1">
   <link rel="stylesheet" href="/public_assets/site/css/content-states.css?v=20260906-shared1">
   <script type="application/ld+json">
@@ -152,9 +152,9 @@
       </main>
     </div>
 
-    <div class="security-modal" id="security-report-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-subtitle">
-      <div class="security-modal__overlay" id="security-modal-overlay"></div>
-      <div class="security-modal__container" tabindex="-1">
+    <dialog class="security-modal" id="security-report-modal" aria-labelledby="modal-title" aria-describedby="modal-subtitle">
+
+      <div class="security-modal__container" tabindex="-1" data-nosnippet>
         <div class="security-modal__header">
           <div>
             <p class="security-modal__eyebrow">Security reporting</p>
@@ -252,12 +252,12 @@
           </div>
         </div>
       </div>
-    </div>
+    </dialog>
     <script src="/public_assets/site/js/config/site-data.js?v=20260906-nav16"></script>
         <script src="/public_assets/site/js/lib/cache.js"></script>
         <script src="/public_assets/site/js/layout/nav-scroll.js"></script>
         <script src="/public_assets/site/js/ascii-background.js?v=20260906-shared1" data-shared-ascii-background data-ascii-canvas="#legal-header-ascii" defer></script>
-        <script src="/public_assets/site/js/layout/shell.js?v=20260904-render1" data-active="legal" defer></script>
+        <script src="/public_assets/site/js/layout/shell.js?v=20260907-snippet1" data-active="legal" defer></script>
     <script>
           (() => {
             const overlayName = /(overlay|backdrop|scrim|dimmer|veil)/i;
@@ -349,6 +349,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const formStatus = document.getElementById('form-status');
         let turnstileLoading = false;
         let previouslyFocused = null;
+        let savedScrollY = 0;
+        let savedBodyStyle = null;
+        const syncReportViewport = () => modal.style.setProperty("--report-viewport-height", (window.visualViewport?.height || window.innerHeight) + "px");
 
         const loadTurnstile = () => {
           if (window.turnstile || turnstileLoading) return;
@@ -373,11 +376,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const openModal = () => {
           previouslyFocused = document.activeElement;
-          modal?.classList.add('is-open');
-          modal?.setAttribute('aria-hidden', 'false');
-          document.body.style.overflow = 'hidden'; // prevent background scrolling
+          if (modal.open) return;
+          savedScrollY = window.scrollY;
+          savedBodyStyle = { position: document.body.style.position, top: document.body.style.top, width: document.body.style.width, overflow: document.body.style.overflow };
+          Object.assign(document.body.style, { position: 'fixed', top: '-' + savedScrollY + 'px', width: '100%', overflow: 'hidden' });
+          syncReportViewport();
+          modal.showModal();
+          window.visualViewport?.addEventListener('resize', syncReportViewport);
           resetModalScreens();
-          requestAnimationFrame(() => modalContainer?.focus());
+          requestAnimationFrame(() => modalContainer?.focus({ preventScroll: true }));
         };
 
         openBtn?.addEventListener('click', openModal);
@@ -395,18 +402,20 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const closeModal = () => {
-          modal?.classList.remove('is-open');
-          modal?.setAttribute('aria-hidden', 'true');
-          document.body.style.overflow = '';
-          
-          setTimeout(resetModalScreens, 300);
+          if (!modal.open) return;
+          modal.close();
+          window.visualViewport?.removeEventListener('resize', syncReportViewport);
+          if (savedBodyStyle) Object.assign(document.body.style, savedBodyStyle);
+          window.scrollTo(0, savedScrollY);
+          resetModalScreens();
           if (previouslyFocused instanceof HTMLElement) {
-            previouslyFocused.focus();
+            previouslyFocused.focus({ preventScroll: true });
           }
         };
 
         closeBtn?.addEventListener('click', closeModal);
-        overlay?.addEventListener('click', closeModal);
+        modal?.addEventListener('click', event => { if (event.target === modal) closeModal(); });
+        modal?.addEventListener('cancel', event => { event.preventDefault(); closeModal(); });
         successCloseBtn?.addEventListener('click', closeModal);
         githubCloseBtn?.addEventListener('click', closeModal);
 
@@ -422,7 +431,9 @@ document.addEventListener('DOMContentLoaded', () => {
           loadTurnstile();
           
           setTimeout(() => {
-            document.getElementById('reporter-email')?.focus();
+            form.setAttribute('tabindex', '-1');
+            form.focus({ preventScroll: true });
+            modal.querySelector('.security-modal__body').scrollTop = 0;
           }, 100);
         });
 
@@ -437,7 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && modal?.classList.contains('is-open')) {
+          if (e.key === 'Escape' && modal?.open) {
             closeModal();
           }
         });

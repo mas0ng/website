@@ -538,7 +538,7 @@
     footer.id = 'site-footer';
     footer.innerHTML = `
       <div class="footer__inner">
-        <p class="footer__copy">Copyright © ${new Date().getFullYear()} ${d.siteName}. All rights reserved.</p>
+        <p class="footer__copy"><span data-nosnippet>Copyright © ${new Date().getFullYear()} ${d.siteName}. All rights reserved.</span></p>
         <div class="footer__cols">
           <div class="footer__col">
             <h3>Site</h3>
