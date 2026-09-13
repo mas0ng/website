@@ -254,8 +254,8 @@ body[data-page="bio"] .nav__brand-logo--black { display: none !important; }
 html[data-nav-solid] body[data-page="home"] .nav__brand-logo--white,
 body[data-page="bio"] .nav__brand-logo--white { display: block !important; }
 
-body[data-page="legal"] .nav__brand-logo--black { display: block !important; }
-body[data-page="legal"] .nav__brand-logo--white { display: none !important; }
+body[data-page="legal"] .nav__brand-logo--black { display: none !important; }
+body[data-page="legal"] .nav__brand-logo--white { display: block !important; }
 
 .nav__cluster {
   display: flex;
