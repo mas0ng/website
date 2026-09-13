@@ -21,13 +21,6 @@
     "icon": "/public_assets/social_icons/linkedin.svg"
   },
   {
-    "id": "snapchat",
-    "label": "Snapchat",
-    "handle": "mas0ng",
-    "href": "https://snapchat.com/add/mas0ng",
-    "icon": "/public_assets/social_icons/snapchat.svg"
-  },
-  {
     "id": "youtube",
     "label": "YouTube",
     "handle": "@mas0ng",

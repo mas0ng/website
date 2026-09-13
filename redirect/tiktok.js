@@ -12,12 +12,6 @@
       pattern: /^[A-Za-z0-9._]{2,24}$/,
       url: (username) => `https://www.tiktok.com/@${encodeURIComponent(username)}`
     },
-    snapchat: {
-      label: 'Snapchat',
-      icon: '/public_assets/social_icons/snapchat.svg',
-      pattern: /^[A-Za-z0-9._-]{3,30}$/,
-      url: (username) => `https://www.snapchat.com/add/${encodeURIComponent(username)}`
-    },
     github: {
       label: 'GitHub',
       icon: '/public_assets/social_icons/github.svg',
