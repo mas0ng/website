@@ -30,7 +30,7 @@
   "isPartOf": {
     "@id": "https://mas0ng.com/#website"
   },
-  "dateModified": "2026-09-07"
+  "dateModified": "2026-09-14"
 }
   </script>
   <link rel="sitemap" type="application/xml" href="https://mas0ng.com/sitemap.xml" />
@@ -49,7 +49,7 @@
           <div class="legal-banner">
             <div class="legal-banner__content">
               <h1 class="legal-title" id="page-title">Privacy Policy</h1>
-              <p class="legal-meta">Last updated: 13 September 2026</p>
+              <p class="legal-meta">Last updated: 14 September 2026</p>
             </div>
           </div>
         </section>
@@ -58,6 +58,7 @@
           <aside class="legal-toc" aria-label="On this page">
             <p class="legal-toc-label">On this page</p>
             <nav>
+              <a href="#edu0">edu0 textbook reader</a>
               <a href="#who-is-responsible-and-uk-scope" data-index="01">Who is responsible and UK scope</a>
               <a href="#what-this-policy-covers" data-index="02">What this policy covers</a>
               <a href="#other-sites-operated-or-developed-by-mas0ngcom" data-index="03">Other sites</a>
@@ -81,6 +82,13 @@
           <div>
 
             <section class="legal-stack" aria-label="Privacy Policy sections">
+            <section class="legal-section" id="edu0"><h2>edu0: the textbook reader at edu.mas0ng.com</h2>
+<p>edu0 is operated by mas0ng.com. It uses separate accounts created by the operator through COMMAND. Account details come from the operator; passwords come from your sign-in and password-setup forms; reading progress is sent automatically when you open or navigate a book.</p>
+<ul><li><strong>Account records:</strong> a random account ID, username, display name, salted scrypt password hash, enabled/disabled state, first-password-change flag and creation/update times are stored in the local edu0 SQLite database on the operator's computer or server. Passwords are processed to verify or change them; permanent passwords are not stored as readable text. The administrator sees generated one-time passwords at creation or reset.</li><li><strong>Sessions:</strong> a random session identifier, account ID, CSRF security token, creation time and expiry time are stored in that database. An essential <code>edu_session</code> cookie identifies your session. Sessions expire after seven days and can end earlier on sign-out, account disabling or administrator revocation. Expired database rows are cleaned up at subsequent successful sign-ins, so expiry does not mean immediate physical deletion.</li><li><strong>Reading progress:</strong> the latest page number for each book, book ID, account ID and update time are saved to let you resume reading. Each save replaces the previous page record; the application does not maintain a page-by-page reading history, grades or time-spent record.</li><li><strong>Connection security:</strong> the server keeps request counts and connection-address keys in process memory for rate limiting. Through the tunnel this is normally the local connector address. These counters are not written to the account database and clear when the server restarts. The Python request logger is disabled.</li></ul>
+<p>The operator can administer accounts and access the database, including saved progress. Account administration passes through the authenticated COMMAND Cloudflare Worker. Ordinary edu0 sign-in and reading requests go through Cloudflare Tunnel to the local edu0 server; Cloudflare still handles the connection and may process IP addresses, request headers, paths, times and security information under its policies. This is not an end-to-end encrypted connection that hides data from Cloudflare. Pages also request the logo from mas0ng.com and ABeeZee from Google Fonts, disclosing ordinary connection information to those providers.</p>
+<p>The current reader has no advertising analytics, AI provider calls, uploads or messaging. It does not request your email address, date of birth, school or payment details. The sign-in acknowledgement is checked in the browser and is not currently saved as a separate consent record. It acknowledges the Terms and privacy information; it does not authorise advertising or optional tracking.</p>
+<p>Account and progress records currently have no automatic deletion schedule and remain until the operator removes them. Disabling an account blocks access and deletes its sessions but does not erase its account or progress records. Request access, correction, erasure or an objection to processing at <a class="legal-link" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>. Copies in operator-made backups and provider operational records may remain until separately removed under the applicable retention arrangements; no fixed backup deletion period is promised here.</p>
+<p>The purposes are to provide your requested private library, authenticate accounts, resume reading and protect the service. These fall under the legitimate-interest purposes described above, subject to your rights, including the right to object. The essential session cookie supports the sign-in you request. The existing rights, international-processing and complaints sections also apply to edu0.</p></section>
             <section class="legal-section" id="who-is-responsible-and-uk-scope">
               <h2>Who is responsible and UK scope</h2>
               <p>The operator of mas0ng.com is responsible for personal data handled through this service. Questions, rights requests, and data protection complaints can be sent to <a class="legal-link" href="mailto:mason@mas0ng.com">mason@mas0ng.com</a>.</p>
