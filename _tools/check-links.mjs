@@ -2,7 +2,17 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=path.resolve(fileURLToPath(new URL('../',import.meta.url)));
-const pages=['index.html','bio.html','certifications.html',...(await fs.readdir(path.join(root,'legal'))).filter(x=>x.endsWith('.html')).map(x=>'legal/'+x)];
+async function htmlFiles(directory, prefix = '') {
+ const items = await fs.readdir(directory, {withFileTypes:true});
+ const files=[];
+ for(const item of items){
+  const relative=prefix+item.name;
+  if(item.isDirectory()) files.push(...await htmlFiles(path.join(directory,item.name),relative+'/'));
+  else if(item.isFile() && item.name.endsWith('.html')) files.push(relative);
+ }
+ return files;
+}
+const pages=['index.html','bio.html','certifications.html',...(await fs.readdir(path.join(root,'legal'))).filter(x=>x.endsWith('.html')).map(x=>'legal/'+x),...await htmlFiles(path.join(root,'publications'),'publications/')];
 const missing=new Set();
 for(const page of pages){
  const html=await fs.readFile(path.join(root,page),'utf8');
@@ -13,8 +23,9 @@ for(const page of pages){
   if(url.origin !== 'https://mas0ng.com')continue;
   const pathname=decodeURIComponent(url.pathname);
   // Worker routes and dynamic services are deliberately outside this static check.
-  if(!/\.(?:html|css|js|png|jpg|jpeg|svg|webp|woff2?|ico|json|pdf)$/i.test(pathname))continue;
-  const target=path.resolve(root,'.'+pathname);
+  const isDirectoryIndex = pathname.endsWith('/');
+  if(!isDirectoryIndex && !/\.(?:html|css|js|png|jpg|jpeg|svg|webp|woff2?|ico|json|pdf)$/i.test(pathname))continue;
+  const target=path.resolve(root,'.'+(isDirectoryIndex ? pathname + 'index.html' : pathname));
   if(!target.startsWith(root+path.sep))throw Error('Path escaped static root');
   try{await fs.access(target);}catch{missing.add(page+': '+pathname);}
  }

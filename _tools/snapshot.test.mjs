@@ -8,7 +8,7 @@ import { promisify } from 'node:util';
 import { execFile } from 'node:child_process';
 const run = promisify(execFile);
 const root = new URL('../', import.meta.url);
-const files = ['index.html', 'bio.html', 'certifications.html', 'sitemap.xml',
+const files = ['index.html', 'bio.html', 'certifications.html', 'sitemap-static.xml',
   '_tools/refresh-public-content.mjs', 'index_assets/js/qualifications.js',
   'index_assets/js/certifications.js', 'public_assets/site/js/lib/social-tiles.js'];
 
@@ -37,11 +37,11 @@ test('refreshes changed public content, escapes markup and remains deterministic
   const html = await fs.readFile(path.join(f.dir, 'certifications.html'), 'utf8');
   assert.match(html, /Updated &lt;script&gt;example&lt;\/script&gt; &amp; course/);
   assert.ok(!html.includes('Updated <script>'));
-  const first = await fs.readFile(path.join(f.dir, 'sitemap.xml'), 'utf8');
+  const first = await fs.readFile(path.join(f.dir, 'sitemap-static.xml'), 'utf8');
   assert.ok(first.includes(new Date().toISOString().slice(0, 10)));
   await generate(f);
   assert.equal(await fs.readFile(path.join(f.dir, 'certifications.html'), 'utf8'), html);
-  assert.equal(await fs.readFile(path.join(f.dir, 'sitemap.xml'), 'utf8'), first);
+  assert.equal(await fs.readFile(path.join(f.dir, 'sitemap-static.xml'), 'utf8'), first);
 });
 
 test('API failure and incomplete payloads leave every published file unchanged', async () => {

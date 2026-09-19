@@ -117,7 +117,7 @@ html = html.replace(/(<span[^>]*id="certification-count"[^>]*>)[\s\S]*?(<\/span>
 output.set('certifications.html', snapshot(html, 'public-certifications-snapshot', certData));
 
 // Update modification dates only when published page content actually changes.
-let sitemap = await read('sitemap.xml');
+let sitemap = await read('sitemap-static.xml');
 for (const file of ['index.html', 'bio.html', 'certifications.html']) {
   const normalize = (value) => value.replace(/\r\n/g, '\n');
   if (normalize(output.get(file)) === normalize(await read(file))) continue;
@@ -126,7 +126,7 @@ for (const file of ['index.html', 'bio.html', 'certifications.html']) {
   const pattern = new RegExp('(<loc>' + escapedUrl + '</loc>)\\s*(?:<lastmod>[^<]*</lastmod>\\s*)?');
   sitemap = sitemap.replace(pattern, '$1\n    <lastmod>' + new Date().toISOString().slice(0, 10) + '</lastmod>\n  ');
 }
-output.set('sitemap.xml', sitemap);
+output.set('sitemap-static.xml', sitemap);
 
 // Write only after every fetch, validation and render has succeeded.
 for (const [file, value] of output) await write(file, value);

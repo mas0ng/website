@@ -4,10 +4,10 @@ const root = new URL('../', import.meta.url);
 const output = new URL('_site/', root);
 // Refuse a reused output directory rather than risk carrying old/unreviewed files.
 await fs.mkdir(output);
-const folders = ['.well-known', 'errors', 'index_assets', 'legal', 'public_assets', 'redirect'];
+const folders = ['.well-known', 'errors', 'index_assets', 'legal', 'public_assets', 'publications', 'redirect'];
 const files = [
   'index.html', 'bio.html', 'certifications.html', '404.html', 'CNAME',
-  'robots.txt', 'sitemap.xml', 'llms.txt', 'health_check.txt',
+  'robots.txt', 'sitemap.xml', 'sitemap-static.xml', 'llms.txt', 'health_check.txt',
   'navbar.js', 'site-libs.js', 'site-theme.css'
 ];
 for (const name of [...folders, ...files]) {

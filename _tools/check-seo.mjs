@@ -2,19 +2,24 @@ import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
 const root = new URL('../', import.meta.url);
 const read = file => fs.readFile(new URL(file, root), 'utf8');
-const sitemap = await read('sitemap.xml');
-const entries = [...sitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(m => ({
+const staticSitemap = await read('sitemap-static.xml');
+const publicationsSitemap = await read('publications/sitemap.xml');
+const entries = [...staticSitemap.matchAll(/<url>([\s\S]*?)<\/url>/g), ...publicationsSitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(m => ({
   url: m[1].match(/<loc>([^<]+)<\/loc>/)?.[1], date: m[1].match(/<lastmod>([^<]+)<\/lastmod>/)?.[1]
 }));
 assert.equal(new Set(entries.map(e => e.url)).size, entries.length, 'Duplicate sitemap URLs');
 const titles = new Set();
 const descriptions = new Set();
-const expected = ['index.html', 'bio.html', 'certifications.html', ...(await fs.readdir(new URL('legal/', root))).filter(f => f.endsWith('.html')).map(f => 'legal/' + f)];
+const publicationFiles = [...publicationsSitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => {
+  const pathname = new URL(m[1]).pathname.replace(/^\/+|\/+$/g, '');
+  return pathname + '/index.html';
+});
+const expected = ['index.html', 'certifications.html', 'publications/index.html', ...(await fs.readdir(new URL('legal/', root))).filter(f => f.endsWith('.html')).map(f => 'legal/' + f), ...publicationFiles];
 assert.equal(entries.length, expected.length, 'Sitemap coverage changed');
 for (const file of expected) {
   const html = await read(file);
   const head = html.split('</head>')[0];
-  const canonical = 'https://mas0ng.com/' + (file === 'index.html' ? '' : file === 'legal/index.html' ? 'legal/' : file);
+  const canonical = 'https://mas0ng.com/' + (file === 'index.html' ? '' : file === 'legal/index.html' ? 'legal/' : file === 'publications/index.html' ? 'publications/' : file.endsWith('/index.html') ? file.slice(0, -'index.html'.length) : file);
   const links = [...head.matchAll(/<link rel="canonical" href="([^"]+)"/g)];
   assert.equal(links.length, 1, file + ': expected one canonical');
   assert.equal(links[0][1], canonical, file + ': wrong canonical');
@@ -40,5 +45,7 @@ for (const file of expected) {
     assert.deepEqual(list.itemListElement.map(e => e.item.name), snapshot.certifications.map(c => c.name));
   }
 }
+const sitemapIndex = await read('sitemap.xml');
+for (const sitemapUrl of ['https://mas0ng.com/sitemap-static.xml', 'https://mas0ng.com/publications/sitemap.xml']) assert(sitemapIndex.includes(`<loc>${sitemapUrl}</loc>`), 'Sitemap index missing ' + sitemapUrl);
 for (const file of ['404.html', 'errors/default.html']) assert(/<meta name="robots" content="[^\"]*noindex/.test(await read(file)), file + ': error page became indexable');
 console.log('SEO checks passed for ' + expected.length + ' indexable pages and error-page exclusions.');

@@ -9,6 +9,7 @@ This overview contains only information already published on the public website.
 - [Official website](https://mas0ng.com/): Mason Gibbs's homepage, public social links, and certification highlights.
 - [Official profile](https://mas0ng.com/bio.html): Mason Gibbs (@mas0ng), profile image and confirmed public social links.
 - [Certifications](https://mas0ng.com/certifications.html): Public certifications and credential information.
+- [Publications](https://mas0ng.com/publications/): Public writing by Mason Gibbs; individual articles are linked in the publications sitemap.
 
 ## Confirmed public profiles
 
@@ -25,4 +26,4 @@ These profile URLs identify the owner of mas0ng.com. A matching name alone does 
 - [Current public certifications (JSON)](https://mas0ng.com/unencrypted/api/certifications?range=all): Optional read-only GET endpoint; no authentication required. Returns the public certification list and total. Prefer the certifications page as the citation URL. If either endpoint is unavailable, use the HTML snapshots above.
 - [Legal information](https://mas0ng.com/legal/): The website's public policies.
 - [Privacy policy](https://mas0ng.com/legal/privacy.html): Information about the website's data handling.
-- [Sitemap](https://mas0ng.com/sitemap.xml): Canonical URLs for indexable public pages.
+- [Sitemap index](https://mas0ng.com/sitemap.xml): Links to the core-site and publications sitemaps.

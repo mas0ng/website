@@ -34,7 +34,7 @@ const person = {
   hasCredential: allCerts.map(c => ({ '@id': credentialId(c) }))
 };
 const files = ['index.html', 'bio.html', 'certifications.html', ...(await fs.readdir(new URL('legal/', root))).filter(f => f.endsWith('.html')).map(f => 'legal/' + f)];
-let sitemap = await read('sitemap.xml');
+let sitemap = await read('sitemap-static.xml');
 sitemap = sitemap.replace('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">');
 // Include the original profile photo on the page where it is actually displayed.
 sitemap = sitemap.replace(/<url>([\s\S]*?)<\/url>/g, (entry, body) => {
@@ -91,5 +91,5 @@ for (const file of files) {
     await fs.writeFile(new URL(file, root), html);
   }
 }
-await fs.writeFile(new URL('sitemap.xml', root), sitemap);
+await fs.writeFile(new URL('sitemap-static.xml', root), sitemap);
 console.log('Refreshed metadata for ' + files.length + ' pages without altering their bodies.');

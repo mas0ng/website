@@ -1,49 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <!-- lastmod tracks documented content changes, including published HTML snapshots. -->
-  <url>
-    <loc>https://mas0ng.com/</loc>
-    <lastmod>2026-09-13</lastmod>
-  </url>
-  <url>
-    <loc>https://mas0ng.com/certifications.html</loc>
-    <lastmod>2026-09-13</lastmod>
-  </url>
-  <url>
-    <loc>https://mas0ng.com/legal/</loc>
-    <lastmod>2026-09-08</lastmod>
-  </url>
-  <url>
-    <loc>https://mas0ng.com/legal/privacy.html</loc>
-    <lastmod>2026-09-15</lastmod>
-  </url>
-  <url>
-    <loc>https://mas0ng.com/legal/ai.html</loc>
-    <lastmod>2026-09-07</lastmod>
-  </url>
-  <url>
-    <loc>https://mas0ng.com/legal/terms.html</loc>
-    <lastmod>2026-09-07</lastmod>
-  </url>
-  <url>
-    <loc>https://mas0ng.com/legal/cookies.html</loc>
-    <lastmod>2026-09-07</lastmod>
-  </url>
-  <url>
-    <loc>https://mas0ng.com/legal/security.html</loc>
-    <lastmod>2026-09-07</lastmod>
-  </url>
-  <url>
-    <loc>https://mas0ng.com/legal/licences.html</loc>
-    <lastmod>2026-09-07</lastmod>
-  </url>
-  <url>
-    <loc>https://mas0ng.com/legal/downloads.html</loc>
-    <lastmod>2026-09-07</lastmod>
-  </url>
-  <url>
-    <loc>https://mas0ng.com/bio.html</loc>
-    <lastmod>2026-09-13</lastmod>
-    <image:image><image:loc>https://mas0ng.com/public_assets/personal_branding/avatar/white_black.jpg</image:loc></image:image>
-  </url>
-</urlset>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://mas0ng.com/sitemap-static.xml</loc>
+    <lastmod>2026-09-19</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://mas0ng.com/publications/sitemap.xml</loc>
+    <lastmod>2026-09-19</lastmod>
+  </sitemap>
+</sitemapindex>

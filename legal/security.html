@@ -30,7 +30,7 @@
   "isPartOf": {
     "@id": "https://mas0ng.com/#website"
   },
-  "dateModified": "2026-09-07"
+  "dateModified": "2026-09-19"
 }
   </script>
   <link rel="sitemap" type="application/xml" href="https://mas0ng.com/sitemap.xml" />
@@ -49,7 +49,7 @@
           <div class="legal-banner">
             <div class="legal-banner__content">
               <h1 class="legal-title" id="page-title">Security Notes</h1>
-              <p class="legal-meta">Last updated: 31 August 2026</p>
+              <p class="legal-meta">Last updated: 19 September 2026</p>
             </div>
           </div>
         </section>
@@ -88,19 +88,20 @@
 
             <section class="legal-section" id="security-controls-and-private-storage">
               <h2>Security controls and private storage</h2>
-              <p>Security controls can include session validation, authorisation, origin checks, request protection, rate limiting, and challenge verification. Private storage features are available only through authorised use and may apply additional checks to changes or downloads.</p>
-              <p>No description on this page is a guarantee that a particular control is infallible or a disclosure of every internal security measure.</p>
+              <p>Security controls may include authentication, authorisation, and checks intended to prevent abuse. Private storage features are available only through authorised use and may apply additional checks.</p>
+              <p>A plain-language explanation of transport encryption is in <a class="legal-link" href="/publications/web/what-https-protects/">What HTTPS actually protects</a>. HTTPS still applies; it does not promise protection from software controlling the browser or device.</p>
+              <p>This page is not a warranty, a complete security architecture, or a disclosure of private systems. No description here is a guarantee that a particular control is infallible.</p>
             </section>
 
             <section class="legal-section" id="security-information-and-monitoring">
               <h2>Security information and monitoring</h2>
-              <p>Sign-in and protected requests may record IP address, timestamp, user agent, requested page, authentication outcome, challenge result, failed-login reason, rate-limit event, and related security information. This is used to authenticate users, detect abuse, investigate faults, and protect private services.</p>
+              <p>Sign-in and protected requests may record connection, request, and authentication information needed to authenticate users, detect abuse, investigate faults, and protect private services.</p>
               <p>Limited alerts about successful, failed, or blocked sign-in attempts may be sent through a third-party notification service. The <a class="legal-link" href="/legal/privacy.html">Privacy Policy</a> identifies relevant recipients, retention, rights, and the data protection complaint process.</p>
             </section>
 
             <section class="legal-section" id="automated-security-checks">
               <h2>Automated security checks</h2>
-              <p>Automated checks may validate sessions, apply rate limits, require a challenge, or allow or block a request based on authentication and security signals. They are used to protect private areas rather than to profile ordinary public visitors or make legal or similarly significant decisions about them.</p>
+              <p>Automated checks may allow, challenge, limit, or block a request based on authentication and security signals. They are used to protect private areas rather than to profile ordinary public visitors or make legal or similarly significant decisions about them.</p>
             </section>
 
             <section class="legal-section" id="cloudflare-turnstile">
@@ -220,7 +221,7 @@
                   <option value="xss">Cross-site scripting (XSS)</option>
                   <option value="csrf">Cross-site request forgery (CSRF)</option>
                   <option value="auth">Authentication / authorisation bypass</option>
-                  <option value="sqli">SQL injection / database issue</option>
+                  <option value="injection">Injection or unauthorised data access</option>
                   <option value="data-exposure">Sensitive data exposure</option>
                   <option value="other">Other security concern</option>
                 </select>

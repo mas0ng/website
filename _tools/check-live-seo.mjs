@@ -1,8 +1,11 @@
 // Read-only deployment audit. Checks the served HTML and headers, not local templates.
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
-const sitemap = await fs.readFile(new URL('../sitemap.xml', import.meta.url), 'utf8');
-const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
+const sitemapIndex = await fs.readFile(new URL('../sitemap.xml', import.meta.url), 'utf8');
+const staticSitemap = await fs.readFile(new URL('../sitemap-static.xml', import.meta.url), 'utf8');
+const publicationsSitemap = await fs.readFile(new URL('../publications/sitemap.xml', import.meta.url), 'utf8');
+for (const sitemapUrl of ['https://mas0ng.com/sitemap-static.xml', 'https://mas0ng.com/publications/sitemap.xml']) assert(sitemapIndex.includes(`<loc>${sitemapUrl}</loc>`), 'Sitemap index missing ' + sitemapUrl);
+const urls = [...staticSitemap.matchAll(/<loc>([^<]+)<\/loc>/g), ...publicationsSitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
 const people = [];
 await Promise.all(urls.map(async url => {
   const response = await fetch(url, { redirect: 'error', signal: AbortSignal.timeout(20000) });
@@ -30,10 +33,10 @@ await Promise.all(urls.map(async url => {
     assert.deepEqual(page.about.hasCredential.map(c => c['@id']), page.mainEntity.itemListElement.map(i => i.item['@id']));
   }
 }));
-assert.equal(people.length, 3, 'Expected identity markup on home, bio and certifications');
+assert.equal(people.length, 2, 'Expected identity markup on home and certifications');
 for (const person of people) {
   assert.deepEqual(person, people[0], 'Inconsistent published Person records');
   assert.deepEqual(person.alternateName, ['mas0ng', 'mas0ngi']);
   assert(person.image.width > 0 && person.image.height > 0 && person.image['@type'] === 'ImageObject');
 }
-console.log('Live metadata and HTTP indexing checks passed on ' + urls.length + ' pages; all three identity records agree.');
+console.log('Live metadata and HTTP indexing checks passed on ' + urls.length + ' pages; both identity records agree.');
