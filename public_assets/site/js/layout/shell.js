@@ -358,7 +358,7 @@
     });
 
     document.addEventListener('click', async (event) => {
-      const link = event.target.closest('.social-tile, .footer__social-link');
+      const link = event.target.closest('.social-tile, .footer__social-link, .hero-link');
       if (!link || event.defaultPrevented) return;
       if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
 
