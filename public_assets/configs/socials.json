@@ -14,6 +14,13 @@
     "icon": "/public_assets/social_icons/tiktok.svg"
   },
   {
+    "id": "snapchat",
+    "label": "Snapchat",
+    "handle": "@wmas0ng",
+    "href": "https://snapchat.com/add/wmas0ng",
+    "icon": "/public_assets/social_icons/snapchat.svg"
+  },
+  {
     "id": "linkedin",
     "label": "LinkedIn",
     "handle": "Mason Gibbs",

@@ -68,6 +68,7 @@ window.MAS0NG_SOCIAL_TILES = (function () {
 
     if (site === 'instagram' && host === 'instagram.com' && parts.length === 1) username = parts[0];
     if (site === 'tiktok' && host === 'tiktok.com' && parts.length === 1 && parts[0].startsWith('@')) username = parts[0].slice(1);
+    if (site === 'snapchat' && host === 'snapchat.com' && parts.length === 2 && parts[0] === 'add') username = parts[1];
     if (site === 'github' && host === 'github.com' && parts.length === 1) username = parts[0];
     if (site === 'linkedin' && host === 'linkedin.com' && parts.length === 2 && parts[0] === 'in') username = parts[1];
     if (site === 'youtube' && host === 'youtube.com' && parts.length === 1 && parts[0].startsWith('@')) username = parts[0].slice(1);
